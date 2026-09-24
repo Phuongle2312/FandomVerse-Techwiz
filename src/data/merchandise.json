@@ -1,0 +1,218 @@
+[
+  {
+    "id": "anime-merch-001",
+    "category": "anime",
+    "name": "Mô hình Luffy Gear 5 Sun God Nika Master Stars Piece",
+    "image": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=500&auto=format&fit=crop&q=80",
+    "price": 89.99,
+    "priceMax": null,
+    "shortDescription": "Mô hình Luffy thức tỉnh Gear 5 cao 25cm làm từ nhựa PVC cao cấp, chi tiết hiệu ứng khói mây uốn lượn sống động.",
+    "productType": "figure"
+  },
+  {
+    "id": "anime-merch-002",
+    "category": "anime",
+    "name": "Áo Hoodie Demon Slayer Tanjiro Hanafuda Kimono Pattern",
+    "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=500&auto=format&fit=crop&q=80",
+    "price": 45.00,
+    "priceMax": 55.00,
+    "shortDescription": "Áo nỉ cotton dệt dày dặn họa tiết ca-rô xanh đen biểu tượng của Tanjiro, đủ kích cỡ từ S đến XXL.",
+    "productType": "apparel"
+  },
+  {
+    "id": "anime-merch-003",
+    "category": "anime",
+    "name": "Gấu Bông Anya Forger Chimera Chibi Plushie",
+    "image": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=500&auto=format&fit=crop&q=80",
+    "price": 24.99,
+    "priceMax": null,
+    "shortDescription": "Thú nhồi bông sinh vật Chimera đáng yêu của bé Anya (Spy x Family), lông mềm mịn không rụng.",
+    "productType": "plushie"
+  },
+
+  {
+    "id": "gaming-merch-001",
+    "category": "gaming",
+    "name": "Tay Cầm Chơi Game Xbox Wireless Controller - Starfield Limited Edition",
+    "image": "https://images.unsplash.com/photo-1592840496073-e5315b936a09?w=500&auto=format&fit=crop&q=80",
+    "price": 79.99,
+    "priceMax": null,
+    "shortDescription": "Tay cầm không dây phiên bản giới hạn Starfield với vỏ nhựa trong suốt, đệm bọc cao su chống trượt cao cấp.",
+    "productType": "accessory"
+  },
+  {
+    "id": "gaming-merch-002",
+    "category": "gaming",
+    "name": "Tượng Geralt of Rivia Grandmaster Ursine Armor 1/6 Scale",
+    "image": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500&auto=format&fit=crop&q=80",
+    "price": 149.99,
+    "priceMax": 179.99,
+    "shortDescription": "Tượng chàng Witcher Geralt trong bộ giáp Gấu Đại sư, sơn thủ công tinh xảo từng sợi tóc và lưỡi kiếm.",
+    "productType": "figure"
+  },
+  {
+    "id": "gaming-merch-003",
+    "category": "gaming",
+    "name": "Bình Nước Giữ Nhiệt Nuka-Cola Quantum Fallout Insulated Bottle",
+    "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=500&auto=format&fit=crop&q=80",
+    "price": 28.50,
+    "priceMax": null,
+    "shortDescription": "Bình giữ nhiệt bằng thép không gỉ 750ml phát quang dạ quang theo phong cách nước ngọt phóng xạ Fallout.",
+    "productType": "collectible"
+  },
+
+  {
+    "id": "movies-merch-001",
+    "category": "movies",
+    "name": "Găng Tay Vô Cực Nano Gauntlet Iron Man 1:1 tỉ lệ thật",
+    "image": "https://images.unsplash.com/photo-1635863138275-d9b33299680b?w=500&auto=format&fit=crop&q=80",
+    "price": 199.00,
+    "priceMax": null,
+    "shortDescription": "Găng tay Nano Gauntlet có đèn LED 6 Viên Đá Vô Cực phát sáng và phát âm thanh búng tay huyền thoại.",
+    "productType": "collectible"
+  },
+  {
+    "id": "movies-merch-002",
+    "category": "movies",
+    "name": "Đũa Phép Harry Potter Ollivanders Box Edition",
+    "image": "https://images.unsplash.com/photo-1598153346810-860daa814c4b?w=500&auto=format&fit=crop&q=80",
+    "price": 42.00,
+    "priceMax": 49.00,
+    "shortDescription": "Đũa phép cây nhựa ruột lông phượng hoàng làm từ nhựa đúc lõi kim loại đầm tay trong hộp nhung Ollivanders.",
+    "productType": "collectible"
+  },
+  {
+    "id": "movies-merch-003",
+    "category": "movies",
+    "name": "Áo Khoác Bomber Star Wars Rebel Alliance Flight Jacket",
+    "image": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=500&auto=format&fit=crop&q=80",
+    "price": 85.00,
+    "priceMax": null,
+    "shortDescription": "Áo khoác phi công phong cách phi đội X-Wing, chất liệu chống gió chống nước nhẹ thêu logo Liên Minh Nổi Dậy.",
+    "productType": "apparel"
+  },
+
+  {
+    "id": "tvshows-merch-001",
+    "category": "tvshows",
+    "name": "Mô hình Ngai Sắt Iron Throne Game of Thrones Replica 7-inch",
+    "image": "https://images.unsplash.com/photo-1514539079130-25950c84af65?w=500&auto=format&fit=crop&q=80",
+    "price": 65.00,
+    "priceMax": null,
+    "shortDescription": "Mô hình Ngai Sắt rèn từ hàng ngàn thanh kiếm của kẻ thù bị Aegon chinh phục, đúc từ đá polystone nặng tay.",
+    "productType": "collectible"
+  },
+  {
+    "id": "tvshows-merch-002",
+    "category": "tvshows",
+    "name": "Mũ Nồi Beret Len Peaky Blinders Vintage Tweed Flat Cap",
+    "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&auto=format&fit=crop&q=80",
+    "price": 35.00,
+    "priceMax": 45.00,
+    "shortDescription": "Mũ dạ tweed phong cách cổ điển của băng nhóm Thomas Shelby những năm 1920 tại Birmingham.",
+    "productType": "apparel"
+  },
+  {
+    "id": "tvshows-merch-003",
+    "category": "tvshows",
+    "name": "Gấu Bông Quái Vật Demogorgon Stranger Things Cute Plush",
+    "image": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=500&auto=format&fit=crop&q=80",
+    "price": 22.99,
+    "priceMax": null,
+    "shortDescription": "Quái vật hoa ăn thịt thế giới Upside Down được biến tấu chibi dễ thương, cánh hoa bung xòe bằng nỉ mềm.",
+    "productType": "plushie"
+  },
+
+  {
+    "id": "kpop-merch-001",
+    "category": "kpop",
+    "name": "Lightstick BTS Official ARMY Bomb Ver.4 (Special Edition)",
+    "image": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=500&auto=format&fit=crop&q=80",
+    "price": 68.00,
+    "priceMax": null,
+    "shortDescription": "Gậy cổ vũ chính hãng BTS tích hợp Bluetooth đổi màu đồng bộ theo giai điệu concert.",
+    "productType": "accessory"
+  },
+  {
+    "id": "kpop-merch-002",
+    "category": "kpop",
+    "name": "Búa Cổ Vũ BLACKPINK Official Lightstick Ver.2 Limited",
+    "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+    "price": 62.00,
+    "priceMax": 70.00,
+    "shortDescription": "Lightstick hình búa trái tim màu hồng phát ra tiếng bíp dễ thương và hiệu ứng ánh sáng rực rỡ.",
+    "productType": "accessory"
+  },
+  {
+    "id": "kpop-merch-003",
+    "category": "kpop",
+    "name": "Bộ Photocard Special Collector Album IU 'The Winning'",
+    "image": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500&auto=format&fit=crop&q=80",
+    "price": 29.99,
+    "priceMax": null,
+    "shortDescription": "Hộp thẻ bo góc hologram phiên bản giới hạn gồm 20 tấm ảnh độc quyền chất lượng cao của nghệ sĩ IU.",
+    "productType": "collectible"
+  },
+
+  {
+    "id": "comics-merch-001",
+    "category": "comics",
+    "name": "Mặt Nạ Batman Đen Nhám Gotham Cowl Replica",
+    "image": "https://images.unsplash.com/photo-1509281373149-e957c6296406?w=500&auto=format&fit=crop&q=80",
+    "price": 110.00,
+    "priceMax": 130.00,
+    "shortDescription": "Mặt nạ hóa trang Batman chất liệu silicon đúc nguyên khối ôm khít khuôn mặt, phong cách The Dark Knight.",
+    "productType": "accessory"
+  },
+  {
+    "id": "comics-merch-002",
+    "category": "comics",
+    "name": "Tượng Bán Thân Spider-Man Symbiote Black Suit 1/4 Scale",
+    "image": "https://images.unsplash.com/photo-1604200213928-ba3cf4fc8436?w=500&auto=format&fit=crop&q=80",
+    "price": 185.00,
+    "priceMax": null,
+    "shortDescription": "Tượng bán thân Người Nhện bộ giáp đen ký sinh trùng Venom với đôi mắt trắng sắc lẹm và biểu tượng nhện lớn.",
+    "productType": "figure"
+  },
+  {
+    "id": "comics-merch-003",
+    "category": "comics",
+    "name": "Áo Thun DC Comics Vintage Superman Classic Shield Graphic Tee",
+    "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500&auto=format&fit=crop&q=80",
+    "price": 25.00,
+    "priceMax": null,
+    "shortDescription": "Áo phông 100% cotton in lụa logo chữ S Superman cổ điển phong cách comic thập niên 80.",
+    "productType": "apparel"
+  },
+
+  {
+    "id": "manga-merch-001",
+    "category": "manga",
+    "name": "Kiếm Gỗ Katana Roronoa Zoro Shusui (Thu Thủy) Trưng Bày",
+    "image": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500&auto=format&fit=crop&q=80",
+    "price": 49.99,
+    "priceMax": 59.99,
+    "shortDescription": "Thanh danh kiếm đen Shusui của Zoro làm từ gỗ tre cao cấp an toàn cho cosplay và trưng bày bàn làm việc.",
+    "productType": "collectible"
+  },
+  {
+    "id": "manga-merch-002",
+    "category": "manga",
+    "name": "Sổ Tay Bìa Da Death Note Kèm Bút Lông Vũ Cosplay",
+    "image": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=500&auto=format&fit=crop&q=80",
+    "price": 18.50,
+    "priceMax": null,
+    "shortDescription": "Cuốn sổ tử thần in đầy đủ hướng dẫn sử dụng tiếng Anh và tiếng Nhật của Ryuk, kèm bút lông ngỗng độc đáo.",
+    "productType": "collectible"
+  },
+  {
+    "id": "manga-merch-003",
+    "category": "manga",
+    "name": "Mô Hình Chibi Saitama Oppai Hoodie Nendoroid",
+    "image": "https://images.unsplash.com/photo-1563089145-599997674d42?w=500&auto=format&fit=crop&q=80",
+    "price": 54.00,
+    "priceMax": null,
+    "shortDescription": "Mô hình Nendoroid Thánh Phồng Tôm Saitama với khuôn mặt nghiêm túc thay thế và túi đồ siêu thị.",
+    "productType": "figure"
+  }
+]

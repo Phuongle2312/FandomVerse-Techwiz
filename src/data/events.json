@@ -1,0 +1,176 @@
+[
+  {
+    "id": "anime-event-001",
+    "category": "anime",
+    "title": "Anime Japan Festival 2026",
+    "date": "2026-10-15",
+    "location": "Tokyo Big Sight, Tokyo, Nhật Bản",
+    "description": "Lễ hội anime lớn nhất hành tinh quy tụ hàng trăm studio hoạt hình hàng đầu thế giới, công bố trailer phim mới và các buổi giao lưu cùng Seiyuu nổi tiếng."
+  },
+  {
+    "id": "anime-event-002",
+    "category": "anime",
+    "title": "One Piece Day Global Live",
+    "date": "2026-11-20",
+    "location": "Makuhari Messe, Chiba, Nhật Bản",
+    "description": "Sự kiện kỷ niệm vũ trụ Đảo Hải Tặc với các thông tin độc quyền về manga, anime, live-action và các màn trình diễn ca nhạc anime rực rỡ."
+  },
+  {
+    "id": "anime-event-003",
+    "category": "anime",
+    "title": "Vietnam Anime Expo Spring 2026",
+    "date": "2026-04-10",
+    "location": "SECC, Quận 7, TP. Hồ Chí Minh",
+    "description": "Đại hội cosplay và anime quy mô lớn tại Việt Nam với sự tham gia của hơn 20,000 bạn trẻ đam mê văn hóa 2D."
+  },
+
+  {
+    "id": "gaming-event-001",
+    "category": "gaming",
+    "title": "Tokyo Game Show (TGS) 2026",
+    "date": "2026-10-25",
+    "location": "Makuhari Messe, Tokyo, Nhật Bản",
+    "description": "Triển lãm trò chơi điện tử châu Á đỉnh cao với các bản demo bom tấn nhập vai, công nghệ VR/AR thế hệ mới và các giải đấu eSports kịch tính."
+  },
+  {
+    "id": "gaming-event-002",
+    "category": "gaming",
+    "title": "The Game Awards 2026",
+    "date": "2026-12-10",
+    "location": "Peacock Theater, Los Angeles, Hoa Kỳ",
+    "description": "Đêm trao giải danh giá nhất của làng game thế giới, vinh danh tựa game của năm (GOTY) và công chiếu các trailer bất ngờ."
+  },
+  {
+    "id": "gaming-event-003",
+    "category": "gaming",
+    "title": "Gamescom Cologne 2026",
+    "date": "2026-08-22",
+    "location": "Koelnmesse, Cologne, Đức",
+    "description": "Hội chợ thương mại trò chơi điện tử lớn nhất châu Âu với hàng ngàn gian hàng trải nghiệm trực tiếp cho cộng đồng game thủ."
+  },
+
+  {
+    "id": "movies-event-001",
+    "category": "movies",
+    "title": "Hollywood Fandom Premiere Gala",
+    "date": "2026-11-05",
+    "location": "TCL Chinese Theatre, Los Angeles, Hoa Kỳ",
+    "description": "Đêm công chiếu thảm đỏ các siêu phẩm bom tấn giả tưởng cuối năm, hội tụ dàn sao hạng A và đạo diễn huyền thoại."
+  },
+  {
+    "id": "movies-event-002",
+    "category": "movies",
+    "title": "Star Wars Celebration 2027",
+    "date": "2027-04-18",
+    "location": "ExCeL London, Vương quốc Anh",
+    "description": "Lễ hội quy mô toàn cầu dành cho cộng đồng người hâm mộ Chiến Tranh Giữa Các Vì Sao với những tiết lộ về tương lai của dải ngân hà."
+  },
+  {
+    "id": "movies-event-003",
+    "category": "movies",
+    "title": "Cannes Film Festival Spotlight",
+    "date": "2026-05-18",
+    "location": "Palais des Festivals, Cannes, Pháp",
+    "description": "Hạng mục vinh danh các tác phẩm điện ảnh xuất sắc và các giải thưởng cống hiến cho nghệ thuật thứ bảy thế giới."
+  },
+
+  {
+    "id": "tvshows-event-001",
+    "category": "tvshows",
+    "title": "PrimeTime Emmy Awards 2026",
+    "date": "2026-10-18",
+    "location": "Microsoft Theater, Los Angeles, Hoa Kỳ",
+    "description": "Lễ trao giải Oscar của truyền hình thế giới, tôn vinh các series xuất sắc nhất, kịch bản ấn tượng và diễn xuất đỉnh cao."
+  },
+  {
+    "id": "tvshows-event-002",
+    "category": "tvshows",
+    "title": "Stranger Things Final Season Fan Screening",
+    "date": "2026-12-05",
+    "location": "Madison Square Garden, New York, Hoa Kỳ",
+    "description": "Buổi chiếu đặc biệt khép lại hành trình 10 năm của thị trấn Hawkins với sự tham gia của toàn bộ dàn diễn viên chính."
+  },
+  {
+    "id": "tvshows-event-003",
+    "category": "tvshows",
+    "title": "Series Mania Festival 2026",
+    "date": "2026-03-24",
+    "location": "Lille Grand Palais, Lille, Pháp",
+    "description": "Liên hoan phim truyền hình quốc tế giới thiệu các series mới nhất từ các nhà đài và dịch vụ phát trực tuyến lớn."
+  },
+
+  {
+    "id": "kpop-event-001",
+    "category": "kpop",
+    "title": "MAMA Awards 2026 (Mnet Asian Music Awards)",
+    "date": "2026-11-28",
+    "location": "Tokyo Dome, Tokyo, Nhật Bản",
+    "description": "Đại nhạc hội trao giải âm nhạc châu Á hoành tráng bậc nhất, quy tụ những sân khấu collab bùng nổ của các idol group hàng đầu K-Pop."
+  },
+  {
+    "id": "kpop-event-002",
+    "category": "kpop",
+    "title": "KCON Worldwide 2026",
+    "date": "2026-10-08",
+    "location": "Crypto.com Arena, Los Angeles, Hoa Kỳ",
+    "description": "Lễ hội văn hóa và âm nhạc Hàn Quốc toàn diện kết hợp fan meeting, gian hàng ẩm thực, thời trang K-beauty và concert đỉnh cao."
+  },
+  {
+    "id": "kpop-event-003",
+    "category": "kpop",
+    "title": "Golden Disc Awards 2026",
+    "date": "2026-01-06",
+    "location": "Jakarta International Stadium, Jakarta, Indonesia",
+    "description": "Lễ trao giải Đĩa Vàng danh giá vinh danh những album bán chạy nhất và các bản hit nhạc số thống trị năm qua."
+  },
+
+  {
+    "id": "comics-event-001",
+    "category": "comics",
+    "title": "San Diego Comic-Con (SDCC) 2026 Special Edition",
+    "date": "2026-10-30",
+    "location": "San Diego Convention Center, California, Hoa Kỳ",
+    "description": "Thánh địa truyện tranh và văn hóa đại chúng thế giới, nơi các hãng truyện Marvel, DC công bố lộ trình phát hành các bộ truyện bom tấn."
+  },
+  {
+    "id": "comics-event-002",
+    "category": "comics",
+    "title": "New York Comic Con 2026",
+    "date": "2026-10-12",
+    "location": "Javits Center, New York, Hoa Kỳ",
+    "description": "Hội chợ truyện tranh bờ đông nước Mỹ với sự tham gia của các họa sĩ minh họa, tác giả kịch bản và nghệ sĩ cosplay hàng đầu."
+  },
+  {
+    "id": "comics-event-003",
+    "category": "comics",
+    "title": "DC FanDome Digital Showcase",
+    "date": "2026-06-15",
+    "location": "Sự kiện trực tuyến toàn cầu (Online Virtual Hub)",
+    "description": "Sự kiện kỹ thuật số 24 giờ của DC Comics giới thiệu các ấn phẩm truyện tranh, game và phim hoạt hình siêu anh hùng."
+  },
+
+  {
+    "id": "manga-event-001",
+    "category": "manga",
+    "title": "Jump Festa 2027",
+    "date": "2026-12-19",
+    "location": "Makuhari Messe, Chiba, Nhật Bản",
+    "description": "Lễ hội thường niên của tạp chí Shonen Jump, nơi tác giả các bộ manga đình đám như One Piece, Jujutsu Kaisen gặp gỡ độc giả và hé lộ chap mới."
+  },
+  {
+    "id": "manga-event-002",
+    "category": "manga",
+    "title": "Comic Market (Comiket) Winter 2026",
+    "date": "2026-12-30",
+    "location": "Tokyo Big Sight, Tokyo, Nhật Bản",
+    "description": "Đại hội doujinshi và truyện tranh tự sáng tác lớn nhất thế giới, thu hút hàng trăm nghìn họa sĩ độc lập và người hâm mộ manga."
+  },
+  {
+    "id": "manga-event-003",
+    "category": "manga",
+    "title": "Kyoto International Manga Anime Fair 2026",
+    "date": "2026-09-19",
+    "location": "Miyako Messe, Kyoto, Nhật Bản",
+    "description": "Hội chợ giao lưu văn hóa manga và nghệ thuật truyền thống tại cố đô Kyoto, trưng bày các bản thảo vẽ tay vô giá của các mangaka kỳ cựu."
+  }
+]

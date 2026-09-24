@@ -1,0 +1,141 @@
+@import './design-tokens.css';
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+/* Base Body Styles */
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-body);
+  color: var(--text-primary);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6,
+.font-heading {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-surface-alt);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: var(--radius-pill);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* Common App Layout */
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+}
+
+/* Card Styling */
+.fv-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.fv-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Category Accent Classes */
+.accent-border-anime { border-left: 4px solid var(--accent-anime) !important; }
+.accent-border-gaming { border-left: 4px solid var(--accent-gaming) !important; }
+.accent-border-movies { border-left: 4px solid var(--accent-movies) !important; }
+.accent-border-tvshows { border-left: 4px solid var(--accent-tvshows) !important; }
+.accent-border-kpop { border-left: 4px solid var(--accent-kpop) !important; }
+.accent-border-comics { border-left: 4px solid var(--accent-comics) !important; }
+.accent-border-manga { border-left: 4px solid var(--accent-manga) !important; }
+
+/* Category Badge Styling */
+.badge-category {
+  padding: 4px 10px;
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  display: inline-block;
+  letter-spacing: 0.5px;
+}
+.badge-category-anime { background-color: rgba(255, 107, 129, 0.12); color: var(--accent-anime); }
+.badge-category-gaming { background-color: rgba(0, 184, 148, 0.12); color: var(--accent-gaming); }
+.badge-category-movies { background-color: rgba(9, 132, 227, 0.12); color: var(--accent-movies); }
+.badge-category-tvshows { background-color: rgba(108, 92, 231, 0.12); color: var(--accent-tvshows); }
+.badge-category-kpop { background-color: rgba(232, 67, 147, 0.12); color: var(--accent-kpop); }
+.badge-category-comics { background-color: rgba(253, 203, 110, 0.2); color: #d68910; }
+.badge-category-manga { background-color: rgba(225, 112, 85, 0.12); color: var(--accent-manga); }
+
+/* Buttons */
+.btn-primary-fv {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--text-on-primary);
+  border-radius: var(--radius-pill);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+.btn-primary-fv:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  color: var(--text-on-primary);
+  transform: translateY(-1px);
+}
+
+.btn-accent-fv {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--text-on-primary);
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+.btn-accent-fv:hover {
+  background-color: #ff526c;
+  border-color: #ff526c;
+  color: var(--text-on-primary);
+  transform: translateY(-1px);
+}
+
+.btn-outline-fv {
+  background-color: transparent;
+  border: 1.5px solid var(--color-primary);
+  color: var(--color-primary);
+  border-radius: var(--radius-pill);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+.btn-outline-fv:hover {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
+
+/* Accessibility Focus Outline */
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--color-primary) !important;
+  outline-offset: 2px !important;
+}

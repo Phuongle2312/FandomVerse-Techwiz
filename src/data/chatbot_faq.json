@@ -1,0 +1,93 @@
+[
+  {
+    "id": "faq-001",
+    "keywords": ["merchandise", "shop", "mua", "giỏ hàng", "cart", "sản phẩm", "figure", "áo"],
+    "question": "Làm thế nào để xem và mua vật phẩm lưu niệm (Merchandise)?",
+    "answer": "Bạn có thể duyệt qua hàng chục mô hình figure, trang phục và đồ sưu tầm chính hãng tại trang Merchandise. Hãy bấm 'Thêm vào giỏ' để xem tổng thanh toán tạm tính!",
+    "link": "#/merchandise"
+  },
+  {
+    "id": "faq-002",
+    "keywords": ["anime", "hoạt hình", "luffy", "naruto", "goku", "one piece", "demon slayer"],
+    "question": "FandomVerse có những nội dung gì về Anime?",
+    "answer": "Chuyên mục Anime tập hợp các bài viết chuyên sâu về One Piece, Demon Slayer, hồ sơ các nhân vật huyền thoại và lịch sự kiện Anime Expo hấp dẫn.",
+    "link": "#/category/anime"
+  },
+  {
+    "id": "faq-003",
+    "keywords": ["gaming", "game", "trò chơi", "tgs", "elden ring", "zelda", "kratos", "geralt"],
+    "question": "Tôi muốn cập nhật tin tức về Game và eSports?",
+    "answer": "Hãy ghé thăm Category Gaming để khám phá các bài phân tích game bom tấn AAA, hồ sơ danh tướng game và lịch tổ chức Tokyo Game Show hay The Game Awards!",
+    "link": "#/category/gaming"
+  },
+  {
+    "id": "faq-004",
+    "keywords": ["trailer", "teaser", "video", "phim mới", "xem trước"],
+    "question": "Xem các đoạn Trailer mới nhất ở đâu?",
+    "answer": "Trung tâm Trailers tổng hợp mọi video giới thiệu phim, game và anime mới nhất. Bạn có thể lọc theo trạng thái Sắp chiếu (Upcoming) hoặc Đã ra mắt (Released).",
+    "link": "#/trailers"
+  },
+  {
+    "id": "faq-005",
+    "keywords": ["bookmark", "lưu", "yêu thích", "ghi chú", "note", "export", "xuất"],
+    "question": "Cách lưu bài viết yêu thích và ghi chú cá nhân?",
+    "answer": "Bấm vào biểu tượng trái tim trên các thẻ bài viết để lưu vào Bookmark (LocalStorage). Bạn có thể vào trang Bookmarks để viết ghi chú riêng và xuất danh sách ra file .txt.",
+    "link": "#/bookmarks"
+  },
+  {
+    "id": "faq-006",
+    "keywords": ["kpop", "bts", "blackpink", "iu", "thần tượng", "idol", "lightstick"],
+    "question": "Vũ trụ K-Pop có gì nổi bật?",
+    "answer": "Khám phá thế giới thần tượng Hallyu với hồ sơ nghệ sĩ BTS, BLACKPINK, các bài phân tích văn hóa fandom đa chiều và thông tin đại nhạc hội MAMA Awards.",
+    "link": "#/category/kpop"
+  },
+  {
+    "id": "faq-007",
+    "keywords": ["movies", "phim ảnh", "mcu", "marvel", "star wars", "iron man", "hollywood"],
+    "question": "Khám phá chuyên mục Điện ảnh (Movies)?",
+    "answer": "Chuyên mục Movies mang đến thông tin về bom tấn Marvel MCU, vũ trụ Star Wars, Chúa Nhẫn và các lễ hội điện ảnh danh giá.",
+    "link": "#/category/movies"
+  },
+  {
+    "id": "faq-008",
+    "keywords": ["tvshows", "phim bộ", "stranger things", "peaky blinders", "game of thrones"],
+    "question": "Có những series truyền hình (TV Shows) nào?",
+    "answer": "Cập nhật thông tin về Stranger Things mùa cuối, gia tộc Peaky Blinders, Game of Thrones và giải thưởng Emmy truyền hình danh giá.",
+    "link": "#/category/tvshows"
+  },
+  {
+    "id": "faq-009",
+    "keywords": ["comics", "truyện tranh", "batman", "superman", "spider-man", "dc"],
+    "question": "Tìm hiểu thế giới Comics phương Tây?",
+    "answer": "Ghé thăm chuyên mục Comics để chiêm ngưỡng các bộ cover kinh điển của Alex Ross, bài viết về Batman The Dark Knight Returns và sự kiện San Diego Comic-Con.",
+    "link": "#/category/comics"
+  },
+  {
+    "id": "faq-010",
+    "keywords": ["manga", "berserk", "zoro", "saitama", "death note", "shonen jump"],
+    "question": "Vũ trụ Manga Nhật Bản có gì đặc sắc?",
+    "answer": "Thưởng thức nét vẽ tuyệt mỹ của cố họa sĩ Kentaro Miura trong Berserk, so sánh Manga và Webtoon, cùng hồ sơ các nhân vật mang tính biểu tượng.",
+    "link": "#/category/manga"
+  },
+  {
+    "id": "faq-011",
+    "keywords": ["liên hệ", "contact", "địa chỉ", "bản đồ", "map", "gps"],
+    "question": "Làm thế nào để liên hệ với ban quản trị FandomVerse?",
+    "answer": "Bạn có thể vào trang Liên hệ (Contact Us) để xem địa chỉ trụ sở, tọa độ GPS chính xác và bản đồ Google Maps tương tác.",
+    "link": "#/contact"
+  },
+  {
+    "id": "faq-012",
+    "keywords": ["giới thiệu", "about", "dự án", "fandomverse", "techwir", "aptech"],
+    "question": "FandomVerse là gì?",
+    "answer": "FandomVerse là nền tảng thông tin tập trung, kết nối 7 vũ trụ fandom lớn nhất toàn cầu, được phát triển theo tiêu chuẩn Web Innovation Unleashed của TechWir.",
+    "link": "#/about"
+  },
+  {
+    "id": "faq-fallback",
+    "keywords": [],
+    "question": "Tôi cần hỗ trợ thông tin khác",
+    "answer": "Xin lỗi, tôi chưa hiểu rõ câu hỏi của bạn. Bạn có thể bấm chọn một trong các câu hỏi gợi ý bên dưới hoặc tìm hiểu về Anime, Gaming, Merchandise, Trailers nhé!",
+    "link": null
+  }
+]

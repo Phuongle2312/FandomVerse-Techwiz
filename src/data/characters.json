@@ -1,0 +1,323 @@
+[
+  {
+    "id": "anime-char-001",
+    "category": "anime",
+    "name": "Monkey D. Luffy",
+    "image": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500&auto=format&fit=crop&q=80",
+    "franchise": "One Piece",
+    "biography": "Thuyền trưởng băng hải tặc Mũ Rơm với ước mơ tìm thấy kho báu vĩ đại One Piece và trở thành Vua Hải Tặc. Cậu sở hữu sức mạnh co giãn cao su từ trái ác quỷ Hito Hito no Mi, Model: Nika.",
+    "traits": ["Lạc quan", "Dũng cảm", "Ham ăn", "Haki Bá Vương"]
+  },
+  {
+    "id": "anime-char-002",
+    "category": "anime",
+    "name": "Naruto Uzumaki",
+    "image": "https://images.unsplash.com/photo-1563089145-599997674d42?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Naruto",
+    "biography": "Ninja làng Lá mang trong mình Cửu Vĩ Kurama, vượt qua định kiến và nỗi cô đơn thời thơ ấu bằng ý chí kiên định để trở thành Hokage Đệ Thất vĩ đại bảo vệ nhẫn giới.",
+    "traits": ["Bền bỉ", "Trung thành", "Ý chí Hỏa Quốc", "Hiền Nhân Thuật"]
+  },
+  {
+    "id": "anime-char-003",
+    "category": "anime",
+    "name": "Goku",
+    "image": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Dragon Ball",
+    "biography": "Chiến binh người Saiyan sống tại Trái Đất, luôn khao khát vượt qua giới hạn của bản thân thông qua rèn luyện không ngừng và đối đầu với những đối thủ mạnh nhất vũ trụ.",
+    "traits": ["Vô tư", "Thượng võ", "Bản Năng Vô Cực", "Kamehameha"]
+  },
+  {
+    "id": "anime-char-004",
+    "category": "anime",
+    "name": "Levi Ackerman",
+    "image": "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Attack on Titan",
+    "biography": "Đại đội trưởng Quân Trinh Sát, được mệnh danh là chiến binh mạnh nhất của nhân loại với kỹ năng sử dụng bộ cơ động 3D điêu luyện và khả năng hạ gục Titan chớp nhoáng.",
+    "traits": ["Lạnh lùng", "Kỷ luật", "Ưa sạch sẽ", "Chiến binh siêu hạng"]
+  },
+  {
+    "id": "anime-char-005",
+    "category": "anime",
+    "name": "Tanjiro Kamado",
+    "image": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Demon Slayer",
+    "biography": "Thợ săn quỷ mang tấm lòng nhân hậu, dấn thân vào hành trình nguy hiểm để tìm cách biến em gái Nezuko trở lại thành người và tiêu diệt chúa quỷ Muzan.",
+    "traits": ["Nhân hậu", "Kiên định", "Hơi thở của Nước", "Điệu múa Hỏa Thần"]
+  },
+
+  {
+    "id": "gaming-char-001",
+    "category": "gaming",
+    "name": "Geralt of Rivia",
+    "image": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500&auto=format&fit=crop&q=80",
+    "franchise": "The Witcher",
+    "biography": "Thợ săn quái vật đột biến lang thang khắp lục địa, sử dụng song kiếm thép và bạc cùng các dấu ấn phép thuật ma thuật để giải quyết các mối đe dọa siêu nhiên.",
+    "traits": ["Thực tế", "Trầm tĩnh", "Kinh nghiệm", "Kiếm pháp thượng thừa"]
+  },
+  {
+    "id": "gaming-char-002",
+    "category": "gaming",
+    "name": "Kratos",
+    "image": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=500&auto=format&fit=crop&q=80",
+    "franchise": "God of War",
+    "biography": "Chiến thần Sparta mang quá khứ bi kịch, sau khi đánh bại đỉnh Olympus đã lui về vùng Bắc Âu tìm kiếm sự cứu rỗi và dạy dỗ con trai Atreus trở thành một vị thần nhân từ.",
+    "traits": ["Mạnh mẽ", "Nghiêm nghị", "Bảo vệ gia đình", "Rìu Leviathan"]
+  },
+  {
+    "id": "gaming-char-003",
+    "category": "gaming",
+    "name": "Link",
+    "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=500&auto=format&fit=crop&q=80",
+    "franchise": "The Legend of Zelda",
+    "biography": "Hiệp sĩ dũng cảm được chọn bởi Tam Hợp Kiếm Master Sword để bảo vệ vương quốc Hyrule và công chúa Zelda khỏi thế lực tà ác của Ganon.",
+    "traits": ["Trầm lặng", "Can trường", "Bậc thầy giải đố", "Biểu tượng Can Đảm"]
+  },
+  {
+    "id": "gaming-char-004",
+    "category": "gaming",
+    "name": "Master Chief (John-117)",
+    "image": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Halo",
+    "biography": "Chiến binh siêu chiến sĩ Spartan-II huyền thoại của UNSC, ngọn hải đăng hy vọng của nhân loại trong cuộc chiến chống lại đế chế Covenant và ký sinh trùng Flood.",
+    "traits": ["Quyết đoán", "Kỷ luật thép", "May mắn phi thường", "Áo giáp Mjolnir"]
+  },
+  {
+    "id": "gaming-char-005",
+    "category": "gaming",
+    "name": "Lara Croft",
+    "image": "https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Tomb Raider",
+    "biography": "Nhà khảo cổ học người Anh thông minh và sắc sảo, dấn thân vào các di tích cổ xưa bí ẩn nhất thế giới để khám phá sự thật lịch sử và giải mã các lời nguyền cổ đại.",
+    "traits": ["Thông minh", "Nhạy bén", "Bắn cung điêu luyện", "Kỹ năng sinh tồn"]
+  },
+
+  {
+    "id": "movies-char-001",
+    "category": "movies",
+    "name": "Tony Stark (Iron Man)",
+    "image": "https://images.unsplash.com/photo-1635863138275-d9b33299680b?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Marvel Cinematic Universe",
+    "biography": "Thiên tài, tỷ phú, nhà từ thiện với bộ giáp công nghệ tối tân tự chế tạo, linh hồn dẫn dắt biệt đội Avengers trong công cuộc bảo vệ Trái Đất và vũ trụ.",
+    "traits": ["Thiên tài cơ khí", "Hài hước", "Quả cảm", "Hi sinh vì đại nghĩa"]
+  },
+  {
+    "id": "movies-char-002",
+    "category": "movies",
+    "name": "Luke Skywalker",
+    "image": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Star Wars",
+    "biography": "Hiệp sĩ Jedi huyền thoại từ hành tinh Tatooine, người đã dẫn đầu liên minh nổi dậy đánh bại Đế chế Thiên hà và cảm hóa cha mình là Darth Vader trở lại phe Ánh Sáng.",
+    "traits": ["Thấu cảm", "Lòng trắc ẩn", "Thần Lực mạnh mẽ", "Kiếm ánh sáng"]
+  },
+  {
+    "id": "movies-char-003",
+    "category": "movies",
+    "name": "Harry Potter",
+    "image": "https://images.unsplash.com/photo-1598153346810-860daa814c4b?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Wizarding World",
+    "biography": "Cậu bé sống sót sau lời nguyền chết chóc, phù thủy quả cảm của nhà Gryffindor đã cùng bạn bè đánh bại Chúa tể Hắc ám Voldemort.",
+    "traits": ["Dũng cảm", "Trung thực", "Tình bạn sâu sắc", "Bùa Hộ Mệnh"]
+  },
+  {
+    "id": "movies-char-004",
+    "category": "movies",
+    "name": "Neo (Thomas Anderson)",
+    "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=500&auto=format&fit=crop&q=80",
+    "franchise": "The Matrix",
+    "biography": "Hacker được tiên tri là 'Người Được Chọn' (The One), thức tỉnh khỏi thực tại ảo Ma Trận để dẫn dắt nhân loại giành lại tự do trước sự thống trị của máy móc.",
+    "traits": ["Bẻ cong thực tại", "Bậc thầy võ thuật", "Giác ngộ", "Tầm nhìn xa"]
+  },
+  {
+    "id": "movies-char-005",
+    "category": "movies",
+    "name": "Aragorn",
+    "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500&auto=format&fit=crop&q=80",
+    "franchise": "The Lord of the Rings",
+    "biography": "Hậu duệ cuối cùng của dòng dõi hoàng tộc Isildur, vượt qua nghi ngại về bản thân để dẫn dắt Trung Địa chiến thắng chúa tể Sauron và lên ngôi Vua xứ Gondor.",
+    "traits": ["Khí chất vương giả", "Kiếm pháp cừ khôi", "Thủy chung", "Lãnh đạo truyền cảm hứng"]
+  },
+
+  {
+    "id": "tvshows-char-001",
+    "category": "tvshows",
+    "name": "Jon Snow",
+    "image": "https://images.unsplash.com/photo-1514539079130-25950c84af65?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Game of Thrones",
+    "biography": "Người chỉ huy Đội Tuần Đêm tại Bức Tường phương Bắc, người thực sự mang dòng máu hoàng gia Targaryen và tập hợp các gia tộc chống lại Đội quân Bóng Trắng.",
+    "traits": ["Chính trực", "Danh dự", "Kiếm Longclaw", "Thủ lĩnh bẩm sinh"]
+  },
+  {
+    "id": "tvshows-char-002",
+    "category": "tvshows",
+    "name": "Walter White (Heisenberg)",
+    "image": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Breaking Bad",
+    "biography": "Giáo viên hóa học trung học bình thường chuyển mình thành trùm ma túy Heisenberg tàn nhẫn sau biến cố ung thư phổi, dần để bản ngã tham vọng nuốt chửng đạo đức.",
+    "traits": ["Thiên tài hóa học", "Mưu mô", "Quyết đoán", "Thao túng tâm lý"]
+  },
+  {
+    "id": "tvshows-char-003",
+    "category": "tvshows",
+    "name": "Eleven (Jane Hopper)",
+    "image": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Stranger Things",
+    "biography": "Cô bé sở hữu năng lực tâm linh viễn di chuyển và ngoại cảm sau các thí nghiệm tại phòng thí nghiệm Hawkins, bức tường thành bảo vệ thị trấn khỏi thế giới Upside Down.",
+    "traits": ["Năng lực tâm linh", "Tình cảm", "Yêu bánh Waffle", "Dũng cảm"]
+  },
+  {
+    "id": "tvshows-char-004",
+    "category": "tvshows",
+    "name": "Thomas Shelby",
+    "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Peaky Blinders",
+    "biography": "Thủ lĩnh lạnh lùng và túc trí đa mưu của băng đảng Peaky Blinders tại Birmingham, biến một tổ chức cá cược đường phố thành tập đoàn quyền lực toàn vương quốc Anh.",
+    "traits": ["Chiến lược gia", "Bình tĩnh kỳ lạ", "Lạnh lùng", "Thương gia tài ba"]
+  },
+  {
+    "id": "tvshows-char-005",
+    "category": "tvshows",
+    "name": "Sherlock Holmes",
+    "image": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Sherlock",
+    "biography": "Thám tử tư vấn duy nhất trên thế giới với bộ óc phân tích siêu việt, sử dụng Cung điện Ký ức (Mind Palace) để giải mã những vụ án hóc búa nhất thành phố London.",
+    "traits": ["Quan sát tinh tế", "Suy luận logic", "Cung điện ký ức", "Khác biệt"]
+  },
+
+  {
+    "id": "kpop-char-001",
+    "category": "kpop",
+    "name": "RM (Kim Nam-joon)",
+    "image": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=500&auto=format&fit=crop&q=80",
+    "franchise": "BTS",
+    "biography": "Trưởng nhóm và nhà sản xuất âm nhạc tài ba của nhóm nhạc hiện tượng toàn cầu BTS, đại diện cho tiếng nói thế hệ trẻ với các bài phát biểu truyền cảm hứng tại Liên Hợp Quốc.",
+    "traits": ["Lãnh đạo xuất chúng", "Sáng tác sâu sắc", "Thông thái", "Rapper tài ba"]
+  },
+  {
+    "id": "kpop-char-002",
+    "category": "kpop",
+    "name": "Jennie Kim",
+    "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+    "franchise": "BLACKPINK",
+    "biography": "Thành viên đa tài của nhóm nữ kỷ lục BLACKPINK, được mệnh danh là 'Human Chanel' với phong cách thời trang dẫn đầu xu hướng và thần thái sân khấu cuốn hút.",
+    "traits": ["Biểu tượng thời trang", "Rapper lôi cuốn", "Vocal quyến rũ", "Visual sang trọng"]
+  },
+  {
+    "id": "kpop-char-003",
+    "category": "kpop",
+    "name": "G-Dragon (Kwon Ji-yong)",
+    "image": "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=500&auto=format&fit=crop&q=80",
+    "franchise": "BIGBANG",
+    "biography": "Ông hoàng K-Pop, nhà tiên phong mở đường cho văn hóa âm nhạc Hallyu vươn tầm quốc tế với khả năng sáng tác đỉnh cao và phong cách thời trang đột phá không giới hạn.",
+    "traits": ["Biểu tượng K-Pop", "Nhạc sĩ thiên tài", "Đột phá", "Phong cách độc bản"]
+  },
+  {
+    "id": "kpop-char-004",
+    "category": "kpop",
+    "name": "IU (Lee Ji-eun)",
+    "image": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Solo Artists",
+    "biography": "Nghệ sĩ solo hàng đầu Hàn Quốc, được yêu mến với biệt danh 'Em gái quốc dân', sở hữu chất giọng trong trẻo 3 nốt cao và gia tài nhạc số bất bại trên mọi bảng xếp hạng.",
+    "traits": ["Giọng hát thiên phú", "Nhạc sĩ tinh tế", "Diễn xuất ấn tượng", "Nhân ái"]
+  },
+  {
+    "id": "kpop-char-005",
+    "category": "kpop",
+    "name": "Taeyeon (Kim Tae-yeon)",
+    "image": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Girls' Generation (SNSD)",
+    "biography": "Trưởng nhóm huyền thoại của nhóm nữ quốc dân SNSD, giọng ca vàng của K-Pop với kỹ thuật thanh nhạc đỉnh cao và sự nghiệp solo rực rỡ kéo dài qua nhiều thế hệ.",
+    "traits": ["Vocalist hàng đầu", "Giàu cảm xúc", "Nghệ sĩ bền bỉ", "Truyền cảm hứng"]
+  },
+
+  {
+    "id": "comics-char-001",
+    "category": "comics",
+    "name": "Bruce Wayne (Batman)",
+    "image": "https://images.unsplash.com/photo-1509281373149-e957c6296406?w=500&auto=format&fit=crop&q=80",
+    "franchise": "DC Comics",
+    "biography": "Hiệp sĩ bóng đêm thành phố Gotham, dùng trí tuệ thiên tài, võ thuật đỉnh cao và kho vũ khí công nghệ cao để chống lại cái ác mà không cần siêu năng lực thần thánh.",
+    "traits": ["Thám tử vĩ đại", "Ý chí phi thường", "Chiến lược gia vô song", "Kỷ luật thép"]
+  },
+  {
+    "id": "comics-char-002",
+    "category": "comics",
+    "name": "Clark Kent (Superman)",
+    "image": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=500&auto=format&fit=crop&q=80",
+    "franchise": "DC Comics",
+    "biography": "Người con cuối cùng của hành tinh Krypton mang tên Kal-El, lớn lên dưới mặt trời vàng Trái Đất và trở thành biểu tượng tối cao của chân lý, công lý và hy vọng nhân loại.",
+    "traits": ["Bất tử", "Sức mạnh vô song", "Tia nhiệt quang", "Trái tim nhân hậu"]
+  },
+  {
+    "id": "comics-char-003",
+    "category": "comics",
+    "name": "Peter Parker (Spider-Man)",
+    "image": "https://images.unsplash.com/photo-1604200213928-ba3cf4fc8436?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Marvel Comics",
+    "biography": "Chàng sinh viên New York tốt bụng sở hữu giác quan nhện và kỹ năng bắn tơ, luôn khắc ghi bài học 'Quyền lực càng lớn thì trách nhiệm càng cao'.",
+    "traits": ["Giác quan nhện", "Bắn tơ linh hoạt", "Hài hước", "Trách nhiệm cao cả"]
+  },
+  {
+    "id": "comics-char-004",
+    "category": "comics",
+    "name": "Diana Prince (Wonder Woman)",
+    "image": "https://images.unsplash.com/photo-1563245372-f21724e3856d?w=500&auto=format&fit=crop&q=80",
+    "franchise": "DC Comics",
+    "biography": "Công chúa chiến binh Amazon đảo Themyscira, đại sứ hòa bình mang theo Dây Thòng Lọng Sự Thật và khiên giáo chiến trận bảo vệ bình đẳng và chính nghĩa.",
+    "traits": ["Chiến binh bất khuất", "Dây thòng lọng sự thật", "Bình đẳng", "Sức mạnh thần thánh"]
+  },
+  {
+    "id": "comics-char-005",
+    "category": "comics",
+    "name": "Logan (Wolverine)",
+    "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=500&auto=format&fit=crop&q=80",
+    "franchise": "X-Men",
+    "biography": "Dị nhân mang khung xương hợp kim Adamantium bất hoại cùng móng vuốt sắc bén, sở hữu khả năng tự chữa lành siêu tốc và quá khứ bí ẩn đẫm máu.",
+    "traits": ["Móng vuốt Adamantium", "Hồi phục tức thì", "Bản năng săn mồi", "Trực giác hoang dã"]
+  },
+
+  {
+    "id": "manga-char-001",
+    "category": "manga",
+    "name": "Roronoa Zoro",
+    "image": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500&auto=format&fit=crop&q=80",
+    "franchise": "One Piece (Manga)",
+    "biography": "Kiếm sĩ Tam Kiếm Phái của băng Mũ Rơm, mang lời thề trở thành Đệ Nhất Kiếm Sĩ thế giới và luôn là chỗ dựa vững chắc nhất cho đồng đội trong mọi nghịch cảnh.",
+    "traits": ["Tam Kiếm Phái", "Ý chí thép", "Mù phương hướng", "Trung thành tuyệt đối"]
+  },
+  {
+    "id": "manga-char-002",
+    "category": "manga",
+    "name": "Saitama",
+    "image": "https://images.unsplash.com/photo-1563089145-599997674d42?w=500&auto=format&fit=crop&q=80",
+    "franchise": "One-Punch Man",
+    "biography": "Anh hùng làm việc vì sở thích, đạt được sức mạnh tối thượng có thể hạ gục mọi quái vật chỉ bằng một cú đấm sau chế độ tập luyện 100 cái hít đất mỗi ngày.",
+    "traits": ["Sức mạnh vô hạn", "Một đấm tất sát", "Bình thản", "Săn đồ giảm giá"]
+  },
+  {
+    "id": "manga-char-003",
+    "category": "manga",
+    "name": "Ken Kaneki",
+    "image": "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Tokyo Ghoul",
+    "biography": "Sinh viên đại học bình thường vô tình bị biến thành Ngạ Quỷ Bán Nhân Bán Quỷ, đấu tranh trong giằng xé nội tâm để tìm kiếm sự hòa hợp giữa hai giống loài.",
+    "traits": ["Mắt chột Kagune", "Tâm lý phức tạp", "Mạnh mẽ sau bi kịch", "Tóc trắng"]
+  },
+  {
+    "id": "manga-char-004",
+    "category": "manga",
+    "name": "Light Yagami (Kira)",
+    "image": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Death Note",
+    "biography": "Học sinh thiên tài nhặt được cuốn sổ tử thần Death Note, bắt đầu kế hoạch thanh lọc tội phạm để xây dựng một thế giới mới không tội ác nơi cậu làm Chúa tể.",
+    "traits": ["Trí tuệ thiên tài", "Mưu đồ thâm sâu", "Cuốn sổ tử thần", "Tâm lý học tội phạm"]
+  },
+  {
+    "id": "manga-char-005",
+    "category": "manga",
+    "name": "Edward Elric",
+    "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Fullmetal Alchemist",
+    "biography": "Giả kim thuật sư trẻ tuổi nhất lịch sử quốc gia Amestris, dấn thân vào hành trình tìm kiếm Hòn Đá Triết Gia để khôi phục lại cơ thể cho người em trai Alphonse.",
+    "traits": ["Thuật chuyển hóa không ấn", "Cánh tay Automail", "Nhiệt huyết", "Yêu thương em trai"]
+  }
+]
