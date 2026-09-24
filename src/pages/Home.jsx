@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useMemo, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { CATEGORY_LIST } from '../constants.js';
 import { dataService } from '../services/dataService.js';
@@ -11,11 +11,78 @@ import VideoModal from '../components/interactive/VideoModal.jsx';
 export default function Home() {
   const { isDark } = useTheme();
   const featuredContents = dataService.getFeaturedContents();
-  const latestTrailers = dataService.getAllTrailers().slice(0, 3);
+  const allTrailers = useMemo(() => dataService.getAllTrailers(), []);
   const upcomingEvents = dataService.getAllEvents().filter((e) => e.date >= new Date().toISOString().split('T')[0]).slice(0, 3);
 
   const [lightboxImages, setLightboxImages] = useState(null);
   const [activeVideo, setActiveVideo] = useState(null);
+  const [trailerCategory, setTrailerCategory] = useState('all');
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const trailerSliderRef = useRef(null);
+  const isDraggingRef = useRef(false);
+  const startXRef = useRef(0);
+  const scrollLeftRef = useRef(0);
+  const hasMovedRef = useRef(false);
+
+  const filteredTrailers = useMemo(() => {
+    if (trailerCategory === 'all') return allTrailers;
+    return allTrailers.filter((t) => t.category === trailerCategory);
+  }, [allTrailers, trailerCategory]);
+
+  const checkScrollBounds = useCallback(() => {
+    if (trailerSliderRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = trailerSliderRef.current;
+      setCanScrollLeft(scrollLeft > 10);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 15);
+    }
+  }, []);
+
+  useEffect(() => {
+    checkScrollBounds();
+    const handleResize = () => checkScrollBounds();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [checkScrollBounds, filteredTrailers]);
+
+  const scrollSlider = (direction) => {
+    if (trailerSliderRef.current) {
+      const cardWidth = 360;
+      const scrollAmount = direction === 'left' ? -cardWidth * 2 : cardWidth * 2;
+      trailerSliderRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      setTimeout(checkScrollBounds, 350);
+    }
+  };
+
+  const handleMouseDown = (e) => {
+    if (!trailerSliderRef.current) return;
+    isDraggingRef.current = true;
+    hasMovedRef.current = false;
+    startXRef.current = e.pageX - trailerSliderRef.current.offsetLeft;
+    scrollLeftRef.current = trailerSliderRef.current.scrollLeft;
+    trailerSliderRef.current.classList.add('is-dragging');
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDraggingRef.current || !trailerSliderRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - trailerSliderRef.current.offsetLeft;
+    const walk = (x - startXRef.current) * 1.5;
+    if (Math.abs(walk) > 6) {
+      hasMovedRef.current = true;
+    }
+    trailerSliderRef.current.scrollLeft = scrollLeftRef.current - walk;
+    checkScrollBounds();
+  };
+
+  const handleMouseUpOrLeave = () => {
+    isDraggingRef.current = false;
+    if (trailerSliderRef.current) {
+      trailerSliderRef.current.classList.remove('is-dragging');
+      checkScrollBounds();
+    }
+  };
 
   const scrollToCategories = () => {
     const el = document.getElementById('category-grid-section');
@@ -26,257 +93,83 @@ export default function Home() {
 
   return (
     <div style={{ backgroundColor: isDark ? '#0c0f1d' : '#F8F9FC', transition: 'background-color 0.3s ease' }}>
-      {/* 1. CINEMATIC FULL-BLEED PANORAMA HERO SECTION */}
-      <section className="cinematic-hero-wrap position-relative text-center text-lg-start py-2 py-lg-3">
-        {/* Ambient Glow Lights */}
+      {/* 1. CINEMATIC FULLSCREEN VIDEO BACKGROUND HERO SECTION */}
+      <section className="hero-video-wrapper hero-pull-under-nav position-relative text-white">
+        {/* Fullscreen Video Background */}
+        <video
+          className="hero-video-element"
+          autoPlay
+          loop
+          muted
+          playsInline
+          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4"
+        />
+
+        {/* Hero Center Section */}
         <div
-          className="ambient-glow position-absolute"
+          className="position-relative flex-grow-1 d-flex flex-column align-items-center justify-content-center text-center px-4"
           style={{
-            top: '0%',
-            right: '10%',
-            width: '450px',
-            height: '450px',
-            background: 'radial-gradient(circle, rgba(108, 92, 231, 0.4) 0%, rgba(108, 92, 231, 0) 70%)',
-            zIndex: 1,
-          }}
-        ></div>
-        <div
-          className="ambient-glow position-absolute"
-          style={{
-            bottom: '0%',
-            left: '5%',
-            width: '400px',
-            height: '400px',
-            background: 'radial-gradient(circle, rgba(255, 107, 129, 0.3) 0%, rgba(255, 107, 129, 0) 70%)',
-            animationDelay: '-4s',
-            zIndex: 1,
-          }}
-        ></div>
-
-        {/* Main Hero Content Deck - Zero Gap Spacing */}
-        <div className="container-fluid px-3 px-md-5 py-2 py-lg-3 position-relative d-flex align-items-center" style={{ zIndex: 2 }}>
-          <div className="row align-items-center g-4 g-xl-5 w-100 mx-0">
-            {/* Left Column: Ultra Frosted Glass Deck */}
-            <div className="col-lg-6 col-12">
-              <div className="p-4 p-md-5 ultra-glass-deck">
-                <div className="d-inline-flex align-items-center gap-2 px-3 py-1.5 rounded-pill mb-3" style={{ background: 'rgba(255, 255, 255, 0.12)', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
-                  <span className="badge rounded-pill" style={{ background: 'linear-gradient(135deg, #FF6B81 0%, #6C5CE7 100%)', color: '#fff' }}>
-                    <i className="bi bi-stars me-1"></i> Web Innovation
-                  </span>
-                  <span className="small text-white fw-semibold">Vũ Trụ Fandom Toàn Cầu</span>
-                </div>
-
-                <h1 className="font-heading display-4 fw-extrabold text-white mb-3 lh-sm" style={{ fontWeight: 800 }}>
-                  Khám Phá <span style={{ background: 'linear-gradient(135deg, #a29bfe 0%, #ff7675 50%, #55efc4 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Vũ Trụ Fandom</span> Đa Chiều Của Bạn
-                </h1>
-
-                <p className="fs-5 text-white-50 mb-4 leading-relaxed">
-                  Hợp nhất <strong className="text-white">7 thế giới</strong>: Anime, Gaming, Phim ảnh, TV Shows, K-Pop, Comics và Manga trong một nền tảng giải trí trực quan, tốc độ cao và đầy cảm hứng.
-                </p>
-
-                {/* Action Buttons */}
-                <div className="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start mb-4">
-                  <button
-                    type="button"
-                    className="btn btn-primary-fv btn-lg px-4 py-3 d-flex align-items-center gap-2"
-                    onClick={scrollToCategories}
-                  >
-                    <span>Khám Phá 7 Vũ Trụ</span>
-                    <i className="bi bi-arrow-down-circle-fill fs-5"></i>
-                  </button>
-                  <Link
-                    to="/trailers"
-                    className="btn btn-outline-fv btn-lg px-4 py-3 d-flex align-items-center gap-2"
-                  >
-                    <i className="bi bi-play-circle-fill text-danger fs-5"></i>
-                    <span>Xem Trailers Mới</span>
-                  </Link>
-                </div>
-
-                {/* Real-Time Fandom Stats Bar */}
-                <div className="row g-2 pt-3 border-top border-white-50 text-center text-md-start">
-                  <div className="col-4">
-                    <div className="fw-bold fs-4 text-warning">7+</div>
-                    <div className="text-white-50 small">Vũ Trụ Fandom</div>
-                  </div>
-                  <div className="col-4 border-start border-white-50">
-                    <div className="fw-bold fs-4" style={{ color: '#55efc4' }}>500+</div>
-                    <div className="text-white-50 small">Nội Dung 4K</div>
-                  </div>
-                  <div className="col-4 border-start border-white-50">
-                    <div className="fw-bold fs-4" style={{ color: '#ff7675' }}>100%</div>
-                    <div className="text-white-50 small">Bản Quyền Chính Hãng</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column: 4 Interactive Media Bento Hub */}
-            <div className="col-lg-6 col-12">
-              <div className="row g-3">
-                {/* Bento 1: Anime Hot */}
-                <div className="col-sm-6 col-12">
-                  <div
-                    className="ultra-glass-card position-relative mb-3 cursor-pointer"
-                    style={{ height: '210px' }}
-                    onClick={() => {
-                      const animeTrailer = latestTrailers.find((t) => t.category === 'anime') || latestTrailers[0];
-                      if (animeTrailer) setActiveVideo(animeTrailer);
-                    }}
-                  >
-                    <img
-                      src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=700&auto=format&fit=crop&q=80"
-                      alt="Anime Fandom"
-                      className="w-100 h-100 object-fit-cover"
-                    />
-                    <div
-                      className="position-absolute w-100 h-100 top-0 start-0"
-                      style={{ background: 'linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(12,15,29,0.85) 100%)' }}
-                    ></div>
-                    <span className="position-absolute top-0 start-0 m-3 badge rounded-pill px-2.5 py-1.5" style={{ background: 'rgba(255, 107, 129, 0.95)' }}>
-                      🔥 Trending Anime
-                    </span>
-                    <div className="position-absolute bottom-0 start-0 end-0 p-3 text-white text-start">
-                      <div className="fw-bold fs-6 mb-0">Demon Slayer: Hashira Training</div>
-                      <span className="text-white-50 small d-flex align-items-center gap-1">
-                        <i className="bi bi-eye-fill text-warning"></i> 98.5K lượt xem • 4K
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Bento 2: Gaming Live */}
-                  <div
-                    className="ultra-glass-card position-relative cursor-pointer"
-                    style={{ height: '190px' }}
-                    onClick={() => {
-                      const gamingTrailer = latestTrailers.find((t) => t.category === 'gaming') || latestTrailers[0];
-                      if (gamingTrailer) setActiveVideo(gamingTrailer);
-                    }}
-                  >
-                    <img
-                      src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=700&auto=format&fit=crop&q=80"
-                      alt="Gaming Fandom"
-                      className="w-100 h-100 object-fit-cover"
-                    />
-                    <div
-                      className="position-absolute w-100 h-100 top-0 start-0"
-                      style={{ background: 'linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(12,15,29,0.85) 100%)' }}
-                    ></div>
-                    <span className="position-absolute top-0 start-0 m-3 badge rounded-pill px-2.5 py-1.5 d-flex align-items-center gap-1.5" style={{ background: 'rgba(0, 184, 148, 0.95)' }}>
-                      <span className="d-flex align-items-center gap-1 me-1">
-                        <span className="equalizer-bar"></span>
-                        <span className="equalizer-bar"></span>
-                        <span className="equalizer-bar"></span>
-                      </span>
-                      Gaming Esports Live
-                    </span>
-                    <div className="position-absolute bottom-0 start-0 end-0 p-3 text-white text-start">
-                      <div className="fw-bold fs-6 mb-0">Cyberpunk & RPG Worlds</div>
-                      <span className="text-white-50 small">Giải đấu thế giới đang diễn ra</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Bento 3 & 4 */}
-                <div className="col-sm-6 col-12">
-                  {/* Bento 3: Marvel Movies */}
-                  <div
-                    className="ultra-glass-card position-relative mb-3 cursor-pointer"
-                    style={{ height: '190px' }}
-                    onClick={() => {
-                      const movieTrailer = latestTrailers.find((t) => t.category === 'movies') || latestTrailers[0];
-                      if (movieTrailer) setActiveVideo(movieTrailer);
-                    }}
-                  >
-                    <img
-                      src="https://images.unsplash.com/photo-1635863138275-d9b33299680b?w=700&auto=format&fit=crop&q=80"
-                      alt="Movie Superhero"
-                      className="w-100 h-100 object-fit-cover"
-                    />
-                    <div
-                      className="position-absolute w-100 h-100 top-0 start-0"
-                      style={{ background: 'linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(12,15,29,0.85) 100%)' }}
-                    ></div>
-                    <span className="position-absolute top-0 start-0 m-3 badge rounded-pill px-2.5 py-1.5" style={{ background: 'rgba(9, 132, 227, 0.95)' }}>
-                      🎬 Marvel & DC 4K
-                    </span>
-                    <div className="position-absolute bottom-0 start-0 end-0 p-3 text-white text-start">
-                      <div className="fw-bold fs-6 mb-0">Vũ Trụ Siêu Anh Hùng</div>
-                      <span className="text-white-50 small">Trailers & Tin tức độc quyền</span>
-                    </div>
-                  </div>
-
-                  {/* Bento 4: K-Pop Live */}
-                  <div
-                    className="ultra-glass-card position-relative cursor-pointer"
-                    style={{ height: '210px' }}
-                    onClick={() => {
-                      const kpopTrailer = latestTrailers.find((t) => t.category === 'kpop') || latestTrailers[0];
-                      if (kpopTrailer) setActiveVideo(kpopTrailer);
-                    }}
-                  >
-                    <img
-                      src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=700&auto=format&fit=crop&q=80"
-                      alt="K-Pop Concert"
-                      className="w-100 h-100 object-fit-cover"
-                    />
-                    <div
-                      className="position-absolute w-100 h-100 top-0 start-0"
-                      style={{ background: 'linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(12,15,29,0.85) 100%)' }}
-                    ></div>
-                    <span className="position-absolute top-0 start-0 m-3 badge rounded-pill px-2.5 py-1.5" style={{ background: 'rgba(232, 67, 147, 0.95)' }}>
-                      🎤 K-Pop Idol Stage
-                    </span>
-                    <div className="position-absolute bottom-0 start-0 end-0 p-3 text-white text-start">
-                      <div className="fw-bold fs-6 mb-0">World Tour & Music Video</div>
-                      <span className="text-white-50 small d-flex align-items-center gap-1">
-                        <i className="bi bi-heart-fill text-danger"></i> 142.3K Fans bình chọn
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Edge-to-Edge 7 Fandom Universe Interactive Ribbon */}
-        <div
-          className="w-100 py-3 px-3 px-lg-5 position-relative"
-          style={{
-            background: 'rgba(12, 15, 29, 0.85)',
-            backdropFilter: 'blur(16px)',
-            WebkitBackdropFilter: 'blur(16px)',
-            borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-            zIndex: 3,
+            zIndex: 10,
+            maxWidth: '1280px',
+            margin: '0 auto',
+            paddingTop: '4rem',
+            paddingBottom: '5rem',
           }}
         >
-          <div className="d-flex flex-wrap align-items-center justify-content-between gap-2">
-            <span className="small text-white-50 fw-bold text-uppercase d-flex align-items-center gap-2" style={{ letterSpacing: '1px', fontSize: '0.8rem' }}>
-              <span className="badge rounded-pill bg-warning text-dark">LIVE</span> 7 Vũ Trụ Fandom Đang Hoạt Động:
-            </span>
+          {/* H1 */}
+          <h1
+            className="text-foreground animate-fade-rise fw-normal mb-0"
+            style={{
+              fontFamily: "'Instrument Serif', serif",
+              fontSize: 'clamp(2.75rem, 7vw, 6rem)',
+              lineHeight: 0.95,
+              letterSpacing: '-2.46px',
+              maxWidth: '1280px',
+            }}
+          >
+            Where <em className="fst-normal text-muted-foreground">dreams</em> rise{' '}
+            <em className="fst-normal text-muted-foreground">through the silence.</em>
+          </h1>
 
-            <div className="d-flex flex-wrap align-items-center gap-2">
-              {CATEGORY_LIST.map((cat) => (
-                <Link
-                  key={cat.id}
-                  to={`/category/${cat.id}`}
-                  className="fandom-nav-pill d-flex align-items-center gap-1.5"
-                >
-                  <i className={`bi ${cat.icon}`}></i>
-                  <span>{cat.label}</span>
-                </Link>
-              ))}
-              <Link
-                to="/merchandise"
-                className="fandom-nav-pill text-white"
-                style={{ background: 'linear-gradient(135deg, #6C5CE7 0%, #FF6B81 100%)', border: 'none' }}
-              >
-                <i className="bi bi-bag-check-fill text-white"></i>
-                <span>Merchandise</span>
-              </Link>
-            </div>
-          </div>
+          {/* Subtext */}
+          <p
+            className="text-muted-foreground animate-fade-rise-delay mt-4 mb-0"
+            style={{
+              maxWidth: '42rem',
+              fontSize: 'clamp(1rem, 2vw, 1.125rem)',
+              lineHeight: 1.625,
+              fontWeight: 400,
+            }}
+          >
+            We're designing tools for deep thinkers, bold creators, and quiet rebels. Amid the chaos, we build digital spaces for sharp focus and inspired work.
+          </p>
+
+          {/* CTA Button */}
+          <button
+            type="button"
+            onClick={scrollToCategories}
+            className="liquid-glass hero-cta-btn rounded-pill text-foreground animate-fade-rise-delay-2 mt-5"
+            style={{
+              padding: '1.25rem 3.5rem',
+              fontSize: '1rem',
+              fontWeight: 500,
+            }}
+          >
+            Begin Journey
+          </button>
+        </div>
+
+        {/* Bottom Indicator */}
+        <div className="position-relative pb-4 text-center" style={{ zIndex: 10 }}>
+          <button
+            type="button"
+            onClick={scrollToCategories}
+            className="btn btn-link text-muted-foreground hover-text-foreground text-decoration-none p-0 d-inline-flex flex-column align-items-center gap-1 opacity-75"
+            style={{ fontSize: '0.75rem', letterSpacing: '0.12em' }}
+          >
+            <span className="text-uppercase">Khám phá vũ trụ</span>
+            <i className="bi bi-chevron-down animate-float-bounce"></i>
+          </button>
         </div>
       </section>
 
@@ -290,7 +183,7 @@ export default function Home() {
           transition: 'background-color 0.3s ease',
         }}
       >
-        <div className="container">
+        <div className="container-fluid px-3 px-md-4 px-lg-5">
           <div className="text-center mb-4">
             <div
               className="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill mb-2"
@@ -327,56 +220,55 @@ export default function Home() {
                 <div key={cat.id} className="col-xl-3 col-lg-4 col-md-6 col-12">
                   <Link
                     to={`/category/${cat.id}`}
-                    className={`category-visual-card h-100 p-4 accent-border-${cat.id}`}
+                    className={`category-visual-card h-100 accent-border-${cat.id}`}
                     style={{
                       backgroundColor: isDark ? 'rgba(255, 255, 255, 0.05)' : '#ffffff',
                       border: isDark ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid var(--border-color)',
                     }}
                   >
-                    {/* Ambient Category Artwork */}
+                    {/* Visible Category Illustration */}
                     {categoryImages[cat.id] && (
-                      <img
-                        src={categoryImages[cat.id]}
-                        alt={cat.label}
-                        className="category-bg-art"
-                        style={{ opacity: isDark ? 0.35 : 0.15 }}
-                      />
+                      <div className="category-image-banner">
+                        <img src={categoryImages[cat.id]} alt={cat.label} />
+                      </div>
                     )}
 
-                    <div className="d-flex align-items-center gap-3 mb-3 position-relative" style={{ zIndex: 2 }}>
-                      <div
-                        className="rounded-circle d-flex align-items-center justify-content-center shadow-xs"
-                        style={{
-                          width: '54px',
-                          height: '54px',
-                          backgroundColor: isDark ? 'rgba(255, 255, 255, 0.1)' : 'var(--bg-surface-alt)',
-                          border: `1.5px solid var(--accent-${cat.id})`,
-                        }}
-                      >
-                        <i className={`bi ${cat.icon} fs-3`} style={{ color: `var(--accent-${cat.id})` }}></i>
-                      </div>
-                      <div>
-                        <h4 className={`font-heading fw-bold mb-0 ${isDark ? 'text-white' : 'text-dark'}`}>{cat.label}</h4>
-                        <span
-                          className="badge rounded-pill px-2 py-0.5"
+                    <div className="p-4 d-flex flex-column flex-grow-1">
+                      <div className="d-flex align-items-center gap-3 mb-3 position-relative" style={{ zIndex: 2 }}>
+                        <div
+                          className="rounded-circle d-flex align-items-center justify-content-center shadow-xs"
                           style={{
-                            backgroundColor: isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(108, 92, 231, 0.08)',
-                            color: `var(--accent-${cat.id})`,
-                            fontSize: '0.7rem',
+                            width: '54px',
+                            height: '54px',
+                            backgroundColor: isDark ? 'rgba(255, 255, 255, 0.1)' : 'var(--bg-surface-alt)',
+                            border: `1.5px solid var(--accent-${cat.id})`,
                           }}
                         >
-                          Khám phá vũ trụ
-                        </span>
+                          <i className={`bi ${cat.icon} fs-3`} style={{ color: `var(--accent-${cat.id})` }}></i>
+                        </div>
+                        <div>
+                          <h4 className={`font-heading fw-bold mb-0 ${isDark ? 'text-white' : 'text-dark'}`}>{cat.label}</h4>
+                          <span
+                            className="badge rounded-pill px-2 py-0.5"
+                            style={{
+                              backgroundColor: isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(108, 92, 231, 0.08)',
+                              color: `var(--accent-${cat.id})`,
+                              fontSize: '0.7rem',
+                            }}
+                          >
+                            Khám phá vũ trụ
+                          </span>
+                        </div>
                       </div>
-                    </div>
 
-                    <p className={`small mb-3 flex-grow-1 leading-relaxed position-relative ${isDark ? 'text-white-50' : 'text-secondary'}`} style={{ zIndex: 2 }}>
-                      {cat.description}
-                    </p>
+                      <p className={`small mb-3 flex-grow-1 leading-relaxed position-relative ${isDark ? 'text-white-50' : 'text-secondary'}`} style={{ zIndex: 2 }}>
+                        {cat.description}
+                      </p>
 
-                    <div className="d-flex align-items-center justify-content-between small fw-bold pt-2 border-top border-white-50 border-opacity-10 position-relative" style={{ color: `var(--accent-${cat.id})`, zIndex: 2 }}>
-                      <span>Xem nội dung & nhân vật</span>
-                      <i className="bi bi-arrow-right"></i>
+                      <div className="d-flex align-items-center justify-content-between small fw-bold pt-2 border-top border-white-50 border-opacity-10 position-relative" style={{ color: `var(--accent-${cat.id})`, zIndex: 2 }}>
+                        <span>Xem nội dung & nhân vật</span>
+                        <i className="bi bi-arrow-right"></i>
+                      </div>
                     </div>
                   </Link>
                 </div>
@@ -387,38 +279,40 @@ export default function Home() {
             <div className="col-xl-3 col-lg-4 col-md-6 col-12">
               <Link
                 to="/merchandise"
-                className="category-visual-card h-100 p-4 text-white position-relative"
+                className="category-visual-card h-100 text-white position-relative"
                 style={{
                   background: 'linear-gradient(135deg, #6C5CE7 0%, #FF6B81 100%)',
                   border: 'none',
                 }}
               >
-                <img
-                  src="https://images.unsplash.com/photo-1563089145-599997674d42?w=500&auto=format&fit=crop&q=80"
-                  alt="Merchandise Store"
-                  className="category-bg-art"
-                  style={{ opacity: 0.3 }}
-                />
-                <div className="d-flex align-items-center gap-3 mb-3 position-relative" style={{ zIndex: 2 }}>
-                  <div
-                    className="rounded-circle d-flex align-items-center justify-content-center bg-white shadow-sm"
-                    style={{ width: '54px', height: '54px' }}
-                  >
-                    <i className="bi bi-bag-check-fill fs-3" style={{ color: '#6C5CE7' }}></i>
-                  </div>
-                  <div>
-                    <h4 className="font-heading fw-bold text-white mb-0">Gian Hàng</h4>
-                    <span className="badge bg-warning text-dark rounded-pill px-2 py-0.5" style={{ fontSize: '0.7rem' }}>
-                      Mô hình & Phụ kiện
-                    </span>
-                  </div>
+                <div className="category-image-banner">
+                  <img
+                    src="https://images.unsplash.com/photo-1563089145-599997674d42?w=500&auto=format&fit=crop&q=80"
+                    alt="Merchandise Store"
+                  />
                 </div>
-                <p className="text-white-50 small mb-3 flex-grow-1 leading-relaxed position-relative" style={{ zIndex: 2 }}>
-                  Hàng trăm mô hình Figure, áo thun, lightstick và phụ kiện chính hãng đang chờ đón bạn.
-                </p>
-                <div className="d-flex align-items-center justify-content-between text-white small fw-bold pt-2 border-top border-white-50 position-relative" style={{ zIndex: 2 }}>
-                  <span>Vào Merchandise Shop</span>
-                  <i className="bi bi-arrow-right"></i>
+                <div className="p-4 d-flex flex-column flex-grow-1">
+                  <div className="d-flex align-items-center gap-3 mb-3 position-relative" style={{ zIndex: 2 }}>
+                    <div
+                      className="rounded-circle d-flex align-items-center justify-content-center bg-white shadow-sm"
+                      style={{ width: '54px', height: '54px' }}
+                    >
+                      <i className="bi bi-bag-check-fill fs-3" style={{ color: '#6C5CE7' }}></i>
+                    </div>
+                    <div>
+                      <h4 className="font-heading fw-bold text-white mb-0">Gian Hàng</h4>
+                      <span className="badge bg-warning text-dark rounded-pill px-2 py-0.5" style={{ fontSize: '0.7rem' }}>
+                        Mô hình & Phụ kiện
+                      </span>
+                    </div>
+                  </div>
+                  <p className="text-white-50 small mb-3 flex-grow-1 leading-relaxed position-relative" style={{ zIndex: 2 }}>
+                    Hàng trăm mô hình Figure, áo thun, lightstick và phụ kiện chính hãng đang chờ đón bạn.
+                  </p>
+                  <div className="d-flex align-items-center justify-content-between text-white small fw-bold pt-2 border-top border-white-50 position-relative" style={{ zIndex: 2 }}>
+                    <span>Vào Merchandise Shop</span>
+                    <i className="bi bi-arrow-right"></i>
+                  </div>
                 </div>
               </Link>
             </div>
@@ -436,7 +330,7 @@ export default function Home() {
           transition: 'background-color 0.3s ease',
         }}
       >
-        <div className="container">
+        <div className="container-fluid px-3 px-md-4 px-lg-5">
           <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between mb-4 gap-2">
             <div>
               <div className="d-flex align-items-center gap-2 mb-1">
@@ -461,51 +355,221 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. LATEST TRAILERS SECTION - DYNAMIC THEME */}
-      <section className="py-4" style={{ backgroundColor: isDark ? '#0e1224' : '#F8F9FC', transition: 'background-color 0.3s ease' }}>
-        <div className="container">
-          <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between mb-4 gap-2">
+      {/* 4. LATEST TRAILERS SECTION - CAROUSEL SLIDER ("LƯỚT") */}
+      <section className="py-5" style={{ backgroundColor: isDark ? '#0a0d1a' : '#F8F9FC', transition: 'background-color 0.3s ease' }}>
+        <div className="container-fluid px-3 px-md-4 px-lg-5">
+          {/* Header & Controls */}
+          <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between mb-3 gap-3">
             <div>
-              <h2 className={`font-heading fw-bold mb-1 d-flex align-items-center gap-2 ${isDark ? 'text-white' : 'text-dark'}`}>
-                <i className="bi bi-play-circle-fill text-danger"></i> Trailer Bom Tấn Mới Nhất
-              </h2>
-              <p className={`small mb-0 ${isDark ? 'text-white-50' : 'text-secondary'}`}>Những thước phim hé lộ các siêu phẩm sắp bùng nổ</p>
+              <div className="d-flex align-items-center gap-2 mb-1">
+                <span className="badge rounded-pill bg-danger px-2.5 py-1 text-white small fw-bold d-inline-flex align-items-center gap-1">
+                  <i className="bi bi-play-circle-fill"></i> TRAILERS
+                </span>
+                <h2 className={`font-heading fw-bold mb-0 ${isDark ? 'text-white' : 'text-dark'}`}>
+                  Trailer Bom Tấn Mới Nhất
+                </h2>
+              </div>
+              <p className={`small mb-0 ${isDark ? 'text-white-50' : 'text-secondary'}`}>
+                Những thước phim hé lộ các siêu phẩm sắp bùng nổ trong vũ trụ Fandom (Kéo hoặc bấm nút để lướt)
+              </p>
             </div>
-            <Link to="/trailers" className="btn btn-sm btn-outline-danger rounded-pill px-3 py-2 fw-semibold">
-              Xem tất cả Trailer <i className="bi bi-arrow-right ms-1"></i>
-            </Link>
+
+            {/* Slider Navigation Arrows & View All Link */}
+            <div className="d-flex align-items-center gap-2">
+              <button
+                type="button"
+                className="fv-slider-nav-btn"
+                onClick={() => scrollSlider('left')}
+                disabled={!canScrollLeft}
+                aria-label="Lướt sang trái"
+                title="Lướt sang trái"
+              >
+                <i className="bi bi-chevron-left fs-5"></i>
+              </button>
+              <button
+                type="button"
+                className="fv-slider-nav-btn"
+                onClick={() => scrollSlider('right')}
+                disabled={!canScrollRight}
+                aria-label="Lướt sang phải"
+                title="Lướt sang phải"
+              >
+                <i className="bi bi-chevron-right fs-5"></i>
+              </button>
+              <Link
+                to="/trailers"
+                className="btn btn-sm btn-outline-danger rounded-pill px-3 py-2 fw-semibold d-inline-flex align-items-center gap-1 ms-1"
+              >
+                <span>Xem tất cả ({allTrailers.length})</span>
+                <i className="bi bi-arrow-right"></i>
+              </Link>
+            </div>
           </div>
 
-          <div className="row g-4">
-            {latestTrailers.map((t) => (
-              <div key={t.id} className="col-lg-4 col-md-6 col-12">
-                <div
-                  className={`card fv-card h-100 rounded-4 overflow-hidden accent-border-${t.category}`}
-                  style={{
-                    cursor: 'pointer',
-                    backgroundColor: isDark ? 'rgba(255, 255, 255, 0.05)' : '#ffffff',
-                    border: isDark ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid var(--border-color)',
+          {/* Category Filter Chips for Quick Sliding */}
+          <div className="d-flex align-items-center gap-2 overflow-x-auto pb-2 mb-3" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+            <button
+              type="button"
+              className={`fv-trailer-filter-chip ${trailerCategory === 'all' ? 'active' : ''}`}
+              onClick={() => {
+                setTrailerCategory('all');
+                if (trailerSliderRef.current) trailerSliderRef.current.scrollLeft = 0;
+              }}
+            >
+              Tất cả ({allTrailers.length})
+            </button>
+            {CATEGORY_LIST.map((cat) => {
+              const count = allTrailers.filter((t) => t.category === cat.id).length;
+              if (count === 0) return null;
+              return (
+                <button
+                  key={cat.id}
+                  type="button"
+                  className={`fv-trailer-filter-chip ${trailerCategory === cat.id ? 'active' : ''}`}
+                  onClick={() => {
+                    setTrailerCategory(cat.id);
+                    if (trailerSliderRef.current) trailerSliderRef.current.scrollLeft = 0;
                   }}
-                  onClick={() => setActiveVideo(t)}
                 >
-                  <div className="position-relative" style={{ height: '200px', backgroundColor: '#000' }}>
-                    <img src={t.thumbnail} alt={t.title} className="w-100 h-100 object-fit-cover opacity-85" />
-                    <div className="position-absolute top-50 start-50 translate-middle">
-                      <div className="rounded-circle bg-danger text-white d-flex align-items-center justify-content-center shadow-lg" style={{ width: '50px', height: '50px' }}>
-                        <i className="bi bi-play-fill fs-3 ms-1"></i>
+                  <i className={`bi ${cat.icon} me-1`}></i>
+                  {cat.label} ({count})
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Interactive Sliding Track ("Lướt") */}
+          <div className="fv-trailer-slider-container">
+            <div
+              ref={trailerSliderRef}
+              className="fv-trailer-slider-track"
+              onScroll={checkScrollBounds}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUpOrLeave}
+              onMouseLeave={handleMouseUpOrLeave}
+            >
+              {filteredTrailers.map((t) => {
+                const categoryColor = `var(--accent-${t.category}, #6C5CE7)`;
+                return (
+                  <div key={t.id} className="fv-trailer-card-item">
+                    <div
+                      className="card fv-card h-100 overflow-hidden shadow-sm"
+                      style={{
+                        cursor: 'pointer',
+                        backgroundColor: isDark ? 'rgba(255, 255, 255, 0.05)' : '#ffffff',
+                        border: isDark ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid var(--border-color)',
+                      }}
+                      onClick={() => {
+                        if (hasMovedRef.current) return;
+                        setActiveVideo(t);
+                      }}
+                    >
+                      {/* Video Thumbnail with Hover Zoom */}
+                      <div className="position-relative overflow-hidden" style={{ height: '200px', backgroundColor: '#000' }}>
+                        <img
+                          src={t.thumbnail}
+                          alt={t.title}
+                          className="w-100 h-100 object-fit-cover"
+                          style={{
+                            opacity: 0.88,
+                            transition: 'transform 0.4s ease',
+                          }}
+                          loading="lazy"
+                        />
+                        <div
+                          className="position-absolute inset-0 w-100 h-100 top-0 start-0"
+                          style={{
+                            background: 'linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(10,13,26,0.7) 100%)',
+                            pointerEvents: 'none',
+                          }}
+                        />
+
+                        {/* Centered Play Button */}
+                        <div className="position-absolute top-50 start-50 translate-middle">
+                          <div className="fv-trailer-play-icon">
+                            <i className="bi bi-play-fill fs-3 ms-0.5"></i>
+                          </div>
+                        </div>
+
+                        {/* Category Badge */}
+                        <span
+                          className="position-absolute top-0 start-0 m-2.5 badge rounded-pill px-2.5 py-1 text-white text-uppercase"
+                          style={{
+                            backgroundColor: categoryColor,
+                            fontSize: '0.72rem',
+                            fontWeight: 700,
+                            letterSpacing: '0.04em',
+                            boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
+                          }}
+                        >
+                          {t.category}
+                        </span>
+
+                        {/* Status Badge */}
+                        <span
+                          className="position-absolute top-0 end-0 m-2.5 badge rounded-pill px-2 py-1 text-white small"
+                          style={{
+                            background: t.status === 'released' ? 'rgba(0, 184, 148, 0.9)' : 'rgba(108, 92, 231, 0.9)',
+                            backdropFilter: 'blur(6px)',
+                            fontSize: '0.7rem',
+                            fontWeight: 600,
+                          }}
+                        >
+                          {t.status === 'released' ? '🔥 Mới ra mắt' : '⏳ Sắp chiếu'}
+                        </span>
+                      </div>
+
+                      {/* Card Info */}
+                      <div className="p-3 d-flex flex-column flex-grow-1 justify-content-between">
+                        <div>
+                          <h6
+                            className={`font-heading fw-bold mb-2 ${isDark ? 'text-white' : 'text-dark'}`}
+                            style={{
+                              display: '-webkit-box',
+                              WebkitLineClamp: 2,
+                              WebkitBoxOrient: 'vertical',
+                              overflow: 'hidden',
+                              minHeight: '2.5rem',
+                              lineHeight: 1.3,
+                              fontSize: '0.95rem',
+                            }}
+                            title={t.title}
+                          >
+                            {t.title}
+                          </h6>
+                        </div>
+
+                        <div className="d-flex align-items-center justify-content-between pt-2 border-top border-white-50 border-opacity-10 small">
+                          <span className={`${isDark ? 'text-white-50' : 'text-muted'}`}>
+                            <i className="bi bi-calendar3 me-1"></i> {t.releaseDate}
+                          </span>
+                          <span
+                            className="fw-bold d-inline-flex align-items-center gap-1"
+                            style={{ color: '#ff4757', fontSize: '0.8rem' }}
+                          >
+                            <span>Xem ngay</span>
+                            <i className="bi bi-play-circle"></i>
+                          </span>
+                        </div>
                       </div>
                     </div>
-                    <span className="position-absolute top-0 end-0 m-2 badge bg-dark bg-opacity-75 text-white small">
-                      {t.category.toUpperCase()}
-                    </span>
                   </div>
-                  <div className="p-3">
-                    <h6 className={`font-heading fw-bold mb-1 line-clamp-1 ${isDark ? 'text-white' : 'text-dark'}`}>{t.title}</h6>
-                    <span className={`small ${isDark ? 'text-white-50' : 'text-muted'}`}>Khởi chiếu: {t.releaseDate}</span>
-                  </div>
-                </div>
+                );
+              })}
+            </div>
+
+            {/* Bottom Swipe Hint */}
+            <div className="d-flex align-items-center justify-content-between mt-2 px-1">
+              <span className={`small ${isDark ? 'text-white-50' : 'text-secondary'}`} style={{ fontSize: '0.8rem' }}>
+                <i className="bi bi-arrows-expand me-1"></i> Giữ chuột kéo để lướt qua {filteredTrailers.length} trailer
+              </span>
+              <div className="d-flex align-items-center gap-1.5">
+                <span className={`small fw-semibold ${isDark ? 'text-white-50' : 'text-muted'}`} style={{ fontSize: '0.78rem' }}>
+                  {filteredTrailers.length} trailer khả dụng
+                </span>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
@@ -519,7 +583,7 @@ export default function Home() {
           transition: 'background-color 0.3s ease',
         }}
       >
-        <div className="container">
+        <div className="container-fluid px-3 px-md-4 px-lg-5">
           <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between mb-4 gap-2">
             <div>
               <h2 className={`font-heading fw-bold mb-1 d-flex align-items-center gap-2 ${isDark ? 'text-white' : 'text-dark'}`}>

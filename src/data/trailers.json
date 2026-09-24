@@ -3,7 +3,7 @@
     "id": "anime-trailer-001",
     "category": "anime",
     "title": "Chainsaw Man: Reze Arc Movie - Official Teaser",
-    "thumbnail": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&auto=format&fit=crop&q=80",
+    "thumbnail": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/v4yLeNt-kCU",
     "status": "upcoming",
     "releaseDate": "2026-11-15"
@@ -12,17 +12,44 @@
     "id": "anime-trailer-002",
     "category": "anime",
     "title": "Demon Slayer: Kimetsu no Yaiba Infinity Castle Arc - Main Trailer",
-    "thumbnail": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&auto=format&fit=crop&q=80",
+    "thumbnail": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/x7uL_xZ55Lw",
     "status": "released",
     "releaseDate": "2026-06-20"
+  },
+  {
+    "id": "anime-trailer-003",
+    "category": "anime",
+    "title": "Jujutsu Kaisen: Culling Game Arc - Teaser PV",
+    "thumbnail": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=700&auto=format&fit=crop&q=80",
+    "mediaUrl": "https://www.youtube.com/embed/v8bCVyq-d_M",
+    "status": "upcoming",
+    "releaseDate": "2026-10-12"
+  },
+  {
+    "id": "anime-trailer-004",
+    "category": "anime",
+    "title": "Solo Leveling Season 2: Arise from the Shadow - Official Trailer",
+    "thumbnail": "https://images.unsplash.com/photo-1563089145-599997674d42?w=700&auto=format&fit=crop&q=80",
+    "mediaUrl": "https://www.youtube.com/embed/sUjN1R-XU_c",
+    "status": "released",
+    "releaseDate": "2026-07-05"
+  },
+  {
+    "id": "anime-trailer-005",
+    "category": "anime",
+    "title": "Attack on Titan: The Last Attack Movie - 4K Theatrical Trailer",
+    "thumbnail": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=700&auto=format&fit=crop&q=80",
+    "mediaUrl": "https://www.youtube.com/embed/M_OauHnAFc8",
+    "status": "upcoming",
+    "releaseDate": "2026-11-20"
   },
 
   {
     "id": "gaming-trailer-001",
     "category": "gaming",
     "title": "Grand Theft Auto VI - First Look Reveal",
-    "thumbnail": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&auto=format&fit=crop&q=80",
+    "thumbnail": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/QdBZY2fkU-0",
     "status": "upcoming",
     "releaseDate": "2026-12-01"
@@ -31,17 +58,53 @@
     "id": "gaming-trailer-002",
     "category": "gaming",
     "title": "Black Myth: Wukong - Launch Gameplay Trailer",
-    "thumbnail": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=600&auto=format&fit=crop&q=80",
+    "thumbnail": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/pCkWYd4yYg4",
     "status": "released",
     "releaseDate": "2026-08-20"
+  },
+  {
+    "id": "gaming-trailer-003",
+    "category": "gaming",
+    "title": "Elden Ring: Shadow of the Erdtree - Official Gameplay Trailer",
+    "thumbnail": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=700&auto=format&fit=crop&q=80",
+    "mediaUrl": "https://www.youtube.com/embed/qLZenOn7WUo",
+    "status": "released",
+    "releaseDate": "2026-06-21"
+  },
+  {
+    "id": "gaming-trailer-004",
+    "category": "gaming",
+    "title": "Ghost of Yōtei - PlayStation 5 Official Reveal Trailer",
+    "thumbnail": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=700&auto=format&fit=crop&q=80",
+    "mediaUrl": "https://www.youtube.com/embed/7X8iiK4cIeg",
+    "status": "upcoming",
+    "releaseDate": "2026-11-10"
+  },
+  {
+    "id": "gaming-trailer-005",
+    "category": "gaming",
+    "title": "Monster Hunter Wilds - Official 4K Showcase Trailer",
+    "thumbnail": "https://images.unsplash.com/photo-1552824722-ddab1374e622?w=700&auto=format&fit=crop&q=80",
+    "mediaUrl": "https://www.youtube.com/embed/K8e6Jg_H0J8",
+    "status": "upcoming",
+    "releaseDate": "2026-09-28"
+  },
+  {
+    "id": "gaming-trailer-006",
+    "category": "gaming",
+    "title": "Cyberpunk 2077: Phantom Liberty - Official Cinematic Trailer",
+    "thumbnail": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=700&auto=format&fit=crop&q=80",
+    "mediaUrl": "https://www.youtube.com/embed/KFdf1B4rZ4E",
+    "status": "released",
+    "releaseDate": "2026-05-18"
   },
 
   {
     "id": "movies-trailer-001",
     "category": "movies",
     "title": "Avatar 3: Fire and Ash - Concept Teaser",
-    "thumbnail": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80",
+    "thumbnail": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/d9MyW72ELq0",
     "status": "upcoming",
     "releaseDate": "2026-12-18"
@@ -50,17 +113,44 @@
     "id": "movies-trailer-002",
     "category": "movies",
     "title": "Deadpool & Wolverine - Final Trailer",
-    "thumbnail": "https://images.unsplash.com/photo-1635863138275-d9b33299680b?w=600&auto=format&fit=crop&q=80",
+    "thumbnail": "https://images.unsplash.com/photo-1635863138275-d9b33299680b?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/73_1biulkYk",
     "status": "released",
     "releaseDate": "2026-07-26"
+  },
+  {
+    "id": "movies-trailer-003",
+    "category": "movies",
+    "title": "Avengers: Secret Wars - Multiverse Saga Official Teaser",
+    "thumbnail": "https://images.unsplash.com/photo-1604200213928-ba3cf4fc8436?w=700&auto=format&fit=crop&q=80",
+    "mediaUrl": "https://www.youtube.com/embed/TcMBFSGVi1c",
+    "status": "upcoming",
+    "releaseDate": "2026-12-25"
+  },
+  {
+    "id": "movies-trailer-004",
+    "category": "movies",
+    "title": "Spider-Man: Beyond the Spider-Verse - First Look Preview",
+    "thumbnail": "https://images.unsplash.com/photo-1635863138275-d9b33299680b?w=700&auto=format&fit=crop&q=80",
+    "mediaUrl": "https://www.youtube.com/embed/shW9i6k8cB0",
+    "status": "upcoming",
+    "releaseDate": "2026-10-15"
+  },
+  {
+    "id": "movies-trailer-005",
+    "category": "movies",
+    "title": "The Batman: Part II - The Dark Knight of Gotham Teaser",
+    "thumbnail": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=700&auto=format&fit=crop&q=80",
+    "mediaUrl": "https://www.youtube.com/embed/mqqft2x_Aa4",
+    "status": "upcoming",
+    "releaseDate": "2026-11-05"
   },
 
   {
     "id": "tvshows-trailer-001",
     "category": "tvshows",
     "title": "Stranger Things Season 5 - The Final Adventure",
-    "thumbnail": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&auto=format&fit=crop&q=80",
+    "thumbnail": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/yQEondeGvLk",
     "status": "upcoming",
     "releaseDate": "2026-11-28"
@@ -69,17 +159,44 @@
     "id": "tvshows-trailer-002",
     "category": "tvshows",
     "title": "House of the Dragon Season 2 - War of Dragons",
-    "thumbnail": "https://images.unsplash.com/photo-1514539079130-25950c84af65?w=600&auto=format&fit=crop&q=80",
+    "thumbnail": "https://images.unsplash.com/photo-1514539079130-25950c84af65?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/DotnJ7tTA34",
     "status": "released",
     "releaseDate": "2026-06-16"
+  },
+  {
+    "id": "tvshows-trailer-003",
+    "category": "tvshows",
+    "title": "The Last of Us Season 2 - Official Teaser Trailer",
+    "thumbnail": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=700&auto=format&fit=crop&q=80",
+    "mediaUrl": "https://www.youtube.com/embed/xT0g_O9Qp68",
+    "status": "upcoming",
+    "releaseDate": "2026-08-30"
+  },
+  {
+    "id": "tvshows-trailer-004",
+    "category": "tvshows",
+    "title": "Arcane Season 2: Final Chapter - Official Netflix Trailer",
+    "thumbnail": "https://images.unsplash.com/photo-1563089145-599997674d42?w=700&auto=format&fit=crop&q=80",
+    "mediaUrl": "https://www.youtube.com/embed/ysQI1W-oP0g",
+    "status": "released",
+    "releaseDate": "2026-05-22"
+  },
+  {
+    "id": "tvshows-trailer-005",
+    "category": "tvshows",
+    "title": "Wednesday Season 2 - Return to Nevermore Official Teaser",
+    "thumbnail": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=700&auto=format&fit=crop&q=80",
+    "mediaUrl": "https://www.youtube.com/embed/Di310WS8zLk",
+    "status": "upcoming",
+    "releaseDate": "2026-10-08"
   },
 
   {
     "id": "kpop-trailer-001",
     "category": "kpop",
     "title": "BTS 2026 Reunion Special Album - Comeback Teaser",
-    "thumbnail": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&auto=format&fit=crop&q=80",
+    "thumbnail": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/WMweEpGlu_U",
     "status": "upcoming",
     "releaseDate": "2026-10-20"
@@ -88,17 +205,35 @@
     "id": "kpop-trailer-002",
     "category": "kpop",
     "title": "BLACKPINK World Tour Finale - Official Live Film",
-    "thumbnail": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop&q=80",
+    "thumbnail": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/dyRsYk0LyA8",
     "status": "released",
     "releaseDate": "2026-05-15"
+  },
+  {
+    "id": "kpop-trailer-003",
+    "category": "kpop",
+    "title": "aespa - 'Whiplash' Official Performance MV Teaser",
+    "thumbnail": "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=700&auto=format&fit=crop&q=80",
+    "mediaUrl": "https://www.youtube.com/embed/jWQx2f-CErU",
+    "status": "released",
+    "releaseDate": "2026-09-18"
+  },
+  {
+    "id": "kpop-trailer-004",
+    "category": "kpop",
+    "title": "NewJeans - 2026 Global Stage Live Film Teaser",
+    "thumbnail": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=700&auto=format&fit=crop&q=80",
+    "mediaUrl": "https://www.youtube.com/embed/ArmDp-zijuc",
+    "status": "upcoming",
+    "releaseDate": "2026-12-10"
   },
 
   {
     "id": "comics-trailer-001",
     "category": "comics",
     "title": "Superman: Legacy - Official Motion Comic Preview",
-    "thumbnail": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&auto=format&fit=crop&q=80",
+    "thumbnail": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/wA_QdI06n_0",
     "status": "upcoming",
     "releaseDate": "2026-11-01"
@@ -107,17 +242,26 @@
     "id": "comics-trailer-002",
     "category": "comics",
     "title": "X-Men '97 - Animated Series Premiere",
-    "thumbnail": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=600&auto=format&fit=crop&q=80",
+    "thumbnail": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/pv3Ss8o99qU",
     "status": "released",
     "releaseDate": "2026-03-20"
+  },
+  {
+    "id": "comics-trailer-003",
+    "category": "comics",
+    "title": "Batman: The Brave and the Bold - DC Studios Official Teaser",
+    "thumbnail": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=700&auto=format&fit=crop&q=80",
+    "mediaUrl": "https://www.youtube.com/embed/1Jj3wvyw9vw",
+    "status": "upcoming",
+    "releaseDate": "2026-12-15"
   },
 
   {
     "id": "manga-trailer-001",
     "category": "manga",
     "title": "One Piece Chapter 1150 - Special Manga PV",
-    "thumbnail": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&auto=format&fit=crop&q=80",
+    "thumbnail": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/Ades3pQbeh8",
     "status": "upcoming",
     "releaseDate": "2026-10-31"
@@ -126,9 +270,18 @@
     "id": "manga-trailer-002",
     "category": "manga",
     "title": "Berserk Memorial Edition - Manga Tribute Trailer",
-    "thumbnail": "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?w=600&auto=format&fit=crop&q=80",
+    "thumbnail": "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/oK0C9i4u_3A",
     "status": "released",
     "releaseDate": "2026-04-12"
+  },
+  {
+    "id": "manga-trailer-003",
+    "category": "manga",
+    "title": "Chainsaw Man Part 2 - Official Manga Motion PV",
+    "thumbnail": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=700&auto=format&fit=crop&q=80",
+    "mediaUrl": "https://www.youtube.com/embed/Ades3pQbeh8",
+    "status": "released",
+    "releaseDate": "2026-06-14"
   }
 ]

@@ -54,7 +54,7 @@ export default function CategoryHub() {
 
   if (!isValidCategory) {
     return (
-      <div className="container py-5 text-center">
+      <div className="container-fluid px-3 px-md-4 px-lg-5 py-5 text-center">
         <EmptyState
           title="Không tìm thấy danh mục"
           message={`Danh mục '${categoryId}' không tồn tại trong hệ thống 7 vũ trụ FandomVerse.`}
@@ -66,7 +66,7 @@ export default function CategoryHub() {
   }
 
   return (
-    <div className="container py-4">
+    <div className="container-fluid px-3 px-md-4 px-lg-5 py-4">
       {/* Category Header Banner */}
       <div
         className={`p-4 p-md-5 rounded-4 shadow-sm mb-4 bg-white border-0 accent-border-${categoryId} d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3`}
@@ -213,7 +213,7 @@ export default function CategoryHub() {
           ) : (
             <div className="row g-4">
               {filteredContents.map((item) => (
-                <div key={item.id} className="col-lg-4 col-md-6 col-12">
+                <div key={item.id} className="col-xl-3 col-lg-4 col-md-6 col-12">
                   <ContentCard
                     item={item}
                     onOpenGallery={(g) => setLightboxImages(g.images)}
@@ -301,7 +301,7 @@ export default function CategoryHub() {
           {/* Events List (>=3 events) */}
           <div className="row g-3">
             {filteredEvents.map((evt) => (
-              <div key={evt.id} className="col-lg-6 col-12">
+              <div key={evt.id} className="col-xl-4 col-lg-6 col-12">
                 <EventCard event={evt} />
               </div>
             ))}

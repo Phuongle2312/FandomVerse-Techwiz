@@ -16,7 +16,7 @@ export default function TrailersHub() {
   }, [selectedCategory, selectedStatus]);
 
   return (
-    <div className="container py-4">
+    <div className="container-fluid px-3 px-md-4 px-lg-5 py-4">
       {/* Header */}
       <div className="mb-4">
         <h1 className="font-heading display-6 fw-bold text-dark mb-2 d-flex align-items-center gap-2">
@@ -98,7 +98,7 @@ export default function TrailersHub() {
       ) : (
         <div className="row g-4">
           {trailers.map((t) => (
-            <div key={t.id} className="col-lg-4 col-md-6 col-12">
+            <div key={t.id} className="col-xl-3 col-lg-4 col-md-6 col-12">
               <div
                 className={`card fv-card h-100 border-0 shadow-sm rounded-4 overflow-hidden accent-border-${t.category}`}
                 style={{ cursor: 'pointer' }}

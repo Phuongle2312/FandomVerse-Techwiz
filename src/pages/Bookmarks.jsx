@@ -31,7 +31,7 @@ export default function Bookmarks() {
   };
 
   return (
-    <div className="container py-4">
+    <div className="container-fluid px-3 px-md-4 px-lg-5 py-4">
       {/* Header */}
       <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-4">
         <div>
