@@ -1,5 +1,6 @@
 import React from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from './context/ThemeContext.jsx';
 import { CartProvider } from './context/CartContext.jsx';
 import { BookmarkProvider } from './context/BookmarkContext.jsx';
 
@@ -25,17 +26,16 @@ import NotFound from './pages/NotFound.jsx';
 export default function App() {
   return (
     <HashRouter>
-      <CartProvider>
-        <BookmarkProvider>
-          <div className="app-layout">
-            {/* Header Navigation */}
-            <Navbar />
+      <ThemeProvider>
+        <CartProvider>
+          <BookmarkProvider>
+            <div className="app-layout">
+              {/* Header Navigation */}
+              <Navbar />
 
             {/* Main Application Container */}
             <main className="main-content">
-              <div className="container pt-3">
-                <Breadcrumb />
-              </div>
+              <Breadcrumb />
 
               <Routes>
                 <Route path="/" element={<Home />} />
@@ -62,6 +62,7 @@ export default function App() {
           </div>
         </BookmarkProvider>
       </CartProvider>
-    </HashRouter>
-  );
+    </ThemeProvider>
+  </HashRouter>
+);
 }

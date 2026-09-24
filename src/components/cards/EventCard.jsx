@@ -1,6 +1,8 @@
 import React from 'react';
+import { useTheme } from '../../context/ThemeContext.jsx';
 
 export default function EventCard({ event }) {
+  const { isDark } = useTheme();
   const eventDate = new Date(event.date);
   const day = eventDate.getDate().toString().padStart(2, '0');
   const month = `Th${eventDate.getMonth() + 1}`;
@@ -10,20 +12,27 @@ export default function EventCard({ event }) {
   const isUpcoming = event.date >= today;
 
   return (
-    <div className="card fv-card h-100 border-0 shadow-sm p-3">
+    <div
+      className="card fv-card h-100 p-3"
+      style={{
+        backgroundColor: isDark ? 'rgba(255, 255, 255, 0.05)' : '#ffffff',
+        border: isDark ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid var(--border-color)',
+        boxShadow: isDark ? '0 4px 20px rgba(0, 0, 0, 0.25)' : '0 4px 20px rgba(0, 0, 0, 0.06)',
+      }}
+    >
       <div className="d-flex gap-3 align-items-start">
         {/* Date Block */}
         <div
-          className="d-flex flex-column align-items-center justify-content-center rounded-3 p-2 text-center text-primary"
+          className="d-flex flex-column align-items-center justify-content-center rounded-3 p-2 text-center"
           style={{
             minWidth: '70px',
-            backgroundColor: 'var(--color-primary-light)',
-            border: '1px solid rgba(108, 92, 231, 0.2)',
+            backgroundColor: isDark ? 'rgba(108, 92, 231, 0.2)' : 'rgba(108, 92, 231, 0.1)',
+            border: isDark ? '1px solid rgba(108, 92, 231, 0.4)' : '1px solid rgba(108, 92, 231, 0.25)',
           }}
         >
-          <span className="font-heading fw-bold fs-4 lh-1 text-primary">{day}</span>
-          <span className="fw-semibold small text-uppercase" style={{ fontSize: '0.75rem' }}>{month}</span>
-          <span className="text-muted" style={{ fontSize: '0.65rem' }}>{year}</span>
+          <span className="font-heading fw-bold fs-4 lh-1" style={{ color: isDark ? '#a29bfe' : '#6C5CE7' }}>{day}</span>
+          <span className="fw-semibold small text-uppercase" style={{ fontSize: '0.75rem', color: isDark ? '#a29bfe' : '#6C5CE7' }}>{month}</span>
+          <span className={`small ${isDark ? 'text-white-50' : 'text-muted'}`} style={{ fontSize: '0.65rem' }}>{year}</span>
         </div>
 
         {/* Content Block */}
@@ -31,28 +40,28 @@ export default function EventCard({ event }) {
           <div className="d-flex align-items-center justify-content-between mb-1 gap-2">
             <span
               className={`badge rounded-pill small ${
-                isUpcoming ? 'bg-warning text-dark' : 'bg-secondary-subtle text-secondary'
+                isUpcoming ? 'bg-warning text-dark' : 'bg-secondary text-white'
               }`}
               style={{ fontSize: '0.7rem' }}
             >
               {isUpcoming ? '⚡ Sắp diễn ra' : '✓ Đã diễn ra'}
             </span>
-            <span className="text-muted small" style={{ fontSize: '0.75rem' }}>
+            <span className={`small ${isDark ? 'text-white-50' : 'text-muted'}`} style={{ fontSize: '0.75rem' }}>
               <i className="bi bi-geo-alt-fill text-danger me-1"></i>
               {event.location.split(',')[0]}
             </span>
           </div>
 
-          <h5 className="font-heading fs-6 fw-bold mb-1 text-dark">
+          <h5 className={`font-heading fs-6 fw-bold mb-1 ${isDark ? 'text-white' : 'text-dark'}`}>
             {event.title}
           </h5>
 
-          <p className="text-secondary small mb-2 line-clamp-2">
+          <p className={`small mb-2 line-clamp-2 ${isDark ? 'text-white-50' : 'text-secondary'}`}>
             {event.description}
           </p>
 
-          <div className="text-muted small d-flex align-items-center gap-1" style={{ fontSize: '0.75rem' }}>
-            <i className="bi bi-pin-map text-primary"></i>
+          <div className={`small d-flex align-items-center gap-1 ${isDark ? 'text-white-50' : 'text-muted'}`} style={{ fontSize: '0.75rem' }}>
+            <i className="bi bi-pin-map" style={{ color: isDark ? '#a29bfe' : '#6C5CE7' }}></i>
             <span>{event.location}</span>
           </div>
         </div>
@@ -60,3 +69,4 @@ export default function EventCard({ event }) {
     </div>
   );
 }
+
