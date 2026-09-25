@@ -19,7 +19,7 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
   };
 
   const handleCardClick = () => {
-    if (item.type === 'video' && item.mediaUrl && onOpenMedia) {
+    if ((item.type === 'video' || item.type === 'audio') && item.mediaUrl && onOpenMedia) {
       onOpenMedia(item);
     } else if (item.type === 'gallery' && item.images && item.images.length > 0 && onOpenGallery) {
       onOpenGallery(item);
@@ -160,8 +160,16 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
             >
               <i className="bi bi-eye-fill me-1"></i> Xem Bộ Ảnh ({item.images?.length || 0})
             </button>
+          ) : item.type === 'audio' ? (
+            <button
+              type="button"
+              className="btn btn-sm btn-outline-info rounded-pill px-3 py-1"
+              onClick={handleCardClick}
+            >
+              <i className="bi bi-soundwave me-1"></i> Nghe Audio
+            </button>
           ) : (
-            <span className={`small ${isDark ? 'text-white-50' : 'text-muted'}`}>Audio Track</span>
+            <span className={`small ${isDark ? 'text-white-50' : 'text-muted'}`}>Nội dung</span>
           )}
         </div>
       </div>

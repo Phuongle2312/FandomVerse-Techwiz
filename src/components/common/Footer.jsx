@@ -23,10 +23,9 @@ export default function Footer() {
                   width: '36px',
                   height: '36px',
                   background: 'linear-gradient(135deg, #6C5CE7 0%, #FF6B81 100%)',
-                  fontSize: '1.15rem',
                 }}
               >
-                🌌
+                <i className="bi bi-stars fs-6"></i>
               </span>
               <span className="font-heading">Fandom<span style={{ color: '#a29bfe' }}>Verse</span></span>
             </Link>

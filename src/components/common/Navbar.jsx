@@ -156,10 +156,9 @@ export default function Navbar() {
               width: '38px',
               height: '38px',
               background: 'linear-gradient(135deg, #6C5CE7 0%, #FF6B81 100%)',
-              fontSize: '1.25rem',
             }}
           >
-            🌌
+            <i className="bi bi-stars fs-5"></i>
           </span>
           <span className="font-heading tracking-wide fw-bold text-white">
             Fandom<span style={{ background: 'linear-gradient(135deg, #a29bfe, #ff7675)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Verse</span>
@@ -183,7 +182,6 @@ export default function Navbar() {
           {/* Main Links */}
           <ul
             className="navbar-nav me-auto mb-2 mb-lg-0 align-items-lg-center"
-            style={{ textShadow: '0 1px 4px rgba(0, 0, 0, 0.6), 0 1px 10px rgba(0, 0, 0, 0.3)' }}
           >
             {/* 7 Categories Dropdown */}
             <li
@@ -205,6 +203,7 @@ export default function Navbar() {
                 style={{
                   backgroundColor: isDark ? '#12162a' : '#ffffff',
                   border: isDark ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.08)',
+                  textShadow: 'none',
                 }}
                 aria-labelledby="categoriesDropdown"
               >
@@ -212,7 +211,12 @@ export default function Navbar() {
                   <li key={cat.id}>
                     <Link
                       to={`/category/${cat.id}`}
-                      className="dropdown-item d-flex align-items-center gap-2 py-2 px-3 fw-medium"
+                      className="dropdown-item d-flex align-items-center gap-2 py-2 px-3"
+                      style={{
+                        color: isDark ? '#cbd5e1' : '#4b5563',
+                        fontWeight: 450,
+                        textShadow: 'none',
+                      }}
                       onClick={() => {
                         setIsNavCollapsed(true);
                         setIsCategoriesOpen(false);

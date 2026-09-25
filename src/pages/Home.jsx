@@ -21,10 +21,18 @@ export default function Home() {
   const [canScrollRight, setCanScrollRight] = useState(true);
 
   const trailerSliderRef = useRef(null);
+  const heroVideoRef = useRef(null);
   const isDraggingRef = useRef(false);
   const startXRef = useRef(0);
   const scrollLeftRef = useRef(0);
   const hasMovedRef = useRef(false);
+
+  useEffect(() => {
+    if (heroVideoRef.current) {
+      heroVideoRef.current.muted = true;
+      heroVideoRef.current.play().catch(() => { });
+    }
+  }, []);
 
   const filteredTrailers = useMemo(() => {
     if (trailerCategory === 'all') return allTrailers;
@@ -93,85 +101,96 @@ export default function Home() {
 
   return (
     <div style={{ backgroundColor: isDark ? '#0c0f1d' : '#F8F9FC', transition: 'background-color 0.3s ease' }}>
-      {/* 1. CINEMATIC FULLSCREEN VIDEO BACKGROUND HERO SECTION */}
-      <section className="hero-video-wrapper hero-pull-under-nav position-relative text-white">
-        {/* Fullscreen Video Background */}
-        <video
-          className="hero-video-element"
-          autoPlay
-          loop
-          muted
-          playsInline
-          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4"
-        />
+      {/* 1. CINEMATIC 1280x720 VIDEO HERO SECTION WITH DARK STAGE BACKDROP */}
+      <div className="hero-stage-container">
+        <section className="hero-video-wrapper position-relative text-white">
+          {/* Fullscreen Video Background */}
+          <video
+            ref={heroVideoRef}
+            key="hero-video-active"
+            className="hero-video-element"
+            autoPlay
+            loop
+            muted
+            playsInline
+            poster="/hero-poster.png"
+            src="/hero-video.mp4"
+          >
+            <source src="/hero-video.mp4" type="video/mp4" />
+          </video>
 
-        {/* Hero Center Section */}
-        <div
-          className="position-relative flex-grow-1 d-flex flex-column align-items-center justify-content-center text-center px-4"
-          style={{
-            zIndex: 10,
-            maxWidth: '1280px',
-            margin: '0 auto',
-            paddingTop: '4rem',
-            paddingBottom: '5rem',
-          }}
-        >
-          {/* H1 */}
-          <h1
-            className="text-foreground animate-fade-rise fw-normal mb-0"
+          {/* Cinematic Vignette Overlay */}
+          <div className="hero-video-overlay" />
+
+          {/* Hero Center Section */}
+          <div
+            className="position-relative flex-grow-1 d-flex flex-column align-items-center justify-content-center text-center px-3 px-md-4"
             style={{
-              fontFamily: "'Instrument Serif', serif",
-              fontSize: 'clamp(2.75rem, 7vw, 6rem)',
-              lineHeight: 0.95,
-              letterSpacing: '-2.46px',
-              maxWidth: '1280px',
+              zIndex: 10,
+              maxWidth: '1100px',
+              margin: '0 auto',
+              paddingTop: '1.5rem',
+              paddingBottom: '1rem',
             }}
           >
-            Where <em className="fst-normal text-muted-foreground">dreams</em> rise{' '}
-            <em className="fst-normal text-muted-foreground">through the silence.</em>
-          </h1>
+            {/* H1 */}
+            <h1
+              className="text-foreground animate-fade-rise fw-normal mb-0"
+              style={{
+                fontFamily: "'Instrument Serif', serif",
+                fontSize: 'clamp(2rem, 4.8vw, 3.8rem)',
+                lineHeight: 1.05,
+                letterSpacing: '-1.5px',
+                maxWidth: '1000px',
+              }}
+            >
+              Where <em className="fst-normal text-muted-foreground">dreams</em> rise{' '}
+              <em className="fst-normal text-muted-foreground">through the silence.</em>
+            </h1>
 
-          {/* Subtext */}
-          <p
-            className="text-muted-foreground animate-fade-rise-delay mt-4 mb-0"
-            style={{
-              maxWidth: '42rem',
-              fontSize: 'clamp(1rem, 2vw, 1.125rem)',
-              lineHeight: 1.625,
-              fontWeight: 400,
-            }}
-          >
-            We're designing tools for deep thinkers, bold creators, and quiet rebels. Amid the chaos, we build digital spaces for sharp focus and inspired work.
-          </p>
+            {/* Subtext */}
+            <p
+              className="text-muted-foreground animate-fade-rise-delay mt-2 mt-md-3 mb-0"
+              style={{
+                maxWidth: '38rem',
+                fontSize: 'clamp(0.85rem, 1.4vw, 1rem)',
+                lineHeight: 1.5,
+                fontWeight: 400,
+                opacity: 0.9,
+              }}
+            >
+              We're designing tools for deep thinkers, bold creators, and quiet rebels. Amid the chaos, we build digital spaces for sharp focus and inspired work.
+            </p>
 
-          {/* CTA Button */}
-          <button
-            type="button"
-            onClick={scrollToCategories}
-            className="liquid-glass hero-cta-btn rounded-pill text-foreground animate-fade-rise-delay-2 mt-5"
-            style={{
-              padding: '1.25rem 3.5rem',
-              fontSize: '1rem',
-              fontWeight: 500,
-            }}
-          >
-            Begin Journey
-          </button>
-        </div>
+            {/* CTA Button */}
+            <button
+              type="button"
+              onClick={scrollToCategories}
+              className="liquid-glass hero-cta-btn rounded-pill text-foreground animate-fade-rise-delay-2 mt-3 mt-md-4"
+              style={{
+                padding: '0.8rem 2.5rem',
+                fontSize: '0.95rem',
+                fontWeight: 550,
+              }}
+            >
+              Begin Journey
+            </button>
+          </div>
 
-        {/* Bottom Indicator */}
-        <div className="position-relative pb-4 text-center" style={{ zIndex: 10 }}>
-          <button
-            type="button"
-            onClick={scrollToCategories}
-            className="btn btn-link text-muted-foreground hover-text-foreground text-decoration-none p-0 d-inline-flex flex-column align-items-center gap-1 opacity-75"
-            style={{ fontSize: '0.75rem', letterSpacing: '0.12em' }}
-          >
-            <span className="text-uppercase">Khám phá vũ trụ</span>
-            <i className="bi bi-chevron-down animate-float-bounce"></i>
-          </button>
-        </div>
-      </section>
+          {/* Bottom Indicator */}
+          <div className="position-relative pb-2 pb-md-3 text-center" style={{ zIndex: 10 }}>
+            <button
+              type="button"
+              onClick={scrollToCategories}
+              className="btn btn-link text-muted-foreground hover-text-foreground text-decoration-none p-0 d-inline-flex flex-column align-items-center gap-1 opacity-75"
+              style={{ fontSize: '0.72rem', letterSpacing: '0.12em' }}
+            >
+              <span className="text-uppercase">Khám phá vũ trụ</span>
+              <i className="bi bi-chevron-down animate-float-bounce"></i>
+            </button>
+          </div>
+        </section>
+      </div>
 
       {/* 2. 7 CATEGORY HUBS GRID - DYNAMIC THEME */}
       <section

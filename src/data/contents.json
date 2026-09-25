@@ -14,7 +14,21 @@
     "mediaUrl": null,
     "subTags": ["One Piece", "Shounen", "Phân tích"],
     "featured": true,
-    "dateAdded": "2026-09-15"
+    "dateAdded": "2026-09-25"
+  },
+  {
+    "id": "anime-video-gundam",
+    "category": "anime",
+    "type": "video",
+    "title": "Mobile Suit Gundam: Chiến Binh Thép Tái Xuất — Official Trailer",
+    "shortDescription": "Chiêm ngưỡng trailer mãn nhãn của vũ trụ Mobile Suit Gundam với những trận chiến mecha hoành tráng ngoài không gian và công nghệ tối tân.",
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "/GunDam.mp4",
+    "subTags": ["Gundam", "Mecha", "Trailer", "Sakuga"],
+    "featured": true,
+    "dateAdded": "2026-09-24"
   },
   {
     "id": "anime-gallery-001",
@@ -32,7 +46,7 @@
     "mediaUrl": null,
     "subTags": ["Ghibli", "Art", "Wallpaper"],
     "featured": false,
-    "dateAdded": "2026-08-20"
+    "dateAdded": "2026-09-17"
   },
   {
     "id": "anime-video-001",
@@ -46,7 +60,101 @@
     "mediaUrl": "https://www.youtube.com/embed/x7uL_xZ55Lw",
     "subTags": ["Demon Slayer", "Ufotable", "Sakuga"],
     "featured": true,
-    "dateAdded": "2026-09-02"
+    "dateAdded": "2026-09-19"
+  },
+  {
+    "id": "anime-article-002",
+    "category": "anime",
+    "type": "article",
+    "title": "Attack on Titan: Bi Kịch Của Sự Tự Do Và Di Sản Triết Học Eren Yeager",
+    "shortDescription": "Đào sâu vào động cơ tâm lý phức tạp của Eren Yeager, thông điệp phản chiến và vòng lặp hận thù không lối thoát trong kiệt tác của Hajime Isayama.",
+    "body": "Attack on Titan (Đại Chiến Titan) đã khép lại hành trình hơn một thập kỷ, để lại một trong những tác phẩm có chiều sâu tư tưởng và tính triết học nặng đô nhất lịch sử anime hiện đại.\n\nNhân vật trung tâm Eren Yeager không đi theo mô-típ người hùng shounen truyền thống. Khát khao 'tự do' ban đầu của cậu thiếu niên chứng kiến quê hương sụp đổ dần biến chất thành một nỗi ám ảnh định mệnh. Sự kiện Rung Chấn (The Rumbling) đặt ra câu hỏi đạo đức gai góc về giá trị của tự do khi phải đánh đổi bằng sự hủy diệt của nhân loại. Bằng nghệ thuật dẫn dắt bi tráng, studio MAPPA và tác giả Hajime Isayama đã mang đến một kết thúc đầy ám ảnh, phản ánh sâu sắc bản chất chiến tranh và nỗi đau của những người sống sót.",
+    "thumbnail": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=1000&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1563089145-599997674d42?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": ["Attack on Titan", "Eren Yeager", "Triết học", "MAPPA"],
+    "featured": true,
+    "dateAdded": "2026-09-23"
+  },
+  {
+    "id": "anime-article-003",
+    "category": "anime",
+    "type": "article",
+    "title": "Jujutsu Kaisen: Giải Mã Bành Trướng Lãnh Địa & Sức Ảnh Hưởng Văn Hóa Toàn Cầu",
+    "shortDescription": "Tại sao Chú Thuật Hồi Chiến lại trở thành anime thống trị các bảng xếp hạng streaming quốc tế với hệ thống thuật thức đỉnh cao?",
+    "body": "Jujutsu Kaisen (Chú Thuật Hồi Chiến) của Gege Akutami đã tái định nghĩa tiêu chuẩn chiến đấu trong shounen thế hệ mới. Không chỉ gây sốt nhờ nhân vật 'thầy giáo quốc dân' Gojo Satoru với đôi mắt Lục Nhãn vô cực, tác phẩm còn sở hữu một hệ thống sức mạnh Chú Lực được xây dựng vô cùng chặt chẽ và logic.\n\nKhái niệm 'Bành Trướng Lãnh Địa' (Domain Expansion) nhanh chóng trở thành một xu hướng văn hóa đại chúng lan tỏa khắp mạng xã hội toàn cầu. Sự kết hợp giữa nhịp độ dồn dập, hoạt họa đỉnh cao từ MAPPA và những màn đấu trí cân não giữa các chú thuật sư và nguyền hồn đã đưa Jujutsu Kaisen lên đỉnh cao danh vọng.",
+    "thumbnail": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": ["Jujutsu Kaisen", "Gojo Satoru", "Sukuna", "Shounen"],
+    "featured": false,
+    "dateAdded": "2026-09-21"
+  },
+  {
+    "id": "anime-article-004",
+    "category": "anime",
+    "type": "article",
+    "title": "Lịch Sử Và Tương Lai Của Studio Ghibli Sau Kỳ Tích Oscar Của 'The Boy and the Heron'",
+    "shortDescription": "Tác phẩm đoạt giải Oscar thứ hai của đạo diễn Hayao Miyazaki đã khẳng định nghệ thuật hoạt họa thủ công vẽ tay truyền thống giữa kỷ nguyên số.",
+    "body": "Chiến thắng vang dội của 'The Boy and the Heron' (Thiếu Niên Và Chim Diệc) tại lễ trao giải Oscar 2024 không chỉ là vinh quang cho riêng đạo diễn Hayao Miyazaki, mà còn là một minh chứng đanh thép cho sức sống mãnh liệt của hoạt hình vẽ tay 2D truyền thống.\n\nTrải qua gần 4 thập kỷ, Studio Ghibli vẫn giữ nguyên vẹn triết lý sáng tạo tỉ mỉ: từng ngọn cỏ, dòng nước, bóng mây đều được các họa sĩ thổi hồn bằng màu nước và nét bút chì. Bài viết phân tích di sản văn hóa khổng lồ của Ghibli và lộ trình kế thừa thế hệ đạo diễn mới nhằm tiếp tục giữ vững ngọn lửa nghệ thuật độc bản này.",
+    "thumbnail": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": ["Studio Ghibli", "Hayao Miyazaki", "Oscar", "Điện ảnh"],
+    "featured": false,
+    "dateAdded": "2026-09-16"
+  },
+  {
+    "id": "anime-audio-001",
+    "category": "anime",
+    "type": "audio",
+    "title": "Tuyển Tập OST Anime Bất Hủ: Từ Gurenge Đến Shinzou wo Sasageyo",
+    "shortDescription": "Lắng nghe những giai điệu hào hùng, giàu cảm xúc đã thắp lửa nhiệt huyết cho biết bao thế hệ người hâm mộ anime toàn thế giới.",
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+    "subTags": ["OST", "Nhạc Anime", "LiSA", "Hiroyuki Sawano"],
+    "featured": true,
+    "dateAdded": "2026-09-20"
+  },
+  {
+    "id": "anime-gallery-002",
+    "category": "anime",
+    "type": "gallery",
+    "title": "Thư Viện Tranh Minh Họa 4K: Các Đại Cảnh Chiến Đấu Sakuga Đẹp Mãn Nhãn",
+    "shortDescription": "Tuyển tập những khung hình minh họa chất lượng cao ghi lại các khoảnh khắc bùng nổ kỹ xảo vẽ tay trong Solo Leveling, Bleach và Fate Series.",
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=1200&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=1200&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": ["Sakuga", "4K Art", "Wallpaper", "Bleach"],
+    "featured": false,
+    "dateAdded": "2026-09-18"
+  },
+  {
+    "id": "anime-video-002",
+    "category": "anime",
+    "type": "video",
+    "title": "Chainsaw Man Reze Arc: Phân Tích Teaser Movie Chi Tiết Từng Khung Hình",
+    "shortDescription": "Khám phá phong cách điện ảnh độc dị của MAPPA và những ẩn ý về nhân vật Reze trong phần phim chiếu rạp bom tấn sắp ra mắt.",
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.youtube.com/embed/d9MyW72ELq0",
+    "subTags": ["Chainsaw Man", "MAPPA", "Reze Arc", "Movie"],
+    "featured": true,
+    "dateAdded": "2026-09-22"
   },
 
   {
