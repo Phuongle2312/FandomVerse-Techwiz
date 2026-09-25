@@ -1,13 +1,20 @@
 import React, { useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { dataService } from '../services/dataService.js';
 import { CATEGORY_LIST } from '../constants.js';
 import VideoModal from '../components/interactive/VideoModal.jsx';
 import EmptyState from '../components/common/EmptyState.jsx';
 
 export default function TrailersHub() {
+  const { t } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedStatus, setSelectedStatus] = useState('all');
   const [activeTrailer, setActiveTrailer] = useState(null);
+
+  const CATEGORY_LIST_LOCALIZED = CATEGORY_LIST.map((cat) => ({
+    ...cat,
+    label: t(`categories.${cat.id}.label`),
+  }));
 
   const trailers = useMemo(() => {
     return dataService.getTrailersByCategory(selectedCategory, {
@@ -20,10 +27,10 @@ export default function TrailersHub() {
       {/* Header */}
       <div className="mb-4">
         <h1 className="font-heading display-6 fw-bold text-dark mb-2 d-flex align-items-center gap-2">
-          <i className="bi bi-play-btn-fill text-danger"></i> Trung Tâm Trailers & Teaser
+          <i className="bi bi-play-btn-fill text-danger"></i> {t('trailersHub.title')}
         </h1>
         <p className="text-secondary">
-          Cập nhật các đoạn giới thiệu video bom tấn mới nhất từ Anime, Game, Điện ảnh Hollywood, K-Pop và Comics.
+          {t('trailersHub.subtitle')}
         </p>
       </div>
 
@@ -31,7 +38,7 @@ export default function TrailersHub() {
       <div className="p-3 bg-light rounded-4 border mb-4 d-flex flex-wrap gap-3 align-items-center justify-content-between">
         {/* Category Pills */}
         <div className="d-flex flex-wrap gap-1 align-items-center">
-          <span className="small fw-semibold text-secondary me-2">Danh mục:</span>
+          <span className="small fw-semibold text-secondary me-2">{t('trailersHub.categoryLabel')}</span>
           <button
             type="button"
             className={`btn btn-sm rounded-pill px-3 py-1 ${
@@ -39,9 +46,9 @@ export default function TrailersHub() {
             }`}
             onClick={() => setSelectedCategory('all')}
           >
-            Tất cả
+            {t('navbar.all')}
           </button>
-          {CATEGORY_LIST.map((c) => (
+          {CATEGORY_LIST_LOCALIZED.map((c) => (
             <button
               key={c.id}
               type="button"
@@ -57,28 +64,28 @@ export default function TrailersHub() {
 
         {/* Status Toggle */}
         <div className="d-flex align-items-center gap-2">
-          <span className="small fw-semibold text-secondary">Trạng thái:</span>
+          <span className="small fw-semibold text-secondary">{t('trailersHub.statusLabel')}</span>
           <div className="btn-group btn-group-sm" role="group">
             <button
               type="button"
               className={`btn ${selectedStatus === 'all' ? 'btn-dark' : 'btn-outline-secondary bg-white'}`}
               onClick={() => setSelectedStatus('all')}
             >
-              Tất cả
+              {t('navbar.all')}
             </button>
             <button
               type="button"
               className={`btn ${selectedStatus === 'upcoming' ? 'btn-warning text-dark fw-semibold' : 'btn-outline-secondary bg-white'}`}
               onClick={() => setSelectedStatus('upcoming')}
             >
-              ⚡ Sắp chiếu
+              {t('trailersHub.statusUpcoming')}
             </button>
             <button
               type="button"
               className={`btn ${selectedStatus === 'released' ? 'btn-success text-white' : 'btn-outline-secondary bg-white'}`}
               onClick={() => setSelectedStatus('released')}
             >
-              ✓ Đã ra mắt
+              {t('trailersHub.statusReleased')}
             </button>
           </div>
         </div>
@@ -87,28 +94,28 @@ export default function TrailersHub() {
       {/* Trailers Grid */}
       {trailers.length === 0 ? (
         <EmptyState
-          title="Không có trailer nào phù hợp"
-          message="Không có trailer nào khớp với bộ lọc hiện tại. Hãy chọn 'Tất cả' để xem toàn bộ danh sách."
+          title={t('trailersHub.noTrailersTitle')}
+          message={t('trailersHub.noTrailersMessage')}
           onAction={() => {
             setSelectedCategory('all');
             setSelectedStatus('all');
           }}
-          actionLabel="Xóa bộ lọc"
+          actionLabel={t('trailersHub.clearFilters')}
         />
       ) : (
         <div className="row g-4">
-          {trailers.map((t) => (
-            <div key={t.id} className="col-xl-3 col-lg-4 col-md-6 col-12">
+          {trailers.map((t2) => (
+            <div key={t2.id} className="col-xl-3 col-lg-4 col-md-6 col-12">
               <div
-                className={`card fv-card h-100 border-0 shadow-sm rounded-4 overflow-hidden accent-border-${t.category}`}
+                className={`card fv-card h-100 border-0 shadow-sm rounded-4 overflow-hidden accent-border-${t2.category}`}
                 style={{ cursor: 'pointer' }}
-                onClick={() => setActiveTrailer(t)}
+                onClick={() => setActiveTrailer(t2)}
               >
                 {/* Thumbnail with Play Icon */}
                 <div className="position-relative overflow-hidden" style={{ height: '210px', backgroundColor: '#000' }}>
                   <img
-                    src={t.thumbnail}
-                    alt={t.title}
+                    src={t2.thumbnail}
+                    alt={t2.title}
                     className="w-100 h-100 object-fit-cover opacity-85"
                     loading="lazy"
                   />
@@ -125,34 +132,34 @@ export default function TrailersHub() {
                   {/* Status Badge */}
                   <span
                     className={`position-absolute top-0 end-0 m-2 badge rounded-pill px-3 py-1 ${
-                      t.status === 'upcoming' ? 'bg-warning text-dark fw-bold' : 'bg-success text-white'
+                      t2.status === 'upcoming' ? 'bg-warning text-dark fw-bold' : 'bg-success text-white'
                     }`}
                   >
-                    {t.status === 'upcoming' ? '⚡ SẮP CHIẾU' : '✓ ĐÃ RA MẮT'}
+                    {t2.status === 'upcoming' ? t('trailersHub.badgeUpcoming') : t('trailersHub.badgeReleased')}
                   </span>
                 </div>
 
                 {/* Card Body */}
                 <div className="card-body p-3 d-flex flex-column">
                   <div className="d-flex align-items-center justify-content-between mb-2">
-                    <span className={`badge-category badge-category-${t.category}`} style={{ fontSize: '0.7rem' }}>
-                      {t.category.toUpperCase()}
+                    <span className={`badge-category badge-category-${t2.category}`} style={{ fontSize: '0.7rem' }}>
+                      {t2.category.toUpperCase()}
                     </span>
                     <span className="text-muted small" style={{ fontSize: '0.75rem' }}>
                       <i className="bi bi-calendar-event me-1"></i>
-                      {t.releaseDate}
+                      {t2.releaseDate}
                     </span>
                   </div>
 
                   <h5 className="font-heading fs-6 fw-bold mb-3 text-dark line-clamp-2">
-                    {t.title}
+                    {t2.title}
                   </h5>
 
                   <button
                     type="button"
                     className="btn btn-sm btn-outline-danger w-100 rounded-pill mt-auto py-2 d-flex align-items-center justify-content-center gap-2"
                   >
-                    <i className="bi bi-play-circle"></i> Xem Trailer
+                    <i className="bi bi-play-circle"></i> {t('trailersHub.watchTrailer')}
                   </button>
                 </div>
               </div>

@@ -1,25 +1,29 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useSearchParams, Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { searchService } from '../services/searchService.js';
 import { CATEGORY_LIST } from '../constants.js';
 import { useTheme } from '../context/ThemeContext.jsx';
+import { useLanguage } from '../context/LanguageContext.jsx';
 import EmptyState from '../components/common/EmptyState.jsx';
 
-const CONTENT_TYPES_OPTIONS = [
-  { id: 'all', label: 'Tất cả định dạng', icon: 'bi-grid-fill' },
-  { id: 'character', label: 'Nhân vật', icon: 'bi-person-badge' },
-  { id: 'article', label: 'Bài viết', icon: 'bi-file-earmark-text' },
-  { id: 'trailer', label: 'Trailer & Video', icon: 'bi-play-btn-fill' },
-  { id: 'merchandise', label: 'Vật phẩm', icon: 'bi-bag-heart-fill' },
-  { id: 'event', label: 'Sự kiện', icon: 'bi-calendar-event' },
-  { id: 'gallery', label: 'Thư viện ảnh', icon: 'bi-images' },
-  { id: 'audio', label: 'Audio / Podcast', icon: 'bi-soundwave' },
-];
-
 export default function SearchResults() {
+  const { t } = useTranslation();
+  const { bcp47 } = useLanguage();
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
   const { isDark } = useTheme();
+
+  const CONTENT_TYPES_OPTIONS = [
+    { id: 'all', label: t('searchResults.optionAllFormats'), icon: 'bi-grid-fill' },
+    { id: 'character', label: t('navbar.filterTypes.character'), icon: 'bi-person-badge' },
+    { id: 'article', label: t('navbar.filterTypes.article'), icon: 'bi-file-earmark-text' },
+    { id: 'trailer', label: t('searchResults.optionTrailerVideo'), icon: 'bi-play-btn-fill' },
+    { id: 'merchandise', label: t('searchResults.optionMerchandise'), icon: 'bi-bag-heart-fill' },
+    { id: 'event', label: t('searchResults.optionEvent'), icon: 'bi-calendar-event' },
+    { id: 'gallery', label: t('contentTypes.gallery'), icon: 'bi-images' },
+    { id: 'audio', label: t('contentTypes.audio'), icon: 'bi-soundwave' },
+  ];
 
   const queryParam = searchParams.get('q') || '';
   const categoryParam = searchParams.get('category') || 'all';
@@ -92,12 +96,12 @@ export default function SearchResults() {
     if (sortBy === 'newest') {
       list.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
     } else if (sortBy === 'alpha-asc') {
-      list.sort((a, b) => (a.title || '').localeCompare(b.title || '', 'vi'));
+      list.sort((a, b) => (a.title || '').localeCompare(b.title || '', bcp47));
     } else if (sortBy === 'alpha-desc') {
-      list.sort((a, b) => (b.title || '').localeCompare(a.title || '', 'vi'));
+      list.sort((a, b) => (b.title || '').localeCompare(a.title || '', bcp47));
     }
     return list;
-  }, [rawResults, sortBy]);
+  }, [rawResults, sortBy, bcp47]);
 
   const hasActiveFilters = selectedCategory !== 'all' || selectedType !== 'all';
 
@@ -117,10 +121,10 @@ export default function SearchResults() {
           >
             <i className="bi bi-search fs-5"></i>
           </span>
-          <h1 className="font-heading display-6 fw-bold mb-0">Tìm Kiếm Toàn Cục</h1>
+          <h1 className="font-heading display-6 fw-bold mb-0">{t('searchResults.title')}</h1>
         </div>
         <p className="text-secondary mb-3">
-          Quét qua toàn bộ bài viết, bộ ảnh, trailer, nhân vật, sự kiện và sản phẩm trong vũ trụ FandomVerse.
+          {t('searchResults.subtitle')}
         </p>
 
         {/* Search Input Bar */}
@@ -138,10 +142,10 @@ export default function SearchResults() {
             <input
               type="search"
               className="form-control border-0 bg-transparent"
-              placeholder="Nhập tên nhân vật, tựa phim, bài viết hoặc franchise..."
+              placeholder={t('searchResults.inputPlaceholder')}
               value={inputKeyword}
               onChange={(e) => setInputKeyword(e.target.value)}
-              aria-label="Từ khóa tìm kiếm"
+              aria-label={t('searchResults.inputAriaLabel')}
             />
             {inputKeyword && (
               <button
@@ -151,7 +155,7 @@ export default function SearchResults() {
                   setInputKeyword('');
                   applyFilters({ q: '' });
                 }}
-                title="Xóa từ khóa"
+                title={t('navbar.clearKeyword')}
               >
                 <i className="bi bi-x-circle-fill"></i>
               </button>
@@ -161,7 +165,7 @@ export default function SearchResults() {
               type="submit"
             >
               <i className="bi bi-search"></i>
-              <span>Tìm Kiếm</span>
+              <span>{t('searchResults.searchButton')}</span>
             </button>
           </div>
         </form>
@@ -180,10 +184,10 @@ export default function SearchResults() {
           <div className="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3">
             <div className="d-flex align-items-center gap-2">
               <i className="bi bi-funnel-fill text-primary fs-5"></i>
-              <h6 className="font-heading fw-bold mb-0">Bộ Lọc Nội Dung</h6>
+              <h6 className="font-heading fw-bold mb-0">{t('searchResults.filterSectionTitle')}</h6>
               {hasActiveFilters && (
                 <span className="badge rounded-pill bg-primary" style={{ fontSize: '0.7rem' }}>
-                  Đang lọc
+                  {t('searchResults.filteringBadge')}
                 </span>
               )}
             </div>
@@ -192,7 +196,7 @@ export default function SearchResults() {
             <div className="d-flex align-items-center gap-3">
               <div className="d-flex align-items-center gap-2">
                 <label className="small text-secondary text-nowrap fw-semibold">
-                  <i className="bi bi-sort-down me-1"></i>Sắp xếp:
+                  <i className="bi bi-sort-down me-1"></i>{t('searchResults.sortLabel')}
                 </label>
                 <select
                   className="form-select form-select-sm"
@@ -200,10 +204,10 @@ export default function SearchResults() {
                   value={sortBy}
                   onChange={(e) => handleSortChange(e.target.value)}
                 >
-                  <option value="relevance">Độ liên quan</option>
-                  <option value="newest">Mới nhất</option>
-                  <option value="alpha-asc">Tên (A → Z)</option>
-                  <option value="alpha-desc">Tên (Z → A)</option>
+                  <option value="relevance">{t('searchResults.sortRelevance')}</option>
+                  <option value="newest">{t('categoryHub.sortNewest')}</option>
+                  <option value="alpha-asc">{t('searchResults.sortAlphaAsc')}</option>
+                  <option value="alpha-desc">{t('searchResults.sortAlphaDesc')}</option>
                 </select>
               </div>
 
@@ -212,10 +216,10 @@ export default function SearchResults() {
                   type="button"
                   className="btn btn-sm btn-outline-danger rounded-pill px-3 d-flex align-items-center gap-1.5"
                   onClick={handleResetFilters}
-                  title="Xóa tất cả bộ lọc"
+                  title={t('searchResults.resetFiltersTitle')}
                 >
                   <i className="bi bi-arrow-counterclockwise"></i>
-                  <span>Đặt lại</span>
+                  <span>{t('searchResults.resetFiltersLabel')}</span>
                 </button>
               )}
             </div>
@@ -224,7 +228,7 @@ export default function SearchResults() {
           {/* Category Chips Bar */}
           <div className="mb-3">
             <div className="small fw-semibold text-secondary mb-2 d-flex align-items-center gap-1.5">
-              <i className="bi bi-compass"></i> Vũ trụ / Danh mục:
+              <i className="bi bi-compass"></i> {t('searchResults.categoryLabel')}
             </div>
             <div className="d-flex flex-wrap gap-2">
               <button
@@ -238,7 +242,7 @@ export default function SearchResults() {
                 }`}
                 onClick={() => handleCategoryChange('all')}
               >
-                <i className="bi bi-grid-fill me-1.5"></i> Tất cả vũ trụ
+                <i className="bi bi-grid-fill me-1.5"></i> {t('searchResults.allUniverses')}
               </button>
               {CATEGORY_LIST.map((c) => (
                 <button
@@ -263,24 +267,24 @@ export default function SearchResults() {
           {/* Content Type Chips Bar */}
           <div>
             <div className="small fw-semibold text-secondary mb-2 d-flex align-items-center gap-1.5">
-              <i className="bi bi-layers"></i> Loại nội dung / Định dạng:
+              <i className="bi bi-layers"></i> {t('searchResults.contentTypeLabel')}
             </div>
             <div className="d-flex flex-wrap gap-2">
-              {CONTENT_TYPES_OPTIONS.map((t) => (
+              {CONTENT_TYPES_OPTIONS.map((typeOption) => (
                 <button
-                  key={t.id}
+                  key={typeOption.id}
                   type="button"
                   className={`btn btn-sm rounded-pill px-3 py-1.5 fw-medium transition-all ${
-                    selectedType === t.id
+                    selectedType === typeOption.id
                       ? 'btn-info text-white shadow-xs'
                       : isDark
                       ? 'btn-outline-secondary text-light'
                       : 'btn-outline-secondary bg-white'
                   }`}
-                  onClick={() => handleTypeChange(t.id)}
+                  onClick={() => handleTypeChange(typeOption.id)}
                 >
-                  <i className={`bi ${t.icon} me-1.5`}></i>
-                  {t.label}
+                  <i className={`bi ${typeOption.icon} me-1.5`}></i>
+                  {typeOption.label}
                 </button>
               ))}
             </div>
@@ -291,7 +295,7 @@ export default function SearchResults() {
       {/* Results Header */}
       <div className="d-flex align-items-center justify-content-between mb-3 pb-2 border-bottom">
         <h5 className="font-heading fw-bold mb-0 d-flex align-items-center gap-2">
-          <span>Kết quả tìm kiếm</span>
+          <span>{t('searchResults.resultsHeading')}</span>
           {queryParam && (
             <span className="text-primary font-monospace fw-semibold">
               "{queryParam}"
@@ -299,20 +303,20 @@ export default function SearchResults() {
           )}
         </h5>
         <span className="badge bg-primary rounded-pill px-3 py-2 fw-medium fs-6">
-          {results.length} kết quả
+          {t('searchResults.resultsCount', { count: results.length })}
         </span>
       </div>
 
       {/* Results Grid */}
       {results.length === 0 ? (
         <EmptyState
-          title="Không tìm thấy kết quả phù hợp"
+          title={t('searchResults.noResultsTitle')}
           message={
             queryParam
-              ? `Không có kết quả nào khớp với từ khóa "${queryParam}" trong các bộ lọc hiện tại. Hãy thử từ khóa khác hoặc đặt lại bộ lọc.`
-              : 'Hãy nhập từ khóa tìm kiếm hoặc chọn danh mục để khám phá nội dung FandomVerse.'
+              ? t('searchResults.noResultsWithQuery', { term: queryParam })
+              : t('searchResults.noResultsNoQuery')
           }
-          actionLabel="Đặt lại bộ lọc & Tìm lại"
+          actionLabel={t('searchResults.resetAndSearch')}
           onAction={handleResetFilters}
         />
       ) : (
@@ -380,7 +384,7 @@ export default function SearchResults() {
                     className="btn btn-sm btn-outline-fv py-1 px-2.5 small d-inline-flex align-items-center gap-1.5"
                     style={{ fontSize: '0.78rem' }}
                   >
-                    <span>Xem chi tiết</span>
+                    <span>{t('common.viewDetails')}</span>
                     <i className="bi bi-arrow-right"></i>
                   </button>
                 </div>

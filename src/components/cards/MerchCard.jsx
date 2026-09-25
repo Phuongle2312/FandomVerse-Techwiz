@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useCart } from '../../context/CartContext.jsx';
 import { useAuth } from '../../context/AuthContext.jsx';
 import { CATEGORY_LIST } from '../../constants.js';
 
 export default function MerchCard({ item, onToast }) {
+  const { t } = useTranslation();
   const { addItem } = useCart();
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const [isAdded, setIsAdded] = useState(false);
 
   const category = CATEGORY_LIST.find((c) => c.id === item.category);
-  const categoryLabel = category ? category.label : item.category;
+  const categoryLabel = category ? t(`categories.${category.id}.label`) : item.category;
 
   const handleAddToCart = () => {
     if (!isAuthenticated) {
       if (onToast) {
-        onToast('Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng.');
+        onToast(t('cards.merch.loginToAddToCart'));
       }
       navigate('/login');
       return;
@@ -25,7 +27,7 @@ export default function MerchCard({ item, onToast }) {
     addItem(item.id, 1);
     setIsAdded(true);
     if (onToast) {
-      onToast(`Đã thêm "${item.name}" vào giỏ hàng!`);
+      onToast(t('cards.merch.addedToast', { name: item.name }));
     }
     setTimeout(() => {
       setIsAdded(false);
@@ -83,7 +85,7 @@ export default function MerchCard({ item, onToast }) {
             disabled={isAdded}
           >
             <i className={`bi ${isAdded ? 'bi-check-circle-fill' : 'bi-bag-plus'}`}></i>
-            <span>{isAdded ? 'Đã thêm vào giỏ!' : 'Thêm vào giỏ'}</span>
+            <span>{isAdded ? t('cards.merch.added') : t('cards.merch.addToCart')}</span>
           </button>
         </div>
       </div>

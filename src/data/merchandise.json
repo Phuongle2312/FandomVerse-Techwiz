@@ -2,217 +2,385 @@
   {
     "id": "anime-merch-001",
     "category": "anime",
-    "name": "Mô hình Luffy Gear 5 Sun God Nika Master Stars Piece",
+    "name": {
+      "vi": "Mô hình Luffy Gear 5 Sun God Nika Master Stars Piece",
+      "en": "Luffy Gear 5 Sun God Nika Master Stars Piece Figure",
+      "hi": "लूफी गियर 5 सन गॉड निका मास्टर स्टार्स पीस फिगर"
+    },
     "image": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=500&auto=format&fit=crop&q=80",
     "price": 89.99,
     "priceMax": null,
-    "shortDescription": "Mô hình Luffy thức tỉnh Gear 5 cao 25cm làm từ nhựa PVC cao cấp, chi tiết hiệu ứng khói mây uốn lượn sống động.",
+    "shortDescription": {
+      "vi": "Mô hình Luffy thức tỉnh Gear 5 cao 25cm làm từ nhựa PVC cao cấp, chi tiết hiệu ứng khói mây uốn lượn sống động.",
+      "en": "A 25cm Luffy Gear 5 awakening figure made of premium PVC, featuring vivid, swirling cloud-smoke effect details.",
+      "hi": "25 सेमी ऊंची लूफी गियर 5 अवेकनिंग फिगर, प्रीमियम पीवीसी से बनी, जिसमें जीवंत घुमावदार बादल-धुएं के प्रभाव की बारीकियां हैं।"
+    },
     "productType": "figure"
   },
   {
     "id": "anime-merch-002",
     "category": "anime",
-    "name": "Áo Hoodie Demon Slayer Tanjiro Hanafuda Kimono Pattern",
+    "name": {
+      "vi": "Áo Hoodie Demon Slayer Tanjiro Hanafuda Kimono Pattern",
+      "en": "Demon Slayer Tanjiro Hanafuda Kimono Pattern Hoodie",
+      "hi": "डेमन स्लेयर तंजिरो हनाफुदा किमोनो पैटर्न हुडी"
+    },
     "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=500&auto=format&fit=crop&q=80",
     "price": 45.00,
     "priceMax": 55.00,
-    "shortDescription": "Áo nỉ cotton dệt dày dặn họa tiết ca-rô xanh đen biểu tượng của Tanjiro, đủ kích cỡ từ S đến XXL.",
+    "shortDescription": {
+      "vi": "Áo nỉ cotton dệt dày dặn họa tiết ca-rô xanh đen biểu tượng của Tanjiro, đủ kích cỡ từ S đến XXL.",
+      "en": "A thick woven cotton fleece hoodie featuring Tanjiro's iconic green-and-black checkered pattern, available in sizes S to XXL.",
+      "hi": "मोटी बुनी हुई कॉटन फ्लीस हुडी, जिस पर तंजिरो का प्रतिष्ठित हरा-काला चेक पैटर्न है, S से XXL तक सभी साइज़ में उपलब्ध।"
+    },
     "productType": "apparel"
   },
   {
     "id": "anime-merch-003",
     "category": "anime",
-    "name": "Gấu Bông Anya Forger Chimera Chibi Plushie",
+    "name": {
+      "vi": "Gấu Bông Anya Forger Chimera Chibi Plushie",
+      "en": "Anya Forger Chimera Chibi Plushie",
+      "hi": "अन्या फोर्जर काइमेरा चिबी प्लशी"
+    },
     "image": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=500&auto=format&fit=crop&q=80",
     "price": 24.99,
     "priceMax": null,
-    "shortDescription": "Thú nhồi bông sinh vật Chimera đáng yêu của bé Anya (Spy x Family), lông mềm mịn không rụng.",
+    "shortDescription": {
+      "vi": "Thú nhồi bông sinh vật Chimera đáng yêu của bé Anya (Spy x Family), lông mềm mịn không rụng.",
+      "en": "An adorable Chimera plush toy of little Anya (Spy x Family), with soft, non-shedding fur.",
+      "hi": "छोटी अन्या (स्पाई x फैमिली) का प्यारा काइमेरा प्लश खिलौना, मुलायम और झड़ने रहित फर के साथ।"
+    },
     "productType": "plushie"
   },
 
   {
     "id": "gaming-merch-001",
     "category": "gaming",
-    "name": "Tay Cầm Chơi Game Xbox Wireless Controller - Starfield Limited Edition",
+    "name": {
+      "vi": "Tay Cầm Chơi Game Xbox Wireless Controller - Starfield Limited Edition",
+      "en": "Xbox Wireless Controller - Starfield Limited Edition",
+      "hi": "एक्सबॉक्स वायरलेस कंट्रोलर - स्टारफील्ड लिमिटेड एडिशन"
+    },
     "image": "https://images.unsplash.com/photo-1592840496073-e5315b936a09?w=500&auto=format&fit=crop&q=80",
     "price": 79.99,
     "priceMax": null,
-    "shortDescription": "Tay cầm không dây phiên bản giới hạn Starfield với vỏ nhựa trong suốt, đệm bọc cao su chống trượt cao cấp.",
+    "shortDescription": {
+      "vi": "Tay cầm không dây phiên bản giới hạn Starfield với vỏ nhựa trong suốt, đệm bọc cao su chống trượt cao cấp.",
+      "en": "A limited-edition Starfield wireless controller with a translucent plastic shell and premium non-slip rubber grips.",
+      "hi": "स्टारफील्ड लिमिटेड एडिशन वायरलेस कंट्रोलर, पारदर्शी प्लास्टिक बॉडी और प्रीमियम नॉन-स्लिप रबर ग्रिप के साथ।"
+    },
     "productType": "accessory"
   },
   {
     "id": "gaming-merch-002",
     "category": "gaming",
-    "name": "Tượng Geralt of Rivia Grandmaster Ursine Armor 1/6 Scale",
+    "name": {
+      "vi": "Tượng Geralt of Rivia Grandmaster Ursine Armor 1/6 Scale",
+      "en": "Geralt of Rivia Grandmaster Ursine Armor 1/6 Scale Statue",
+      "hi": "गेराल्ट ऑफ रिविया ग्रैंडमास्टर उर्साइन आर्मर 1/6 स्केल मूर्ति"
+    },
     "image": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500&auto=format&fit=crop&q=80",
     "price": 149.99,
     "priceMax": 179.99,
-    "shortDescription": "Tượng chàng Witcher Geralt trong bộ giáp Gấu Đại sư, sơn thủ công tinh xảo từng sợi tóc và lưỡi kiếm.",
+    "shortDescription": {
+      "vi": "Tượng chàng Witcher Geralt trong bộ giáp Gấu Đại sư, sơn thủ công tinh xảo từng sợi tóc và lưỡi kiếm.",
+      "en": "A statue of the Witcher Geralt in Grandmaster Ursine armor, hand-painted with meticulous detail down to every strand of hair and the sword's edge.",
+      "hi": "ग्रैंडमास्टर उर्साइन कवच में विचर गेराल्ट की मूर्ति, हर बाल और तलवार की धार तक बारीकी से हाथ से रंगी गई।"
+    },
     "productType": "figure"
   },
   {
     "id": "gaming-merch-003",
     "category": "gaming",
-    "name": "Bình Nước Giữ Nhiệt Nuka-Cola Quantum Fallout Insulated Bottle",
+    "name": {
+      "vi": "Bình Nước Giữ Nhiệt Nuka-Cola Quantum Fallout Insulated Bottle",
+      "en": "Nuka-Cola Quantum Fallout Insulated Bottle",
+      "hi": "न्यूका-कोला क्वांटम फॉलआउट इंसुलेटेड बॉटल"
+    },
     "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=500&auto=format&fit=crop&q=80",
     "price": 28.50,
     "priceMax": null,
-    "shortDescription": "Bình giữ nhiệt bằng thép không gỉ 750ml phát quang dạ quang theo phong cách nước ngọt phóng xạ Fallout.",
+    "shortDescription": {
+      "vi": "Bình giữ nhiệt bằng thép không gỉ 750ml phát quang dạ quang theo phong cách nước ngọt phóng xạ Fallout.",
+      "en": "A 750ml stainless steel insulated bottle that glows in the dark, styled after Fallout's radioactive soda.",
+      "hi": "750 मिली स्टेनलेस स्टील इंसुलेटेड बोतल, जो अंधेरे में चमकती है और फॉलआउट के रेडियोधर्मी सोडा से प्रेरित है।"
+    },
     "productType": "collectible"
   },
 
   {
     "id": "movies-merch-001",
     "category": "movies",
-    "name": "Găng Tay Vô Cực Nano Gauntlet Iron Man 1:1 tỉ lệ thật",
+    "name": {
+      "vi": "Găng Tay Vô Cực Nano Gauntlet Iron Man 1:1 tỉ lệ thật",
+      "en": "Iron Man Nano Gauntlet 1:1 Scale Replica",
+      "hi": "आयरन मैन नैनो गॉन्टलेट 1:1 स्केल रेप्लिका"
+    },
     "image": "https://images.unsplash.com/photo-1635863138275-d9b33299680b?w=500&auto=format&fit=crop&q=80",
     "price": 199.00,
     "priceMax": null,
-    "shortDescription": "Găng tay Nano Gauntlet có đèn LED 6 Viên Đá Vô Cực phát sáng và phát âm thanh búng tay huyền thoại.",
+    "shortDescription": {
+      "vi": "Găng tay Nano Gauntlet có đèn LED 6 Viên Đá Vô Cực phát sáng và phát âm thanh búng tay huyền thoại.",
+      "en": "A Nano Gauntlet featuring LED-lit Infinity Stones and the legendary snap sound effect.",
+      "hi": "नैनो गॉन्टलेट, जिसमें एलईडी से जगमगाते इन्फिनिटी स्टोन्स और प्रसिद्ध स्नैप की ध्वनि शामिल है।"
+    },
     "productType": "collectible"
   },
   {
     "id": "movies-merch-002",
     "category": "movies",
-    "name": "Đũa Phép Harry Potter Ollivanders Box Edition",
+    "name": {
+      "vi": "Đũa Phép Harry Potter Ollivanders Box Edition",
+      "en": "Harry Potter Wand - Ollivanders Box Edition",
+      "hi": "हैरी पॉटर वैंड - ऑलिवैंडर्स बॉक्स एडिशन"
+    },
     "image": "https://images.unsplash.com/photo-1598153346810-860daa814c4b?w=500&auto=format&fit=crop&q=80",
     "price": 42.00,
     "priceMax": 49.00,
-    "shortDescription": "Đũa phép cây nhựa ruột lông phượng hoàng làm từ nhựa đúc lõi kim loại đầm tay trong hộp nhung Ollivanders.",
+    "shortDescription": {
+      "vi": "Đũa phép cây nhựa ruột lông phượng hoàng làm từ nhựa đúc lõi kim loại đầm tay trong hộp nhung Ollivanders.",
+      "en": "A phoenix-feather-core wand made of metal-core cast resin with a comfortable grip, presented in an Ollivanders velvet box.",
+      "hi": "फीनिक्स-पंख कोर वाली वैंड, धातु-कोर कास्ट रेज़िन से बनी और आरामदायक पकड़ वाली, ऑलिवैंडर्स के मखमली बॉक्स में प्रस्तुत।"
+    },
     "productType": "collectible"
   },
   {
     "id": "movies-merch-003",
     "category": "movies",
-    "name": "Áo Khoác Bomber Star Wars Rebel Alliance Flight Jacket",
+    "name": {
+      "vi": "Áo Khoác Bomber Star Wars Rebel Alliance Flight Jacket",
+      "en": "Star Wars Rebel Alliance Flight Bomber Jacket",
+      "hi": "स्टार वार्स रिबेल एलायंस फ्लाइट बॉम्बर जैकेट"
+    },
     "image": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=500&auto=format&fit=crop&q=80",
     "price": 85.00,
     "priceMax": null,
-    "shortDescription": "Áo khoác phi công phong cách phi đội X-Wing, chất liệu chống gió chống nước nhẹ thêu logo Liên Minh Nổi Dậy.",
+    "shortDescription": {
+      "vi": "Áo khoác phi công phong cách phi đội X-Wing, chất liệu chống gió chống nước nhẹ thêu logo Liên Minh Nổi Dậy.",
+      "en": "An X-Wing squadron-style flight jacket made of lightweight windproof, waterproof material, embroidered with the Rebel Alliance logo.",
+      "hi": "एक्स-विंग स्क्वाड्रन शैली की फ्लाइट जैकेट, हल्के विंडप्रूफ और वॉटरप्रूफ कपड़े से बनी, जिस पर रिबेल एलायंस का लोगो कढ़ाई किया गया है।"
+    },
     "productType": "apparel"
   },
 
   {
     "id": "tvshows-merch-001",
     "category": "tvshows",
-    "name": "Mô hình Ngai Sắt Iron Throne Game of Thrones Replica 7-inch",
+    "name": {
+      "vi": "Mô hình Ngai Sắt Iron Throne Game of Thrones Replica 7-inch",
+      "en": "Iron Throne Game of Thrones 7-inch Replica",
+      "hi": "आयरन थ्रोन गेम ऑफ थ्रोन्स 7-इंच रेप्लिका"
+    },
     "image": "https://images.unsplash.com/photo-1514539079130-25950c84af65?w=500&auto=format&fit=crop&q=80",
     "price": 65.00,
     "priceMax": null,
-    "shortDescription": "Mô hình Ngai Sắt rèn từ hàng ngàn thanh kiếm của kẻ thù bị Aegon chinh phục, đúc từ đá polystone nặng tay.",
+    "shortDescription": {
+      "vi": "Mô hình Ngai Sắt rèn từ hàng ngàn thanh kiếm của kẻ thù bị Aegon chinh phục, đúc từ đá polystone nặng tay.",
+      "en": "A replica of the Iron Throne forged from the swords of enemies conquered by Aegon, cast in heavy polystone.",
+      "hi": "एजेगन द्वारा जीते गए दुश्मनों की तलवारों से बना आयरन थ्रोन का रेप्लिका, भारी पॉलीस्टोन से ढाला गया।"
+    },
     "productType": "collectible"
   },
   {
     "id": "tvshows-merch-002",
     "category": "tvshows",
-    "name": "Mũ Nồi Beret Len Peaky Blinders Vintage Tweed Flat Cap",
+    "name": {
+      "vi": "Mũ Nồi Beret Len Peaky Blinders Vintage Tweed Flat Cap",
+      "en": "Peaky Blinders Vintage Tweed Flat Cap",
+      "hi": "पीकी ब्लाइंडर्स विंटेज ट्वीड फ्लैट कैप"
+    },
     "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&auto=format&fit=crop&q=80",
     "price": 35.00,
     "priceMax": 45.00,
-    "shortDescription": "Mũ dạ tweed phong cách cổ điển của băng nhóm Thomas Shelby những năm 1920 tại Birmingham.",
+    "shortDescription": {
+      "vi": "Mũ dạ tweed phong cách cổ điển của băng nhóm Thomas Shelby những năm 1920 tại Birmingham.",
+      "en": "A classic-style tweed flat cap in the manner of Thomas Shelby's gang in 1920s Birmingham.",
+      "hi": "1920 के दशक के बर्मिंघम में थॉमस शेल्बी के गैंग की शैली वाली क्लासिक ट्वीड फ्लैट कैप।"
+    },
     "productType": "apparel"
   },
   {
     "id": "tvshows-merch-003",
     "category": "tvshows",
-    "name": "Gấu Bông Quái Vật Demogorgon Stranger Things Cute Plush",
+    "name": {
+      "vi": "Gấu Bông Quái Vật Demogorgon Stranger Things Cute Plush",
+      "en": "Demogorgon Stranger Things Cute Plush",
+      "hi": "डेमोगॉर्गन स्ट्रेंजर थिंग्स क्यूट प्लश"
+    },
     "image": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=500&auto=format&fit=crop&q=80",
     "price": 22.99,
     "priceMax": null,
-    "shortDescription": "Quái vật hoa ăn thịt thế giới Upside Down được biến tấu chibi dễ thương, cánh hoa bung xòe bằng nỉ mềm.",
+    "shortDescription": {
+      "vi": "Quái vật hoa ăn thịt thế giới Upside Down được biến tấu chibi dễ thương, cánh hoa bung xòe bằng nỉ mềm.",
+      "en": "The flower-headed monster from the Upside Down reimagined as an adorable chibi, with soft felt petals that unfold.",
+      "hi": "अपसाइड डाउन के फूल-सिर वाले राक्षस को एक प्यारे चिबी रूप में ढाला गया है, जिसमें मुलायम फेल्ट की खुलती हुई पंखुड़ियां हैं।"
+    },
     "productType": "plushie"
   },
 
   {
     "id": "kpop-merch-001",
     "category": "kpop",
-    "name": "Lightstick BTS Official ARMY Bomb Ver.4 (Special Edition)",
+    "name": {
+      "vi": "Lightstick BTS Official ARMY Bomb Ver.4 (Special Edition)",
+      "en": "BTS Official ARMY Bomb Ver.4 Lightstick (Special Edition)",
+      "hi": "बीटीएस ऑफिशियल आर्मी बॉम्ब वर.4 लाइटस्टिक (स्पेशल एडिशन)"
+    },
     "image": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=500&auto=format&fit=crop&q=80",
     "price": 68.00,
     "priceMax": null,
-    "shortDescription": "Gậy cổ vũ chính hãng BTS tích hợp Bluetooth đổi màu đồng bộ theo giai điệu concert.",
+    "shortDescription": {
+      "vi": "Gậy cổ vũ chính hãng BTS tích hợp Bluetooth đổi màu đồng bộ theo giai điệu concert.",
+      "en": "The official BTS cheering stick with built-in Bluetooth that syncs its color changes to the concert's music.",
+      "hi": "बीटीएस का आधिकारिक चीयरिंग स्टिक, जिसमें ब्लूटूथ है जो कॉन्सर्ट के संगीत के अनुसार रंग बदलता है।"
+    },
     "productType": "accessory"
   },
   {
     "id": "kpop-merch-002",
     "category": "kpop",
-    "name": "Búa Cổ Vũ BLACKPINK Official Lightstick Ver.2 Limited",
+    "name": {
+      "vi": "Búa Cổ Vũ BLACKPINK Official Lightstick Ver.2 Limited",
+      "en": "BLACKPINK Official Lightstick Ver.2 Limited Hammer",
+      "hi": "ब्लैकपिंक ऑफिशियल लाइटस्टिक वर.2 लिमिटेड हैमर"
+    },
     "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
     "price": 62.00,
     "priceMax": 70.00,
-    "shortDescription": "Lightstick hình búa trái tim màu hồng phát ra tiếng bíp dễ thương và hiệu ứng ánh sáng rực rỡ.",
+    "shortDescription": {
+      "vi": "Lightstick hình búa trái tim màu hồng phát ra tiếng bíp dễ thương và hiệu ứng ánh sáng rực rỡ.",
+      "en": "A pink heart-shaped hammer lightstick that emits a cute beeping sound and vibrant light effects.",
+      "hi": "गुलाबी दिल के आकार का हथौड़ा लाइटस्टिक, जो प्यारी बीप की आवाज़ और शानदार रोशनी के प्रभाव देता है।"
+    },
     "productType": "accessory"
   },
   {
     "id": "kpop-merch-003",
     "category": "kpop",
-    "name": "Bộ Photocard Special Collector Album IU 'The Winning'",
+    "name": {
+      "vi": "Bộ Photocard Special Collector Album IU 'The Winning'",
+      "en": "IU 'The Winning' Special Collector Album Photocard Set",
+      "hi": "आईयू 'द विनिंग' स्पेशल कलेक्टर एल्बम फोटोकार्ड सेट"
+    },
     "image": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500&auto=format&fit=crop&q=80",
     "price": 29.99,
     "priceMax": null,
-    "shortDescription": "Hộp thẻ bo góc hologram phiên bản giới hạn gồm 20 tấm ảnh độc quyền chất lượng cao của nghệ sĩ IU.",
+    "shortDescription": {
+      "vi": "Hộp thẻ bo góc hologram phiên bản giới hạn gồm 20 tấm ảnh độc quyền chất lượng cao của nghệ sĩ IU.",
+      "en": "A limited-edition holographic rounded-corner card box containing 20 exclusive high-quality photos of the artist IU.",
+      "hi": "एक लिमिटेड एडिशन होलोग्राफिक राउंडेड-कॉर्नर कार्ड बॉक्स, जिसमें कलाकार आईयू की 20 विशेष उच्च-गुणवत्ता वाली तस्वीरें हैं।"
+    },
     "productType": "collectible"
   },
 
   {
     "id": "comics-merch-001",
     "category": "comics",
-    "name": "Mặt Nạ Batman Đen Nhám Gotham Cowl Replica",
+    "name": {
+      "vi": "Mặt Nạ Batman Đen Nhám Gotham Cowl Replica",
+      "en": "Batman Matte Black Gotham Cowl Replica Mask",
+      "hi": "बैटमैन मैट ब्लैक गोथम काउल रेप्लिका मास्क"
+    },
     "image": "https://images.unsplash.com/photo-1509281373149-e957c6296406?w=500&auto=format&fit=crop&q=80",
     "price": 110.00,
     "priceMax": 130.00,
-    "shortDescription": "Mặt nạ hóa trang Batman chất liệu silicon đúc nguyên khối ôm khít khuôn mặt, phong cách The Dark Knight.",
+    "shortDescription": {
+      "vi": "Mặt nạ hóa trang Batman chất liệu silicon đúc nguyên khối ôm khít khuôn mặt, phong cách The Dark Knight.",
+      "en": "A Batman cosplay mask made of molded one-piece silicone that fits snugly to the face, styled after The Dark Knight.",
+      "hi": "बैटमैन कॉसप्ले मास्क, एक-टुकड़ा ढले हुए सिलिकॉन से बना जो चेहरे पर पूरी तरह फिट बैठता है, द डार्क नाइट की शैली में।"
+    },
     "productType": "accessory"
   },
   {
     "id": "comics-merch-002",
     "category": "comics",
-    "name": "Tượng Bán Thân Spider-Man Symbiote Black Suit 1/4 Scale",
+    "name": {
+      "vi": "Tượng Bán Thân Spider-Man Symbiote Black Suit 1/4 Scale",
+      "en": "Spider-Man Symbiote Black Suit 1/4 Scale Bust",
+      "hi": "स्पाइडर-मैन सिंबायोट ब्लैक सूट 1/4 स्केल बस्ट"
+    },
     "image": "https://images.unsplash.com/photo-1604200213928-ba3cf4fc8436?w=500&auto=format&fit=crop&q=80",
     "price": 185.00,
     "priceMax": null,
-    "shortDescription": "Tượng bán thân Người Nhện bộ giáp đen ký sinh trùng Venom với đôi mắt trắng sắc lẹm và biểu tượng nhện lớn.",
+    "shortDescription": {
+      "vi": "Tượng bán thân Người Nhện bộ giáp đen ký sinh trùng Venom với đôi mắt trắng sắc lẹm và biểu tượng nhện lớn.",
+      "en": "A Spider-Man bust in the black Venom symbiote suit, featuring sharp white eyes and a large spider emblem.",
+      "hi": "स्पाइडर-मैन का बस्ट, काले वेनम सिंबायोट सूट में, तेज़ सफेद आंखों और बड़े स्पाइडर प्रतीक के साथ।"
+    },
     "productType": "figure"
   },
   {
     "id": "comics-merch-003",
     "category": "comics",
-    "name": "Áo Thun DC Comics Vintage Superman Classic Shield Graphic Tee",
+    "name": {
+      "vi": "Áo Thun DC Comics Vintage Superman Classic Shield Graphic Tee",
+      "en": "DC Comics Vintage Superman Classic Shield Graphic Tee",
+      "hi": "डीसी कॉमिक्स विंटेज सुपरमैन क्लासिक शील्ड ग्राफिक टी"
+    },
     "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500&auto=format&fit=crop&q=80",
     "price": 25.00,
     "priceMax": null,
-    "shortDescription": "Áo phông 100% cotton in lụa logo chữ S Superman cổ điển phong cách comic thập niên 80.",
+    "shortDescription": {
+      "vi": "Áo phông 100% cotton in lụa logo chữ S Superman cổ điển phong cách comic thập niên 80.",
+      "en": "A 100% cotton T-shirt silk-screen printed with the classic Superman 'S' shield logo, styled after 80s comics.",
+      "hi": "100% कॉटन टी-शर्ट, जिस पर 80 के दशक के कॉमिक्स शैली में क्लासिक सुपरमैन 'S' शील्ड लोगो सिल्क-स्क्रीन प्रिंट है।"
+    },
     "productType": "apparel"
   },
 
   {
     "id": "manga-merch-001",
     "category": "manga",
-    "name": "Kiếm Gỗ Katana Roronoa Zoro Shusui (Thu Thủy) Trưng Bày",
+    "name": {
+      "vi": "Kiếm Gỗ Katana Roronoa Zoro Shusui (Thu Thủy) Trưng Bày",
+      "en": "Roronoa Zoro Shusui Wooden Katana Display",
+      "hi": "रोरोनोआ ज़ोरो शुसुई लकड़ी की कटाना डिस्प्ले"
+    },
     "image": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500&auto=format&fit=crop&q=80",
     "price": 49.99,
     "priceMax": 59.99,
-    "shortDescription": "Thanh danh kiếm đen Shusui của Zoro làm từ gỗ tre cao cấp an toàn cho cosplay và trưng bày bàn làm việc.",
+    "shortDescription": {
+      "vi": "Thanh danh kiếm đen Shusui của Zoro làm từ gỗ tre cao cấp an toàn cho cosplay và trưng bày bàn làm việc.",
+      "en": "Zoro's famous black blade Shusui, made from premium bamboo, safe for cosplay and desk display.",
+      "hi": "ज़ोरो की प्रसिद्ध काली तलवार शुसुई, प्रीमियम बांस से बनी, कॉसप्ले और डेस्क डिस्प्ले के लिए सुरक्षित।"
+    },
     "productType": "collectible"
   },
   {
     "id": "manga-merch-002",
     "category": "manga",
-    "name": "Sổ Tay Bìa Da Death Note Kèm Bút Lông Vũ Cosplay",
+    "name": {
+      "vi": "Sổ Tay Bìa Da Death Note Kèm Bút Lông Vũ Cosplay",
+      "en": "Death Note Leather Cover Notebook with Cosplay Feather Pen",
+      "hi": "डेथ नोट लेदर कवर नोटबुक कॉसप्ले फेदर पेन के साथ"
+    },
     "image": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=500&auto=format&fit=crop&q=80",
     "price": 18.50,
     "priceMax": null,
-    "shortDescription": "Cuốn sổ tử thần in đầy đủ hướng dẫn sử dụng tiếng Anh và tiếng Nhật của Ryuk, kèm bút lông ngỗng độc đáo.",
+    "shortDescription": {
+      "vi": "Cuốn sổ tử thần in đầy đủ hướng dẫn sử dụng tiếng Anh và tiếng Nhật của Ryuk, kèm bút lông ngỗng độc đáo.",
+      "en": "A Death Note printed with the full English and Japanese usage rules from Ryuk, complete with a unique quill pen.",
+      "hi": "डेथ नोट, जिसमें र्यूक के पूरे अंग्रेज़ी और जापानी उपयोग नियम छपे हैं, एक अनोखे क्विल पेन के साथ।"
+    },
     "productType": "collectible"
   },
   {
     "id": "manga-merch-003",
     "category": "manga",
-    "name": "Mô Hình Chibi Saitama Oppai Hoodie Nendoroid",
+    "name": {
+      "vi": "Mô Hình Chibi Saitama Oppai Hoodie Nendoroid",
+      "en": "Chibi Saitama Oppai Hoodie Nendoroid Figure",
+      "hi": "चिबी सैतामा ओप्पाई हुडी नेंडोरॉइड फिगर"
+    },
     "image": "https://images.unsplash.com/photo-1563089145-599997674d42?w=500&auto=format&fit=crop&q=80",
     "price": 54.00,
     "priceMax": null,
-    "shortDescription": "Mô hình Nendoroid Thánh Phồng Tôm Saitama với khuôn mặt nghiêm túc thay thế và túi đồ siêu thị.",
+    "shortDescription": {
+      "vi": "Mô hình Nendoroid Thánh Phồng Tôm Saitama với khuôn mặt nghiêm túc thay thế và túi đồ siêu thị.",
+      "en": "A Nendoroid figure of the 'Caped Baldy' Saitama, including a swappable serious-face part and a supermarket shopping bag.",
+      "hi": "'कैप्ड बाल्डी' सैतामा का नेंडोरॉइड फिगर, जिसमें बदलने योग्य गंभीर चेहरा और सुपरमार्केट का शॉपिंग बैग शामिल है।"
+    },
     "productType": "figure"
   }
 ]

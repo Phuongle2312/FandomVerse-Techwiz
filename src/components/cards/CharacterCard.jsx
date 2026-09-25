@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function CharacterCard({ character }) {
+  const { t } = useTranslation();
   const [showBio, setShowBio] = useState(false);
 
   return (
@@ -51,7 +53,7 @@ export default function CharacterCard({ character }) {
           className="btn btn-sm btn-outline-fv w-100 mt-auto py-1"
           onClick={() => setShowBio(true)}
         >
-          Xem Tiểu Sử
+          {t('cards.character.viewBio')}
         </button>
       </div>
 
@@ -61,11 +63,11 @@ export default function CharacterCard({ character }) {
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content border-0 shadow-lg rounded-4">
               <div className="modal-header border-0 pb-0">
-                <h5 className="modal-title font-heading fw-bold text-primary">Hồ Sơ Nhân Vật</h5>
+                <h5 className="modal-title font-heading fw-bold text-primary">{t('cards.character.modalTitle')}</h5>
                 <button
                   type="button"
                   className="btn-close"
-                  aria-label="Đóng"
+                  aria-label={t('common.close')}
                   onClick={() => setShowBio(false)}
                 ></button>
               </div>
@@ -92,7 +94,7 @@ export default function CharacterCard({ character }) {
                 </div>
 
                 <div className="bg-light p-3 rounded-3 text-start small text-secondary lh-base">
-                  <strong>Tiểu sử:</strong>
+                  <strong>{t('cards.character.bioLabel')}</strong>
                   <p className="mt-1 mb-0">{character.biography}</p>
                 </div>
               </div>
@@ -102,7 +104,7 @@ export default function CharacterCard({ character }) {
                   className="btn btn-secondary rounded-pill px-4"
                   onClick={() => setShowBio(false)}
                 >
-                  Đóng
+                  {t('common.close')}
                 </button>
               </div>
             </div>

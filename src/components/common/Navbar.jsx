@@ -1,29 +1,44 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { CATEGORY_LIST } from '../../constants.js';
 import { searchService } from '../../services/searchService.js';
 import { useCart } from '../../context/CartContext.jsx';
 import { useBookmarks } from '../../context/BookmarkContext.jsx';
 import { useTheme } from '../../context/ThemeContext.jsx';
 import { useAuth } from '../../context/AuthContext.jsx';
+import { useLanguage } from '../../context/LanguageContext.jsx';
 
-const CONTENT_FILTER_TYPES = [
-  { id: 'character', label: 'Nhân vật', icon: 'bi-person-badge' },
-  { id: 'article', label: 'Bài viết', icon: 'bi-file-earmark-text' },
-  { id: 'trailer', label: 'Trailers & Teaser', icon: 'bi-play-btn-fill' },
-  { id: 'merchandise', label: 'Vật phẩm & Shop', icon: 'bi-bag-heart-fill' },
-  { id: 'event', label: 'Sự kiện Fandom', icon: 'bi-calendar-event' },
-  { id: 'gallery', label: 'Bộ ảnh & Gallery', icon: 'bi-images' },
+const CONTENT_FILTER_IDS = [
+  { id: 'character', icon: 'bi-person-badge' },
+  { id: 'article', icon: 'bi-file-earmark-text' },
+  { id: 'trailer', icon: 'bi-play-btn-fill' },
+  { id: 'merchandise', icon: 'bi-bag-heart-fill' },
+  { id: 'event', icon: 'bi-calendar-event' },
+  { id: 'gallery', icon: 'bi-images' },
 ];
 
 export default function Navbar() {
+  const { t } = useTranslation();
+  const { language, setLanguage, languages } = useLanguage();
+  const CONTENT_FILTER_TYPES = CONTENT_FILTER_IDS.map((f) => ({
+    ...f,
+    label: t(`navbar.filterTypes.${f.id}`),
+  }));
+  const CATEGORY_LIST_LOCALIZED = CATEGORY_LIST.map((cat) => ({
+    ...cat,
+    label: t(`categories.${cat.id}.label`),
+    description: t(`categories.${cat.id}.description`),
+  }));
   const [searchTerm, setSearchTerm] = useState('');
   const [filterMode, setFilterMode] = useState({
     kind: 'all',
     id: 'all',
-    label: 'Tất cả',
+    label: t('navbar.all'),
     icon: 'bi-grid-fill',
   });
+  const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const languageRef = useRef(null);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isSuggestionsOpen, setIsSuggestionsOpen] = useState(false);
   const [quickFilterType, setQuickFilterType] = useState('all');
@@ -39,6 +54,10 @@ export default function Navbar() {
   const { bookmarkCount } = useBookmarks();
   const { isDark, toggleTheme } = useTheme();
   const { isAuthenticated, currentUser, logout } = useAuth();
+
+  useEffect(() => {
+    setFilterMode((prev) => (prev.id === 'all' ? { ...prev, label: t('navbar.all') } : prev));
+  }, [language, t]);
 
   const requireAuthThen = (action) => {
     if (!isAuthenticated) {
@@ -89,6 +108,9 @@ export default function Navbar() {
       }
       if (categoriesRef.current && !categoriesRef.current.contains(e.target)) {
         setIsCategoriesOpen(false);
+      }
+      if (languageRef.current && !languageRef.current.contains(e.target)) {
+        setIsLanguageOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -189,7 +211,7 @@ export default function Navbar() {
           type="button"
           aria-controls="fandomNavbar"
           aria-expanded={!isNavCollapsed}
-          aria-label="Chuyển đổi thanh điều hướng"
+          aria-label={t('navbar.toggleNav')}
           onClick={() => setIsNavCollapsed(!isNavCollapsed)}
         >
           <i className={`bi ${isNavCollapsed ? 'bi-list' : 'bi-x-lg'} fs-3`}></i>
@@ -215,7 +237,7 @@ export default function Navbar() {
                 onClick={() => setIsCategoriesOpen((open) => !open)}
               >
                 <i className="bi bi-grid-3x3-gap-fill" style={{ color: '#a29bfe' }}></i>
-                <span>Vũ Trụ Fandom</span>
+                <span>{t('navbar.fandomUniverse')}</span>
               </button>
               <ul
                 className={`dropdown-menu border-0 shadow-lg rounded-4 py-2 ${isDark ? 'dropdown-menu-dark' : ''} ${isCategoriesOpen ? 'show' : ''}`}
@@ -225,7 +247,7 @@ export default function Navbar() {
                 }}
                 aria-labelledby="categoriesDropdown"
               >
-                {CATEGORY_LIST.map((cat) => (
+                {CATEGORY_LIST_LOCALIZED.map((cat) => (
                   <li key={cat.id}>
                     <Link
                       to={`/category/${cat.id}`}
@@ -250,7 +272,7 @@ export default function Navbar() {
                 onClick={() => setIsNavCollapsed(true)}
               >
                 <i className="bi bi-play-circle-fill text-danger"></i>
-                <span>Trailers</span>
+                <span>{t('navbar.trailers')}</span>
               </Link>
             </li>
 
@@ -261,7 +283,7 @@ export default function Navbar() {
                 onClick={() => setIsNavCollapsed(true)}
               >
                 <i className="bi bi-bag-check-fill text-success"></i>
-                <span>Merchandise</span>
+                <span>{t('navbar.merchandise')}</span>
               </Link>
             </li>
 
@@ -271,7 +293,7 @@ export default function Navbar() {
                 className="nav-link fw-medium px-2 text-white-50"
                 onClick={() => setIsNavCollapsed(true)}
               >
-                Giới thiệu
+                {t('navbar.about')}
               </Link>
             </li>
             <li className="nav-item">
@@ -280,7 +302,7 @@ export default function Navbar() {
                 className="nav-link fw-medium px-2 text-white-50"
                 onClick={() => setIsNavCollapsed(true)}
               >
-                Liên hệ
+                {t('navbar.contact')}
               </Link>
             </li>
           </ul>
@@ -301,7 +323,7 @@ export default function Navbar() {
                     setIsSuggestionsOpen(false);
                   }}
                   aria-expanded={isFilterOpen}
-                  title="Bộ lọc tìm kiếm (Danh mục / Định dạng)"
+                  title={t('navbar.searchFilterTitle')}
                 >
                   <i className={`bi ${filterMode.icon}`}></i>
                   <span className="fv-search-filter-text">{filterMode.label}</span>
@@ -314,10 +336,10 @@ export default function Navbar() {
                   className="form-control fv-search-input"
                   placeholder={
                     filterMode.id !== 'all'
-                      ? `Tìm trong ${filterMode.label}...`
-                      : 'Tìm nhân vật, bài viết...'
+                      ? t('navbar.searchPlaceholderIn', { label: filterMode.label })
+                      : t('navbar.searchPlaceholderDefault')
                   }
-                  aria-label="Tìm kiếm toàn cục"
+                  aria-label={t('navbar.searchAriaLabel')}
                   value={searchTerm}
                   onChange={(e) => {
                     setSearchTerm(e.target.value);
@@ -347,8 +369,8 @@ export default function Navbar() {
                       setSearchTerm('');
                       setIsSuggestionsOpen(false);
                     }}
-                    title="Xóa từ khóa"
-                    aria-label="Xóa từ khóa"
+                    title={t('navbar.clearKeyword')}
+                    aria-label={t('navbar.clearKeyword')}
                   >
                     <i className="bi bi-x-circle-fill"></i>
                   </button>
@@ -358,8 +380,8 @@ export default function Navbar() {
                 <button
                   className="btn fv-search-submit-btn"
                   type="submit"
-                  aria-label="Nút tìm kiếm"
-                  title="Tìm kiếm"
+                  aria-label={t('navbar.searchButton')}
+                  title={t('navbar.search')}
                 >
                   <i className="bi bi-search fs-6"></i>
                 </button>
@@ -374,11 +396,11 @@ export default function Navbar() {
                   <button
                     type="button"
                     className={`fv-filter-item ${filterMode.id === 'all' ? 'active' : ''}`}
-                    onClick={() => handleSelectFilter('all', 'all', 'Tất cả', 'bi-grid-fill')}
+                    onClick={() => handleSelectFilter('all', 'all', t('navbar.all'), 'bi-grid-fill')}
                   >
                     <span className="d-flex align-items-center gap-2">
                       <i className="bi bi-grid-fill text-primary"></i>
-                      <span>Tất cả vũ trụ (Toàn bộ)</span>
+                      <span>{t('navbar.allUniverses')}</span>
                     </span>
                     {filterMode.id === 'all' && <i className="bi bi-check2 text-primary fw-bold"></i>}
                   </button>
@@ -387,9 +409,9 @@ export default function Navbar() {
 
                   {/* Section 1: Categories */}
                   <div className="fv-filter-section-title">
-                    <i className="bi bi-compass me-1"></i> Theo Vũ Trụ / Danh Mục
+                    <i className="bi bi-compass me-1"></i> {t('navbar.byUniverseCategory')}
                   </div>
-                  {CATEGORY_LIST.map((c) => (
+                  {CATEGORY_LIST_LOCALIZED.map((c) => (
                     <button
                       key={c.id}
                       type="button"
@@ -408,20 +430,20 @@ export default function Navbar() {
 
                   {/* Section 2: Content Types */}
                   <div className="fv-filter-section-title">
-                    <i className="bi bi-layers me-1"></i> Theo Loại Nội Dung
+                    <i className="bi bi-layers me-1"></i> {t('navbar.byContentType')}
                   </div>
-                  {CONTENT_FILTER_TYPES.map((t) => (
+                  {CONTENT_FILTER_TYPES.map((ft) => (
                     <button
-                      key={t.id}
+                      key={ft.id}
                       type="button"
-                      className={`fv-filter-item ${filterMode.id === t.id ? 'active' : ''}`}
-                      onClick={() => handleSelectFilter('type', t.id, t.label, t.icon)}
+                      className={`fv-filter-item ${filterMode.id === ft.id ? 'active' : ''}`}
+                      onClick={() => handleSelectFilter('type', ft.id, ft.label, ft.icon)}
                     >
                       <span className="d-flex align-items-center gap-2">
-                        <i className={`bi ${t.icon} text-info`}></i>
-                        <span>{t.label}</span>
+                        <i className={`bi ${ft.icon} text-info`}></i>
+                        <span>{ft.label}</span>
                       </span>
-                      {filterMode.id === t.id && <i className="bi bi-check2 text-primary fw-bold"></i>}
+                      {filterMode.id === ft.id && <i className="bi bi-check2 text-primary fw-bold"></i>}
                     </button>
                   ))}
                 </div>
@@ -437,31 +459,31 @@ export default function Navbar() {
                     className={`fv-quick-chip ${quickFilterType === 'all' ? 'active' : ''}`}
                     onClick={() => setQuickFilterType('all')}
                   >
-                    Tất cả
+                    {t('navbar.all')}
                   </span>
                   <span
                     className={`fv-quick-chip ${quickFilterType === 'character' ? 'active' : ''}`}
                     onClick={() => setQuickFilterType('character')}
                   >
-                    👤 Nhân vật
+                    👤 {t('navbar.filterTypes.character')}
                   </span>
                   <span
                     className={`fv-quick-chip ${quickFilterType === 'article' ? 'active' : ''}`}
                     onClick={() => setQuickFilterType('article')}
                   >
-                    📰 Bài viết
+                    📰 {t('navbar.filterTypes.article')}
                   </span>
                   <span
                     className={`fv-quick-chip ${quickFilterType === 'trailer' ? 'active' : ''}`}
                     onClick={() => setQuickFilterType('trailer')}
                   >
-                    🎥 Trailers
+                    🎥 {t('navbar.trailers')}
                   </span>
                   <span
                     className={`fv-quick-chip ${quickFilterType === 'merchandise' ? 'active' : ''}`}
                     onClick={() => setQuickFilterType('merchandise')}
                   >
-                    🛍️ Vật phẩm
+                    🛍️ {t('navbar.filterTypes.merchandise')}
                   </span>
                 </div>
 
@@ -470,7 +492,7 @@ export default function Navbar() {
                   {liveResults.length === 0 ? (
                     <div className="p-3 text-center text-secondary small">
                       <i className="bi bi-search fs-4 d-block mb-1 opacity-50"></i>
-                      Không tìm thấy kết quả phù hợp cho "<strong>{searchTerm}</strong>".
+                      {t('navbar.noResultsFor', { term: searchTerm })}
                     </div>
                   ) : (
                     liveResults.map((item) => (
@@ -509,13 +531,13 @@ export default function Navbar() {
                 {/* Footer with Full Results Link */}
                 <div className="fv-suggestions-footer">
                   <span className="text-secondary small">
-                    {totalResultsCount} kết quả tìm được
+                    {t('navbar.resultsFound', { count: totalResultsCount })}
                   </span>
                   <button
                     type="button"
                     onClick={() => handleSearchSubmit()}
                   >
-                    Xem tất cả <i className="bi bi-arrow-right"></i>
+                    {t('navbar.viewAll')} <i className="bi bi-arrow-right"></i>
                   </button>
                 </div>
               </div>
@@ -524,6 +546,51 @@ export default function Navbar() {
 
           {/* Action Icons & Theme Switcher */}
           <div className="d-flex align-items-center gap-2 mt-2 mt-lg-0">
+            {/* Language Switcher Dropdown */}
+            <div ref={languageRef} className={`dropdown ${isLanguageOpen ? 'show' : ''}`}>
+              <button
+                type="button"
+                className="btn position-relative rounded-circle p-2 shadow-xs d-flex align-items-center justify-content-center"
+                style={{
+                  width: '40px',
+                  height: '40px',
+                  background: isDark ? 'rgba(255, 255, 255, 0.12)' : 'rgba(0, 0, 0, 0.05)',
+                  border: isDark ? '1px solid rgba(255, 255, 255, 0.2)' : '1px solid rgba(0, 0, 0, 0.08)',
+                  fontSize: '1.1rem',
+                }}
+                title={t('navbar.chooseLanguage')}
+                aria-label={t('navbar.language')}
+                aria-expanded={isLanguageOpen}
+                onClick={() => setIsLanguageOpen((open) => !open)}
+              >
+                {languages.find((l) => l.code === language)?.flag}
+              </button>
+              <ul
+                className={`dropdown-menu dropdown-menu-end border-0 shadow-lg rounded-4 py-2 ${isDark ? 'dropdown-menu-dark' : ''} ${isLanguageOpen ? 'show' : ''}`}
+                style={{
+                  backgroundColor: isDark ? '#12162a' : '#ffffff',
+                  border: isDark ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.08)',
+                }}
+              >
+                {languages.map((l) => (
+                  <li key={l.code}>
+                    <button
+                      type="button"
+                      className={`dropdown-item d-flex align-items-center gap-2 py-2 px-3 fw-medium ${language === l.code ? 'active' : ''}`}
+                      onClick={() => {
+                        setLanguage(l.code);
+                        setIsLanguageOpen(false);
+                      }}
+                    >
+                      <span>{l.flag}</span>
+                      <span>{l.label}</span>
+                      {language === l.code && <i className="bi bi-check2 ms-auto"></i>}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             {/* Theme Toggle Button (Light / Dark Mode) */}
             <button
               type="button"
@@ -537,8 +604,8 @@ export default function Navbar() {
                 transition: 'all 0.25s ease',
               }}
               onClick={toggleTheme}
-              title={isDark ? 'Chuyển sang giao diện Sáng (Light Mode)' : 'Chuyển sang giao diện Tối (Dark Mode)'}
-              aria-label="Chuyển đổi giao diện Sáng / Tối"
+              title={isDark ? t('navbar.switchToLight') : t('navbar.switchToDark')}
+              aria-label={t('navbar.toggleTheme')}
             >
               {isDark ? (
                 <i className="bi bi-sun-fill fs-5" style={{ color: '#fdcb6e' }}></i>
@@ -557,8 +624,8 @@ export default function Navbar() {
                 background: isDark ? 'rgba(255, 255, 255, 0.12)' : 'rgba(0, 0, 0, 0.05)',
                 border: isDark ? '1px solid rgba(255, 255, 255, 0.2)' : '1px solid rgba(0, 0, 0, 0.08)',
               }}
-              title="Danh sách đã lưu"
-              aria-label="Xem danh sách bài viết đã bookmark"
+              title={t('navbar.bookmarksTitle')}
+              aria-label={t('navbar.bookmarksAriaLabel')}
               onClick={() => requireAuthThen(() => {
                 setIsNavCollapsed(true);
                 navigate('/bookmarks');
@@ -582,8 +649,8 @@ export default function Navbar() {
                 background: isDark ? 'rgba(255, 255, 255, 0.12)' : 'rgba(0, 0, 0, 0.05)',
                 border: isDark ? '1px solid rgba(255, 255, 255, 0.2)' : '1px solid rgba(0, 0, 0, 0.08)',
               }}
-              title="Mở giỏ hàng"
-              aria-label="Mở giỏ hàng"
+              title={t('navbar.cartTitle')}
+              aria-label={t('navbar.cartAriaLabel')}
               onClick={() => requireAuthThen(() => {
                 setIsCartOpen(true);
                 setIsNavCollapsed(true);
@@ -614,7 +681,7 @@ export default function Navbar() {
                     className={`btn btn-sm rounded-pill px-3 ${isDark ? 'btn-outline-light' : 'btn-outline-primary'}`}
                     onClick={handleLogout}
                   >
-                    Đăng xuất
+                    {t('navbar.logout')}
                   </button>
                 </>
               ) : (
@@ -624,14 +691,14 @@ export default function Navbar() {
                     className={`btn btn-sm rounded-pill px-3 ${isDark ? 'btn-outline-light' : 'btn-outline-primary'}`}
                     onClick={() => setIsNavCollapsed(true)}
                   >
-                    Đăng nhập
+                    {t('navbar.login')}
                   </Link>
                   <Link
                     to="/signup"
                     className="btn btn-sm btn-primary-fv px-3 d-none d-sm-inline-block text-white"
                     onClick={() => setIsNavCollapsed(true)}
                   >
-                    Đăng ký
+                    {t('navbar.signup')}
                   </Link>
                 </>
               )}

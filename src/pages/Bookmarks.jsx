@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useBookmarks } from '../context/BookmarkContext.jsx';
-import { Link } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext.jsx';
 import EmptyState from '../components/common/EmptyState.jsx';
 import ToastNotification from '../components/common/ToastNotification.jsx';
 
 export default function Bookmarks() {
+  const { t } = useTranslation();
+  const { bcp47 } = useLanguage();
   const {
     bookmarks,
     notes,
@@ -19,7 +22,7 @@ export default function Bookmarks() {
     const success = exportBookmarksAsText();
     if (success) {
       setToast({
-        message: 'Đã xuất danh sách Bookmark ra tệp fandomverse-bookmarks.txt thành công!',
+        message: t('bookmarks.exportSuccess'),
         type: 'success',
         icon: 'bi-file-earmark-arrow-down-fill',
       });
@@ -36,10 +39,10 @@ export default function Bookmarks() {
       <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-4">
         <div>
           <h1 className="font-heading display-6 fw-bold text-dark mb-1 d-flex align-items-center gap-2">
-            <i className="bi bi-heart-fill text-danger"></i> Nội Dung Đã Lưu & Ghi Chú
+            <i className="bi bi-heart-fill text-danger"></i> {t('bookmarks.title')}
           </h1>
           <p className="text-secondary small mb-0">
-            Danh sách yêu thích lưu trong <strong>LocalStorage</strong> và ghi chú cá nhân lưu trong <strong>SessionStorage</strong> (theo phiên).
+            {t('bookmarks.subtitlePart1')} <strong>LocalStorage</strong> {t('bookmarks.subtitlePart2')} <strong>SessionStorage</strong> {t('bookmarks.subtitlePart3')}
           </p>
         </div>
 
@@ -50,10 +53,10 @@ export default function Bookmarks() {
             className="btn btn-primary-fv px-3 py-2 d-flex align-items-center gap-2 shadow-sm"
             onClick={handleExport}
             disabled={bookmarks.length === 0}
-            title={bookmarks.length === 0 ? 'Chưa có nội dung để xuất' : 'Xuất danh sách ra file .txt'}
+            title={bookmarks.length === 0 ? t('bookmarks.exportButtonDisabledTitle') : t('bookmarks.exportButtonTitle')}
           >
             <i className="bi bi-download"></i>
-            <span>Xuất Tệp .TXT</span>
+            <span>{t('bookmarks.exportButtonLabel')}</span>
           </button>
         </div>
       </div>
@@ -62,17 +65,17 @@ export default function Bookmarks() {
       <div className="alert alert-info border-0 rounded-4 shadow-xs small mb-4 d-flex align-items-center gap-2">
         <i className="bi bi-info-circle-fill text-info fs-5"></i>
         <div>
-          <strong>Quy chuẩn SRS §1.6.12:</strong> Mục đánh dấu sẽ được lưu vĩnh viễn trên trình duyệt của bạn (LocalStorage). Ghi chú cá nhân chỉ tồn tại trong phiên duyệt web hiện tại và sẽ tự xóa khi bạn đóng tab/trình duyệt (SessionStorage).
+          <strong>{t('bookmarks.infoAlertStrong')}</strong> {t('bookmarks.infoAlertText')}
         </div>
       </div>
 
       {/* Bookmarks Grid */}
       {bookmarks.length === 0 ? (
         <EmptyState
-          title="Chưa có nội dung nào được lưu"
-          message="Hãy nhấn vào biểu tượng trái tim ở các bài viết, video hoặc sản phẩm để lưu lại vào đây và viết ghi chú cho riêng bạn!"
+          title={t('bookmarks.emptyTitle')}
+          message={t('bookmarks.emptyMessage')}
           icon="bi-bookmark-heart"
-          actionLabel="Khám phá trang chủ"
+          actionLabel={t('bookmarks.exploreHome')}
           onAction={() => (window.location.hash = '#/')}
         />
       ) : (
@@ -108,8 +111,8 @@ export default function Bookmarks() {
                         type="button"
                         className="btn btn-sm text-danger p-0"
                         onClick={() => removeBookmark(b.itemId)}
-                        title="Bỏ lưu khỏi danh sách"
-                        aria-label="Xóa bookmark"
+                        title={t('bookmarks.removeTitle')}
+                        aria-label={t('bookmarks.removeAriaLabel')}
                       >
                         <i className="bi bi-trash fs-6"></i>
                       </button>
@@ -120,7 +123,7 @@ export default function Bookmarks() {
                     </h6>
 
                     <div className="text-muted small" style={{ fontSize: '0.75rem' }}>
-                      <i className="bi bi-clock me-1"></i> Lưu ngày: {new Date(b.addedAt).toLocaleDateString('vi-VN')}
+                      <i className="bi bi-clock me-1"></i> {t('bookmarks.savedOn', { date: new Date(b.addedAt).toLocaleDateString(bcp47) })}
                     </div>
                   </div>
                 </div>
@@ -129,7 +132,7 @@ export default function Bookmarks() {
                 <div className="mt-auto pt-2 border-top">
                   <label className="form-label small fw-semibold text-secondary d-flex align-items-center justify-content-between mb-1">
                     <span>
-                      <i className="bi bi-pencil-square text-primary me-1"></i> Ghi chú phiên này:
+                      <i className="bi bi-pencil-square text-primary me-1"></i> {t('bookmarks.noteLabel')}
                     </span>
                     <span className="text-muted" style={{ fontSize: '0.65rem' }}>
                       (SessionStorage)
@@ -138,7 +141,7 @@ export default function Bookmarks() {
                   <textarea
                     className="form-control form-control-sm bg-light border-0 rounded-3"
                     rows="2"
-                    placeholder="Viết cảm nghĩ, lưu ý của bạn về mục này..."
+                    placeholder={t('bookmarks.notePlaceholder')}
                     value={notes[b.itemId] || ''}
                     onChange={(e) => handleNoteChange(b.itemId, e.target.value)}
                   ></textarea>

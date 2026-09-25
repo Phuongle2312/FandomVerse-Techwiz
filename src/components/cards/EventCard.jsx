@@ -1,11 +1,15 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from '../../context/ThemeContext.jsx';
+import { useLanguage } from '../../context/LanguageContext.jsx';
 
 export default function EventCard({ event }) {
+  const { t } = useTranslation();
   const { isDark } = useTheme();
+  const { bcp47 } = useLanguage();
   const eventDate = new Date(event.date);
   const day = eventDate.getDate().toString().padStart(2, '0');
-  const month = `Th${eventDate.getMonth() + 1}`;
+  const month = eventDate.toLocaleDateString(bcp47, { month: 'short' });
   const year = eventDate.getFullYear();
 
   const today = new Date().toISOString().split('T')[0];
@@ -44,7 +48,7 @@ export default function EventCard({ event }) {
               }`}
               style={{ fontSize: '0.7rem' }}
             >
-              {isUpcoming ? '⚡ Sắp diễn ra' : '✓ Đã diễn ra'}
+              {isUpcoming ? t('categoryHub.statusUpcoming') : t('categoryHub.statusPast')}
             </span>
             <span className={`small ${isDark ? 'text-white-50' : 'text-muted'}`} style={{ fontSize: '0.75rem' }}>
               <i className="bi bi-geo-alt-fill text-danger me-1"></i>

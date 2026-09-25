@@ -1,10 +1,14 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { storageService } from '../services/storageService.js';
 import { dataService } from '../services/dataService.js';
+import { useLanguage } from './LanguageContext.jsx';
 
 const BookmarkContext = createContext(null);
 
 export function BookmarkProvider({ children }) {
+  const { t } = useTranslation();
+  const { bcp47 } = useLanguage();
   const [bookmarks, setBookmarks] = useState(() => storageService.loadBookmarks());
   const [notes, setNotes] = useState(() => storageService.loadNotes());
 
@@ -69,27 +73,27 @@ export function BookmarkProvider({ children }) {
 
     const lines = [
       '=====================================================',
-      '       FANDOMVERSE — DANH SÁCH NỘI DUNG YÊU THÍCH     ',
+      `       ${t('bookmarkExport.headerTitle')}     `,
       '=====================================================',
-      `Thời gian xuất: ${new Date().toLocaleString('vi-VN')}`,
-      `Tổng số mục đã lưu: ${bookmarks.length}`,
+      t('bookmarkExport.exportedAt', { datetime: new Date().toLocaleString(bcp47) }),
+      t('bookmarkExport.totalSaved', { count: bookmarks.length }),
       '-----------------------------------------------------\n',
     ];
 
     bookmarks.forEach((b, index) => {
-      lines.push(`${index + 1}. [${b.category?.toUpperCase() || 'GENERAL'}] ${b.title}`);
-      lines.push(`   - Mã nội dung: ${b.itemId}`);
-      lines.push(`   - Loại: ${b.itemType}`);
-      lines.push(`   - Ngày lưu: ${new Date(b.addedAt).toLocaleDateString('vi-VN')}`);
+      lines.push(`${index + 1}. [${b.category?.toUpperCase() || t('bookmarkExport.generalCategory')}] ${b.title}`);
+      lines.push(t('bookmarkExport.itemIdLabel', { id: b.itemId }));
+      lines.push(t('bookmarkExport.itemTypeLabel', { type: b.itemType }));
+      lines.push(t('bookmarkExport.savedDateLabel', { date: new Date(b.addedAt).toLocaleDateString(bcp47) }));
       if (notes[b.itemId]) {
-        lines.push(`   - Ghi chú cá nhân: "${notes[b.itemId]}"`);
+        lines.push(t('bookmarkExport.noteLabel', { note: notes[b.itemId] }));
       }
       lines.push('');
     });
 
     lines.push('=====================================================');
-    lines.push('Cảm ơn bạn đã đồng hành cùng FandomVerse Universe!');
-    lines.push('© FandomVerse — Web Innovation Unleashed');
+    lines.push(t('bookmarkExport.thankYou'));
+    lines.push(t('bookmarkExport.footer'));
 
     const content = lines.join('\n');
     const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });

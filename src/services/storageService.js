@@ -134,4 +134,21 @@ export const storageService = {
       console.warn('Không thể lưu phiên đăng nhập vào LocalStorage:', error);
     }
   },
+
+  // Language Preference (LocalStorage)
+  loadLanguage() {
+    try {
+      return localStorage.getItem(STORAGE_KEYS.LANGUAGE) || null;
+    } catch (error) {
+      return null;
+    }
+  },
+
+  saveLanguage(language) {
+    try {
+      localStorage.setItem(STORAGE_KEYS.LANGUAGE, language);
+    } catch (error) {
+      console.warn('Không thể lưu ngôn ngữ vào LocalStorage:', error);
+    }
+  },
 };

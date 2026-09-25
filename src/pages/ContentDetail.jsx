@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { dataService } from '../services/dataService.js';
 import { CATEGORY_LIST } from '../constants.js';
 import { useBookmarks } from '../context/BookmarkContext.jsx';
@@ -10,6 +11,7 @@ import VideoModal from '../components/interactive/VideoModal.jsx';
 import EmptyState from '../components/common/EmptyState.jsx';
 
 export default function ContentDetail() {
+  const { t } = useTranslation();
   const { categoryId, contentId } = useParams();
   const content = dataService.getContentById(contentId);
 
@@ -33,9 +35,9 @@ export default function ContentDetail() {
     return (
       <div className="container-fluid px-3 px-md-4 px-lg-5 py-5">
         <EmptyState
-          title="Không tìm thấy bài viết"
-          message="Bài viết bạn đang tìm không tồn tại hoặc đã bị xóa."
-          actionLabel="Quay lại danh mục"
+          title={t('contentDetail.notFoundTitle')}
+          message={t('contentDetail.notFoundMessage')}
+          actionLabel={t('contentDetail.backToCategory')}
           onAction={() => (window.location.hash = `#/category/${categoryId || 'anime'}`)}
         />
       </div>
@@ -43,7 +45,7 @@ export default function ContentDetail() {
   }
 
   const category = CATEGORY_LIST.find((c) => c.id === content.category);
-  const categoryLabel = category ? category.label : content.category;
+  const categoryLabel = category ? t(`categories.${category.id}.label`) : content.category;
   const related = dataService.getRelatedContents(content.category, content.id, 3);
 
   return (
@@ -64,7 +66,7 @@ export default function ContentDetail() {
                 <i className="bi bi-calendar3 me-1"></i> {content.dateAdded}
               </span>
               <span className="text-muted small">
-                <i className="bi bi-person-fill me-1"></i> Ban Biên Tập FandomVerse
+                <i className="bi bi-person-fill me-1"></i> {t('contentDetail.editorialTeam')}
               </span>
             </div>
 
@@ -86,14 +88,14 @@ export default function ContentDetail() {
                 onClick={handleBookmarkToggle}
               >
                 <i className={`bi ${bookmarked ? 'bi-heart-fill' : 'bi-heart'}`}></i>
-                <span>{bookmarked ? 'Đã Lưu Vào Bookmark' : 'Lưu Vào Bookmark'}</span>
+                <span>{bookmarked ? t('contentDetail.bookmarked') : t('contentDetail.notBookmarked')}</span>
               </button>
 
               <Link
                 to={`/category/${content.category}`}
                 className="btn btn-sm btn-outline-secondary rounded-pill px-3 py-2"
               >
-                <i className="bi bi-arrow-left me-1"></i> Trở Về {categoryLabel}
+                <i className="bi bi-arrow-left me-1"></i> {t('contentDetail.backTo', { label: categoryLabel })}
               </Link>
             </div>
           </div>
@@ -123,7 +125,7 @@ export default function ContentDetail() {
             {content.images && content.images.length > 0 && (
               <div className="mt-5 pt-4 border-top">
                 <h4 className="font-heading fw-bold mb-3 d-flex align-items-center gap-2">
-                  <i className="bi bi-images text-warning"></i> Thư Viện Hình Ảnh Đính Kèm ({content.images.length})
+                  <i className="bi bi-images text-warning"></i> {t('contentDetail.galleryTitle', { count: content.images.length })}
                 </h4>
                 <div className="row g-2">
                   {content.images.map((img, i) => (
@@ -133,7 +135,7 @@ export default function ContentDetail() {
                         style={{ height: '140px', cursor: 'pointer' }}
                         onClick={() => setLightboxImages(content.images)}
                       >
-                        <img src={img} alt={`Ảnh minh họa ${i + 1}`} className="w-100 h-100 object-fit-cover hover-scale" />
+                        <img src={img} alt={t('contentDetail.imageAlt', { index: i + 1 })} className="w-100 h-100 object-fit-cover hover-scale" />
                         <div className="position-absolute bottom-0 end-0 m-1 badge bg-dark bg-opacity-75 text-white small">
                           <i className="bi bi-zoom-in"></i>
                         </div>
@@ -147,7 +149,7 @@ export default function ContentDetail() {
             {/* Sub Tags */}
             {content.subTags && (
               <div className="d-flex flex-wrap gap-2 mt-4 pt-3 border-top">
-                <span className="small text-muted me-2 align-self-center">Từ khóa:</span>
+                <span className="small text-muted me-2 align-self-center">{t('contentDetail.tagsLabel')}</span>
                 {content.subTags.map((tag) => (
                   <span key={tag} className="badge bg-light text-secondary border px-3 py-2 rounded-pill">
                     #{tag}
@@ -160,7 +162,7 @@ export default function ContentDetail() {
           {/* Related Contents */}
           {related.length > 0 && (
             <div className="mb-5">
-              <h3 className="font-heading fw-bold text-dark mb-4">Nội Dung Liên Quan Trong {categoryLabel}</h3>
+              <h3 className="font-heading fw-bold text-dark mb-4">{t('contentDetail.relatedTitle', { label: categoryLabel })}</h3>
               <div className="row g-3">
                 {related.map((item) => (
                   <div key={item.id} className="col-md-4 col-12">

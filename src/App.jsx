@@ -1,5 +1,6 @@
 import React from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
+import { LanguageProvider } from './context/LanguageContext.jsx';
 import { ThemeProvider } from './context/ThemeContext.jsx';
 import { AuthProvider } from './context/AuthContext.jsx';
 import { CartProvider } from './context/CartContext.jsx';
@@ -28,6 +29,7 @@ import NotFound from './pages/NotFound.jsx';
 export default function App() {
   return (
     <HashRouter>
+      <LanguageProvider>
       <ThemeProvider>
         <AuthProvider>
           <CartProvider>
@@ -67,6 +69,7 @@ export default function App() {
         </CartProvider>
       </AuthProvider>
     </ThemeProvider>
+    </LanguageProvider>
   </HashRouter>
 );
 }

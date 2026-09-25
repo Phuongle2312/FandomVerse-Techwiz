@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { CATEGORY_LIST } from '../../constants.js';
 import { dataService } from '../../services/dataService.js';
 import { useTheme } from '../../context/ThemeContext.jsx';
 
 export default function Breadcrumb() {
+  const { t } = useTranslation();
   const location = useLocation();
   const path = location.pathname;
   const { isDark } = useTheme();
@@ -15,40 +17,40 @@ export default function Breadcrumb() {
   }
 
   const parts = path.split('/').filter(Boolean);
-  const crumbs = [{ label: 'Trang chủ', to: '/' }];
+  const crumbs = [{ label: t('breadcrumb.home'), to: '/' }];
 
   if (parts[0] === 'category') {
     const categoryId = parts[1];
     const cat = CATEGORY_LIST.find((c) => c.id === categoryId);
-    const catLabel = cat ? cat.label : categoryId;
+    const catLabel = cat ? t(`categories.${cat.id}.label`) : categoryId;
     crumbs.push({ label: catLabel, to: `/category/${categoryId}` });
 
     if (parts[2] === 'article' && parts[3]) {
       const contentId = parts[3];
       const content = dataService.getContentById(contentId);
       crumbs.push({
-        label: content ? content.title : 'Chi tiết bài viết',
+        label: content ? content.title : t('breadcrumb.articleDetail'),
         to: `/category/${categoryId}/article/${contentId}`,
       });
     }
   } else if (parts[0] === 'trailers') {
-    crumbs.push({ label: 'Trung Tâm Trailers', to: '/trailers' });
+    crumbs.push({ label: t('breadcrumb.trailersHub'), to: '/trailers' });
   } else if (parts[0] === 'merchandise') {
-    crumbs.push({ label: 'Gian Hàng Merchandise', to: '/merchandise' });
+    crumbs.push({ label: t('breadcrumb.merchandiseShop'), to: '/merchandise' });
   } else if (parts[0] === 'bookmarks') {
-    crumbs.push({ label: 'Bookmarks & Ghi Chú', to: '/bookmarks' });
+    crumbs.push({ label: t('breadcrumb.bookmarksNotes'), to: '/bookmarks' });
   } else if (parts[0] === 'search') {
-    crumbs.push({ label: 'Kết Quả Tìm Kiếm', to: '/search' });
+    crumbs.push({ label: t('breadcrumb.searchResults'), to: '/search' });
   } else if (parts[0] === 'contact') {
-    crumbs.push({ label: 'Liên Hệ', to: '/contact' });
+    crumbs.push({ label: t('breadcrumb.contact'), to: '/contact' });
   } else if (parts[0] === 'about') {
-    crumbs.push({ label: 'Giới Thiệu', to: '/about' });
+    crumbs.push({ label: t('breadcrumb.about'), to: '/about' });
   } else if (parts[0] === 'login') {
-    crumbs.push({ label: 'Đăng Nhập', to: '/login' });
+    crumbs.push({ label: t('breadcrumb.login'), to: '/login' });
   } else if (parts[0] === 'signup') {
-    crumbs.push({ label: 'Đăng Ký', to: '/signup' });
+    crumbs.push({ label: t('breadcrumb.signup'), to: '/signup' });
   } else {
-    crumbs.push({ label: 'Trang', to: path });
+    crumbs.push({ label: t('breadcrumb.genericPage'), to: path });
   }
 
   return (

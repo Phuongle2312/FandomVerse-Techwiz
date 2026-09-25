@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useBookmarks } from '../../context/BookmarkContext.jsx';
 import { useTheme } from '../../context/ThemeContext.jsx';
 import { useAuth } from '../../context/AuthContext.jsx';
 import { CATEGORY_LIST } from '../../constants.js';
 
 export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
+  const { t } = useTranslation();
   const { isBookmarked, toggleBookmark } = useBookmarks();
   const { isDark } = useTheme();
   const { isAuthenticated } = useAuth();
@@ -13,7 +15,7 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
   const bookmarked = isBookmarked(item.id);
 
   const category = CATEGORY_LIST.find((c) => c.id === item.category);
-  const categoryLabel = category ? category.label : item.category;
+  const categoryLabel = category ? t(`categories.${category.id}.label`) : item.category;
 
   const handleBookmarkClick = (e) => {
     e.preventDefault();
@@ -64,8 +66,8 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
             border: isDark ? '1px solid rgba(255, 255, 255, 0.2)' : '1px solid rgba(0, 0, 0, 0.1)',
           }}
           onClick={handleBookmarkClick}
-          aria-label={bookmarked ? 'Bỏ lưu bài viết' : 'Lưu bài viết'}
-          title={bookmarked ? 'Bỏ lưu bài viết' : 'Lưu bài viết'}
+          aria-label={bookmarked ? t('common.unsave') : t('common.save')}
+          title={bookmarked ? t('common.unsave') : t('common.save')}
         >
           <i className={`bi ${bookmarked ? 'bi-heart-fill text-danger' : isDark ? 'bi-heart text-white' : 'bi-heart text-dark'}`}></i>
         </button>
@@ -149,7 +151,7 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
               className="btn btn-sm fw-semibold p-0 text-decoration-none d-flex align-items-center gap-1"
               style={{ color: '#6C5CE7' }}
             >
-              Xem chi tiết <i className="bi bi-arrow-right"></i>
+              {t('common.viewDetails')} <i className="bi bi-arrow-right"></i>
             </Link>
           ) : item.type === 'video' ? (
             <button
@@ -157,7 +159,7 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
               className="btn btn-sm btn-outline-danger rounded-pill px-3 py-1"
               onClick={handleCardClick}
             >
-              <i className="bi bi-play-fill me-1"></i> Phát Video
+              <i className="bi bi-play-fill me-1"></i> {t('common.playVideo')}
             </button>
           ) : item.type === 'gallery' ? (
             <button
@@ -165,14 +167,13 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
               className="btn btn-sm btn-outline-warning rounded-pill px-3 py-1"
               onClick={handleCardClick}
             >
-              <i className="bi bi-eye-fill me-1"></i> Xem Bộ Ảnh ({item.images?.length || 0})
+              <i className="bi bi-eye-fill me-1"></i> {t('cards.content.viewGalleryCount', { count: item.images?.length || 0 })}
             </button>
           ) : (
-            <span className={`small ${isDark ? 'text-white-50' : 'text-muted'}`}>Audio Track</span>
+            <span className={`small ${isDark ? 'text-white-50' : 'text-muted'}`}>{t('common.audioTrack')}</span>
           )}
         </div>
       </div>
     </div>
   );
 }
-

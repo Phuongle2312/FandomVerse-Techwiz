@@ -57,6 +57,7 @@ export const STORAGE_KEYS = {
   VISITOR_COUNT: 'fandomverse_visitor_count',
   USERS: 'fandomverse_users',
   CURRENT_USER: 'fandomverse_current_user',
+  LANGUAGE: 'fv_language',
 };
 
 export const CONTENT_TYPES = [

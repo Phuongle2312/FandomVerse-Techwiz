@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useCategoryData } from '../hooks/useCategoryData.js';
 import { dataService } from '../services/dataService.js';
 import ContentCard from '../components/cards/ContentCard.jsx';
@@ -10,6 +11,7 @@ import VideoModal from '../components/interactive/VideoModal.jsx';
 import EmptyState from '../components/common/EmptyState.jsx';
 
 export default function CategoryHub() {
+  const { t } = useTranslation();
   const { categoryId } = useParams();
   const { categoryInfo, contents, characters, events, franchises, isValidCategory } = useCategoryData(categoryId);
 
@@ -56,9 +58,9 @@ export default function CategoryHub() {
     return (
       <div className="container-fluid px-3 px-md-4 px-lg-5 py-5 text-center">
         <EmptyState
-          title="Không tìm thấy danh mục"
-          message={`Danh mục '${categoryId}' không tồn tại trong hệ thống 7 vũ trụ FandomVerse.`}
-          actionLabel="Quay lại trang chủ"
+          title={t('categoryHub.notFoundTitle')}
+          message={t('categoryHub.notFoundMessage', { categoryId })}
+          actionLabel={t('categoryHub.backHome')}
           onAction={() => (window.location.hash = '#/')}
         />
       </div>
@@ -74,7 +76,7 @@ export default function CategoryHub() {
         <div>
           <div className="d-flex align-items-center gap-2 mb-2">
             <span className={`badge-category badge-category-${categoryId} fs-6`}>
-              <i className={`bi ${categoryInfo.icon} me-1`}></i> Fandom Universe
+              <i className={`bi ${categoryInfo.icon} me-1`}></i> {t('navbar.fandomUniverse')}
             </span>
           </div>
           <h1 className="font-heading display-5 fw-bold text-dark mb-2">
@@ -86,9 +88,9 @@ export default function CategoryHub() {
         </div>
 
         <div className="d-flex flex-row flex-md-column gap-2 text-md-end text-muted small">
-          <div><i className="bi bi-file-text me-1 text-primary"></i> <strong>{contents.length}</strong> bài viết & media</div>
-          <div><i className="bi bi-people me-1 text-success"></i> <strong>{characters.length}</strong> nhân vật tiêu biểu</div>
-          <div><i className="bi bi-calendar-event me-1 text-warning"></i> <strong>{events.length}</strong> sự kiện nổi bật</div>
+          <div><i className="bi bi-file-text me-1 text-primary"></i> <strong>{contents.length}</strong> {t('categoryHub.articlesMediaLabel')}</div>
+          <div><i className="bi bi-people me-1 text-success"></i> <strong>{characters.length}</strong> {t('categoryHub.charactersLabel')}</div>
+          <div><i className="bi bi-calendar-event me-1 text-warning"></i> <strong>{events.length}</strong> {t('categoryHub.eventsLabel')}</div>
         </div>
       </div>
 
@@ -103,7 +105,7 @@ export default function CategoryHub() {
               onClick={() => setActiveTab('content')}
             >
               <i className="bi bi-collection-play-fill"></i>
-              <span>Nội Dung & Media ({contents.length})</span>
+              <span>{t('categoryHub.tabContent', { count: contents.length })}</span>
             </button>
           </li>
           <li className="nav-item">
@@ -114,7 +116,7 @@ export default function CategoryHub() {
               onClick={() => setActiveTab('characters')}
             >
               <i className="bi bi-people-fill"></i>
-              <span>Nhân Vật ({characters.length})</span>
+              <span>{t('categoryHub.tabCharacters', { count: characters.length })}</span>
             </button>
           </li>
           <li className="nav-item">
@@ -125,7 +127,7 @@ export default function CategoryHub() {
               onClick={() => setActiveTab('events')}
             >
               <i className="bi bi-calendar-check-fill"></i>
-              <span>Sự Kiện ({events.length})</span>
+              <span>{t('categoryHub.tabEvents', { count: events.length })}</span>
             </button>
           </li>
         </ul>
@@ -138,7 +140,7 @@ export default function CategoryHub() {
           <div className="p-3 bg-white rounded-4 border mb-4 shadow-xs d-flex flex-wrap gap-3 align-items-center justify-content-between">
             {/* Type Filters */}
             <div className="d-flex flex-wrap gap-1 align-items-center">
-              <span className="small fw-semibold text-secondary me-2">Định dạng:</span>
+              <span className="small fw-semibold text-secondary me-2">{t('categoryHub.formatLabel')}</span>
               <button
                 type="button"
                 className={`btn btn-sm rounded-pill px-3 py-1 ${
@@ -146,7 +148,7 @@ export default function CategoryHub() {
                 }`}
                 onClick={() => setSelectedType('all')}
               >
-                Tất cả
+                {t('navbar.all')}
               </button>
               <button
                 type="button"
@@ -155,7 +157,7 @@ export default function CategoryHub() {
                 }`}
                 onClick={() => setSelectedType('article')}
               >
-                <i className="bi bi-file-text me-1"></i> Bài viết
+                <i className="bi bi-file-text me-1"></i> {t('contentTypes.article')}
               </button>
               <button
                 type="button"
@@ -164,7 +166,7 @@ export default function CategoryHub() {
                 }`}
                 onClick={() => setSelectedType('gallery')}
               >
-                <i className="bi bi-images me-1"></i> Bộ ảnh
+                <i className="bi bi-images me-1"></i> {t('categoryHub.filterGallery')}
               </button>
               <button
                 type="button"
@@ -173,7 +175,7 @@ export default function CategoryHub() {
                 }`}
                 onClick={() => setSelectedType('video')}
               >
-                <i className="bi bi-play-circle me-1"></i> Video
+                <i className="bi bi-play-circle me-1"></i> {t('contentTypes.video')}
               </button>
               <button
                 type="button"
@@ -182,22 +184,22 @@ export default function CategoryHub() {
                 }`}
                 onClick={() => setSelectedType('audio')}
               >
-                <i className="bi bi-soundwave me-1"></i> Audio
+                <i className="bi bi-soundwave me-1"></i> {t('categoryHub.filterAudio')}
               </button>
             </div>
 
             {/* Sort Options */}
             <div className="d-flex align-items-center gap-2">
-              <label className="small fw-semibold text-secondary text-nowrap">Sắp xếp:</label>
+              <label className="small fw-semibold text-secondary text-nowrap">{t('categoryHub.sortLabel')}</label>
               <select
                 className="form-select form-select-sm bg-light"
                 style={{ width: '160px' }}
                 value={selectedSort}
                 onChange={(e) => setSelectedSort(e.target.value)}
               >
-                <option value="newest">Mới nhất</option>
-                <option value="alphabetical">Tên (A-Z)</option>
-                <option value="featured">Nổi bật trước</option>
+                <option value="newest">{t('categoryHub.sortNewest')}</option>
+                <option value="alphabetical">{t('categoryHub.sortAlpha')}</option>
+                <option value="featured">{t('categoryHub.sortFeatured')}</option>
               </select>
             </div>
           </div>
@@ -205,10 +207,10 @@ export default function CategoryHub() {
           {/* Content Cards Grid */}
           {filteredContents.length === 0 ? (
             <EmptyState
-              title="Không có nội dung phù hợp"
-              message="Không có bài viết hoặc media nào khớp với định dạng bạn đã chọn."
+              title={t('categoryHub.noContentTitle')}
+              message={t('categoryHub.noContentMessage')}
               onAction={() => setSelectedType('all')}
-              actionLabel="Xem tất cả nội dung"
+              actionLabel={t('categoryHub.viewAllContent')}
             />
           ) : (
             <div className="row g-4">
@@ -231,14 +233,14 @@ export default function CategoryHub() {
         <div>
           {/* Franchise Filter Toolbar */}
           <div className="p-3 bg-white rounded-4 border mb-4 shadow-xs d-flex align-items-center gap-3">
-            <span className="small fw-semibold text-secondary">Lọc theo Franchise:</span>
+            <span className="small fw-semibold text-secondary">{t('categoryHub.filterByFranchiseLabel')}</span>
             <select
               className="form-select form-select-sm bg-light"
               style={{ maxWidth: '280px' }}
               value={selectedFranchise}
               onChange={(e) => setSelectedFranchise(e.target.value)}
             >
-              <option value="all">Tất cả Franchise</option>
+              <option value="all">{t('categoryHub.allFranchise')}</option>
               {franchises.map((f) => (
                 <option key={f} value={f}>
                   {f}
@@ -246,7 +248,7 @@ export default function CategoryHub() {
               ))}
             </select>
             <span className="badge bg-secondary rounded-pill ms-auto">
-              {filteredCharacters.length} nhân vật
+              {t('categoryHub.charactersCountBadge', { count: filteredCharacters.length })}
             </span>
           </div>
 
@@ -267,34 +269,34 @@ export default function CategoryHub() {
           {/* Event Status Filter Toolbar */}
           <div className="p-3 bg-white rounded-4 border mb-4 shadow-xs d-flex align-items-center justify-content-between">
             <div className="d-flex align-items-center gap-2">
-              <span className="small fw-semibold text-secondary">Trạng thái:</span>
+              <span className="small fw-semibold text-secondary">{t('categoryHub.statusLabel')}</span>
               <div className="btn-group btn-group-sm">
                 <button
                   type="button"
                   className={`btn ${selectedEventStatus === 'all' ? 'btn-dark' : 'btn-outline-secondary'}`}
                   onClick={() => setSelectedEventStatus('all')}
                 >
-                  Tất cả
+                  {t('navbar.all')}
                 </button>
                 <button
                   type="button"
                   className={`btn ${selectedEventStatus === 'upcoming' ? 'btn-warning text-dark fw-bold' : 'btn-outline-secondary'}`}
                   onClick={() => setSelectedEventStatus('upcoming')}
                 >
-                  ⚡ Sắp diễn ra
+                  {t('categoryHub.statusUpcoming')}
                 </button>
                 <button
                   type="button"
                   className={`btn ${selectedEventStatus === 'past' ? 'btn-secondary' : 'btn-outline-secondary'}`}
                   onClick={() => setSelectedEventStatus('past')}
                 >
-                  ✓ Đã diễn ra
+                  {t('categoryHub.statusPast')}
                 </button>
               </div>
             </div>
 
             <span className="badge bg-secondary rounded-pill">
-              {filteredEvents.length} sự kiện
+              {t('categoryHub.eventsCountBadge', { count: filteredEvents.length })}
             </span>
           </div>
 
@@ -313,7 +315,7 @@ export default function CategoryHub() {
       {lightboxImages && (
         <LightboxGallery
           images={lightboxImages}
-          title={`${categoryInfo.label} Gallery`}
+          title={t('categoryHub.galleryTitle', { label: categoryInfo.label })}
           onClose={() => setLightboxImages(null)}
         />
       )}

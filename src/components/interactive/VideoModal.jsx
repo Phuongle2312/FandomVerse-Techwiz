@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function VideoModal({ item, onClose }) {
+  const { t } = useTranslation();
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') onClose();
@@ -27,7 +29,7 @@ export default function VideoModal({ item, onClose }) {
             <button
               type="button"
               className="btn-close btn-close-white"
-              aria-label="Đóng video"
+              aria-label={t('videoModal.closeAria')}
               onClick={onClose}
             ></button>
           </div>
