@@ -1,12 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useBookmarks } from '../../context/BookmarkContext.jsx';
 import { useTheme } from '../../context/ThemeContext.jsx';
+import { useAuth } from '../../context/AuthContext.jsx';
 import { CATEGORY_LIST } from '../../constants.js';
 
 export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
   const { isBookmarked, toggleBookmark } = useBookmarks();
   const { isDark } = useTheme();
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
   const bookmarked = isBookmarked(item.id);
 
   const category = CATEGORY_LIST.find((c) => c.id === item.category);
@@ -15,6 +18,10 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
   const handleBookmarkClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
+    if (!isAuthenticated) {
+      navigate('/login');
+      return;
+    }
     toggleBookmark(item);
   };
 

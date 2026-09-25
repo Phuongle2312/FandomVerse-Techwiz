@@ -1,15 +1,27 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext.jsx';
+import { useAuth } from '../../context/AuthContext.jsx';
 import { CATEGORY_LIST } from '../../constants.js';
 
 export default function MerchCard({ item, onToast }) {
   const { addItem } = useCart();
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
   const [isAdded, setIsAdded] = useState(false);
 
   const category = CATEGORY_LIST.find((c) => c.id === item.category);
   const categoryLabel = category ? category.label : item.category;
 
   const handleAddToCart = () => {
+    if (!isAuthenticated) {
+      if (onToast) {
+        onToast('Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng.');
+      }
+      navigate('/login');
+      return;
+    }
+
     addItem(item.id, 1);
     setIsAdded(true);
     if (onToast) {

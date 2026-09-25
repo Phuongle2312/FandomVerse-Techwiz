@@ -1,18 +1,26 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ToastNotification from '../components/common/ToastNotification.jsx';
+import { useAuth } from '../context/AuthContext.jsx';
 
 export default function Signup() {
   const [formData, setFormData] = useState({ name: '', email: '', password: '', fandomInterest: 'anime' });
   const [toast, setToast] = useState(null);
+  const { register } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setToast({
-      message: 'Chế độ demo — không xử lý đăng ký thật (No-Backend Architecture)',
-      type: 'info',
-      icon: 'bi-info-circle-fill',
-    });
+    const result = register(formData);
+    if (result.success) {
+      navigate('/');
+    } else {
+      setToast({
+        message: result.message,
+        type: 'error',
+        icon: 'bi-exclamation-triangle-fill',
+      });
+    }
   };
 
   return (
@@ -75,6 +83,7 @@ export default function Signup() {
                 placeholder="Tối thiểu 8 ký tự"
                 value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                minLength={8}
                 required
               />
             </div>

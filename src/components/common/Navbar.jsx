@@ -4,6 +4,7 @@ import { CATEGORY_LIST } from '../../constants.js';
 import { useCart } from '../../context/CartContext.jsx';
 import { useBookmarks } from '../../context/BookmarkContext.jsx';
 import { useTheme } from '../../context/ThemeContext.jsx';
+import { useAuth } from '../../context/AuthContext.jsx';
 
 export default function Navbar() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -13,6 +14,22 @@ export default function Navbar() {
   const { cartCount, setIsCartOpen } = useCart();
   const { bookmarkCount } = useBookmarks();
   const { isDark, toggleTheme } = useTheme();
+  const { isAuthenticated, currentUser, logout } = useAuth();
+
+  const requireAuthThen = (action) => {
+    if (!isAuthenticated) {
+      setIsNavCollapsed(true);
+      navigate('/login', { state: { from: window.location.hash.replace('#', '') || '/' } });
+      return;
+    }
+    action();
+  };
+
+  const handleLogout = () => {
+    logout();
+    setIsNavCollapsed(true);
+    navigate('/');
+  };
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
@@ -214,8 +231,8 @@ export default function Navbar() {
             </button>
 
             {/* Bookmarks Icon Button */}
-            <Link
-              to="/bookmarks"
+            <button
+              type="button"
               className="btn position-relative rounded-circle p-2 shadow-xs d-flex align-items-center justify-content-center"
               style={{
                 width: '40px',
@@ -225,7 +242,10 @@ export default function Navbar() {
               }}
               title="Danh sách đã lưu"
               aria-label="Xem danh sách bài viết đã bookmark"
-              onClick={() => setIsNavCollapsed(true)}
+              onClick={() => requireAuthThen(() => {
+                setIsNavCollapsed(true);
+                navigate('/bookmarks');
+              })}
             >
               <i className="bi bi-heart-fill text-danger fs-5"></i>
               {bookmarkCount > 0 && (
@@ -233,7 +253,7 @@ export default function Navbar() {
                   {bookmarkCount}
                 </span>
               )}
-            </Link>
+            </button>
 
             {/* Cart Icon Button */}
             <button
@@ -247,10 +267,10 @@ export default function Navbar() {
               }}
               title="Mở giỏ hàng"
               aria-label="Mở giỏ hàng"
-              onClick={() => {
+              onClick={() => requireAuthThen(() => {
                 setIsCartOpen(true);
                 setIsNavCollapsed(true);
-              }}
+              })}
             >
               <i className={`bi bi-cart3 fs-5 ${isDark ? 'text-white' : 'text-primary'}`}></i>
               {cartCount > 0 && (
@@ -260,22 +280,44 @@ export default function Navbar() {
               )}
             </button>
 
-            {/* Dummy Login / Signup Links */}
+            {/* Auth Section: Login/Signup or User Menu */}
             <div className={`d-flex align-items-center gap-2 ms-2 border-start ps-2 ${isDark ? 'border-white-50' : 'border-secondary-subtle'}`}>
-              <Link
-                to="/login"
-                className={`btn btn-sm rounded-pill px-3 ${isDark ? 'btn-outline-light' : 'btn-outline-primary'}`}
-                onClick={() => setIsNavCollapsed(true)}
-              >
-                Đăng nhập
-              </Link>
-              <Link
-                to="/signup"
-                className="btn btn-sm btn-primary-fv px-3 d-none d-sm-inline-block text-white"
-                onClick={() => setIsNavCollapsed(true)}
-              >
-                Đăng ký
-              </Link>
+              {isAuthenticated ? (
+                <>
+                  <span
+                    className={`small fw-semibold d-none d-md-inline-block text-truncate ${isDark ? 'text-white' : 'text-dark'}`}
+                    style={{ maxWidth: '120px' }}
+                    title={currentUser?.name}
+                  >
+                    <i className="bi bi-person-circle me-1"></i>
+                    {currentUser?.name}
+                  </span>
+                  <button
+                    type="button"
+                    className={`btn btn-sm rounded-pill px-3 ${isDark ? 'btn-outline-light' : 'btn-outline-primary'}`}
+                    onClick={handleLogout}
+                  >
+                    Đăng xuất
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link
+                    to="/login"
+                    className={`btn btn-sm rounded-pill px-3 ${isDark ? 'btn-outline-light' : 'btn-outline-primary'}`}
+                    onClick={() => setIsNavCollapsed(true)}
+                  >
+                    Đăng nhập
+                  </Link>
+                  <Link
+                    to="/signup"
+                    className="btn btn-sm btn-primary-fv px-3 d-none d-sm-inline-block text-white"
+                    onClick={() => setIsNavCollapsed(true)}
+                  >
+                    Đăng ký
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>

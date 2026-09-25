@@ -55,6 +55,8 @@ export const STORAGE_KEYS = {
   BOOKMARKS: 'fandomverse_bookmarks',
   NOTES: 'fandomverse_notes',
   VISITOR_COUNT: 'fandomverse_visitor_count',
+  USERS: 'fandomverse_users',
+  CURRENT_USER: 'fandomverse_current_user',
 };
 
 export const CONTENT_TYPES = [

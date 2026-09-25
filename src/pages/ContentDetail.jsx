@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { dataService } from '../services/dataService.js';
 import { CATEGORY_LIST } from '../constants.js';
 import { useBookmarks } from '../context/BookmarkContext.jsx';
+import { useAuth } from '../context/AuthContext.jsx';
 import ContentCard from '../components/cards/ContentCard.jsx';
 import LightboxGallery from '../components/interactive/LightboxGallery.jsx';
 import VideoModal from '../components/interactive/VideoModal.jsx';
@@ -13,7 +14,17 @@ export default function ContentDetail() {
   const content = dataService.getContentById(contentId);
 
   const { isBookmarked, toggleBookmark } = useBookmarks();
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
   const bookmarked = content ? isBookmarked(content.id) : false;
+
+  const handleBookmarkToggle = () => {
+    if (!isAuthenticated) {
+      navigate('/login');
+      return;
+    }
+    toggleBookmark(content);
+  };
 
   const [lightboxImages, setLightboxImages] = useState(null);
   const [activeVideo, setActiveVideo] = useState(null);
@@ -72,7 +83,7 @@ export default function ContentDetail() {
                 className={`btn btn-sm d-flex align-items-center gap-2 px-3 py-2 rounded-pill ${
                   bookmarked ? 'btn-danger text-white' : 'btn-outline-danger'
                 }`}
-                onClick={() => toggleBookmark(content)}
+                onClick={handleBookmarkToggle}
               >
                 <i className={`bi ${bookmarked ? 'bi-heart-fill' : 'bi-heart'}`}></i>
                 <span>{bookmarked ? 'Đã Lưu Vào Bookmark' : 'Lưu Vào Bookmark'}</span>
