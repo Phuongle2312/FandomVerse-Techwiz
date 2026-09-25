@@ -8,6 +8,7 @@ export default function Login() {
   const { t } = useTranslation();
   const [formData, setFormData] = useState({ email: '', password: '', remember: true });
   const [toast, setToast] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -16,6 +17,15 @@ export default function Login() {
 
   const fillDemoAccount = () => {
     setFormData({ ...formData, email: DEMO_ACCOUNT.email, password: DEMO_ACCOUNT.password });
+  };
+
+  const handleForgotPassword = (e) => {
+    e.preventDefault();
+    setToast({
+      message: t('login.forgotPasswordUnavailable'),
+      type: 'info',
+      icon: 'bi-info-circle-fill',
+    });
   };
 
   const handleSubmit = (e) => {
@@ -33,7 +43,8 @@ export default function Login() {
   };
 
   return (
-    <div className="container py-5 d-flex align-items-center justify-content-center" style={{ minHeight: '65vh' }}>
+    <div className="cinematic-hero-space cinematic-hero-wrap align-items-center justify-content-center">
+      <div className="container py-5 d-flex align-items-center justify-content-center">
       <div className="card fv-card border-0 shadow-lg rounded-4 p-4 w-100" style={{ maxWidth: '420px' }}>
         <div className="text-center mb-4">
           <span style={{ fontSize: '2.5rem' }}>🌌</span>
@@ -41,28 +52,26 @@ export default function Login() {
           <p className="text-secondary small mb-0">{t('login.subtitle')}</p>
         </div>
 
-        {redirectedFromAuthGate ? (
-          <div className="alert alert-warning bg-warning-subtle border-0 rounded-3 small py-2 px-3 mb-3">
-            <i className="bi bi-lock-fill me-1 text-warning"></i> {t('login.authGateWarning')}
+        <div
+          className={`alert ${redirectedFromAuthGate ? 'alert-warning bg-warning-subtle' : 'alert-primary bg-primary-subtle'} border-0 rounded-3 small py-2 px-3 mb-3`}
+        >
+          <div className="mb-2">
+            <i className={`bi ${redirectedFromAuthGate ? 'bi-lock-fill text-warning' : 'bi-info-circle text-primary'} me-1`}></i>
+            {redirectedFromAuthGate ? t('login.authGateWarning') : t('login.dummyNotice')}
           </div>
-        ) : (
-          <div className="alert alert-primary bg-primary-subtle border-0 rounded-3 small py-2 px-3 mb-3">
-            <i className="bi bi-info-circle me-1 text-primary"></i> {t('login.dummyNotice')}
+          <div className="d-flex flex-wrap align-items-center justify-content-between gap-2 pt-2 border-top border-white-50 border-opacity-10">
+            <span>
+              <i className="bi bi-person-badge me-1"></i>
+              {t('login.demoAccountLabel')} <strong>{DEMO_ACCOUNT.email}</strong> / <strong>{DEMO_ACCOUNT.password}</strong>
+            </span>
+            <button
+              type="button"
+              className="btn btn-sm btn-outline-secondary flex-shrink-0"
+              onClick={fillDemoAccount}
+            >
+              {t('login.fillDemo')}
+            </button>
           </div>
-        )}
-
-        <div className="alert alert-secondary bg-secondary-subtle border-0 rounded-3 small py-2 px-3 mb-3 d-flex align-items-center justify-content-between gap-2">
-          <span>
-            <i className="bi bi-person-badge me-1"></i>
-            {t('login.demoAccountLabel')} <strong>{DEMO_ACCOUNT.email}</strong> / <strong>{DEMO_ACCOUNT.password}</strong>
-          </span>
-          <button
-            type="button"
-            className="btn btn-sm btn-outline-secondary flex-shrink-0"
-            onClick={fillDemoAccount}
-          >
-            {t('login.fillDemo')}
-          </button>
         </div>
 
         <form onSubmit={handleSubmit}>
@@ -73,7 +82,7 @@ export default function Login() {
                 <i className="bi bi-envelope"></i>
               </span>
               <input
-                type="text"
+                type="email"
                 className="form-control border-start-0 bg-light"
                 placeholder={t('common.demoEmailPlaceholder')}
                 value={formData.email}
@@ -86,22 +95,36 @@ export default function Login() {
           <div className="mb-3">
             <div className="d-flex justify-content-between align-items-center mb-1">
               <label className="form-label small fw-semibold text-secondary mb-0">{t('common.passwordLabel')}</label>
-              <span className="small text-muted" style={{ fontSize: '0.75rem' }}>
+              <button
+                type="button"
+                className="btn btn-link p-0 small fw-semibold text-primary text-decoration-none"
+                style={{ fontSize: '0.75rem' }}
+                onClick={handleForgotPassword}
+              >
                 {t('login.forgotPassword')}
-              </span>
+              </button>
             </div>
             <div className="input-group">
               <span className="input-group-text bg-light border-end-0 text-muted">
                 <i className="bi bi-lock"></i>
               </span>
               <input
-                type="password"
-                className="form-control border-start-0 bg-light"
+                type={showPassword ? 'text' : 'password'}
+                className="form-control border-start-0 border-end-0 bg-light"
                 placeholder="••••••••"
                 value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                 required
               />
+              <button
+                type="button"
+                className="input-group-text bg-light border-start-0 text-muted"
+                onClick={() => setShowPassword((prev) => !prev)}
+                aria-label={showPassword ? t('common.hidePassword') : t('common.showPassword')}
+                title={showPassword ? t('common.hidePassword') : t('common.showPassword')}
+              >
+                <i className={`bi ${showPassword ? 'bi-eye-slash' : 'bi-eye'}`}></i>
+              </button>
             </div>
           </div>
 
@@ -132,6 +155,7 @@ export default function Login() {
       </div>
 
       <ToastNotification toast={toast} onClose={() => setToast(null)} />
+      </div>
     </div>
   );
 }

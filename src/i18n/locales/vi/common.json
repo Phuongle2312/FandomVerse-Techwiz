@@ -101,7 +101,9 @@
     "samplePersonName": "Nguyễn Văn A",
     "emailAddressLabel": "Địa chỉ Email",
     "demoEmailPlaceholder": "fan@fandomverse.io",
-    "passwordLabel": "Mật khẩu"
+    "passwordLabel": "Mật khẩu",
+    "showPassword": "Hiện mật khẩu",
+    "hidePassword": "Ẩn mật khẩu"
   },
   "about": {
     "title": "Về Dự Án FandomVerse",
@@ -154,6 +156,7 @@
     "fillDemo": "Điền nhanh",
     "emailLabel": "Email hoặc Tên đăng nhập",
     "forgotPassword": "Quên mật khẩu?",
+    "forgotPasswordUnavailable": "Tính năng khôi phục mật khẩu chưa khả dụng trong bản demo này.",
     "rememberMe": "Ghi nhớ đăng nhập trên thiết bị này",
     "noAccount": "Chưa có tài khoản?",
     "signupNow": "Đăng ký ngay"

@@ -8,6 +8,7 @@ export default function Signup() {
   const { t } = useTranslation();
   const [formData, setFormData] = useState({ name: '', email: '', password: '', fandomInterest: 'anime' });
   const [toast, setToast] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
   const { register } = useAuth();
   const navigate = useNavigate();
 
@@ -26,7 +27,8 @@ export default function Signup() {
   };
 
   return (
-    <div className="container py-5 d-flex align-items-center justify-content-center" style={{ minHeight: '70vh' }}>
+    <div className="cinematic-hero-space cinematic-hero-wrap align-items-center justify-content-center">
+      <div className="container py-5 d-flex align-items-center justify-content-center">
       <div className="card fv-card border-0 shadow-lg rounded-4 p-4 w-100" style={{ maxWidth: '440px' }}>
         <div className="text-center mb-4">
           <span style={{ fontSize: '2.5rem' }}>🌌</span>
@@ -80,14 +82,23 @@ export default function Signup() {
                 <i className="bi bi-lock"></i>
               </span>
               <input
-                type="password"
-                className="form-control border-start-0 bg-light"
+                type={showPassword ? 'text' : 'password'}
+                className="form-control border-start-0 border-end-0 bg-light"
                 placeholder={t('signup.passwordPlaceholder')}
                 value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                 minLength={8}
                 required
               />
+              <button
+                type="button"
+                className="input-group-text bg-light border-start-0 text-muted"
+                onClick={() => setShowPassword((prev) => !prev)}
+                aria-label={showPassword ? t('common.hidePassword') : t('common.showPassword')}
+                title={showPassword ? t('common.hidePassword') : t('common.showPassword')}
+              >
+                <i className={`bi ${showPassword ? 'bi-eye-slash' : 'bi-eye'}`}></i>
+              </button>
             </div>
           </div>
 
@@ -122,6 +133,7 @@ export default function Signup() {
       </div>
 
       <ToastNotification toast={toast} onClose={() => setToast(null)} />
+      </div>
     </div>
   );
 }

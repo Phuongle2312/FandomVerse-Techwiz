@@ -101,7 +101,9 @@
     "samplePersonName": "Jane Doe",
     "emailAddressLabel": "Email address",
     "demoEmailPlaceholder": "fan@fandomverse.io",
-    "passwordLabel": "Password"
+    "passwordLabel": "Password",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password"
   },
   "about": {
     "title": "About the FandomVerse Project",
@@ -154,6 +156,7 @@
     "fillDemo": "Autofill",
     "emailLabel": "Email or Username",
     "forgotPassword": "Forgot password?",
+    "forgotPasswordUnavailable": "Password recovery is not available in this demo build.",
     "rememberMe": "Remember me on this device",
     "noAccount": "Don't have an account?",
     "signupNow": "Sign up now"
