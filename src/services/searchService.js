@@ -3,7 +3,7 @@ import { dataService } from './dataService.js';
 export const searchService = {
   search(keyword = '', { category = 'all', type = 'all' } = {}) {
     const q = keyword.toLowerCase().trim();
-    if (!q) return [];
+    if (!q && category === 'all' && type === 'all') return [];
 
     let results = [];
 
@@ -11,9 +11,9 @@ export const searchService = {
     if (type === 'all' || ['article', 'gallery', 'video', 'audio'].includes(type)) {
       const contents = dataService.getAllContents();
       contents.forEach((item) => {
-        const matchTitle = item.title.toLowerCase().includes(q);
-        const matchDesc = item.shortDescription?.toLowerCase().includes(q);
-        const matchTags = item.subTags?.some((tag) => tag.toLowerCase().includes(q));
+        const matchTitle = !q || item.title.toLowerCase().includes(q);
+        const matchDesc = !q || item.shortDescription?.toLowerCase().includes(q);
+        const matchTags = !q || item.subTags?.some((tag) => tag.toLowerCase().includes(q));
 
         if (matchTitle || matchDesc || matchTags) {
           results.push({
@@ -34,10 +34,10 @@ export const searchService = {
     if (type === 'all' || type === 'character') {
       const characters = dataService.getAllCharacters();
       characters.forEach((c) => {
-        const matchName = c.name.toLowerCase().includes(q);
-        const matchBio = c.biography.toLowerCase().includes(q);
-        const matchFranchise = c.franchise.toLowerCase().includes(q);
-        const matchTraits = c.traits.some((t) => t.toLowerCase().includes(q));
+        const matchName = !q || c.name.toLowerCase().includes(q);
+        const matchBio = !q || c.biography.toLowerCase().includes(q);
+        const matchFranchise = !q || c.franchise.toLowerCase().includes(q);
+        const matchTraits = !q || c.traits.some((t) => t.toLowerCase().includes(q));
 
         if (matchName || matchBio || matchFranchise || matchTraits) {
           results.push({
@@ -57,9 +57,9 @@ export const searchService = {
     if (type === 'all' || type === 'event') {
       const events = dataService.getAllEvents();
       events.forEach((e) => {
-        const matchTitle = e.title.toLowerCase().includes(q);
-        const matchDesc = e.description.toLowerCase().includes(q);
-        const matchLoc = e.location.toLowerCase().includes(q);
+        const matchTitle = !q || e.title.toLowerCase().includes(q);
+        const matchDesc = !q || e.description.toLowerCase().includes(q);
+        const matchLoc = !q || e.location.toLowerCase().includes(q);
 
         if (matchTitle || matchDesc || matchLoc) {
           results.push({
@@ -80,7 +80,7 @@ export const searchService = {
     if (type === 'all' || type === 'trailer') {
       const trailers = dataService.getAllTrailers();
       trailers.forEach((t) => {
-        if (t.title.toLowerCase().includes(q)) {
+        if (!q || t.title.toLowerCase().includes(q)) {
           results.push({
             id: t.id,
             category: t.category,
@@ -99,8 +99,8 @@ export const searchService = {
     if (type === 'all' || type === 'merchandise') {
       const merchandise = dataService.getAllMerchandise();
       merchandise.forEach((m) => {
-        const matchName = m.name.toLowerCase().includes(q);
-        const matchDesc = m.shortDescription.toLowerCase().includes(q);
+        const matchName = !q || m.name.toLowerCase().includes(q);
+        const matchDesc = !q || m.shortDescription.toLowerCase().includes(q);
 
         if (matchName || matchDesc) {
           results.push({

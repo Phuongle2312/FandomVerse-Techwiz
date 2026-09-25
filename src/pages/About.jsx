@@ -4,7 +4,7 @@ import { CATEGORY_LIST } from '../constants.js';
 
 export default function About() {
   return (
-    <div className="container py-4">
+    <div className="container-fluid px-3 px-md-4 px-lg-5 py-4">
       {/* Hero Section */}
       <div className="text-center py-5 mb-5 bg-primary bg-opacity-10 rounded-4 px-3">
         <span style={{ fontSize: '3rem' }}>🌌</span>

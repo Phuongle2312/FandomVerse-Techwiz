@@ -31,7 +31,7 @@ export default function ContentDetail() {
 
   if (!content) {
     return (
-      <div className="container py-5">
+      <div className="container-fluid px-3 px-md-4 px-lg-5 py-5">
         <EmptyState
           title="Không tìm thấy bài viết"
           message="Bài viết bạn đang tìm không tồn tại hoặc đã bị xóa."
@@ -47,7 +47,7 @@ export default function ContentDetail() {
   const related = dataService.getRelatedContents(content.category, content.id, 3);
 
   return (
-    <div className="container py-4">
+    <div className="container-fluid px-3 px-md-4 px-lg-5 py-4">
       <div className="row g-4 justify-content-center">
         {/* Main Article Content */}
         <div className="col-lg-9 col-12">

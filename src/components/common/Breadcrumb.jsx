@@ -52,7 +52,7 @@ export default function Breadcrumb() {
   }
 
   return (
-    <div className="container pt-3">
+    <div className="container-fluid px-3 px-md-4 px-lg-5 pt-3">
       <nav
         aria-label="breadcrumb"
         className="py-2 px-3 rounded-3 mb-4 shadow-sm"

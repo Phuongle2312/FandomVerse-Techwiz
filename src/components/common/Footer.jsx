@@ -12,15 +12,25 @@ export default function Footer() {
 
   return (
     <footer className="dark-universe-footer mt-auto py-5">
-      <div className="container">
-        <div className="row g-4 mb-4">
+      <div className="container-fluid px-3 px-md-4 px-lg-5">
+        <div className="row g-4 g-xl-5 mb-4 justify-content-between">
           {/* Brand & Introduction */}
-          <div className="col-lg-4 col-md-6">
+          <div className="col-xl-4 col-lg-4 col-md-12">
             <Link to="/" className={`d-flex align-items-center gap-2 text-decoration-none fs-4 fw-bold mb-3 ${isDark ? 'text-white' : 'text-dark'}`}>
-              <span>🌌</span>
+              <span
+                className="d-flex align-items-center justify-content-center rounded-3 text-white shadow-sm"
+                style={{
+                  width: '36px',
+                  height: '36px',
+                  background: 'linear-gradient(135deg, #6C5CE7 0%, #FF6B81 100%)',
+                  fontSize: '1.15rem',
+                }}
+              >
+                🌌
+              </span>
               <span className="font-heading">Fandom<span style={{ color: '#a29bfe' }}>Verse</span></span>
             </Link>
-            <p className="small mb-3">
+            <p className="small mb-3" style={{ maxWidth: '440px', lineHeight: '1.6' }}>
               Cổng thông tin vũ trụ người hâm mộ toàn diện. Kết nối cộng đồng đam mê Anime, Gaming, Phim ảnh, K-Pop, Comics và Manga trên khắp thế giới.
             </p>
             {/* Live Clock & Visitor Counter Badge */}
@@ -29,6 +39,7 @@ export default function Footer() {
               style={{
                 backgroundColor: isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.03)',
                 border: isDark ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.08)',
+                maxWidth: '440px',
               }}
             >
               <div className="d-flex align-items-center justify-content-between mb-2">
@@ -55,16 +66,16 @@ export default function Footer() {
           </div>
 
           {/* 7 Fandom Categories */}
-          <div className="col-lg-4 col-md-6">
+          <div className="col-xl-4 col-lg-4 col-md-6">
             <h6 className={`font-heading fw-bold mb-3 d-flex align-items-center gap-2 ${isDark ? 'text-white' : 'text-dark'}`}>
               <i className="bi bi-grid-fill" style={{ color: '#a29bfe' }}></i> Vũ Trụ Fandom
             </h6>
             <div className="row g-2">
               {CATEGORY_LIST.map((cat) => (
-                <div key={cat.id} className="col-6">
+                <div key={cat.id} className="col-6 col-sm-6">
                   <Link
                     to={`/category/${cat.id}`}
-                    className={`text-decoration-none small d-flex align-items-center gap-1.5 py-1 ${isDark ? 'text-white-50' : 'text-secondary'}`}
+                    className={`text-decoration-none small d-flex align-items-center gap-2 py-1.5 px-2 rounded-2 fv-footer-category-link ${isDark ? 'text-white-50' : 'text-secondary'}`}
                   >
                     <i className={`bi ${cat.icon}`} style={{ color: `var(--accent-${cat.id})` }}></i>
                     <span>{cat.label}</span>
@@ -75,7 +86,7 @@ export default function Footer() {
           </div>
 
           {/* Useful Navigation & Info */}
-          <div className="col-lg-2 col-md-6 col-6">
+          <div className="col-xl-2 col-lg-2 col-md-3 col-6">
             <h6 className={`font-heading fw-bold mb-3 ${isDark ? 'text-white' : 'text-dark'}`}>Khám Phá</h6>
             <ul className="list-unstyled small mb-0">
               <li className="mb-2">
@@ -102,7 +113,7 @@ export default function Footer() {
           </div>
 
           {/* Legal & Static */}
-          <div className="col-lg-2 col-md-6 col-6">
+          <div className="col-xl-2 col-lg-2 col-md-3 col-6">
             <h6 className={`font-heading fw-bold mb-3 ${isDark ? 'text-white' : 'text-dark'}`}>Thông Tin</h6>
             <ul className="list-unstyled small mb-0">
               <li className="mb-2">

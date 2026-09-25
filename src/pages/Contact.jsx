@@ -16,7 +16,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="container py-4">
+    <div className="container-fluid px-3 px-md-4 px-lg-5 py-4">
       {/* Page Title */}
       <div className="text-center mb-5">
         <h1 className="font-heading fw-bold display-6 text-dark mb-2">Liên Hệ & Tọa Độ FandomVerse</h1>
