@@ -166,7 +166,7 @@ export default function CartDrawer() {
                 onClick={handleCheckout}
               >
                 <i className="bi bi-credit-card-2-front-fill"></i>
-                <span>Tiến Hành Thanh Toán (${cartTotal.toFixed(2)})</span>
+                <span>{t('cartDrawer.proceedToCheckout', { total: cartTotal.toFixed(2) })}</span>
               </button>
               <button
                 type="button"
