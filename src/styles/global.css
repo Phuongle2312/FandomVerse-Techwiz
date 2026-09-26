@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Baloo+2:wght@600;700;800&family=Bebas+Neue&family=Comfortaa:wght@500;600;700&family=Montserrat:wght@500;600;700;800;900&family=Orbitron:wght@500;600;700;800;900&family=Oswald:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=Quicksand:wght@500;600;700&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&family=Unbounded:wght@500;700;800;900&display=swap');
 @import './design-tokens.css';
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -686,6 +686,39 @@ nav.fv-navbar.fv-navbar-transparent .navbar-nav > .nav-item > .nav-link:hover,
   -webkit-text-fill-color: #a29bfe !important;
 }
 
+/* User profile button in Navbar */
+.fv-user-nav-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 4px 10px !important;
+  transition: all 0.2s ease !important;
+}
+
+.fv-user-nav-btn:hover {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="light"] .fv-user-nav-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+.fv-user-nav-btn .bi-person-circle {
+  font-size: 1.25rem !important;
+  margin-right: 3px !important;
+  flex-shrink: 0 !important;
+}
+
+.fv-user-nav-btn .fv-username-text {
+  margin-right: 4px !important;
+  letter-spacing: 0.2px !important;
+}
+
+.fv-user-nav-btn .fv-user-chevron {
+  flex-shrink: 0 !important;
+}
+
+
 /* Mobile navbar dropdown: sleek search-only bar container */
 @media (max-width: 991px) {
   .fv-navbar .navbar-collapse.show,
@@ -830,26 +863,66 @@ nav.fv-navbar.fv-navbar-transparent .fv-auth-divider,
 }
 
 /* Navigation bar links - crisp, sharp typography without blurry text-shadow */
-.navbar-nav > .nav-item > .nav-link {
+/* Navigation bar links - crisp, sharp typography with sleek modern hover pills */
+.navbar-nav > .nav-item > .nav-link,
+.fv-nav-item-link {
   text-shadow: none !important;
   font-weight: 600 !important;
-  transition: all 0.2s ease !important;
+  font-size: 0.92rem !important;
+  letter-spacing: 0.02em !important;
+  border-radius: 999px !important;
+  padding: 0.45rem 0.9rem !important;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  position: relative;
 }
 
-[data-theme="light"] .navbar-nav > .nav-item > .nav-link {
-  color: #1e293b !important;
+[data-theme="light"] .navbar-nav > .nav-item > .nav-link,
+[data-theme="light"] .fv-nav-item-link {
+  color: #2d3436 !important;
 }
 
-[data-theme="light"] .navbar-nav > .nav-item > .nav-link:hover {
+[data-theme="light"] .navbar-nav > .nav-item > .nav-link:hover,
+[data-theme="light"] .fv-nav-item-link:hover {
   color: #6C5CE7 !important;
+  background-color: rgba(108, 92, 231, 0.09) !important;
+  transform: translateY(-1px);
 }
 
-[data-theme="dark"] .navbar-nav > .nav-item > .nav-link {
+[data-theme="light"] .navbar-nav > .nav-item > .nav-link.active,
+[data-theme="light"] .fv-nav-item-link.active {
+  color: #6C5CE7 !important;
+  background-color: rgba(108, 92, 231, 0.14) !important;
+}
+
+[data-theme="dark"] .navbar-nav > .nav-item > .nav-link,
+[data-theme="dark"] .fv-nav-item-link {
   color: #f1f5f9 !important;
 }
 
-[data-theme="dark"] .navbar-nav > .nav-item > .nav-link:hover {
+[data-theme="dark"] .navbar-nav > .nav-item > .nav-link:hover,
+[data-theme="dark"] .fv-nav-item-link:hover {
   color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  transform: translateY(-1px);
+}
+
+[data-theme="dark"] .navbar-nav > .nav-item > .nav-link.active,
+[data-theme="dark"] .fv-nav-item-link.active {
+  color: #ffffff !important;
+  background-color: rgba(108, 92, 231, 0.35) !important;
+}
+
+nav.fv-navbar.fv-navbar-transparent .navbar-nav > .nav-item > .nav-link:hover,
+nav.fv-navbar.fv-navbar-transparent .fv-nav-item-link:hover {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  transform: translateY(-1px);
+}
+
+nav.fv-navbar.fv-navbar-transparent .navbar-nav > .nav-item > .nav-link.active,
+nav.fv-navbar.fv-navbar-transparent .fv-nav-item-link.active {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.2) !important;
 }
 
 /* Ensure all dropdown menus and items do not inherit text-shadow */
@@ -2159,7 +2232,24 @@ button.fv-lang-btn:hover,
   flex-direction: column;
   justify-content: flex-end;
   background-color: #0a0c14;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 185, 35, 0.22);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 45px rgba(255, 159, 26, 0.16), 0 0 90px rgba(72, 219, 251, 0.1);
+  animation: moviesHeroAmbilight 7s ease-in-out infinite alternate;
+}
+
+@keyframes moviesHeroAmbilight {
+  0% {
+    border-color: rgba(255, 185, 35, 0.25);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 45px rgba(255, 159, 26, 0.18), 0 0 80px rgba(72, 219, 251, 0.08);
+  }
+  50% {
+    border-color: rgba(255, 71, 87, 0.3);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 60px rgba(255, 71, 87, 0.2), 0 0 100px rgba(162, 155, 254, 0.14);
+  }
+  100% {
+    border-color: rgba(72, 219, 251, 0.32);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 50px rgba(72, 219, 251, 0.22), 0 0 95px rgba(255, 159, 26, 0.12);
+  }
 }
 
 .movies-hero-bg {
@@ -2196,6 +2286,7 @@ button.fv-lang-btn:hover,
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: #fff;
+  font-family: var(--font-movies-title);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -2206,11 +2297,13 @@ button.fv-lang-btn:hover,
 }
 
 .movies-hero-title {
-  font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: clamp(1.75rem, 3.2vw, 2.75rem);
-  line-height: 1.1;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  font-family: var(--font-movies-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: clamp(2rem, 3.6vw, 3.25rem);
+  line-height: 1.08;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 0 30px rgba(9, 132, 227, 0.35);
   margin-bottom: 0.75rem;
 }
 
@@ -2244,8 +2337,11 @@ button.fv-lang-btn:hover,
   border: none;
   border-radius: 9999px;
   padding: 0.8rem 1.75rem;
+  font-family: var(--font-movies-title);
   font-weight: 700;
-  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 0.9rem;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -2399,8 +2495,10 @@ button.fv-lang-btn:hover,
   color: #fff;
 }
 .movies-poster-card .poster-title {
+  font-family: var(--font-movies-title);
   font-size: 0.85rem;
   font-weight: 700;
+  letter-spacing: 0.02em;
   line-height: 1.3;
   margin-bottom: 0.15rem;
   display: -webkit-box;
@@ -3354,53 +3452,55 @@ button.fv-lang-btn:hover,
   text-transform: uppercase;
 }
 
-/* 3. Exclusive Gaming Cyber Hero Banner */
-.gaming-cyber-hero {
+/* 3. Exclusive Gaming Cinema Hero Banner (Layout matching Anime & Hextech LoL colors) */
+.gaming-cinema-hero {
+  border: 1.5px solid rgba(0, 206, 201, 0.4) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 45px rgba(0, 206, 201, 0.18), 0 0 90px rgba(9, 132, 227, 0.12) !important;
   position: relative;
-  background: radial-gradient(circle at 80% 20%, rgba(0, 255, 204, 0.15) 0%, rgba(108, 92, 231, 0.1) 40%, #070a14 100%);
-  border: 1px solid rgba(0, 255, 204, 0.35);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(0, 255, 204, 0.05);
-  border-radius: 20px;
-  padding: 2.5rem 2rem;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.35s ease;
 }
 
-@media (max-width: 768px) {
-  .gaming-cyber-hero {
-    padding: 1.5rem 1.2rem;
-    border-radius: 16px;
-  }
+.gaming-cinema-hero:hover {
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.75), 0 0 60px rgba(0, 206, 201, 0.28), 0 0 110px rgba(9, 132, 227, 0.18) !important;
+  border-color: rgba(0, 206, 201, 0.6) !important;
 }
 
-/* Cyber Grid Background lines */
-.gaming-cyber-grid-bg {
+.gaming-cinema-hero .category-cinema-hero-bg {
+  object-fit: cover !important;
+  opacity: 0.95 !important;
+  filter: contrast(1.1) saturate(1.2) brightness(1.02) !important;
+}
+
+.gaming-cinema-hero .gaming-cinema-scrim {
   position: absolute;
   inset: 0;
-  background-image: 
-    linear-gradient(rgba(0, 255, 204, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 204, 0.07) 1px, transparent 1px);
-  background-size: 32px 32px;
-  background-position: center center;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(7, 10, 20, 0.94) 0%, rgba(7, 10, 20, 0.68) 45%, rgba(7, 10, 20, 0.12) 75%, rgba(7, 10, 20, 0.5) 100%),
+    linear-gradient(0deg, rgba(7, 10, 20, 0.95) 0%, rgba(7, 10, 20, 0.12) 50%, rgba(7, 10, 20, 0.08) 100%) !important;
   pointer-events: none;
-  opacity: 0.85;
 }
 
-/* Scanline Sweep animation */
-.gaming-cyber-scanlines {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    rgba(18, 16, 16, 0) 50%, 
-    rgba(0, 255, 204, 0.04) 50%
-  ), linear-gradient(
-    90deg,
-    rgba(255, 0, 0, 0.03),
-    rgba(0, 255, 0, 0.01),
-    rgba(0, 0, 255, 0.03)
-  );
-  background-size: 100% 4px, 6px 100%;
-  pointer-events: none;
+.gaming-universe-container .gaming-cinema-hero .category-cinema-hero-title {
+  font-family: var(--font-gaming-display) !important;
+  font-weight: 800 !important;
+  letter-spacing: 1.5px !important;
+  text-shadow: 0 0 24px rgba(0, 206, 201, 0.45), 2px 2px 8px rgba(0, 0, 0, 0.9) !important;
+}
+
+.gaming-universe-container .gaming-cinema-hero .category-cinema-hero-desc {
+  font-family: var(--font-gaming-title) !important;
+  font-size: 1.05rem !important;
+  font-weight: 500 !important;
+  line-height: 1.65 !important;
+  color: rgba(255, 255, 255, 0.92) !important;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.gaming-universe-container .gaming-cinema-hero .category-cinema-hero-stats {
+  border: 1px solid rgba(0, 206, 201, 0.3) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 206, 201, 0.05) !important;
 }
 
 /* Active laser scan beam */
@@ -3671,3 +3771,692 @@ button.fv-lang-btn:hover,
 .gaming-event-card .badge {
   font-family: var(--font-gaming-mono) !important;
 }
+
+/* ==========================================================================
+   EXCLUSIVE ANIME, MANGA & JRPG TYPOGRAPHY & AESTHETICS
+   Fonts: Montserrat & Bebas Neue (Titles/Banners), Quicksand & Comfortaa (Body/Pills/Cute)
+   ========================================================================== */
+
+/* 1. Global Anime Font Classes */
+.anime-font-title {
+  font-family: var(--font-anime-title) !important;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.anime-font-display {
+  font-family: var(--font-anime-display) !important;
+  letter-spacing: 1px;
+}
+
+.anime-font-body {
+  font-family: var(--font-anime-body) !important;
+}
+
+.anime-font-cute {
+  font-family: var(--font-anime-cute) !important;
+}
+
+/* 2. Anime Category Hub Experience */
+.anime-universe-container .category-cinema-hero-title {
+  font-family: var(--font-anime-title) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.5px !important;
+}
+
+.anime-universe-container .category-cinema-hero-desc {
+  font-family: var(--font-anime-body) !important;
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  line-height: 1.6 !important;
+}
+
+.anime-universe-container .category-cinema-hero-stats {
+  font-family: var(--font-anime-title) !important;
+  font-weight: 600 !important;
+}
+
+.anime-universe-container .category-cinema-hero-cta,
+.anime-universe-container .category-cinema-hero-btn-secondary {
+  font-family: var(--font-anime-title) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.3px;
+}
+
+.anime-universe-container .badge-category-anime,
+.badge-category-anime {
+  font-family: var(--font-anime-cute) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px;
+}
+
+/* Anime Navigation Tabs & Filters */
+.anime-universe-container .nav-pills .nav-link {
+  font-family: var(--font-anime-title) !important;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.anime-universe-container .nav-pills .nav-link.active {
+  background: linear-gradient(135deg, #FF6B81, #ff758c) !important;
+  color: #ffffff !important;
+  border: 1px solid #FF6B81 !important;
+  box-shadow: 0 4px 16px rgba(255, 107, 129, 0.4) !important;
+}
+
+.anime-universe-container .btn-primary {
+  font-family: var(--font-anime-title) !important;
+  font-weight: 700;
+  background: linear-gradient(135deg, #FF6B81, #ff758c) !important;
+  border-color: #FF6B81 !important;
+}
+
+.anime-universe-container .btn-outline-secondary,
+.anime-universe-container .btn-outline-light {
+  font-family: var(--font-anime-body) !important;
+  font-weight: 600;
+}
+
+/* 3. Anime Content Cards */
+.accent-border-anime {
+  border-left: 4px solid var(--accent-anime) !important;
+}
+
+.fv-content-card.accent-border-anime .card-title {
+  font-family: var(--font-anime-title) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.2px !important;
+}
+
+.fv-content-card.accent-border-anime .badge.rounded-pill {
+  font-family: var(--font-anime-cute) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.2px;
+}
+
+.fv-content-card.accent-border-anime .btn {
+  font-family: var(--font-anime-title) !important;
+  font-weight: 700;
+}
+
+/* 4. Anime Character Card */
+.anime-character-card h5 {
+  font-family: var(--font-anime-title) !important;
+  font-weight: 700 !important;
+}
+
+.anime-character-card .badge {
+  font-family: var(--font-anime-cute) !important;
+  font-weight: 600 !important;
+}
+
+.anime-character-card p {
+  font-family: var(--font-anime-body) !important;
+}
+
+/* 5. Anime Event Card */
+.anime-event-card h5 {
+  font-family: var(--font-anime-title) !important;
+  font-weight: 700 !important;
+}
+
+.anime-event-card .fv-event-date-block {
+  font-family: var(--font-anime-title) !important;
+}
+
+.anime-event-card .badge {
+  font-family: var(--font-anime-cute) !important;
+  font-weight: 600 !important;
+}
+
+/* ==========================================================================
+   EXCLUSIVE K-POP & IDOL COMEBACK STAGE EXPERIENCE
+   Fonts: Unbounded (Display/Hero), Baloo 2 (Titles/Badges/UI), Poppins (Body)
+   ========================================================================== */
+
+/* 1. Global K-Pop Font Classes */
+.kpop-font-display {
+  font-family: var(--font-kpop-display) !important;
+  letter-spacing: 0.5px;
+}
+
+.kpop-font-title {
+  font-family: var(--font-kpop-title) !important;
+  font-weight: 700;
+}
+
+.kpop-font-body {
+  font-family: var(--font-kpop-body) !important;
+}
+
+/* 2. K-Pop Badge & Accent Theme */
+.badge-category-kpop {
+  font-family: var(--font-kpop-title) !important;
+  font-weight: 700;
+}
+
+/* 3. Exclusive K-Pop Holographic Comeback Stage Hero */
+.kpop-hero {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-color: #0c0a1a;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(160, 108, 255, 0.2);
+  border: 1px solid rgba(255, 91, 168, 0.3);
+}
+
+.kpop-hero-holo-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    var(--kpop-holo-1) 0%,
+    var(--kpop-holo-2) 28%,
+    #0c0a1a 55%,
+    var(--kpop-holo-3) 80%,
+    var(--kpop-holo-4) 100%
+  );
+  background-size: 300% 300%;
+  opacity: 0.55;
+  animation: kpopHoloShift 10s ease infinite;
+}
+
+@keyframes kpopHoloShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.kpop-hero-spotlight {
+  position: absolute;
+  width: 60vw;
+  height: 60vw;
+  max-width: 520px;
+  max-height: 520px;
+  border-radius: 50%;
+  filter: blur(70px);
+  pointer-events: none;
+  animation: kpopSpotlightPulse 6s ease-in-out infinite;
+}
+
+.kpop-spotlight-1 {
+  top: -15%;
+  right: -10%;
+  background: radial-gradient(circle, rgba(255, 91, 168, 0.45) 0%, transparent 70%);
+  animation-delay: 0s;
+}
+
+.kpop-spotlight-2 {
+  bottom: -20%;
+  left: -10%;
+  background: radial-gradient(circle, rgba(79, 216, 255, 0.4) 0%, transparent 70%);
+  animation-delay: 2s;
+}
+
+@keyframes kpopSpotlightPulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+.kpop-hero-content {
+  position: relative;
+  z-index: 3;
+  padding: 2.5rem 2.5rem 2.25rem;
+  max-width: 680px;
+  color: #fff;
+}
+
+.kpop-hero-title {
+  font-family: var(--font-kpop-display);
+  font-weight: 800;
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(90deg, var(--kpop-holo-1), var(--kpop-holo-2), var(--kpop-holo-3), var(--kpop-holo-4), var(--kpop-holo-1));
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 24px rgba(160, 108, 255, 0.5);
+  animation: kpopHoloShift 6s linear infinite;
+}
+
+.kpop-hero-desc {
+  font-family: var(--font-kpop-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 1.25rem;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.kpop-badge-holo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-kpop-title);
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: #fff;
+  padding: 0.4rem 0.9rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, var(--kpop-holo-1), var(--kpop-holo-2));
+  box-shadow: 0 4px 16px rgba(255, 91, 168, 0.35);
+}
+
+.kpop-badge-holo--alt {
+  background: linear-gradient(135deg, var(--kpop-holo-2), var(--kpop-holo-3));
+  box-shadow: 0 4px 16px rgba(79, 216, 255, 0.35);
+}
+
+.kpop-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-kpop-title);
+  background: linear-gradient(135deg, var(--kpop-holo-1) 0%, var(--kpop-holo-2) 60%, var(--kpop-holo-3) 100%);
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.75rem 1.6rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(160, 108, 255, 0.45);
+  transition: all 0.25s ease;
+}
+
+.kpop-hero-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(160, 108, 255, 0.6);
+  color: #fff;
+}
+
+@media (max-width: 767px) {
+  .kpop-hero {
+    min-height: 400px;
+    border-radius: 20px;
+  }
+  .kpop-hero-content {
+    padding: 1.5rem 1.25rem 1.25rem;
+  }
+  .kpop-hero-title {
+    font-size: 1.85rem;
+  }
+  .kpop-hero-desc {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .kpop-hero-cta {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.82rem;
+  }
+}
+
+/* 4. K-Pop Category Hub Navigation, Filters & Buttons */
+.kpop-universe-container .nav-pills .nav-link {
+  font-family: var(--font-kpop-title) !important;
+  font-weight: 700;
+}
+
+.kpop-universe-container .nav-pills .nav-link.active {
+  background: linear-gradient(135deg, var(--kpop-holo-1), var(--kpop-holo-2)) !important;
+  color: #ffffff !important;
+  border: 1px solid var(--kpop-holo-1) !important;
+  box-shadow: 0 4px 16px rgba(255, 91, 168, 0.4) !important;
+}
+
+.kpop-universe-container .btn-primary {
+  font-family: var(--font-kpop-title) !important;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--kpop-holo-1), var(--kpop-holo-2)) !important;
+  border-color: var(--kpop-holo-1) !important;
+}
+
+.kpop-universe-container .btn-outline-secondary,
+.kpop-universe-container .btn-outline-light {
+  font-family: var(--font-kpop-body) !important;
+  font-weight: 600;
+}
+
+/* 5. K-Pop Content Cards */
+.accent-border-kpop {
+  border-left: 4px solid var(--accent-kpop) !important;
+}
+
+.fv-content-card.accent-border-kpop .card-title {
+  font-family: var(--font-kpop-title) !important;
+  font-weight: 700 !important;
+}
+
+.fv-content-card.accent-border-kpop .badge.rounded-pill {
+  font-family: var(--font-kpop-body) !important;
+  font-weight: 600 !important;
+}
+
+.fv-content-card.accent-border-kpop .btn {
+  font-family: var(--font-kpop-title) !important;
+  font-weight: 700;
+}
+
+/* 6. K-Pop Character Card */
+.kpop-character-card h5 {
+  font-family: var(--font-kpop-title) !important;
+  font-weight: 700 !important;
+}
+
+.kpop-character-card .badge {
+  font-family: var(--font-kpop-body) !important;
+  font-weight: 600 !important;
+}
+
+.kpop-character-card p {
+  font-family: var(--font-kpop-body) !important;
+}
+
+/* 7. K-Pop Event Card */
+.kpop-event-card h5 {
+  font-family: var(--font-kpop-title) !important;
+  font-weight: 700 !important;
+}
+
+.kpop-event-card .fv-event-date-block {
+  font-family: var(--font-kpop-title) !important;
+}
+
+.kpop-event-card .badge {
+  font-family: var(--font-kpop-body) !important;
+  font-weight: 600 !important;
+}
+
+/* ==========================================================================
+   EXCLUSIVE MOVIES & CINEMATIC BLOCKBUSTER EXPERIENCE
+   Fonts: Anton (Poster Display), Oswald (Titles/UI/Body — condensed cinema signage)
+   ========================================================================== */
+
+/* 1. Global Movies Font Classes */
+.movies-font-display {
+  font-family: var(--font-movies-display) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.movies-font-title {
+  font-family: var(--font-movies-title) !important;
+  font-weight: 600;
+}
+
+.movies-font-body {
+  font-family: var(--font-movies-body) !important;
+}
+
+/* 2. Movies Badge & Accent Theme */
+.badge-category-movies {
+  font-family: var(--font-movies-title) !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* 3. Movies Category Hub Navigation, Filters & Buttons */
+.movies-universe-container .nav-pills .nav-link {
+  font-family: var(--font-movies-title) !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.movies-universe-container .nav-pills .nav-link.active {
+  background: linear-gradient(135deg, #0984E3, #4834d4) !important;
+  color: #ffffff !important;
+  border: 1px solid #0984E3 !important;
+  box-shadow: 0 4px 16px rgba(9, 132, 227, 0.4) !important;
+}
+
+.movies-universe-container .btn-primary {
+  font-family: var(--font-movies-title) !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  background: linear-gradient(135deg, #0984E3, #4834d4) !important;
+  border-color: #0984E3 !important;
+}
+
+.movies-universe-container .btn-outline-secondary,
+.movies-universe-container .btn-outline-light {
+  font-family: var(--font-movies-body) !important;
+  font-weight: 500;
+}
+
+/* 4. Movies Content Cards */
+.fv-content-card.accent-border-movies .card-title {
+  font-family: var(--font-movies-title) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em;
+}
+
+.fv-content-card.accent-border-movies .badge.rounded-pill {
+  font-family: var(--font-movies-body) !important;
+  font-weight: 500 !important;
+}
+
+.fv-content-card.accent-border-movies .btn {
+  font-family: var(--font-movies-title) !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* 5. Movies Character Card (Actors/Roles) */
+.movies-character-card h5 {
+  font-family: var(--font-movies-title) !important;
+  font-weight: 600 !important;
+}
+
+.movies-character-card .badge {
+  font-family: var(--font-movies-body) !important;
+  font-weight: 500 !important;
+}
+
+.movies-character-card p {
+  font-family: var(--font-movies-body) !important;
+}
+
+/* 6. Movies Event Card (Premieres/Screenings) */
+.movies-event-card h5 {
+  font-family: var(--font-movies-title) !important;
+  font-weight: 600 !important;
+}
+
+.movies-event-card .fv-event-date-block {
+  font-family: var(--font-movies-display) !important;
+}
+
+.movies-event-card .badge {
+  font-family: var(--font-movies-body) !important;
+  font-weight: 500 !important;
+}
+
+/* ==========================================================================
+   EXCLUSIVE MANGA & SHONEN COMIC EXPERIENCE
+   Fonts: Dela Gothic One (Titles/Japanese Manga Cover), Bangers (SFX/Action), Quicksand (Body)
+   ========================================================================== */
+
+/* 1. Global Manga Font Classes */
+.manga-font-title {
+  font-family: var(--font-manga-title) !important;
+  letter-spacing: 0.5px;
+}
+
+.manga-font-display {
+  font-family: var(--font-manga-display) !important;
+  letter-spacing: 1px;
+}
+
+.manga-font-sfx {
+  font-family: var(--font-manga-sfx) !important;
+  letter-spacing: 1.5px;
+}
+
+.manga-font-body {
+  font-family: var(--font-manga-body) !important;
+}
+
+/* 2. Manga Category Hub Experience */
+.manga-universe-container .category-cinema-hero {
+  border: 2px solid rgba(225, 112, 85, 0.45);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65), 0 0 40px rgba(225, 112, 85, 0.22), 0 0 80px rgba(214, 48, 49, 0.12);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.4s ease;
+}
+
+.manga-universe-container .category-cinema-hero:hover {
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.7), 0 0 55px rgba(225, 112, 85, 0.32), 0 0 100px rgba(214, 48, 49, 0.2);
+}
+
+.manga-universe-container .category-cinema-hero-title {
+  font-family: var(--font-manga-title) !important;
+  font-weight: 900 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase;
+  color: #ffffff !important;
+  text-shadow: 3px 3px 0px #d63031, 5px 5px 18px rgba(0, 0, 0, 0.85) !important;
+}
+
+.manga-universe-container .category-cinema-hero-desc {
+  font-family: var(--font-manga-body) !important;
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  line-height: 1.65 !important;
+  color: rgba(255, 255, 255, 0.92) !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.manga-universe-container .category-cinema-hero-stats {
+  font-family: var(--font-manga-title) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px;
+  background: rgba(17, 20, 26, 0.75) !important;
+  border: 1px solid rgba(225, 112, 85, 0.35) !important;
+}
+
+.manga-universe-container .category-cinema-hero-cta {
+  font-family: var(--font-manga-title) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.manga-universe-container .category-cinema-hero-cta:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(211, 84, 0, 0.6) !important;
+}
+
+.manga-universe-container .category-cinema-hero-btn-secondary {
+  font-family: var(--font-manga-title) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px;
+}
+
+.manga-universe-container .badge-category-manga,
+.badge-category-manga {
+  font-family: var(--font-manga-display) !important;
+  letter-spacing: 0.6px;
+  font-weight: 600;
+}
+
+/* 3. Manga Navigation Tabs & Filters */
+.manga-universe-container .nav-pills .nav-link {
+  font-family: var(--font-manga-title) !important;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.manga-universe-container .nav-pills .nav-link.active {
+  background: linear-gradient(135deg, #e17055, #d63031) !important;
+  color: #ffffff !important;
+  border: 1px solid #e17055 !important;
+  box-shadow: 0 4px 18px rgba(225, 112, 85, 0.45) !important;
+}
+
+.manga-universe-container .btn-primary {
+  font-family: var(--font-manga-title) !important;
+  font-weight: 700;
+  background: linear-gradient(135deg, #e17055, #d63031) !important;
+  border-color: #e17055 !important;
+}
+
+.manga-universe-container .btn-outline-secondary,
+.manga-universe-container .btn-outline-light {
+  font-family: var(--font-manga-body) !important;
+  font-weight: 600;
+}
+
+/* 4. Manga Content Cards */
+.accent-border-manga {
+  border-left: 4px solid var(--accent-manga) !important;
+}
+
+.fv-content-card.accent-border-manga .card-title {
+  font-family: var(--font-manga-title) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.3px !important;
+}
+
+.fv-content-card.accent-border-manga .badge.rounded-pill {
+  font-family: var(--font-manga-display) !important;
+  letter-spacing: 0.5px;
+}
+
+.fv-content-card.accent-border-manga .btn {
+  font-family: var(--font-manga-title) !important;
+  font-weight: 700;
+}
+
+/* 5. Manga Character Card */
+.manga-character-card h5 {
+  font-family: var(--font-manga-title) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.3px;
+}
+
+.manga-character-card .badge {
+  font-family: var(--font-manga-display) !important;
+  letter-spacing: 0.5px;
+}
+
+.manga-character-card p {
+  font-family: var(--font-manga-body) !important;
+  font-weight: 500;
+}
+
+/* 6. Manga Event Card */
+.manga-event-card h5 {
+  font-family: var(--font-manga-title) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.3px;
+}
+
+.manga-event-card .fv-event-date-block {
+  font-family: var(--font-manga-title) !important;
+  font-weight: 700;
+}
+
+.manga-event-card .badge {
+  font-family: var(--font-manga-display) !important;
+  letter-spacing: 0.5px;
+}
+
+

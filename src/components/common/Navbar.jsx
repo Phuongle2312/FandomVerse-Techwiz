@@ -243,12 +243,11 @@ export default function Navbar() {
             >
               <button
                 type="button"
-                className={`nav-link dropdown-toggle fw-semibold px-3 d-flex align-items-center gap-1.5 bg-transparent border-0 ${navTextColor}`}
+                className={`nav-link dropdown-toggle fw-semibold px-2.5 d-flex align-items-center gap-1 bg-transparent border-0 fv-nav-item-link ${navTextColor}`}
                 id="categoriesDropdown"
                 aria-expanded={isCategoriesOpen}
                 onClick={() => setIsCategoriesOpen((open) => !open)}
               >
-                <i className="bi bi-grid-3x3-gap-fill" style={{ color: '#6C5CE7' }}></i>
                 <span>{t('navbar.fandomUniverse')}</span>
               </button>
               <ul
@@ -286,10 +285,9 @@ export default function Navbar() {
             <li className="nav-item">
               <Link
                 to="/trailers"
-                className={`nav-link fw-semibold px-3 d-flex align-items-center gap-1.5 ${navTextColor}`}
+                className={`nav-link fw-semibold px-2.5 fv-nav-item-link ${navTextColor} ${location.pathname === '/trailers' ? 'active' : ''}`}
                 onClick={() => setIsNavCollapsed(true)}
               >
-                <i className="bi bi-play-circle-fill text-danger"></i>
                 <span>{t('navbar.trailers')}</span>
               </Link>
             </li>
@@ -297,30 +295,20 @@ export default function Navbar() {
             <li className="nav-item">
               <Link
                 to="/merchandise"
-                className={`nav-link fw-semibold px-3 d-flex align-items-center gap-1.5 ${navTextColor}`}
+                className={`nav-link fw-semibold px-2.5 fv-nav-item-link ${navTextColor} ${location.pathname === '/merchandise' ? 'active' : ''}`}
                 onClick={() => setIsNavCollapsed(true)}
               >
-                <i className="bi bi-bag-check-fill text-success"></i>
                 <span>{t('navbar.merchandise')}</span>
               </Link>
             </li>
 
             <li className="nav-item">
               <Link
-                to="/about"
-                className={`nav-link fw-semibold px-3 ${navTextColor}`}
-                onClick={() => setIsNavCollapsed(true)}
-              >
-                {t('navbar.about')}
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
                 to="/contact"
-                className={`nav-link fw-semibold px-3 ${navTextColor}`}
+                className={`nav-link fw-semibold px-2.5 fv-nav-item-link ${navTextColor} ${location.pathname === '/contact' ? 'active' : ''}`}
                 onClick={() => setIsNavCollapsed(true)}
               >
-                {t('navbar.contact')}
+                <span>{t('navbar.contact')}</span>
               </Link>
             </li>
           </ul>
@@ -672,15 +660,15 @@ export default function Navbar() {
                 <div ref={userMenuRef} className={`dropdown ${isUserMenuOpen ? 'show' : ''} position-relative`}>
                   <button
                     type="button"
-                    className="btn d-flex align-items-center gap-1.5 border-0 bg-transparent px-1"
-                    style={{ maxWidth: '180px' }}
+                    className="btn d-flex align-items-center border-0 bg-transparent px-2 py-1 rounded-pill fv-user-nav-btn"
+                    style={{ maxWidth: '200px', gap: '8px' }}
                     title={currentUser?.name}
                     aria-expanded={isUserMenuOpen}
                     onClick={() => setIsUserMenuOpen((open) => !open)}
                   >
-                    <i className="bi bi-person-circle fs-5" style={{ color: '#00a8ff' }}></i>
+                    <i className="bi bi-person-circle fs-5 me-1" style={{ color: '#00a8ff', flexShrink: 0 }}></i>
                     <span className={`fv-username-text fw-bold fs-6 text-truncate ${navTextColor}`}>{currentUser?.name}</span>
-                    <i className={`fv-user-chevron bi bi-chevron-${isUserMenuOpen ? 'up' : 'down'} ${navSubTextColor}`} style={{ fontSize: '0.65rem' }}></i>
+                    <i className={`fv-user-chevron bi bi-chevron-${isUserMenuOpen ? 'up' : 'down'} ${navSubTextColor} ms-1`} style={{ fontSize: '0.65rem', flexShrink: 0 }}></i>
                   </button>
 
                   <ul
@@ -751,6 +739,21 @@ export default function Navbar() {
                           <span className="badge bg-primary rounded-pill ms-auto">{cartCount}</span>
                         )}
                       </button>
+                    </li>
+                    <li>
+                      <Link
+                        to="/admin"
+                        className="dropdown-item d-flex align-items-center gap-2 py-2 px-3"
+                        style={{ color: '#00f5d4', fontWeight: 600 }}
+                        onClick={() => {
+                          setIsUserMenuOpen(false);
+                          setIsNavCollapsed(true);
+                        }}
+                      >
+                        <i className="bi bi-shield-lock-fill" style={{ color: '#00f5d4' }}></i>
+                        <span>Quản trị (Admin Portal)</span>
+                        <span className="badge bg-success-subtle text-success border border-success-subtle ms-auto" style={{ fontSize: '0.65rem' }}>PRO</span>
+                      </Link>
                     </li>
                     <li><hr className="dropdown-divider my-1" style={{ borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.08)' }} /></li>
                     <li>

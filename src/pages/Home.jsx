@@ -30,6 +30,7 @@ export default function Home() {
   const [trailerCategory, setTrailerCategory] = useState('all');
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  const [isAutoScrollActive, setIsAutoScrollActive] = useState(true);
 
   const trailerSliderRef = useRef(null);
   const heroVideoRef = useRef(null);
@@ -37,6 +38,35 @@ export default function Home() {
   const startXRef = useRef(0);
   const scrollLeftRef = useRef(0);
   const hasMovedRef = useRef(false);
+  const isTrailerHoveredRef = useRef(false);
+
+  // Hiệu ứng lướt tự động mượt mà cho phần trailer
+  useEffect(() => {
+    if (!isAutoScrollActive) return;
+
+    const interval = setInterval(() => {
+      if (
+        isTrailerHoveredRef.current ||
+        isDraggingRef.current ||
+        !trailerSliderRef.current ||
+        activeVideo
+      ) {
+        return;
+      }
+      const slider = trailerSliderRef.current;
+      const cardWidth = 360;
+      const maxScroll = slider.scrollWidth - slider.clientWidth;
+
+      if (slider.scrollLeft >= maxScroll - 30) {
+        slider.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        slider.scrollBy({ left: cardWidth, behavior: 'smooth' });
+      }
+      setTimeout(checkScrollBounds, 350);
+    }, 2800);
+
+    return () => clearInterval(interval);
+  }, [isAutoScrollActive, checkScrollBounds, activeVideo]);
 
   useEffect(() => {
     if (heroVideoRef.current) {
@@ -420,8 +450,24 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Slider Navigation Arrows & View All Link */}
+            {/* Slider Navigation Arrows & View All Link & Auto-scroll Toggle */}
             <div className="d-flex align-items-center gap-2">
+              <button
+                type="button"
+                className={`btn btn-sm rounded-pill px-3 py-1.5 fw-semibold d-inline-flex align-items-center gap-1.5 border-0 ${
+                  isAutoScrollActive
+                    ? 'bg-danger bg-opacity-20 text-danger'
+                    : isDark
+                    ? 'bg-secondary bg-opacity-20 text-white-50'
+                    : 'bg-secondary bg-opacity-10 text-secondary'
+                }`}
+                onClick={() => setIsAutoScrollActive(!isAutoScrollActive)}
+                title={isAutoScrollActive ? 'Bấm để tạm dừng lướt tự động' : 'Bấm để bật lướt tự động'}
+                style={{ fontSize: '0.8rem', transition: 'all 0.2s ease' }}
+              >
+                <i className={`bi ${isAutoScrollActive ? 'bi-pause-circle-fill' : 'bi-play-circle-fill'}`}></i>
+                <span>{isAutoScrollActive ? 'Tự động lướt: Bật' : 'Tự động lướt: Tắt'}</span>
+              </button>
               <button
                 type="button"
                 className="fv-slider-nav-btn"
@@ -485,7 +531,16 @@ export default function Home() {
           </div>
 
           {/* Interactive Sliding Track ("Lướt") */}
-          <div className="fv-trailer-slider-container">
+          <div
+            className="fv-trailer-slider-container"
+            onMouseEnter={() => {
+              isTrailerHoveredRef.current = true;
+            }}
+            onMouseLeave={() => {
+              isTrailerHoveredRef.current = false;
+              handleMouseUpOrLeave();
+            }}
+          >
             <div
               ref={trailerSliderRef}
               className="fv-trailer-slider-track"

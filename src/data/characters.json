@@ -7,7 +7,7 @@
       "en": "Monkey D. Luffy",
       "hi": "मंकी डी. लूफी"
     },
-    "image": "image/luffy.jpg",
+    "image": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500&auto=format&fit=crop&q=80",
     "franchise": "One Piece",
     "biography": {
       "vi": "Thuyền trưởng băng hải tặc Mũ Rơm với ước mơ tìm thấy kho báu vĩ đại One Piece và trở thành Vua Hải Tặc. Cậu sở hữu sức mạnh co giãn cao su từ trái ác quỷ Hito Hito no Mi, Model: Nika.",
@@ -45,7 +45,7 @@
       "en": "Naruto Uzumaki",
       "hi": "नारुतो उज़ुमाकी"
     },
-    "image": "image/naruto_1.jpg",
+    "image": "https://images.unsplash.com/photo-1563089145-599997674d42?w=500&auto=format&fit=crop&q=80",
     "franchise": "Naruto",
     "biography": {
       "vi": "Ninja làng Lá mang trong mình Cửu Vĩ Kurama, vượt qua định kiến và nỗi cô đơn thời thơ ấu bằng ý chí kiên định để trở thành Hokage Đệ Thất vĩ đại bảo vệ nhẫn giới.",
@@ -83,7 +83,7 @@
       "en": "Goku",
       "hi": "गोकू"
     },
-    "image": "image/goku.jpg",
+    "image": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=500&auto=format&fit=crop&q=80",
     "franchise": "Dragon Ball",
     "biography": {
       "vi": "Chiến binh người Saiyan sống tại Trái Đất, luôn khao khát vượt qua giới hạn của bản thân thông qua rèn luyện không ngừng và đối đầu với những đối thủ mạnh nhất vũ trụ.",
@@ -121,7 +121,7 @@
       "en": "Levi Ackerman",
       "hi": "लेवी एकरमैन"
     },
-    "image": "image/levi.jpg",
+    "image": "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?w=500&auto=format&fit=crop&q=80",
     "franchise": "Attack on Titan",
     "biography": {
       "vi": "Đại đội trưởng Quân Trinh Sát, được mệnh danh là chiến binh mạnh nhất của nhân loại với kỹ năng sử dụng bộ cơ động 3D điêu luyện và khả năng hạ gục Titan chớp nhoáng.",
@@ -159,7 +159,7 @@
       "en": "Tanjiro Kamado",
       "hi": "तंजिरो कामाडो"
     },
-    "image": "image/tanjiro.jpg",
+    "image": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=500&auto=format&fit=crop&q=80",
     "franchise": "Demon Slayer",
     "biography": {
       "vi": "Thợ săn quỷ mang tấm lòng nhân hậu, dấn thân vào hành trình nguy hiểm để tìm cách biến em gái Nezuko trở lại thành người và tiêu diệt chúa quỷ Muzan.",
@@ -1147,7 +1147,7 @@
       "en": "Roronoa Zoro",
       "hi": "रोरोनोआ ज़ोरो"
     },
-    "image": "image/zoro.jpg",
+    "image": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500&auto=format&fit=crop&q=80",
     "franchise": "One Piece (Manga)",
     "biography": {
       "vi": "Kiếm sĩ Tam Kiếm Phái của băng Mũ Rơm, mang lời thề trở thành Đệ Nhất Kiếm Sĩ thế giới và luôn là chỗ dựa vững chắc nhất cho đồng đội trong mọi nghịch cảnh.",
@@ -1185,7 +1185,7 @@
       "en": "Saitama",
       "hi": "सैतामा"
     },
-    "image": "image/saitama.jpg",
+    "image": "https://images.unsplash.com/photo-1563089145-599997674d42?w=500&auto=format&fit=crop&q=80",
     "franchise": "One-Punch Man",
     "biography": {
       "vi": "Anh hùng làm việc vì sở thích, đạt được sức mạnh tối thượng có thể hạ gục mọi quái vật chỉ bằng một cú đấm sau chế độ tập luyện 100 cái hít đất mỗi ngày.",
@@ -1223,7 +1223,7 @@
       "en": "Ken Kaneki",
       "hi": "केन कानेकी"
     },
-    "image": "image/kentaki.jpg",
+    "image": "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?w=500&auto=format&fit=crop&q=80",
     "franchise": "Tokyo Ghoul",
     "biography": {
       "vi": "Sinh viên đại học bình thường vô tình bị biến thành Ngạ Quỷ Bán Nhân Bán Quỷ, đấu tranh trong giằng xé nội tâm để tìm kiếm sự hòa hợp giữa hai giống loài.",
@@ -1261,7 +1261,7 @@
       "en": "Light Yagami (Kira)",
       "hi": "लाइट यागामी (किरा)"
     },
-    "image": "image/yagami.jpg",
+    "image": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=500&auto=format&fit=crop&q=80",
     "franchise": "Death Note",
     "biography": {
       "vi": "Học sinh thiên tài nhặt được cuốn sổ tử thần Death Note, bắt đầu kế hoạch thanh lọc tội phạm để xây dựng một thế giới mới không tội ác nơi cậu làm Chúa tể.",
@@ -1299,7 +1299,7 @@
       "en": "Edward Elric",
       "hi": "एडवर्ड एल्रिक"
     },
-    "image": "image/eward.jpg",
+    "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=500&auto=format&fit=crop&q=80",
     "franchise": "Fullmetal Alchemist",
     "biography": {
       "vi": "Giả kim thuật sư trẻ tuổi nhất lịch sử quốc gia Amestris, dấn thân vào hành trình tìm kiếm Hòn Đá Triết Gia để khôi phục lại cơ thể cho người em trai Alphonse.",
@@ -1326,6 +1326,1604 @@
         "vi": "Yêu thương em trai",
         "en": "Devoted brother",
         "hi": "समर्पित भाई"
+      }
+    ]
+  },
+  {
+    "id": "anime-char-006",
+    "category": "anime",
+    "name": {
+      "vi": "Frieren",
+      "en": "Frieren",
+      "hi": "फ़्रीरेन"
+    },
+    "image": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Frieren: Beyond Journey's End",
+    "biography": {
+      "vi": "Nữ pháp sư elf sống hơn một nghìn năm từng trong đội ngũ tiêu diệt Ma Vương, lên đường học hỏi ý nghĩa của những khoảnh khắc và tình cảm con người.",
+      "en": "An elf mage living over a millennium who was part of the Hero Party that defeated the Demon King, now traveling to understand human hearts.",
+      "hi": "एक अमर एल्फ जादूगरनी जो इंसानी भावनाओं और पलों के मूल्य को समझने की यात्रा पर है।"
+    },
+    "traits": [
+      {
+        "vi": "Thông thái",
+        "en": "Wise",
+        "hi": "बुद्धिमान"
+      },
+      {
+        "vi": "Pháp thuật cổ đại",
+        "en": "Ancient Magic",
+        "hi": "प्राचीन जादू"
+      },
+      {
+        "vi": "Trầm tĩnh",
+        "en": "Calm",
+        "hi": "शांत"
+      }
+    ]
+  },
+  {
+    "id": "anime-char-007",
+    "category": "anime",
+    "name": {
+      "vi": "Satoru Gojo",
+      "en": "Satoru Gojo",
+      "hi": "सातोरू गोजो"
+    },
+    "image": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Jujutsu Kaisen",
+    "biography": {
+      "vi": "Chú thuật sư mạnh nhất thời hiện đại sở hữu Lục Nhãn (Six Eyes) và thuật thức Vô Hạ Hạn (Limitless), người bảo vệ thế hệ trẻ với nụ cười tự tin.",
+      "en": "The strongest modern jujutsu sorcerer who wields the Six Eyes and the Limitless technique, mentoring students with effortless charm.",
+      "hi": "आधुनिक युग का सबसे शक्तिशाली जादूगर जिसके पास सिक्स आईज और असीमित शक्ति है।"
+    },
+    "traits": [
+      {
+        "vi": "Bất khả xâm phạm",
+        "en": "Invulnerable",
+        "hi": "अभेद्य"
+      },
+      {
+        "vi": "Vô Lượng Không Xứ",
+        "en": "Unlimited Void",
+        "hi": "अनलिमिटेड वॉइड"
+      },
+      {
+        "vi": "Tự tin",
+        "en": "Confident",
+        "hi": "आत्मविश्वासी"
+      }
+    ]
+  },
+  {
+    "id": "gaming-char-006",
+    "category": "gaming",
+    "name": {
+      "vi": "Jinx",
+      "en": "Jinx",
+      "hi": "जिंक्स"
+    },
+    "image": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500&auto=format&fit=crop&q=80",
+    "franchise": "League of Legends",
+    "biography": {
+      "vi": "Nữ xạ thủ nổi loạn của Zaun với khẩu súng phóng lựu Fishbones và tình yêu cuồng nhiệt với những vụ nổ rực rỡ sắc màu.",
+      "en": "Zaun's manic, impulsive marksman armed with Fishbones rocket launcher, creating vibrant chaos wherever she goes.",
+      "hi": "ज़ाउन की चुलबुली और खतरनाक शूटर जो अपने हथियारों से तबाही मचाती है।"
+    },
+    "traits": [
+      {
+        "vi": "Điên loạn",
+        "en": "Chaotic",
+        "hi": "अराजक"
+      },
+      {
+        "vi": "Thiên tài chế tạo",
+        "en": "Weapons Genius",
+        "hi": "हथियार विशेषज्ञ"
+      },
+      {
+        "vi": "Nhanh nhẹn",
+        "en": "Agile",
+        "hi": "फुर्तीली"
+      }
+    ]
+  },
+  {
+    "id": "gaming-char-007",
+    "category": "gaming",
+    "name": {
+      "vi": "Thiên Mệnh Nhân (Destined One)",
+      "en": "The Destined One (Sun Wukong)",
+      "hi": "द डेस्टिन्ड वन (सन वूकॉन्ग)"
+    },
+    "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Black Myth: Wukong",
+    "biography": {
+      "vi": "Chiến hầu gánh vác sứ mệnh thu thập sáu căn lục đạo của Tề Thiên Đại Thánh để giải phóng hoa quả sơn và đối đầu thiên đình.",
+      "en": "A brave monkey warrior destined to gather Sun Wukong's scattered relics to unravel an ancient myth and free his people.",
+      "hi": "एक वानर योद्धा जो सुन वूकॉन्ग के रहस्यों को उजागर करने के लिए निकला है।"
+    },
+    "traits": [
+      {
+        "vi": "Biến hóa 72 phép",
+        "en": "72 Transformations",
+        "hi": "72 रूप"
+      },
+      {
+        "vi": "Thiết Bảng Như Ý",
+        "en": "Ruyi Jingu Bang",
+        "hi": "जादुई गदा"
+      },
+      {
+        "vi": "Kiên cường",
+        "en": "Resilient",
+        "hi": "दृढ़"
+      }
+    ]
+  },
+  {
+    "id": "movies-char-006",
+    "category": "movies",
+    "name": {
+      "vi": "Paul Atreides",
+      "en": "Paul Atreides",
+      "hi": "पॉल एट्रेइड्स"
+    },
+    "image": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Dune",
+    "biography": {
+      "vi": "Người thừa kế gia tộc Atreides, người được dân du mục Fremen tôn xưng là Muad'Dib và đấng cứu thế Kwisatz Haderach dẫn dắt cuộc thánh chiến vũ trụ.",
+      "en": "The duke of House Atreides chosen by destiny and the desert Fremen as Muad'Dib, rising as the Kwisatz Haderach.",
+      "hi": "हाउस एट्रेइड्स का उत्तराधिकारी और फ्रेमेन का मसीहा मुआद'दिब।"
+    },
+    "traits": [
+      {
+        "vi": "Thấu thị tương lai",
+        "en": "Prescience",
+        "hi": "दूरदर्शिता"
+      },
+      {
+        "vi": "Khí chất thủ lĩnh",
+        "en": "Leader",
+        "hi": "नेता"
+      },
+      {
+        "vi": "Tiếng nói The Voice",
+        "en": "The Voice",
+        "hi": "द वॉयस"
+      }
+    ]
+  },
+  {
+    "id": "movies-char-007",
+    "category": "movies",
+    "name": {
+      "vi": "Stephen Strange (Doctor Strange)",
+      "en": "Doctor Strange",
+      "hi": "डॉक्टर स्ट्रेंज"
+    },
+    "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Marvel Cinematic Universe",
+    "biography": {
+      "vi": "Phù Thủy Tối Thượng bảo vệ Đa Vũ Trụ Marvel bằng con mắt Agamotto và những câu thần chú bẻ cong không thời gian phức tạp.",
+      "en": "Master of the Mystic Arts and protector of the Marvel Multiverse, wielding the Eye of Agamotto and reality-bending spells.",
+      "hi": "रहस्यमय कलाओं का मास्टर और मार्वल मल्टीवर्स का संरक्षक।"
+    },
+    "traits": [
+      {
+        "vi": "Phép thuật tối thượng",
+        "en": "Mystic Arts",
+        "hi": "रहस्यमयी जादू"
+      },
+      {
+        "vi": "Bảo vệ đa vũ trụ",
+        "en": "Multiverse Guardian",
+        "hi": "मल्टीवर्स रक्षक"
+      }
+    ]
+  },
+  {
+    "id": "tvshows-char-006",
+    "category": "tvshows",
+    "name": {
+      "vi": "Vi (Violet)",
+      "en": "Vi (Violet)",
+      "hi": "वी (वायलेट)"
+    },
+    "image": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Arcane",
+    "biography": {
+      "vi": "Đấu sĩ đường phố quả cảm xứ Zaun với đôi găng tay Hextech khổng lồ, luôn chiến đấu để bảo vệ em gái Jinx và những người cô yêu quý.",
+      "en": "Zaun's fiercely protective street brawler equipped with massive Hextech gauntlets, fighting for sisterhood and justice.",
+      "hi": "ज़ाउन की साहसी मुक्केबाज जिसके पास हेक्सटेक दस्ताने हैं।"
+    },
+    "traits": [
+      {
+        "vi": "Găng tay Hextech",
+        "en": "Hextech Gauntlets",
+        "hi": "हेक्सटेक दस्ताने"
+      },
+      {
+        "vi": "Bền bỉ",
+        "en": "Tough",
+        "hi": "कठोर"
+      }
+    ]
+  },
+  {
+    "id": "tvshows-char-007",
+    "category": "tvshows",
+    "name": {
+      "vi": "Daemon Targaryen",
+      "en": "Daemon Targaryen",
+      "hi": "डेमन टारगैरियन"
+    },
+    "image": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500&auto=format&fit=crop&q=80",
+    "franchise": "House of the Dragon",
+    "biography": {
+      "vi": "Hoàng tử Rogue khét tiếng cưỡi rồng Caraxes, chiến binh kiêu hùng khó lường của gia tộc Rồng trong cuộc chiến tranh vương quyền.",
+      "en": "The unpredictable Rogue Prince and rider of the blood wyrm Caraxes, a fierce Targaryen warrior during the civil war.",
+      "hi": "रक्त ड्रैगन कैराक्सेस का सवार और दुर्जेय योद्धा राजकुमार।"
+    },
+    "traits": [
+      {
+        "vi": "Cưỡi rồng Caraxes",
+        "en": "Dragonrider",
+        "hi": "ड्रैगन राइडर"
+      },
+      {
+        "vi": "Kiếm Thép Valyrian",
+        "en": "Dark Sister",
+        "hi": "डार्क सिस्टर"
+      }
+    ]
+  },
+  {
+    "id": "kpop-char-006",
+    "category": "kpop",
+    "name": {
+      "vi": "Hanni",
+      "en": "Hanni",
+      "hi": "हन्नी"
+    },
+    "image": "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=500&auto=format&fit=crop&q=80",
+    "franchise": "NewJeans",
+    "biography": {
+      "vi": "Thành viên gốc Việt tài năng của nhóm nhạc hiện tượng NewJeans, nổi tiếng với chất giọng mật ngọt, khả năng sáng tác và visual Y2K cuốn hút.",
+      "en": "Talented member of phenomenon group NewJeans, loved for honey-smooth vocals, lyricism, and iconic Y2K fashion.",
+      "hi": "न्यूजीन्स की प्रतिभाशाली सदस्य, अपनी मधुर आवाज और स्टाइल के लिए प्रसिद्ध।"
+    },
+    "traits": [
+      {
+        "vi": "Giọng ca ngọt ngào",
+        "en": "Honey Vocals",
+        "hi": "मधुर आवाज"
+      },
+      {
+        "vi": "Biểu tượng thời trang",
+        "en": "Fashion Icon",
+        "hi": "फैशन आइकन"
+      }
+    ]
+  },
+  {
+    "id": "kpop-char-007",
+    "category": "kpop",
+    "name": {
+      "vi": "Karina",
+      "en": "Karina",
+      "hi": "करीना"
+    },
+    "image": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=500&auto=format&fit=crop&q=80",
+    "franchise": "aespa",
+    "biography": {
+      "vi": "Trưởng nhóm quyền lực của aespa với tỷ lệ gương mặt hoàn hảo như nhân vật đồ họa CGI, vũ đạo sắc bén và khí chất dẫn đầu thế hệ mới.",
+      "en": "Charismatic leader of aespa known for unreal CGI-like proportions, sharp choreography, and commanding stage power.",
+      "hi": "एस्पा की करिश्माई लीडर, अपनी शानदार कोरियोग्राफी के लिए प्रसिद्ध।"
+    },
+    "traits": [
+      {
+        "vi": "Visual đồ họa",
+        "en": "CGI Visual",
+        "hi": "सीजीआई लुक"
+      },
+      {
+        "vi": "Trưởng nhóm",
+        "en": "Leader",
+        "hi": "लीडर"
+      }
+    ]
+  },
+  {
+    "id": "comics-char-006",
+    "category": "comics",
+    "name": {
+      "vi": "Wolverine (Logan)",
+      "en": "Wolverine (Logan)",
+      "hi": "वॉल्वरिन (लोगन)"
+    },
+    "image": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=500&auto=format&fit=crop&q=80",
+    "franchise": "X-Men",
+    "biography": {
+      "vi": "Dị nhân mang khung xương kim loại Adamantium bất hoại và móng vuốt sắc nhọn, sở hữu khả năng hồi phục siêu phàm và bản năng dã thú.",
+      "en": "A mutant with an indestructible Adamantium skeleton and razor claws, endowed with a legendary healing factor and feral instincts.",
+      "hi": "अविनाशी एडामेंटियम कंकाल और तेज पंजों वाला म्यूटेंट योद्धा।"
+    },
+    "traits": [
+      {
+        "vi": "Móng vuốt Adamantium",
+        "en": "Adamantium Claws",
+        "hi": "एडामेंटियम पंजे"
+      },
+      {
+        "vi": "Hồi phục vết thương",
+        "en": "Healing Factor",
+        "hi": "हीलिंग पावर"
+      }
+    ]
+  },
+  {
+    "id": "comics-char-007",
+    "category": "comics",
+    "name": {
+      "vi": "The Joker",
+      "en": "The Joker",
+      "hi": "द जोकर"
+    },
+    "image": "https://images.unsplash.com/photo-1563089145-599997674d42?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Batman",
+    "biography": {
+      "vi": "Hoàng Tử Tội Phạm Gotham với nụ cười ma quái vĩnh cửu, kẻ thù truyền kiếp đại diện cho sự hỗn loạn tuyệt đối đối đầu Batman.",
+      "en": "The Clown Prince of Crime in Gotham, a theatrical psychopathic mastermind representing pure chaos opposite Batman.",
+      "hi": "गोथम का सबसे कुख्यात विलेन और अराजकता का प्रतीक।"
+    },
+    "traits": [
+      {
+        "vi": "Thiên tài hỗn loạn",
+        "en": "Master of Chaos",
+        "hi": "अराजकता का मास्टर"
+      },
+      {
+        "vi": "Khó lường",
+        "en": "Unpredictable",
+        "hi": "अप्रत्याशित"
+      }
+    ]
+  },
+  {
+    "id": "manga-char-006",
+    "category": "manga",
+    "name": {
+      "vi": "Guts",
+      "en": "Guts",
+      "hi": "गट्स"
+    },
+    "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Berserk",
+    "biography": {
+      "vi": "Kiếm sĩ Đen vác thanh đại đao Dragon Slayer khổng lồ, chiến đấu không ngừng nghỉ chống lại định mệnh nghiệt ngã và bầy ác quỷ Tông Tộc.",
+      "en": "The Black Swordsman wielding the massive Dragon Slayer sword, defying brutal fate and demonic apostles in an unrelenting war.",
+      "hi": "ड्रैगन स्लेयर तलवार चलाने वाला ब्लैक स्वॉर्ड्समैन जो अपनी क्रूर नियति से लड़ता है।"
+    },
+    "traits": [
+      {
+        "vi": "Đại kiếm Dragon Slayer",
+        "en": "Dragon Slayer",
+        "hi": "ड्रैगन स्लेयर"
+      },
+      {
+        "vi": "Ý chí bất khuất",
+        "en": "Indomitable Will",
+        "hi": "अदम्य इच्छाशक्ति"
+      },
+      {
+        "vi": "Giáp Berserker",
+        "en": "Berserker Armor",
+        "hi": "बर्ज़र्कर कवच"
+      }
+    ]
+  },
+  {
+    "id": "manga-char-007",
+    "category": "manga",
+    "name": {
+      "vi": "Thorfinn Karlsefni",
+      "en": "Thorfinn Karlsefni",
+      "hi": "थॉरफिन"
+    },
+    "image": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Vinland Saga",
+    "biography": {
+      "vi": "Chiến binh Viking từng chìm trong hận thù, lột xác thành con người chuộng hòa bình với lý tưởng tìm kiếm vùng đất tự do Vinland không chiến tranh.",
+      "en": "A Viking warrior who once walked the path of blood, transforming into a steadfast pacifist seeking the land of peace: Vinland.",
+      "hi": "एक वाइकिंग योद्धा जो शांति की भूमि विनलैंड की खोज में निकला है।"
+    },
+    "traits": [
+      {
+        "vi": "Song dao tốc độ",
+        "en": "Dual Daggers",
+        "hi": "दोहरे खंजर"
+      },
+      {
+        "vi": "Chiến binh hòa bình",
+        "en": "True Warrior",
+        "hi": "सच्चा योद्धा"
+      }
+    ]
+  },
+  {
+    "id": "anime-char-008",
+    "category": "anime",
+    "name": {
+      "vi": "Eren Yeager",
+      "en": "Eren Yeager",
+      "hi": "एरेन येइगर"
+    },
+    "image": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Attack on Titan",
+    "biography": {
+      "vi": "Cậu bé đảo Paradis khát khao tự do tột cùng, người nắm giữ sức mạnh Thủy Tổ Titan và khởi động cuộc rung chấn địa cầu.",
+      "en": "Paradis youth driven by an uncompromising hunger for freedom, wielding the Founding Titan to initiate the Rumbling.",
+      "hi": "स्वतंत्रता की चाह में दुनिया को चुनौती देने वाला टाइटन योद्धा।"
+    },
+    "traits": [
+      {
+        "vi": "Titan Thủy Tổ",
+        "en": "Founding Titan",
+        "hi": "फाउंडिंग टाइटन"
+      },
+      {
+        "vi": "Ý chí tự do",
+        "en": "Freedom",
+        "hi": "स्वतंत्रता"
+      }
+    ]
+  },
+  {
+    "id": "anime-char-009",
+    "category": "anime",
+    "name": {
+      "vi": "Levi Ackerman",
+      "en": "Levi Ackerman",
+      "hi": "लेवी एकरमैन"
+    },
+    "image": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Attack on Titan",
+    "biography": {
+      "vi": "Chiến binh mạnh nhất nhân loại, đội trưởng Trinh Sát Đoàn với kỹ năng cơ động 3D không đối thủ và lòng trung thành sắc son.",
+      "en": "Humanity's strongest soldier, scout captain of unmatched bladesmanship and fierce loyalty.",
+      "hi": "मानवता का सबसे मजबूत सैनिक और कुशल योद्धा।"
+    },
+    "traits": [
+      {
+        "vi": "Binh trưởng mạnh nhất",
+        "en": "Strongest Soldier",
+        "hi": "सर्वश्रेष्ठ सैनिक"
+      },
+      {
+        "vi": "Dòng máu Ackerman",
+        "en": "Ackerman Blood",
+        "hi": "एकरमैन खून"
+      }
+    ]
+  },
+  {
+    "id": "anime-char-010",
+    "category": "anime",
+    "name": {
+      "vi": "Tanjiro Kamado",
+      "en": "Tanjiro Kamado",
+      "hi": "तंजिरो कामादो"
+    },
+    "image": "https://images.unsplash.com/photo-1563089145-599997674d42?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Demon Slayer",
+    "biography": {
+      "vi": "Kiếm sĩ diệt quỷ nhân hậu sở hữu Điệu Múa Của Hỏa Thần (Hinokami Kagura) và lòng kiên định chữa trị cho em gái Nezuko.",
+      "en": "A compassionate demon slayer mastering Hinokami Kagura, fighting tirelessly to turn Nezuko human again.",
+      "hi": "अपनी बहन को बचाने के लिए हिनोकामी कागुरा चलाने वाला दयालु तलवारबाज।"
+    },
+    "traits": [
+      {
+        "vi": "Hơi Thở Mặt Trời",
+        "en": "Sun Breathing",
+        "hi": "सन ब्रीदिंग"
+      },
+      {
+        "vi": "Trái tim nhân hậu",
+        "en": "Kind Heart",
+        "hi": "दयालु हृदय"
+      }
+    ]
+  },
+  {
+    "id": "anime-char-011",
+    "category": "anime",
+    "name": {
+      "vi": "Roronoa Zoro",
+      "en": "Roronoa Zoro",
+      "hi": "रोरोनोआ ज़ोरो"
+    },
+    "image": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500&auto=format&fit=crop&q=80",
+    "franchise": "One Piece",
+    "biography": {
+      "vi": "Tam Kiếm Sĩ phái Santoryu của băng Mũ Rơm với lời thề trở thành Đệ Nhất Kiếm Hào thế giới.",
+      "en": "The Straw Hat Pirates' master of the Three-Sword Style, aiming to become the world's greatest swordsman.",
+      "hi": "तीन तलवारों की शैली चलाने वाला महान योद्धा।"
+    },
+    "traits": [
+      {
+        "vi": "Tam Kiếm Phái",
+        "en": "Santoryu",
+        "hi": "तीन तलवारें"
+      },
+      {
+        "vi": "Ý chí Asura",
+        "en": "Asura Spirit",
+        "hi": "असुरा शक्ति"
+      }
+    ]
+  },
+  {
+    "id": "anime-char-012",
+    "category": "anime",
+    "name": {
+      "vi": "Denji",
+      "en": "Denji",
+      "hi": "डेंजी"
+    },
+    "image": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Chainsaw Man",
+    "biography": {
+      "vi": "Chàng trai hòa làm một với Quỷ Cưa Pochita, biến lưỡi cưa máy thành vũ khí hủy diệt để bảo vệ những ước muốn bình dị.",
+      "en": "A boy fused with the chainsaw devil Pochita, revving chainsaws from his body to defend simple everyday joys.",
+      "hi": "पोचिता के साथ मिलकर चेनसॉ मैन बनने वाला अनोखा नायक।"
+    },
+    "traits": [
+      {
+        "vi": "Quỷ Cưa",
+        "en": "Chainsaw Devil",
+        "hi": "चेनसॉ डेविल"
+      },
+      {
+        "vi": "Bất tử",
+        "en": "Immortality",
+        "hi": "अमरता"
+      }
+    ]
+  },
+  {
+    "id": "anime-char-013",
+    "category": "anime",
+    "name": {
+      "vi": "Anya Forger",
+      "en": "Anya Forger",
+      "hi": "अन्या फोर्जर"
+    },
+    "image": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Spy x Family",
+    "biography": {
+      "vi": "Cô bé có khả năng đọc suy nghĩ người khác, con gái nuôi bí ẩn của điệp viên Loid và sát thủ Yor.",
+      "en": "A telepathic orphan girl adopted by spy Twilight and assassin Thorn Princess Yor.",
+      "hi": "मन की बात पढ़ने की शक्ति रखने वाली प्यारी बच्ची।"
+    },
+    "traits": [
+      {
+        "vi": "Đọc suy nghĩ",
+        "en": "Telepathy",
+        "hi": "विचार पढ़ना"
+      },
+      {
+        "vi": "Thích đậu phộng",
+        "en": "Loves Peanuts",
+        "hi": "मूंगफली पसंद"
+      }
+    ]
+  },
+  {
+    "id": "gaming-char-008",
+    "category": "gaming",
+    "name": {
+      "vi": "Kratos",
+      "en": "Kratos",
+      "hi": "क्रेटोस"
+    },
+    "image": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500&auto=format&fit=crop&q=80",
+    "franchise": "God of War",
+    "biography": {
+      "vi": "Chiến Thần Sparta mang trên mình lưỡi gươm Blades of Chaos và cây rìu Leviathan bảo vệ con trai Atreus qua vùng đất Bắc Âu.",
+      "en": "The Spartan Ghost who tore down Olympus, now wielding the Leviathan Axe to protect his son in Midgard.",
+      "hi": "ओलंपस को गिराने वाला महान स्पार्टन योद्धा।"
+    },
+    "traits": [
+      {
+        "vi": "Chiến Thần",
+        "en": "God of War",
+        "hi": "युद्ध का देवता"
+      },
+      {
+        "vi": "Rìu Leviathan",
+        "en": "Leviathan Axe",
+        "hi": "लेविआथन कुल्हाड़ी"
+      }
+    ]
+  },
+  {
+    "id": "gaming-char-009",
+    "category": "gaming",
+    "name": {
+      "vi": "Malenia, Blade of Miquella",
+      "en": "Malenia",
+      "hi": "मलेनिया"
+    },
+    "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Elden Ring",
+    "biography": {
+      "vi": "Nữ kiếm sĩ bán thần bất bại của vùng đất Lands Between với kỹ năng Múa Nước (Waterfowl Dance) và đóa hoa Scarlet Aeonia hủy diệt.",
+      "en": "The undefeated demigod swordstress of the Lands Between, wielding the Waterfowl Dance and Scarlet Rot.",
+      "hi": "एल्डन रिंग की सबसे खतरनाक और अजेय तलवारबाज।"
+    },
+    "traits": [
+      {
+        "vi": "Kiếm Thần Bất Bại",
+        "en": "Undefeated",
+        "hi": "अजेय"
+      },
+      {
+        "vi": "Múa Nước",
+        "en": "Waterfowl Dance",
+        "hi": "वाटरफॉल डांस"
+      }
+    ]
+  },
+  {
+    "id": "gaming-char-010",
+    "category": "gaming",
+    "name": {
+      "vi": "Link",
+      "en": "Link",
+      "hi": "लिंक"
+    },
+    "image": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500&auto=format&fit=crop&q=80",
+    "franchise": "The Legend of Zelda",
+    "biography": {
+      "vi": "Hiệp sĩ dũng cảm của vương quốc Hyrule sở hữu thanh kiếm Master Sword và sức mạnh cánh tay cổ xưa của tộc Zonai.",
+      "en": "The Hero of Hyrule wielding the Master Sword and the ancient Zonai Ultrahand to seal the Demon King.",
+      "hi": "मास्टर स्वॉर्ड चलाने वाला हाइलूल का रक्षक।"
+    },
+    "traits": [
+      {
+        "vi": "Thanh Kiếm Master",
+        "en": "Master Sword",
+        "hi": "मास्टर स्वॉर्ड"
+      },
+      {
+        "vi": "Trí tuệ Zonai",
+        "en": "Zonai Arm",
+        "hi": "ज़ोनाई शक्ति"
+      }
+    ]
+  },
+  {
+    "id": "gaming-char-011",
+    "category": "gaming",
+    "name": {
+      "vi": "Cloud Strife",
+      "en": "Cloud Strife",
+      "hi": "क्लाउड स्ट्राइफ"
+    },
+    "image": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Final Fantasy VII",
+    "biography": {
+      "vi": "Cựu chiến binh SOLDIER vác thanh đại đao Buster Sword bảo vệ hành tinh Gaia khỏi thảm họa Sephiroth.",
+      "en": "Ex-SOLDIER mercenary wielding the iconic Buster Sword to protect planet Gaia from Sephiroth.",
+      "hi": "बस्टर स्वॉर्ड चलाने वाला महान योद्धा।"
+    },
+    "traits": [
+      {
+        "vi": "Buster Sword",
+        "en": "Buster Sword",
+        "hi": "बस्टर स्वॉर्ड"
+      },
+      {
+        "vi": "Giới Hạn Limit Break",
+        "en": "Omnislash",
+        "hi": "ओम्नीस्लैश"
+      }
+    ]
+  },
+  {
+    "id": "gaming-char-012",
+    "category": "gaming",
+    "name": {
+      "vi": "Atsu",
+      "en": "Atsu",
+      "hi": "अत्सु"
+    },
+    "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Ghost of Yōtei",
+    "biography": {
+      "vi": "Nữ kiếm sĩ lang bạt vùng Ezo năm 1603 mang theo mối hận thù gia tộc và kỹ thuật song kiếm điêu luyện.",
+      "en": "A lone ronin wandering Hokkaido in 1603 wielding twin blades and hunting targets across Mount Yōtei.",
+      "hi": "होक्काइडो के पहाड़ों में भटकने वाली निडर महिला समुराई।"
+    },
+    "traits": [
+      {
+        "vi": "Song Kiếm",
+        "en": "Dual Katanas",
+        "hi": "दो तलवारें"
+      },
+      {
+        "vi": "Báo thù",
+        "en": "Vengeance",
+        "hi": "प्रतिशोध"
+      }
+    ]
+  },
+  {
+    "id": "gaming-char-013",
+    "category": "gaming",
+    "name": {
+      "vi": "Faker (Lee Sang-hyeok)",
+      "en": "Faker (The Unkillable Demon King)",
+      "hi": "फेकर"
+    },
+    "image": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500&auto=format&fit=crop&q=80",
+    "franchise": "eSports Icons",
+    "biography": {
+      "vi": "Huyền thoại sống vĩ đại nhất lịch sử thể thao điện tử thế giới với 4 chức vô địch CKTG cùng đội tuyển T1.",
+      "en": "The greatest eSports icon in history, 4-time League of Legends World Champion representing T1.",
+      "hi": "ई-स्पोर्ट्स इतिहास का सबसे महान खिलाड़ी।"
+    },
+    "traits": [
+      {
+        "vi": "Quỷ Vương Bất Tử",
+        "en": "Demon King",
+        "hi": "राक्षस राजा"
+      },
+      {
+        "vi": "Vô địch thế giới",
+        "en": "4x Worlds Champ",
+        "hi": "विश्व चैंपियन"
+      }
+    ]
+  },
+  {
+    "id": "movies-char-008",
+    "category": "movies",
+    "name": {
+      "vi": "Tony Stark (Iron Man)",
+      "en": "Tony Stark (Iron Man)",
+      "hi": "टोनी स्टार्क (आयरन मैन)"
+    },
+    "image": "https://images.unsplash.com/photo-1635805737707-575885ab0820?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Marvel Cinematic Universe",
+    "biography": {
+      "vi": "Thiên tài, tỷ phú, nhà từ thiện với bộ giáp công nghệ nano đã hy sinh thân mình cứu cả vũ trụ.",
+      "en": "Genius, billionaire, philanthropist who forged nanotech armor and sacrificed himself to save the universe.",
+      "hi": "नैनोटेक कवच बनाने वाला प्रतिभाशाली सुपरहीरो।"
+    },
+    "traits": [
+      {
+        "vi": "Bộ giáp Nanotech",
+        "en": "Nanotech Suit",
+        "hi": "नैनोटेक सूट"
+      },
+      {
+        "vi": "Trí tuệ thiên tài",
+        "en": "Genius Intellect",
+        "hi": "अद्भुत बुद्धि"
+      }
+    ]
+  },
+  {
+    "id": "movies-char-009",
+    "category": "movies",
+    "name": {
+      "vi": "Miles Morales",
+      "en": "Miles Morales",
+      "hi": "माइल्स मोरालेस"
+    },
+    "image": "https://images.unsplash.com/photo-1635805737707-575885ab0820?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Spider-Verse",
+    "biography": {
+      "vi": "Người Nhện thiếu niên Brooklyn sở hữu nọc độc điện Venom Strike và khả năng tàng hình độc nhất vô nhị.",
+      "en": "Brooklyn teenager Spider-Man commanding bio-electric Venom blasts and camouflage invisibility.",
+      "hi": "इलेक्ट्रिक शॉक और अदृश्य होने की शक्ति वाला युवा स्पाइडर-मैन।"
+    },
+    "traits": [
+      {
+        "vi": "Venom Strike",
+        "en": "Venom Strike",
+        "hi": "वेनम स्ट्राइक"
+      },
+      {
+        "vi": "Tàng hình",
+        "en": "Camouflage",
+        "hi": "अदृश्य होना"
+      }
+    ]
+  },
+  {
+    "id": "movies-char-010",
+    "category": "movies",
+    "name": {
+      "vi": "Chani",
+      "en": "Chani",
+      "hi": "चानी"
+    },
+    "image": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Dune",
+    "biography": {
+      "vi": "Nữ chiến binh Fremen quả cảm của sa mạc Arrakis, người luôn đấu tranh cho tự do thực sự của bộ tộc.",
+      "en": "Fierce Fremen desert warrior fighting for Arrakis independence with a laser-focused heart.",
+      "hi": "अर्राकिस के रेगिस्तान की निडर महिला योद्धा।"
+    },
+    "traits": [
+      {
+        "vi": "Chiến binh Sa Mạc",
+        "en": "Fremen Fedaykin",
+        "hi": "रेगिस्तानी योद्धा"
+      },
+      {
+        "vi": "Mắt xanh Ibad",
+        "en": "Eyes of Ibad",
+        "hi": "नीली आंखें"
+      }
+    ]
+  },
+  {
+    "id": "movies-char-011",
+    "category": "movies",
+    "name": {
+      "vi": "Jake Sully (Toruk Makto)",
+      "en": "Jake Sully",
+      "hi": "जेक सुली"
+    },
+    "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Avatar",
+    "biography": {
+      "vi": "Thủ lĩnh bộ tộc Na'vi từng cưỡi đại bàng Toruk bảo vệ hành tinh Pandora khỏi sự xâm lăng của loài người.",
+      "en": "Former Marine who embraced Na'vi identity, riding the Great Leonopteryx as Toruk Makto to defend Pandora.",
+      "hi": "पैंडोरा की रक्षा करने वाला तोरुक माक्तो।"
+    },
+    "traits": [
+      {
+        "vi": "Toruk Makto",
+        "en": "Toruk Makto",
+        "hi": "तोरुक माक्तो"
+      },
+      {
+        "vi": "Thủ lĩnh Omaticaya",
+        "en": "Clan Leader",
+        "hi": "कबीला सरदार"
+      }
+    ]
+  },
+  {
+    "id": "movies-char-012",
+    "category": "movies",
+    "name": {
+      "vi": "Bruce Wayne (The Batman)",
+      "en": "The Batman (Robert Pattinson)",
+      "hi": "द बैटमैन"
+    },
+    "image": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=500&auto=format&fit=crop&q=80",
+    "franchise": "DC Universe",
+    "biography": {
+      "vi": "Thám tử bóng đêm thành phố Gotham điều tra tội ác bằng nắm đấm thép và chiếc xe Batmobile cơ bắp gầm rú.",
+      "en": "Gotham's nocturnal vigilante detective wielding raw hand-to-hand force and tactical brilliance.",
+      "hi": "गोथम का जासूस और अंधकार का रक्षक।"
+    },
+    "traits": [
+      {
+        "vi": "Thám tử vĩ đại",
+        "en": "World's Greatest Detective",
+        "hi": "महान जासूस"
+      },
+      {
+        "vi": "Áo giáp chống đạn",
+        "en": "Armored Bat-Suit",
+        "hi": "बुलेटप्रूफ सूट"
+      }
+    ]
+  },
+  {
+    "id": "movies-char-013",
+    "category": "movies",
+    "name": {
+      "vi": "Lucius Verus",
+      "en": "Lucius Verus",
+      "hi": "लूसियस"
+    },
+    "image": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Gladiator",
+    "biography": {
+      "vi": "Vị đấu sĩ La Mã thừa kế ngọn lửa danh dự của Maximus, đứng lên giải phóng đấu trường Colosseum khỏi bạo quyền.",
+      "en": "Roman gladiator inheriting Maximus' legacy to reclaim Roman honor and defy corrupt emperors.",
+      "hi": "मैक्सिमस की विरासत को आगे बढ़ाने वाला महान योद्धा।"
+    },
+    "traits": [
+      {
+        "vi": "Đấu sĩ La Mã",
+        "en": "Gladiator",
+        "hi": "ग्लेडिएटर"
+      },
+      {
+        "vi": "Ý chí Maximus",
+        "en": "Legacy of Maximus",
+        "hi": "सम्मान की लड़ाई"
+      }
+    ]
+  },
+  {
+    "id": "tvshows-char-008",
+    "category": "tvshows",
+    "name": {
+      "vi": "Eleven (Jane Hopper)",
+      "en": "Eleven",
+      "hi": "इलेवन"
+    },
+    "image": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Stranger Things",
+    "biography": {
+      "vi": "Cô bé có năng lực siêu linh điều khiển đồ vật bằng tâm trí (Telekinesis), niềm hy vọng cuối cùng chống lại Vecna.",
+      "en": "Gifted telekinetic girl raised in Hawkins Lab who stands between the human world and the Upside Down.",
+      "hi": "दिमाग से चीजें हिलाने की जादुई शक्ति रखने वाली लड़की।"
+    },
+    "traits": [
+      {
+        "vi": "Điều khiển vật thể",
+        "en": "Telekinesis",
+        "hi": "टेलीकिनेसिस"
+      },
+      {
+        "vi": "Cổng không gian",
+        "en": "Interdimensional Gate",
+        "hi": "अंतरिक्ष द्वार"
+      }
+    ]
+  },
+  {
+    "id": "tvshows-char-009",
+    "category": "tvshows",
+    "name": {
+      "vi": "Rhaenyra Targaryen",
+      "en": "Rhaenyra Targaryen",
+      "hi": "रेनिरा टारगैरियन"
+    },
+    "image": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500&auto=format&fit=crop&q=80",
+    "franchise": "House of the Dragon",
+    "biography": {
+      "vi": "Nữ vương hợp pháp của Bảy Vương Quốc, người cưỡi rồng Syrax chiến đấu giành lại Ngai Sắt cho nhánh Đen.",
+      "en": "The rightful Queen of the Seven Kingdoms riding Syrax in the fierce Dance of the Dragons civil war.",
+      "hi": "सात राज्यों की रानी और ड्रैगन सिराक्स की सवार।"
+    },
+    "traits": [
+      {
+        "vi": "Nữ vương Ngai Sắt",
+        "en": "Rightful Queen",
+        "hi": "सच्ची रानी"
+      },
+      {
+        "vi": "Cưỡi rồng Syrax",
+        "en": "Syrax Rider",
+        "hi": "सिराक्स राइडर"
+      }
+    ]
+  },
+  {
+    "id": "tvshows-char-010",
+    "category": "tvshows",
+    "name": {
+      "vi": "Lucy MacLean",
+      "en": "Lucy MacLean",
+      "hi": "लूसी मैकलियन"
+    },
+    "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Fallout",
+    "biography": {
+      "vi": "Cô gái lạc quan bước ra từ hầm trú ẩn Vault 33 đối mặt với sự tàn nhẫn và kỳ dị của thế giới sa mạc hậu tận thế.",
+      "en": "An optimistic Vault 33 dweller forced onto the violent irradiated wasteland to rescue her father.",
+      "hi": "वॉल्ट 33 से बाहर आकर खतरनाक दुनिया का सामना करने वाली लड़की।"
+    },
+    "traits": [
+      {
+        "vi": "Cư dân Vault 33",
+        "en": "Vault Dweller",
+        "hi": "वॉल्ट निवासी"
+      },
+      {
+        "vi": "Pip-Boy",
+        "en": "Pip-Boy 3000",
+        "hi": "पिप-बॉय"
+      }
+    ]
+  },
+  {
+    "id": "tvshows-char-011",
+    "category": "tvshows",
+    "name": {
+      "vi": "Seong Gi-hun (Player 456)",
+      "en": "Seong Gi-hun",
+      "hi": "सियोंग गी-हुन"
+    },
+    "image": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Squid Game",
+    "biography": {
+      "vi": "Người chiến thắng duy nhất của trò chơi con mực, từ chối số tiền khổng lồ để tìm cách hủy diệt trò chơi tàn bạo.",
+      "en": "Winner of the deadly Squid Game who turns down a life of luxury to dismantle the twisted game.",
+      "hi": "स्क्विड गेम का विजेता जो व्यवस्था को खत्म करना चाहता है।"
+    },
+    "traits": [
+      {
+        "vi": "Người chơi 456",
+        "en": "Player 456",
+        "hi": "खिलाड़ी 456"
+      },
+      {
+        "vi": "Ý chí chính nghĩa",
+        "en": "Moral Conscience",
+        "hi": "नैतिक साहस"
+      }
+    ]
+  },
+  {
+    "id": "tvshows-char-012",
+    "category": "tvshows",
+    "name": {
+      "vi": "Wednesday Addams",
+      "en": "Wednesday Addams",
+      "hi": "वेडनेसडे एडम्स"
+    },
+    "image": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Wednesday",
+    "biography": {
+      "vi": "Tiểu thư nhà Addams với khiếu hài hước đen tối, tài chơi đàn cello xuất chúng và năng lực ngoại cảm nhìn thấu quá khứ.",
+      "en": "The macabre Addams daughter possessing psychic visions, razor-sharp wits, and masterful cello skills.",
+      "hi": "अजीबोगरीब शक्तियों और तेज दिमाग वाली लड़की।"
+    },
+    "traits": [
+      {
+        "vi": "Ngoại cảm",
+        "en": "Psychic Visions",
+        "hi": "दिव्य दृष्टि"
+      },
+      {
+        "vi": "Cello cổ điển",
+        "en": "Master Cellist",
+        "hi": "सेलो वादक"
+      }
+    ]
+  },
+  {
+    "id": "tvshows-char-013",
+    "category": "tvshows",
+    "name": {
+      "vi": "Homelander",
+      "en": "Homelander",
+      "hi": "होमलैंडर"
+    },
+    "image": "https://images.unsplash.com/photo-1563089145-599997674d42?w=500&auto=format&fit=crop&q=80",
+    "franchise": "The Boys",
+    "biography": {
+      "vi": "Siêu anh hùng mạnh nhất tập đoàn Vought mang đôi mắt bắn tia laser đỏ rực và tâm lý ái kỷ nguy hiểm tột cùng.",
+      "en": "Vought's terrifying god-like product armed with flight and heat vision, masking a narcissistic psychopath.",
+      "hi": "अपार शक्तियों और खतरनाक सोच वाला विलेन।"
+    },
+    "traits": [
+      {
+        "vi": "Tia mắt nhiệt Laser",
+        "en": "Laser Eyes",
+        "hi": "लेजर आंखें"
+      },
+      {
+        "vi": "Bất khả xâm phạm",
+        "en": "Invulnerable",
+        "hi": "अभेद्य शरीर"
+      }
+    ]
+  },
+  {
+    "id": "kpop-char-008",
+    "category": "kpop",
+    "name": {
+      "vi": "Jungkook",
+      "en": "Jungkook",
+      "hi": "जंगकुक"
+    },
+    "image": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=500&auto=format&fit=crop&q=80",
+    "franchise": "BTS",
+    "biography": {
+      "vi": "Em út vàng (Golden Maknae) của BTS, ca sĩ solo phá kỷ lục tỷ lượt nghe Spotify với bản hit Seven.",
+      "en": "BTS's Golden Maknae whose record-shattering solo debut 'Seven' made pop history worldwide.",
+      "hi": "बीटीएस का सबसे लोकप्रिय गायक और डांसर।"
+    },
+    "traits": [
+      {
+        "vi": "Giọng ca vàng",
+        "en": "Golden Vocals",
+        "hi": "स्वर्ण आवाज"
+      },
+      {
+        "vi": "Vũ đạo hoàn hảo",
+        "en": "Main Dancer",
+        "hi": "शानदार डांसर"
+      }
+    ]
+  },
+  {
+    "id": "kpop-char-009",
+    "category": "kpop",
+    "name": {
+      "vi": "Jennie Kim",
+      "en": "Jennie Kim",
+      "hi": "जेनी किम"
+    },
+    "image": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=500&auto=format&fit=crop&q=80",
+    "franchise": "BLACKPINK",
+    "biography": {
+      "vi": "Biểu tượng thời trang toàn cầu kiêm rapper chủ lực của BLACKPINK, nghệ sĩ solo phong cách độc bản.",
+      "en": "Global fashion muse and charismatic main rapper of BLACKPINK.",
+      "hi": "ब्लैकपिंक की रैपर और अंतरराष्ट्रीय फैशन आइकन।"
+    },
+    "traits": [
+      {
+        "vi": "Khí chất thời trang",
+        "en": "Fashion Icon",
+        "hi": "फैशन आइकन"
+      },
+      {
+        "vi": "Rap sắc sảo",
+        "en": "Main Rapper",
+        "hi": "तेज रैप"
+      }
+    ]
+  },
+  {
+    "id": "kpop-char-010",
+    "category": "kpop",
+    "name": {
+      "vi": "Felix",
+      "en": "Felix",
+      "hi": "फेलिक्स"
+    },
+    "image": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Stray Kids",
+    "biography": {
+      "vi": "Chàng trai người Úc gốc Hàn sở hữu chất giọng trầm ấm sâu thẳm (Deep Cave Voice) và visual cổ tích cuốn hút.",
+      "en": "Stray Kids sensation known for angelic freckles and his signature thunderous deep bass voice.",
+      "hi": "अपनी गहरी आवाज और शानदार डांस के लिए मशहूर आइडल।"
+    },
+    "traits": [
+      {
+        "vi": "Giọng trầm Deep Bass",
+        "en": "Cave Voice",
+        "hi": "गहरी आवाज"
+      },
+      {
+        "vi": "Visual thiên thần",
+        "en": "Angel Visual",
+        "hi": "परी जैसा चेहरा"
+      }
+    ]
+  },
+  {
+    "id": "kpop-char-011",
+    "category": "kpop",
+    "name": {
+      "vi": "Jang Wonyoung",
+      "en": "Jang Wonyoung",
+      "hi": "जांग वोनयॉन्ग"
+    },
+    "image": "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=500&auto=format&fit=crop&q=80",
+    "franchise": "IVE",
+    "biography": {
+      "vi": "Center quốc dân của thế hệ Gen 4 với chiều cao ấn tượng, phong thái công chúa và tinh thần 'Lucky Vicky'.",
+      "en": "Gen 4's quintessential center revered for doll-like elegance and unshakeable positivity.",
+      "hi": "जेन 4 की सबसे लोकप्रिय राजकुमारी जैसी आइडल।"
+    },
+    "traits": [
+      {
+        "vi": "Center Quốc Dân",
+        "en": "Nation's Center",
+        "hi": "देश का सेंटर"
+      },
+      {
+        "vi": "Lucky Vicky",
+        "en": "Positive Mindset",
+        "hi": "सकारात्मक सोच"
+      }
+    ]
+  },
+  {
+    "id": "kpop-char-012",
+    "category": "kpop",
+    "name": {
+      "vi": "Kim Chaewon",
+      "en": "Kim Chaewon",
+      "hi": "किम चेवोन"
+    },
+    "image": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=500&auto=format&fit=crop&q=80",
+    "franchise": "LE SSERAFIM",
+    "biography": {
+      "vi": "Trưởng nhóm cá tính của LE SSERAFIM với mái tóc ngắn thương hiệu, giọng hát thanh khiết và thần thái sân khấu bùng nổ.",
+      "en": "Charismatic leader of LE SSERAFIM known for her sharp bob cut, crisp vocals, and stage dominance.",
+      "hi": "ले सेराफिम की तेज-तर्रार और प्यारी लीडर।"
+    },
+    "traits": [
+      {
+        "vi": "Trưởng nhóm",
+        "en": "Leader",
+        "hi": "लीडर"
+      },
+      {
+        "vi": "Vũ đạo thần thái",
+        "en": "Stage Presence",
+        "hi": "मंच पर जादू"
+      }
+    ]
+  },
+  {
+    "id": "kpop-char-013",
+    "category": "kpop",
+    "name": {
+      "vi": "Winter (Kim Min-jeong)",
+      "en": "Winter",
+      "hi": "विंटर"
+    },
+    "image": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=500&auto=format&fit=crop&q=80",
+    "franchise": "aespa",
+    "biography": {
+      "vi": "Giọng ca chính của aespa sở hữu nốt cao vút như pha lê và khả năng biến hóa concept đa dạng.",
+      "en": "aespa's vocal powerhouse delivering razor-sharp high notes and ethereal chameleon concepts.",
+      "hi": "एस्पा की सुरीली आवाज और जादुई खूबसूरती।"
+    },
+    "traits": [
+      {
+        "vi": "Giọng ca chính",
+        "en": "Main Vocal",
+        "hi": "मुख्य गायिका"
+      },
+      {
+        "vi": "Nốt cao pha lê",
+        "en": "Crystal High Notes",
+        "hi": "ऊंचे सुर"
+      }
+    ]
+  },
+  {
+    "id": "comics-char-008",
+    "category": "comics",
+    "name": {
+      "vi": "Peter Parker (Spider-Man)",
+      "en": "Spider-Man",
+      "hi": "स्पाइडर-मैन"
+    },
+    "image": "https://images.unsplash.com/photo-1635805737707-575885ab0820?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Marvel Comics",
+    "biography": {
+      "vi": "Người Nhện thân thiện của khu phố mang giác quan nhện Spider-Sense và bài học 'Sức mạnh càng lớn, trách nhiệm càng cao'.",
+      "en": "With great power comes great responsibility: Brooklyn's webslinger swinging across Manhattan.",
+      "hi": "दुनिया का सबसे चहेता सुपरहीरो स्पाइडर-मैन।"
+    },
+    "traits": [
+      {
+        "vi": "Bắn tơ nhện",
+        "en": "Web Shooting",
+        "hi": "जाला फेंकना"
+      },
+      {
+        "vi": "Giác quan nhện",
+        "en": "Spider-Sense",
+        "hi": "स्पाइडर-सेंस"
+      }
+    ]
+  },
+  {
+    "id": "comics-char-009",
+    "category": "comics",
+    "name": {
+      "vi": "Clark Kent (Superman)",
+      "en": "Superman",
+      "hi": "सुपरमैन"
+    },
+    "image": "https://images.unsplash.com/photo-1563089145-599997674d42?w=500&auto=format&fit=crop&q=80",
+    "franchise": "DC Comics",
+    "biography": {
+      "vi": "Người Đàn Ông Thép đến từ hành tinh Krypton, biểu tượng bất diệt của công lý và hy vọng dưới ánh mặt trời vàng.",
+      "en": "The Last Son of Krypton soaring the skies as Earth's beacon of absolute truth and justice.",
+      "hi": "क्रिप्टन का बेटा और दुनिया का सबसे शक्तिशाली रक्षक।"
+    },
+    "traits": [
+      {
+        "vi": "Bay lượn siêu thanh",
+        "en": "Supersonic Flight",
+        "hi": "उड़ान"
+      },
+      {
+        "vi": "Thị giác nhiệt Laser",
+        "en": "Heat Vision",
+        "hi": "लेजर दृष्टि"
+      }
+    ]
+  },
+  {
+    "id": "comics-char-010",
+    "category": "comics",
+    "name": {
+      "vi": "Diana Prince (Wonder Woman)",
+      "en": "Wonder Woman",
+      "hi": "वंडर वुमन"
+    },
+    "image": "https://images.unsplash.com/photo-1635805737707-575885ab0820?w=500&auto=format&fit=crop&q=80",
+    "franchise": "DC Comics",
+    "biography": {
+      "vi": "Công chúa người Amazon của đảo Themyscira mang Thòng Lọng Sự Thật Lasso of Truth và vòng tay hộ thể bất hoại.",
+      "en": "Amazonian warrior princess championing peace and truth with the Lasso of Truth.",
+      "hi": "अमेजन की योद्धा राजकुमारी और न्याय की देवी।"
+    },
+    "traits": [
+      {
+        "vi": "Thòng lọng sự thật",
+        "en": "Lasso of Truth",
+        "hi": "सत्य का फंदा"
+      },
+      {
+        "vi": "Vòng tay hộ thân",
+        "en": "Bracelets of Submission",
+        "hi": "कवच कंगन"
+      }
+    ]
+  },
+  {
+    "id": "comics-char-011",
+    "category": "comics",
+    "name": {
+      "vi": "Morpheus (Dream of the Endless)",
+      "en": "Morpheus (Dream)",
+      "hi": "मॉर्फियस (ड्रीम)"
+    },
+    "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500&auto=format&fit=crop&q=80",
+    "franchise": "The Sandman",
+    "biography": {
+      "vi": "Chúa Tể Cõi Mộng, một trong bảy thực thể Vô Hạn Endless cai quản mọi giấc mơ và trí tưởng tượng của muôn loài.",
+      "en": "Lord of the Dreaming and one of the Endless, shaping all dreams, nightmares, and stories.",
+      "hi": "सपनों का स्वामी और अमर कथाओं का संरक्षक।"
+    },
+    "traits": [
+      {
+        "vi": "Chúa tể cõi mộng",
+        "en": "Lord of Dreams",
+        "hi": "सपनों का राजा"
+      },
+      {
+        "vi": "Bụi cát ma thuật",
+        "en": "Pouch of Sand",
+        "hi": "जादुई रेत"
+      }
+    ]
+  },
+  {
+    "id": "comics-char-012",
+    "category": "comics",
+    "name": {
+      "vi": "Matt Murdock (Daredevil)",
+      "en": "Daredevil",
+      "hi": "डेयरडेvil"
+    },
+    "image": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Marvel Comics",
+    "biography": {
+      "vi": "Luật sư mù ban ngày, Hiệp Sĩ Không Sợ Hãi ban đêm sở hữu giác quan radar siêu phàm bảo vệ khu phố Hell's Kitchen.",
+      "en": "Blind defense attorney by day, vigilante demon of Hell's Kitchen by night guided by radar senses.",
+      "hi": "अंधा वकील जो रात में हेल्स किचन की रक्षा करता है।"
+    },
+    "traits": [
+      {
+        "vi": "Giác quan Radar",
+        "en": "Radar Sense",
+        "hi": "रडार दृष्टि"
+      },
+      {
+        "vi": "Võ thuật cận chiến",
+        "en": "Master Martial Artist",
+        "hi": "मार्शल आर्ट्स"
+      }
+    ]
+  },
+  {
+    "id": "comics-char-013",
+    "category": "comics",
+    "name": {
+      "vi": "Rorschach (Walter Kovacs)",
+      "en": "Rorschach",
+      "hi": "रोरशैक"
+    },
+    "image": "https://images.unsplash.com/photo-1563089145-599997674d42?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Watchmen",
+    "biography": {
+      "vi": "Vị thám tử đường phố không bao giờ thỏa hiệp với cái xấu, đeo chiếc mặt nạ mực chuyển động không ngừng.",
+      "en": "Uncompromising vigilante wearing a shifting ink-blot mask, seeking justice without moral dilution.",
+      "hi": "बुराई से कभी समझौता न करने वाला जासूस।"
+    },
+    "traits": [
+      {
+        "vi": "Không thỏa hiệp",
+        "en": "Never Compromise",
+        "hi": "कड़ा रुख"
+      },
+      {
+        "vi": "Mặt nạ vết mực",
+        "en": "Inkblot Mask",
+        "hi": "जादुई मास्क"
+      }
+    ]
+  },
+  {
+    "id": "manga-char-008",
+    "category": "manga",
+    "name": {
+      "vi": "Miyamoto Musashi",
+      "en": "Miyamoto Musashi",
+      "hi": "मियामोतो मुसाशी"
+    },
+    "image": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Vagabond",
+    "biography": {
+      "vi": "Huyền thoại kiếm sĩ Nhật Bản trên con đường ngộ đạo kiếm thuật, từ dã thú khát máu trở thành thiền sư bình thản.",
+      "en": "Historical sword saint on a journey from feral bloodlust to Zen philosophical self-discovery.",
+      "hi": "जापान का अमर तलवारबाज जो ज्ञान की खोज में निकला।"
+    },
+    "traits": [
+      {
+        "vi": "Nhị Thiên Nhất Lưu",
+        "en": "Niten Ichi-ryu",
+        "hi": "दो तलवार शैली"
+      },
+      {
+        "vi": "Kiếm Đạo Thiền",
+        "en": "Zen Insight",
+        "hi": "ध्यान और शांति"
+      }
+    ]
+  },
+  {
+    "id": "manga-char-009",
+    "category": "manga",
+    "name": {
+      "vi": "Killua Zoldyck",
+      "en": "Killua Zoldyck",
+      "hi": "किलुआ ज़ोल्डिक"
+    },
+    "image": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Hunter x Hunter",
+    "biography": {
+      "vi": "Thiên tài nhí gia tộc sát thủ Zoldyck có khả năng biến đổi Niệm thành dòng điện chớp nhoáng Godspeed.",
+      "en": "Prodigy assassin of the Zoldyck clan transforming transmutation Nen into lightning-fast Godspeed.",
+      "hi": "बिजली की गति से लड़ने वाला नन्हा हत्यारा।"
+    },
+    "traits": [
+      {
+        "vi": "Tốc độ thần thánh Godspeed",
+        "en": "Godspeed",
+        "hi": "गॉडस्पीड"
+      },
+      {
+        "vi": "Móng vuốt sát thủ",
+        "en": "Assassin Claws",
+        "hi": "तेज पंजे"
+      }
+    ]
+  },
+  {
+    "id": "manga-char-010",
+    "category": "manga",
+    "name": {
+      "vi": "Taro Sakamoto",
+      "en": "Taro Sakamoto",
+      "hi": "तारो साकामोटो"
+    },
+    "image": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Sakamoto Days",
+    "biography": {
+      "vi": "Sát thủ huyền thoại giải nghệ mở tiệm tạp hóa gia đình, luôn giữ lời thề không bao giờ sát sinh trước mặt vợ con.",
+      "en": "Retired legendary assassin who runs a friendly convenience store while fending off hitmen without killing.",
+      "hi": "रिटायर्ड हत्यारा जो अब एक साधारण दुकानदार है।"
+    },
+    "traits": [
+      {
+        "vi": "Phản xạ thần sầu",
+        "en": "Godly Reflexes",
+        "hi": "तीव्र सजगता"
+      },
+      {
+        "vi": "Không giết người",
+        "en": "No-Kill Rule",
+        "hi": "अहिंसा का नियम"
+      }
+    ]
+  },
+  {
+    "id": "manga-char-011",
+    "category": "manga",
+    "name": {
+      "vi": "Kenzo Tenma",
+      "en": "Dr. Kenzo Tenma",
+      "hi": "डॉ. केनज़ो तेनमा"
+    },
+    "image": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Monster",
+    "biography": {
+      "vi": "Bác sĩ giải phẫu thần kinh tài hoa từ bỏ danh vọng để chuộc lỗi và ngăn chặn con quái vật Johan Liebert.",
+      "en": "Brilliant brain surgeon who abandons status to hunt the sociopathic monster he once saved.",
+      "hi": "एक दयालु डॉक्टर जो एक राक्षस को रोकने के लिए निकला है।"
+    },
+    "traits": [
+      {
+        "vi": "Tay phẫu thuật vàng",
+        "en": "Master Surgeon",
+        "hi": "महान सर्जन"
+      },
+      {
+        "vi": "Lương tâm nghề nghiệp",
+        "en": "Moral Duty",
+        "hi": "सच्ची निष्ठा"
+      }
+    ]
+  },
+  {
+    "id": "manga-char-012",
+    "category": "manga",
+    "name": {
+      "vi": "Momo Ayase",
+      "en": "Momo Ayase",
+      "hi": "मोमो अयासे"
+    },
+    "image": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500&auto=format&fit=crop&q=80",
+    "franchise": "Dandadan",
+    "biography": {
+      "vi": "Nữ sinh có khả năng tâm linh thức tỉnh đôi bàn tay khổng lồ bằng năng lượng Aura để trừ tà ma quỷ quái.",
+      "en": "Spunky high-schooler who awakens psychokinetic spirit hands to battle aliens and cursed yokai.",
+      "hi": "आध्यात्मिक शक्तियों से भूतों से लड़ने वाली निडर लड़की।"
+    },
+    "traits": [
+      {
+        "vi": "Bàn tay linh hồn Aura",
+        "en": "Psychokinesis",
+        "hi": "आध्यात्मिक हाथ"
+      },
+      {
+        "vi": "Dũng cảm",
+        "en": "Brave",
+        "hi": "साहसी"
+      }
+    ]
+  },
+  {
+    "id": "manga-char-013",
+    "category": "manga",
+    "name": {
+      "vi": "Jotaro Kujo",
+      "en": "Jotaro Kujo",
+      "hi": "जोतारो कुजो"
+    },
+    "image": "https://images.unsplash.com/photo-1563089145-599997674d42?w=500&auto=format&fit=crop&q=80",
+    "franchise": "JoJo's Bizarre Adventure",
+    "biography": {
+      "vi": "Nhân vật biểu tượng của dòng họ Joestar sở hữu Stand Star Platinum có tốc độ siêu phàm và khả năng dừng thời gian.",
+      "en": "Iconic delinquent hero of Stardust Crusaders commanding Star Platinum: The World to stop time.",
+      "hi": "समय रोकने की शक्ति रखने वाला जोतारो कुजो।"
+    },
+    "traits": [
+      {
+        "vi": "Stand Star Platinum",
+        "en": "Star Platinum",
+        "hi": "स्टार प्लैटिनम"
+      },
+      {
+        "vi": "Dừng thời gian",
+        "en": "Time Stop",
+        "hi": "समय रोकना"
       }
     ]
   }

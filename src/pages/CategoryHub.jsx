@@ -9,7 +9,12 @@ import CharacterCard from '../components/cards/CharacterCard.jsx';
 import EventCard from '../components/cards/EventCard.jsx';
 import LightboxGallery from '../components/interactive/LightboxGallery.jsx';
 import VideoModal from '../components/interactive/VideoModal.jsx';
+import CategoryContentRow from '../components/interactive/CategoryContentRow.jsx';
 import SakuraEffect from '../components/interactive/SakuraEffect.jsx';
+import KpopSparkleEffect from '../components/interactive/KpopSparkleEffect.jsx';
+import MoviesProjectorEffect from '../components/interactive/MoviesProjectorEffect.jsx';
+import MangaActionEffect from '../components/interactive/MangaActionEffect.jsx';
+import GamingHextechEffect from '../components/interactive/GamingHextechEffect.jsx';
 import EmptyState from '../components/common/EmptyState.jsx';
 import { useBookmarks } from '../context/BookmarkContext.jsx';
 import { useTheme } from '../context/ThemeContext.jsx';
@@ -36,6 +41,9 @@ export default function CategoryHub() {
   const { categoryInfo, contents, characters, events, franchises, isValidCategory } = useCategoryData(categoryId);
   const isMovies = categoryId === 'movies';
   const isGaming = categoryId === 'gaming';
+  const isAnime = categoryId === 'anime';
+  const isKpop = categoryId === 'kpop';
+  const isManga = categoryId === 'manga';
   const { isBookmarked, toggleBookmark } = useBookmarks();
   const { isDark } = useTheme();
 
@@ -96,27 +104,100 @@ export default function CategoryHub() {
     return () => clearInterval(interval);
   }, [isMovies]);
 
-  // Anime-only: cinematic Gundam hero video state
-  const [animeHeroMuted, setAnimeHeroMuted] = useState(true);
-  const animeVideoRef = useRef(null);
+  // Unified Cinematic Hero Video state (matching Anime across all categories)
+  const [heroMuted, setHeroMuted] = useState(true);
+  const heroVideoRef = useRef(null);
 
-  const toggleAnimeHeroAudio = () => {
-    if (animeVideoRef.current) {
-      animeVideoRef.current.muted = !animeHeroMuted;
-      setAnimeHeroMuted(!animeHeroMuted);
+  const toggleHeroAudio = () => {
+    if (heroVideoRef.current) {
+      heroVideoRef.current.muted = !heroMuted;
+      setHeroMuted(!heroMuted);
     }
   };
 
-  // Manga-only: cinematic hero video state
-  const [mangaHeroMuted, setMangaHeroMuted] = useState(true);
-  const mangaVideoRef = useRef(null);
-
-  const toggleMangaHeroAudio = () => {
-    if (mangaVideoRef.current) {
-      mangaVideoRef.current.muted = !mangaHeroMuted;
-      setMangaHeroMuted(!mangaHeroMuted);
+  useEffect(() => {
+    setHeroMuted(true);
+    if (heroVideoRef.current) {
+      heroVideoRef.current.muted = true;
+      heroVideoRef.current.play().catch(() => {});
     }
-  };
+  }, [categoryId]);
+
+  const heroConfig = useMemo(() => {
+    const configs = {
+      anime: {
+        videoSrc: '/GunDam.mp4',
+        badgeText: 'Anime Exclusive',
+        badgeGradient: 'linear-gradient(135deg, #FF6B81, #ff4757)',
+        badgeShadow: 'rgba(255, 107, 129, 0.35)',
+        videoTitle: 'Mobile Suit Gundam: Chiến Binh Thép Tái Xuất',
+        heroSubtitle: '• Mobile Suit GunDam',
+        heroDesc: 'Khám phá thế giới hoạt hình Nhật Bản đỉnh cao, các tác phẩm shounen huyền thoại cùng trailer bom tấn Mobile Suit Gundam: Chiến Binh Thép Tái Xuất với những màn đại chiến mecha mãn nhãn.',
+        effect: <SakuraEffect autoStart={true} />,
+      },
+      gaming: {
+        videoSrc: '/video_lol.mp4',
+        badgeText: 'Gaming Exclusive',
+        badgeGradient: 'linear-gradient(135deg, #00cec9, #0984e3)',
+        badgeShadow: 'rgba(0, 206, 201, 0.35)',
+        videoTitle: 'League of Legends: Cinematic eSports',
+        heroSubtitle: '• League of Legends & eSports',
+        heroDesc: 'Thế giới game đỉnh cao, eSports chuyên nghiệp, các tựa game bom tấn AAA cùng trailer bom tấn League of Legends Cinematic với những trận đại chiến huyền thoại và đồ họa tương lai mãn nhãn.',
+        effect: <GamingHextechEffect autoStart={true} />,
+      },
+      manga: {
+        videoSrc: '/manga-hero-video.mp4',
+        badgeText: 'Manga Exclusive',
+        badgeGradient: 'linear-gradient(135deg, #d35400, #E17055)',
+        badgeShadow: 'rgba(211, 84, 0, 0.35)',
+        videoTitle: 'Manga Shounen Jump & Seinen Masterpieces',
+        heroSubtitle: '• Kho Tàng Truyện Tranh Huyền Thoại',
+        heroDesc: 'Đắm chìm vào những trang truyện tranh kinh điển, các nét vẽ mực đỉnh cao từ Eiichiro Oda, Gege Akutami, Kentaro Miura đến thế giới shounen bùng nổ cảm xúc.',
+        effect: <MangaActionEffect autoStart={true} />,
+      },
+      movies: {
+        videoSrc: '/movies-hero-video.mp4',
+        badgeText: 'Cinema Exclusive',
+        badgeGradient: 'linear-gradient(135deg, #0984E3, #00a8ff)',
+        badgeShadow: 'rgba(9, 132, 227, 0.35)',
+        videoTitle: 'Hollywood & Vũ Trụ Điện Ảnh Marvel/DC',
+        heroSubtitle: '• Bom Tấn Màn Bạc & Kỹ Xảo Điện Ảnh',
+        heroDesc: 'Hòa mình vào vũ trụ điện ảnh đỉnh cao, những kiệt tác màn ảnh rộng, vũ trụ đa chiều MCU & DC cùng kỹ xảo CGI mãn nhãn hàng đầu thế giới.',
+        effect: <MoviesProjectorEffect autoStart={true} />,
+      },
+      tvshows: {
+        videoSrc: '/hero-video.mp4',
+        badgeText: 'TV Series Exclusive',
+        badgeGradient: 'linear-gradient(135deg, #6C5CE7, #a29bfe)',
+        badgeShadow: 'rgba(108, 92, 231, 0.35)',
+        videoTitle: 'Top TV Series & Streaming Originals',
+        heroSubtitle: '• Series Truyền Hình Bom Tấn',
+        heroDesc: 'Thưởng thức những mùa phim truyền hình gây bão toàn cầu, từ Stranger Things, House of the Dragon đến các tác phẩm kịch tính đỉnh cao trên các nền tảng streaming.',
+        effect: <GamingHextechEffect autoStart={true} />,
+      },
+      kpop: {
+        videoSrc: '/0925 (1).mp4',
+        badgeText: 'K-Pop Universe',
+        badgeGradient: 'linear-gradient(135deg, #FD79A8, #e84393)',
+        badgeShadow: 'rgba(253, 121, 168, 0.35)',
+        videoTitle: 'K-Pop Global Live Stage & MV Teasers',
+        heroSubtitle: '• Làn Sóng Hallyu Toàn Cầu',
+        heroDesc: 'Thế giới âm nhạc bùng nổ của BTS, BLACKPINK, aespa, NewJeans với các màn trình diễn vũ đạo đỉnh cao, lightstick rực rỡ và đại nhạc hội quốc tế.',
+        effect: <KpopSparkleEffect autoStart={true} />,
+      },
+      comics: {
+        videoSrc: '/hero-video.mp4',
+        badgeText: 'Comics Universe',
+        badgeGradient: 'linear-gradient(135deg, #FDCB6E, #e17055)',
+        badgeShadow: 'rgba(253, 203, 110, 0.35)',
+        videoTitle: 'Marvel & DC Comics Epic Sagas',
+        heroSubtitle: '• Kỷ Nguyên Siêu Anh Hùng Đồ Họa',
+        heroDesc: 'Khám phá lịch sử truyện tranh phương Tây, những huyền thoại Avengers, Batman, Spider-Man cùng các ấn bản graphic novel kinh điển.',
+        effect: <MangaActionEffect autoStart={true} />,
+      },
+    };
+    return configs[categoryId] || configs.anime;
+  }, [categoryId]);
 
   // Content Filters
   const [selectedType, setSelectedType] = useState('all');
@@ -211,6 +292,23 @@ export default function CategoryHub() {
     });
   }, [categoryId, selectedType, selectedSort, language]);
 
+  // Divided Content Collections for 'All' View
+  const videoContents = useMemo(() => {
+    return dataService.getContentsByCategory(categoryId, { type: 'video', sort: selectedSort });
+  }, [categoryId, selectedSort, language]);
+
+  const galleryContents = useMemo(() => {
+    return dataService.getContentsByCategory(categoryId, { type: 'gallery', sort: selectedSort });
+  }, [categoryId, selectedSort, language]);
+
+  const articleContents = useMemo(() => {
+    return dataService.getContentsByCategory(categoryId, { type: 'article', sort: selectedSort });
+  }, [categoryId, selectedSort, language]);
+
+  const audioContents = useMemo(() => {
+    return dataService.getContentsByCategory(categoryId, { type: 'audio', sort: selectedSort });
+  }, [categoryId, selectedSort, language]);
+
   // Filtered Characters
   const filteredCharacters = useMemo(() => {
     return dataService.getCharactersByCategory(categoryId, {
@@ -278,485 +376,118 @@ export default function CategoryHub() {
   }
 
   return (
-    <div className={`container-fluid px-3 px-md-4 px-lg-5 py-4 ${isGaming ? 'gaming-universe-container' : ''}`}>
-      {isMovies ? (
-        <>
-          {/* MOVIES CINEMATIC HERO — spotlight rotates through latest trailers */}
-          {activeHeroTrailer && (
-            <div className="movies-hero mb-4">
-              <video
-                ref={moviesHeroVideoRef}
-                className="movies-hero-bg"
-                src="/movies-hero-video.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                onTimeUpdate={handleMoviesHeroTimeUpdate}
-              />
-              <div className="movies-hero-scrim" />
+    <div className={`container-fluid px-3 px-md-4 px-lg-5 py-4 ${isGaming ? 'gaming-universe-container' : ''} ${isAnime ? 'anime-universe-container' : ''} ${isKpop ? 'kpop-universe-container' : ''} ${isMovies ? 'movies-universe-container' : ''} ${isManga ? 'manga-universe-container' : ''}`}>
+      {/* EXCLUSIVE CINEMATIC HERO BANNER — UNIFIED ACROSS ALL 7 CATEGORIES (MATCHING ANIME) */}
+      <div className={`category-cinema-hero ${categoryId}-cinema-hero mb-4`}>
+        <video
+          key={heroConfig.videoSrc}
+          ref={heroVideoRef}
+          className="category-cinema-hero-bg"
+          src={heroConfig.videoSrc}
+          autoPlay
+          loop
+          muted={heroMuted}
+          playsInline
+        />
+        <div className="category-cinema-hero-scrim" />
 
-              <div className="movies-hero-content">
-                <span className="movies-hero-eyebrow">
-                  <i className="bi bi-film"></i> Trailer Nổi Bật
-                </span>
-                <h1 className="movies-hero-title">{activeHeroTrailer.title}</h1>
-                <div className="movies-hero-meta">
-                  <span><i className="bi bi-calendar3 me-1"></i>{formatVietnameseDate(activeHeroTrailer.releaseDate)}</span>
-                  <span className="dot"></span>
-                  <span className={`badge-category badge-category-movies`}>
-                    <i className={`bi ${categoryInfo.icon} me-1`}></i> {categoryInfo.label}
-                  </span>
-                  {activeHeroTrailer.status === 'upcoming' && (
-                    <>
-                      <span className="dot"></span>
-                      <span className="text-warning fw-semibold">
-                        <i className="bi bi-lightning-charge-fill me-1"></i>Sắp ra mắt
-                      </span>
-                    </>
-                  )}
-                </div>
-                <div className="movies-hero-actions">
-                  <button
-                    type="button"
-                    className="movies-hero-cta"
-                    onClick={() => setActiveVideo(activeHeroTrailer)}
-                  >
-                    <i className="bi bi-play-fill fs-5"></i> Xem Trailer
-                  </button>
-                  <button
-                    type="button"
-                    className={`movies-hero-icon-btn ${isBookmarked(activeHeroTrailer.id) ? 'is-active' : ''}`}
-                    onClick={() => toggleBookmark({ ...activeHeroTrailer, category: 'movies', type: 'trailer' })}
-                    aria-label="Lưu trailer"
-                    title="Lưu vào danh sách của bạn"
-                  >
-                    <i className={`bi ${isBookmarked(activeHeroTrailer.id) ? 'bi-heart-fill' : 'bi-heart'}`}></i>
-                  </button>
-                  <button
-                    type="button"
-                    className="movies-hero-icon-btn"
-                    aria-label="Chia sẻ"
-                    title="Sao chép liên kết chia sẻ"
-                    onClick={() => {
-                      navigator.clipboard?.writeText(window.location.href);
-                    }}
-                  >
-                    <i className="bi bi-share-fill"></i>
-                  </button>
-                </div>
-              </div>
-
-              {/* Thumbnail selector rail */}
-              <div className="movies-hero-rail">
-                {heroTrailers.map((t, idx) => (
-                  <button
-                    key={t.id}
-                    type="button"
-                    className={`movies-hero-thumb ${idx === heroIndex ? 'is-active' : ''}`}
-                    onClick={() => setHeroIndex(idx)}
-                    aria-label={t.title}
-                    title={t.title}
-                  >
-                    <img src={t.thumbnail} alt={t.title} />
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* MOVIES "MỚI RA MẮT" POSTER CAROUSEL */}
-          {moviesLatest.length > 0 && (
-            <div className="mb-4">
-              <div className="d-flex align-items-center justify-content-between mb-3">
-                <h2 className={`font-heading fw-bold h4 mb-0 ${isDark ? 'text-white' : 'text-dark'}`}>
-                  <i className="bi bi-stars me-2" style={{ color: '#0984E3' }}></i>
-                  Mới Ra Mắt
-                </h2>
-                <div className="d-flex align-items-center gap-2">
-                  <button type="button" className="movies-carousel-arrow" onClick={() => scrollMoviesCarousel(-1)} aria-label="Trước">
-                    <i className="bi bi-chevron-left"></i>
-                  </button>
-                  <button type="button" className="movies-carousel-arrow" onClick={() => scrollMoviesCarousel(1)} aria-label="Tiếp theo">
-                    <i className="bi bi-chevron-right"></i>
-                  </button>
-                </div>
-              </div>
-
-              <div className="movies-carousel-track" ref={moviesCarouselRef}>
-                {moviesLatest.map((item) => (
-                  <div
-                    key={item.id}
-                    className="movies-poster-card"
-                    onClick={() => {
-                      if (item.kind === 'trailer') {
-                        setActiveVideo(item.source);
-                      } else if (item.source.type === 'video') {
-                        setActiveVideo(item.source);
-                      } else if (item.source.type === 'gallery') {
-                        setLightboxImages(item.source.images);
-                      } else {
-                        window.location.hash = `#/category/movies/article/${item.id}`;
-                      }
-                    }}
-                  >
-                    <img src={item.thumbnail} alt={item.title} loading="lazy" />
-                    <div className="poster-scrim" />
-                    <span
-                      className="poster-badge"
-                      style={{
-                        background: isRecentlyAdded(item.dateAdded)
-                          ? 'linear-gradient(135deg, #FF6B81, #ee5253)'
-                          : 'rgba(9, 132, 227, 0.9)',
-                      }}
-                    >
-                      {isRecentlyAdded(item.dateAdded) ? 'Mới' : item.kind === 'trailer' ? 'Trailer' : 'Bài viết'}
-                    </span>
-                    <div className="poster-info">
-                      <div className="poster-title">{item.title}</div>
-                      <div className="poster-date">{formatVietnameseDate(item.dateAdded)}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-        </>
-      ) : categoryId === 'anime' ? (
-        /* EXCLUSIVE CINEMATIC GUNDAM ANIME HERO BANNER */
-        <div className="category-cinema-hero mb-4">
-          <video
-            ref={animeVideoRef}
-            className="category-cinema-hero-bg"
-            src="/GunDam.mp4"
-            autoPlay
-            loop
-            muted={animeHeroMuted}
-            playsInline
-          />
-          <div className="category-cinema-hero-scrim" />
-
-          {/* Top-Right Stats Card */}
-          <div className="category-cinema-hero-stats">
-            <div>
-              <i className="bi bi-file-text me-1 text-primary"></i>{' '}
-              <strong className="text-white">{contents.length}</strong> bài viết & media
-            </div>
-            <div>
-              <i className="bi bi-people me-1 text-success"></i>{' '}
-              <strong className="text-white">{characters.length}</strong> nhân vật tiêu biểu
-            </div>
-            <div>
-              <i className="bi bi-calendar-event me-1 text-warning"></i>{' '}
-              <strong className="text-white">{events.length}</strong> sự kiện nổi bật
-            </div>
-          </div>
-
-          <div className="category-cinema-hero-content">
-            <div className="category-cinema-hero-eyebrow">
-              <span className="badge-category badge-category-anime fs-6">
-                <i className={`bi ${categoryInfo.icon} me-1`}></i> Fandom Universe
-              </span>
-              <span
-                className="badge rounded-pill px-3 py-1 text-white small d-inline-flex align-items-center gap-1"
-                style={{
-                  background: 'linear-gradient(135deg, #ff758c, #ff7eb3)',
-                  boxShadow: '0 2px 8px rgba(255, 117, 140, 0.35)',
-                }}
-              >
-                <i className="bi bi-stars"></i> Anime Exclusive
-              </span>
-              <span
-                className="badge rounded-pill px-3 py-1 text-white small d-inline-flex align-items-center gap-1"
-                style={{
-                  background: 'linear-gradient(135deg, #e84118, #ff6b81)',
-                  boxShadow: '0 2px 8px rgba(232, 65, 24, 0.35)',
-                }}
-              >
-                <i className="bi bi-play-circle-fill"></i> GunDam Video
-              </span>
-              <SakuraEffect autoStart={true} />
-            </div>
-
-            <h1 className="category-cinema-hero-title">
-              {categoryInfo.label}
-              <span className="ms-2 fs-4 fw-normal text-white-50 d-block d-sm-inline">
-                • Mobile Suit GunDam
-              </span>
-            </h1>
-
-            <p className="category-cinema-hero-desc">
-              Khám phá thế giới hoạt hình Nhật Bản đỉnh cao, các tác phẩm shounen huyền thoại cùng trailer bom tấn{' '}
-              <strong className="text-white">Mobile Suit Gundam: Chiến Binh Thép Tái Xuất</strong> với những màn đại chiến mecha mãn nhãn.
-            </p>
-
-            <div className="category-cinema-hero-actions">
-              <button
-                type="button"
-                className="category-cinema-hero-cta"
-                onClick={() => setActiveVideo({
-                  id: 'anime-trailer-002',
-                  title: 'Mobile Suit Gundam: Chiến Binh Thép Tái Xuất',
-                  mediaUrl: '/GunDam.mp4',
-                })}
-              >
-                <i className="bi bi-arrows-fullscreen fs-6"></i>
-                <span>Xem Bản Chi Tiết (Full Video)</span>
-              </button>
-
-              <button
-                type="button"
-                className="category-cinema-hero-btn-secondary"
-                onClick={toggleAnimeHeroAudio}
-                title={animeHeroMuted ? 'Bật âm thanh video Gundam' : 'Tắt tiếng video Gundam'}
-              >
-                <i className={`bi ${animeHeroMuted ? 'bi-volume-mute-fill' : 'bi-volume-up-fill'} fs-6`}></i>
-                <span>{animeHeroMuted ? 'Bật Âm Thanh' : 'Tắt Âm Thanh'}</span>
-              </button>
-
-              <button
-                type="button"
-                className="movies-hero-icon-btn"
-                aria-label="Chia sẻ"
-                title="Sao chép liên kết chia sẻ"
-                onClick={() => {
-                  navigator.clipboard?.writeText(window.location.href);
-                }}
-              >
-                <i className="bi bi-share-fill"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      ) : categoryId === 'manga' ? (
-        /* CINEMATIC MANGA HERO BANNER */
-        <div className="category-cinema-hero mb-4">
-          <video
-            ref={mangaVideoRef}
-            className="category-cinema-hero-bg"
-            src="/manga-hero-video.mp4"
-            autoPlay
-            loop
-            muted={mangaHeroMuted}
-            playsInline
-          />
-          <div className="category-cinema-hero-scrim" />
-
-          {/* Top-Right Stats Card */}
-          <div className="category-cinema-hero-stats">
-            <div>
-              <i className="bi bi-file-text me-1 text-primary"></i>{' '}
-              <strong className="text-white">{contents.length}</strong> bài viết & media
-            </div>
-            <div>
-              <i className="bi bi-people me-1 text-success"></i>{' '}
-              <strong className="text-white">{characters.length}</strong> nhân vật tiêu biểu
-            </div>
-            <div>
-              <i className="bi bi-calendar-event me-1 text-warning"></i>{' '}
-              <strong className="text-white">{events.length}</strong> sự kiện nổi bật
-            </div>
-          </div>
-
-          <div className="category-cinema-hero-content">
-            <div className="category-cinema-hero-eyebrow">
-              <span className="badge-category badge-category-manga fs-6">
-                <i className={`bi ${categoryInfo.icon} me-1`}></i> Fandom Universe
-              </span>
-              <span
-                className="badge rounded-pill px-3 py-1 text-white small d-inline-flex align-items-center gap-1"
-                style={{
-                  background: 'linear-gradient(135deg, #E17055, #f0a48a)',
-                  boxShadow: '0 2px 8px rgba(225, 112, 85, 0.35)',
-                }}
-              >
-                <i className="bi bi-stars"></i> Manga Exclusive
-              </span>
-              <span
-                className="badge rounded-pill px-3 py-1 text-white small d-inline-flex align-items-center gap-1"
-                style={{
-                  background: 'linear-gradient(135deg, #d35400, #E17055)',
-                  boxShadow: '0 2px 8px rgba(211, 84, 0, 0.35)',
-                }}
-              >
-                <i className="bi bi-play-circle-fill"></i> Video Nổi Bật
-              </span>
-            </div>
-
-            <h1 className="category-cinema-hero-title">
-              {categoryInfo.label}
-            </h1>
-
-            <p className="category-cinema-hero-desc">
-              {categoryInfo.description}
-            </p>
-
-            <div className="category-cinema-hero-actions">
-              <button
-                type="button"
-                className="category-cinema-hero-cta"
-                style={{ background: 'linear-gradient(135deg, #d35400, #E17055)', boxShadow: '0 8px 24px rgba(211, 84, 0, 0.4)' }}
-                onClick={() => setActiveVideo({
-                  id: 'manga-hero-video',
-                  title: `Video Nổi Bật — ${categoryInfo.label}`,
-                  mediaUrl: '/manga-hero-video.mp4',
-                })}
-              >
-                <i className="bi bi-arrows-fullscreen fs-6"></i>
-                <span>Xem Bản Chi Tiết (Full Video)</span>
-              </button>
-
-              <button
-                type="button"
-                className="category-cinema-hero-btn-secondary"
-                onClick={toggleMangaHeroAudio}
-                title={mangaHeroMuted ? 'Bật âm thanh video' : 'Tắt tiếng video'}
-              >
-                <i className={`bi ${mangaHeroMuted ? 'bi-volume-mute-fill' : 'bi-volume-up-fill'} fs-6`}></i>
-                <span>{mangaHeroMuted ? 'Bật Âm Thanh' : 'Tắt Âm Thanh'}</span>
-              </button>
-
-              <button
-                type="button"
-                className="movies-hero-icon-btn"
-                aria-label="Chia sẻ"
-                title="Sao chép liên kết chia sẻ"
-                onClick={() => {
-                  navigator.clipboard?.writeText(window.location.href);
-                }}
-              >
-                <i className="bi bi-share-fill"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      ) : categoryId === 'gaming' ? (
-        /* EXCLUSIVE SCI-FI CYBERPUNK GAMING HUD HERO BANNER */
-        <div className="gaming-cyber-hero mb-4 position-relative overflow-hidden">
-          {/* Cyber Grid Background lines */}
-          <div className="gaming-cyber-grid-bg"></div>
-          <div className="gaming-cyber-scanlines"></div>
-
-          {/* Active Laser Radar Scan Beam */}
-          {gamingScannerActive && <div className="gaming-laser-scanner"></div>}
-
-          {/* Corner HUD Brackets */}
-          <div className="gaming-hud-corner corner-tl"></div>
-          <div className="gaming-hud-corner corner-tr"></div>
-          <div className="gaming-hud-corner corner-bl"></div>
-          <div className="gaming-hud-corner corner-br"></div>
-
-          {/* Telemetry Status Bar */}
-          <div className="gaming-telemetry-bar">
-            <span><i className="bi bi-cpu-fill text-warning me-1"></i>[ SYS: ONLINE ]</span>
-            <span><i className="bi bi-broadcast me-1 text-info"></i>PING: 12ms // 144 FPS</span>
-            <span><i className="bi bi-shield-lock-fill text-success me-1"></i>SEC_LVL: 09</span>
-            <span><i className="bi bi-terminal-fill me-1"></i>CORE: SCI-FI_CYBERPUNK</span>
-            <span className="ms-auto text-white-50 d-none d-md-inline">// PROTOCOL: FANDOM_v4.2</span>
-          </div>
-
-          <div className="row align-items-center position-relative" style={{ zIndex: 3 }}>
-            <div className="col-lg-8">
-              <div className="d-flex align-items-center gap-2 mb-2 flex-wrap">
-                <span className="badge-category badge-category-gaming fs-6">
-                  <i className="bi bi-controller me-1"></i> [ GAMING.EXE ]
-                </span>
-                <span className="badge gaming-stat-chip">
-                  <i className="bi bi-lightning-charge-fill me-1 text-warning"></i>CYBERPUNK & FUTURE TECH
-                </span>
-                <span className="badge gaming-stat-chip text-white-50">
-                  <i className="bi bi-soundwave me-1"></i>SYNTH_ENGINE
-                </span>
-              </div>
-
-              <h1 className="gaming-hero-title">
-                GAMING & ESPORTS
-              </h1>
-
-              <p className="gaming-hero-desc">
-                Thế giới game đỉnh cao, eSports, các tựa game bom tấn AAA và những kiệt tác khoa học viễn tưởng.
-                Khám phá thế giới mở tương lai, các chiến binh Cyberpunk và những trận đại chiến ngoạn mục.
-              </p>
-
-              <div className="d-flex align-items-center gap-2 flex-wrap">
-                <button
-                  type="button"
-                  className="gaming-btn-cyber-primary d-flex align-items-center gap-2"
-                  onClick={toggleGamingScanner}
-                  title="Kích hoạt rada quét laser Cyber HUD"
-                >
-                  <i className={`bi ${gamingScannerActive ? 'bi-radar text-warning' : 'bi-crosshair'}`}></i>
-                  <span>{gamingScannerActive ? '[ RADAR QUÉT: ĐANG BẬT ]' : '[ KÍCH HOẠT CYBER RADAR ]'}</span>
-                </button>
-
-                <button
-                  type="button"
-                  className="gaming-btn-cyber-secondary d-flex align-items-center gap-1"
-                  onClick={() => {
-                    const el = document.getElementById('gaming-content-tabs');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                >
-                  <i className="bi bi-arrow-down-short fs-6"></i>
-                  <span>// TRUY CẬP DỮ LIỆU</span>
-                </button>
-              </div>
-            </div>
-
-            <div className="col-lg-4 mt-4 mt-lg-0">
-              <div className="p-3 rounded-3" style={{ background: 'rgba(0, 255, 204, 0.04)', border: '1px solid rgba(0, 255, 204, 0.2)' }}>
-                <div className="gaming-font-mono text-warning small mb-2 d-flex align-items-center justify-content-between">
-                  <span>// TELEMETRY_STATS</span>
-                  <span className="badge bg-success p-1" style={{ width: '6px', height: '6px' }}></span>
-                </div>
-                <div className="d-flex flex-column gap-2 gaming-font-mono" style={{ fontSize: '0.85rem' }}>
-                  <div className="d-flex justify-content-between text-white-50 border-bottom border-secondary border-opacity-25 pb-1">
-                    <span>SYS.DATABASE:</span>
-                    <strong className="text-white">{contents.length} TITLES</strong>
-                  </div>
-                  <div className="d-flex justify-content-between text-white-50 border-bottom border-secondary border-opacity-25 pb-1">
-                    <span>ROSTER.ACTIVE:</span>
-                    <strong className="text-white">{characters.length} OPERATORS</strong>
-                  </div>
-                  <div className="d-flex justify-content-between text-white-50">
-                    <span>OPS.MISSION:</span>
-                    <strong className="text-white">{events.length} TOURNAMENTS</strong>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      ) : (
-        /* Category Header Banner (default categories) */
-        <div
-          className={`p-4 p-md-5 rounded-4 shadow-sm mb-4 accent-border-${categoryId} d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3`}
-          style={{
-            backgroundColor: isDark ? '#12162a' : '#ffffff',
-            border: isDark ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid rgba(0, 0, 0, 0.06)',
-          }}
-        >
+        {/* Top-Right Stats Card */}
+        <div className="category-cinema-hero-stats">
           <div>
-            <div className="d-flex align-items-center gap-2 mb-2">
-              <span className={`badge-category badge-category-${categoryId} fs-6`}>
-                <i className={`bi ${categoryInfo.icon} me-1`}></i> Fandom Universe
-              </span>
-            </div>
-            <h1 className={`font-heading display-5 fw-bold mb-2 ${isDark ? 'text-white' : 'text-dark'}`} style={{ color: isDark ? '#ffffff' : '#0f172a' }}>
-              {categoryInfo.label}
-            </h1>
-            <p className={`lead fs-6 mb-0 ${isDark ? 'text-white-50' : 'text-secondary'}`} style={{ maxWidth: '650px', color: isDark ? '#94a3b8' : '#475569' }}>
-              {categoryInfo.description}
-            </p>
+            <i className="bi bi-file-text me-1 text-primary"></i>{' '}
+            <strong className="text-white">{contents.length}</strong> bài viết & media
           </div>
-
-          <div className={`d-flex flex-row flex-md-column gap-2 text-md-end ${isDark ? 'text-white-50' : 'text-muted'} small`}>
-            <div><i className="bi bi-file-text me-1 text-primary"></i> <strong className={isDark ? 'text-white' : 'text-dark'}>{contents.length}</strong> bài viết & media</div>
-            <div><i className="bi bi-people me-1 text-success"></i> <strong className={isDark ? 'text-white' : 'text-dark'}>{characters.length}</strong> nhân vật tiêu biểu</div>
-            <div><i className="bi bi-calendar-event me-1 text-warning"></i> <strong className={isDark ? 'text-white' : 'text-dark'}>{events.length}</strong> sự kiện nổi bật</div>
+          <div>
+            <i className="bi bi-people me-1 text-success"></i>{' '}
+            <strong className="text-white">{characters.length}</strong> nhân vật tiêu biểu
+          </div>
+          <div>
+            <i className="bi bi-calendar-event me-1 text-warning"></i>{' '}
+            <strong className="text-white">{events.length}</strong> sự kiện nổi bật
           </div>
         </div>
-      )}
+
+        <div className="category-cinema-hero-content">
+          <div className="category-cinema-hero-eyebrow">
+            <span className={`badge-category badge-category-${categoryId} fs-6`}>
+              <i className={`bi ${categoryInfo.icon} me-1`}></i> Fandom Universe
+            </span>
+            <span
+              className="badge rounded-pill px-3 py-1 text-white small d-inline-flex align-items-center gap-1"
+              style={{
+                background: heroConfig.badgeGradient,
+                boxShadow: `0 2px 8px ${heroConfig.badgeShadow}`,
+              }}
+            >
+              <i className="bi bi-stars"></i> {heroConfig.badgeText}
+            </span>
+            <span
+              className="badge rounded-pill px-3 py-1 text-white small d-inline-flex align-items-center gap-1"
+              style={{
+                background: 'linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.06))',
+                backdropFilter: 'blur(8px)',
+                border: '1px solid rgba(255,255,255,0.15)',
+              }}
+            >
+              <i className="bi bi-play-circle-fill"></i> Video Nổi Bật
+            </span>
+            {heroConfig.effect}
+          </div>
+
+          <h1 className="category-cinema-hero-title">
+            {categoryInfo.label}
+            <span className="ms-2 fs-4 fw-normal text-white-50 d-block d-sm-inline">
+              {heroConfig.heroSubtitle}
+            </span>
+          </h1>
+
+          <p className="category-cinema-hero-desc">
+            {heroConfig.heroDesc}
+          </p>
+
+          <div className="category-cinema-hero-actions">
+            <button
+              type="button"
+              className="category-cinema-hero-cta"
+              style={{
+                background: heroConfig.badgeGradient,
+                boxShadow: `0 8px 24px ${heroConfig.badgeShadow}`,
+              }}
+              onClick={() => setActiveVideo({
+                id: `${categoryId}-hero-video`,
+                title: heroConfig.videoTitle,
+                mediaUrl: heroConfig.videoSrc,
+              })}
+            >
+              <i className="bi bi-arrows-fullscreen fs-6"></i>
+              <span>Xem Bản Chi Tiết (Full Video)</span>
+            </button>
+
+            <button
+              type="button"
+              className="category-cinema-hero-btn-secondary"
+              onClick={toggleHeroAudio}
+              title={heroMuted ? 'Bật âm thanh video' : 'Tắt tiếng video'}
+            >
+              <i className={`bi ${heroMuted ? 'bi-volume-mute-fill' : 'bi-volume-up-fill'} fs-6`}></i>
+              <span>{heroMuted ? 'Bật Âm Thanh' : 'Tắt Âm Thanh'}</span>
+            </button>
+
+            <button
+              type="button"
+              className="movies-hero-icon-btn"
+              aria-label="Chia sẻ"
+              title="Sao chép liên kết chia sẻ"
+              onClick={() => {
+                navigator.clipboard?.writeText(window.location.href);
+                alert('Đã sao chép liên kết vũ trụ ' + categoryInfo.label + ' vào bộ nhớ tạm!');
+              }}
+            >
+              <i className="bi bi-share-fill"></i>
+            </button>
+          </div>
+        </div>
+      </div>
 
       {/* Navigation Tabs */}
       <div
@@ -892,8 +623,62 @@ export default function CategoryHub() {
             </div>
           </div>
 
-          {/* Content Cards Grid */}
-          {filteredContents.length === 0 ? (
+          {/* Content Cards: Divided Distinct Rows for 'All' View OR Filtered Grid */}
+          {selectedType === 'all' ? (
+            <div className="category-divided-content-sections">
+              {/* 1. Video Row */}
+              <CategoryContentRow
+                title="Video & Phân Cảnh Đặc Sắc"
+                subtitle="Các đoạn video clip, trailer bom tấn và hoạt cảnh đại chiến mãn nhãn"
+                icon="bi-play-circle-fill"
+                color="#ff4757"
+                badgeText={`${videoContents.length} Video`}
+                items={videoContents}
+                onOpenMedia={(v) => setActiveVideo(v)}
+                onOpenGallery={(g) => setLightboxImages(g.images)}
+                onFilterSelf={() => setSelectedType('video')}
+              />
+
+              {/* 2. Gallery Row */}
+              <CategoryContentRow
+                title="Bộ Sưu Tập Ảnh & Concept Art"
+                subtitle="Phòng trưng bày hình nền 4K, bản vẽ phác thảo mecha và minh họa độc quyền"
+                icon="bi-images"
+                color="#feca57"
+                badgeText={`${galleryContents.length} Bộ Ảnh`}
+                items={galleryContents}
+                onOpenMedia={(v) => setActiveVideo(v)}
+                onOpenGallery={(g) => setLightboxImages(g.images)}
+                onFilterSelf={() => setSelectedType('gallery')}
+              />
+
+              {/* 3. Article Row */}
+              <CategoryContentRow
+                title="Bài Viết Chuyên Sâu & Phân Tích"
+                subtitle="Đánh giá tác phẩm, phân tích nhân vật và các bài xã luận văn hóa đặc sắc"
+                icon="bi-file-text-fill"
+                color="#a29bfe"
+                badgeText={`${articleContents.length} Bài Viết`}
+                items={articleContents}
+                onOpenMedia={(v) => setActiveVideo(v)}
+                onOpenGallery={(g) => setLightboxImages(g.images)}
+                onFilterSelf={() => setSelectedType('article')}
+              />
+
+              {/* 4. Audio Row */}
+              <CategoryContentRow
+                title="Podcast & Bản Âm Thanh Fandom"
+                subtitle="Nhạc nền OST kinh điển và các số radio thảo luận cùng cộng đồng"
+                icon="bi-soundwave"
+                color="#00cec9"
+                badgeText={`${audioContents.length} Audio`}
+                items={audioContents}
+                onOpenMedia={(v) => setActiveVideo(v)}
+                onOpenGallery={(g) => setLightboxImages(g.images)}
+                onFilterSelf={() => setSelectedType('audio')}
+              />
+            </div>
+          ) : filteredContents.length === 0 ? (
             <EmptyState
               title={t('categoryHub.noContentTitle')}
               message={t('categoryHub.noContentMessage')}
