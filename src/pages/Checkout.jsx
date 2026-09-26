@@ -5,6 +5,7 @@ import { useCart } from '../context/CartContext.jsx';
 import { useAuth } from '../context/AuthContext.jsx';
 import { useTheme } from '../context/ThemeContext.jsx';
 import ToastNotification from '../components/common/ToastNotification.jsx';
+import { storageService } from '../services/storageService.js';
 
 // Available discount promo codes
 const PROMO_CODES = {
@@ -183,8 +184,12 @@ export default function Checkout() {
         shippingFee,
         vatTax,
         total: finalTotal,
+        status: 'completed',
+        userEmail: currentUser?.email || shippingInfo.email || 'guest',
+        userName: currentUser?.name || shippingInfo.fullName,
       };
 
+      storageService.addOrder(orderData);
       setCompletedOrder(orderData);
       setIsProcessing(false);
       setStep('success');

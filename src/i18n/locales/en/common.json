@@ -448,6 +448,7 @@
     "about": "About",
     "login": "Log In",
     "signup": "Sign Up",
+    "profile": "My Account",
     "genericPage": "Page"
   },
   "emptyState": {
@@ -501,7 +502,28 @@
     "merchShop": "Fandom Store & Merchandise",
     "trailersHub": "Blockbuster Trailers & Teasers",
     "aboutUs": "About FandomVerse Universe",
-    "contactSupport": "Contact & Feedback"
+    "contactSupport": "Contact & Feedback",
+    "ordersTitle": "Order & Transaction History",
+    "ordersCount": "{{count}} orders",
+    "noOrdersTitle": "No Transaction History Yet",
+    "noOrdersSubtitle": "You haven't placed any orders on FandomVerse yet. Discover exclusive merchandise now!",
+    "shopNow": "Explore Merchandise",
+    "orderId": "Order ID:",
+    "orderDate": "Date:",
+    "orderStatus": "Status:",
+    "statusCompleted": "Completed",
+    "statusProcessing": "Processing",
+    "orderTotal": "Total:",
+    "orderItems": "Items:",
+    "recipient": "Recipient:",
+    "viewInvoice": "View Receipt",
+    "reorder": "Buy Again",
+    "receiptTitle": "Official Order Receipt",
+    "printReceipt": "Print Receipt",
+    "close": "Close",
+    "deliveryAddress": "Delivery Address",
+    "paymentMethod": "Payment Method",
+    "reorderSuccess": "Added {{count}} items from order {{id}} back into your cart!"
   },
   "checkout": {
     "title": "Checkout & Order Confirmation",

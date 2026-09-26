@@ -151,4 +151,80 @@ export const storageService = {
       console.warn('Không thể lưu ngôn ngữ vào LocalStorage:', error);
     }
   },
+
+  // Orders / Transactions (LocalStorage)
+  loadOrders() {
+    try {
+      const data = localStorage.getItem(STORAGE_KEYS.ORDERS);
+      if (data) {
+        return JSON.parse(data);
+      }
+      // Seed with initial order matching the user's completed checkout
+      const initialOrders = [
+        {
+          orderId: 'FV-864983',
+          date: '26/09/2026, 22:41:28',
+          createdAt: '2026-09-26T15:41:28.000Z',
+          userEmail: 'luyenhao48@gmail.com',
+          userName: 'hào',
+          items: [
+            {
+              id: 'merch-onepiece-luffy-gear5',
+              name: 'Luffy Gear 5 Sun God Nika Master Stars Piece Figure',
+              price: 89.99,
+              quantity: 3,
+              image: '/image/luffy.jpg',
+            },
+            {
+              id: 'merch-witcher-geralt-ursine',
+              name: 'Geralt of Rivia Grandmaster Ursina Armor 1/6 Scale Statue',
+              price: 149.99,
+              quantity: 1,
+              image: '/image/model_denjji.jpg',
+            },
+          ],
+          shippingInfo: {
+            fullName: 'hào',
+            phone: '123456789',
+            email: 'luyenhao48@gmail.com',
+            city: 'Hà Nội',
+            district: 'Xuân Phương',
+            address: 'Xuân Phương, Nam Từ Liêm',
+          },
+          paymentMethod: 'momo',
+          subtotal: 419.96,
+          discount: 0,
+          shippingFee: 0,
+          vatTax: 33.60,
+          total: 453.56,
+          status: 'completed',
+        },
+      ];
+      this.saveOrders(initialOrders);
+      return initialOrders;
+    } catch (error) {
+      console.warn('Không thể đọc lịch sử đơn hàng từ LocalStorage:', error);
+      return [];
+    }
+  },
+
+  saveOrders(orders) {
+    try {
+      localStorage.setItem(STORAGE_KEYS.ORDERS, JSON.stringify(orders));
+    } catch (error) {
+      console.warn('Không thể lưu đơn hàng vào LocalStorage:', error);
+    }
+  },
+
+  addOrder(order) {
+    try {
+      const orders = this.loadOrders();
+      orders.unshift(order);
+      this.saveOrders(orders);
+      return orders;
+    } catch (error) {
+      console.warn('Không thể thêm đơn hàng mới:', error);
+      return [];
+    }
+  },
 };

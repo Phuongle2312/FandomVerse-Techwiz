@@ -448,6 +448,7 @@
     "about": "Giới Thiệu",
     "login": "Đăng Nhập",
     "signup": "Đăng Ký",
+    "profile": "Tài Khoản Của Tôi",
     "genericPage": "Trang"
   },
   "emptyState": {
@@ -501,7 +502,28 @@
     "merchShop": "Cửa Hàng Fandom & Vật Phẩm",
     "trailersHub": "Trailers & Teasers Bom Tấn",
     "aboutUs": "Về Vũ Trụ FandomVerse",
-    "contactSupport": "Liên Hệ & Phản Hồi Ý Kiến"
+    "contactSupport": "Liên Hệ & Phản Hồi Ý Kiến",
+    "ordersTitle": "Lịch Sử Giao Dịch & Đơn Hàng",
+    "ordersCount": "{{count}} đơn hàng",
+    "noOrdersTitle": "Chưa Có Giao Dịch Nào",
+    "noOrdersSubtitle": "Bạn chưa đặt đơn hàng nào trên FandomVerse. Hãy khám phá gian hàng Fandom Merchandise ngay!",
+    "shopNow": "Khám Phá Cửa Hàng",
+    "orderId": "Mã đơn:",
+    "orderDate": "Ngày đặt:",
+    "orderStatus": "Trạng thái:",
+    "statusCompleted": "Đã hoàn thành",
+    "statusProcessing": "Đang xử lý",
+    "orderTotal": "Tổng tiền:",
+    "orderItems": "Vật phẩm:",
+    "recipient": "Người nhận:",
+    "viewInvoice": "Xem Hóa Đơn",
+    "reorder": "Mua Lại",
+    "receiptTitle": "Hóa Đơn Mua Hàng FandomVerse",
+    "printReceipt": "In Hóa Đơn",
+    "close": "Đóng",
+    "deliveryAddress": "Địa Chỉ Nhận Hàng",
+    "paymentMethod": "Phương Thức Thanh Toán",
+    "reorderSuccess": "Đã thêm lại {{count}} món từ đơn {{id}} vào giỏ hàng!"
   },
   "checkout": {
     "title": "Thanh Toán & Xác Nhận Đơn Hàng",

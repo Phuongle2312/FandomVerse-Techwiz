@@ -445,6 +445,7 @@
     "about": "परिचय",
     "login": "लॉग इन करें",
     "signup": "साइन अप करें",
+    "profile": "मेरा खाता",
     "genericPage": "पेज"
   },
   "emptyState": {
@@ -498,7 +499,28 @@
     "merchShop": "फैन्डम स्टोर और मर्चेंडाइज",
     "trailersHub": "ब्लॉकबस्टर ट्रेलर और टीज़र",
     "aboutUs": "FandomVerse के बारे में",
-    "contactSupport": "संपर्क और प्रतिक्रिया"
+    "contactSupport": "संपर्क और प्रतिक्रिया",
+    "ordersTitle": "ऑर्डर व लेनदेन इतिहास",
+    "ordersCount": "{{count}} ऑर्डर",
+    "noOrdersTitle": "अभी तक कोई लेनदेन नहीं",
+    "noOrdersSubtitle": "आपने अभी तक FandomVerse पर कोई ऑर्डर नहीं दिया है। अभी मर्चेंडाइज़ एक्सप्लोर करें!",
+    "shopNow": "मर्चेंडाइज़ देखें",
+    "orderId": "ऑर्डर आईडी:",
+    "orderDate": "तारीख:",
+    "orderStatus": "स्थिति:",
+    "statusCompleted": "पूर्ण",
+    "statusProcessing": "प्रगति पर",
+    "orderTotal": "कुल:",
+    "orderItems": "वस्तुएं:",
+    "recipient": "प्राप्तकर्ता:",
+    "viewInvoice": "चालान देखें",
+    "reorder": "पुनः खरीदें",
+    "receiptTitle": "आधिकारिक ऑर्डर रसीद",
+    "printReceipt": "रसीद प्रिंट करें",
+    "close": "बंद करें",
+    "deliveryAddress": "डिलीवरी का पता",
+    "paymentMethod": "भुगतान विधि",
+    "reorderSuccess": "ऑर्डर {{id}} से {{count}} वस्तुएं आपके कार्ट में फिर से जोड़ दी गईं!"
   },
   "checkout": {
     "title": "चेकआउट और ऑर्डर पुष्टि",

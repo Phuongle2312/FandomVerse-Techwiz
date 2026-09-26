@@ -52,6 +52,8 @@ export default function Breadcrumb() {
     crumbs.push({ label: t('breadcrumb.login'), to: '/login' });
   } else if (parts[0] === 'signup') {
     crumbs.push({ label: t('breadcrumb.signup'), to: '/signup' });
+  } else if (parts[0] === 'profile') {
+    crumbs.push({ label: t('breadcrumb.profile'), to: '/profile' });
   } else {
     crumbs.push({ label: t('breadcrumb.genericPage'), to: path });
   }
