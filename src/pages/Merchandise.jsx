@@ -157,6 +157,8 @@ export default function Merchandise() {
       message,
       type: 'success',
       icon: 'bi-bag-check-fill',
+      id: Date.now(),
+      duration: 2000,
     });
   };
 
