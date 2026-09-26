@@ -749,21 +749,7 @@ export default function Navbar() {
                         )}
                       </button>
                     </li>
-                    <li>
-                      <Link
-                        to="/admin"
-                        className="dropdown-item d-flex align-items-center gap-2 py-2 px-3"
-                        style={{ color: '#00f5d4', fontWeight: 600 }}
-                        onClick={() => {
-                          setIsUserMenuOpen(false);
-                          setIsNavCollapsed(true);
-                        }}
-                      >
-                        <i className="bi bi-shield-lock-fill" style={{ color: '#00f5d4' }}></i>
-                        <span>Quản trị (Admin Portal)</span>
-                        <span className="badge bg-success-subtle text-success border border-success-subtle ms-auto" style={{ fontSize: '0.65rem' }}>PRO</span>
-                      </Link>
-                    </li>
+
                     <li><hr className="dropdown-divider my-1" style={{ borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.08)' }} /></li>
                     <li>
                       <button
