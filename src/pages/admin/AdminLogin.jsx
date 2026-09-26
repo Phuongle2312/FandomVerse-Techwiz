@@ -168,7 +168,7 @@ export default function AdminLogin() {
                   <input
                     type="email"
                     className="fv-admin-input ps-5"
-                    placeholder="admin@fandomverse.io"
+                    placeholder="admin@gmail.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required

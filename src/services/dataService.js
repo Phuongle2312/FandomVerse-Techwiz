@@ -21,81 +21,99 @@ const STORAGE_KEYS = {
   MERCHANDISE: 'fv_admin_merchandise_v3',
 };
 
-function loadDataset(key, defaultData) {
+// Clean up legacy localStorage caches so they never shadow or desync from the real JSON files
+if (typeof window !== 'undefined') {
   try {
-    const raw = localStorage.getItem(key);
-    if (raw) {
-      const parsed = JSON.parse(raw);
-      if (Array.isArray(parsed) && parsed.length > 0) {
-        return parsed;
-      }
-    }
-  } catch (error) {
-    console.warn(`[dataService] Error loading ${key} from storage:`, error);
-  }
-  return [...defaultData];
+    localStorage.removeItem(STORAGE_KEYS.CONTENTS);
+    localStorage.removeItem(STORAGE_KEYS.CHARACTERS);
+    localStorage.removeItem(STORAGE_KEYS.EVENTS);
+    localStorage.removeItem(STORAGE_KEYS.TRAILERS);
+    localStorage.removeItem(STORAGE_KEYS.MERCHANDISE);
+  } catch (_) {}
 }
 
+// In-memory active stores initialized directly from the authentic JSON files on disk
+let activeContents = [...contentsData];
+let activeCharacters = [...charactersData];
+let activeEvents = [...eventsData];
+let activeTrailers = [...trailersData];
+let activeMerchandise = [...merchandiseData];
+
+// 1. Live WebSocket synchronization via Vite HMR across all open tabs (User & Admin, Incognito & Normal)
+if (typeof import.meta !== 'undefined' && import.meta.hot) {
+  import.meta.hot.on('fandomverse:data-updated', (payload) => {
+    if (payload?.dataset && Array.isArray(payload.data)) {
+      if (payload.dataset === 'contents') activeContents = payload.data;
+      else if (payload.dataset === 'characters') activeCharacters = payload.data;
+      else if (payload.dataset === 'events') activeEvents = payload.data;
+      else if (payload.dataset === 'trailers') activeTrailers = payload.data;
+      else if (payload.dataset === 'merchandise') activeMerchandise = payload.data;
+
+      window.dispatchEvent(new CustomEvent('fv_data_change', { detail: { key: payload.dataset } }));
+    }
+  });
+}
+
+// 2. BroadcastChannel fallback across same-origin tabs
 let broadcastChannel = null;
 if (typeof window !== 'undefined' && 'BroadcastChannel' in window) {
   try {
     broadcastChannel = new BroadcastChannel('fandomverse_data_sync');
     broadcastChannel.onmessage = (event) => {
-      if (event?.data?.key) {
-        syncDatasetKey(event.data.key);
-        window.dispatchEvent(new CustomEvent('fv_data_change', { detail: { key: event.data.key } }));
+      if (event?.data?.dataset && Array.isArray(event.data.data)) {
+        const { dataset, data } = event.data;
+        if (dataset === 'contents') activeContents = data;
+        else if (dataset === 'characters') activeCharacters = data;
+        else if (dataset === 'events') activeEvents = data;
+        else if (dataset === 'trailers') activeTrailers = data;
+        else if (dataset === 'merchandise') activeMerchandise = data;
+        window.dispatchEvent(new CustomEvent('fv_data_change', { detail: { key: dataset } }));
       }
     };
-  } catch (e) {
-    // BroadcastChannel unsupported or restricted
-  }
+  } catch (_) {}
 }
 
-function syncDatasetKey(key) {
-  if (key === STORAGE_KEYS.CONTENTS) {
-    activeContents = loadDataset(STORAGE_KEYS.CONTENTS, contentsData);
-  } else if (key === STORAGE_KEYS.CHARACTERS) {
-    activeCharacters = loadDataset(STORAGE_KEYS.CHARACTERS, charactersData);
-  } else if (key === STORAGE_KEYS.EVENTS) {
-    activeEvents = loadDataset(STORAGE_KEYS.EVENTS, eventsData);
-  } else if (key === STORAGE_KEYS.TRAILERS) {
-    activeTrailers = loadDataset(STORAGE_KEYS.TRAILERS, trailersData);
-  } else if (key === STORAGE_KEYS.MERCHANDISE) {
-    activeMerchandise = loadDataset(STORAGE_KEYS.MERCHANDISE, merchandiseData);
-  }
-}
-
+// 3. Instant sync on window focus (when switching from Admin tab to User tab)
 if (typeof window !== 'undefined') {
-  window.addEventListener('storage', (e) => {
-    if (e.key && Object.values(STORAGE_KEYS).includes(e.key)) {
-      syncDatasetKey(e.key);
-      window.dispatchEvent(new CustomEvent('fv_data_change', { detail: { key: e.key } }));
-    }
+  window.addEventListener('focus', () => {
+    fetch('/api/data?dataset=contents')
+      .then((r) => r.ok && r.json())
+      .then((data) => {
+        if (Array.isArray(data) && data.length !== activeContents.length) {
+          activeContents = data;
+          window.dispatchEvent(new CustomEvent('fv_data_change', { detail: { key: 'contents' } }));
+        }
+      })
+      .catch(() => {});
   });
 }
 
 function persistDataset(key, dataset) {
-  try {
-    localStorage.setItem(key, JSON.stringify(dataset));
-    if (typeof window !== 'undefined') {
-      window.dispatchEvent(new CustomEvent('fv_data_change', { detail: { key } }));
-      if (broadcastChannel) {
-        try {
-          broadcastChannel.postMessage({ key });
-        } catch (_) {}
-      }
+  const datasetMap = {
+    [STORAGE_KEYS.CONTENTS]: 'contents',
+    [STORAGE_KEYS.CHARACTERS]: 'characters',
+    [STORAGE_KEYS.EVENTS]: 'events',
+    [STORAGE_KEYS.TRAILERS]: 'trailers',
+    [STORAGE_KEYS.MERCHANDISE]: 'merchandise',
+  };
+  const datasetName = datasetMap[key] || key;
+
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new CustomEvent('fv_data_change', { detail: { key: datasetName } }));
+    if (broadcastChannel) {
+      try {
+        broadcastChannel.postMessage({ dataset: datasetName, data: dataset });
+      } catch (_) {}
     }
-  } catch (error) {
-    console.warn(`[dataService] Error saving ${key} to storage:`, error);
+
+    // Sync directly to the real JSON file on disk
+    fetch('/api/sync-data', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ dataset: datasetName, data: dataset }),
+    }).catch(() => {});
   }
 }
-
-// In-memory active stores loaded from storage or fallback defaults
-let activeContents = loadDataset(STORAGE_KEYS.CONTENTS, contentsData);
-let activeCharacters = loadDataset(STORAGE_KEYS.CHARACTERS, charactersData);
-let activeEvents = loadDataset(STORAGE_KEYS.EVENTS, eventsData);
-let activeTrailers = loadDataset(STORAGE_KEYS.TRAILERS, trailersData);
-let activeMerchandise = loadDataset(STORAGE_KEYS.MERCHANDISE, merchandiseData);
 
 // Picks the value for the active language from a { vi, en, hi } locale object,
 // falling back to vi, then to whatever value is available.

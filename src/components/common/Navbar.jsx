@@ -753,7 +753,7 @@ export default function Navbar() {
                         )}
                       </button>
                     </li>
-                    {isAdmin && (
+                    {isAdmin ? (
                       <li>
                         <Link
                           to="/admin"
@@ -767,6 +767,21 @@ export default function Navbar() {
                           <i className="bi bi-shield-lock-fill" style={{ color: '#00f5d4' }}></i>
                           <span>Quản trị (Admin Portal)</span>
                           <span className="badge bg-success-subtle text-success border border-success-subtle ms-auto" style={{ fontSize: '0.65rem' }}>ADMIN</span>
+                        </Link>
+                      </li>
+                    ) : (
+                      <li>
+                        <Link
+                          to="/admin/login"
+                          className="dropdown-item d-flex align-items-center gap-2 py-2 px-3"
+                          style={{ color: isDark ? '#94a3b8' : '#64748b', fontSize: '0.875rem' }}
+                          onClick={() => {
+                            setIsUserMenuOpen(false);
+                            setIsNavCollapsed(true);
+                          }}
+                        >
+                          <i className="bi bi-shield-lock text-info"></i>
+                          <span>Đăng nhập Admin Portal</span>
                         </Link>
                       </li>
                     )}

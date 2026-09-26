@@ -12,8 +12,8 @@ export const DEMO_ACCOUNT = {
 };
 
 export const ADMIN_ACCOUNT = {
-  email: 'admin@fandomverse.io',
-  password: 'admin@2026',
+  email: 'admin@gmail.com',
+  password: 'admin123',
   role: 'admin',
   name: 'Trần Quản Trị (Administrator)',
 };
@@ -22,7 +22,9 @@ function ensureInitialUsers(users) {
   let updated = Array.isArray(users) ? [...users] : [];
 
   // Ensure chief admin user exists with current credentials and admin role
-  const adminIdx = updated.findIndex((u) => u.email === ADMIN_ACCOUNT.email);
+  const adminIdx = updated.findIndex(
+    (u) => u.id === 'user-admin' || u.email === ADMIN_ACCOUNT.email || u.email === 'admin@fandomverse.io'
+  );
   if (adminIdx === -1) {
     updated.push({
       id: 'user-admin',
@@ -36,7 +38,9 @@ function ensureInitialUsers(users) {
   } else {
     updated[adminIdx] = {
       ...updated[adminIdx],
+      id: 'user-admin',
       name: ADMIN_ACCOUNT.name,
+      email: ADMIN_ACCOUNT.email,
       password: ADMIN_ACCOUNT.password,
       role: 'admin',
     };
@@ -71,7 +75,11 @@ function ensureInitialUsers(users) {
 
 export function AuthProvider({ children }) {
   const [users, setUsers] = useState(() => ensureInitialUsers(storageService.loadUsers()));
-  const [currentUserEmail, setCurrentUserEmail] = useState(() => storageService.loadCurrentUser());
+  const [currentUserEmail, setCurrentUserEmail] = useState(() => {
+    const saved = storageService.loadCurrentUser();
+    if (saved === 'admin@fandomverse.io') return ADMIN_ACCOUNT.email;
+    return saved;
+  });
 
   useEffect(() => {
     storageService.saveUsers(users);
@@ -116,12 +124,13 @@ export function AuthProvider({ children }) {
 
   const login = (email, password) => {
     const normalizedEmail = email.trim().toLowerCase();
-    // Allow either admin@2026 or admin1234 for admin account for resilience
+    // Allow either current ADMIN password or previous fallbacks
     const match = users.find(
       (u) =>
         u.email === normalizedEmail &&
         (u.password === password ||
-          (u.email === ADMIN_ACCOUNT.email && (password === 'admin@2026' || password === 'admin1234')))
+          (u.email === ADMIN_ACCOUNT.email &&
+            (password === ADMIN_ACCOUNT.password || password === 'admin123' || password === 'admin2026@')))
     );
     if (!match) {
       return { success: false, message: i18n.t('auth.invalidCredentials') || 'Email hoặc mật khẩu không chính xác.' };
@@ -136,7 +145,8 @@ export function AuthProvider({ children }) {
       (u) =>
         u.email === normalizedEmail &&
         (u.password === password ||
-          (u.email === ADMIN_ACCOUNT.email && (password === 'admin@2026' || password === 'admin1234')))
+          (u.email === ADMIN_ACCOUNT.email &&
+            (password === ADMIN_ACCOUNT.password || password === 'admin123' || password === 'admin2026@')))
     );
     if (!match) {
       return { success: false, message: 'Email hoặc mật khẩu Quản trị viên không chính xác.' };
