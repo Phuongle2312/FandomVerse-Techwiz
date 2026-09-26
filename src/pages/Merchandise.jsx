@@ -82,20 +82,21 @@ export default function Merchandise() {
   const isVi = i18n.language === 'vi';
   const { setIsCartOpen, cartCount, cartTotal } = useCart();
 
-  const CATEGORY_LIST_LOCALIZED = CATEGORY_LIST.map((cat) => ({
+  const CATEGORY_LIST_LOCALIZED = useMemo(() => CATEGORY_LIST.map((cat) => ({
     ...cat,
-    label: t(`categories.${cat.id}.label`),
-  }));
+    label: t(`categories.${cat.id}.label`) || cat.label,
+  })), [t, language]);
 
-  const PRODUCT_TYPES_LOCALIZED = PRODUCT_TYPES.map((pt) => ({
+  const PRODUCT_TYPES_LOCALIZED = useMemo(() => PRODUCT_TYPES.map((pt) => ({
     ...pt,
-    label: t(`productTypes.${pt.id}`),
-  }));
+    label: t(`productTypes.${pt.id}`) || pt.label,
+  })), [t, language]);
 
   // Lấy toàn bộ sản phẩm thỏa mãn bộ lọc danh mục và loại
   const allFilteredMerchandise = useMemo(() => {
     let result = dataService.getMerchandiseByCategory(selectedCategory, {
       productType: selectedType,
+      sort: selectedSort,
     });
 
     if (searchQuery.trim()) {
@@ -536,9 +537,209 @@ export default function Merchandise() {
             <div key={item.id} className="col-xl-3 col-lg-4 col-md-6 col-6">
               <MerchCard item={item} onToast={handleShowToast} />
             </div>
+
+            <div className="col-lg-4 mt-3 mt-lg-0 text-lg-end">
+              {/* View Cart Banner Button */}
+              <button
+                type="button"
+                className="btn btn-primary-fv px-4 py-3 rounded-pill d-inline-flex align-items-center gap-2 shadow-lg"
+                onClick={() => setIsCartOpen(true)}
+                style={{ fontSize: '1rem' }}
+              >
+                <i className="bi bi-bag-check-fill fs-5"></i>
+                <span>{t('merchandise.viewCart', { count: cartCount })}</span>
+                {cartTotal > 0 && (
+                  <span className="badge bg-white text-primary rounded-pill ms-1 font-monospace px-2.5 py-1">
+                    ${cartTotal.toFixed(2)}
+                  </span>
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Category Scroll Chips (Universal) */}
+        <div className="fv-chips-scroll mb-3.5 d-flex gap-2 pb-1" style={{ overflowX: 'auto', whiteSpace: 'nowrap' }}>
+          <button
+            type="button"
+            className={`btn btn-sm rounded-pill px-3.5 py-1.5 fw-semibold transition-normal ${
+              selectedCategory === 'all'
+                ? 'btn-primary text-white shadow-sm'
+                : isDark
+                ? 'btn-outline-light border-opacity-25 text-white-50'
+                : 'btn-outline-secondary'
+            }`}
+            onClick={() => setSelectedCategory('all')}
+          >
+            {t('merchandise.allFandoms')}
+          </button>
+          {CATEGORY_LIST_LOCALIZED.map((c) => (
+            <button
+              key={c.id}
+              type="button"
+              className={`btn btn-sm rounded-pill px-3.5 py-1.5 fw-semibold transition-normal d-inline-flex align-items-center gap-1.5 ${
+                selectedCategory === c.id
+                  ? 'btn-primary text-white shadow-sm'
+                  : isDark
+                  ? 'btn-outline-light border-opacity-25 text-white-50'
+                  : 'btn-outline-secondary'
+              }`}
+              onClick={() => setSelectedCategory(c.id)}
+            >
+              <i className={`bi ${c.icon}`} style={{ color: selectedCategory === c.id ? '#ffffff' : `var(--accent-${c.id})` }}></i>
+              <span>{c.label}</span>
+            </button>
           ))}
         </div>
-      )}
+
+        {/* Unified Filter & Search Toolbar */}
+        <div
+          className="p-3 rounded-4 mb-4 shadow-xs"
+          style={{
+            backgroundColor: isDark ? 'rgba(255, 255, 255, 0.04)' : '#ffffff',
+            border: isDark ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid var(--border-color)',
+          }}
+        >
+          <div className="row g-2.5 align-items-center">
+            {/* Search Input */}
+            <div className="col-lg-4 col-md-5 col-12">
+              <div className="input-group input-group-sm">
+                <span
+                  className="input-group-text border-end-0"
+                  style={{
+                    backgroundColor: isDark ? 'rgba(255, 255, 255, 0.06)' : '#f8f9fa',
+                    borderColor: isDark ? 'rgba(255, 255, 255, 0.12)' : '#ced4da',
+                    color: isDark ? '#cbd5e1' : '#6c757d',
+                  }}
+                >
+                  <i className="bi bi-search"></i>
+                </span>
+                <input
+                  type="text"
+                  className="form-control form-control-sm border-start-0"
+                  style={{
+                    backgroundColor: isDark ? 'rgba(255, 255, 255, 0.06)' : '#f8f9fa',
+                    borderColor: isDark ? 'rgba(255, 255, 255, 0.12)' : '#ced4da',
+                    color: isDark ? '#ffffff' : '#212529',
+                  }}
+                  placeholder={t('merchandise.searchPlaceholder') || 'Search products...'}
+                  value={searchKeyword}
+                  onChange={(e) => setSearchKeyword(e.target.value)}
+                />
+                {searchKeyword && (
+                  <button
+                    className="btn btn-outline-secondary border-start-0"
+                    type="button"
+                    onClick={() => setSearchKeyword('')}
+                  >
+                    <i className="bi bi-x"></i>
+                  </button>
+                )}
+              </div>
+            </div>
+
+            {/* Product Type Selector */}
+            <div className="col-lg-3 col-md-3 col-6">
+              <select
+                className="form-select form-select-sm"
+                value={selectedType}
+                onChange={(e) => setSelectedType(e.target.value)}
+                style={{
+                  backgroundColor: isDark ? '#12162a' : '#ffffff',
+                  borderColor: isDark ? 'rgba(255, 255, 255, 0.15)' : '#ced4da',
+                  color: isDark ? '#ffffff' : '#212529',
+                  colorScheme: isDark ? 'dark' : 'light',
+                }}
+              >
+                {PRODUCT_TYPES_LOCALIZED.map((pt) => (
+                  <option
+                    key={pt.id}
+                    value={pt.id}
+                    style={{
+                      backgroundColor: isDark ? '#12162a' : '#ffffff',
+                      color: isDark ? '#ffffff' : '#212529',
+                    }}
+                  >
+                    {pt.icon ? `${pt.icon} ` : ''}{pt.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Sort Selector */}
+            <div className="col-lg-3 col-md-4 col-6">
+              <select
+                className="form-select form-select-sm"
+                value={selectedSort}
+                onChange={(e) => setSelectedSort(e.target.value)}
+                style={{
+                  backgroundColor: isDark ? '#12162a' : '#ffffff',
+                  borderColor: isDark ? 'rgba(255, 255, 255, 0.15)' : '#ced4da',
+                  color: isDark ? '#ffffff' : '#212529',
+                  colorScheme: isDark ? 'dark' : 'light',
+                }}
+              >
+                <option value="featured" style={{ backgroundColor: isDark ? '#12162a' : '#ffffff', color: isDark ? '#ffffff' : '#212529' }}>
+                  {t('merchandise.sortFeatured') || '✨ Featured & Popular'}
+                </option>
+                <option value="rating" style={{ backgroundColor: isDark ? '#12162a' : '#ffffff', color: isDark ? '#ffffff' : '#212529' }}>
+                  {t('merchandise.sortRating') || '⭐ Top Rated'}
+                </option>
+                <option value="price-asc" style={{ backgroundColor: isDark ? '#12162a' : '#ffffff', color: isDark ? '#ffffff' : '#212529' }}>
+                  {t('merchandise.sortPriceAsc') || '💵 Price: Low to High'}
+                </option>
+                <option value="price-desc" style={{ backgroundColor: isDark ? '#12162a' : '#ffffff', color: isDark ? '#ffffff' : '#212529' }}>
+                  {t('merchandise.sortPriceDesc') || '💎 Price: High to Low'}
+                </option>
+              </select>
+            </div>
+
+            {/* Reset Filters / Counter */}
+            <div className="col-lg-2 col-12 text-md-end d-flex align-items-center justify-content-between justify-content-lg-end gap-2">
+              <span className={`small ${isDark ? 'text-white-50' : 'text-muted'}`}>
+                {t('merchandise.productsCount', { count: merchandise.length })}
+              </span>
+              {(selectedCategory !== 'all' || selectedType !== 'all' || selectedSort !== 'featured' || searchKeyword) && (
+                <button
+                  type="button"
+                  className="btn btn-sm btn-link text-decoration-none p-0 text-danger small fw-semibold"
+                  onClick={() => {
+                    setSelectedCategory('all');
+                    setSelectedType('all');
+                    setSelectedSort('featured');
+                    setSearchKeyword('');
+                  }}
+                >
+                  <i className="bi bi-arrow-counterclockwise me-1"></i>{t('merchandise.reset') || 'Reset'}
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Products Grid (Balanced 4-col on desktop) */}
+        {merchandise.length === 0 ? (
+          <EmptyState
+            title={t('merchandise.noProductsTitle')}
+            message={t('merchandise.noProductsMessage')}
+            onAction={() => {
+              setSelectedCategory('all');
+              setSelectedType('all');
+              setSelectedSort('featured');
+              setSearchKeyword('');
+            }}
+            actionLabel={t('trailersHub.clearFilters')}
+          />
+        ) : (
+          <div className="row g-3 g-md-4 fv-merch-grid mb-5">
+            {merchandise.map((item) => (
+              <div key={item.id} className="col-xl-3 col-lg-4 col-md-6 col-6">
+                <MerchCard item={item} onToast={handleShowToast} />
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
 
       {/* Toast Notification */}
       <ToastNotification toast={toast} onClose={() => setToast(null)} />

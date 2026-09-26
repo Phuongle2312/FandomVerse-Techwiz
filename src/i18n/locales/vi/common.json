@@ -113,6 +113,7 @@
     "hidePassword": "Ẩn mật khẩu"
   },
   "about": {
+    "badgeLabel": "Câu Chuyện Của Chúng Tôi",
     "title": "Về Dự Án FandomVerse",
     "subtitle": "Cổng thông tin vũ trụ người hâm mộ đầu tiên tích hợp 7 danh mục văn hóa đại chúng lớn nhất thế giới dưới một nền tảng Single Page Application (SPA) mượt mà và trực quan.",
     "contestBadge": "Kỳ thi TechWir — Web Innovation Unleashed (© Aptech Limited)",
@@ -126,6 +127,7 @@
     "tech2Desc": "Chatbot thông minh xử lý câu hỏi thường gặp và điều hướng tức thì mà không cần phụ thuộc vào API AI bên ngoài.",
     "tech3Title": "Responsive & Dễ Tiếp Cận:",
     "tech3Desc": "Tối ưu hóa trên mọi thiết bị từ Mobile (375px) đến Desktop, tuân thủ nghiêm ngặt tiêu chuẩn tiếp cận WCAG AA.",
+    "universesBadge": "Khám Phá",
     "universesTitle": "7 Vũ Trụ Fandom Kết Nối",
     "exploreCategory": "Khám phá {{label}}",
     "creditsTitle": "Thông Tin Phát Hành & Bản Quyền",
@@ -134,8 +136,12 @@
   },
   "contact": {
     "toastSuccess": "Tin nhắn của bạn đã được gửi thành công! (Chế độ mô phỏng client-side)",
+    "badge": "Kết Nối Với Chúng Tôi",
     "title": "Liên Hệ & Tọa Độ FandomVerse",
     "subtitle": "Bạn có câu hỏi, đề xuất nội dung hoặc muốn kết nối với ban quản trị cộng đồng FandomVerse? Chúng tôi luôn sẵn sàng lắng nghe!",
+    "chipResponse": "Phản hồi trong 24 giờ",
+    "chipCommunity": "7 vũ trụ fandom, một đội ngũ",
+    "chipSecure": "Tin nhắn của bạn luôn được bảo mật",
     "formTitle": "Gửi Tin Nhắn Cho Chúng Tôi",
     "nameLabel": "Họ và tên của bạn",
     "subjectLabel": "Chủ đề quan tâm",
@@ -270,7 +276,19 @@
     "allFandoms": "Tất cả 7 Fandom",
     "typeLabel": "Loại vật phẩm:",
     "noProductsTitle": "Không có sản phẩm nào phù hợp",
-    "noProductsMessage": "Không tìm thấy vật phẩm lưu niệm khớp với bộ lọc bạn đã chọn."
+    "noProductsMessage": "Không tìm thấy vật phẩm lưu niệm khớp với bộ lọc bạn đã chọn.",
+    "officialBadge": "100% Chính Hãng",
+    "freeShipping": "Miễn Phí Giao Hàng (Demo)",
+    "perk1": "7 Vũ Trụ Fandom",
+    "perk2": "24+ Vật Phẩm Độc Quyền",
+    "perk3": "Đồ Sưu Tầm Cao Cấp",
+    "searchPlaceholder": "Tìm sản phẩm (Luffy, Starfield, Batman...)...",
+    "sortFeatured": "✨ Nổi bật & Bán chạy",
+    "sortRating": "⭐ Đánh giá cao nhất",
+    "sortPriceAsc": "💵 Giá: Thấp đến Cao",
+    "sortPriceDesc": "💎 Giá: Cao đến Thấp",
+    "productsCount": "{{count}} sản phẩm",
+    "reset": "Đặt lại"
   },
   "bookmarks": {
     "exportSuccess": "Đã xuất danh sách Bookmark ra tệp fandomverse-bookmarks.txt thành công!",
@@ -359,7 +377,8 @@
       "loginToAddToCart": "Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng.",
       "addedToast": "Đã thêm \"{{name}}\" vào giỏ hàng!",
       "added": "Đã thêm vào giỏ!",
-      "addToCart": "Thêm vào giỏ"
+      "addToCart": "Thêm vào giỏ",
+      "inStock": "Còn hàng"
     }
   },
   "chatbot": {

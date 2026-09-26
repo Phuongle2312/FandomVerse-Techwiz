@@ -69,10 +69,11 @@ export const CONTENT_TYPES = [
 ];
 
 export const PRODUCT_TYPES = [
-  { id: 'all', label: 'Tất cả loại' },
-  { id: 'figure', label: 'Mô hình (Figure)' },
-  { id: 'collectible', label: 'Đồ sưu tầm' },
-  { id: 'apparel', label: 'Trang phục & Áo' },
-  { id: 'accessory', label: 'Phụ kiện' },
-  { id: 'plushie', label: 'Gấu bông (Plushie)' },
+  { id: 'all', label: 'Tất cả loại', icon: '📦' },
+  { id: 'figure', label: 'Mô hình (Figure)', icon: '🗿' },
+  { id: 'collectible', label: 'Đồ sưu tầm', icon: '🏆' },
+  { id: 'apparel', label: 'Trang phục & Áo', icon: '👕' },
+  { id: 'accessory', label: 'Phụ kiện', icon: '🎒' },
+  { id: 'plushie', label: 'Gấu bông (Plushie)', icon: '🧸' },
 ];
+

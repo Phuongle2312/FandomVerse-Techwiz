@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
 import { storageService } from '../services/storageService.js';
+import i18n from '../i18n/index.js';
 
 const AuthContext = createContext(null);
 
@@ -80,7 +81,7 @@ export function AuthProvider({ children }) {
     const normalizedEmail = email.trim().toLowerCase();
     const exists = users.some((u) => u.email === normalizedEmail);
     if (exists) {
-      return { success: false, message: 'Email này đã được đăng ký. Vui lòng đăng nhập.' };
+      return { success: false, message: i18n.t('auth.emailAlreadyRegistered') };
     }
 
     const newUser = {
@@ -102,7 +103,7 @@ export function AuthProvider({ children }) {
     const normalizedEmail = email.trim().toLowerCase();
     const match = users.find((u) => u.email === normalizedEmail && u.password === password);
     if (!match) {
-      return { success: false, message: 'Email hoặc mật khẩu không đúng.' };
+      return { success: false, message: i18n.t('auth.invalidCredentials') };
     }
     setCurrentUserEmail(normalizedEmail);
     return { success: true, user: match };
