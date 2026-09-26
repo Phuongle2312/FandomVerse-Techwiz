@@ -3,6 +3,7 @@ import { dataService } from '../../services/dataService.js';
 import { resolveAdminImage, handleImageFallback } from '../../utils/adminImageHelper.js';
 import AdminPagination from '../../components/common/AdminPagination.jsx';
 import AdminCategoryTabs from '../../components/common/AdminCategoryTabs.jsx';
+import ConfirmModal from '../../components/common/ConfirmModal.jsx';
 
 const CATEGORIES = [
   { id: 'all', label: 'Tất cả danh mục' },
@@ -32,6 +33,7 @@ export default function AdminMerchandise({ onShowToast }) {
   const [selectedStock, setSelectedStock] = useState('all');
   const [viewMode, setViewMode] = useState('grid');
   const [previewImage, setPreviewImage] = useState(null);
+  const [confirmState, setConfirmState] = useState(null);
 
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
@@ -171,17 +173,24 @@ export default function AdminMerchandise({ onShowToast }) {
   };
 
   const handleDelete = (id, name) => {
-    if (window.confirm(`Bạn có chắc chắn muốn xóa sản phẩm "${name}" (ID: ${id}) không?`)) {
-      dataService.deleteMerchandise(id);
-      reloadData();
-      if (onShowToast) onShowToast(`Đã xóa sản phẩm "${name}" thành công.`, 'success');
-    }
+    setConfirmState({
+      title: 'Xóa sản phẩm?',
+      message: `Bạn có chắc chắn muốn xóa sản phẩm "${name}" (ID: ${id}) không? Hành động này không thể hoàn tác.`,
+      confirmLabel: 'Xóa sản phẩm',
+      variant: 'danger',
+      onConfirm: () => {
+        dataService.deleteMerchandise(id);
+        reloadData();
+        if (onShowToast) onShowToast(`Đã xóa sản phẩm "${name}" thành công.`, 'success');
+        setConfirmState(null);
+      },
+    });
   };
 
   const handleSave = (e) => {
     e.preventDefault();
     if (!formData.nameVi.trim()) {
-      alert('Vui lòng nhập tên sản phẩm.');
+      if (onShowToast) onShowToast('Vui lòng nhập tên sản phẩm.', 'error');
       return;
     }
 
@@ -785,6 +794,13 @@ export default function AdminMerchandise({ onShowToast }) {
           </div>
         </div>
       )}
+
+      {/* Confirm Dialog */}
+      <ConfirmModal
+        show={!!confirmState}
+        {...confirmState}
+        onCancel={() => setConfirmState(null)}
+      />
     </div>
   );
 }

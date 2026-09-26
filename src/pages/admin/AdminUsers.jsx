@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useAuth, ADMIN_ACCOUNT } from '../../context/AuthContext.jsx';
+import ConfirmModal from '../../components/common/ConfirmModal.jsx';
 
 export default function AdminUsers({ onShowToast }) {
   const { users, currentUser, updateUserRole, deleteUser, addUser, switchAccount } = useAuth();
   const [searchTerm, setSearchTerm] = useState('');
   const [roleFilter, setRoleFilter] = useState('all');
+  const [confirmState, setConfirmState] = useState(null);
 
   // Modal for adding a user
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -27,7 +29,7 @@ export default function AdminUsers({ onShowToast }) {
 
   const handleToggleRole = (user) => {
     if (user.email === ADMIN_ACCOUNT.email) {
-      alert('Không thể thay đổi quyền của Quản trị viên tối cao.');
+      if (onShowToast) onShowToast('Không thể thay đổi quyền của Quản trị viên tối cao.', 'error');
       return;
     }
     const nextRole = user.role === 'admin' ? 'user' : 'admin';
@@ -39,17 +41,24 @@ export default function AdminUsers({ onShowToast }) {
 
   const handleDelete = (user) => {
     if (user.email === ADMIN_ACCOUNT.email) {
-      alert('Không thể xóa Quản trị viên tối cao.');
+      if (onShowToast) onShowToast('Không thể xóa Quản trị viên tối cao.', 'error');
       return;
     }
-    if (window.confirm(`Bạn có chắc chắn muốn xóa tài khoản "${user.name}" (${user.email})?`)) {
-      const res = deleteUser(user.id);
-      if (res.success) {
-        if (onShowToast) onShowToast(`Đã xóa tài khoản "${user.name}".`, 'success');
-      } else {
-        alert(res.message);
-      }
-    }
+    setConfirmState({
+      title: 'Xóa tài khoản?',
+      message: `Bạn có chắc chắn muốn xóa tài khoản "${user.name}" (${user.email}) không? Hành động này không thể hoàn tác.`,
+      confirmLabel: 'Xóa tài khoản',
+      variant: 'danger',
+      onConfirm: () => {
+        const res = deleteUser(user.id);
+        if (res.success) {
+          if (onShowToast) onShowToast(`Đã xóa tài khoản "${user.name}".`, 'success');
+        } else if (onShowToast) {
+          onShowToast(res.message, 'error');
+        }
+        setConfirmState(null);
+      },
+    });
   };
 
   const handleSwitchTo = (user) => {
@@ -62,7 +71,7 @@ export default function AdminUsers({ onShowToast }) {
   const handleAddSubmit = (e) => {
     e.preventDefault();
     if (!newUser.name.trim() || !newUser.email.trim() || !newUser.password.trim()) {
-      alert('Vui lòng điền đầy đủ các thông tin bắt buộc.');
+      if (onShowToast) onShowToast('Vui lòng điền đầy đủ các thông tin bắt buộc.', 'error');
       return;
     }
     const res = addUser(newUser);
@@ -70,8 +79,8 @@ export default function AdminUsers({ onShowToast }) {
       setIsModalOpen(false);
       setNewUser({ name: '', email: '', password: '', role: 'user', fandomInterest: 'anime' });
       if (onShowToast) onShowToast(`Đã tạo tài khoản "${newUser.name}" thành công!`, 'success');
-    } else {
-      alert(res.message);
+    } else if (onShowToast) {
+      onShowToast(res.message, 'error');
     }
   };
 
@@ -339,6 +348,13 @@ export default function AdminUsers({ onShowToast }) {
           </div>
         </div>
       )}
+
+      {/* Confirm Dialog */}
+      <ConfirmModal
+        show={!!confirmState}
+        {...confirmState}
+        onCancel={() => setConfirmState(null)}
+      />
     </div>
   );
 }

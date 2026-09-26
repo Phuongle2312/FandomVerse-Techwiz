@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { dataService } from '../../services/dataService.js';
 import { useAuth, ADMIN_ACCOUNT, DEMO_ACCOUNT } from '../../context/AuthContext.jsx';
+import ConfirmModal from '../../components/common/ConfirmModal.jsx';
 
 export default function AdminSettings({ onShowToast }) {
   const { currentUser, switchAccount } = useAuth();
   const [stats, setStats] = useState(() => dataService.getStats());
   const [importJsonText, setImportJsonText] = useState('');
   const [isImportModalOpen, setIsImportModalOpen] = useState(false);
+  const [confirmState, setConfirmState] = useState(null);
 
   const handleExportBackup = () => {
     try {
@@ -23,7 +25,7 @@ export default function AdminSettings({ onShowToast }) {
       URL.revokeObjectURL(url);
       if (onShowToast) onShowToast('Đã tải xuống tệp sao lưu hệ thống JSON!', 'success');
     } catch (e) {
-      alert('Lỗi xuất sao lưu: ' + e.message);
+      if (onShowToast) onShowToast('Lỗi xuất sao lưu: ' + e.message, 'error');
     }
   };
 
@@ -36,7 +38,7 @@ export default function AdminSettings({ onShowToast }) {
         const text = event.target?.result;
         setImportJsonText(text);
       } catch (err) {
-        alert('Không thể đọc tệp: ' + err.message);
+        if (onShowToast) onShowToast('Không thể đọc tệp: ' + err.message, 'error');
       }
     };
     reader.readAsText(file);
@@ -45,7 +47,7 @@ export default function AdminSettings({ onShowToast }) {
   const handleApplyImport = () => {
     try {
       if (!importJsonText.trim()) {
-        alert('Vui lòng dán hoặc chọn tệp JSON sao lưu.');
+        if (onShowToast) onShowToast('Vui lòng dán hoặc chọn tệp JSON sao lưu.', 'error');
         return;
       }
       const parsed = JSON.parse(importJsonText);
@@ -55,22 +57,25 @@ export default function AdminSettings({ onShowToast }) {
       setImportJsonText('');
       if (onShowToast) onShowToast('Phục hồi dữ liệu từ bản sao lưu thành công!', 'success');
     } catch (err) {
-      alert('Lỗi phục hồi dữ liệu: ' + err.message);
+      if (onShowToast) onShowToast('Lỗi phục hồi dữ liệu: ' + err.message, 'error');
     }
   };
 
   const handleResetToDefaults = () => {
-    if (
-      window.confirm(
-        'CẢNH BÁO: Thao tác này sẽ đặt lại tất cả dữ liệu (Bài viết, Trailers, Sự kiện, Merch, Nhân vật) về dữ liệu mẫu mặc định ban đầu (13 mục / phân loại, tổng 455 mục). Bạn có chắc chắn muốn tiếp tục?'
-      )
-    ) {
-      dataService.resetAllToDefaults();
-      setStats(dataService.getStats());
-      if (onShowToast) {
-        onShowToast('Đã khôi phục toàn bộ hệ thống về dữ liệu mẫu gốc tiêu chuẩn!', 'success');
-      }
-    }
+    setConfirmState({
+      title: 'Khôi phục dữ liệu gốc?',
+      message: 'CẢNH BÁO: Thao tác này sẽ đặt lại tất cả dữ liệu (Bài viết, Trailers, Sự kiện, Merch, Nhân vật) về dữ liệu mẫu mặc định ban đầu (13 mục / phân loại, tổng 455 mục). Mọi thay đổi hiện tại sẽ bị mất và không thể hoàn tác.',
+      confirmLabel: 'Khôi phục gốc',
+      variant: 'warning',
+      onConfirm: () => {
+        dataService.resetAllToDefaults();
+        setStats(dataService.getStats());
+        if (onShowToast) {
+          onShowToast('Đã khôi phục toàn bộ hệ thống về dữ liệu mẫu gốc tiêu chuẩn!', 'success');
+        }
+        setConfirmState(null);
+      },
+    });
   };
 
   const handleSwitchAdmin = () => {
@@ -258,6 +263,13 @@ export default function AdminSettings({ onShowToast }) {
           </div>
         </div>
       )}
+
+      {/* Confirm Dialog */}
+      <ConfirmModal
+        show={!!confirmState}
+        {...confirmState}
+        onCancel={() => setConfirmState(null)}
+      />
     </div>
   );
 }
