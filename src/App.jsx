@@ -85,6 +85,15 @@ function AppContent() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/bookmarks" element={<RequireAuth><Bookmarks /></RequireAuth>} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/account" element={<Profile />} />
+          <Route path="/my-account" element={<Profile />} />
+          <Route path="/orders" element={<Profile />} />
+          <Route path="/order-history" element={<Profile />} />
+          <Route path="/history" element={<Profile />} />
+          <Route path="/transactions" element={<Profile />} />
+          <Route path="/profile/orders" element={<Profile />} />
+          <Route path="/checkout/success" element={<Checkout />} />
+          <Route path="/order-success" element={<Checkout />} />
           <Route path="/search" element={<SearchResults />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />

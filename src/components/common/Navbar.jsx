@@ -706,6 +706,20 @@ export default function Navbar() {
                     </li>
                     <li>
                       <Link
+                        to="/orders"
+                        className="dropdown-item d-flex align-items-center gap-2 py-2 px-3"
+                        style={{ color: isDark ? '#cbd5e1' : '#4b5563', fontWeight: 500 }}
+                        onClick={() => {
+                          setIsUserMenuOpen(false);
+                          setIsNavCollapsed(true);
+                        }}
+                      >
+                        <i className="bi bi-receipt-cutoff" style={{ color: '#00b894' }}></i>
+                        <span>{t('navbar.orderHistory') || 'Lịch sử đơn hàng'}</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
                         to="/bookmarks"
                         className="dropdown-item d-flex align-items-center gap-2 py-2 px-3"
                         style={{ color: isDark ? '#cbd5e1' : '#4b5563', fontWeight: 500 }}

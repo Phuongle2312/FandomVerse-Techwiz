@@ -428,7 +428,10 @@ export default function Checkout() {
 
               {/* Action Buttons */}
               <div className="d-flex flex-wrap justify-content-center gap-3">
-                <Link to="/merchandise" className="btn btn-primary-fv px-4 py-2">
+                <Link to="/profile" className="btn btn-primary-fv px-4 py-2">
+                  <i className="bi bi-receipt-cutoff me-2"></i> {t('checkout.viewInProfile') || (i18n.language === 'vi' ? 'Xem Lịch Sử Giao Dịch' : 'View Order History')}
+                </Link>
+                <Link to="/merchandise" className="btn btn-outline-secondary px-4 py-2">
                   <i className="bi bi-bag-plus me-2"></i> {t('checkout.continueShopping')}
                 </Link>
                 <button

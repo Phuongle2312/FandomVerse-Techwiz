@@ -157,7 +157,10 @@ export const storageService = {
     try {
       const data = localStorage.getItem(STORAGE_KEYS.ORDERS);
       if (data) {
-        return JSON.parse(data);
+        const parsed = JSON.parse(data);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
+        }
       }
       // Seed with initial order matching the user's completed checkout
       const initialOrders = [
@@ -219,8 +222,17 @@ export const storageService = {
   addOrder(order) {
     try {
       const orders = this.loadOrders();
-      orders.unshift(order);
+      const existingIdx = orders.findIndex((o) => o.orderId === order.orderId);
+      if (existingIdx >= 0) {
+        orders[existingIdx] = order;
+      } else {
+        orders.unshift(order);
+      }
       this.saveOrders(orders);
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(new Event('storage'));
+        window.dispatchEvent(new CustomEvent('fv_order_created', { detail: order }));
+      }
       return orders;
     } catch (error) {
       console.warn('Không thể thêm đơn hàng mới:', error);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext.jsx';
@@ -25,6 +25,30 @@ export default function Profile() {
   const [activeOrderReceipt, setActiveOrderReceipt] = useState(null);
   const [toast, setToast] = useState(null);
 
+  // Auto-refresh orders whenever an order is placed or storage changes
+  useEffect(() => {
+    const refreshOrders = () => {
+      setOrders(storageService.loadOrders());
+    };
+    window.addEventListener('storage', refreshOrders);
+    window.addEventListener('fv_order_created', refreshOrders);
+    refreshOrders();
+    return () => {
+      window.removeEventListener('storage', refreshOrders);
+      window.removeEventListener('fv_order_created', refreshOrders);
+    };
+  }, []);
+
+  // Smooth scroll to order section if URL hash requests it
+  useEffect(() => {
+    if (window.location.hash === '#order-history-section') {
+      const el = document.getElementById('order-history-section');
+      if (el) {
+        setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 150);
+      }
+    }
+  }, []);
+
   const interestCategory = CATEGORY_LIST.find((c) => c.id === currentUser?.fandomInterest);
   const joinedDate = currentUser?.createdAt
     ? new Date(currentUser.createdAt).toLocaleDateString(bcp47 || (language === 'vi' ? 'vi-VN' : language === 'hi' ? 'hi-IN' : 'en-US'), {
@@ -34,10 +58,22 @@ export default function Profile() {
       })
     : null;
 
-  // Filter user orders
-  const userOrders = isAuthenticated && currentUser
-    ? orders.filter((o) => !o.userEmail || o.userEmail.toLowerCase() === currentUser.email.toLowerCase())
-    : orders;
+  // Filter user orders: match userEmail or shippingInfo.email or guest orders,
+  // with fallback to all orders so no placed order is ever hidden on the client!
+  const userOrders = useMemo(() => {
+    if (!orders || orders.length === 0) return [];
+    if (!isAuthenticated || !currentUser) return orders;
+
+    const currentEmail = currentUser.email?.toLowerCase().trim();
+    const matched = orders.filter((o) => {
+      if (!o.userEmail || o.userEmail === 'guest') return true;
+      const orderEmail = o.userEmail?.toLowerCase().trim();
+      const shipEmail = o.shippingInfo?.email?.toLowerCase().trim();
+      return orderEmail === currentEmail || shipEmail === currentEmail;
+    });
+
+    return matched.length > 0 ? matched : orders;
+  }, [orders, isAuthenticated, currentUser]);
 
   const getPaymentDetails = (method) => {
     switch (method) {
