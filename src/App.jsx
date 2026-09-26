@@ -26,8 +26,11 @@ import Contact from './pages/Contact.jsx';
 import About from './pages/About.jsx';
 import Login from './pages/Login.jsx';
 import Signup from './pages/Signup.jsx';
+import Checkout from './pages/Checkout.jsx';
 import NotFound from './pages/NotFound.jsx';
 import AdminLayout from './pages/admin/AdminLayout.jsx';
+import AdminLogin from './pages/admin/AdminLogin.jsx';
+import RequireAdmin from './components/common/RequireAdmin.jsx';
 
 function AppContent() {
   const location = useLocation();
@@ -36,8 +39,23 @@ function AppContent() {
   if (isAdminRoute) {
     return (
       <Routes>
-        <Route path="/admin/*" element={<AdminLayout />} />
-        <Route path="/admin" element={<AdminLayout />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route
+          path="/admin/*"
+          element={
+            <RequireAdmin>
+              <AdminLayout />
+            </RequireAdmin>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <RequireAdmin>
+              <AdminLayout />
+            </RequireAdmin>
+          }
+        />
       </Routes>
     );
   }
@@ -57,6 +75,7 @@ function AppContent() {
           <Route path="/category/:categoryId/article/:contentId" element={<ContentDetail />} />
           <Route path="/trailers" element={<TrailersHub />} />
           <Route path="/merchandise" element={<Merchandise />} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route path="/bookmarks" element={<RequireAuth><Bookmarks /></RequireAuth>} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/search" element={<SearchResults />} />

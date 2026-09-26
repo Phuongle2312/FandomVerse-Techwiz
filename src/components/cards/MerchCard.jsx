@@ -39,10 +39,11 @@ export default function MerchCard({ item, onToast }) {
       {/* Product Image 1:1 ratio */}
       <div className="position-relative overflow-hidden" style={{ paddingTop: '100%', backgroundColor: 'rgba(128, 128, 128, 0.08)' }}>
         <img
-          src={item.image}
+          src={item.image?.startsWith('image/') ? `/${item.image}` : item.image}
           alt={item.name}
           className="position-absolute top-0 start-0 w-100 h-100 object-fit-cover transition-normal"
           loading="lazy"
+          decoding="async"
           onError={(e) => {
             e.currentTarget.onerror = null;
             e.currentTarget.src = 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&auto=format&fit=crop&q=80';

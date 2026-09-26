@@ -118,9 +118,9 @@ export default function Footer() {
                 </Link>
               </li>
               <li className="mb-2">
-                <Link to="/admin" className="text-decoration-none d-flex align-items-center gap-1.5" style={{ color: '#00f5d4', fontWeight: 600 }}>
+                <Link to="/admin/login" className="text-decoration-none d-flex align-items-center gap-1.5" style={{ color: '#00f5d4', fontWeight: 600 }}>
                   <i className="bi bi-shield-lock-fill"></i>
-                  <span>Quản trị (Admin Portal)</span>
+                  <span>Cổng Quản trị viên (Admin Portal)</span>
                 </Link>
               </li>
             </ul>

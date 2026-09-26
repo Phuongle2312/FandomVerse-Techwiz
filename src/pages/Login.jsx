@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import ToastNotification from '../components/common/ToastNotification.jsx';
-import { useAuth, DEMO_ACCOUNT } from '../context/AuthContext.jsx';
+import { useAuth } from '../context/AuthContext.jsx';
 
 export default function Login() {
   const { t } = useTranslation();
@@ -14,10 +14,6 @@ export default function Login() {
   const location = useLocation();
 
   const redirectedFromAuthGate = Boolean(location.state?.from);
-
-  const fillDemoAccount = () => {
-    setFormData({ ...formData, email: DEMO_ACCOUNT.email, password: DEMO_ACCOUNT.password });
-  };
 
   const handleForgotPassword = (e) => {
     e.preventDefault();
@@ -32,7 +28,11 @@ export default function Login() {
     e.preventDefault();
     const result = login(formData.email, formData.password);
     if (result.success) {
-      navigate(location.state?.from || '/', { replace: true });
+      if (result.isAdmin) {
+        navigate(location.state?.from || '/admin', { replace: true });
+      } else {
+        navigate(location.state?.from || '/', { replace: true });
+      }
     } else {
       setToast({
         message: result.message,
@@ -45,116 +45,113 @@ export default function Login() {
   return (
     <div className="cinematic-hero-space cinematic-hero-wrap align-items-center justify-content-center">
       <div className="container py-5 d-flex align-items-center justify-content-center">
-      <div className="card fv-card border-0 shadow-lg rounded-4 p-4 w-100" style={{ maxWidth: '420px' }}>
-        <div className="text-center mb-4">
-          <span style={{ fontSize: '2.5rem' }}>🌌</span>
-          <h3 className="font-heading fw-bold text-dark mt-2 mb-1">{t('login.title')}</h3>
-          <p className="text-secondary small mb-0">{t('login.subtitle')}</p>
-        </div>
-
-        <div
-          className={`alert ${redirectedFromAuthGate ? 'alert-warning bg-warning-subtle' : 'alert-primary bg-primary-subtle'} border-0 rounded-3 small py-2 px-3 mb-3`}
-        >
-          <div className="mb-2">
-            <i className={`bi ${redirectedFromAuthGate ? 'bi-lock-fill text-warning' : 'bi-info-circle text-primary'} me-1`}></i>
-            {redirectedFromAuthGate ? t('login.authGateWarning') : t('login.dummyNotice')}
+        <div className="card fv-card border-0 shadow-lg rounded-4 p-4 w-100" style={{ maxWidth: '420px' }}>
+          <div className="text-center mb-4">
+            <span style={{ fontSize: '2.5rem' }}>🌌</span>
+            <h3 className="font-heading fw-bold text-dark mt-2 mb-1">{t('login.title')}</h3>
+            <p className="text-secondary small mb-0">{t('login.subtitle')}</p>
           </div>
-          <div className="d-flex flex-wrap align-items-center justify-content-between gap-2 pt-2 border-top border-white-50 border-opacity-10">
-            <span>
-              <i className="bi bi-person-badge me-1"></i>
-              {t('login.demoAccountLabel')} <strong>{DEMO_ACCOUNT.email}</strong> / <strong>{DEMO_ACCOUNT.password}</strong>
-            </span>
-            <button
-              type="button"
-              className="btn btn-sm btn-outline-secondary flex-shrink-0"
-              onClick={fillDemoAccount}
-            >
-              {t('login.fillDemo')}
+
+          {redirectedFromAuthGate && (
+            <div className="alert alert-warning bg-warning-subtle border-0 rounded-3 small py-2 px-3 mb-3 d-flex align-items-center gap-2">
+              <i className="bi bi-lock-fill text-warning flex-shrink-0"></i>
+              <span>{t('login.authGateWarning')}</span>
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <label className="form-label small fw-semibold text-secondary">{t('login.emailLabel')}</label>
+              <div className="input-group">
+                <span className="input-group-text bg-light border-end-0 text-muted">
+                  <i className="bi bi-envelope"></i>
+                </span>
+                <input
+                  type="email"
+                  className="form-control border-start-0 bg-light"
+                  placeholder="Nhập email của bạn..."
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  required
+                  autoFocus
+                />
+              </div>
+            </div>
+
+            <div className="mb-3">
+              <div className="d-flex justify-content-between align-items-center mb-1">
+                <label className="form-label small fw-semibold text-secondary mb-0">{t('common.passwordLabel')}</label>
+                <button
+                  type="button"
+                  className="btn btn-link p-0 small fw-semibold text-primary text-decoration-none"
+                  style={{ fontSize: '0.75rem' }}
+                  onClick={handleForgotPassword}
+                >
+                  {t('login.forgotPassword')}
+                </button>
+              </div>
+              <div className="input-group">
+                <span className="input-group-text bg-light border-end-0 text-muted">
+                  <i className="bi bi-lock"></i>
+                </span>
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  className="form-control border-start-0 border-end-0 bg-light"
+                  placeholder="••••••••"
+                  value={formData.password}
+                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                  required
+                />
+                <button
+                  type="button"
+                  className="input-group-text bg-light border-start-0 text-muted"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  aria-label={showPassword ? t('common.hidePassword') : t('common.showPassword')}
+                  title={showPassword ? t('common.hidePassword') : t('common.showPassword')}
+                >
+                  <i className={`bi ${showPassword ? 'bi-eye-slash' : 'bi-eye'}`}></i>
+                </button>
+              </div>
+            </div>
+
+            <div className="form-check mb-4">
+              <input
+                type="checkbox"
+                className="form-check-input"
+                id="rememberMe"
+                checked={formData.remember}
+                onChange={(e) => setFormData({ ...formData, remember: e.target.checked })}
+              />
+              <label className="form-check-label small text-secondary" htmlFor="rememberMe">
+                {t('login.rememberMe')}
+              </label>
+            </div>
+
+            <button type="submit" className="btn btn-primary-fv w-100 py-2 fw-semibold">
+              {t('login.title')}
             </button>
+          </form>
+
+          <div className="text-center mt-4 pt-3 border-top small text-muted">
+            {t('login.noAccount')}{' '}
+            <Link to="/signup" className="text-primary fw-semibold text-decoration-none">
+              {t('login.signupNow')}
+            </Link>
+          </div>
+
+          <div className="text-center mt-3 pt-2">
+            <Link
+              to="/admin/login"
+              className="text-secondary small text-decoration-none d-inline-flex align-items-center gap-1.5"
+              style={{ fontSize: '0.8rem' }}
+            >
+              <i className="bi bi-shield-lock-fill text-info"></i>
+              <span>Cổng Đăng Nhập Quản Trị Viên (Admin) →</span>
+            </Link>
           </div>
         </div>
 
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label className="form-label small fw-semibold text-secondary">{t('login.emailLabel')}</label>
-            <div className="input-group">
-              <span className="input-group-text bg-light border-end-0 text-muted">
-                <i className="bi bi-envelope"></i>
-              </span>
-              <input
-                type="email"
-                className="form-control border-start-0 bg-light"
-                placeholder={t('common.demoEmailPlaceholder')}
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                required
-              />
-            </div>
-          </div>
-
-          <div className="mb-3">
-            <div className="d-flex justify-content-between align-items-center mb-1">
-              <label className="form-label small fw-semibold text-secondary mb-0">{t('common.passwordLabel')}</label>
-              <button
-                type="button"
-                className="btn btn-link p-0 small fw-semibold text-primary text-decoration-none"
-                style={{ fontSize: '0.75rem' }}
-                onClick={handleForgotPassword}
-              >
-                {t('login.forgotPassword')}
-              </button>
-            </div>
-            <div className="input-group">
-              <span className="input-group-text bg-light border-end-0 text-muted">
-                <i className="bi bi-lock"></i>
-              </span>
-              <input
-                type={showPassword ? 'text' : 'password'}
-                className="form-control border-start-0 border-end-0 bg-light"
-                placeholder="••••••••"
-                value={formData.password}
-                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                required
-              />
-              <button
-                type="button"
-                className="input-group-text bg-light border-start-0 text-muted"
-                onClick={() => setShowPassword((prev) => !prev)}
-                aria-label={showPassword ? t('common.hidePassword') : t('common.showPassword')}
-                title={showPassword ? t('common.hidePassword') : t('common.showPassword')}
-              >
-                <i className={`bi ${showPassword ? 'bi-eye-slash' : 'bi-eye'}`}></i>
-              </button>
-            </div>
-          </div>
-
-          <div className="form-check mb-4">
-            <input
-              type="checkbox"
-              className="form-check-input"
-              id="rememberMe"
-              checked={formData.remember}
-              onChange={(e) => setFormData({ ...formData, remember: e.target.checked })}
-            />
-            <label className="form-check-label small text-secondary" htmlFor="rememberMe">
-              {t('login.rememberMe')}
-            </label>
-          </div>
-
-          <button type="submit" className="btn btn-primary-fv w-100 py-2 fw-semibold">
-            {t('login.title')}
-          </button>
-        </form>
-
-        <div className="text-center mt-4 pt-3 border-top small text-muted">
-          {t('login.noAccount')}{' '}
-          <Link to="/signup" className="text-primary fw-semibold text-decoration-none">
-            {t('login.signupNow')}
-          </Link>
-        </div>
-      </div>
-
-      <ToastNotification toast={toast} onClose={() => setToast(null)} />
+        <ToastNotification toast={toast} onClose={() => setToast(null)} />
       </div>
     </div>
   );
