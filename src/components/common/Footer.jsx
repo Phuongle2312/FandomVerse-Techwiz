@@ -117,7 +117,6 @@ export default function Footer() {
                   {t('footer.globalSearch')}
                 </Link>
               </li>
-
             </ul>
           </div>
 

@@ -37,6 +37,9 @@ export default function Breadcrumb() {
     crumbs.push({ label: t('breadcrumb.trailersHub'), to: '/trailers' });
   } else if (parts[0] === 'merchandise') {
     crumbs.push({ label: t('breadcrumb.merchandiseShop'), to: '/merchandise' });
+  } else if (parts[0] === 'checkout') {
+    crumbs.push({ label: t('breadcrumb.merchandiseShop'), to: '/merchandise' });
+    crumbs.push({ label: 'Thanh Toán Đơn Hàng', to: '/checkout' });
   } else if (parts[0] === 'bookmarks') {
     crumbs.push({ label: t('breadcrumb.bookmarksNotes'), to: '/bookmarks' });
   } else if (parts[0] === 'search') {

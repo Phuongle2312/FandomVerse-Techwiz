@@ -49,7 +49,7 @@ export default function Navbar() {
   const { cartCount, setIsCartOpen } = useCart();
   const { bookmarkCount } = useBookmarks();
   const { isDark, toggleTheme } = useTheme();
-  const { currentUser, isAuthenticated, logout } = useAuth();
+  const { currentUser, isAuthenticated, isAdmin, logout } = useAuth();
 
   // Over transparent hero: always white text and contrast, immune to dark/light theme.
   // When scrolled past hero or on other pages: dynamically adapts to theme!
@@ -739,7 +739,23 @@ export default function Navbar() {
                         )}
                       </button>
                     </li>
-
+                    {isAdmin && (
+                      <li>
+                        <Link
+                          to="/admin"
+                          className="dropdown-item d-flex align-items-center gap-2 py-2 px-3"
+                          style={{ color: '#00f5d4', fontWeight: 600 }}
+                          onClick={() => {
+                            setIsUserMenuOpen(false);
+                            setIsNavCollapsed(true);
+                          }}
+                        >
+                          <i className="bi bi-shield-lock-fill" style={{ color: '#00f5d4' }}></i>
+                          <span>Quản trị (Admin Portal)</span>
+                          <span className="badge bg-success-subtle text-success border border-success-subtle ms-auto" style={{ fontSize: '0.65rem' }}>ADMIN</span>
+                        </Link>
+                      </li>
+                    )}
                     <li><hr className="dropdown-divider my-1" style={{ borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.08)' }} /></li>
                     <li>
                       <button

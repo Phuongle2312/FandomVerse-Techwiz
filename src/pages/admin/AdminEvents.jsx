@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { dataService } from '../../services/dataService.js';
+import { resolveAdminImage, handleImageFallback } from '../../utils/adminImageHelper.js';
+import AdminPagination from '../../components/common/AdminPagination.jsx';
+import AdminCategoryTabs from '../../components/common/AdminCategoryTabs.jsx';
 
 const CATEGORIES = [
   { id: 'all', label: 'Tất cả danh mục' },
@@ -17,6 +20,12 @@ export default function AdminEvents({ onShowToast }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCat, setSelectedCat] = useState('all');
   const [selectedStatus, setSelectedStatus] = useState('all');
+  const [viewMode, setViewMode] = useState('grid');
+  const [previewImage, setPreviewImage] = useState(null);
+
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(12);
 
   // Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -44,6 +53,17 @@ export default function AdminEvents({ onShowToast }) {
 
   const today = new Date().toISOString().split('T')[0];
 
+  // Count items per category
+  const categoryCounts = useMemo(() => {
+    const counts = {};
+    items.forEach((item) => {
+      const cat = item.category || 'anime';
+      counts[cat] = (counts[cat] || 0) + 1;
+    });
+    return counts;
+  }, [items]);
+
+  // Filter items based on category, status, and search
   const filteredItems = useMemo(() => {
     return items.filter((item) => {
       const matchCat = selectedCat === 'all' || item.category === selectedCat;
@@ -66,6 +86,17 @@ export default function AdminEvents({ onShowToast }) {
     });
   }, [items, searchTerm, selectedCat, selectedStatus, today]);
 
+  // Reset page when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, selectedCat, selectedStatus]);
+
+  // Paginated items
+  const paginatedItems = useMemo(() => {
+    const start = (currentPage - 1) * pageSize;
+    return filteredItems.slice(start, start + pageSize);
+  }, [filteredItems, currentPage, pageSize]);
+
   const handleOpenAdd = () => {
     setEditingItem(null);
     setFormData({
@@ -76,7 +107,7 @@ export default function AdminEvents({ onShowToast }) {
       locationVi: 'Tokyo Big Sight, Nhật Bản',
       locationEn: 'Tokyo Big Sight, Japan',
       date: '2026-10-15',
-      imageUrl: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop&q=80',
+      imageUrl: '/image/onepice_thamnail.jpg',
       descVi: '',
       descEn: '',
     });
@@ -93,7 +124,7 @@ export default function AdminEvents({ onShowToast }) {
       locationVi: item.location?.vi || (typeof item.location === 'string' ? item.location : ''),
       locationEn: item.location?.en || (typeof item.location === 'string' ? item.location : ''),
       date: item.date || '',
-      imageUrl: item.imageUrl || '',
+      imageUrl: item.imageUrl || resolveAdminImage(item, item.category),
       descVi: item.description?.vi || (typeof item.description === 'string' ? item.description : ''),
       descEn: item.description?.en || (typeof item.description === 'string' ? item.description : ''),
     });
@@ -129,7 +160,7 @@ export default function AdminEvents({ onShowToast }) {
         hi: formData.locationEn.trim() || formData.locationVi.trim(),
       },
       date: formData.date || '2026-10-15',
-      imageUrl: formData.imageUrl.trim() || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop&q=80',
+      imageUrl: formData.imageUrl.trim() || resolveAdminImage({ category: formData.category, id: formData.id }),
       description: {
         vi: formData.descVi.trim(),
         en: formData.descEn.trim() || formData.descVi.trim(),
@@ -148,20 +179,51 @@ export default function AdminEvents({ onShowToast }) {
   return (
     <div className="admin-events-module">
       {/* Header bar */}
-      <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3 mb-4">
+      <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3 mb-3">
         <div>
           <h3 className="fw-bold text-white mb-1 d-flex align-items-center gap-2">
-            <i className="bi bi-calendar-event" style={{ color: '#00a8ff' }}></i>
+            <i className="bi bi-calendar-event" style={{ color: '#00f5d4' }}></i>
             Quản lý Sự Kiện Fandom
           </h3>
           <p className="text-secondary small mb-0">
             Hiển thị <strong className="text-white">{filteredItems.length}</strong> / {items.length} đại nhạc hội, triển lãm và hội chợ văn hóa.
           </p>
         </div>
-        <button type="button" className="fv-admin-btn-primary" onClick={handleOpenAdd}>
-          <i className="bi bi-plus-lg"></i> Thêm sự kiện mới
-        </button>
+        <div className="d-flex align-items-center gap-2">
+          {/* View Mode Switcher */}
+          <div className="fv-admin-view-switcher">
+            <button
+              type="button"
+              className={`fv-admin-view-btn ${viewMode === 'grid' ? 'active' : ''}`}
+              onClick={() => setViewMode('grid')}
+              title="Chế độ thẻ ảnh sự kiện trực quan"
+            >
+              <i className="bi bi-grid-fill"></i> Thẻ Sự Kiện
+            </button>
+            <button
+              type="button"
+              className={`fv-admin-view-btn ${viewMode === 'table' ? 'active' : ''}`}
+              onClick={() => setViewMode('table')}
+              title="Chế độ danh sách bảng"
+            >
+              <i className="bi bi-list-ul"></i> Bảng
+            </button>
+          </div>
+
+          <button type="button" className="fv-admin-btn-primary" onClick={handleOpenAdd}>
+            <i className="bi bi-plus-lg"></i> Thêm sự kiện mới
+          </button>
+        </div>
       </div>
+
+      {/* Category Tabs Filter */}
+      <AdminCategoryTabs
+        categories={CATEGORIES}
+        selectedCategory={selectedCat}
+        onSelectCategory={(catId) => setSelectedCat(catId)}
+        itemCounts={categoryCounts}
+        totalCount={items.length}
+      />
 
       {/* Filter and Search Bar */}
       <div className="fv-admin-card mb-4 p-3">
@@ -185,7 +247,9 @@ export default function AdminEvents({ onShowToast }) {
               onChange={(e) => setSelectedCat(e.target.value)}
             >
               {CATEGORIES.map((c) => (
-                <option key={c.id} value={c.id}>{c.label}</option>
+                <option key={c.id} value={c.id}>
+                  {c.label} {c.id === 'all' ? `(${items.length})` : `(${categoryCounts[c.id] || 0})`}
+                </option>
               ))}
             </select>
           </div>
@@ -203,110 +267,244 @@ export default function AdminEvents({ onShowToast }) {
         </div>
       </div>
 
-      {/* Data Table */}
-      <div className="fv-admin-table-container">
-        <div className="table-responsive">
-          <table className="fv-admin-table">
-            <thead>
-              <tr>
-                <th style={{ width: '60px' }}>Ảnh</th>
-                <th>Tên Sự Kiện</th>
-                <th>Danh mục</th>
-                <th>Địa điểm</th>
-                <th>Ngày tổ chức</th>
-                <th>Trạng thái</th>
-                <th className="text-end" style={{ width: '130px' }}>Thao tác</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredItems.length === 0 ? (
-                <tr>
-                  <td colSpan="7" className="text-center py-5 text-secondary">
-                    <i className="bi bi-inbox fs-2 d-block mb-2 text-muted"></i>
-                    Không có sự kiện nào phù hợp.
-                  </td>
-                </tr>
-              ) : (
-                filteredItems.map((item) => {
-                  const titleVi = item.title?.vi || item.title;
-                  const locVi = item.location?.vi || item.location;
-                  const isUpcoming = item.date >= today;
-                  return (
-                    <tr key={item.id}>
-                      <td>
+      {/* Main Content: Grid View OR Table View */}
+      {viewMode === 'grid' ? (
+        /* VISUAL EVENT CARDS */
+        <div className="mb-4">
+          {filteredItems.length === 0 ? (
+            <div className="fv-admin-card text-center py-5 text-secondary">
+              <i className="bi bi-inbox fs-2 d-block mb-2 text-muted"></i>
+              Không có sự kiện nào phù hợp.
+            </div>
+          ) : (
+            <div className="row g-3">
+              {paginatedItems.map((item) => {
+                const titleVi = item.title?.vi || item.title;
+                const locVi = item.location?.vi || item.location;
+                const isUpcoming = item.date >= today;
+                const imgSrc = resolveAdminImage(item, item.category);
+
+                return (
+                  <div key={item.id} className="col-12 col-sm-6 col-md-4 col-xl-3">
+                    <div className="fv-admin-grid-card">
+                      {/* Event Banner */}
+                      <div
+                        className="fv-admin-grid-img-wrap cursor-pointer position-relative"
+                        style={{ height: '175px', cursor: 'zoom-in' }}
+                        onClick={() => setPreviewImage({ ...item, resolvedImg: imgSrc })}
+                        title="Bấm để xem ảnh phóng to"
+                      >
                         <img
-                          src={item.imageUrl}
+                          src={imgSrc}
                           alt={titleVi}
-                          className="fv-admin-thumb"
-                          onError={(e) => {
-                            e.target.src = 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=100&auto=format&fit=crop&q=80';
-                          }}
+                          className="fv-admin-grid-img"
+                          onError={(e) => handleImageFallback(e, item.category)}
                         />
-                      </td>
-                      <td>
-                        <div className="fw-bold text-white text-truncate" style={{ maxWidth: '300px' }}>
-                          {titleVi}
-                        </div>
-                        <div className="text-muted" style={{ fontSize: '0.72rem' }}>
-                          ID: <code>{item.id}</code>
-                        </div>
-                      </td>
-                      <td>
-                        <span className={`fv-badge-cat fv-cat-${item.category}`}>
+
+                        {/* Category & Status badges */}
+                        <span className={`fv-badge-cat fv-cat-${item.category} position-absolute top-0 start-0 m-2`} style={{ fontSize: '0.65rem' }}>
                           {item.category}
                         </span>
-                      </td>
-                      <td className="text-secondary small" style={{ maxWidth: '200px' }}>
-                        <i className="bi bi-geo-alt me-1 text-danger"></i>
-                        <span className="text-truncate d-inline-block align-middle" style={{ maxWidth: '170px' }}>
-                          {locVi}
-                        </span>
-                      </td>
-                      <td className="text-secondary small">
-                        {item.date}
-                      </td>
-                      <td>
+
                         <span
-                          className={`badge ${
+                          className={`badge position-absolute top-0 end-0 m-2 ${
                             isUpcoming
-                              ? 'bg-warning-subtle text-warning border border-warning'
-                              : 'bg-secondary-subtle text-secondary border border-secondary'
+                              ? 'bg-warning text-dark'
+                              : 'bg-secondary text-white'
                           }`}
-                          style={{ fontSize: '0.75rem' }}
+                          style={{ fontSize: '0.68rem' }}
                         >
                           {isUpcoming ? '⚡ Sắp diễn ra' : '🕰️ Đã qua'}
                         </span>
-                      </td>
-                      <td className="text-end">
-                        <div className="d-inline-flex gap-1">
+
+                        <span className="badge bg-black bg-opacity-75 text-white position-absolute bottom-0 start-0 m-2 font-monospace" style={{ fontSize: '0.68rem' }}>
+                          <i className="bi bi-calendar3 me-1"></i>{item.date}
+                        </span>
+                      </div>
+
+                      {/* Card Body */}
+                      <div className="fv-admin-grid-body">
+                        <h6 className="fw-bold text-white mb-1 text-truncate" title={titleVi}>
+                          {titleVi}
+                        </h6>
+
+                        <div className="text-secondary small mb-3 text-truncate" title={locVi} style={{ fontSize: '0.78rem' }}>
+                          <i className="bi bi-geo-alt-fill text-danger me-1"></i>{locVi}
+                        </div>
+
+                        {/* Actions */}
+                        <div className="d-flex gap-2 pt-2 border-top border-secondary border-opacity-25 mt-auto">
                           <button
                             type="button"
-                            className="fv-admin-btn-edit"
+                            className="fv-admin-btn-edit flex-grow-1 justify-content-center"
+                            style={{ fontSize: '0.8rem' }}
                             onClick={() => handleOpenEdit(item)}
-                            title="Sửa"
                           >
-                            <i className="bi bi-pencil-square"></i> Sửa
+                            <i className="bi bi-pencil-square"></i> Chỉnh sửa
                           </button>
                           <button
                             type="button"
                             className="fv-admin-btn-danger"
+                            style={{ fontSize: '0.8rem' }}
                             onClick={() => handleDelete(item.id, titleVi)}
                             title="Xóa"
                           >
                             <i className="bi bi-trash"></i>
                           </button>
                         </div>
-                      </td>
-                    </tr>
-                  );
-                })
-              )}
-            </tbody>
-          </table>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
-      </div>
+      ) : (
+        /* TABLE VIEW */
+        <div className="fv-admin-table-container">
+          <div className="table-responsive">
+            <table className="fv-admin-table">
+              <thead>
+                <tr>
+                  <th style={{ width: '70px' }}>Ảnh (Zoom)</th>
+                  <th>Tên Sự Kiện</th>
+                  <th>Danh mục</th>
+                  <th>Địa điểm</th>
+                  <th>Ngày tổ chức</th>
+                  <th>Trạng thái</th>
+                  <th className="text-end" style={{ width: '130px' }}>Thao tác</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredItems.length === 0 ? (
+                  <tr>
+                    <td colSpan="7" className="text-center py-5 text-secondary">
+                      <i className="bi bi-inbox fs-2 d-block mb-2 text-muted"></i>
+                      Không có sự kiện nào phù hợp.
+                    </td>
+                  </tr>
+                ) : (
+                  paginatedItems.map((item) => {
+                    const titleVi = item.title?.vi || item.title;
+                    const locVi = item.location?.vi || item.location;
+                    const isUpcoming = item.date >= today;
+                    const imgSrc = resolveAdminImage(item, item.category);
 
-      {/* Modal */}
+                    return (
+                      <tr key={item.id}>
+                        <td>
+                          <img
+                            src={imgSrc}
+                            alt={titleVi}
+                            className="fv-admin-thumb"
+                            onClick={() => setPreviewImage({ ...item, resolvedImg: imgSrc })}
+                            title="Bấm để xem ảnh to"
+                            onError={(e) => handleImageFallback(e, item.category)}
+                          />
+                        </td>
+                        <td>
+                          <div className="fw-bold text-white text-truncate" style={{ maxWidth: '300px' }}>
+                            {titleVi}
+                          </div>
+                          <div className="text-muted" style={{ fontSize: '0.72rem' }}>
+                            ID: <code>{item.id}</code>
+                          </div>
+                        </td>
+                        <td>
+                          <span className={`fv-badge-cat fv-cat-${item.category}`}>
+                            {item.category}
+                          </span>
+                        </td>
+                        <td className="text-secondary small" style={{ maxWidth: '200px' }}>
+                          <i className="bi bi-geo-alt me-1 text-danger"></i>
+                          <span className="text-truncate d-inline-block align-middle" style={{ maxWidth: '170px' }}>
+                            {locVi}
+                          </span>
+                        </td>
+                        <td className="text-secondary small">
+                          {item.date}
+                        </td>
+                        <td>
+                          <span
+                            className={`badge ${
+                              isUpcoming
+                                ? 'bg-warning-subtle text-warning border border-warning'
+                                : 'bg-secondary-subtle text-secondary border border-secondary'
+                            }`}
+                            style={{ fontSize: '0.75rem' }}
+                          >
+                            {isUpcoming ? '⚡ Sắp diễn ra' : '🕰️ Đã qua'}
+                          </span>
+                        </td>
+                        <td className="text-end">
+                          <div className="d-inline-flex gap-1">
+                            <button
+                              type="button"
+                              className="fv-admin-btn-edit"
+                              onClick={() => handleOpenEdit(item)}
+                              title="Sửa"
+                            >
+                              <i className="bi bi-pencil-square"></i> Sửa
+                            </button>
+                            <button
+                              type="button"
+                              className="fv-admin-btn-danger"
+                              onClick={() => handleDelete(item.id, titleVi)}
+                              title="Xóa"
+                            >
+                              <i className="bi bi-trash"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {/* Pagination Controls */}
+      <AdminPagination
+        currentPage={currentPage}
+        totalItems={filteredItems.length}
+        pageSize={pageSize}
+        onPageChange={setCurrentPage}
+        onPageSizeChange={setPageSize}
+        pageSizeOptions={[8, 12, 24, 48]}
+      />
+
+      {/* Lightbox Modal */}
+      {previewImage && (
+        <div className="fv-admin-lightbox-modal" onClick={() => setPreviewImage(null)}>
+          <div className="fv-admin-lightbox-content" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={previewImage.resolvedImg || resolveAdminImage(previewImage, previewImage.category)}
+              alt={previewImage.title?.vi || previewImage.title}
+              className="fv-admin-lightbox-img"
+              onError={(e) => handleImageFallback(e, previewImage.category)}
+            />
+            <div className="d-flex justify-content-between align-items-center mt-3 text-white">
+              <div className="text-start">
+                <h5 className="fw-bold mb-0">{previewImage.title?.vi || previewImage.title}</h5>
+                <span className="text-secondary small">{previewImage.location?.vi || previewImage.location} • {previewImage.date}</span>
+              </div>
+              <button
+                type="button"
+                className="btn btn-outline-light btn-sm rounded-pill px-3"
+                onClick={() => setPreviewImage(null)}
+              >
+                <i className="bi bi-x-lg me-1"></i> Đóng
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal Edit/Add */}
       {isModalOpen && (
         <div className="fv-admin-modal-backdrop" onClick={() => setIsModalOpen(false)}>
           <div className="fv-admin-modal-dialog" onClick={(e) => e.stopPropagation()}>
@@ -420,14 +618,29 @@ export default function AdminEvents({ onShowToast }) {
                     <div className="fv-admin-form-group">
                       <label className="fv-admin-label">URL Ảnh Bìa Sự Kiện</label>
                       <input
-                        type="url"
+                        type="text"
                         className="fv-admin-input"
                         value={formData.imageUrl}
                         onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
-                        placeholder="https://images.unsplash.com/..."
+                        placeholder="/image/ghibili.jpg hoặc https://..."
                       />
                     </div>
                   </div>
+
+                  {/* Live Image Preview in Modal */}
+                  {formData.imageUrl && (
+                    <div className="col-12">
+                      <label className="fv-admin-label mb-1">Xem trước ảnh bìa:</label>
+                      <div className="rounded overflow-hidden border border-secondary border-opacity-25" style={{ maxHeight: '140px' }}>
+                        <img
+                          src={formData.imageUrl}
+                          alt="Preview"
+                          style={{ width: '100%', height: '140px', objectFit: 'cover' }}
+                          onError={(e) => handleImageFallback(e, formData.category)}
+                        />
+                      </div>
+                    </div>
+                  )}
 
                   <div className="col-12">
                     <div className="fv-admin-form-group">
@@ -449,23 +662,22 @@ export default function AdminEvents({ onShowToast }) {
                         rows="2"
                         value={formData.descEn}
                         onChange={(e) => setFormData({ ...formData, descEn: e.target.value })}
-                        placeholder="Event overview in English..."
+                        placeholder="Event details, exhibits, guest speakers..."
                       ></textarea>
                     </div>
                   </div>
                 </div>
               </div>
-
               <div className="fv-admin-modal-footer">
                 <button
                   type="button"
                   className="fv-admin-btn-secondary"
                   onClick={() => setIsModalOpen(false)}
                 >
-                  Hủy bỏ
+                  Hủy
                 </button>
                 <button type="submit" className="fv-admin-btn-primary">
-                  <i className="bi bi-check-lg"></i> Lưu sự kiện
+                  <i className="bi bi-check-lg"></i> {editingItem ? 'Cập nhật' : 'Thêm mới'}
                 </button>
               </div>
             </form>

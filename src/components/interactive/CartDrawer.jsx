@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useCart } from '../../context/CartContext.jsx';
 import { useLanguage } from '../../context/LanguageContext.jsx';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function CartDrawer() {
   const { t } = useTranslation();
   const { bcp47 } = useLanguage();
+  const navigate = useNavigate();
   const {
     isCartOpen,
     setIsCartOpen,
@@ -22,8 +23,9 @@ export default function CartDrawer() {
 
   if (!isCartOpen) return null;
 
-  const handleCheckoutDemo = () => {
-    setCheckoutNotice(true);
+  const handleCheckout = () => {
+    setIsCartOpen(false);
+    navigate('/checkout');
   };
 
   return (
@@ -160,11 +162,11 @@ export default function CartDrawer() {
             <div className="d-grid gap-2">
               <button
                 type="button"
-                className="btn btn-accent-fv py-2 d-flex align-items-center justify-content-center gap-2"
-                onClick={handleCheckoutDemo}
+                className="btn btn-accent-fv py-2 d-flex align-items-center justify-content-center gap-2 fw-bold"
+                onClick={handleCheckout}
               >
-                <i className="bi bi-receipt"></i>
-                <span>{t('cartDrawer.viewOrderSummary')}</span>
+                <i className="bi bi-credit-card-2-front-fill"></i>
+                <span>Tiến Hành Thanh Toán (${cartTotal.toFixed(2)})</span>
               </button>
               <button
                 type="button"

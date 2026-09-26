@@ -15,7 +15,7 @@ import AdminUsers from './AdminUsers.jsx';
 import AdminSettings from './AdminSettings.jsx';
 
 export default function AdminLayout() {
-  const { currentUser, isAdmin, switchAccount } = useAuth();
+  const { currentUser, isAdmin, logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -150,13 +150,17 @@ export default function AdminLayout() {
                 </div>
               </div>
             </div>
-            <Link
-              to="/"
-              className="btn btn-sm btn-outline-secondary p-1 border-0"
-              title="Về Website"
+            <button
+              type="button"
+              className="btn btn-sm btn-outline-danger p-1 border-0"
+              title="Đăng xuất Admin"
+              onClick={() => {
+                logout();
+                navigate('/admin/login');
+              }}
             >
               <i className="bi bi-box-arrow-right fs-5"></i>
-            </Link>
+            </button>
           </div>
         </div>
       </aside>
@@ -182,7 +186,7 @@ export default function AdminLayout() {
             </div>
           </div>
 
-          <div className="d-flex align-items-center gap-3">
+          <div className="d-flex align-items-center gap-2">
             <Link to="/" className="fv-admin-btn-secondary text-decoration-none py-1 px-3 d-none d-sm-inline-flex" style={{ fontSize: '0.85rem' }}>
               <i className="bi bi-box-arrow-up-right me-1"></i> Xem Website
             </Link>
@@ -200,9 +204,22 @@ export default function AdminLayout() {
               >
                 <i className="bi bi-person-check-fill"></i>
               </div>
-              <span className="small text-white fw-semibold d-none d-md-inline">
+              <span className="small text-white fw-semibold d-none d-md-inline me-2">
                 {currentUser?.name || 'Admin'}
               </span>
+              <button
+                type="button"
+                className="btn btn-sm btn-outline-danger d-inline-flex align-items-center gap-1 py-1 px-2.5 rounded-pill"
+                style={{ fontSize: '0.78rem' }}
+                onClick={() => {
+                  logout();
+                  navigate('/admin/login');
+                }}
+                title="Đăng xuất khỏi trung tâm quản trị"
+              >
+                <i className="bi bi-box-arrow-right"></i>
+                <span className="d-none d-sm-inline">Đăng xuất</span>
+              </button>
             </div>
           </div>
         </header>
