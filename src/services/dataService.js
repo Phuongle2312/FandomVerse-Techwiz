@@ -36,11 +36,54 @@ function loadDataset(key, defaultData) {
   return [...defaultData];
 }
 
+let broadcastChannel = null;
+if (typeof window !== 'undefined' && 'BroadcastChannel' in window) {
+  try {
+    broadcastChannel = new BroadcastChannel('fandomverse_data_sync');
+    broadcastChannel.onmessage = (event) => {
+      if (event?.data?.key) {
+        syncDatasetKey(event.data.key);
+        window.dispatchEvent(new CustomEvent('fv_data_change', { detail: { key: event.data.key } }));
+      }
+    };
+  } catch (e) {
+    // BroadcastChannel unsupported or restricted
+  }
+}
+
+function syncDatasetKey(key) {
+  if (key === STORAGE_KEYS.CONTENTS) {
+    activeContents = loadDataset(STORAGE_KEYS.CONTENTS, contentsData);
+  } else if (key === STORAGE_KEYS.CHARACTERS) {
+    activeCharacters = loadDataset(STORAGE_KEYS.CHARACTERS, charactersData);
+  } else if (key === STORAGE_KEYS.EVENTS) {
+    activeEvents = loadDataset(STORAGE_KEYS.EVENTS, eventsData);
+  } else if (key === STORAGE_KEYS.TRAILERS) {
+    activeTrailers = loadDataset(STORAGE_KEYS.TRAILERS, trailersData);
+  } else if (key === STORAGE_KEYS.MERCHANDISE) {
+    activeMerchandise = loadDataset(STORAGE_KEYS.MERCHANDISE, merchandiseData);
+  }
+}
+
+if (typeof window !== 'undefined') {
+  window.addEventListener('storage', (e) => {
+    if (e.key && Object.values(STORAGE_KEYS).includes(e.key)) {
+      syncDatasetKey(e.key);
+      window.dispatchEvent(new CustomEvent('fv_data_change', { detail: { key: e.key } }));
+    }
+  });
+}
+
 function persistDataset(key, dataset) {
   try {
     localStorage.setItem(key, JSON.stringify(dataset));
     if (typeof window !== 'undefined') {
       window.dispatchEvent(new CustomEvent('fv_data_change', { detail: { key } }));
+      if (broadcastChannel) {
+        try {
+          broadcastChannel.postMessage({ key });
+        } catch (_) {}
+      }
     }
   } catch (error) {
     console.warn(`[dataService] Error saving ${key} to storage:`, error);
@@ -91,9 +134,10 @@ export const dataService = {
   },
 
   getFeaturedContents() {
-    return activeContents
-      .filter((item) => item.featured)
-      .map((item) => resolveLocale(item, CONTENT_LOCALE_FIELDS));
+    // Return items explicitly marked as featured first, followed by newest items so newly added posts are always highlighted
+    const featured = activeContents.filter((item) => item.featured);
+    const nonFeatured = activeContents.filter((item) => !item.featured);
+    return [...featured, ...nonFeatured].map((item) => resolveLocale(item, CONTENT_LOCALE_FIELDS));
   },
 
   getContentById(id) {

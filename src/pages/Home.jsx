@@ -10,15 +10,17 @@ import EventCard from '../components/cards/EventCard.jsx';
 import LightboxGallery from '../components/interactive/LightboxGallery.jsx';
 import VideoModal from '../components/interactive/VideoModal.jsx';
 import { useVideoVisibilityAutoplay } from '../hooks/useVideoVisibilityAutoplay.js';
+import { useDataSync } from '../hooks/useDataSync.js';
 
 export default function Home() {
   const { t } = useTranslation();
   const { language } = useLanguage();
   const { isDark } = useTheme();
+  const dataVersion = useDataSync();
 
-  const featuredContents = useMemo(() => dataService.getFeaturedContents(), [language]);
-  const allTrailers = useMemo(() => dataService.getAllTrailers(), [language]);
-  const upcomingEvents = useMemo(() => dataService.getAllEvents().filter((e) => e.date >= new Date().toISOString().split('T')[0]).slice(0, 3), [language]);
+  const featuredContents = useMemo(() => dataService.getFeaturedContents(), [language, dataVersion]);
+  const allTrailers = useMemo(() => dataService.getAllTrailers(), [language, dataVersion]);
+  const upcomingEvents = useMemo(() => dataService.getAllEvents().filter((e) => e.date >= new Date().toISOString().split('T')[0]).slice(0, 3), [language, dataVersion]);
 
   const CATEGORY_LIST_LOCALIZED = useMemo(() => CATEGORY_LIST.map((cat) => ({
     ...cat,

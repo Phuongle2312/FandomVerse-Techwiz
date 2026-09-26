@@ -21,6 +21,7 @@ import EmptyState from '../components/common/EmptyState.jsx';
 import { useBookmarks } from '../context/BookmarkContext.jsx';
 import { useTheme } from '../context/ThemeContext.jsx';
 import { useVideoVisibilityAutoplay } from '../hooks/useVideoVisibilityAutoplay.js';
+import { useDataSync } from '../hooks/useDataSync.js';
 
 function formatVietnameseDate(dateStr) {
   if (!dateStr) return '';
@@ -51,6 +52,7 @@ export default function CategoryHub() {
   const isTvShows = categoryId === 'tvshows';
   const { isBookmarked, toggleBookmark } = useBookmarks();
   const { isDark } = useTheme();
+  const dataVersion = useDataSync();
 
   // Gaming-only: Cyber HUD Scanner interactive mode
   const [gamingScannerActive, setGamingScannerActive] = useState(false);
@@ -318,31 +320,31 @@ export default function CategoryHub() {
       type: selectedType,
       sort: selectedSort,
     });
-  }, [categoryId, selectedType, selectedSort, language]);
+  }, [categoryId, selectedType, selectedSort, language, dataVersion]);
 
   // Divided Content Collections for 'All' View
   const videoContents = useMemo(() => {
     return dataService.getContentsByCategory(categoryId, { type: 'video', sort: selectedSort });
-  }, [categoryId, selectedSort, language]);
+  }, [categoryId, selectedSort, language, dataVersion]);
 
   const galleryContents = useMemo(() => {
     return dataService.getContentsByCategory(categoryId, { type: 'gallery', sort: selectedSort });
-  }, [categoryId, selectedSort, language]);
+  }, [categoryId, selectedSort, language, dataVersion]);
 
   const articleContents = useMemo(() => {
     return dataService.getContentsByCategory(categoryId, { type: 'article', sort: selectedSort });
-  }, [categoryId, selectedSort, language]);
+  }, [categoryId, selectedSort, language, dataVersion]);
 
   const audioContents = useMemo(() => {
     return dataService.getContentsByCategory(categoryId, { type: 'audio', sort: selectedSort });
-  }, [categoryId, selectedSort, language]);
+  }, [categoryId, selectedSort, language, dataVersion]);
 
   // Filtered Characters
   const filteredCharacters = useMemo(() => {
     return dataService.getCharactersByCategory(categoryId, {
       franchise: selectedFranchise,
     });
-  }, [categoryId, selectedFranchise, language]);
+  }, [categoryId, selectedFranchise, language, dataVersion]);
 
   // Movies-only: trailers power the cinematic hero spotlight
   const heroTrailers = useMemo(() => {
@@ -536,7 +538,104 @@ export default function CategoryHub() {
         </div>
       </div>
 
-      {/* Divided Distinct Rows: Video, Gallery, Article, Audio */}
+      {/* Format Filter Bar (Tất cả, Bài viết, Video, Bộ ảnh, Audio) & Sort */}
+      <div
+        className="d-flex flex-wrap align-items-center justify-content-between gap-3 my-4 p-3 rounded-4 shadow-sm"
+        style={{
+          background: isDark ? 'rgba(255, 255, 255, 0.04)' : 'rgba(0, 0, 0, 0.03)',
+          border: isDark ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid var(--border-color)',
+        }}
+      >
+        <div className="d-flex flex-wrap align-items-center gap-2">
+          <span className="small fw-bold text-uppercase me-1" style={{ color: `var(--accent-${categoryId}, #6C5CE7)` }}>
+            <i className="bi bi-funnel-fill me-1"></i> {isVi ? 'Định dạng:' : 'Format:'}
+          </span>
+          {[
+            { id: 'all', label: isVi ? 'Tất cả' : 'All', count: formatCounts.all, icon: 'bi-grid-fill' },
+            { id: 'article', label: isVi ? 'Bài viết' : 'Articles', count: formatCounts.article, icon: 'bi-file-text-fill' },
+            { id: 'video', label: 'Video', count: formatCounts.video, icon: 'bi-play-circle-fill' },
+            { id: 'gallery', label: isVi ? 'Bộ ảnh' : 'Galleries', count: formatCounts.gallery, icon: 'bi-images' },
+            { id: 'audio', label: 'Audio', count: formatCounts.audio, icon: 'bi-soundwave' },
+          ].map((fmt) => (
+            <button
+              key={fmt.id}
+              type="button"
+              className={`btn btn-sm rounded-pill px-3 py-1.5 fw-semibold d-inline-flex align-items-center gap-1.5 border-0 transition-all ${
+                selectedType === fmt.id
+                  ? 'text-white shadow-sm'
+                  : isDark ? 'text-white-50 bg-white bg-opacity-10 hover-text-white' : 'text-secondary bg-light'
+              }`}
+              style={{
+                background: selectedType === fmt.id ? `var(--accent-${categoryId}, #6C5CE7)` : undefined,
+                fontSize: '0.82rem',
+              }}
+              onClick={() => setSelectedType(fmt.id)}
+            >
+              <i className={`bi ${fmt.icon}`}></i>
+              <span>{fmt.label}</span>
+              <span className="badge rounded-pill bg-black bg-opacity-25 ms-1" style={{ fontSize: '0.72rem' }}>
+                {fmt.count}
+              </span>
+            </button>
+          ))}
+        </div>
+
+        {/* Sort selector */}
+        <div className="d-flex align-items-center gap-2 ms-auto">
+          <span className={`small ${isDark ? 'text-white-50' : 'text-secondary'}`}>
+            <i className="bi bi-sort-down me-1"></i> {isVi ? 'Sắp xếp:' : 'Sort:'}
+          </span>
+          <select
+            className={`form-select form-select-sm rounded-pill ${isDark ? 'bg-dark text-white border-secondary' : 'bg-white text-dark'}`}
+            style={{ width: 'auto', minWidth: '140px' }}
+            value={selectedSort}
+            onChange={(e) => setSelectedSort(e.target.value)}
+          >
+            <option value="newest">{isVi ? 'Mới nhất' : 'Newest'}</option>
+            <option value="featured">{isVi ? 'Nổi bật' : 'Featured'}</option>
+            <option value="alphabetical">{isVi ? 'Theo tên (A-Z)' : 'Alphabetical'}</option>
+          </select>
+        </div>
+      </div>
+
+      {/* When filtering a specific format: show dedicated responsive grid */}
+      {selectedType !== 'all' ? (
+        <div className="fv-category-filtered-grid mb-5">
+          <div className="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3 pb-2 border-bottom border-white-50 border-opacity-10">
+            <h4 className={`fw-bold mb-0 ${isDark ? 'text-white' : 'text-dark'}`}>
+              {selectedType === 'article' && (isVi ? 'Danh Sách Toàn Bộ Bài Viết' : 'All Articles & Analysis')}
+              {selectedType === 'video' && (isVi ? 'Danh Sách Video Đặc Sắc' : 'Featured Videos')}
+              {selectedType === 'gallery' && (isVi ? 'Danh Sách Bộ Sưu Tập Ảnh' : 'Photo Galleries')}
+              {selectedType === 'audio' && (isVi ? 'Danh Sách Podcast & Bản Âm Thanh' : 'Podcasts & Audios')}
+              <span className="badge rounded-pill ms-2 fs-6" style={{ background: `var(--accent-${categoryId}, #6C5CE7)` }}>
+                {filteredContents.length}
+              </span>
+            </h4>
+            <button
+              type="button"
+              className="btn btn-sm btn-outline-secondary rounded-pill px-3"
+              onClick={() => setSelectedType('all')}
+            >
+              <i className="bi bi-arrow-left me-1"></i> {isVi ? 'Xem tất cả chuyên mục' : 'View all sections'}
+            </button>
+          </div>
+
+          <div className="row g-3 g-md-4">
+            {filteredContents.map((cItem) => (
+              <div key={cItem.id} className="col-12 col-sm-6 col-lg-4 col-xl-3 d-flex">
+                <div className="w-100 h-100">
+                  <ContentCard
+                    item={cItem}
+                    onOpenMedia={(v) => setActiveVideo(v)}
+                    onOpenGallery={(g) => setLightboxImages(g.images)}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : (
+        /* Divided Distinct Rows: Video, Gallery, Article, Audio */
       <div className="category-divided-content-sections mt-4">
         {/* 1. Video Row - Wider Cinema Cards */}
         <CategoryContentRow
@@ -587,6 +686,7 @@ export default function CategoryHub() {
           onOpenGallery={(g) => setLightboxImages(g.images)}
         />
       </div>
+      )}
 
       {/* Characters Showcase Section */}
       {filteredCharacters.length > 0 && (

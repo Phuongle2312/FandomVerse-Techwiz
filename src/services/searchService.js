@@ -51,7 +51,7 @@ export const searchService = {
         const { matched, score } = q
           ? computeRelevance(item.title?.toLowerCase(), [
               item.shortDescription?.toLowerCase(),
-              ...(item.subTags || []).map((tag) => tag.toLowerCase()),
+              ...(item.subTags || []).map((tag) => (typeof tag === 'string' ? tag.toLowerCase() : (tag?.vi || tag?.en || '').toLowerCase())),
             ], q)
           : { matched: true, score: 0 };
 

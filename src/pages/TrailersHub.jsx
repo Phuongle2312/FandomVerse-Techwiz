@@ -4,12 +4,14 @@ import { dataService } from '../services/dataService.js';
 import { CATEGORY_LIST } from '../constants.js';
 import VideoModal from '../components/interactive/VideoModal.jsx';
 import EmptyState from '../components/common/EmptyState.jsx';
+import { useDataSync } from '../hooks/useDataSync.js';
 
 export default function TrailersHub() {
   const { t } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedStatus, setSelectedStatus] = useState('all');
   const [activeTrailer, setActiveTrailer] = useState(null);
+  const dataVersion = useDataSync();
 
   const CATEGORY_LIST_LOCALIZED = CATEGORY_LIST.map((cat) => ({
     ...cat,
@@ -20,7 +22,7 @@ export default function TrailersHub() {
     return dataService.getTrailersByCategory(selectedCategory, {
       status: selectedStatus,
     });
-  }, [selectedCategory, selectedStatus]);
+  }, [selectedCategory, selectedStatus, dataVersion]);
 
   return (
     <div className="container-fluid px-3 px-md-4 px-lg-5 py-4">

@@ -9,6 +9,7 @@ import EmptyState from '../components/common/EmptyState.jsx';
 import ToastNotification from '../components/common/ToastNotification.jsx';
 import { useCart } from '../context/CartContext.jsx';
 import { useTheme } from '../context/ThemeContext.jsx';
+import { useDataSync } from '../hooks/useDataSync.js';
 
 // 5 phân loại sản phẩm tương ứng với từng hàng trượt giống Ảnh 2
 const PRODUCT_TYPE_SECTIONS = [
@@ -81,6 +82,7 @@ export default function Merchandise() {
 
   const isVi = i18n.language === 'vi';
   const { setIsCartOpen, cartCount, cartTotal } = useCart();
+  const dataVersion = useDataSync();
 
   const CATEGORY_LIST_LOCALIZED = CATEGORY_LIST.map((cat) => ({
     ...cat,
@@ -116,7 +118,7 @@ export default function Merchandise() {
     }
 
     return result;
-  }, [selectedCategory, selectedType, searchQuery, sortBy]);
+  }, [selectedCategory, selectedType, searchQuery, sortBy, dataVersion]);
 
   // Gom nhóm sản phẩm theo 5 phân loại để render từng hàng trượt riêng biệt
   const categorizedSections = useMemo(() => {
@@ -150,7 +152,7 @@ export default function Merchandise() {
         items,
       };
     }).filter((sec) => sec.items.length > 0);
-  }, [selectedCategory, searchQuery, sortBy, isVi]);
+  }, [selectedCategory, searchQuery, sortBy, isVi, dataVersion]);
 
   const handleShowToast = (message) => {
     setToast({
