@@ -1,6 +1,5 @@
 import { dataService } from './dataService.js';
 import i18n from '../i18n/index.js';
-
 // Below this query length, only the primary field (title/name) is matched.
 // A 1-2 letter query almost always appears somewhere inside a long bio/description,
 // which used to flood the results with items whose *title* had nothing to do with the query.

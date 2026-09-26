@@ -179,4 +179,3 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
     </div>
   );
 }
-
