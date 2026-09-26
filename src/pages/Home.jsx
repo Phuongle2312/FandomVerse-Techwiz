@@ -9,6 +9,7 @@ import ContentCard from '../components/cards/ContentCard.jsx';
 import EventCard from '../components/cards/EventCard.jsx';
 import LightboxGallery from '../components/interactive/LightboxGallery.jsx';
 import VideoModal from '../components/interactive/VideoModal.jsx';
+import { useVideoVisibilityAutoplay } from '../hooks/useVideoVisibilityAutoplay.js';
 
 export default function Home() {
   const { t } = useTranslation();
@@ -82,6 +83,9 @@ export default function Home() {
       heroVideoRef.current.play().catch(() => { });
     }
   }, []);
+
+  // Tự dừng video hero khi cuộn ra khỏi màn hình hoặc khi rời trang, để web mượt hơn
+  useVideoVisibilityAutoplay(heroVideoRef);
 
   const filteredTrailers = useMemo(() => {
     if (trailerCategory === 'all') return allTrailers;

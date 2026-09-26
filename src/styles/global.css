@@ -5571,3 +5571,168 @@ button.fv-lang-btn:hover,
     gap: 0.65rem;
   }
 }
+
+/* ==========================================================================
+   EVENTS SHOWCASE — BALANCED 5-COLUMN GRID (2 ROWS OF 5)
+   ========================================================================== */
+.fv-events-5col-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.fv-event-5col-item {
+  width: 100%;
+  display: flex;
+}
+
+.fv-event-5col-item .fv-event-card {
+  width: 100%;
+  padding: 0.9rem 0.85rem !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 12px;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
+}
+
+.fv-event-5col-item .fv-event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35) !important;
+}
+
+.fv-event-5col-item .fv-event-inner {
+  gap: 0.75rem !important;
+}
+
+.fv-event-5col-item .fv-event-date-block {
+  min-width: 56px !important;
+  padding: 0.4rem 0.25rem !important;
+  flex-shrink: 0;
+  border-radius: 8px;
+}
+
+.fv-event-5col-item .fv-event-date-block .fs-4 {
+  font-size: 1.2rem !important;
+}
+
+.fv-event-5col-item .fv-event-card h5 {
+  font-size: 0.88rem !important;
+  line-height: 1.35 !important;
+  margin-bottom: 0.35rem !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.fv-event-5col-item .fv-event-card p {
+  font-size: 0.75rem !important;
+  line-height: 1.4 !important;
+  margin-bottom: 0.4rem !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (max-width: 1399px) {
+  .fv-events-5col-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+  .fv-event-5col-item .fv-event-inner {
+    gap: 0.5rem !important;
+  }
+}
+
+@media (max-width: 1199px) {
+  .fv-events-5col-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .fv-events-5col-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .fv-events-5col-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   EVENT CARDS THEMED BORDERS & GLOWS FOR ALL 7 CATEGORIES
+   -------------------------------------------------------------------------- */
+.anime-event-card {
+  border-left: 4px solid #ff4757 !important;
+}
+.anime-event-card .fv-event-date-block {
+  background: rgba(255, 71, 87, 0.1) !important;
+  border-color: rgba(255, 71, 87, 0.3) !important;
+}
+.anime-event-card .fv-event-date-block span {
+  color: #ff4757 !important;
+}
+
+.kpop-event-card {
+  border-left: 4px solid #fd79a8 !important;
+}
+.kpop-event-card .fv-event-date-block {
+  background: rgba(253, 121, 168, 0.1) !important;
+  border-color: rgba(253, 121, 168, 0.3) !important;
+}
+.kpop-event-card .fv-event-date-block span {
+  color: #fd79a8 !important;
+}
+
+.movies-event-card {
+  border-left: 4px solid #f5c518 !important;
+}
+.movies-event-card .fv-event-date-block {
+  background: rgba(245, 197, 24, 0.1) !important;
+  border-color: rgba(245, 197, 24, 0.3) !important;
+}
+.movies-event-card .fv-event-date-block span {
+  color: #f5c518 !important;
+}
+
+.tvshows-event-card {
+  border-left: 4px solid #ff6b4a !important;
+}
+.tvshows-event-card .fv-event-date-block {
+  background: rgba(255, 107, 74, 0.1) !important;
+  border-color: rgba(255, 107, 74, 0.3) !important;
+}
+.tvshows-event-card .fv-event-date-block span {
+  color: #ff6b4a !important;
+}
+
+.manga-event-card {
+  border-left: 4px solid #e056fd !important;
+}
+.manga-event-card .fv-event-date-block {
+  background: rgba(224, 86, 253, 0.1) !important;
+  border-color: rgba(224, 86, 253, 0.3) !important;
+}
+.manga-event-card .fv-event-date-block span {
+  color: #e056fd !important;
+}
+
+.comics-event-card {
+  border-left: 4px solid #00a8ff !important;
+}
+.comics-event-card .fv-event-date-block {
+  background: rgba(0, 168, 255, 0.1) !important;
+  border-color: rgba(0, 168, 255, 0.3) !important;
+}
+.comics-event-card .fv-event-date-block span {
+  color: #00a8ff !important;
+}
+

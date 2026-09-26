@@ -60,366 +60,6 @@
     }
   },
   {
-    "id": "gaming-event-001",
-    "category": "gaming",
-    "title": {
-      "vi": "Tokyo Game Show (TGS) 2026",
-      "en": "Tokyo Game Show (TGS) 2026",
-      "hi": "टोक्यो गेम शो (टीजीएस) 2026"
-    },
-    "date": "2026-10-25",
-    "location": {
-      "vi": "Makuhari Messe, Tokyo, Nhật Bản",
-      "en": "Makuhari Messe, Tokyo, Japan",
-      "hi": "मकुहारी मेस्से, टोक्यो, जापान"
-    },
-    "description": {
-      "vi": "Triển lãm trò chơi điện tử châu Á đỉnh cao với các bản demo bom tấn nhập vai, công nghệ VR/AR thế hệ mới và các giải đấu eSports kịch tính.",
-      "en": "Asia's premier video game exhibition featuring blockbuster RPG demos, next-generation VR/AR technology, and thrilling eSports tournaments.",
-      "hi": "एशिया का प्रमुख वीडियो गेम प्रदर्शनी, जिसमें बड़े आरपीजी डेमो, अगली पीढ़ी की वीआर/एआर तकनीक और रोमांचक ईस्पोर्ट्स टूर्नामेंट शामिल हैं।"
-    }
-  },
-  {
-    "id": "gaming-event-002",
-    "category": "gaming",
-    "title": {
-      "vi": "The Game Awards 2026",
-      "en": "The Game Awards 2026",
-      "hi": "द गेम अवार्ड्स 2026"
-    },
-    "date": "2026-12-10",
-    "location": {
-      "vi": "Peacock Theater, Los Angeles, Hoa Kỳ",
-      "en": "Peacock Theater, Los Angeles, USA",
-      "hi": "पीकॉक थिएटर, लॉस एंजिल्स, अमेरिका"
-    },
-    "description": {
-      "vi": "Đêm trao giải danh giá nhất của làng game thế giới, vinh danh tựa game của năm (GOTY) và công chiếu các trailer bất ngờ.",
-      "en": "The most prestigious award ceremony in the global gaming world, honoring the Game of the Year (GOTY) and unveiling surprise trailers.",
-      "hi": "वैश्विक गेमिंग जगत का सबसे प्रतिष्ठित पुरस्कार समारोह, जो गेम ऑफ द ईयर (जीओटीवाई) को सम्मानित करता है और चौंकाने वाले ट्रेलर पेश करता है।"
-    }
-  },
-  {
-    "id": "gaming-event-003",
-    "category": "gaming",
-    "title": {
-      "vi": "Gamescom Cologne 2026",
-      "en": "Gamescom Cologne 2026",
-      "hi": "गेम्सकॉम कोलोन 2026"
-    },
-    "date": "2026-08-22",
-    "location": {
-      "vi": "Koelnmesse, Cologne, Đức",
-      "en": "Koelnmesse, Cologne, Germany",
-      "hi": "कोल्नमेस्से, कोलोन, जर्मनी"
-    },
-    "description": {
-      "vi": "Hội chợ thương mại trò chơi điện tử lớn nhất châu Âu với hàng ngàn gian hàng trải nghiệm trực tiếp cho cộng đồng game thủ.",
-      "en": "Europe's largest video game trade fair, featuring thousands of hands-on booths for the gaming community to experience firsthand.",
-      "hi": "यूरोप का सबसे बड़ा वीडियो गेम ट्रेड फेयर, जिसमें गेमिंग समुदाय के लिए हज़ारों हैंड्स-ऑन बूथ शामिल हैं।"
-    }
-  },
-  {
-    "id": "movies-event-001",
-    "category": "movies",
-    "title": {
-      "vi": "Hollywood Fandom Premiere Gala",
-      "en": "Hollywood Fandom Premiere Gala",
-      "hi": "हॉलीवुड फैंडम प्रीमियर गाला"
-    },
-    "date": "2026-11-05",
-    "location": {
-      "vi": "TCL Chinese Theatre, Los Angeles, Hoa Kỳ",
-      "en": "TCL Chinese Theatre, Los Angeles, USA",
-      "hi": "टीसीएल चाइनीज़ थिएटर, लॉस एंजिल्स, अमेरिका"
-    },
-    "description": {
-      "vi": "Đêm công chiếu thảm đỏ các siêu phẩm bom tấn giả tưởng cuối năm, hội tụ dàn sao hạng A và đạo diễn huyền thoại.",
-      "en": "A red-carpet premiere night for the year's biggest fantasy blockbusters, bringing together A-list stars and legendary directors.",
-      "hi": "साल की सबसे बड़ी फैंटेसी ब्लॉकबस्टर फिल्मों की रेड-कार्पेट प्रीमियर रात, जिसमें ए-लिस्ट सितारे और महान निर्देशक शामिल होते हैं।"
-    }
-  },
-  {
-    "id": "movies-event-002",
-    "category": "movies",
-    "title": {
-      "vi": "Star Wars Celebration 2027",
-      "en": "Star Wars Celebration 2027",
-      "hi": "स्टार वार्स सेलिब्रेशन 2027"
-    },
-    "date": "2027-04-18",
-    "location": {
-      "vi": "ExCeL London, Vương quốc Anh",
-      "en": "ExCeL London, United Kingdom",
-      "hi": "एक्ससेल लंदन, यूनाइटेड किंगडम"
-    },
-    "description": {
-      "vi": "Lễ hội quy mô toàn cầu dành cho cộng đồng người hâm mộ Chiến Tranh Giữa Các Vì Sao với những tiết lộ về tương lai của dải ngân hà.",
-      "en": "A global-scale festival for the Star Wars fan community, featuring reveals about the future of the galaxy.",
-      "hi": "स्टार वार्स प्रशंसक समुदाय के लिए एक वैश्विक स्तर का उत्सव, जिसमें आकाशगंगा के भविष्य से जुड़े खुलासे किए जाते हैं।"
-    }
-  },
-  {
-    "id": "movies-event-003",
-    "category": "movies",
-    "title": {
-      "vi": "Cannes Film Festival Spotlight",
-      "en": "Cannes Film Festival Spotlight",
-      "hi": "कान फिल्म फेस्टिवल स्पॉटलाइट"
-    },
-    "date": "2026-05-18",
-    "location": {
-      "vi": "Palais des Festivals, Cannes, Pháp",
-      "en": "Palais des Festivals, Cannes, France",
-      "hi": "पैले दे फेस्तिवाल, कान, फ़्रांस"
-    },
-    "description": {
-      "vi": "Hạng mục vinh danh các tác phẩm điện ảnh xuất sắc và các giải thưởng cống hiến cho nghệ thuật thứ bảy thế giới.",
-      "en": "A category honoring outstanding cinematic works and lifetime achievement awards dedicated to the world's seventh art.",
-      "hi": "उत्कृष्ट सिनेमाई कृतियों को सम्मानित करने वाली श्रेणी और विश्व की सातवीं कला को समर्पित उपलब्धि पुरस्कार।"
-    }
-  },
-  {
-    "id": "tvshows-event-001",
-    "category": "tvshows",
-    "title": {
-      "vi": "PrimeTime Emmy Awards 2026",
-      "en": "PrimeTime Emmy Awards 2026",
-      "hi": "प्राइमटाइम एमी अवार्ड्स 2026"
-    },
-    "date": "2026-10-18",
-    "location": {
-      "vi": "Microsoft Theater, Los Angeles, Hoa Kỳ",
-      "en": "Microsoft Theater, Los Angeles, USA",
-      "hi": "माइक्रोसॉफ्ट थिएटर, लॉस एंजिल्स, अमेरिका"
-    },
-    "description": {
-      "vi": "Lễ trao giải Oscar của truyền hình thế giới, tôn vinh các series xuất sắc nhất, kịch bản ấn tượng và diễn xuất đỉnh cao.",
-      "en": "The Oscars of world television, honoring the best series, most impressive scripts, and top-tier acting performances.",
-      "hi": "विश्व टेलीविज़न का ऑस्कर, जो सर्वश्रेष्ठ सीरीज़, प्रभावशाली पटकथाओं और उत्कृष्ट अभिनय को सम्मानित करता है।"
-    }
-  },
-  {
-    "id": "tvshows-event-002",
-    "category": "tvshows",
-    "title": {
-      "vi": "Stranger Things Final Season Fan Screening",
-      "en": "Stranger Things Final Season Fan Screening",
-      "hi": "स्ट्रेंजर थिंग्स फाइनल सीज़न फैन स्क्रीनिंग"
-    },
-    "date": "2026-12-05",
-    "location": {
-      "vi": "Madison Square Garden, New York, Hoa Kỳ",
-      "en": "Madison Square Garden, New York, USA",
-      "hi": "मैडिसन स्क्वायर गार्डन, न्यूयॉर्क, अमेरिका"
-    },
-    "description": {
-      "vi": "Buổi chiếu đặc biệt khép lại hành trình 10 năm của thị trấn Hawkins với sự tham gia của toàn bộ dàn diễn viên chính.",
-      "en": "A special screening closing out the 10-year journey of the town of Hawkins, featuring the entire main cast.",
-      "hi": "हॉकिन्स कस्बे की 10 साल की यात्रा को समाप्त करने वाली एक विशेष स्क्रीनिंग, जिसमें पूरी मुख्य कास्ट शामिल होगी।"
-    }
-  },
-  {
-    "id": "tvshows-event-003",
-    "category": "tvshows",
-    "title": {
-      "vi": "Series Mania Festival 2026",
-      "en": "Series Mania Festival 2026",
-      "hi": "सीरीज़ मानिया फेस्टिवल 2026"
-    },
-    "date": "2026-03-24",
-    "location": {
-      "vi": "Lille Grand Palais, Lille, Pháp",
-      "en": "Lille Grand Palais, Lille, France",
-      "hi": "लिल ग्रांड पैले, लिल, फ़्रांस"
-    },
-    "description": {
-      "vi": "Liên hoan phim truyền hình quốc tế giới thiệu các series mới nhất từ các nhà đài và dịch vụ phát trực tuyến lớn.",
-      "en": "An international TV series festival showcasing the newest shows from major networks and streaming services.",
-      "hi": "एक अंतरराष्ट्रीय टीवी सीरीज़ फेस्टिवल, जो प्रमुख नेटवर्क और स्ट्रीमिंग सेवाओं की नवीनतम सीरीज़ प्रस्तुत करता है।"
-    }
-  },
-  {
-    "id": "kpop-event-001",
-    "category": "kpop",
-    "title": {
-      "vi": "MAMA Awards 2026 (Mnet Asian Music Awards)",
-      "en": "MAMA Awards 2026 (Mnet Asian Music Awards)",
-      "hi": "मामा अवार्ड्स 2026 (एमनेट एशियन म्यूज़िक अवार्ड्स)"
-    },
-    "date": "2026-11-28",
-    "location": {
-      "vi": "Tokyo Dome, Tokyo, Nhật Bản",
-      "en": "Tokyo Dome, Tokyo, Japan",
-      "hi": "टोक्यो डोम, टोक्यो, जापान"
-    },
-    "description": {
-      "vi": "Đại nhạc hội trao giải âm nhạc châu Á hoành tráng bậc nhất, quy tụ những sân khấu collab bùng nổ của các idol group hàng đầu K-Pop.",
-      "en": "One of the grandest music award ceremonies in Asia, featuring explosive collaboration stages from top K-Pop idol groups.",
-      "hi": "एशिया के सबसे भव्य संगीत पुरस्कार समारोहों में से एक, जिसमें शीर्ष के-पॉप आइडल ग्रुप्स के धमाकेदार सहयोगी प्रदर्शन शामिल हैं।"
-    }
-  },
-  {
-    "id": "kpop-event-002",
-    "category": "kpop",
-    "title": {
-      "vi": "KCON Worldwide 2026",
-      "en": "KCON Worldwide 2026",
-      "hi": "केकॉन वर्ल्डवाइड 2026"
-    },
-    "date": "2026-10-08",
-    "location": {
-      "vi": "Crypto.com Arena, Los Angeles, Hoa Kỳ",
-      "en": "Crypto.com Arena, Los Angeles, USA",
-      "hi": "क्रिप्टो डॉट कॉम एरिना, लॉस एंजिल्स, अमेरिका"
-    },
-    "description": {
-      "vi": "Lễ hội văn hóa và âm nhạc Hàn Quốc toàn diện kết hợp fan meeting, gian hàng ẩm thực, thời trang K-beauty và concert đỉnh cao.",
-      "en": "A comprehensive Korean culture and music festival combining fan meetings, food stalls, K-beauty fashion, and top-tier concerts.",
-      "hi": "एक व्यापक कोरियाई संस्कृति और संगीत उत्सव, जिसमें फैन मीटिंग, फूड स्टॉल, के-ब्यूटी फैशन और शानदार कॉन्सर्ट शामिल हैं।"
-    }
-  },
-  {
-    "id": "kpop-event-003",
-    "category": "kpop",
-    "title": {
-      "vi": "Golden Disc Awards 2026",
-      "en": "Golden Disc Awards 2026",
-      "hi": "गोल्डन डिस्क अवार्ड्स 2026"
-    },
-    "date": "2026-01-06",
-    "location": {
-      "vi": "Jakarta International Stadium, Jakarta, Indonesia",
-      "en": "Jakarta International Stadium, Jakarta, Indonesia",
-      "hi": "जकार्ता इंटरनेशनल स्टेडियम, जकार्ता, इंडोनेशिया"
-    },
-    "description": {
-      "vi": "Lễ trao giải Đĩa Vàng danh giá vinh danh những album bán chạy nhất và các bản hit nhạc số thống trị năm qua.",
-      "en": "The prestigious Golden Disc Awards honoring the best-selling albums and dominant digital hits of the past year.",
-      "hi": "प्रतिष्ठित गोल्डन डिस्क अवार्ड्स, जो पिछले साल के सबसे ज़्यादा बिकने वाले एल्बम और शीर्ष डिजिटल हिट्स को सम्मानित करता है।"
-    }
-  },
-  {
-    "id": "comics-event-001",
-    "category": "comics",
-    "title": {
-      "vi": "San Diego Comic-Con (SDCC) 2026 Special Edition",
-      "en": "San Diego Comic-Con (SDCC) 2026 Special Edition",
-      "hi": "सैन डिएगो कॉमिक-कॉन (एसडीसीसी) 2026 स्पेशल एडिशन"
-    },
-    "date": "2026-10-30",
-    "location": {
-      "vi": "San Diego Convention Center, California, Hoa Kỳ",
-      "en": "San Diego Convention Center, California, USA",
-      "hi": "सैन डिएगो कन्वेंशन सेंटर, कैलिफ़ोर्निया, अमेरिका"
-    },
-    "description": {
-      "vi": "Thánh địa truyện tranh và văn hóa đại chúng thế giới, nơi các hãng truyện Marvel, DC công bố lộ trình phát hành các bộ truyện bom tấn.",
-      "en": "The mecca of comics and world pop culture, where publishers like Marvel and DC unveil the release roadmaps for their blockbuster series.",
-      "hi": "कॉमिक्स और विश्व पॉप संस्कृति का तीर्थस्थल, जहां मार्वल और डीसी जैसे प्रकाशक अपनी बड़ी सीरीज़ के रिलीज़ रोडमैप की घोषणा करते हैं।"
-    }
-  },
-  {
-    "id": "comics-event-002",
-    "category": "comics",
-    "title": {
-      "vi": "New York Comic Con 2026",
-      "en": "New York Comic Con 2026",
-      "hi": "न्यूयॉर्क कॉमिक कॉन 2026"
-    },
-    "date": "2026-10-12",
-    "location": {
-      "vi": "Javits Center, New York, Hoa Kỳ",
-      "en": "Javits Center, New York, USA",
-      "hi": "जैविट्स सेंटर, न्यूयॉर्क, अमेरिका"
-    },
-    "description": {
-      "vi": "Hội chợ truyện tranh bờ đông nước Mỹ với sự tham gia của các họa sĩ minh họa, tác giả kịch bản và nghệ sĩ cosplay hàng đầu.",
-      "en": "The East Coast's premier comic convention, featuring top illustrators, scriptwriters, and cosplay artists.",
-      "hi": "अमेरिका के पूर्वी तट का प्रमुख कॉमिक सम्मेलन, जिसमें शीर्ष इलस्ट्रेटर, स्क्रिप्ट राइटर और कॉसप्ले कलाकार शामिल होते हैं।"
-    }
-  },
-  {
-    "id": "comics-event-003",
-    "category": "comics",
-    "title": {
-      "vi": "DC FanDome Digital Showcase",
-      "en": "DC FanDome Digital Showcase",
-      "hi": "डीसी फैनडोम डिजिटल शोकेस"
-    },
-    "date": "2026-06-15",
-    "location": {
-      "vi": "Sự kiện trực tuyến toàn cầu (Online Virtual Hub)",
-      "en": "Global online event (Online Virtual Hub)",
-      "hi": "वैश्विक ऑनलाइन आयोजन (ऑनलाइन वर्चुअल हब)"
-    },
-    "description": {
-      "vi": "Sự kiện kỹ thuật số 24 giờ của DC Comics giới thiệu các ấn phẩm truyện tranh, game và phim hoạt hình siêu anh hùng.",
-      "en": "DC Comics' 24-hour digital event showcasing comic publications, games, and superhero animated films.",
-      "hi": "डीसी कॉमिक्स का 24 घंटे का डिजिटल आयोजन, जिसमें कॉमिक प्रकाशन, गेम्स और सुपरहीरो एनिमेटेड फिल्में प्रस्तुत की जाती हैं।"
-    }
-  },
-  {
-    "id": "manga-event-001",
-    "category": "manga",
-    "title": {
-      "vi": "Jump Festa 2027",
-      "en": "Jump Festa 2027",
-      "hi": "जंप फेस्टा 2027"
-    },
-    "date": "2026-12-19",
-    "location": {
-      "vi": "Makuhari Messe, Chiba, Nhật Bản",
-      "en": "Makuhari Messe, Chiba, Japan",
-      "hi": "मकुहारी मेस्से, चिबा, जापान"
-    },
-    "description": {
-      "vi": "Lễ hội thường niên của tạp chí Shonen Jump, nơi tác giả các bộ manga đình đám như One Piece, Jujutsu Kaisen gặp gỡ độc giả và hé lộ chap mới.",
-      "en": "The annual festival of Shonen Jump magazine, where the authors of hit manga series like One Piece and Jujutsu Kaisen meet readers and reveal new chapters.",
-      "hi": "शोनेन जंप पत्रिका का वार्षिक उत्सव, जहां वन पीस और जुजुत्सु कैसेन जैसी लोकप्रिय मंगा सीरीज़ के लेखक पाठकों से मिलते हैं और नए अध्याय का खुलासा करते हैं।"
-    }
-  },
-  {
-    "id": "manga-event-002",
-    "category": "manga",
-    "title": {
-      "vi": "Comic Market (Comiket) Winter 2026",
-      "en": "Comic Market (Comiket) Winter 2026",
-      "hi": "कॉमिक मार्केट (कॉमिकेट) विंटर 2026"
-    },
-    "date": "2026-12-30",
-    "location": {
-      "vi": "Tokyo Big Sight, Tokyo, Nhật Bản",
-      "en": "Tokyo Big Sight, Tokyo, Japan",
-      "hi": "टोक्यो बिग साइट, टोक्यो, जापान"
-    },
-    "description": {
-      "vi": "Đại hội doujinshi và truyện tranh tự sáng tác lớn nhất thế giới, thu hút hàng trăm nghìn họa sĩ độc lập và người hâm mộ manga.",
-      "en": "The world's largest doujinshi and self-published comics convention, attracting hundreds of thousands of independent artists and manga fans.",
-      "hi": "दुनिया का सबसे बड़ा दोउजिंशी और स्व-प्रकाशित कॉमिक्स सम्मेलन, जो लाखों स्वतंत्र कलाकारों और मंगा प्रशंसकों को आकर्षित करता है।"
-    }
-  },
-  {
-    "id": "manga-event-003",
-    "category": "manga",
-    "title": {
-      "vi": "Kyoto International Manga Anime Fair 2026",
-      "en": "Kyoto International Manga Anime Fair 2026",
-      "hi": "क्योटो इंटरनेशनल मंगा एनीमे फेयर 2026"
-    },
-    "date": "2026-09-19",
-    "location": {
-      "vi": "Miyako Messe, Kyoto, Nhật Bản",
-      "en": "Miyako Messe, Kyoto, Japan",
-      "hi": "मियाको मेस्से, क्योटो, जापान"
-    },
-    "description": {
-      "vi": "Hội chợ giao lưu văn hóa manga và nghệ thuật truyền thống tại cố đô Kyoto, trưng bày các bản thảo vẽ tay vô giá của các mangaka kỳ cựu.",
-      "en": "A cultural exchange fair for manga and traditional art in the ancient capital of Kyoto, displaying priceless hand-drawn manuscripts by veteran mangaka.",
-      "hi": "प्राचीन राजधानी क्योटो में मंगा और पारंपरिक कला के सांस्कृतिक आदान-प्रदान का मेला, जिसमें अनुभवी मंगाका के अमूल्य हस्तनिर्मित पांडुलिपियां प्रदर्शित की जाती हैं।"
-    }
-  },
-  {
     "id": "anime-event-004",
     "category": "anime",
     "title": {
@@ -457,246 +97,6 @@
       "vi": "Đại nhạc hội anime lớn nhất thế giới quy tụ hơn 50 ca sĩ và nhóm nhạc thể hiện các bài hát mở đầu anime huyền thoại.",
       "en": "The world's biggest anime song concert bringing together over 50 artists performing legendary anime openings.",
       "hi": "दुनिया का सबसे बड़ा एनीमे सॉन्ग कॉन्सर्ट जिसमें 50 से अधिक कलाकार शामिल होते हैं।"
-    }
-  },
-  {
-    "id": "gaming-event-004",
-    "category": "gaming",
-    "title": {
-      "vi": "Chung Kết Thế Giới LMHT (LoL Worlds Finals) 2026",
-      "en": "League of Legends World Championship Finals 2026",
-      "hi": "लीग ऑफ लीजेंड्स वर्ल्ड चैंपियनशिप फाइनल्स 2026"
-    },
-    "date": "2026-11-07",
-    "location": {
-      "vi": "Mercedes-Benz Arena, Thượng Hải, Trung Quốc",
-      "en": "Mercedes-Benz Arena, Shanghai, China",
-      "hi": "मर्सिडीज-बेंज एरिना, शंघाई, चीन"
-    },
-    "description": {
-      "vi": "Đại chiến đỉnh cao giữa hai đội tuyển eSports mạnh nhất hành tinh tranh chiếc cúp Summoner's Cup danh giá trước hàng vạn khán giả trực tiếp.",
-      "en": "The pinnacle showdown between the planet's two greatest eSports teams competing for the Summoner's Cup.",
-      "hi": "समनर्स कप के लिए दुनिया की दो सबसे मजबूत ई-स्पोर्ट्स टीमों के बीच महामुकाबला।"
-    }
-  },
-  {
-    "id": "gaming-event-005",
-    "category": "gaming",
-    "title": {
-      "vi": "EVO Fighting Game Championship 2026",
-      "en": "EVO Fighting Game Championship 2026",
-      "hi": "ईवीओ फाइटिंग गेम चैंपियनशिप 2026"
-    },
-    "date": "2026-12-18",
-    "location": {
-      "vi": "Las Vegas Convention Center, Nevada, Hoa Kỳ",
-      "en": "Las Vegas Convention Center, Nevada, USA",
-      "hi": "लास वेगास, अमेरिका"
-    },
-    "description": {
-      "vi": "Giải đấu game đối kháng quy mô nhất thế giới dành cho Tekken 8, Street Fighter 6 và Guilty Gear Strive.",
-      "en": "The world's largest fighting game tournament featuring Tekken 8, Street Fighter 6, and Guilty Gear Strive.",
-      "hi": "टेक्केन 8 और स्ट्रीट फाइटर 6 के लिए दुनिया का सबसे बड़ा फाइटिंग गेम टूर्नामेंट।"
-    }
-  },
-  {
-    "id": "movies-event-004",
-    "category": "movies",
-    "title": {
-      "vi": "San Diego Comic-Con (SDCC) Hall H Panels 2026",
-      "en": "San Diego Comic-Con (SDCC) Hall H Panels 2026",
-      "hi": "सैन डिएगो कॉमिक-कॉन हॉल एच पैनल्स 2026"
-    },
-    "date": "2026-11-15",
-    "location": {
-      "vi": "San Diego Convention Center, California, Hoa Kỳ",
-      "en": "San Diego Convention Center, California, USA",
-      "hi": "सैन डिएगो, अमेरिका"
-    },
-    "description": {
-      "vi": "Hội trường H huyền thoại nơi Marvel Studios, DC Studios và các hãng phim công bố trailer độc quyền cho bom tấn tương lai.",
-      "en": "The legendary Hall H where Marvel Studios, DC Studios, and major directors unveil exclusive trailers for upcoming blockbusters.",
-      "hi": "हॉल एच जहां मार्वल और डीसी स्टूडियोज आगामी ब्लॉकबस्टर्स के एक्सक्लूसिव ट्रेलर जारी करते हैं।"
-    }
-  },
-  {
-    "id": "movies-event-005",
-    "category": "movies",
-    "title": {
-      "vi": "Lễ Trao Giải Oscar (Academy Awards) 2027",
-      "en": "The 99th Academy Awards (Oscars) 2027",
-      "hi": "99वें ऑस्कर पुरस्कार 2027"
-    },
-    "date": "2027-03-21",
-    "location": {
-      "vi": "Dolby Theatre, Hollywood, Los Angeles, Hoa Kỳ",
-      "en": "Dolby Theatre, Hollywood, Los Angeles, USA",
-      "hi": "डॉल्बी थिएटर, हॉलीवुड, अमेरिका"
-    },
-    "description": {
-      "vi": "Đêm vinh danh điện ảnh lớn nhất thế giới trao các bức tượng vàng danh giá cho những kiệt tác xuất sắc nhất năm.",
-      "en": "The world's premier cinema honors night celebrating the finest achievements in global filmmaking.",
-      "hi": "सिनेमा की सबसे प्रतिष्ठित रात जहां वर्ष की सर्वश्रेष्ठ फिल्मों को सम्मानित किया जाता है।"
-    }
-  },
-  {
-    "id": "tvshows-event-004",
-    "category": "tvshows",
-    "title": {
-      "vi": "Netflix TUDUM: A Global Fan Event 2026",
-      "en": "Netflix TUDUM: A Global Fan Event 2026",
-      "hi": "नेटफ्लिक्स ट्यूडम: ग्लोबल फैन इवेंट 2026"
-    },
-    "date": "2026-11-28",
-    "location": {
-      "vi": "Ibirapuera Auditorium, São Paulo, Brazil & Trực Tuyến",
-      "en": "Ibirapuera Auditorium, São Paulo, Brazil & Livestream",
-      "hi": "साओ पाउलो, ब्राजील और ऑनलाइन"
-    },
-    "description": {
-      "vi": "Đại sự kiện toàn cầu của Netflix với dàn diễn viên Stranger Things, Wednesday, Squid Game hé lộ cảnh quay độc quyền.",
-      "en": "Netflix's global mega-event where cast members of Stranger Things, Wednesday, and Squid Game reveal exclusive clips.",
-      "hi": "नेटफ्लिक्स का वैश्विक कार्यक्रम जहां आगामी सीरीज़ की विशेष झलकियां दिखाई जाती हैं।"
-    }
-  },
-  {
-    "id": "tvshows-event-005",
-    "category": "tvshows",
-    "title": {
-      "vi": "Festival De Cannes Series (CANNESERIES) 2027",
-      "en": "CANNESERIES International Series Festival 2027",
-      "hi": "केन्स अंतरराष्ट्रीय सीरीज़ फेस्टिवल 2027"
-    },
-    "date": "2027-04-14",
-    "location": {
-      "vi": "Palais des Festivals, Cannes, Pháp",
-      "en": "Palais des Festivals, Cannes, France",
-      "hi": "कान्स, फ्रांस"
-    },
-    "description": {
-      "vi": "Liên hoan phim truyền hình quốc tế uy tín hàng đầu tôn vinh sự đổi mới sáng tạo trong thể loại phim dài tập thế giới.",
-      "en": "A prestigious international TV festival celebrating creativity and narrative innovation in serialized storytelling.",
-      "hi": "धारावाहिक कहानी कहने में रचनात्मकता का जश्न मनाने वाला प्रतिष्ठित टीवी महोत्सव।"
-    }
-  },
-  {
-    "id": "kpop-event-004",
-    "category": "kpop",
-    "title": {
-      "vi": "Melon Music Awards (MMA) 2026",
-      "en": "Melon Music Awards (MMA) 2026",
-      "hi": "मेलन म्यूजिक अवार्ड्स (एमएमए) 2026"
-    },
-    "date": "2026-12-02",
-    "location": {
-      "vi": "Inspire Arena, Incheon, Hàn Quốc",
-      "en": "Inspire Arena, Incheon, South Korea",
-      "hi": "इंचियोन, दक्षिण कोरिया"
-    },
-    "description": {
-      "vi": "Lễ trao giải âm nhạc số uy tín nhất Hàn Quốc với những sân khấu trình diễn được dàn dựng công phu và giải thưởng Daesang danh giá.",
-      "en": "Korea's leading digital music awards show featuring elaborate stage productions and coveted Daesang grand prizes.",
-      "hi": "कोरिया का प्रमुख डिजिटल संगीत पुरस्कार समारोह जिसमें भव्य मंच प्रदर्शन होते हैं।"
-    }
-  },
-  {
-    "id": "kpop-event-005",
-    "category": "kpop",
-    "title": {
-      "vi": "SBS Gayo Daejeon Year-End Festival 2026",
-      "en": "SBS Gayo Daejeon Year-End Festival 2026",
-      "hi": "एसबीएस गायो डेजेओन फेवरिट 2026"
-    },
-    "date": "2026-12-25",
-    "location": {
-      "vi": "Gocheok Sky Dome, Seoul, Hàn Quốc",
-      "en": "Gocheok Sky Dome, Seoul, South Korea",
-      "hi": "सियोल, दक्षिण कोरिया"
-    },
-    "description": {
-      "vi": "Đại nhạc hội Giáng Sinh truyền thống của đài SBS quy tụ toàn bộ các nhóm nhạc thần tượng hàng đầu K-Pop.",
-      "en": "SBS's traditional Christmas musical festival bringing together K-Pop's absolute finest idol groups.",
-      "hi": "क्रिसमस के अवसर पर आयोजित संगीत समारोह जिसमें शीर्ष के-पॉप समूह शामिल होते हैं।"
-    }
-  },
-  {
-    "id": "comics-event-004",
-    "category": "comics",
-    "title": {
-      "vi": "Angoulême International Comics Festival 2027",
-      "en": "Angoulême International Comics Festival 2027",
-      "hi": "अंगौलेम अंतरराष्ट्रीय कॉमिक्स फेस्टिवल 2027"
-    },
-    "date": "2027-01-28",
-    "location": {
-      "vi": "Angoulême, Pháp",
-      "en": "Angoulême, France",
-      "hi": "अंगौलेम, फ्रांस"
-    },
-    "description": {
-      "vi": "Liên hoan truyện tranh danh giá bậc nhất châu Âu quy tụ các họa sĩ minh họa hàng đầu và trao giải Fauve d'Or huyền thoại.",
-      "en": "Europe's most prestigious comic arts festival gathering master illustrators and presenting the coveted Fauve d'Or award.",
-      "hi": "यूरोप का सबसे प्रतिष्ठित कॉमिक आर्ट्स फेस्टिवल।"
-    }
-  },
-  {
-    "id": "comics-event-005",
-    "category": "comics",
-    "title": {
-      "vi": "Free Comic Book Day Worldwide 2027",
-      "en": "Free Comic Book Day Worldwide 2027",
-      "hi": "फ्री कॉमिक बुक डे 2027"
-    },
-    "date": "2027-05-01",
-    "location": {
-      "vi": "Hệ thống nhà sách truyện tranh toàn cầu",
-      "en": "Comic Shops Worldwide",
-      "hi": "दुनिया भर की कॉमिक दुकानें"
-    },
-    "description": {
-      "vi": "Ngày hội văn hóa nơi các cửa hàng truyện tranh trên toàn thế giới phát tặng ấn bản đặc biệt miễn phí cho người hâm mộ.",
-      "en": "An annual cultural event where participating comic book specialty shops give away brand-new issues entirely free.",
-      "hi": "एक वार्षिक उत्सव जहां कॉमिक दुकानें प्रशंसकों को मुफ्त में कॉमिक्स देती हैं।"
-    }
-  },
-  {
-    "id": "manga-event-004",
-    "category": "manga",
-    "title": {
-      "vi": "Manga Taisho Awards Gala 2027",
-      "en": "Manga Taisho Awards Gala 2027",
-      "hi": "मंगा ताइशो अवार्ड्स 2027"
-    },
-    "date": "2027-03-28",
-    "location": {
-      "vi": "Tokyo International Forum, Tokyo, Nhật Bản",
-      "en": "Tokyo International Forum, Tokyo, Japan",
-      "hi": "टोक्यो, जापान"
-    },
-    "description": {
-      "vi": "Giải thưởng manga do các nhân viên hiệu sách tại Nhật bình chọn để tìm ra tác phẩm truyện tranh mới xuất sắc nhất năm.",
-      "en": "Japan's esteemed manga award voted directly by bookstore staff to spotlight the most promising new works of the year.",
-      "hi": "जापान का प्रतिष्ठित मंगा पुरस्कार जो वर्ष की सर्वश्रेष्ठ नई कृतियों को सम्मानित करता है।"
-    }
-  },
-  {
-    "id": "manga-event-005",
-    "category": "manga",
-    "title": {
-      "vi": "Akihabara Manga & Doujinshi Fair Winter 2026",
-      "en": "Akihabara Manga & Doujinshi Fair Winter 2026",
-      "hi": "अकिहाबारा मंगा मेला 2026"
-    },
-    "date": "2026-11-14",
-    "location": {
-      "vi": "Akihabara UDX, Tokyo, Nhật Bản",
-      "en": "Akihabara UDX, Tokyo, Japan",
-      "hi": "अकिहाबारा यूडीएक्स, टोक्यो, जापान"
-    },
-    "description": {
-      "vi": "Hội chợ giao lưu và trưng bày các tác phẩm manga độc lập, tranh minh họa nghệ thuật và ký tặng độc quyền từ các tác giả.",
-      "en": "An indie manga and doujinshi fair showcasing artbooks, exclusive signings, and creative independent works.",
-      "hi": "स्वतंत्र मंगा और कलाकृतियों का एक अनोखा मेला।"
     }
   },
   {
@@ -800,63 +200,103 @@
     }
   },
   {
-    "id": "anime-event-011",
-    "category": "anime",
+    "id": "gaming-event-001",
+    "category": "gaming",
     "title": {
-      "vi": "Tokyo Anime Award Festival (TAAF) 2027",
-      "en": "Tokyo Anime Award Festival (TAAF) 2027",
-      "hi": "टोक्यो एनीमे अवार्ड फेस्टिवल 2027"
+      "vi": "Tokyo Game Show (TGS) 2026",
+      "en": "Tokyo Game Show (TGS) 2026",
+      "hi": "टोक्यो गेम शो (टीजीएस) 2026"
     },
-    "date": "2027-03-12",
+    "date": "2026-10-25",
     "location": {
-      "vi": "Ikebukuro, Tokyo, Nhật Bản",
-      "en": "Ikebukuro, Tokyo, Japan",
-      "hi": "टोक्यो, जापान"
+      "vi": "Makuhari Messe, Tokyo, Nhật Bản",
+      "en": "Makuhari Messe, Tokyo, Japan",
+      "hi": "मकुहारी मेस्से, टोक्यो, जापान"
     },
     "description": {
-      "vi": "Giải thưởng điện ảnh tôn vinh các nhà làm phim, đạo diễn và họa sĩ hoạt hình xuất sắc nhất năm.",
-      "en": "Prestige animation award honoring the finest animators, directors, and creators of the year.",
-      "hi": "वर्ष के सर्वश्रेष्ठ एनीमेशन निर्देशकों और कलाकारों का सम्मान समारोह।"
+      "vi": "Triển lãm trò chơi điện tử châu Á đỉnh cao với các bản demo bom tấn nhập vai, công nghệ VR/AR thế hệ mới và các giải đấu eSports kịch tính.",
+      "en": "Asia's premier video game exhibition featuring blockbuster RPG demos, next-generation VR/AR technology, and thrilling eSports tournaments.",
+      "hi": "एशिया का प्रमुख वीडियो गेम प्रदर्शनी, जिसमें बड़े आरपीजी डेमो, अगली पीढ़ी की वीआर/एआर तकनीक और रोमांचक ईस्पोर्ट्स टूर्नामेंट शामिल हैं।"
     }
   },
   {
-    "id": "anime-event-012",
-    "category": "anime",
+    "id": "gaming-event-002",
+    "category": "gaming",
     "title": {
-      "vi": "Jump Special Anime Festa 2026",
-      "en": "Jump Special Anime Festa 2026",
-      "hi": "जंप स्पेशल एनीमे फेस्टा 2026"
+      "vi": "The Game Awards 2026",
+      "en": "The Game Awards 2026",
+      "hi": "द गेम अवार्ड्स 2026"
     },
-    "date": "2026-11-29",
+    "date": "2026-12-10",
     "location": {
-      "vi": "Pacifico Yokohama, Kanagawa, Nhật Bản",
-      "en": "Pacifico Yokohama, Kanagawa, Japan",
-      "hi": "योकोहामा, जापान"
+      "vi": "Peacock Theater, Los Angeles, Hoa Kỳ",
+      "en": "Peacock Theater, Los Angeles, USA",
+      "hi": "पीकॉक थिएटर, लॉस एंजिल्स, अमेरिका"
     },
     "description": {
-      "vi": "Chiếu sớm các tập phim đặc biệt của các bộ anime Shonen Jump đình đám chuẩn bị lên sóng năm tới.",
-      "en": "Exclusive preview screenings of upcoming Shonen Jump anime series and special episodes.",
-      "hi": "आगामी शोनेन जंप एनीमे सीरीज़ की विशेष स्क्रीनिंग।"
+      "vi": "Đêm trao giải danh giá nhất của làng game thế giới, vinh danh tựa game của năm (GOTY) và công chiếu các trailer bất ngờ.",
+      "en": "The most prestigious award ceremony in the global gaming world, honoring the Game of the Year (GOTY) and unveiling surprise trailers.",
+      "hi": "वैश्विक गेमिंग जगत का सबसे प्रतिष्ठित पुरस्कार समारोह, जो गेम ऑफ द ईयर (जीओटीवाई) को सम्मानित करता है और चौंकाने वाले ट्रेलर पेश करता है।"
     }
   },
   {
-    "id": "anime-event-013",
-    "category": "anime",
+    "id": "gaming-event-003",
+    "category": "gaming",
     "title": {
-      "vi": "Seoul International Cartoon & Animation Festival (SICAF) 2026",
-      "en": "Seoul Animation Festival (SICAF) 2026",
-      "hi": "सियोल एनिमेशन फेस्टिवल 2026"
+      "vi": "Gamescom Cologne 2026",
+      "en": "Gamescom Cologne 2026",
+      "hi": "गेम्सकॉम कोलोन 2026"
     },
-    "date": "2026-10-22",
+    "date": "2026-08-22",
     "location": {
-      "vi": "COEX Convention Center, Seoul, Hàn Quốc",
-      "en": "COEX Convention Center, Seoul, South Korea",
-      "hi": "सियोल, दक्षिण कोरिया"
+      "vi": "Koelnmesse, Cologne, Đức",
+      "en": "Koelnmesse, Cologne, Germany",
+      "hi": "कोल्नमेस्से, कोलोन, जर्मनी"
     },
     "description": {
-      "vi": "Liên hoan hoạt hình quốc tế kết nối các nhà sáng tạo Nhật Bản, Hàn Quốc và toàn thế giới.",
-      "en": "A global animation summit bridging Japanese anime masters, Korean webtoon animators, and world studios.",
-      "hi": "अंतरराष्ट्रीय एनिमेशन महोत्सव जो वैश्विक रचनाकारों को जोड़ता है।"
+      "vi": "Hội chợ thương mại trò chơi điện tử lớn nhất châu Âu với hàng ngàn gian hàng trải nghiệm trực tiếp cho cộng đồng game thủ.",
+      "en": "Europe's largest video game trade fair, featuring thousands of hands-on booths for the gaming community to experience firsthand.",
+      "hi": "यूरोप का सबसे बड़ा वीडियो गेम ट्रेड फेयर, जिसमें गेमिंग समुदाय के लिए हज़ारों हैंड्स-ऑन बूथ शामिल हैं।"
+    }
+  },
+  {
+    "id": "gaming-event-004",
+    "category": "gaming",
+    "title": {
+      "vi": "Chung Kết Thế Giới LMHT (LoL Worlds Finals) 2026",
+      "en": "League of Legends World Championship Finals 2026",
+      "hi": "लीग ऑफ लीजेंड्स वर्ल्ड चैंपियनशिप फाइनल्स 2026"
+    },
+    "date": "2026-11-07",
+    "location": {
+      "vi": "Mercedes-Benz Arena, Thượng Hải, Trung Quốc",
+      "en": "Mercedes-Benz Arena, Shanghai, China",
+      "hi": "मर्सिडीज-बेंज एरिना, शंघाई, चीन"
+    },
+    "description": {
+      "vi": "Đại chiến đỉnh cao giữa hai đội tuyển eSports mạnh nhất hành tinh tranh chiếc cúp Summoner's Cup danh giá trước hàng vạn khán giả trực tiếp.",
+      "en": "The pinnacle showdown between the planet's two greatest eSports teams competing for the Summoner's Cup.",
+      "hi": "समनर्स कप के लिए दुनिया की दो सबसे मजबूत ई-स्पोर्ट्स टीमों के बीच महामुकाबला।"
+    }
+  },
+  {
+    "id": "gaming-event-005",
+    "category": "gaming",
+    "title": {
+      "vi": "EVO Fighting Game Championship 2026",
+      "en": "EVO Fighting Game Championship 2026",
+      "hi": "ईवीओ फाइटिंग गेम चैंपियनशिप 2026"
+    },
+    "date": "2026-12-18",
+    "location": {
+      "vi": "Las Vegas Convention Center, Nevada, Hoa Kỳ",
+      "en": "Las Vegas Convention Center, Nevada, USA",
+      "hi": "लास वेगास, अमेरिका"
+    },
+    "description": {
+      "vi": "Giải đấu game đối kháng quy mô nhất thế giới dành cho Tekken 8, Street Fighter 6 và Guilty Gear Strive.",
+      "en": "The world's largest fighting game tournament featuring Tekken 8, Street Fighter 6, and Guilty Gear Strive.",
+      "hi": "टेक्केन 8 और स्ट्रीट फाइटर 6 के लिए दुनिया का सबसे बड़ा फाइटिंग गेम टूर्नामेंट।"
     }
   },
   {
@@ -960,63 +400,103 @@
     }
   },
   {
-    "id": "gaming-event-011",
-    "category": "gaming",
+    "id": "movies-event-001",
+    "category": "movies",
     "title": {
-      "vi": "Nintendo Live Championship 2026",
-      "en": "Nintendo Live Championship 2026",
-      "hi": "निनटेंडो लाइव चैंपियनशिप 2026"
+      "vi": "Hollywood Fandom Premiere Gala",
+      "en": "Hollywood Fandom Premiere Gala",
+      "hi": "हॉलीवुड फैंडम प्रीमियर गाला"
     },
-    "date": "2026-10-18",
+    "date": "2026-11-05",
     "location": {
-      "vi": "Kyoto International Exhibition Hall, Kyoto, Nhật Bản",
-      "en": "Kyoto Exhibition Hall, Kyoto, Japan",
-      "hi": "क्योतो, जापान"
+      "vi": "TCL Chinese Theatre, Los Angeles, Hoa Kỳ",
+      "en": "TCL Chinese Theatre, Los Angeles, USA",
+      "hi": "टीसीएल चाइनीज़ थिएटर, लॉस एंजिल्स, अमेरिका"
     },
     "description": {
-      "vi": "Giải đấu Super Smash Bros, Mario Kart và gian hàng trải nghiệm thế hệ máy chơi game Nintendo mới.",
-      "en": "Competitive Smash Bros, Mario Kart tournaments, and exclusive hands-on Nintendo hardware demos.",
-      "hi": "मारियो कार्ट और स्मैश ब्रदर्स टूर्नामेंट्स का उत्सव।"
+      "vi": "Đêm công chiếu thảm đỏ các siêu phẩm bom tấn giả tưởng cuối năm, hội tụ dàn sao hạng A và đạo diễn huyền thoại.",
+      "en": "A red-carpet premiere night for the year's biggest fantasy blockbusters, bringing together A-list stars and legendary directors.",
+      "hi": "साल की सबसे बड़ी फैंटेसी ब्लॉकबस्टर फिल्मों की रेड-कार्पेट प्रीमियर रात, जिसमें ए-लिस्ट सितारे और महान निर्देशक शामिल होते हैं।"
     }
   },
   {
-    "id": "gaming-event-012",
-    "category": "gaming",
+    "id": "movies-event-002",
+    "category": "movies",
     "title": {
-      "vi": "Dota 2: The International (TI 15) 2026",
-      "en": "Dota 2: The International (TI 15) 2026",
-      "hi": "डोटा 2: द इंटरनेशनल 2026"
+      "vi": "Star Wars Celebration 2027",
+      "en": "Star Wars Celebration 2027",
+      "hi": "स्टार वार्स सेलिब्रेशन 2027"
     },
-    "date": "2026-10-10",
+    "date": "2027-04-18",
     "location": {
-      "vi": "Royal Arena, Copenhagen, Đan Mạch",
-      "en": "Royal Arena, Copenhagen, Denmark",
-      "hi": "कोपेनहेगन, डेनमार्क"
+      "vi": "ExCeL London, Vương quốc Anh",
+      "en": "ExCeL London, United Kingdom",
+      "hi": "एक्ससेल लंदन, यूनाइटेड किंगडम"
     },
     "description": {
-      "vi": "Giải đấu thể thao điện tử huyền thoại với chiếc khiên Aegis danh giá của Valve quy tụ các cao thủ Dota 2 thế giới.",
-      "en": "Valve's legendary Dota 2 championship where the world's best squads battle for the Aegis of Champions.",
-      "hi": "डोटा 2 का सबसे बड़ा अंतरराष्ट्रीय टूर्नामेंट।"
+      "vi": "Lễ hội quy mô toàn cầu dành cho cộng đồng người hâm mộ Chiến Tranh Giữa Các Vì Sao với những tiết lộ về tương lai của dải ngân hà.",
+      "en": "A global-scale festival for the Star Wars fan community, featuring reveals about the future of the galaxy.",
+      "hi": "स्टार वार्स प्रशंसक समुदाय के लिए एक वैश्विक स्तर का उत्सव, जिसमें आकाशगंगा के भविष्य से जुड़े खुलासे किए जाते हैं।"
     }
   },
   {
-    "id": "gaming-event-013",
-    "category": "gaming",
+    "id": "movies-event-003",
+    "category": "movies",
     "title": {
-      "vi": "Capcom Cup Fighting World Finals 2027",
-      "en": "Capcom Cup Fighting World Finals 2027",
-      "hi": "कैपकॉम कप वर्ल्ड फाइनल्स 2027"
+      "vi": "Cannes Film Festival Spotlight",
+      "en": "Cannes Film Festival Spotlight",
+      "hi": "कान फिल्म फेस्टिवल स्पॉटलाइट"
     },
-    "date": "2027-02-28",
+    "date": "2026-05-18",
     "location": {
-      "vi": "Ryogoku Kokugikan Arena, Tokyo, Nhật Bản",
-      "en": "Ryogoku Kokugikan, Tokyo, Japan",
-      "hi": "टोक्यो, जापान"
+      "vi": "Palais des Festivals, Cannes, Pháp",
+      "en": "Palais des Festivals, Cannes, France",
+      "hi": "पैले दे फेस्तिवाल, कान, फ़्रांस"
     },
     "description": {
-      "vi": "Trận đại chiến Street Fighter 6 với giải thưởng triệu đô tranh ngôi vô địch võ đài thế giới.",
-      "en": "The multi-million dollar Street Fighter 6 world championship held in Tokyo's historic sumo arena.",
-      "hi": "स्ट्रीट फाइटर 6 का 10 लाख डॉलर का विश्व कप।"
+      "vi": "Hạng mục vinh danh các tác phẩm điện ảnh xuất sắc và các giải thưởng cống hiến cho nghệ thuật thứ bảy thế giới.",
+      "en": "A category honoring outstanding cinematic works and lifetime achievement awards dedicated to the world's seventh art.",
+      "hi": "उत्कृष्ट सिनेमाई कृतियों को सम्मानित करने वाली श्रेणी और विश्व की सातवीं कला को समर्पित उपलब्धि पुरस्कार।"
+    }
+  },
+  {
+    "id": "movies-event-004",
+    "category": "movies",
+    "title": {
+      "vi": "San Diego Comic-Con (SDCC) Hall H Panels 2026",
+      "en": "San Diego Comic-Con (SDCC) Hall H Panels 2026",
+      "hi": "सैन डिएगो कॉमिक-कॉन हॉल एच पैनल्स 2026"
+    },
+    "date": "2026-11-15",
+    "location": {
+      "vi": "San Diego Convention Center, California, Hoa Kỳ",
+      "en": "San Diego Convention Center, California, USA",
+      "hi": "सैन डिएगो, अमेरिका"
+    },
+    "description": {
+      "vi": "Hội trường H huyền thoại nơi Marvel Studios, DC Studios và các hãng phim công bố trailer độc quyền cho bom tấn tương lai.",
+      "en": "The legendary Hall H where Marvel Studios, DC Studios, and major directors unveil exclusive trailers for upcoming blockbusters.",
+      "hi": "हॉल एच जहां मार्वल और डीसी स्टूडियोज आगामी ब्लॉकबस्टर्स के एक्सक्लूसिव ट्रेलर जारी करते हैं।"
+    }
+  },
+  {
+    "id": "movies-event-005",
+    "category": "movies",
+    "title": {
+      "vi": "Lễ Trao Giải Oscar (Academy Awards) 2027",
+      "en": "The 99th Academy Awards (Oscars) 2027",
+      "hi": "99वें ऑस्कर पुरस्कार 2027"
+    },
+    "date": "2027-03-21",
+    "location": {
+      "vi": "Dolby Theatre, Hollywood, Los Angeles, Hoa Kỳ",
+      "en": "Dolby Theatre, Hollywood, Los Angeles, USA",
+      "hi": "डॉल्बी थिएटर, हॉलीवुड, अमेरिका"
+    },
+    "description": {
+      "vi": "Đêm vinh danh điện ảnh lớn nhất thế giới trao các bức tượng vàng danh giá cho những kiệt tác xuất sắc nhất năm.",
+      "en": "The world's premier cinema honors night celebrating the finest achievements in global filmmaking.",
+      "hi": "सिनेमा की सबसे प्रतिष्ठित रात जहां वर्ष की सर्वश्रेष्ठ फिल्मों को सम्मानित किया जाता है।"
     }
   },
   {
@@ -1120,63 +600,103 @@
     }
   },
   {
-    "id": "movies-event-011",
-    "category": "movies",
+    "id": "tvshows-event-001",
+    "category": "tvshows",
     "title": {
-      "vi": "Star Wars Celebration Europe 2027",
-      "en": "Star Wars Celebration Europe 2027",
-      "hi": "स्टार वॉर्स सेलिब्रेशन यूरोप 2027"
+      "vi": "PrimeTime Emmy Awards 2026",
+      "en": "PrimeTime Emmy Awards 2026",
+      "hi": "प्राइमटाइम एमी अवार्ड्स 2026"
     },
-    "date": "2027-04-16",
+    "date": "2026-10-18",
     "location": {
-      "vi": "ExCeL London, Luân Đôn, Vương quốc Anh",
-      "en": "ExCeL London, London, UK",
-      "hi": "लंदन, ब्रिटेन"
+      "vi": "Microsoft Theater, Los Angeles, Hoa Kỳ",
+      "en": "Microsoft Theater, Los Angeles, USA",
+      "hi": "माइक्रोसॉफ्ट थिएटर, लॉस एंजिल्स, अमेरिका"
     },
     "description": {
-      "vi": "Đại lễ hội toàn cầu kỷ niệm 50 năm vũ trụ Chiến Tranh Giữa Các Vì Sao với các thông báo phim chiếu rạp mới.",
-      "en": "The definitive global convention celebrating Star Wars history with major Lucasfilm movie announcements.",
-      "hi": "स्टार वॉर्स के 50 वर्ष पूरे होने का भव्य वैश्विक जश्न।"
+      "vi": "Lễ trao giải Oscar của truyền hình thế giới, tôn vinh các series xuất sắc nhất, kịch bản ấn tượng và diễn xuất đỉnh cao.",
+      "en": "The Oscars of world television, honoring the best series, most impressive scripts, and top-tier acting performances.",
+      "hi": "विश्व टेलीविज़न का ऑस्कर, जो सर्वश्रेष्ठ सीरीज़, प्रभावशाली पटकथाओं और उत्कृष्ट अभिनय को सम्मानित करता है।"
     }
   },
   {
-    "id": "movies-event-012",
-    "category": "movies",
+    "id": "tvshows-event-002",
+    "category": "tvshows",
     "title": {
-      "vi": "BFI London Film Festival 2026",
-      "en": "BFI London Film Festival 2026",
-      "hi": "बीएफआई लंदन फिल्म महोत्सव 2026"
+      "vi": "Stranger Things Final Season Fan Screening",
+      "en": "Stranger Things Final Season Fan Screening",
+      "hi": "स्ट्रेंजर थिंग्स फाइनल सीज़न फैन स्क्रीनिंग"
     },
-    "date": "2026-10-14",
+    "date": "2026-12-05",
     "location": {
-      "vi": "Southbank Centre, Luân Đôn, Vương quốc Anh",
-      "en": "Southbank Centre, London, UK",
-      "hi": "लंदन, ब्रिटेन"
+      "vi": "Madison Square Garden, New York, Hoa Kỳ",
+      "en": "Madison Square Garden, New York, USA",
+      "hi": "मैडिसन स्क्वायर गार्डन, न्यूयॉर्क, अमेरिका"
     },
     "description": {
-      "vi": "Liên hoan phim lớn nhất Vương quốc Anh với hơn 200 tác phẩm điện ảnh và các buổi tọa đàm cùng đạo diễn.",
-      "en": "The UK's largest cinema festival presenting over 200 international feature films.",
-      "hi": "ब्रिटेन का सबसे बड़ा सिनेमाई महोत्सव।"
+      "vi": "Buổi chiếu đặc biệt khép lại hành trình 10 năm của thị trấn Hawkins với sự tham gia của toàn bộ dàn diễn viên chính.",
+      "en": "A special screening closing out the 10-year journey of the town of Hawkins, featuring the entire main cast.",
+      "hi": "हॉकिन्स कस्बे की 10 साल की यात्रा को समाप्त करने वाली एक विशेष स्क्रीनिंग, जिसमें पूरी मुख्य कास्ट शामिल होगी।"
     }
   },
   {
-    "id": "movies-event-013",
-    "category": "movies",
+    "id": "tvshows-event-003",
+    "category": "tvshows",
     "title": {
-      "vi": "Golden Globe Awards (Quả Cầu Vàng) 2027",
-      "en": "The 84th Annual Golden Globe Awards 2027",
-      "hi": "84वें गोल्डन ग्लोब अवार्ड्स 2027"
+      "vi": "Series Mania Festival 2026",
+      "en": "Series Mania Festival 2026",
+      "hi": "सीरीज़ मानिया फेस्टिवल 2026"
     },
-    "date": "2027-01-10",
+    "date": "2026-03-24",
     "location": {
-      "vi": "The Beverly Hilton, Beverly Hills, California, Hoa Kỳ",
-      "en": "The Beverly Hilton, California, USA",
-      "hi": "कैलिफोर्निया, अमेरिका"
+      "vi": "Lille Grand Palais, Lille, Pháp",
+      "en": "Lille Grand Palais, Lille, France",
+      "hi": "लिल ग्रांड पैले, लिल, फ़्रांस"
     },
     "description": {
-      "vi": "Đêm tiệc mở màn mùa giải thưởng điện ảnh lớn nhất nước Mỹ vinh danh cả phim điện ảnh và truyền hình.",
-      "en": "Hollywood's party of the year honoring excellence in both motion pictures and television.",
-      "hi": "हॉलीवुड का भव्य पुरस्कार समारोह जिसमें सिनेमा और टीवी को सम्मानित किया जाता है।"
+      "vi": "Liên hoan phim truyền hình quốc tế giới thiệu các series mới nhất từ các nhà đài và dịch vụ phát trực tuyến lớn.",
+      "en": "An international TV series festival showcasing the newest shows from major networks and streaming services.",
+      "hi": "एक अंतरराष्ट्रीय टीवी सीरीज़ फेस्टिवल, जो प्रमुख नेटवर्क और स्ट्रीमिंग सेवाओं की नवीनतम सीरीज़ प्रस्तुत करता है।"
+    }
+  },
+  {
+    "id": "tvshows-event-004",
+    "category": "tvshows",
+    "title": {
+      "vi": "Netflix TUDUM: A Global Fan Event 2026",
+      "en": "Netflix TUDUM: A Global Fan Event 2026",
+      "hi": "नेटफ्लिक्स ट्यूडम: ग्लोबल फैन इवेंट 2026"
+    },
+    "date": "2026-11-28",
+    "location": {
+      "vi": "Ibirapuera Auditorium, São Paulo, Brazil & Trực Tuyến",
+      "en": "Ibirapuera Auditorium, São Paulo, Brazil & Livestream",
+      "hi": "साओ पाउलो, ब्राजील और ऑनलाइन"
+    },
+    "description": {
+      "vi": "Đại sự kiện toàn cầu của Netflix với dàn diễn viên Stranger Things, Wednesday, Squid Game hé lộ cảnh quay độc quyền.",
+      "en": "Netflix's global mega-event where cast members of Stranger Things, Wednesday, and Squid Game reveal exclusive clips.",
+      "hi": "नेटफ्लिक्स का वैश्विक कार्यक्रम जहां आगामी सीरीज़ की विशेष झलकियां दिखाई जाती हैं।"
+    }
+  },
+  {
+    "id": "tvshows-event-005",
+    "category": "tvshows",
+    "title": {
+      "vi": "Festival De Cannes Series (CANNESERIES) 2027",
+      "en": "CANNESERIES International Series Festival 2027",
+      "hi": "केन्स अंतरराष्ट्रीय सीरीज़ फेस्टिवल 2027"
+    },
+    "date": "2027-04-14",
+    "location": {
+      "vi": "Palais des Festivals, Cannes, Pháp",
+      "en": "Palais des Festivals, Cannes, France",
+      "hi": "कान्स, फ्रांस"
+    },
+    "description": {
+      "vi": "Liên hoan phim truyền hình quốc tế uy tín hàng đầu tôn vinh sự đổi mới sáng tạo trong thể loại phim dài tập thế giới.",
+      "en": "A prestigious international TV festival celebrating creativity and narrative innovation in serialized storytelling.",
+      "hi": "धारावाहिक कहानी कहने में रचनात्मकता का जश्न मनाने वाला प्रतिष्ठित टीवी महोत्सव।"
     }
   },
   {
@@ -1280,63 +800,103 @@
     }
   },
   {
-    "id": "tvshows-event-011",
-    "category": "tvshows",
+    "id": "kpop-event-001",
+    "category": "kpop",
     "title": {
-      "vi": "HBO Max DragonCon House of Targaryen Panel 2026",
-      "en": "House of Targaryen Panel DragonCon 2026",
-      "hi": "हाउस ऑफ टारगैरियन पैनल ड्रैगनकॉन 2026"
+      "vi": "MAMA Awards 2026 (Mnet Asian Music Awards)",
+      "en": "MAMA Awards 2026 (Mnet Asian Music Awards)",
+      "hi": "मामा अवार्ड्स 2026 (एमनेट एशियन म्यूज़िक अवार्ड्स)"
     },
-    "date": "2026-09-05",
+    "date": "2026-11-28",
     "location": {
-      "vi": "Hyatt Regency Atlanta, Georgia, Hoa Kỳ",
-      "en": "Atlanta, Georgia, USA",
-      "hi": "अटलांटा, अमेरिका"
+      "vi": "Tokyo Dome, Tokyo, Nhật Bản",
+      "en": "Tokyo Dome, Tokyo, Japan",
+      "hi": "टोक्यो डोम, टोक्यो, जापान"
     },
     "description": {
-      "vi": "Buổi giao lưu đặc biệt cùng các diễn viên thủ vai Daemon, Rhaenyra và Aemond Targaryen.",
-      "en": "An exclusive panel and autograph signing with the stars of House of the Dragon.",
-      "hi": "हाउस ऑफ द ड्रैगन के प्रमुख सितारों के साथ विशेष मुलाकात।"
+      "vi": "Đại nhạc hội trao giải âm nhạc châu Á hoành tráng bậc nhất, quy tụ những sân khấu collab bùng nổ của các idol group hàng đầu K-Pop.",
+      "en": "One of the grandest music award ceremonies in Asia, featuring explosive collaboration stages from top K-Pop idol groups.",
+      "hi": "एशिया के सबसे भव्य संगीत पुरस्कार समारोहों में से एक, जिसमें शीर्ष के-पॉप आइडल ग्रुप्स के धमाकेदार सहयोगी प्रदर्शन शामिल हैं।"
     }
   },
   {
-    "id": "tvshows-event-012",
-    "category": "tvshows",
+    "id": "kpop-event-002",
+    "category": "kpop",
     "title": {
-      "vi": "Critics Choice Television Awards 2027",
-      "en": "The 32nd Critics Choice Awards 2027",
-      "hi": "32वें क्रिटिक्स चॉइस टीवी अवार्ड्स 2027"
+      "vi": "KCON Worldwide 2026",
+      "en": "KCON Worldwide 2026",
+      "hi": "केकॉन वर्ल्डवाइड 2026"
     },
-    "date": "2027-01-17",
+    "date": "2026-10-08",
     "location": {
-      "vi": "Barker Hangar, Santa Monica, California, Hoa Kỳ",
-      "en": "Santa Monica, California, USA",
-      "hi": "कैलिफोर्निया, अमेरिका"
+      "vi": "Crypto.com Arena, Los Angeles, Hoa Kỳ",
+      "en": "Crypto.com Arena, Los Angeles, USA",
+      "hi": "क्रिप्टो डॉट कॉम एरिना, लॉस एंजिल्स, अमेरिका"
     },
     "description": {
-      "vi": "Giải thưởng do các nhà phê bình truyền hình Mỹ bình chọn nhằm vinh danh các series phim đột phá.",
-      "en": "Honoring the year's finest achievement in cinematic and serialized television storytelling.",
-      "hi": "अमेरिकी समीक्षकों द्वारा सर्वश्रेष्ठ टीवी सीरीज़ का सम्मान।"
+      "vi": "Lễ hội văn hóa và âm nhạc Hàn Quốc toàn diện kết hợp fan meeting, gian hàng ẩm thực, thời trang K-beauty và concert đỉnh cao.",
+      "en": "A comprehensive Korean culture and music festival combining fan meetings, food stalls, K-beauty fashion, and top-tier concerts.",
+      "hi": "एक व्यापक कोरियाई संस्कृति और संगीत उत्सव, जिसमें फैन मीटिंग, फूड स्टॉल, के-ब्यूटी फैशन और शानदार कॉन्सर्ट शामिल हैं।"
     }
   },
   {
-    "id": "tvshows-event-013",
-    "category": "tvshows",
+    "id": "kpop-event-003",
+    "category": "kpop",
     "title": {
-      "vi": "Seoul International Drama Awards (SDA) 2026",
-      "en": "Seoul International Drama Awards 2026",
-      "hi": "सियोल इंटरनेशनल ड्रामा अवार्ड्स 2026"
+      "vi": "Golden Disc Awards 2026",
+      "en": "Golden Disc Awards 2026",
+      "hi": "गोल्डन डिस्क अवार्ड्स 2026"
     },
-    "date": "2026-09-25",
+    "date": "2026-01-06",
     "location": {
-      "vi": "KBS Hall, Seoul, Hàn Quốc",
-      "en": "KBS Hall, Seoul, South Korea",
+      "vi": "Jakarta International Stadium, Jakarta, Indonesia",
+      "en": "Jakarta International Stadium, Jakarta, Indonesia",
+      "hi": "जकार्ता इंटरनेशनल स्टेडियम, जकार्ता, इंडोनेशिया"
+    },
+    "description": {
+      "vi": "Lễ trao giải Đĩa Vàng danh giá vinh danh những album bán chạy nhất và các bản hit nhạc số thống trị năm qua.",
+      "en": "The prestigious Golden Disc Awards honoring the best-selling albums and dominant digital hits of the past year.",
+      "hi": "प्रतिष्ठित गोल्डन डिस्क अवार्ड्स, जो पिछले साल के सबसे ज़्यादा बिकने वाले एल्बम और शीर्ष डिजिटल हिट्स को सम्मानित करता है।"
+    }
+  },
+  {
+    "id": "kpop-event-004",
+    "category": "kpop",
+    "title": {
+      "vi": "Melon Music Awards (MMA) 2026",
+      "en": "Melon Music Awards (MMA) 2026",
+      "hi": "मेलन म्यूजिक अवार्ड्स (एमएमए) 2026"
+    },
+    "date": "2026-12-02",
+    "location": {
+      "vi": "Inspire Arena, Incheon, Hàn Quốc",
+      "en": "Inspire Arena, Incheon, South Korea",
+      "hi": "इंचियोन, दक्षिण कोरिया"
+    },
+    "description": {
+      "vi": "Lễ trao giải âm nhạc số uy tín nhất Hàn Quốc với những sân khấu trình diễn được dàn dựng công phu và giải thưởng Daesang danh giá.",
+      "en": "Korea's leading digital music awards show featuring elaborate stage productions and coveted Daesang grand prizes.",
+      "hi": "कोरिया का प्रमुख डिजिटल संगीत पुरस्कार समारोह जिसमें भव्य मंच प्रदर्शन होते हैं।"
+    }
+  },
+  {
+    "id": "kpop-event-005",
+    "category": "kpop",
+    "title": {
+      "vi": "SBS Gayo Daejeon Year-End Festival 2026",
+      "en": "SBS Gayo Daejeon Year-End Festival 2026",
+      "hi": "एसबीएस गायो डेजेओन फेवरिट 2026"
+    },
+    "date": "2026-12-25",
+    "location": {
+      "vi": "Gocheok Sky Dome, Seoul, Hàn Quốc",
+      "en": "Gocheok Sky Dome, Seoul, South Korea",
       "hi": "सियोल, दक्षिण कोरिया"
     },
     "description": {
-      "vi": "Lễ trao giải phim truyền hình quốc tế quy tụ các đạo diễn và biên kịch hàng đầu châu Á và thế giới.",
-      "en": "An international drama festival honoring global excellence in scripted television production.",
-      "hi": "सियोल में आयोजित अंतरराष्ट्रीय ड्रामा पुरस्कार समारोह।"
+      "vi": "Đại nhạc hội Giáng Sinh truyền thống của đài SBS quy tụ toàn bộ các nhóm nhạc thần tượng hàng đầu K-Pop.",
+      "en": "SBS's traditional Christmas musical festival bringing together K-Pop's absolute finest idol groups.",
+      "hi": "क्रिसमस के अवसर पर आयोजित संगीत समारोह जिसमें शीर्ष के-पॉप समूह शामिल होते हैं।"
     }
   },
   {
@@ -1440,63 +1000,103 @@
     }
   },
   {
-    "id": "kpop-event-011",
-    "category": "kpop",
+    "id": "comics-event-001",
+    "category": "comics",
     "title": {
-      "vi": "MBC Gayo Daejejeon New Year Eve 2026",
-      "en": "MBC Gayo Daejejeon New Year Eve 2026",
-      "hi": "एमबीसी नए साल की पूर्व संध्या संगीत उत्सव 2026"
+      "vi": "San Diego Comic-Con (SDCC) 2026 Special Edition",
+      "en": "San Diego Comic-Con (SDCC) 2026 Special Edition",
+      "hi": "सैन डिएगो कॉमिक-कॉन (एसडीसीसी) 2026 स्पेशल एडिशन"
     },
-    "date": "2026-12-31",
+    "date": "2026-10-30",
     "location": {
-      "vi": "MBC Dream Center, Ilsan, Hàn Quốc",
-      "en": "MBC Dream Center, Ilsan, South Korea",
-      "hi": "सियोल, दक्षिण कोरिया"
+      "vi": "San Diego Convention Center, California, Hoa Kỳ",
+      "en": "San Diego Convention Center, California, USA",
+      "hi": "सैन डिएगो कन्वेंशन सेंटर, कैलिफ़ोर्निया, अमेरिका"
     },
     "description": {
-      "vi": "Đại tiệc đếm ngược giao thừa cùng dàn sao K-Pop hàng đầu đón chào năm mới rực rỡ.",
-      "en": "New Year's Eve musical countdown uniting K-Pop's brightest icons for midnight celebrations.",
-      "hi": "नए साल के स्वागत का भव्य लाइव संगीत समारोह।"
+      "vi": "Thánh địa truyện tranh và văn hóa đại chúng thế giới, nơi các hãng truyện Marvel, DC công bố lộ trình phát hành các bộ truyện bom tấn.",
+      "en": "The mecca of comics and world pop culture, where publishers like Marvel and DC unveil the release roadmaps for their blockbuster series.",
+      "hi": "कॉमिक्स और विश्व पॉप संस्कृति का तीर्थस्थल, जहां मार्वल और डीसी जैसे प्रकाशक अपनी बड़ी सीरीज़ के रिलीज़ रोडमैप की घोषणा करते हैं।"
     }
   },
   {
-    "id": "kpop-event-012",
-    "category": "kpop",
+    "id": "comics-event-002",
+    "category": "comics",
     "title": {
-      "vi": "Dream Concert World 2026",
-      "en": "Dream Concert World 2026",
-      "hi": "ड्रीम कॉन्सर्ट वर्ल्ड 2026"
+      "vi": "New York Comic Con 2026",
+      "en": "New York Comic Con 2026",
+      "hi": "न्यूयॉर्क कॉमिक कॉन 2026"
     },
-    "date": "2026-10-24",
+    "date": "2026-10-12",
     "location": {
-      "vi": "Goyang Stadium, Goyang, Hàn Quốc",
-      "en": "Goyang Stadium, Goyang, South Korea",
-      "hi": "कोरिया"
+      "vi": "Javits Center, New York, Hoa Kỳ",
+      "en": "Javits Center, New York, USA",
+      "hi": "जैविट्स सेंटर, न्यूयॉर्क, अमेरिका"
     },
     "description": {
-      "vi": "Lễ hội âm nhạc truyền thống lâu đời quy tụ hơn 25 nhóm nhạc thần tượng biểu diễn trước 40,000 khán giả.",
-      "en": "South Korea's longest-running collective idol concert uniting over 25 groups on one stage.",
-      "hi": "25 से अधिक आइडल समूहों का विशाल वार्षिक कॉन्सर्ट।"
+      "vi": "Hội chợ truyện tranh bờ đông nước Mỹ với sự tham gia của các họa sĩ minh họa, tác giả kịch bản và nghệ sĩ cosplay hàng đầu.",
+      "en": "The East Coast's premier comic convention, featuring top illustrators, scriptwriters, and cosplay artists.",
+      "hi": "अमेरिका के पूर्वी तट का प्रमुख कॉमिक सम्मेलन, जिसमें शीर्ष इलस्ट्रेटर, स्क्रिप्ट राइटर और कॉसप्ले कलाकार शामिल होते हैं।"
     }
   },
   {
-    "id": "kpop-event-013",
-    "category": "kpop",
+    "id": "comics-event-003",
+    "category": "comics",
     "title": {
-      "vi": "The Fact Music Awards (TMA) 2026",
-      "en": "The Fact Music Awards (TMA) 2026",
-      "hi": "द फैक्ट म्यूजिक अवार्ड्स 2026"
+      "vi": "DC FanDome Digital Showcase",
+      "en": "DC FanDome Digital Showcase",
+      "hi": "डीसी फैनडोम डिजिटल शोकेस"
     },
-    "date": "2026-10-03",
+    "date": "2026-06-15",
     "location": {
-      "vi": "Kyocera Dome, Osaka, Nhật Bản",
-      "en": "Kyocera Dome, Osaka, Japan",
-      "hi": "ओसाका, जापान"
+      "vi": "Sự kiện trực tuyến toàn cầu (Online Virtual Hub)",
+      "en": "Global online event (Online Virtual Hub)",
+      "hi": "वैश्विक ऑनलाइन आयोजन (ऑनलाइन वर्चुअल हब)"
     },
     "description": {
-      "vi": "Lễ hội âm nhạc kết hợp giữa người hâm mộ và nghệ sĩ với các giải thưởng do fan toàn cầu trực tiếp bình chọn.",
-      "en": "Fan-driven award festival recognizing idol milestones through global voter participation.",
-      "hi": "फैंस द्वारा चुने गए सर्वश्रेष्ठ कलाकारों का सम्मान समारोह।"
+      "vi": "Sự kiện kỹ thuật số 24 giờ của DC Comics giới thiệu các ấn phẩm truyện tranh, game và phim hoạt hình siêu anh hùng.",
+      "en": "DC Comics' 24-hour digital event showcasing comic publications, games, and superhero animated films.",
+      "hi": "डीसी कॉमिक्स का 24 घंटे का डिजिटल आयोजन, जिसमें कॉमिक प्रकाशन, गेम्स और सुपरहीरो एनिमेटेड फिल्में प्रस्तुत की जाती हैं।"
+    }
+  },
+  {
+    "id": "comics-event-004",
+    "category": "comics",
+    "title": {
+      "vi": "Angoulême International Comics Festival 2027",
+      "en": "Angoulême International Comics Festival 2027",
+      "hi": "अंगौलेम अंतरराष्ट्रीय कॉमिक्स फेस्टिवल 2027"
+    },
+    "date": "2027-01-28",
+    "location": {
+      "vi": "Angoulême, Pháp",
+      "en": "Angoulême, France",
+      "hi": "अंगौलेम, फ्रांस"
+    },
+    "description": {
+      "vi": "Liên hoan truyện tranh danh giá bậc nhất châu Âu quy tụ các họa sĩ minh họa hàng đầu và trao giải Fauve d'Or huyền thoại.",
+      "en": "Europe's most prestigious comic arts festival gathering master illustrators and presenting the coveted Fauve d'Or award.",
+      "hi": "यूरोप का सबसे प्रतिष्ठित कॉमिक आर्ट्स फेस्टिवल।"
+    }
+  },
+  {
+    "id": "comics-event-005",
+    "category": "comics",
+    "title": {
+      "vi": "Free Comic Book Day Worldwide 2027",
+      "en": "Free Comic Book Day Worldwide 2027",
+      "hi": "फ्री कॉमिक बुक डे 2027"
+    },
+    "date": "2027-05-01",
+    "location": {
+      "vi": "Hệ thống nhà sách truyện tranh toàn cầu",
+      "en": "Comic Shops Worldwide",
+      "hi": "दुनिया भर की कॉमिक दुकानें"
+    },
+    "description": {
+      "vi": "Ngày hội văn hóa nơi các cửa hàng truyện tranh trên toàn thế giới phát tặng ấn bản đặc biệt miễn phí cho người hâm mộ.",
+      "en": "An annual cultural event where participating comic book specialty shops give away brand-new issues entirely free.",
+      "hi": "एक वार्षिक उत्सव जहां कॉमिक दुकानें प्रशंसकों को मुफ्त में कॉमिक्स देती हैं।"
     }
   },
   {
@@ -1600,63 +1200,103 @@
     }
   },
   {
-    "id": "comics-event-011",
-    "category": "comics",
+    "id": "manga-event-001",
+    "category": "manga",
     "title": {
-      "vi": "Marvel Comics Spider-Man 65th Anniversary Gala 2027",
-      "en": "Spider-Man 65th Anniversary Gala 2027",
-      "hi": "स्पाइडर-मैन 65वीं वर्षगांठ उत्सव 2027"
+      "vi": "Jump Festa 2027",
+      "en": "Jump Festa 2027",
+      "hi": "जंप फेस्टा 2027"
     },
-    "date": "2027-08-10",
+    "date": "2026-12-19",
     "location": {
-      "vi": "Javits Center, New York City, Hoa Kỳ",
-      "en": "Javits Center, New York, USA",
-      "hi": "न्यूयॉर्क, अमेरिका"
+      "vi": "Makuhari Messe, Chiba, Nhật Bản",
+      "en": "Makuhari Messe, Chiba, Japan",
+      "hi": "मकुहारी मेस्से, चिबा, जापान"
     },
     "description": {
-      "vi": "Đại lễ kỷ niệm 65 năm ngày ra mắt Người Nhện Peter Parker với các ấn bản truyện tranh bìa biến thể quý hiếm.",
-      "en": "Commemorating 65 years of Peter Parker with exclusive variant covers and retrospective art panels.",
-      "hi": "स्पाइडर-मैन के 65 साल पूरे होने पर विशेष प्रदर्शनी।"
+      "vi": "Lễ hội thường niên của tạp chí Shonen Jump, nơi tác giả các bộ manga đình đám như One Piece, Jujutsu Kaisen gặp gỡ độc giả và hé lộ chap mới.",
+      "en": "The annual festival of Shonen Jump magazine, where the authors of hit manga series like One Piece and Jujutsu Kaisen meet readers and reveal new chapters.",
+      "hi": "शोनेन जंप पत्रिका का वार्षिक उत्सव, जहां वन पीस और जुजुत्सु कैसेन जैसी लोकप्रिय मंगा सीरीज़ के लेखक पाठकों से मिलते हैं और नए अध्याय का खुलासा करते हैं।"
     }
   },
   {
-    "id": "comics-event-012",
-    "category": "comics",
+    "id": "manga-event-002",
+    "category": "manga",
     "title": {
-      "vi": "WonderCon Anaheim 2027",
-      "en": "WonderCon Anaheim 2027",
-      "hi": "वंडरकॉन एनाहाइम 2027"
+      "vi": "Comic Market (Comiket) Winter 2026",
+      "en": "Comic Market (Comiket) Winter 2026",
+      "hi": "कॉमिक मार्केट (कॉमिकेट) विंटर 2026"
     },
-    "date": "2027-03-26",
+    "date": "2026-12-30",
     "location": {
-      "vi": "Anaheim Convention Center, California, Hoa Kỳ",
-      "en": "Anaheim Convention Center, California, USA",
-      "hi": "कैलिफोर्निया, अमेरिका"
+      "vi": "Tokyo Big Sight, Tokyo, Nhật Bản",
+      "en": "Tokyo Big Sight, Tokyo, Japan",
+      "hi": "टोक्यो बिग साइट, टोक्यो, जापान"
     },
     "description": {
-      "vi": "Sự kiện truyện tranh mùa xuân danh tiếng do tổ chức Comic-Con International tổ chức.",
-      "en": "Comic-Con International's signature sister show presenting artist spotlights and comic masterclasses.",
-      "hi": "कॉमिक्स के रचनाकारों और प्रशंसकों का वसंत कालीन उत्सव।"
+      "vi": "Đại hội doujinshi và truyện tranh tự sáng tác lớn nhất thế giới, thu hút hàng trăm nghìn họa sĩ độc lập và người hâm mộ manga.",
+      "en": "The world's largest doujinshi and self-published comics convention, attracting hundreds of thousands of independent artists and manga fans.",
+      "hi": "दुनिया का सबसे बड़ा दोउजिंशी और स्व-प्रकाशित कॉमिक्स सम्मेलन, जो लाखों स्वतंत्र कलाकारों और मंगा प्रशंसकों को आकर्षित करता है।"
     }
   },
   {
-    "id": "comics-event-013",
-    "category": "comics",
+    "id": "manga-event-003",
+    "category": "manga",
     "title": {
-      "vi": "DC Universe Batman Day Worldwide 2026",
-      "en": "Batman Day Worldwide Celebration 2026",
-      "hi": "विश्व बैटमैन दिवस उत्सव 2026"
+      "vi": "Kyoto International Manga Anime Fair 2026",
+      "en": "Kyoto International Manga Anime Fair 2026",
+      "hi": "क्योटो इंटरनेशनल मंगा एनीमे फेयर 2026"
     },
     "date": "2026-09-19",
     "location": {
-      "vi": "Các thành phố lớn trên thế giới (Tokyo, London, NYC)",
-      "en": "Major Cities Worldwide",
-      "hi": "दुनिया भर के प्रमुख शहर"
+      "vi": "Miyako Messe, Kyoto, Nhật Bản",
+      "en": "Miyako Messe, Kyoto, Japan",
+      "hi": "मियाको मेस्से, क्योटो, जापान"
     },
     "description": {
-      "vi": "Ngày hội chiếu đèn Bat-Signal lên bầu trời các thành phố lớn và phát hành truyện tranh Batman miễn phí.",
-      "en": "Lighting the iconic Bat-Signal across global skyscrapers with free Batman comic giveaways.",
-      "hi": "दुनिया भर के आसमान में बैट-सिग्नल चमकाने का दिन।"
+      "vi": "Hội chợ giao lưu văn hóa manga và nghệ thuật truyền thống tại cố đô Kyoto, trưng bày các bản thảo vẽ tay vô giá của các mangaka kỳ cựu.",
+      "en": "A cultural exchange fair for manga and traditional art in the ancient capital of Kyoto, displaying priceless hand-drawn manuscripts by veteran mangaka.",
+      "hi": "प्राचीन राजधानी क्योटो में मंगा और पारंपरिक कला के सांस्कृतिक आदान-प्रदान का मेला, जिसमें अनुभवी मंगाका के अमूल्य हस्तनिर्मित पांडुलिपियां प्रदर्शित की जाती हैं।"
+    }
+  },
+  {
+    "id": "manga-event-004",
+    "category": "manga",
+    "title": {
+      "vi": "Manga Taisho Awards Gala 2027",
+      "en": "Manga Taisho Awards Gala 2027",
+      "hi": "मंगा ताइशो अवार्ड्स 2027"
+    },
+    "date": "2027-03-28",
+    "location": {
+      "vi": "Tokyo International Forum, Tokyo, Nhật Bản",
+      "en": "Tokyo International Forum, Tokyo, Japan",
+      "hi": "टोक्यो, जापान"
+    },
+    "description": {
+      "vi": "Giải thưởng manga do các nhân viên hiệu sách tại Nhật bình chọn để tìm ra tác phẩm truyện tranh mới xuất sắc nhất năm.",
+      "en": "Japan's esteemed manga award voted directly by bookstore staff to spotlight the most promising new works of the year.",
+      "hi": "जापान का प्रतिष्ठित मंगा पुरस्कार जो वर्ष की सर्वश्रेष्ठ नई कृतियों को सम्मानित करता है।"
+    }
+  },
+  {
+    "id": "manga-event-005",
+    "category": "manga",
+    "title": {
+      "vi": "Akihabara Manga & Doujinshi Fair Winter 2026",
+      "en": "Akihabara Manga & Doujinshi Fair Winter 2026",
+      "hi": "अकिहाबारा मंगा मेला 2026"
+    },
+    "date": "2026-11-14",
+    "location": {
+      "vi": "Akihabara UDX, Tokyo, Nhật Bản",
+      "en": "Akihabara UDX, Tokyo, Japan",
+      "hi": "अकिहाबारा यूडीएक्स, टोक्यो, जापान"
+    },
+    "description": {
+      "vi": "Hội chợ giao lưu và trưng bày các tác phẩm manga độc lập, tranh minh họa nghệ thuật và ký tặng độc quyền từ các tác giả.",
+      "en": "An indie manga and doujinshi fair showcasing artbooks, exclusive signings, and creative independent works.",
+      "hi": "स्वतंत्र मंगा और कलाकृतियों का एक अनोखा मेला।"
     }
   },
   {
@@ -1757,66 +1397,6 @@
       "vi": "Lễ trao giải lâu đời tôn vinh các kiệt tác truyện tranh có đóng góp to lớn cho văn hóa đọc Nhật Bản.",
       "en": "Japan's oldest standing manga award recognizing profound contributions to reading culture.",
       "hi": "जापान का सबसे पुराना और सम्मानित मंगा पुरस्कार।"
-    }
-  },
-  {
-    "id": "manga-event-011",
-    "category": "manga",
-    "title": {
-      "vi": "One Piece Day Tokyo Dome Mega Live 2027",
-      "en": "One Piece Day 30th Anniversary Mega Live 2027",
-      "hi": "वन पीस दिवस 30वीं वर्षगांठ महाउत्सव 2027"
-    },
-    "date": "2027-07-22",
-    "location": {
-      "vi": "Tokyo Dome, Tokyo, Nhật Bản",
-      "en": "Tokyo Dome, Tokyo, Japan",
-      "hi": "टोक्यो डोम, जापान"
-    },
-    "description": {
-      "vi": "Đại lễ hội kỷ niệm 30 năm ra mắt bộ manga One Piece cùng tác giả Eiichiro Oda và hàng vạn độc giả.",
-      "en": "The historic 30th anniversary global fan festival honoring Eiichiro Oda's pirate saga at Tokyo Dome.",
-      "hi": "वन पीस की 30वीं वर्षगांठ का ऐतिहासिक वैश्विक उत्सव।"
-    }
-  },
-  {
-    "id": "manga-event-012",
-    "category": "manga",
-    "title": {
-      "vi": "Comitia Indie Manga Fair Tokyo 2026",
-      "en": "Comitia 149 Indie Manga Fair Tokyo 2026",
-      "hi": "कोमिटिया स्वतंत्र मंगा मेला टोक्यो 2026"
-    },
-    "date": "2026-11-15",
-    "location": {
-      "vi": "Tokyo Big Sight, Tokyo, Nhật Bản",
-      "en": "Tokyo Big Sight, Tokyo, Japan",
-      "hi": "टोक्यो बिग साइट, जापान"
-    },
-    "description": {
-      "vi": "Hội chợ truyện tranh nguyên tác lớn nhất Nhật Bản nơi chỉ trưng bày các tác phẩm tự sáng tác không đạo nhái.",
-      "en": "Japan's premier convention exclusively devoted to original, non-parody independent manga works.",
-      "hi": "केवल मूल कहानियों को समर्पित जापान का सबसे बड़ा स्वतंत्र मंगा मेला।"
-    }
-  },
-  {
-    "id": "manga-event-013",
-    "category": "manga",
-    "title": {
-      "vi": "Tezuka Osamu Cultural Prize Gala 2027",
-      "en": "The 31st Tezuka Osamu Cultural Prize 2027",
-      "hi": "31वां तेज़ुका ओसामू सांस्कृतिक पुरस्कार 2027"
-    },
-    "date": "2027-06-05",
-    "location": {
-      "vi": "Asahi Shimbun Tokyo Head Office, Tokyo, Nhật Bản",
-      "en": "Tokyo, Japan",
-      "hi": "टोक्यो, जापान"
-    },
-    "description": {
-      "vi": "Giải thưởng văn hóa mang tên 'Vị thần Manga' Osamu Tezuka tôn vinh các tác phẩm truyện tranh có giá trị nhân văn sâu sắc.",
-      "en": "The Nobel of manga honors named after the 'God of Manga' Osamu Tezuka, celebrating profound humanism.",
-      "hi": "'मंगा के भगवान' ओसामू तेज़ुका के नाम पर मानवतावादी मंगा का सर्वोच्च सम्मान।"
     }
   }
 ]

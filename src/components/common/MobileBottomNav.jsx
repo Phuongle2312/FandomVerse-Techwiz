@@ -79,7 +79,7 @@ export default function MobileBottomNav() {
 
       {/* Main Fixed Bottom Navigation Bar */}
       <nav
-        className={`fv-mobile-bottom-nav d-lg-none ${isDark ? 'dark' : 'light'}`}
+        className={`fv-mobile-bottom-nav d-xxl-none ${isDark ? 'dark' : 'light'}`}
         aria-label="Mobile Bottom Navigation"
       >
         <div className="fv-mobile-nav-container">

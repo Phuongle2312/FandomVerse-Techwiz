@@ -20,6 +20,7 @@ import DragonFireEmbersEffect from '../components/interactive/DragonFireEmbersEf
 import EmptyState from '../components/common/EmptyState.jsx';
 import { useBookmarks } from '../context/BookmarkContext.jsx';
 import { useTheme } from '../context/ThemeContext.jsx';
+import { useVideoVisibilityAutoplay } from '../hooks/useVideoVisibilityAutoplay.js';
 
 function formatVietnameseDate(dateStr) {
   if (!dateStr) return '';
@@ -222,6 +223,9 @@ export default function CategoryHub() {
     };
     return configs[categoryId] || configs.anime;
   }, [categoryId, isVi]);
+
+  // Tự dừng video hero khi cuộn ra khỏi màn hình hoặc khi rời trang, để web mượt hơn
+  useVideoVisibilityAutoplay(heroVideoRef, heroConfig.videoSrc);
 
   // Content Filters
   const [selectedType, setSelectedType] = useState('all');
@@ -634,7 +638,7 @@ export default function CategoryHub() {
                 className="badge rounded-pill px-2.5 py-1 text-white small fw-bold d-inline-flex align-items-center gap-1.5"
                 style={{ background: '#f39c12', boxShadow: '0 4px 12px rgba(243, 156, 18, 0.3)' }}
               >
-                <i className="bi bi-calendar-event-fill"></i> {filteredEvents.length} {isVi ? 'Sự Kiện' : 'Events'}
+                <i className="bi bi-calendar-event-fill"></i> {Math.min(filteredEvents.length, 10)} {isVi ? 'Sự Kiện' : 'Events'}
               </span>
               <h3 className={`font-heading fw-bold mb-0 fs-5 ${isDark ? 'text-white' : 'text-dark'}`}>
                 {isVi ? 'Sự Kiện & Lễ Hội Fandom' : 'Fandom Events & Festivals'}
@@ -664,9 +668,9 @@ export default function CategoryHub() {
               </button>
             </div>
           </div>
-          <div className="row g-3">
-            {filteredEvents.map((evt) => (
-              <div key={evt.id} className="col-xl-4 col-lg-6 col-12">
+          <div className="fv-events-5col-grid">
+            {filteredEvents.slice(0, 10).map((evt) => (
+              <div key={evt.id} className="fv-event-5col-item">
                 <EventCard event={evt} />
               </div>
             ))}

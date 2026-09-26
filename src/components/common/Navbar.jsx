@@ -187,7 +187,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`navbar navbar-expand-lg fixed-top py-2.5 fv-navbar ${isTransparentHero ? 'fv-navbar-transparent' : ''}`}
+      className={`navbar navbar-expand-xxl fixed-top py-2.5 fv-navbar ${isTransparentHero ? 'fv-navbar-transparent' : ''}`}
       style={{
         zIndex: 1030,
         transform: isNavVisible ? 'translateY(0)' : 'translateY(-100%)',
@@ -218,7 +218,7 @@ export default function Navbar() {
 
         {/* Mobile Search Toggle Button */}
         <button
-          className={`navbar-toggler border-0 shadow-none d-lg-none ${navTextColor}`}
+          className={`navbar-toggler border-0 shadow-none d-xxl-none ${navTextColor}`}
           type="button"
           aria-controls="fandomNavbar"
           aria-expanded={!isNavCollapsed}
@@ -232,7 +232,7 @@ export default function Navbar() {
         <div className={`collapse navbar-collapse ${isNavCollapsed ? '' : 'show'}`} id="fandomNavbar">
           {/* Main Links (Desktop Only) */}
           <ul
-            className="navbar-nav d-none d-lg-flex me-auto mb-2 mb-lg-0 align-items-lg-center"
+            className="navbar-nav d-none d-xxl-flex me-auto mb-2 mb-lg-0 align-items-lg-center"
           >
             {/* 7 Categories Dropdown */}
             <li
@@ -294,7 +294,7 @@ export default function Navbar() {
             <li className="nav-item">
               <Link
                 to="/trailers"
-                className={`nav-link fw-semibold px-2.5 fv-nav-item-link ${navTextColor} ${location.pathname === '/trailers' ? 'active' : ''}`}
+                className={`nav-link fw-semibold px-2.5 text-nowrap fv-nav-item-link ${navTextColor} ${location.pathname === '/trailers' ? 'active' : ''}`}
                 onClick={() => setIsNavCollapsed(true)}
               >
                 <span>{t('navbar.trailers')}</span>
@@ -304,7 +304,7 @@ export default function Navbar() {
             <li className="nav-item">
               <Link
                 to="/merchandise"
-                className={`nav-link fw-semibold px-2.5 fv-nav-item-link ${navTextColor} ${location.pathname === '/merchandise' ? 'active' : ''}`}
+                className={`nav-link fw-semibold px-2.5 text-nowrap fv-nav-item-link ${navTextColor} ${location.pathname === '/merchandise' ? 'active' : ''}`}
                 onClick={() => setIsNavCollapsed(true)}
               >
                 <span>{t('navbar.merchandise')}</span>
@@ -314,7 +314,7 @@ export default function Navbar() {
             <li className="nav-item">
               <Link
                 to="/contact"
-                className={`nav-link fw-semibold px-2.5 fv-nav-item-link ${navTextColor} ${location.pathname === '/contact' ? 'active' : ''}`}
+                className={`nav-link fw-semibold px-2.5 text-nowrap fv-nav-item-link ${navTextColor} ${location.pathname === '/contact' ? 'active' : ''}`}
                 onClick={() => setIsNavCollapsed(true)}
               >
                 <span>{t('navbar.contact')}</span>
@@ -565,7 +565,7 @@ export default function Navbar() {
           </div>
 
           {/* Action Icons & Theme Switcher (Desktop Only) */}
-          <div className="d-none d-lg-flex flex-wrap align-items-center gap-2 mt-2 mt-lg-0">
+          <div className="d-none d-xxl-flex flex-wrap align-items-center gap-2 mt-2 mt-lg-0">
             {/* Language Switcher Dropdown - Permanent styling from photo, immune to light/dark mode */}
             <div ref={languageRef} className={`dropdown ${isLanguageOpen ? 'show' : ''} position-relative`}>
               <button

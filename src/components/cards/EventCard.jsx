@@ -17,7 +17,7 @@ export default function EventCard({ event }) {
 
   return (
     <div
-      className={`card fv-card fv-event-card h-100 p-3 ${event.category === 'gaming' ? 'gaming-event-card' : ''} ${event.category === 'anime' ? 'anime-event-card' : ''} ${event.category === 'kpop' ? 'kpop-event-card' : ''} ${event.category === 'movies' ? 'movies-event-card' : ''} ${event.category === 'manga' ? 'manga-event-card' : ''}`}
+      className={`card fv-card fv-event-card h-100 p-3 ${event.category === 'gaming' ? 'gaming-event-card' : ''} ${event.category === 'anime' ? 'anime-event-card' : ''} ${event.category === 'kpop' ? 'kpop-event-card' : ''} ${event.category === 'movies' ? 'movies-event-card' : ''} ${event.category === 'manga' ? 'manga-event-card' : ''} ${event.category === 'comics' ? 'comics-event-card' : ''} ${event.category === 'tvshows' ? 'tvshows-event-card' : ''}`}
       style={{
         backgroundColor: isDark ? 'rgba(255, 255, 255, 0.05)' : '#ffffff',
         border: isDark ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid var(--border-color)',

@@ -3850,5 +3850,896 @@
     ],
     "featured": true,
     "dateAdded": "2026-09-20"
+  },
+  {
+    "id": "anime-video-006",
+    "category": "anime",
+    "type": "video",
+    "title": {
+      "vi": "Attack on Titan Final Season: Bản Hòa Tấu Rumbling Rung Chuyển Trái Đất 4K",
+      "en": "Attack on Titan Final Season: The Rumbling 4K Symphonic Climax",
+      "hi": "अटैक ऑन टाइटन: द रंबलिंग 4K क्लाइमेक्स"
+    },
+    "shortDescription": {
+      "vi": "Cảnh tượng hàng triệu Titan Thiết Giáp trỗi dậy dưới sự chỉ huy của Eren Yeager gây chấn động làng anime.",
+      "en": "The earth-shattering sight of millions of Colossal Titans marching under Eren Yeager's command.",
+      "hi": "एरेन येगर के आदेश पर विशाल टाइटन्स का भयानक मार्च।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.youtube.com/embed/2S4qGKmzBJE",
+    "subTags": [
+      "Attack on Titan",
+      "The Rumbling",
+      "MAPPA"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-25"
+  },
+  {
+    "id": "anime-gallery-006",
+    "category": "anime",
+    "type": "gallery",
+    "title": {
+      "vi": "Bộ Sưu Tập Tranh Thủy Mặc Ma Thuật Jujutsu Kaisen: Lãnh Địa Khai Mở 4K",
+      "en": "Jujutsu Kaisen Domain Expansion Ink Art 4K Wallpaper Collection",
+      "hi": "जुजुत्सु कैसेन डोमेन एक्सपेंशन इंक आर्ट वॉलपेपर"
+    },
+    "shortDescription": {
+      "vi": "Khắc họa các Lãnh Địa Vô Lượng Không Gian, Phục Ma Ngự Khám và Tự Tạng Biến Cảnh.",
+      "en": "Stunning illustrations of Infinite Void, Malevolent Shrine, and Self-Embodiment of Perfection.",
+      "hi": "इन्फिनिट वॉइड और मैलवोलेंट श्राइन के आकर्षक चित्र।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=1000&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "Domain Expansion",
+      "JJK",
+      "Ink Art"
+    ],
+    "featured": false,
+    "dateAdded": "2026-09-24"
+  },
+  {
+    "id": "anime-article-007",
+    "category": "anime",
+    "type": "article",
+    "title": {
+      "vi": "Di Sản Của Hayao Miyazaki: 40 Năm Thổi Hồn Vào Những Giấc Mơ Trẻ Thơ",
+      "en": "Hayao Miyazaki's Legacy: 40 Years of Breathing Life into Childhood Dreams",
+      "hi": "हायाओ मियाज़ाकी की विरासत: बचपन के सपनों को जीवंत करने के 40 साल"
+    },
+    "shortDescription": {
+      "vi": "Nhìn lại hành trình sáng tạo của nhà làm phim vĩ đại nhất lịch sử hoạt hình Nhật Bản cùng Studio Ghibli.",
+      "en": "A retrospective on the creative journey of Japanese animation's greatest auteur and Studio Ghibli.",
+      "hi": "स्टूडियो घिबली और जापानी एनीमेशन के महानतम निर्देशक की यात्रा।"
+    },
+    "body": {
+      "vi": "Miyazaki không đơn thuần vẽ tranh; ông vẽ nên những cảm xúc thuần khiết nhất của con người trước tự nhiên, chiến tranh và tình yêu thương vô điều kiện.",
+      "en": "Miyazaki does not simply animate; he channels the raw emotional harmony between humankind, nature, and wonder.",
+      "hi": "मियाज़ाकी केवल एनीमेशन नहीं बनाते, वे मानवीय भावनाओं को जीवंत करते हैं।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "Hayao Miyazaki",
+      "Studio Ghibli",
+      "Retrospective"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-23"
+  },
+  {
+    "id": "movies-video-005",
+    "category": "movies",
+    "type": "video",
+    "title": {
+      "vi": "The Batman: Phân Cảnh Rượt Đuổi Xe Batmobile Đỉnh Cao Trong Cơn Mưa Gotham",
+      "en": "The Batman: Iconic Rain-Soaked Batmobile Highway Chase in 4K",
+      "hi": "द बैटमैन: गोथम की बारिश में बैटमोबाइल चेस दृश्य"
+    },
+    "shortDescription": {
+      "vi": "Tiếng gầm rú của khối động cơ phản lực Batmobile xé toạc màn đêm và cú lộn xe của Chim Cánh Cụt.",
+      "en": "The roar of the jet engine tearing through the rain and Penguin's terrifying perspective.",
+      "hi": "बारिश में बैटमोबाइल के इंजन की गूंज और पेंगुइन का पीछा करने का रोमांचक दृश्य।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1509281373149-e957c6296406?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.youtube.com/embed/mqqft2x_Aa4",
+    "subTags": [
+      "The Batman",
+      "Batmobile",
+      "Car Chase"
+    ],
+    "featured": false,
+    "dateAdded": "2026-09-24"
+  },
+  {
+    "id": "movies-video-006",
+    "category": "movies",
+    "type": "video",
+    "title": {
+      "vi": "Avatar: Fire and Ash — Đoạn Trích Hé Lộ Bộ Tộc Tro Tàn Núi Lửa Pandora",
+      "en": "Avatar: Fire and Ash — First Look at the Ash People of Pandora",
+      "hi": "अवतार: फायर एंड ऐश — पेंडोरा के ऐश लोगों की पहली झलक"
+    },
+    "shortDescription": {
+      "vi": "James Cameron đưa người xem khám phá mặt tối và góc nhìn gai góc hơn về hành tinh kỳ ảo Pandora.",
+      "en": "James Cameron expands the Pandora lore with the fierce, volcanic Ash People tribe.",
+      "hi": "जेम्स कैमरून ने पेंडोरा की ज्वालामुखी जनजाति की झलक दिखाई।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.youtube.com/embed/d9MyW72ELq0",
+    "subTags": [
+      "Avatar",
+      "James Cameron",
+      "Pandora"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-25"
+  },
+  {
+    "id": "movies-gallery-005",
+    "category": "movies",
+    "type": "gallery",
+    "title": {
+      "vi": "Bộ Sưu Tập Trang Phục Siêu Anh Hùng Marvel Khắc Laser Thủ Công",
+      "en": "Marvel Cinematic Universe Hero Costumes Laser Concept Art Gallery",
+      "hi": "एमसीयू सुपरहीरो कॉस्ट्यूम कॉन्सेप्ट आर्ट गैलरी"
+    },
+    "shortDescription": {
+      "vi": "Chi tiết từng đường kim mũi chỉ trên giáp Iron Man Mark 85, Captain America và Thor Odinson.",
+      "en": "High-res closeups of the nanotech weave, vibranium textures, and Asgardian engravings.",
+      "hi": "आयरन मैन और कैप्टन अमेरिका के नैनोटेक सूट के विस्तृत चित्र।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1635863138275-d9b33299680b?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1635863138275-d9b33299680b?w=1000&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "MCU",
+      "Costumes",
+      "Concept Art"
+    ],
+    "featured": false,
+    "dateAdded": "2026-09-23"
+  },
+  {
+    "id": "movies-gallery-006",
+    "category": "movies",
+    "type": "gallery",
+    "title": {
+      "vi": "Bộ Ảnh Hậu Trường Kỹ Xảo Oppenheimer: Khi Quả Bom Thực Sự Phát Nổ",
+      "en": "Oppenheimer Behind-the-Scenes: The Real Practical Pyrotechnics",
+      "hi": "ओपेनहाइमर बैकस्टेज: असली विस्फोटों की कलाकारी"
+    },
+    "shortDescription": {
+      "vi": "Chiêm ngưỡng dàn hiệu ứng chất nổ thực tế dưới ống kính IMAX 65mm của Christopher Nolan.",
+      "en": "Stunning archival photos of full-scale practical explosions filmed without CGI.",
+      "hi": "बिना सीजीआई के फिल्माए गए असली विस्फोटों की तस्वीरें।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "Oppenheimer",
+      "Behind The Scenes",
+      "Nolan"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-22"
+  },
+  {
+    "id": "movies-article-007",
+    "category": "movies",
+    "type": "article",
+    "title": {
+      "vi": "Vũ Trụ Đa Chiều (Multiverse) Trong Điện Ảnh: Khi Sự Sáng Tạo Gặp Giới Hạn Của Khán Giả",
+      "en": "The Cinematic Multiverse: When Infinite Freedom Meets Audience Fatigue",
+      "hi": "सिनेमाई मल्टीवर्स: अनंत रचनात्मकता और दर्शकों की थकान"
+    },
+    "shortDescription": {
+      "vi": "Phân tích tại sao khái niệm đa vũ trụ từng gây sốt nay lại trở thành con dao hai lưỡi cho các thương hiệu tỷ đô.",
+      "en": "Why the multiverse went from Hollywood's most lucrative trend to a narratively perilous crutch.",
+      "hi": "मल्टीवर्स की अवधारणा कैसे हॉलीवुड के लिए एक दोधारी तलवार बन गई।"
+    },
+    "body": {
+      "vi": "Khi cái chết không còn là vĩnh viễn và bất kỳ nhân vật nào cũng có thể được đưa trở lại bằng một biến thể khác, cái giá phải trả chính là cảm xúc chân thực của người xem.",
+      "en": "When death ceases to carry finality, emotional resonance is inevitably eroded across story arcs.",
+      "hi": "जब मौत का कोई महत्व नहीं रहता, तो कहानी का भावनात्मक प्रभाव कम हो जाता है।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1635863138275-d9b33299680b?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1635863138275-d9b33299680b?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "Multiverse",
+      "Cinema Essay",
+      "Marvel DC"
+    ],
+    "featured": false,
+    "dateAdded": "2026-09-24"
+  },
+  {
+    "id": "movies-audio-004",
+    "category": "movies",
+    "type": "audio",
+    "title": {
+      "vi": "Radio Điện Ảnh: Tổng Hợp Bản Giao Hưởng John Williams Hay Nhất Mọi Thời Đại",
+      "en": "Cinema Radio: The Immortal Symphonies of John Williams",
+      "hi": "सिनेमा रेडियो: जॉन विलियम्स की अमर धुनें"
+    },
+    "shortDescription": {
+      "vi": "Hành trình âm nhạc qua Star Wars, Harry Potter, Jurassic Park và Indiana Jones.",
+      "en": "A sweeping orchestral journey through Star Wars, Jurassic Park, Harry Potter, and Superman.",
+      "hi": "स्टार वार्स और हैरी पॉटर के अमर संगीत की यात्रा।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+    "subTags": [
+      "John Williams",
+      "Star Wars",
+      "Soundtrack"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-25"
+  },
+  {
+    "id": "tvshows-video-005",
+    "category": "tvshows",
+    "type": "video",
+    "title": {
+      "vi": "Arcane Season 2: Trailer Đại Chiến Piltover & Zaun Làm Bùng Nổ Cảm Xúc",
+      "en": "Arcane Season 2: The Final War for Piltover & Zaun Official Trailer",
+      "hi": "आर्केन सीज़न 2: पिल्टोवर और ज़ाउन के बीच अंतिम युद्ध का ट्रेलर"
+    },
+    "shortDescription": {
+      "vi": "Sự trỗi dậy của Jinx, găng tay Hextech của Vi và bi kịch gia đình đẩy hai chị em vào thế đối đầu sinh tử.",
+      "en": "Jinx's anarchic uprising and Vi's Enforcer gauntlets collide in Fortiche's animated triumph.",
+      "hi": "जिंक्स और वी के बीच की आखिरी लड़ाई।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.youtube.com/embed/hsff_eA3wQ0",
+    "subTags": [
+      "Arcane",
+      "Netflix",
+      "League of Legends"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-24"
+  },
+  {
+    "id": "tvshows-video-006",
+    "category": "tvshows",
+    "type": "video",
+    "title": {
+      "vi": "The Last of Us: Trailer Hé Lộ Tạo Hình Abby & Mùa Đông Khốc Liệt Jackson",
+      "en": "The Last of Us Season 2: First Look at Abby & the Winter of Jackson",
+      "hi": "द लास्ट ऑफ अस सीज़न 2: एब्बी का पहला लुक"
+    },
+    "shortDescription": {
+      "vi": "Cuộc tái ngộ nghẹn ngào giữa Joel và Ellie trước bóng đen báo thù của tổ chức WLF.",
+      "en": "Pedro Pascal and Bella Ramsey return as the cycle of retribution tightens around Jackson.",
+      "hi": "जोएल और एली की कहानी का नया भावनात्मक मोड़।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.youtube.com/embed/uLtkt8BonwM",
+    "subTags": [
+      "The Last of Us",
+      "HBO",
+      "Post Apocalyptic"
+    ],
+    "featured": false,
+    "dateAdded": "2026-09-23"
+  },
+  {
+    "id": "tvshows-gallery-005",
+    "category": "tvshows",
+    "type": "gallery",
+    "title": {
+      "vi": "Bộ Sưu Tập Phong Cách Quý Tộc Cổ Điển Peaky Blinders & Vương Triều Birmingham",
+      "en": "Peaky Blinders 1920s Tweed & Razor Sartorial Gallery",
+      "hi": "पीकी ब्लाइंडर्स 1920s ट्वीड सूट और विंटेज स्टाइल गैलरी"
+    },
+    "shortDescription": {
+      "vi": "Tông màu lạnh sắc sảo của những bộ vest 3 mảnh, mũ lưỡi trai dạ và tẩu thuốc phong trần.",
+      "en": "Sharp bespoke three-piece suits, newsboy caps, and the brooding atmosphere of Small Heath.",
+      "hi": "थॉमस शेल्बी के विंटेज सूट और शैली के आकर्षक चित्र।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "Peaky Blinders",
+      "Vintage Style",
+      "British Drama"
+    ],
+    "featured": false,
+    "dateAdded": "2026-09-22"
+  },
+  {
+    "id": "tvshows-gallery-006",
+    "category": "tvshows",
+    "type": "gallery",
+    "title": {
+      "vi": "Bộ Ảnh Hậu Trường Stranger Things 5: Tạm Biệt Thị Trấn Hawkins Sau 10 Năm",
+      "en": "Stranger Things Season 5 Nostalgic Farewell Gallery",
+      "hi": "स्ट्रेंजर थिंग्स सीज़न 5 विदाई फोटो गैलरी"
+    },
+    "shortDescription": {
+      "vi": "Những khoảnh khắc xúc động của dàn diễn viên từ thuở ấu thơ đến ngày đóng máy mùa phim cuối cùng.",
+      "en": "Emotional candid memories tracking the Hawkins kids from bicycles to the final stand against Vecna.",
+      "hi": "हॉकिन्स के बच्चों की 10 साल की यात्रा की यादगार तस्वीरें।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "Stranger Things",
+      "Hawkins",
+      "Final Season"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-21"
+  },
+  {
+    "id": "tvshows-article-007",
+    "category": "tvshows",
+    "type": "article",
+    "title": {
+      "vi": "Kỷ Nguyên Hoàng Kim Phim Truyền Hình: Khi Màn Ảnh Nhỏ Trở Thành Thánh Đường Nghệ Thuật",
+      "en": "Prestige TV's Golden Era: When the Small Screen Became Cinema's True Sanctuary",
+      "hi": "प्रेस्टीज टीवी का स्वर्ण युग: जब छोटा पर्दा सिनेमा का मंदिर बना"
+    },
+    "shortDescription": {
+      "vi": "Từ Breaking Bad, Game of Thrones đến Chernobyl — sự chuyển dịch trọng tâm của các kịch bản đỉnh cao nhất nhân loại.",
+      "en": "How complex serialized storytelling eclipsed blockbuster cinema in cultural significance.",
+      "hi": "ब्रेकिंग बैड और गेम ऑफ थ्रोन्स ने टीवी की दुनिया को कैसे बदल दिया।"
+    },
+    "body": {
+      "vi": "Một bộ phim 2 tiếng ở rạp không thể cho phép bạn chứng kiến Walter White trượt dốc đạo đức qua 62 tập phim, hay nỗi cô độc của gia tộc Targaryen suốt nhiều thế hệ.",
+      "en": "Two hours in a multiplex cannot replicate the slow, operatic character arcs nurtured across dozens of hours.",
+      "hi": "टीवी सीरीज़ की लंबी कहानियां किरदारों को गहराई से समझने का मौका देती हैं।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1514539079130-25950c84af65?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1514539079130-25950c84af65?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "Prestige TV",
+      "HBO",
+      "Screenplay"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-25"
+  },
+  {
+    "id": "tvshows-audio-004",
+    "category": "tvshows",
+    "type": "audio",
+    "title": {
+      "vi": "Radio Nhạc Phim Truyền Hình: Từ Khúc Cello Game of Thrones Đến Synthwave Stranger Things",
+      "en": "TV Themes Radio: From Game of Thrones Cellos to Stranger Things 80s Synths",
+      "hi": "टीवी थीम्स रेडियो: गेम ऑफ थ्रोन्स से लेकर स्ट्रेंजर थिंग्स के संगीत तक"
+    },
+    "shortDescription": {
+      "vi": "Thư giãn cùng những giai điệu mở màn kinh điển sống mãi cùng năm tháng của Ramin Djawadi và Kyle Dixon.",
+      "en": "Iconic opening themes that define the modern binge-watching cultural zeitgeist.",
+      "hi": "प्रसिद्ध टीवी सीरीज़ के थीम गानों का खूबसूरत संकलन।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+    "subTags": [
+      "Soundtrack",
+      "TV Score",
+      "Ramin Djawadi"
+    ],
+    "featured": false,
+    "dateAdded": "2026-09-22"
+  },
+  {
+    "id": "kpop-video-005",
+    "category": "kpop",
+    "type": "video",
+    "title": {
+      "vi": "BLACKPINK Born Pink World Tour Seoul Finale: Biển Hồng Ánh Sáng Huyền Thoại",
+      "en": "BLACKPINK Born Pink World Tour Finale: Legendary Pink Lightstick Ocean",
+      "hi": "ब्लैकपिंक वर्ल्ड टूर फिनाले: गुलाबी रोशनी का महासागर"
+    },
+    "shortDescription": {
+      "vi": "Màn trình diễn bản mashup DDU-DU DDU-DU bốc lửa cùng dàn nhạc giao hứng sống động.",
+      "en": "Electrifying live band arrangements and pyrotechnics concluding the biggest girl group tour in history.",
+      "hi": "ब्लैकपिंक का शानदार लाइव कॉन्सर्ट प्रदर्शन।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.youtube.com/embed/ioNng23DkIM",
+    "subTags": [
+      "BLACKPINK",
+      "Live Concert",
+      "Born Pink"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-24"
+  },
+  {
+    "id": "kpop-video-006",
+    "category": "kpop",
+    "type": "video",
+    "title": {
+      "vi": "Stray Kids: Sân Khấu Maniac & LALALALA Đỉnh Cao Kỹ Thuật Vũ Đạo",
+      "en": "Stray Kids: Maniac & LALALALA Elite Choreography Stage",
+      "hi": "स्ट्रे किड्स: शानदार डांस और रैप परफॉर्मेंस"
+    },
+    "shortDescription": {
+      "vi": "Sức mạnh đồng đều và năng lượng bùng nổ của nhóm nhạc tự sản xuất âm nhạc số 1 K-Pop.",
+      "en": "Raw energy, self-produced anthems, and razor-sharp synchronicity captivating global stadiums.",
+      "hi": "स्ट्रे किड्स का शक्तिशाली मंच प्रदर्शन।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.youtube.com/embed/OvioeS1ZZ7o",
+    "subTags": [
+      "Stray Kids",
+      "Choreography",
+      "4th Gen"
+    ],
+    "featured": false,
+    "dateAdded": "2026-09-23"
+  },
+  {
+    "id": "kpop-gallery-005",
+    "category": "kpop",
+    "type": "gallery",
+    "title": {
+      "vi": "Triển Lãm Ảnh Kỷ Niệm 10 Năm Debut BTS: Ánh Sáng Tím Của Hàng Triệu ARMY",
+      "en": "BTS 10th Anniversary Exhibition: The Purple Wave of Millions of ARMY",
+      "hi": "बीटीएस 10वीं वर्षगांठ प्रदर्शनी: पर्पल लाइटस्टिक वेव"
+    },
+    "shortDescription": {
+      "vi": "Những khoảnh khắc xúc động từ những ngày đầu ra mắt cho đến khi lấp đầy sân vận động Wembley nước Anh.",
+      "en": "Iconic moments charting BTS's trajectory from tiny rehearsal rooms to Wembley Stadium.",
+      "hi": "बीटीएस के शुरुआती दिनों से लेकर ऐतिहासिक स्टेडियम कॉन्सर्ट तक की यादें।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "BTS",
+      "ARMY",
+      "Exhibition"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-22"
+  },
+  {
+    "id": "kpop-gallery-006",
+    "category": "kpop",
+    "type": "gallery",
+    "title": {
+      "vi": "Bộ Ảnh Tạp Chí High Fashion Của Các Đại Sứ Thương Hiệu Toàn Cầu K-Pop",
+      "en": "K-Pop Global Luxury Ambassadors High Fashion Editorial Gallery",
+      "hi": "के-पॉप ग्लोबल फैशन एम्बेसडर हाई-फैशन गैलरी"
+    },
+    "shortDescription": {
+      "vi": "Jennie (Chanel), Karina (Prada), Wonyoung (Miu Miu) tỏa sáng lộng lẫy tại Tuần lễ Thời trang Paris.",
+      "en": "Haute couture elegance from Paris Fashion Week featuring leading idols dominating the global luxury sphere.",
+      "hi": "पेरिस फैशन वीक में के-पॉप सितारों की शानदार तस्वीरें।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "High Fashion",
+      "Luxury",
+      "Idol Visual"
+    ],
+    "featured": false,
+    "dateAdded": "2026-09-20"
+  },
+  {
+    "id": "kpop-article-007",
+    "category": "kpop",
+    "type": "article",
+    "title": {
+      "vi": "Giải Mã Hiện Tượng Easy Listening: Sự Chuyển Hướng Giai Điệu Trong Âm Nhạc K-Pop Hiện Đại",
+      "en": "The Easy-Listening Revolution: How Mellow Anthems Conquered Modern K-Pop",
+      "hi": "ईज़ी-लिसनिंग क्रांति: आधुनिक के-पॉप में सुकून भरे संगीत की लहर"
+    },
+    "shortDescription": {
+      "vi": "Từ những điệp khúc gào thét sang giai điệu R&B êm ái của NewJeans, ILLIT và Fifty Fifty.",
+      "en": "Tracing the seismic sonic shift from abrasive EDM drop choruses to breezy R&B and lo-fi melodies.",
+      "hi": "लाउड बीट्स से लेकर सुकून भरी धुनों तक के-पॉप का बदलाव।"
+    },
+    "body": {
+      "vi": "Âm nhạc thần tượng ngày nay được người nghe thêm vào playlist nghe lặp lại hàng giờ lúc học tập hay lái xe, không còn tạo cảm giác mỏi mệt cho màng nhĩ.",
+      "en": "Idol music has evolved into daily sonic comfort, designed for endless Spotify streaming and calm loops.",
+      "hi": "आज का के-पॉप संगीत आरामदायक और बार-बार सुनने लायक बन चुका है।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "Music Trends",
+      "Easy Listening",
+      "NewJeans"
+    ],
+    "featured": false,
+    "dateAdded": "2026-09-24"
+  },
+  {
+    "id": "kpop-audio-004",
+    "category": "kpop",
+    "type": "audio",
+    "title": {
+      "vi": "Podcast Hallyu Talk: Bí Quyết Sản Xuất Ca Khúc Hit Triệu Bản Của Teddy Park",
+      "en": "Hallyu Talk Podcast: The Hitmaking Chemistry of Producer Teddy Park",
+      "hi": "हाल्यू टॉक पॉडकास्ट: प्रोड्यूसर टेडी पार्क के सुपरहिट गानों का राज़"
+    },
+    "shortDescription": {
+      "vi": "Phân tích cấu trúc beat drop và giai điệu bắt tai làm nên thành công của 2NE1, BIGBANG và BLACKPINK.",
+      "en": "Deconstructing the hip-hop swagger and irresistible melodic hooks that built YG's golden empire.",
+      "hi": "ब्लैकपिंक और बिगबैंग के मशहूर बीट्स का विश्लेषण।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+    "subTags": [
+      "Teddy Park",
+      "Music Production",
+      "Podcast"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-25"
+  },
+  {
+    "id": "comics-video-005",
+    "category": "comics",
+    "type": "video",
+    "title": {
+      "vi": "Batman: Arkham Shadow — Trailer Gameplay VR Thành Phố Gotham Đỉnh Cao",
+      "en": "Batman: Arkham Shadow VR Gameplay Gotham Showdown",
+      "hi": "बैटमैन: आरखम शैडो वीआर गेमप्ले ट्रेलर"
+    },
+    "shortDescription": {
+      "vi": "Nhập vai Đấng Batman chiến đấu cận chiến Freeflow và lặn sâu vào bóng đêm nhà tù Blackgate.",
+      "en": "Step into the cowl and unleash bone-crunching Freeflow combat inside the depths of Blackgate.",
+      "hi": "बैटमैन बनकर गोथम के अपराधियों का सामना करें।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1509281373149-e957c6296406?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.youtube.com/embed/z5958o_kZsc",
+    "subTags": [
+      "Batman",
+      "Arkham",
+      "VR"
+    ],
+    "featured": false,
+    "dateAdded": "2026-09-24"
+  },
+  {
+    "id": "comics-video-006",
+    "category": "comics",
+    "type": "video",
+    "title": {
+      "vi": "X-Men '97: Đoạn Cắt Cảnh Magneto 'Was Right' Gây Chấn Động Toàn Cầu",
+      "en": "X-Men '97: Magneto Was Right Iconic Speech & Climax",
+      "hi": "एक्स-मैन '97: मैग्नेटो का ऐतिहासिक भाषण"
+    },
+    "shortDescription": {
+      "vi": "Phân cảnh Magneto kích hoạt sóng điện từ toàn cầu và bài diễn văn bảo vệ giống loài đột biến.",
+      "en": "The heart-stopping moment Magneto unleashes global EMP to protect mutantkind from extinction.",
+      "hi": "म्यूटेंट्स की रक्षा के लिए मैग्नेटो का शक्तिशाली कदम।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.youtube.com/embed/pv3Ss8o9auE",
+    "subTags": [
+      "X-Men 97",
+      "Magneto",
+      "Marvel Animation"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-23"
+  },
+  {
+    "id": "comics-gallery-005",
+    "category": "comics",
+    "type": "gallery",
+    "title": {
+      "vi": "Bộ Ảnh Tranh Sơn Dầu Huyền Thoại Alex Ross: Các Siêu Anh Hùng Thần Thánh",
+      "en": "Alex Ross Mythological Superhero Masterpiece Oil Art Gallery",
+      "hi": "एलेक्स रॉस की पौराणिक सुपरहीरो ऑयल पेंटिंग गैलरी"
+    },
+    "shortDescription": {
+      "vi": "Vẻ đẹp chân thực như người thật của Superman, Batman, Wonder Woman và Justice League.",
+      "en": "Photorealistic gouache and watercolor paintings that elevate superheroes into Renaissance demigods.",
+      "hi": "सुपरमैन और बैटमैन की सजीव ऑयल पेंटिंग्स।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1604200213928-ba3cf4fc8436?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1604200213928-ba3cf4fc8436?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "Alex Ross",
+      "DC Comics",
+      "Oil Painting"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-22"
+  },
+  {
+    "id": "comics-gallery-006",
+    "category": "comics",
+    "type": "gallery",
+    "title": {
+      "vi": "Bộ Sưu Tập Concept Art Vũ Khí & Xe Đua Batmobile Qua Từng Thời Kỳ",
+      "en": "Batmobile & Gotham Arsenal Evolution Concept Gallery",
+      "hi": "बैटमोबाइल और गोथम के हथियारों का विकास"
+    },
+    "shortDescription": {
+      "vi": "Từ chiếc xe cổ điển thập niên 60 đến chiến xa bọc thép Tumbler và thiết kế siêu xe bóng đêm tương lai.",
+      "en": "Tracing the engineering lineage of the world's most famous tactical supercar across decades.",
+      "hi": "दशकों में बैटमोबाइल के बदलते डिज़ाइनों का संग्रह।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1509281373149-e957c6296406?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1509281373149-e957c6296406?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "Batmobile",
+      "Batman",
+      "Design Evolution"
+    ],
+    "featured": false,
+    "dateAdded": "2026-09-20"
+  },
+  {
+    "id": "comics-article-007",
+    "category": "comics",
+    "type": "article",
+    "title": {
+      "vi": "Triết Lý Đạo Đức Trong Watchmen: Liệu Cứu Rỗi Nhân Loại Bằng Một Lời Nói Dối Có Chính Đáng?",
+      "en": "The Moral Philosophy of Watchmen: Can a Lie Truly Save Humankind?",
+      "hi": "वॉचमेन का नैतिक दर्शन: क्या एक झूठ इंसानियत को बचा सकता है?"
+    },
+    "shortDescription": {
+      "vi": "Phân tích cuộc xung đột giữa chủ nghĩa tuyệt đối của Rorschach và chủ nghĩa thực dụng của Ozymandias.",
+      "en": "Examining the ideological clash between Rorschach's uncompromising truth and Veidt's utilitarian salvation.",
+      "hi": "रॉर्शैक के सच और ओज़ीमैंडियास के दृष्टिकोण के बीच का गहरा टकराव।"
+    },
+    "body": {
+      "vi": "Alan Moore đã đặt ra một câu hỏi không có lời giải đáp dễ dàng: Khi hòa bình thế giới chỉ có thể đánh đổi bằng sinh mạng của hàng triệu người vô tội, ai có quyền đưa ra quyết định đó?",
+      "en": "Alan Moore left readers with an unyielding ethical dilemma: who watches the watchmen when catastrophe arrives?",
+      "hi": "एलन मूर की कालजयी रचना नैतिकता और शक्ति पर गहरे सवाल उठाती है।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1509281373149-e957c6296406?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1509281373149-e957c6296406?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "Watchmen",
+      "Alan Moore",
+      "Philosophy"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-25"
+  },
+  {
+    "id": "comics-audio-004",
+    "category": "comics",
+    "type": "audio",
+    "title": {
+      "vi": "Radio Truyện Tranh Đêm Khuya: Âm Hưởng U Tối Của Thành Phố Gotham & Kịch Truyền Thanh Batman",
+      "en": "Gotham Noir Radio: Dark Audio Drama & Gotham City Ambient Rain",
+      "hi": "गोथम नॉइर रेडियो: बैटमैन का डार्क ऑडियो ड्रामा"
+    },
+    "shortDescription": {
+      "vi": "Thưởng thức giọng đọc kịch tính cùng tiếng còi xe cảnh sát và mưa rơi rả rích trên nóc tòa nhà Wayne.",
+      "en": "Immersive voice acting and atmospheric rain-slicked noir soundscapes straight out of Crime Alley.",
+      "hi": "गोथम सिटी की बारिश और रहस्यों से भरी ऑडियो कहानी।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1509281373149-e957c6296406?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+    "subTags": [
+      "Audio Drama",
+      "Gotham Noir",
+      "Batman"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-22"
+  },
+  {
+    "id": "manga-video-005",
+    "category": "manga",
+    "type": "video",
+    "title": {
+      "vi": "One Piece Chapter 1100+: Hoạt Họa Fan Đỉnh Cao Trận Đại Chiến Đảo Egghead",
+      "en": "One Piece Chapter 1100+: Egghead Island Climax Fan Animation",
+      "hi": "वन पीस एगहेड आइलैंड महायुद्ध का एनीमेशन"
+    },
+    "shortDescription": {
+      "vi": "Cú đấm khổng lồ White Star Gun của Luffy đối đầu với Ngũ Lão Tinh làm rực sáng đại dương.",
+      "en": "Luffy's Gear 5 rubberizing the surrounding battlefield against the terrifying Five Elders.",
+      "hi": "लूफी के गियर 5 का एगहेड आइलैंड पर भव्य युद्ध।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.youtube.com/embed/AkgfQWq_Xz4",
+    "subTags": [
+      "One Piece",
+      "Egghead",
+      "Gear 5"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-24"
+  },
+  {
+    "id": "manga-video-006",
+    "category": "manga",
+    "type": "video",
+    "title": {
+      "vi": "Vinland Saga: Sự Thức Tỉnh Của Thorfinn 'Tôi Không Có Kẻ Thù Nào Cả' 4K",
+      "en": "Vinland Saga: Thorfinn's Awakening 'I Have No Enemies' 4K",
+      "hi": "विनलैंड सागा: थॉरफिन का आत्मज्ञान 'मेरा कोई दुश्मन नहीं है'"
+    },
+    "shortDescription": {
+      "vi": "Thời khắc triết học xúc động biến một chiến binh cuồng nộ thành người kiến tạo hòa bình vĩ đại.",
+      "en": "The profound spiritual metamorphosis of a vengeful Viking into an advocate for absolute nonviolence.",
+      "hi": "बदले की आग से शांति की ओर थॉरफिन की परिवर्तन यात्रा।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.youtube.com/embed/Q5yRzI0w_vE",
+    "subTags": [
+      "Vinland Saga",
+      "Thorfinn",
+      "Philosophy"
+    ],
+    "featured": false,
+    "dateAdded": "2026-09-23"
+  },
+  {
+    "id": "manga-gallery-005",
+    "category": "manga",
+    "type": "gallery",
+    "title": {
+      "vi": "Bộ Sưu Tập Trang Màu Gốc Tuyệt Bản Của Cố Họa Sĩ Akira Toriyama (Dragon Ball)",
+      "en": "Akira Toriyama Memorial Color Palette & Dragon Ball Art Gallery",
+      "hi": "अकीरा तोरियामा मेमोरियल ड्रैगन बॉल रंगीन कला संग्रह"
+    },
+    "shortDescription": {
+      "vi": "Những nét vẽ vui nhộn, phóng khoáng và tràn ngập tình yêu phiêu lưu làm say đắm tuổi thơ của cả hành tinh.",
+      "en": "Joyous, kinetic ink and marker illustrations celebrating the boundless wonder of Dragon Ball and Dr. Slump.",
+      "hi": "ड्रैगन बॉल के रचयिता अकीरा तोरियामा की कालजयी कलाकृतियां।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1563089145-599997674d42?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "Akira Toriyama",
+      "Dragon Ball",
+      "Memorial"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-22"
+  },
+  {
+    "id": "manga-gallery-006",
+    "category": "manga",
+    "type": "gallery",
+    "title": {
+      "vi": "Bộ Tranh Minh Họa JoJo's Bizarre Adventure Phong Cách Hội Họa Cổ Điển Ý",
+      "en": "JoJo's Bizarre Adventure Classical Italian Renaissance Art Gallery",
+      "hi": "जोजो बिज़ारे एडवेंचर पुनर्जागरण कला गैलरी"
+    },
+    "shortDescription": {
+      "vi": "Tác giả Hirohiko Araki kết hợp tư thế tạo dáng điêu khắc Michelangelo và thời trang cao cấp Gucci.",
+      "en": "Hirohiko Araki's fashion-forward anatomy drawing inspiration from Michelangelo statues and runway couture.",
+      "hi": "माइकलएंजेलो की मूर्तियों और हाई-फैशन से प्रेरित जोजो के चित्र।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "JoJo",
+      "Hirohiko Araki",
+      "Renaissance Art"
+    ],
+    "featured": false,
+    "dateAdded": "2026-09-21"
+  },
+  {
+    "id": "manga-article-007",
+    "category": "manga",
+    "type": "article",
+    "title": {
+      "vi": "Berserk & Kentaro Miura: Nỗi Đau, Sự Cứu Rỗi Và Ý Chí Sinh Tồn Bất Diệt Của Con Người",
+      "en": "Berserk & Kentaro Miura: Pain, Atonement, and the Indomitable Human Will",
+      "hi": "बर्ज़र्क और केनतारो मिउरा: दर्द, मुक्ति और मनुष्य की अदम्य इच्छाशक्ति"
+    },
+    "shortDescription": {
+      "vi": "Hành trình vượt lên định mệnh nghiệt ngã của Guts trong tác phẩm Dark Fantasy vĩ đại nhất lịch sử truyện tranh.",
+      "en": "How Guts's eternal struggle against causality mirrors the relentless resilience of the human spirit.",
+      "hi": "गट्स का भाग्य के खिलाफ संघर्ष और मानवीय जिजीविषा का चित्रण।"
+    },
+    "body": {
+      "vi": "Guts không có siêu năng lực thần thánh; anh chỉ là một con người bằng xương bằng thịt vung thanh đại đao nặng hơn cả bản thân để chống lại những thực thể tối cao.",
+      "en": "Guts possesses no divine blessings; he is mere mortal flesh and bone swinging iron against gods.",
+      "hi": "गट्स कोई भगवान नहीं, केवल एक इंसान है जो ईश्वर से भी लड़ जाता है।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "Berserk",
+      "Guts",
+      "Philosophy"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-25"
+  },
+  {
+    "id": "manga-audio-004",
+    "category": "manga",
+    "type": "audio",
+    "title": {
+      "vi": "Radio Đọc Truyện Manga: Bản Hùng Ca Của Những Kiếm Sĩ Lang Bạt Xứ Phù Tang",
+      "en": "Manga Tales Radio: The Meditative Odysseys of Wandering Samurai",
+      "hi": "मांगा टेल्स रेडियो: भटकते समुराई की कहानियां और बांसुरी संगीत"
+    },
+    "shortDescription": {
+      "vi": "Hòa mình vào tiếng sáo trúc Shakuhachi cổ và những câu chuyện kiếm đạo bất hủ từ Vagabond và Rurouni Kenshin.",
+      "en": "Traditional Shakuhachi bamboo flutes and introspective bushido narratives beneath cherry blossom trees.",
+      "hi": "पारंपरिक बांसुरी और समुराई दर्शन की सुंदर ऑडियो यात्रा।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+    "subTags": [
+      "Bushido",
+      "Samurai",
+      "Radio"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-23"
   }
 ]
