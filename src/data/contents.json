@@ -378,9 +378,9 @@
       "en": "Before 1986, the public perception of Batman was largely shaped by the campy tone of the 1960s TV series. But when Frank Miller published The Dark Knight Returns, the entire Western comics industry was shaken.\n\nThe work portrays a battered but resilient 55-year-old Bruce Wayne returning to don the cape in a Gotham City ravaged by violence. Its rapid-fire panels, gritty dialogue, and the historic ideological clash between Batman and Superman ushered the superhero comic genre into the Modern Age of Comics.",
       "hi": "1986 से पहले, बैटमैन की सार्वजनिक छवि काफी हद तक 1960 के दशक की टीवी सीरीज़ के हल्के-फुल्के अंदाज़ से प्रभावित थी। लेकिन जब फ्रैंक मिलर ने द डार्क नाइट रिटर्न्स प्रकाशित किया, तो पूरे पश्चिमी कॉमिक्स उद्योग में हलचल मच गई।\n\nयह कृति एक 55 वर्षीय, थके हुए लेकिन दृढ़ ब्रूस वेन को दर्शाती है, जो हिंसा से तबाह गोथम शहर में फिर से केप पहनकर लौटता है। इसके तेज़-तर्रार पैनल, कठोर संवाद, और बैटमैन व सुपरमैन के बीच ऐतिहासिक वैचारिक टकराव ने सुपरहीरो कॉमिक विधा को मॉडर्न एज ऑफ कॉमिक्स में प्रवेश कराया।"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1509281373149-e957c6296406?w=600&auto=format&fit=crop&q=80",
+    "thumbnail": "image/batman.jpg",
     "images": [
-      "https://images.unsplash.com/photo-1509281373149-e957c6296406?w=1000&auto=format&fit=crop&q=80"
+      "image/batman_1.jpg"
     ],
     "mediaUrl": null,
     "subTags": [
@@ -406,7 +406,7 @@
       "hi": "जस्टिस लीग के सुपरहीरो की दिव्य सुंदरता और भव्यता को दर्शाती अति-यथार्थवादी वॉटरकलर पेंटिंग्स।"
     },
     "body": null,
-    "thumbnail": "https://images.unsplash.com/photo-1604200213928-ba3cf4fc8436?w=600&auto=format&fit=crop&q=80",
+    "thumbnail": "image/fire.jpg",
     "images": [
       "https://images.unsplash.com/photo-1604200213928-ba3cf4fc8436?w=1200&auto=format&fit=crop&q=80",
       "https://images.unsplash.com/photo-1563245372-f21724e3856d?w=1200&auto=format&fit=crop&q=80"
@@ -439,9 +439,9 @@
       "en": "Manga and Webtoon are now two parallel pillars of the Asian comics world. While Manga celebrates the art of multi-angle paneling, sharp black-and-white ink contrast, and deep character expression, Webtoon is optimized for mobile touchscreens with an unlimited vertical-scroll layout.\n\nThis healthy competition gives readers an unprecedented wealth of choice, while pushing both cultures to constantly innovate how they deliver stories to young readers worldwide.",
       "hi": "मंगा और वेबटून अब एशियाई कॉमिक्स की दुनिया के दो समानांतर स्तंभ बन चुके हैं। जहां मंगा बहु-कोणीय पैनलिंग, स्याही के तीखे श्वेत-श्याम कंट्रास्ट और गहरी चरित्र अभिव्यक्ति की कला को महत्व देता है, वहीं वेबटून मोबाइल टचस्क्रीन के लिए असीमित वर्टिकल-स्क्रॉल लेआउट के साथ अनुकूलित है।\n\nयह स्वस्थ प्रतिस्पर्धा पाठकों को पहले कभी न मिली विविधता प्रदान करती है, साथ ही दोनों संस्कृतियों को दुनिया भर के युवा पाठकों तक कहानियां पहुंचाने के तरीकों में लगातार नवाचार करने के लिए प्रेरित करती है।"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?w=600&auto=format&fit=crop&q=80",
+    "thumbnail": "image/mahogara.jpg",
     "images": [
-      "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?w=1000&auto=format&fit=crop&q=80"
+      "image/monster.jpg"
     ],
     "mediaUrl": null,
     "subTags": [
@@ -471,10 +471,10 @@
       "hi": "तलवारबाज़ गट्स की महान डार्क फैंटेसी दुनिया में हर बारीक, भव्य और गहरे प्रभाव वाली स्याही रेखा।"
     },
     "body": null,
-    "thumbnail": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&auto=format&fit=crop&q=80",
+    "thumbnail": "image/beseark.jpg",
     "images": [
-      "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=1200&auto=format&fit=crop&q=80",
-      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1200&auto=format&fit=crop&q=80"
+      "image/beseark_1.jpg",
+      "image/beseark_2.jpg"
     ],
     "mediaUrl": null,
     "subTags": [

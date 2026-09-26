@@ -252,10 +252,10 @@ export default function Navbar() {
                 <span>{t('navbar.fandomUniverse')}</span>
               </button>
               <ul
-                className={`dropdown-menu dropdown-menu-dark border-0 shadow-lg rounded-4 py-2 ${isCategoriesOpen ? 'show' : ''}`}
+                className={`dropdown-menu border-0 shadow-lg rounded-4 py-2 ${isDark ? 'dropdown-menu-dark' : ''} ${isCategoriesOpen ? 'show' : ''}`}
                 style={{
-                  backgroundColor: '#12162a',
-                  border: '1px solid rgba(255,255,255,0.1)',
+                  backgroundColor: isDark ? '#12162a' : '#ffffff',
+                  border: isDark ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.08)',
                   textShadow: 'none',
                 }}
                 aria-labelledby="categoriesDropdown"
@@ -266,7 +266,7 @@ export default function Navbar() {
                       to={`/category/${cat.id}`}
                       className={`dropdown-item d-flex align-items-center gap-2 py-2 px-3 fv-category-dropdown-item fv-cat-${cat.id}`}
                       style={{
-                        color: '#cbd5e1',
+                        color: isDark ? '#cbd5e1' : '#1a1a2e',
                         fontWeight: 500,
                         textShadow: 'none',
                       }}
