@@ -2810,5 +2810,1045 @@
     ],
     "featured": false,
     "dateAdded": "2026-08-25"
+  },
+  {
+    "id": "gaming-video-004",
+    "category": "gaming",
+    "type": "video",
+    "title": {
+      "vi": "Chung Kết Đấu Trường Chân Lý CKTG: Khoảnh Khắc Lật Kèo 1 Máu Đăng Quang",
+      "en": "TFT World Championship Finals: Legendary 1-HP Comeback Victory",
+      "hi": "टीएफटी वर्ल्ड चैंपियनशिप फाइनल्स: 1-एचपी ऐतिहासिक वापसी"
+    },
+    "shortDescription": {
+      "vi": "Màn tái hiện pha đổi bài thần sầu và kích hoạt tộc hệ bậc cao đem về chức vô địch thế giới danh giá.",
+      "en": "Relive the high-IQ pivot and prismatic trait activation that secured the coveted world championship trophy.",
+      "hi": "उच्च स्तरीय गेमप्ले जिसने प्रतिष्ठित विश्व कप ट्रॉफी हासिल की।"
+    },
+    "body": {
+      "vi": "Trận chung kết kịch tính nhất lịch sử Đấu Trường Chân Lý khi tuyển thủ còn đúng 1 máu trước vòng đấu quyết định. Nhờ quyết định roll tướng chuẩn xác và sắp xếp đội hình khắc chế đối thủ, chiến thắng ngoạn mục đã làm bùng nổ cầu trường.",
+      "en": "The most dramatic finals in Teamfight Tactics history with the champion standing on just 1 HP before the final round.",
+      "hi": "टीएफटी इतिहास का सबसे रोमांचक फाइनल मुकाबला।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.youtube.com/embed/jZUkA5m-m2c",
+    "subTags": [
+      "TFT",
+      "eSports",
+      "Tournament"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-25"
+  },
+  {
+    "id": "gaming-video-005",
+    "category": "gaming",
+    "type": "video",
+    "title": {
+      "vi": "God of War Ragnarök: Trận Đại Chiến Kratos vs Thor Đỉnh Cao CGI",
+      "en": "God of War Ragnarök: Kratos vs Thor Epic Showdown Cinematic",
+      "hi": "गॉड ऑफ वॉर रैग्नारॉक: क्रेटोस बनाम थॉर महायुद्ध"
+    },
+    "shortDescription": {
+      "vi": "Tận hưởng trọn vẹn màn giao đấu giữa Thần Chiến Tranh Hy Lạp và Thần Sấm Bắc Âu với âm thanh sấm sét rền vang.",
+      "en": "Experience the thunderous clash between the Greek God of War and the Norse God of Thunder in full cinematic glory.",
+      "hi": "क्रेटोस और थॉर के बीच के जबरदस्त टकराव का पूरा सिनेमाई अनुभव।"
+    },
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.youtube.com/embed/hfJ4Km46A-0",
+    "subTags": [
+      "God of War",
+      "PlayStation",
+      "Cinematic"
+    ],
+    "featured": false,
+    "dateAdded": "2026-09-20"
+  },
+  {
+    "id": "gaming-video-006",
+    "category": "gaming",
+    "type": "video",
+    "title": {
+      "vi": "Genshin Impact: Trailer Đỉnh Cao Đại Kịch Trường Thủy Thần Furina",
+      "en": "Genshin Impact: Furina Opera Epiclese Epic Trailer",
+      "hi": "जेनशिन इम्पैक्ट: फूरीना एपिक ट्रेलर"
+    },
+    "shortDescription": {
+      "vi": "Màn trình diễn nghệ thuật sân khấu lộng lẫy và câu chuyện hy sinh 500 năm đầy xúc động của Thần Nước Fontaine.",
+      "en": "A gorgeous stage performance and the deeply touching 500-year sacrifice of the Hydro Archon in Fontaine.",
+      "hi": "फोंटेन के हाइड्रो आर्कन का 500 साल का दिल छू लेने वाला बलिदान।"
+    },
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.youtube.com/embed/TAlKhARUcoY",
+    "subTags": [
+      "Genshin Impact",
+      "Fontaine",
+      "Anime Game"
+    ],
+    "featured": false,
+    "dateAdded": "2026-09-17"
+  },
+  {
+    "id": "gaming-gallery-004",
+    "category": "gaming",
+    "type": "gallery",
+    "title": {
+      "vi": "Bộ Sưu Tập Concept Art Vũ Khí Thần Thoại & Áo Giáp Elden Ring 4K",
+      "en": "Elden Ring Mythic Weapons & Armors 4K Concept Art Collection",
+      "hi": "एल्डन रिंग पौराणिक हथियार और कवच 4K आर्ट संग्रह"
+    },
+    "shortDescription": {
+      "vi": "Tổng hợp các bản phác thảo chi tiết về Dark Moon Greatsword, Rivers of Blood và áo giáp kỵ sĩ hoàng gia.",
+      "en": "A collection of detailed conceptual sketches of iconic legendary armaments and royal armor sets.",
+      "hi": "प्रतिष्ठित हथियारों और शाही कवच के स्केच का संग्रह।"
+    },
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=1000&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "Elden Ring",
+      "Concept Art",
+      "Dark Fantasy"
+    ],
+    "featured": false,
+    "dateAdded": "2026-09-22"
+  },
+  {
+    "id": "gaming-gallery-005",
+    "category": "gaming",
+    "type": "gallery",
+    "title": {
+      "vi": "Góc Setup Gaming Room Đỉnh Cao Phong Cách Cyberpunk Neon & Mech",
+      "en": "Ultimate Cyberpunk Neon & Mech Battlestation Setups",
+      "hi": "अल्टीमेट साइबरपंक नियॉन गेमिंग रूम सेटअप"
+    },
+    "shortDescription": {
+      "vi": "Chiêm ngưỡng những góc làm việc và chơi game tuyệt đẹp kết hợp bàn phím custom, mô hình Gunpla và ánh sáng RGB.",
+      "en": "Admire stunning battlestations featuring custom mechanical keyboards, Gunpla models, and synchronized RGB.",
+      "hi": "कस्टम कीबोर्ड और आरजीबी लाइट वाले खूबसूरत गेमिंग सेटअप।"
+    },
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1000&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "Battlestation",
+      "Cyberpunk",
+      "RGB Tech"
+    ],
+    "featured": false,
+    "dateAdded": "2026-09-19"
+  },
+  {
+    "id": "gaming-gallery-006",
+    "category": "gaming",
+    "type": "gallery",
+    "title": {
+      "vi": "Bộ Ảnh Cosplay Jinx & Vi Thành Phố Zaun Đạt Giải Quán Quân Riot Games",
+      "en": "Champion Riot Games Cosplay: Jinx & Vi of Zaun Gallery",
+      "hi": "जिंक्स और वी ज़ाउन चैम्पियन कॉस्प्ले फोटो गैलरी"
+    },
+    "shortDescription": {
+      "vi": "Trang phục cosplay độ hoàn thiện thủ công cực cao với khẩu súng Fishbones phát sáng và găng tay Hextech khổng lồ.",
+      "en": "Masterpiece cosplay craftsmanship with illuminated Fishbones rocket and giant Hextech gauntlets.",
+      "hi": "रोशनी वाले फिशबोन्स और विशाल हेक्सटेक दस्ताने के साथ मास्टरपीस कॉस्प्ले।"
+    },
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1563089145-599997674d42?w=1000&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "Cosplay",
+      "Arcane",
+      "League of Legends"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-24"
+  },
+  {
+    "id": "gaming-article-006",
+    "category": "gaming",
+    "type": "article",
+    "title": {
+      "vi": "Chiến Thuật Macro & Tâm Lý Thi Đấu Đỉnh Cao: Bí Quyết Bất Bại Của Quỷ Vương Faker",
+      "en": "Macro Strategy & Championship Mindset: The Secret of Faker",
+      "hi": "मैक्रो रणनीति और मानसिकता: फेकर की अमर सफलता का राज़"
+    },
+    "shortDescription": {
+      "vi": "Phân tích cách Faker duy trì phong độ thống trị làng eSports hơn 12 năm và khả năng đọc bản đồ không ai sánh bằng.",
+      "en": "An in-depth study into how Faker maintained competitive dominance for over 12 years with unmatched map awareness.",
+      "hi": "फेकर के 12 साल से अधिक के दबदबे और नक्शे की समझ का विश्लेषण।"
+    },
+    "body": {
+      "vi": "Điều tạo nên sự khác biệt giữa Lee Sang-hyeok (Faker) và phần còn lại không chỉ là kỹ năng bấm phím nhanh như chớp, mà là tư duy chiến thuật toàn cục (Macro Vision). Dù đối thủ thay đổi qua từng thế hệ tuyển thủ trẻ tuổi, Faker vẫn luôn là linh hồn dẫn dắt T1 trong các thời khắc ngặt nghèo nhất.",
+      "en": "What sets Faker apart is not merely blinding APM, but vision and calm decision-making under intense pressure.",
+      "hi": "फेकर को असाधारण बनाने वाली बात दबाव में शांत निर्णय लेना है।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "Faker",
+      "eSports",
+      "Tactics"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-23"
+  },
+  {
+    "id": "gaming-article-007",
+    "category": "gaming",
+    "type": "article",
+    "title": {
+      "vi": "Giải Mã Thế Giới Lore Phức Tạp Trong Dark Souls & Elden Ring: Di Sản Của Hidetaka Miyazaki",
+      "en": "Deciphering the Lore of Dark Souls & Elden Ring: Miyazaki's Legacy",
+      "hi": "डार्क सोल्स और एल्डन रिंग की रहस्यमयी कहानी: मियाज़ाकी की विरासत"
+    },
+    "shortDescription": {
+      "vi": "Khám phá phong cách kể chuyện ngầm qua mô tả vật phẩm và kiến trúc cổ xưa làm say đắm hàng triệu game thủ.",
+      "en": "Unravel the environmental storytelling and cryptic item lore that define FromSoftware's masterpieces.",
+      "hi": "फ्रॉमसॉफ्टवेयर की उत्कृष्ट कृतियों की रहस्यमयी दुनिया को समझें।"
+    },
+    "body": {
+      "vi": "Hidetaka Miyazaki không bao giờ kể trực tiếp cho bạn nghe toàn bộ câu chuyện. Thay vào đó, ông rải rác từng mảnh ghép lịch sử qua từng thanh kiếm gãy, bia mộ đổ nát và lời thì thầm của các NPC cô độc. Cách tiếp cận này biến việc chơi game thành một chuyến khảo cổ học huyền bí.",
+      "en": "Miyazaki never feeds players the narrative directly; he turns exploration into an archaeological quest.",
+      "hi": "मियाज़ाकी कभी भी कहानी सीधे नहीं बताते, वे खोज को एक रोमांचक यात्रा बना देते हैं।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "Lore",
+      "FromSoftware",
+      "Game Design"
+    ],
+    "featured": false,
+    "dateAdded": "2026-09-16"
+  },
+  {
+    "id": "gaming-audio-003",
+    "category": "gaming",
+    "type": "audio",
+    "title": {
+      "vi": "Podcast FandomVerse #14: Bí Quyết Build Đội Hình Esport & Lộ Trình Lên Chuyên Nghiệp",
+      "en": "FandomVerse Podcast #14: Building Pro eSports Rosters & Career Paths",
+      "hi": "फैंडमवर्स पॉडकास्ट #14: प्रो ई-स्पोर्ट्स टीम और करियर"
+    },
+    "shortDescription": {
+      "vi": "Trò chuyện cùng các HLV hàng đầu về tuyển trạch tài năng trẻ, chế độ dinh dưỡng và bài tập phản xạ của game thủ.",
+      "en": "Chat with veteran coaches about scouting young talent, athlete nutrition, and pro reaction training.",
+      "hi": "युवा प्रतिभाओं और खिलाड़ियों के अभ्यास पर कोचों के साथ चर्चा।"
+    },
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+    "subTags": [
+      "Podcast",
+      "Pro Gaming",
+      "Career"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-24"
+  },
+  {
+    "id": "gaming-audio-004",
+    "category": "gaming",
+    "type": "audio",
+    "title": {
+      "vi": "Radio Đêm Khuya: Tổng Hợp Bản Nhạc Không Lời Tuyệt Sắc Trong The Witcher 3",
+      "en": "Late Night Radio: The Enchanting Acoustic Soundscapes of The Witcher 3",
+      "hi": "लेट नाइट रेडियो: द विचर 3 का जादुई संगीत"
+    },
+    "shortDescription": {
+      "vi": "Thư giãn cùng những giai điệu mandolin, sáo trúc Slavic và tiếng gió xào xạc trên đồng cỏ Velen.",
+      "en": "Relax with acoustic mandolins, Slavic flutes, and the rustling winds across Velen's marshes.",
+      "hi": "विचर 3 के मधुर संगीत के साथ सुकून भरे पल।"
+    },
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+    "subTags": [
+      "The Witcher",
+      "OST",
+      "Acoustic"
+    ],
+    "featured": false,
+    "dateAdded": "2026-09-21"
+  },
+  {
+    "id": "anime-video-004",
+    "category": "anime",
+    "type": "video",
+    "title": {
+      "vi": "Jujutsu Kaisen Season 2: Đại Chiến Shibuya & Hoạt Họa MAPPA Đỉnh Cao",
+      "en": "Jujutsu Kaisen Season 2: Shibuya Incident MAPPA Climax Trailer",
+      "hi": "जुजुत्सु कैसेन सीज़न 2: शिबुया इंसिडेंट क्लाइमेक्स"
+    },
+    "shortDescription": {
+      "vi": "Cắt cảnh đại chiến giữa Sukuna và Thần Tướng Ma Hư La với chuyển động camera 3D đột phá.",
+      "en": "Experience the explosive showdown between Sukuna and Mahoraga with boundary-pushing 3D camera sweeps.",
+      "hi": "सुकुना और माहोरागा के बीच का धमाकेदार मुकाबला।"
+    },
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.youtube.com/embed/PKHQu_Wkpt8",
+    "subTags": [
+      "Jujutsu Kaisen",
+      "MAPPA",
+      "Action"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-25"
+  },
+  {
+    "id": "anime-video-005",
+    "category": "anime",
+    "type": "video",
+    "title": {
+      "vi": "Chainsaw Man: Teaser Movie Reze Arc Đẫm Nước Mắt Và Bom Đạn",
+      "en": "Chainsaw Man: Reze Arc Theatrical Movie Teaser",
+      "hi": "चेनसो मैन: रेज़े आर्क मूवी टीज़र"
+    },
+    "shortDescription": {
+      "vi": "Mối tình đầu bão táp của Denji và nàng quỷ bom Reze sắp đổ bộ màn ảnh rộng trên toàn cầu.",
+      "en": "Denji's bittersweet romance and explosive clash with the Bomb Devil heading to theaters worldwide.",
+      "hi": "डेंजी और बॉम्ब डेविल के बीच की अनोखी कहानी सिनेमाघरों में।"
+    },
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.youtube.com/embed/v4yLeNt-kCU",
+    "subTags": [
+      "Chainsaw Man",
+      "Reze Arc",
+      "Anime Movie"
+    ],
+    "featured": false,
+    "dateAdded": "2026-09-22"
+  },
+  {
+    "id": "anime-gallery-004",
+    "category": "anime",
+    "type": "gallery",
+    "title": {
+      "vi": "Bộ Sưu Tập Hình Nền 4K Phong Cách Cyberpunk Anime & Neo-Tokyo",
+      "en": "Cyberpunk Anime & Neo-Tokyo 4K Wallpaper Collection",
+      "hi": "साइबरपंक एनीमे 4K वॉलपेपर संग्रह"
+    },
+    "shortDescription": {
+      "vi": "Những con phố ngập tràn ánh đèn neon tím hồng huyền ảo trong các tác phẩm khoa học viễn tưởng Nhật Bản.",
+      "en": "Neon-drenched cybernetic streetscapes and holographic cityscapes inspired by Japanese sci-fi.",
+      "hi": "जापानी विज्ञान-कथा पर आधारित खूबसूरत 4K वॉलपेपर।"
+    },
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=1000&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "Cyberpunk",
+      "Neo Tokyo",
+      "Wallpapers"
+    ],
+    "featured": false,
+    "dateAdded": "2026-09-23"
+  },
+  {
+    "id": "anime-gallery-005",
+    "category": "anime",
+    "type": "gallery",
+    "title": {
+      "vi": "Triển Lãm Tranh Màu Thủy Mặc Frieren & Bầu Trời Phương Bắc",
+      "en": "Frieren Water-Ink Art Exhibition: Skies of the Northern Lands",
+      "hi": "फ़्रीरेन वाटर-इंक आर्ट प्रदर्शनी"
+    },
+    "shortDescription": {
+      "vi": "Nét vẽ bồng bềnh thanh khiết tái hiện chuyến hành trình nghìn năm của nàng pháp sư trường sinh.",
+      "en": "Pristine watercolor illustrations capturing the thousand-year passage of time through the northern skies.",
+      "hi": "फ़्रीरेन की हजार साल की यात्रा के खूबसूरत चित्र।"
+    },
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "Frieren",
+      "Watercolor",
+      "Art"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-20"
+  },
+  {
+    "id": "anime-article-006",
+    "category": "anime",
+    "type": "article",
+    "title": {
+      "vi": "Giải Mã Cơn Sốt Frieren: Beyond Journey's End: Khi Nỗi Buồn Trở Thành Vẻ Đẹp Vĩnh Cửu",
+      "en": "Deconstructing Frieren: When Melancholy Transforms into Eternal Grace",
+      "hi": "फ़्रीरेन का डिकंस्ट्रक्शन: जब उदासी अमर सुंदरता बन जाती है"
+    },
+    "shortDescription": {
+      "vi": "Tại sao câu chuyện xảy ra sau khi đánh bại Trùm Cuối lại chạm đến trái tim của hàng triệu khán giả trưởng thành?",
+      "en": "Why an epilogue set after the defeat of the Demon King resonated deeply with adult audiences worldwide.",
+      "hi": "दानव राजा की हार के बाद की कहानी दुनिया भर में क्यों इतनी लोकप्रिय हुई।"
+    },
+    "body": {
+      "vi": "Hầu hết các bộ anime phiêu lưu đều kết thúc khi anh hùng đánh bại Ma Vương. Nhưng Frieren bắt đầu từ chính thời điểm đó. Tác phẩm đưa chúng ta vào một bài học thấm thía về thời gian: những điều tưởng chừng thoáng qua của kiếp người lại là những ký ức trân quý nhất trong cuộc đời dài vô tận của một tộc yêu tinh.",
+      "en": "Frieren turns the hero fantasy upside down by exploring what remains after peace has already been won.",
+      "hi": "फ़्रीरेन समय और यादों के महत्व पर एक गहरा दृष्टिकोण प्रस्तुत करती है।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "Frieren",
+      "Review",
+      "Philosophy"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-24"
+  },
+  {
+    "id": "anime-audio-003",
+    "category": "anime",
+    "type": "audio",
+    "title": {
+      "vi": "Podcast Anime Zone: Top 10 Màn Biến Hình Khiến Người Xem Nổi Da Gà Nhất Lịch Sử",
+      "en": "Anime Zone Podcast: Top 10 Transformations That Gave Us Chills",
+      "hi": "एनीमे ज़ोन पॉडकास्ट: टॉप 10 सबसे रोंगटे खड़े कर देने वाले ट्रांसफॉर्मेशन"
+    },
+    "shortDescription": {
+      "vi": "Từ Goku Super Saiyan, Luffy Gear 5 đến Gon Berserk — điểm lại những thời khắc vỡ òa cảm xúc.",
+      "en": "From Super Saiyan to Gear 5 and Gon's dark rage — celebrating anime's most unforgettable milestones.",
+      "hi": "सुपर सायान से लेकर गियर 5 तक एनीमे के यादगार पलों की चर्चा।"
+    },
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+    "subTags": [
+      "Podcast",
+      "Shounen",
+      "Hype"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-21"
+  },
+  {
+    "id": "anime-audio-004",
+    "category": "anime",
+    "type": "audio",
+    "title": {
+      "vi": "Giao Hưởng Anime OST: Những Bản Nhạc Không Lời Làm Rơi Nước Mắt Của Hiroyuki Sawano",
+      "en": "Anime Symphonic OST: Hiroyuki Sawano's Emotionally Resonant Masterpieces",
+      "hi": "एनीमे सिम्फोनिक ओएसटी: हिरोयुकी सवानो के मास्टरपीस"
+    },
+    "shortDescription": {
+      "vi": "Lắng nghe những giai điệu piano và dàn nhạc hoành tráng trong Attack on Titan và Solo Leveling.",
+      "en": "Immerse in grand orchestral strings and sweeping brass themes that power Attack on Titan and beyond.",
+      "hi": "अटैक ऑन टाइटन के प्रेरणादायक संगीत का अनुभव करें।"
+    },
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+    "subTags": [
+      "Hiroyuki Sawano",
+      "Orchestra",
+      "Soundtrack"
+    ],
+    "featured": false,
+    "dateAdded": "2026-09-19"
+  },
+  {
+    "id": "movies-video-004",
+    "category": "movies",
+    "type": "video",
+    "title": {
+      "vi": "Dune: Part Two — Phân Cảnh Cưỡi Rồng Cát Shai-Hulud Chấn Động Rạp Phim",
+      "en": "Dune: Part Two — Paul Atreides Rides Shai-Hulud IMAX Scene",
+      "hi": "ड्यून 2: पॉल एट्रिड्स की रेत के विशाल कीड़े की सवारी का दृश्य"
+    },
+    "shortDescription": {
+      "vi": "Phân cảnh quay bằng máy quay IMAX với thiết kế âm thanh sub-bass rung chuyển ghế ngồi rạp chiếu.",
+      "en": "Captured in true 70mm IMAX with seat-rattling sub-bass sound design and sweeping camera choreography.",
+      "hi": "आईमैक्स में फिल्माया गया ड्यून 2 का सबसे भव्य दृश्य।"
+    },
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.youtube.com/embed/Way9Dexny3w",
+    "subTags": [
+      "Dune",
+      "IMAX",
+      "Sci-Fi"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-24"
+  },
+  {
+    "id": "movies-gallery-004",
+    "category": "movies",
+    "type": "gallery",
+    "title": {
+      "vi": "Bộ Sưu Tập Poster Điện Ảnh Tối Giản (Minimalist Art) Của Các Bom Tấn Thế Kỷ",
+      "en": "Minimalist Cinema Poster Collection: Masterpieces of the Century",
+      "hi": "मिनिमलिस्ट सिनेमा पोस्टर संग्रह: सदी की उत्कृष्ट कृतियां"
+    },
+    "shortDescription": {
+      "vi": "Những tấm poster thiết kế biểu tượng cho Interstellar, Inception, Blade Runner 2049 và The Dark Knight.",
+      "en": "Iconic graphic designs celebrating the vision of Nolan, Villeneuve, and legendary auteurs.",
+      "hi": "इंटरस्टेलर, इनसेप्शन और द डार्क नाइट के प्रसिद्ध पोस्टर।"
+    },
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1000&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "Posters",
+      "Graphic Design",
+      "Cinema Art"
+    ],
+    "featured": false,
+    "dateAdded": "2026-09-21"
+  },
+  {
+    "id": "movies-article-006",
+    "category": "movies",
+    "type": "article",
+    "title": {
+      "vi": "Nghệ Thuật Kỹ Xảo Thực Tế Trong Kỷ Nguyên CGI: Cuộc Đấu Tranh Cho Bản Sắc Điện Ảnh",
+      "en": "Practical Effects vs. CGI: The Struggle for Cinema's Tangible Soul",
+      "hi": "प्रैक्टिकल इफेक्ट्स बनाम सीजीआई: सिनेमा की आत्मा की खोज"
+    },
+    "shortDescription": {
+      "vi": "Tại sao các đạo diễn như Christopher Nolan và Tom Cruise luôn kiên định chọn cảnh quay thật thay vì phông xanh?",
+      "en": "Why auteurs like Christopher Nolan and Tom Cruise stubbornly champion physical stunts over greenscreens.",
+      "hi": "क्रिस्टोफर नोलन और टॉम क्रूज़ असली स्टंट क्यों पसंद करते हैं।"
+    },
+    "body": {
+      "vi": "Trong thời đại mà mọi kỳ quan có thể tạo ra bằng vài cú click chuột trên máy tính, cảm giác chạm vào thực tế vẫn mang lại sức nặng không thể thay thế trên màn ảnh rộng.",
+      "en": "The tactile weight of genuine film celluloid and real physical explosions cannot be completely emulated in software.",
+      "hi": "असली स्टंट्स और वास्तविक फिल्म का प्रभाव हमेशा अनूठा होता है।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "CGI",
+      "Practical FX",
+      "Hollywood"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-25"
+  },
+  {
+    "id": "movies-audio-003",
+    "category": "movies",
+    "type": "audio",
+    "title": {
+      "vi": "Podcast Cinema Deep-Dive: Phân Tích Kỹ Xảo Âm Thanh Hans Zimmer",
+      "en": "Cinema Deep-Dive: Analyzing Hans Zimmer's Groundbreaking Sound Design",
+      "hi": "सिनेमा डीप-डाइव: हैंस ज़िमर का क्रांतिकारी साउंड डिज़ाइन"
+    },
+    "shortDescription": {
+      "vi": "Khám phá bí mật đằng sau tiếng đồng hồ tích tắc trong Dunkirk và tiếng đàn organ khổng lồ của Interstellar.",
+      "en": "Uncover the sheer genius behind the ticking pocket watch in Dunkirk and the church organ in Interstellar.",
+      "hi": "डंकर्क और इंटरस्टेलर के प्रतिष्ठित संगीत के पीछे के राज़।"
+    },
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+    "subTags": [
+      "Hans Zimmer",
+      "Soundtrack",
+      "Film Score"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-20"
+  },
+  {
+    "id": "tvshows-video-004",
+    "category": "tvshows",
+    "type": "video",
+    "title": {
+      "vi": "House of the Dragon Season 2: Đại Chiến Không Gian Lửa Rook's Rest 4K",
+      "en": "House of the Dragon S2: Battle at Rook's Rest Dragon Clash",
+      "hi": "हाउस ऑफ द ड्रैगन सीज़न 2: रूक्स रेस्ट पर ड्रैगन की जंग"
+    },
+    "shortDescription": {
+      "vi": "Trận thư hùng nghẹt thở giữa Sunfyre, Vhagar và Meleys trên bầu trời biển đỏ của Westeros.",
+      "en": "The devastating clash between Sunfyre, Vhagar, and Meleys burning the skies over Westeros.",
+      "hi": "वेस्टरोस के आसमान में ड्रैगन्स की भयानक टक्कर।"
+    },
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.youtube.com/embed/DotnJ7tTA34",
+    "subTags": [
+      "House of the Dragon",
+      "HBO",
+      "Dragons"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-24"
+  },
+  {
+    "id": "tvshows-gallery-004",
+    "category": "tvshows",
+    "type": "gallery",
+    "title": {
+      "vi": "Bộ Ảnh Nghệ Thuật Gia Tộc Targaryen: Vương Miện, Áo Giáp & Trứng Rồng 4K",
+      "en": "House Targaryen Royal Heritage: Crowns, Dragon Eggs & Armor",
+      "hi": "टार्गेरियन शाही विरासत: मुकुट, ड्रैगन के अंडे और कवच"
+    },
+    "shortDescription": {
+      "vi": "Chiêm ngưỡng những món cổ vật hoàng gia được chạm khắc tinh xảo từ vương triều Chinh Phạt Valyria.",
+      "en": "Intricate high-resolution photography of royal Valyrian steel regalia and fossilized dragon eggs.",
+      "hi": "वालिरियन स्टील और ड्रैगन के अंडों के खूबसूरत चित्र।"
+    },
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1514539079130-25950c84af65?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1514539079130-25950c84af65?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "Targaryen",
+      "Game of Thrones",
+      "Valyria"
+    ],
+    "featured": false,
+    "dateAdded": "2026-09-22"
+  },
+  {
+    "id": "tvshows-article-006",
+    "category": "tvshows",
+    "type": "article",
+    "title": {
+      "vi": "Vũ Điệu Của Bầy Rồng: Bi Kịch Của Lòng Tham Quyền Lực Trong Gia Tộc Targaryen",
+      "en": "Dance of the Dragons: The Tragedy of Power in House Targaryen",
+      "hi": "ड्रैगन्स का नृत्य: सत्ता की लालच में टार्गेरियन परिवार का पतन"
+    },
+    "shortDescription": {
+      "vi": "Phân tích các tầng nấc chính trị và sự rạn nứt giữa phe Lục (Greens) và phe Đen (Blacks) dẫn đến tuyệt chủng loài rồng.",
+      "en": "A deep political breakdown of how internal factional rivalry extinguished the greatest beasts in Westeros.",
+      "hi": "वेस्टरोस में ड्रैगन्स के विलुप्त होने की राजनीतिक वजहों का विश्लेषण।"
+    },
+    "body": {
+      "vi": "Không có kẻ thù nào ở Essos hay phương Bắc có thể lật đổ được Gia tộc Rồng. Kẻ duy nhất có thể tiêu diệt một con rồng chính là một con rồng khác. Cuộc nội chiến vương quyền tàn khốc là lời cảnh tỉnh muôn thuở về lòng tham quyền lực không đáy.",
+      "en": "No exterior enemy could vanquish the Dragonlords; only dragons could destroy dragons.",
+      "hi": "टार्गेरियन परिवार को केवल वे खुद ही खत्म कर सकते थे।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1514539079130-25950c84af65?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1514539079130-25950c84af65?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "Targaryen",
+      "Analysis",
+      "Westeros"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-23"
+  },
+  {
+    "id": "tvshows-audio-003",
+    "category": "tvshows",
+    "type": "audio",
+    "title": {
+      "vi": "Podcast Westeros Lore: Nguồn Gốc Của Lời Tiên Tri Khúc Ca Băng Và Lửa",
+      "en": "Westeros Lorecast: The Secret Origins of the Song of Ice and Fire",
+      "hi": "वेस्टरोस लोरकास्ट: बर्फ और आग के गीत की भविष्यवाणी का रहस्य"
+    },
+    "shortDescription": {
+      "vi": "Bàn luận về giấc mơ của Aegon Chinh Phạt và thanh đoản kiếm thép Valyrian mang dòng chữ khắc định mệnh.",
+      "en": "Discussing Aegon the Conqueror's prophecy etched into the catspaw blade and the impending long night.",
+      "hi": "एजेगन की भविष्यवाणी और कैट्सपॉ खंजर के रहस्य पर चर्चा।"
+    },
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1514539079130-25950c84af65?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+    "subTags": [
+      "Aegon",
+      "Prophecy",
+      "Podcast"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-21"
+  },
+  {
+    "id": "kpop-video-004",
+    "category": "kpop",
+    "type": "video",
+    "title": {
+      "vi": "NewJeans Supernatural 4K Live Stage: Đỉnh Cao Thần Thái Y2K Năng Động",
+      "en": "NewJeans Supernatural 4K Live Stage: Peak Y2K Charisma",
+      "hi": "न्यूजीन्स सुपरनेचुरल 4K लाइव स्टेज: शानदार प्रदर्शन"
+    },
+    "shortDescription": {
+      "vi": "Màn vũ đạo New Jack Swing điêu luyện kết hợp phong cách thời trang đường phố Tokyo sôi động.",
+      "en": "Effortless New Jack Swing footwork and vibrant Tokyo streetstyle from the trendsetting quintet.",
+      "hi": "न्यूजीन्स का नया जैक स्विंग डांस और टोक्यो स्टाइल।"
+    },
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.youtube.com/embed/ArmDp-zijuc",
+    "subTags": [
+      "NewJeans",
+      "Y2K",
+      "Live Stage"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-24"
+  },
+  {
+    "id": "kpop-gallery-004",
+    "category": "kpop",
+    "type": "gallery",
+    "title": {
+      "vi": "Bộ Ảnh Concept Album Armageddon aespa: Kỷ Nguyên Siêu Thực Tương Lai",
+      "en": "aespa Armageddon Concept Gallery: Cyber-Futuristic Royalty",
+      "hi": "एस्पा आर्मगेडन कॉन्सेप्ट गैलरी: साइबर-फ्यूचरिस्टिक दृश्य"
+    },
+    "shortDescription": {
+      "vi": "Tạo hình mắt đổi màu khoa học viễn tưởng và trang phục thiết kế kim loại vị lai gây bão toàn cầu.",
+      "en": "Extraordinary avant-garde cyber styling, glowing irises, and biomechanical accents.",
+      "hi": "साइबर स्टाइल और आकर्षक परिधानों में एस्पा का नया रूप।"
+    },
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "aespa",
+      "Armageddon",
+      "Cyber Concept"
+    ],
+    "featured": false,
+    "dateAdded": "2026-09-21"
+  },
+  {
+    "id": "kpop-article-006",
+    "category": "kpop",
+    "type": "article",
+    "title": {
+      "vi": "Sự Trỗi Dậy Của Thế Hệ K-Pop Gen 5: Công Nghệ, Visual Thực Tế Ảo Và Toàn Cầu Hóa",
+      "en": "The Rise of 5th Gen K-Pop: Technology, Virtual Idols & Global Sound",
+      "hi": "5वीं पीढ़ी का के-पॉप: तकनीक, वर्चुअल आइडल और वैश्विक संगीत"
+    },
+    "shortDescription": {
+      "vi": "Phân tích cách các nhóm nhạc thần tượng thế hệ mới định hình lại văn hóa nghe nhìn và vượt qua ranh giới quốc gia.",
+      "en": "How the latest generation is reshaping pop culture, streaming mechanics, and the boundaries of idol music.",
+      "hi": "नई पीढ़ी के संगीत और संस्कृति पर गहरा प्रभाव।"
+    },
+    "body": {
+      "vi": "K-Pop ngày nay không chỉ dừng lại ở các video ca nhạc truyền thống. Đó là một hệ sinh thái văn hóa đa phương tiện kết hợp giữa công nghệ AI, sân khấu tương tác đa chiều và cộng đồng người hâm mộ gắn kết toàn cầu.",
+      "en": "K-Pop has transformed into a multimedia transmedia universe connecting fans across continents.",
+      "hi": "के-पॉप अब सीमाओं से परे एक वैश्विक संगीत क्रांति बन चुका है।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "K-Pop Gen 5",
+      "Analysis",
+      "Music Trends"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-25"
+  },
+  {
+    "id": "kpop-audio-003",
+    "category": "kpop",
+    "type": "audio",
+    "title": {
+      "vi": "Radio K-Pop Đêm Khuya: Tuyển Tập 10 Bài Hát B-Side Êm Dịu Tuyệt Đỉnh",
+      "en": "Late Night K-Pop Radio: Top 10 Soul-Soothing B-Side Gems",
+      "hi": "लेट नाइट के-पॉप रेडियो: 10 सबसे मधुर और सुकून देने वाले गाने"
+    },
+    "shortDescription": {
+      "vi": "Thư giãn cùng giọng hát mộc mạc và tiếng guitar rải êm ái từ IU, BTS, Taeyeon và Baekhyun.",
+      "en": "Unwind with acoustic confessions and intimate vocal performances from Korea's finest vocalists.",
+      "hi": "आईयू और बीटीएस के सुकून भरे गानों के साथ आराम करें।"
+    },
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
+    "subTags": [
+      "Radio",
+      "Acoustic",
+      "IU"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-22"
+  },
+  {
+    "id": "comics-video-004",
+    "category": "comics",
+    "type": "video",
+    "title": {
+      "vi": "Spider-Man: Beyond the Spider-Verse Clip Hoạt Họa Phong Cách Đa Chiều Độc Đáo",
+      "en": "Beyond the Spider-Verse Multi-Style Animation Showcase",
+      "hi": "स्पाइडर-मैन बियॉन्ड द स्पाइडर-वर्स मल्टी-स्टाइल एनीमेशन"
+    },
+    "shortDescription": {
+      "vi": "Chiêm ngưỡng sự kết hợp ngoạn mục giữa màu nước Spider-Gwen, bút lông Spider-Punk và truyện tranh thập niên 60.",
+      "en": "Witness the mind-bending collision of watercolor Gwen, punk collage Hobie, and vintage ink dot printing.",
+      "hi": "स्पाइडर-मैन एनीमेशन का अनूठा और रंगीन प्रदर्शन।"
+    },
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1604200213928-ba3cf4fc8436?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.youtube.com/embed/cqGjhVJWtEg",
+    "subTags": [
+      "Spider-Man",
+      "Sony Animation",
+      "Spider-Verse"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-25"
+  },
+  {
+    "id": "comics-gallery-004",
+    "category": "comics",
+    "type": "gallery",
+    "title": {
+      "vi": "Bộ Tranh Bìa Biến Thể (Variant Covers) Đắt Giá Nhất Lịch Sử Marvel & DC",
+      "en": "Most Coveted Marvel & DC Variant Covers Collector Gallery",
+      "hi": "मार्वल और डीसी के सबसे महंगे वेरिएंट कवर्स की गैलरी"
+    },
+    "shortDescription": {
+      "vi": "Những bìa truyện cực hiếm được vẽ bởi Todd McFarlane, Alex Ross và Jim Lee với giá trị hàng triệu đô.",
+      "en": "Ultra-rare covers illustrated by Todd McFarlane, Alex Ross, and Jim Lee that fetch fortunes at auction.",
+      "hi": "टॉड मैकफार्लेन और एलेक्स रॉस द्वारा चित्रित दुर्लभ कॉमिक कवर्स।"
+    },
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1563089145-599997674d42?w=1000&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1509281373149-e957c6296406?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "Variant Cover",
+      "Alex Ross",
+      "Collector"
+    ],
+    "featured": false,
+    "dateAdded": "2026-09-20"
+  },
+  {
+    "id": "comics-article-006",
+    "category": "comics",
+    "type": "article",
+    "title": {
+      "vi": "Tại Sao Batman: The Dark Knight Returns Của Frank Miller Vẫn Là Kiệt Tác Không Thể Thay Thế",
+      "en": "Why Frank Miller's The Dark Knight Returns Remains an Untouchable Masterpiece",
+      "hi": "फ्रैंक मिलर की द डार्क नाइट रिटर्न्स आज भी एक महान कृति क्यों है"
+    },
+    "shortDescription": {
+      "vi": "Cú hích năm 1986 đã thay đổi mãi mãi cách nhân loại nhìn nhận siêu anh hùng từ một hình tượng trẻ con thành văn học trưởng thành.",
+      "en": "The 1986 landmark that forever transformed comic books from children's pulp into literary graphic masterpieces.",
+      "hi": "1986 की ऐतिहासिक कॉमिक जिसने सुपरहीरो कहानियों को परिपक्व साहित्य में बदल दिया।"
+    },
+    "body": {
+      "vi": "Khi Frank Miller giới thiệu một Bruce Wayne 55 tuổi già nua, đầy vết sẹo nhưng kiên cường bước ra khỏi bóng tối, định kiến rằng truyện tranh chỉ dành cho trẻ em đã vĩnh viễn bị phá hủy.",
+      "en": "Frank Miller's grizzled 55-year-old Bruce Wayne shattered the misconception that comics were childish fare.",
+      "hi": "फ्रैंक मिलर के 55 वर्षीय ब्रूस वेन ने कॉमिक्स की दुनिया को हमेशा के लिए बदल दिया।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1509281373149-e957c6296406?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1509281373149-e957c6296406?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "Batman",
+      "Frank Miller",
+      "Graphic Novel"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-24"
+  },
+  {
+    "id": "comics-audio-003",
+    "category": "comics",
+    "type": "audio",
+    "title": {
+      "vi": "Podcast Comic Book Vault: So Sánh Vũ Trụ Ultimate Marvel Mới Và Thập Niên 2000",
+      "en": "Comic Book Vault Podcast: Comparing the New Ultimate Universe to 2000s Original",
+      "hi": "कॉमिक बुक वॉल्ट पॉडकास्ट: नए और पुराने अल्टीमेट मार्वल यूनिवर्स की तुलना"
+    },
+    "shortDescription": {
+      "vi": "Phân tích tài nghệ của Jonathan Hickman khi tái thiết lập Spider-Man Peter Parker làm cha ở tuổi trung niên.",
+      "en": "Dissecting Jonathan Hickman's bold reimagining of an adult family-man Peter Parker in Ultimate Spider-Man.",
+      "hi": "अल्टीमेट स्पाइडर-मैन में जोनाथन हिकमैन के नए दृष्टिकोण का विश्लेषण।"
+    },
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1604200213928-ba3cf4fc8436?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
+    "subTags": [
+      "Ultimate Marvel",
+      "Hickman",
+      "Podcast"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-21"
+  },
+  {
+    "id": "manga-video-004",
+    "category": "manga",
+    "type": "video",
+    "title": {
+      "vi": "Quá Trình Vẽ Mực Lông Thủ Công Của Họa Sĩ Takehiko Inoue Dành Cho Vagabond",
+      "en": "Takehiko Inoue's Traditional Ink Brush Drawing Process for Vagabond",
+      "hi": "ताकेहिको इनोउए की पारंपरिक स्याही और ब्रश से वागाबॉन्ड बनाने की प्रक्रिया"
+    },
+    "shortDescription": {
+      "vi": "Tận mắt chiêm ngưỡng từng nét cọ phóng khoáng và thần thái kiếm đạo thiền định của Miyamoto Musashi.",
+      "en": "Witness the breathless mastery of sumi-e brushstrokes capturing Musashi's meditative zen swordsmanship.",
+      "hi": "मियामोतो मुसाशी की तलवारबाजी और चित्रकला का जादुई संगम।"
+    },
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.youtube.com/embed/nLRL_N661LM",
+    "subTags": [
+      "Vagabond",
+      "Takehiko Inoue",
+      "Manga Craft"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-25"
+  },
+  {
+    "id": "manga-gallery-004",
+    "category": "manga",
+    "type": "gallery",
+    "title": {
+      "vi": "Bộ Sưu Tập Trang Đôi Bất Hủ (Double Spread Pages) Trong Berserk Của Kentaro Miura",
+      "en": "Immortal Double Spread Pages of Berserk by Kentaro Miura",
+      "hi": "केनतारो मिउरा द्वारा बर्ज़र्क के अमर डबल स्प्रेड पन्नों का संग्रह"
+    },
+    "shortDescription": {
+      "vi": "Những khung tranh vẽ chi tiết đến từng chiếc vảy quái vật và hàng ngàn binh lính trong thế giới Dark Fantasy.",
+      "en": "Awe-inspiring ink detail rendering monstrous apostles and sprawling medieval armies in dark fantasy.",
+      "hi": "डार्क फैंटेसी की दुनिया के सबसे विस्तृत और भव्य चित्र।"
+    },
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "Berserk",
+      "Kentaro Miura",
+      "Masterpiece"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-22"
+  },
+  {
+    "id": "manga-article-006",
+    "category": "manga",
+    "type": "article",
+    "title": {
+      "vi": "Nghệ Thuật Bố Cục Khung Tranh (Paneling) Trong Manga: Bí Mật Dẫn Dắt Nhịp Điệu Cảm Xúc",
+      "en": "The Art of Manga Paneling: The Silent Rhythm Behind Master Storytellers",
+      "hi": "मांगा पैनेलिंग की कला: कहानी कहने की मौन लय"
+    },
+    "shortDescription": {
+      "vi": "Khám phá cách các mangaka Nhật Bản dẫn dắt ánh nhìn của người đọc từ phải sang trái một cách tự nhiên và cuốn hút.",
+      "en": "How legendary mangaka orchestrate the reader's eye flow across panels with dramatic speedlines and gutters.",
+      "hi": "जापानी मांगा कलाकार पाठकों का ध्यान कैसे आकर्षित करते हैं।"
+    },
+    "body": {
+      "vi": "Trong manga, khoảng trắng giữa hai khung tranh (gutter) không hề trống rỗng; đó là nơi trí tưởng tượng của độc giả tự lấp đầy chuyển động và tiếng vang của nhân vật.",
+      "en": "In manga, the space between panels is where the reader's own imagination animates the story.",
+      "hi": "मांगा में दो पैनलों के बीच की जगह पाठक की कल्पना को जीवंत करती है।"
+    },
+    "thumbnail": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=1000&auto=format&fit=crop&q=80"
+    ],
+    "mediaUrl": null,
+    "subTags": [
+      "Manga Paneling",
+      "Craft",
+      "Storytelling"
+    ],
+    "featured": false,
+    "dateAdded": "2026-09-24"
+  },
+  {
+    "id": "manga-audio-003",
+    "category": "manga",
+    "type": "audio",
+    "title": {
+      "vi": "Podcast Manga Cafe: Bàn Về Các Tác Phẩm Seinen Chiều Sâu Triết Học U Tối",
+      "en": "Manga Cafe Podcast: Exploring Existential Themes in Philosophical Seinen",
+      "hi": "मांगा कैफे पॉडकास्ट: दार्शनिक सीनेन मांगा के गहरे विषयों पर चर्चा"
+    },
+    "shortDescription": {
+      "vi": "Phân tích thông điệp hiện sinh trong Monster của Naoki Urasawa, Vinland Saga và Goodnight Punpun.",
+      "en": "Analyzing existential morality in Naoki Urasawa's Monster, Vinland Saga, and Asano's Goodnight Punpun.",
+      "hi": "मॉन्स्टर और विनलैंड सागा में दार्शनिक संदेशों का विश्लेषण।"
+    },
+    "body": null,
+    "thumbnail": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&auto=format&fit=crop&q=80",
+    "images": [],
+    "mediaUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+    "subTags": [
+      "Seinen",
+      "Philosophy",
+      "Podcast"
+    ],
+    "featured": true,
+    "dateAdded": "2026-09-20"
   }
 ]

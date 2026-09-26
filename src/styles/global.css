@@ -784,7 +784,7 @@ nav.fv-navbar.fv-navbar-transparent .navbar-nav > .nav-item > .nav-link:hover,
 
 
 /* Mobile navbar dropdown: sleek search-only bar container */
-@media (max-width: 991px) {
+@media (max-width: 1399px) {
   .fv-navbar .navbar-collapse.show,
   .fv-navbar .navbar-collapse.collapsing {
     background: #0f1325 !important;
@@ -2824,7 +2824,7 @@ button.fv-lang-btn:hover,
    ========================================================================== */
 
 /* Main content & Footer padding to prevent Bottom Nav overlay */
-@media (max-width: 991px) {
+@media (max-width: 1399px) {
   .main-content {
     padding-bottom: calc(70px + env(safe-area-inset-bottom, 0px));
   }
@@ -3225,8 +3225,9 @@ button.fv-lang-btn:hover,
   border-bottom-left-radius: 2px !important;
 }
 
-/* Mobile Responsive Compact */
-@media (max-width: 768px) {
+/* Mobile Responsive Compact (matches the navbar's xxl collapse breakpoint,
+   so the chat launcher always clears the bottom nav bar while it's visible) */
+@media (max-width: 1399px) {
   .fv-chatbot-launcher {
     bottom: calc(82px + env(safe-area-inset-bottom, 0px)) !important;
     right: 12px !important;
@@ -3242,7 +3243,7 @@ button.fv-lang-btn:hover,
   .fv-chatbot-window {
     width: min(340px, calc(100vw - 20px)) !important;
     height: min(420px, calc(100vh - 145px)) !important;
-    bottom: calc(68px + env(safe-area-inset-bottom, 0px)) !important;
+    bottom: calc(82px + env(safe-area-inset-bottom, 0px)) !important;
     right: 10px !important;
     left: auto !important;
     margin: 0 !important;
@@ -5532,5 +5533,41 @@ button.fv-lang-btn:hover,
   color: #fff;
 }
 
+/* ==========================================================================
+   CHARACTERS SHOWCASE — BALANCED 5-COLUMN GRID (2 ROWS OF 5)
+   ========================================================================== */
+.fv-characters-5col-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1.25rem;
+}
 
+.fv-character-5col-item {
+  width: 100%;
+  display: flex;
+}
 
+.fv-character-5col-item .fv-character-card {
+  width: 100%;
+}
+
+@media (max-width: 1199px) {
+  .fv-characters-5col-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .fv-characters-5col-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .fv-characters-5col-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+}

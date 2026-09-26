@@ -593,7 +593,7 @@ export default function CategoryHub() {
                 className="badge rounded-pill px-2.5 py-1 text-white small fw-bold d-inline-flex align-items-center gap-1.5"
                 style={{ background: '#00b894', boxShadow: '0 4px 12px rgba(0, 184, 148, 0.3)' }}
               >
-                <i className="bi bi-people-fill"></i> {filteredCharacters.length} {isVi ? 'Nhân Vật' : 'Characters'}
+                <i className="bi bi-people-fill"></i> {Math.min(filteredCharacters.length, 10)} {isVi ? 'Nhân Vật' : 'Characters'}
               </span>
               <h3 className={`font-heading fw-bold mb-0 fs-5 ${isDark ? 'text-white' : 'text-dark'}`}>
                 {isVi ? 'Nhân Vật Tiêu Biểu' : 'Featured Characters'} ({categoryInfo.label})
@@ -615,9 +615,9 @@ export default function CategoryHub() {
               </div>
             )}
           </div>
-          <div className="row g-2 g-md-4">
-            {filteredCharacters.map((char) => (
-              <div key={char.id} className="col-xl-2 col-lg-3 col-md-4 col-6">
+          <div className="fv-characters-5col-grid">
+            {filteredCharacters.slice(0, 10).map((char) => (
+              <div key={char.id} className="fv-character-5col-item">
                 <CharacterCard character={char} />
               </div>
             ))}
