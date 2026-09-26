@@ -1,6 +1,8 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useCategoryData } from '../hooks/useCategoryData.js';
+import { useLanguage } from '../context/LanguageContext.jsx';
 import { dataService } from '../services/dataService.js';
 import ContentCard from '../components/cards/ContentCard.jsx';
 import CharacterCard from '../components/cards/CharacterCard.jsx';
@@ -28,11 +30,41 @@ function isRecentlyAdded(dateStr, days = 21) {
 }
 
 export default function CategoryHub() {
+  const { t } = useTranslation();
+  const { language } = useLanguage();
   const { categoryId } = useParams();
   const { categoryInfo, contents, characters, events, franchises, isValidCategory } = useCategoryData(categoryId);
   const isMovies = categoryId === 'movies';
+  const isGaming = categoryId === 'gaming';
   const { isBookmarked, toggleBookmark } = useBookmarks();
   const { isDark } = useTheme();
+
+  // Gaming-only: Cyber HUD Scanner interactive mode
+  const [gamingScannerActive, setGamingScannerActive] = useState(false);
+
+  const toggleGamingScanner = () => {
+    const nextState = !gamingScannerActive;
+    setGamingScannerActive(nextState);
+    try {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (AudioCtx) {
+        const ctx = new AudioCtx();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(nextState ? 587.33 : 440, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(nextState ? 1174.66 : 220, ctx.currentTime + 0.18);
+        gain.gain.setValueAtTime(0.08, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.25);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.25);
+      }
+    } catch (e) {
+      // AudioContext optional / user interaction
+    }
+  };
 
   // Tab State: 'content' | 'characters' | 'events'
   const [activeTab, setActiveTab] = useState('content');
@@ -72,6 +104,17 @@ export default function CategoryHub() {
     if (animeVideoRef.current) {
       animeVideoRef.current.muted = !animeHeroMuted;
       setAnimeHeroMuted(!animeHeroMuted);
+    }
+  };
+
+  // Manga-only: cinematic hero video state
+  const [mangaHeroMuted, setMangaHeroMuted] = useState(true);
+  const mangaVideoRef = useRef(null);
+
+  const toggleMangaHeroAudio = () => {
+    if (mangaVideoRef.current) {
+      mangaVideoRef.current.muted = !mangaHeroMuted;
+      setMangaHeroMuted(!mangaHeroMuted);
     }
   };
 
@@ -166,20 +209,20 @@ export default function CategoryHub() {
       type: selectedType,
       sort: selectedSort,
     });
-  }, [categoryId, selectedType, selectedSort]);
+  }, [categoryId, selectedType, selectedSort, language]);
 
   // Filtered Characters
   const filteredCharacters = useMemo(() => {
     return dataService.getCharactersByCategory(categoryId, {
       franchise: selectedFranchise,
     });
-  }, [categoryId, selectedFranchise]);
+  }, [categoryId, selectedFranchise, language]);
 
   // Movies-only: trailers power the cinematic hero spotlight
   const heroTrailers = useMemo(() => {
     if (!isMovies) return [];
     return dataService.getTrailersByCategory('movies').slice(0, 5);
-  }, [isMovies]);
+  }, [isMovies, language]);
 
   // Movies-only: combine content + trailers into one "Mới ra mắt" poster rail
   const moviesLatest = useMemo(() => {
@@ -203,7 +246,7 @@ export default function CategoryHub() {
     return [...contentItems, ...trailerItems].sort(
       (a, b) => new Date(b.dateAdded) - new Date(a.dateAdded)
     );
-  }, [isMovies]);
+  }, [isMovies, language]);
 
   const activeHeroTrailer = heroTrailers[heroIndex] || null;
 
@@ -219,15 +262,15 @@ export default function CategoryHub() {
     return dataService.getEventsByCategory(categoryId, {
       status: selectedEventStatus,
     });
-  }, [categoryId, selectedEventStatus]);
+  }, [categoryId, selectedEventStatus, language]);
 
   if (!isValidCategory) {
     return (
       <div className="container-fluid px-3 px-md-4 px-lg-5 py-5 text-center">
         <EmptyState
-          title="Không tìm thấy danh mục"
-          message={`Danh mục '${categoryId}' không tồn tại trong hệ thống 7 vũ trụ FandomVerse.`}
-          actionLabel="Quay lại trang chủ"
+          title={t('categoryHub.notFoundTitle')}
+          message={t('categoryHub.notFoundMessage', { categoryId })}
+          actionLabel={t('categoryHub.backHome')}
           onAction={() => (window.location.hash = '#/')}
         />
       </div>
@@ -235,7 +278,7 @@ export default function CategoryHub() {
   }
 
   return (
-    <div className="container-fluid px-3 px-md-4 px-lg-5 py-4">
+    <div className={`container-fluid px-3 px-md-4 px-lg-5 py-4 ${isGaming ? 'gaming-universe-container' : ''}`}>
       {isMovies ? (
         <>
           {/* MOVIES CINEMATIC HERO — spotlight rotates through latest trailers */}
@@ -381,20 +424,20 @@ export default function CategoryHub() {
         </>
       ) : categoryId === 'anime' ? (
         /* EXCLUSIVE CINEMATIC GUNDAM ANIME HERO BANNER */
-        <div className="anime-hero mb-4">
+        <div className="category-cinema-hero mb-4">
           <video
             ref={animeVideoRef}
-            className="anime-hero-bg"
+            className="category-cinema-hero-bg"
             src="/GunDam.mp4"
             autoPlay
             loop
             muted={animeHeroMuted}
             playsInline
           />
-          <div className="anime-hero-scrim" />
+          <div className="category-cinema-hero-scrim" />
 
           {/* Top-Right Stats Card */}
-          <div className="anime-hero-stats">
+          <div className="category-cinema-hero-stats">
             <div>
               <i className="bi bi-file-text me-1 text-primary"></i>{' '}
               <strong className="text-white">{contents.length}</strong> bài viết & media
@@ -409,8 +452,8 @@ export default function CategoryHub() {
             </div>
           </div>
 
-          <div className="anime-hero-content">
-            <div className="anime-hero-eyebrow">
+          <div className="category-cinema-hero-content">
+            <div className="category-cinema-hero-eyebrow">
               <span className="badge-category badge-category-anime fs-6">
                 <i className={`bi ${categoryInfo.icon} me-1`}></i> Fandom Universe
               </span>
@@ -435,26 +478,27 @@ export default function CategoryHub() {
               <SakuraEffect autoStart={true} />
             </div>
 
-            <h1 className="anime-hero-title">
+            <h1 className="category-cinema-hero-title">
               {categoryInfo.label}
               <span className="ms-2 fs-4 fw-normal text-white-50 d-block d-sm-inline">
                 • Mobile Suit GunDam
               </span>
             </h1>
 
-            <p className="anime-hero-desc">
+            <p className="category-cinema-hero-desc">
               Khám phá thế giới hoạt hình Nhật Bản đỉnh cao, các tác phẩm shounen huyền thoại cùng trailer bom tấn{' '}
               <strong className="text-white">Mobile Suit Gundam: Chiến Binh Thép Tái Xuất</strong> với những màn đại chiến mecha mãn nhãn.
             </p>
 
-            <div className="anime-hero-actions">
+            <div className="category-cinema-hero-actions">
               <button
                 type="button"
-                className="anime-hero-cta"
-                onClick={() => {
-                  const gundamItem = contents.find((c) => c.id === 'anime-video-gundam');
-                  if (gundamItem) setActiveVideo(gundamItem);
-                }}
+                className="category-cinema-hero-cta"
+                onClick={() => setActiveVideo({
+                  id: 'anime-trailer-002',
+                  title: 'Mobile Suit Gundam: Chiến Binh Thép Tái Xuất',
+                  mediaUrl: '/GunDam.mp4',
+                })}
               >
                 <i className="bi bi-arrows-fullscreen fs-6"></i>
                 <span>Xem Bản Chi Tiết (Full Video)</span>
@@ -462,7 +506,7 @@ export default function CategoryHub() {
 
               <button
                 type="button"
-                className="anime-hero-btn-secondary"
+                className="category-cinema-hero-btn-secondary"
                 onClick={toggleAnimeHeroAudio}
                 title={animeHeroMuted ? 'Bật âm thanh video Gundam' : 'Tắt tiếng video Gundam'}
               >
@@ -484,10 +528,213 @@ export default function CategoryHub() {
             </div>
           </div>
         </div>
+      ) : categoryId === 'manga' ? (
+        /* CINEMATIC MANGA HERO BANNER */
+        <div className="category-cinema-hero mb-4">
+          <video
+            ref={mangaVideoRef}
+            className="category-cinema-hero-bg"
+            src="/manga-hero-video.mp4"
+            autoPlay
+            loop
+            muted={mangaHeroMuted}
+            playsInline
+          />
+          <div className="category-cinema-hero-scrim" />
+
+          {/* Top-Right Stats Card */}
+          <div className="category-cinema-hero-stats">
+            <div>
+              <i className="bi bi-file-text me-1 text-primary"></i>{' '}
+              <strong className="text-white">{contents.length}</strong> bài viết & media
+            </div>
+            <div>
+              <i className="bi bi-people me-1 text-success"></i>{' '}
+              <strong className="text-white">{characters.length}</strong> nhân vật tiêu biểu
+            </div>
+            <div>
+              <i className="bi bi-calendar-event me-1 text-warning"></i>{' '}
+              <strong className="text-white">{events.length}</strong> sự kiện nổi bật
+            </div>
+          </div>
+
+          <div className="category-cinema-hero-content">
+            <div className="category-cinema-hero-eyebrow">
+              <span className="badge-category badge-category-manga fs-6">
+                <i className={`bi ${categoryInfo.icon} me-1`}></i> Fandom Universe
+              </span>
+              <span
+                className="badge rounded-pill px-3 py-1 text-white small d-inline-flex align-items-center gap-1"
+                style={{
+                  background: 'linear-gradient(135deg, #E17055, #f0a48a)',
+                  boxShadow: '0 2px 8px rgba(225, 112, 85, 0.35)',
+                }}
+              >
+                <i className="bi bi-stars"></i> Manga Exclusive
+              </span>
+              <span
+                className="badge rounded-pill px-3 py-1 text-white small d-inline-flex align-items-center gap-1"
+                style={{
+                  background: 'linear-gradient(135deg, #d35400, #E17055)',
+                  boxShadow: '0 2px 8px rgba(211, 84, 0, 0.35)',
+                }}
+              >
+                <i className="bi bi-play-circle-fill"></i> Video Nổi Bật
+              </span>
+            </div>
+
+            <h1 className="category-cinema-hero-title">
+              {categoryInfo.label}
+            </h1>
+
+            <p className="category-cinema-hero-desc">
+              {categoryInfo.description}
+            </p>
+
+            <div className="category-cinema-hero-actions">
+              <button
+                type="button"
+                className="category-cinema-hero-cta"
+                style={{ background: 'linear-gradient(135deg, #d35400, #E17055)', boxShadow: '0 8px 24px rgba(211, 84, 0, 0.4)' }}
+                onClick={() => setActiveVideo({
+                  id: 'manga-hero-video',
+                  title: `Video Nổi Bật — ${categoryInfo.label}`,
+                  mediaUrl: '/manga-hero-video.mp4',
+                })}
+              >
+                <i className="bi bi-arrows-fullscreen fs-6"></i>
+                <span>Xem Bản Chi Tiết (Full Video)</span>
+              </button>
+
+              <button
+                type="button"
+                className="category-cinema-hero-btn-secondary"
+                onClick={toggleMangaHeroAudio}
+                title={mangaHeroMuted ? 'Bật âm thanh video' : 'Tắt tiếng video'}
+              >
+                <i className={`bi ${mangaHeroMuted ? 'bi-volume-mute-fill' : 'bi-volume-up-fill'} fs-6`}></i>
+                <span>{mangaHeroMuted ? 'Bật Âm Thanh' : 'Tắt Âm Thanh'}</span>
+              </button>
+
+              <button
+                type="button"
+                className="movies-hero-icon-btn"
+                aria-label="Chia sẻ"
+                title="Sao chép liên kết chia sẻ"
+                onClick={() => {
+                  navigator.clipboard?.writeText(window.location.href);
+                }}
+              >
+                <i className="bi bi-share-fill"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : categoryId === 'gaming' ? (
+        /* EXCLUSIVE SCI-FI CYBERPUNK GAMING HUD HERO BANNER */
+        <div className="gaming-cyber-hero mb-4 position-relative overflow-hidden">
+          {/* Cyber Grid Background lines */}
+          <div className="gaming-cyber-grid-bg"></div>
+          <div className="gaming-cyber-scanlines"></div>
+
+          {/* Active Laser Radar Scan Beam */}
+          {gamingScannerActive && <div className="gaming-laser-scanner"></div>}
+
+          {/* Corner HUD Brackets */}
+          <div className="gaming-hud-corner corner-tl"></div>
+          <div className="gaming-hud-corner corner-tr"></div>
+          <div className="gaming-hud-corner corner-bl"></div>
+          <div className="gaming-hud-corner corner-br"></div>
+
+          {/* Telemetry Status Bar */}
+          <div className="gaming-telemetry-bar">
+            <span><i className="bi bi-cpu-fill text-warning me-1"></i>[ SYS: ONLINE ]</span>
+            <span><i className="bi bi-broadcast me-1 text-info"></i>PING: 12ms // 144 FPS</span>
+            <span><i className="bi bi-shield-lock-fill text-success me-1"></i>SEC_LVL: 09</span>
+            <span><i className="bi bi-terminal-fill me-1"></i>CORE: SCI-FI_CYBERPUNK</span>
+            <span className="ms-auto text-white-50 d-none d-md-inline">// PROTOCOL: FANDOM_v4.2</span>
+          </div>
+
+          <div className="row align-items-center position-relative" style={{ zIndex: 3 }}>
+            <div className="col-lg-8">
+              <div className="d-flex align-items-center gap-2 mb-2 flex-wrap">
+                <span className="badge-category badge-category-gaming fs-6">
+                  <i className="bi bi-controller me-1"></i> [ GAMING.EXE ]
+                </span>
+                <span className="badge gaming-stat-chip">
+                  <i className="bi bi-lightning-charge-fill me-1 text-warning"></i>CYBERPUNK & FUTURE TECH
+                </span>
+                <span className="badge gaming-stat-chip text-white-50">
+                  <i className="bi bi-soundwave me-1"></i>SYNTH_ENGINE
+                </span>
+              </div>
+
+              <h1 className="gaming-hero-title">
+                GAMING & ESPORTS
+              </h1>
+
+              <p className="gaming-hero-desc">
+                Thế giới game đỉnh cao, eSports, các tựa game bom tấn AAA và những kiệt tác khoa học viễn tưởng.
+                Khám phá thế giới mở tương lai, các chiến binh Cyberpunk và những trận đại chiến ngoạn mục.
+              </p>
+
+              <div className="d-flex align-items-center gap-2 flex-wrap">
+                <button
+                  type="button"
+                  className="gaming-btn-cyber-primary d-flex align-items-center gap-2"
+                  onClick={toggleGamingScanner}
+                  title="Kích hoạt rada quét laser Cyber HUD"
+                >
+                  <i className={`bi ${gamingScannerActive ? 'bi-radar text-warning' : 'bi-crosshair'}`}></i>
+                  <span>{gamingScannerActive ? '[ RADAR QUÉT: ĐANG BẬT ]' : '[ KÍCH HOẠT CYBER RADAR ]'}</span>
+                </button>
+
+                <button
+                  type="button"
+                  className="gaming-btn-cyber-secondary d-flex align-items-center gap-1"
+                  onClick={() => {
+                    const el = document.getElementById('gaming-content-tabs');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
+                  <i className="bi bi-arrow-down-short fs-6"></i>
+                  <span>// TRUY CẬP DỮ LIỆU</span>
+                </button>
+              </div>
+            </div>
+
+            <div className="col-lg-4 mt-4 mt-lg-0">
+              <div className="p-3 rounded-3" style={{ background: 'rgba(0, 255, 204, 0.04)', border: '1px solid rgba(0, 255, 204, 0.2)' }}>
+                <div className="gaming-font-mono text-warning small mb-2 d-flex align-items-center justify-content-between">
+                  <span>// TELEMETRY_STATS</span>
+                  <span className="badge bg-success p-1" style={{ width: '6px', height: '6px' }}></span>
+                </div>
+                <div className="d-flex flex-column gap-2 gaming-font-mono" style={{ fontSize: '0.85rem' }}>
+                  <div className="d-flex justify-content-between text-white-50 border-bottom border-secondary border-opacity-25 pb-1">
+                    <span>SYS.DATABASE:</span>
+                    <strong className="text-white">{contents.length} TITLES</strong>
+                  </div>
+                  <div className="d-flex justify-content-between text-white-50 border-bottom border-secondary border-opacity-25 pb-1">
+                    <span>ROSTER.ACTIVE:</span>
+                    <strong className="text-white">{characters.length} OPERATORS</strong>
+                  </div>
+                  <div className="d-flex justify-content-between text-white-50">
+                    <span>OPS.MISSION:</span>
+                    <strong className="text-white">{events.length} TOURNAMENTS</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       ) : (
         /* Category Header Banner (default categories) */
         <div
-          className={`p-4 p-md-5 rounded-4 shadow-sm mb-4 bg-white border-0 accent-border-${categoryId} d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3`}
+          className={`p-4 p-md-5 rounded-4 shadow-sm mb-4 accent-border-${categoryId} d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3`}
+          style={{
+            backgroundColor: isDark ? '#12162a' : '#ffffff',
+            border: isDark ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid rgba(0, 0, 0, 0.06)',
+          }}
         >
           <div>
             <div className="d-flex align-items-center gap-2 mb-2">
@@ -495,56 +742,75 @@ export default function CategoryHub() {
                 <i className={`bi ${categoryInfo.icon} me-1`}></i> Fandom Universe
               </span>
             </div>
-            <h1 className="font-heading display-5 fw-bold text-dark mb-2">
+            <h1 className={`font-heading display-5 fw-bold mb-2 ${isDark ? 'text-white' : 'text-dark'}`} style={{ color: isDark ? '#ffffff' : '#0f172a' }}>
               {categoryInfo.label}
             </h1>
-            <p className="text-secondary lead fs-6 mb-0" style={{ maxWidth: '650px' }}>
+            <p className={`lead fs-6 mb-0 ${isDark ? 'text-white-50' : 'text-secondary'}`} style={{ maxWidth: '650px', color: isDark ? '#94a3b8' : '#475569' }}>
               {categoryInfo.description}
             </p>
           </div>
 
-          <div className="d-flex flex-row flex-md-column gap-2 text-md-end text-muted small">
-            <div><i className="bi bi-file-text me-1 text-primary"></i> <strong>{contents.length}</strong> bài viết & media</div>
-            <div><i className="bi bi-people me-1 text-success"></i> <strong>{characters.length}</strong> nhân vật tiêu biểu</div>
-            <div><i className="bi bi-calendar-event me-1 text-warning"></i> <strong>{events.length}</strong> sự kiện nổi bật</div>
+          <div className={`d-flex flex-row flex-md-column gap-2 text-md-end ${isDark ? 'text-white-50' : 'text-muted'} small`}>
+            <div><i className="bi bi-file-text me-1 text-primary"></i> <strong className={isDark ? 'text-white' : 'text-dark'}>{contents.length}</strong> bài viết & media</div>
+            <div><i className="bi bi-people me-1 text-success"></i> <strong className={isDark ? 'text-white' : 'text-dark'}>{characters.length}</strong> nhân vật tiêu biểu</div>
+            <div><i className="bi bi-calendar-event me-1 text-warning"></i> <strong className={isDark ? 'text-white' : 'text-dark'}>{events.length}</strong> sự kiện nổi bật</div>
           </div>
         </div>
       )}
 
       {/* Navigation Tabs */}
-      <div className="bg-light p-2 rounded-4 border mb-4 shadow-xs">
-        <ul className="nav nav-pills nav-fill gap-2" role="tablist">
+      <div
+        id="gaming-content-tabs"
+        className="p-2 rounded-4 mb-4 shadow-xs"
+        style={{
+          backgroundColor: isDark ? 'rgba(255, 255, 255, 0.04)' : '#ffffff',
+          border: isDark ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid rgba(0, 0, 0, 0.06)',
+        }}
+      >
+        <ul className="nav nav-pills fv-chips-scroll justify-content-start justify-content-md-center gap-2 p-1" role="tablist">
           <li className="nav-item">
             <button
-              className={`nav-link rounded-pill py-2 fw-semibold d-flex align-items-center justify-content-center gap-2 ${
-                activeTab === 'content' ? 'active shadow-sm' : 'text-secondary'
+              className={`nav-link rounded-pill py-2 px-3 fw-semibold text-nowrap d-flex align-items-center justify-content-center gap-2 ${
+                activeTab === 'content' ? 'active shadow-sm text-white' : isDark ? 'text-white-50' : 'text-secondary'
               }`}
+              style={{
+                background: activeTab === 'content' ? 'linear-gradient(135deg, #6C5CE7, #8075e8)' : 'transparent',
+                fontWeight: 600,
+              }}
               onClick={() => setActiveTab('content')}
             >
               <i className="bi bi-collection-play-fill"></i>
-              <span>Nội Dung & Media ({contents.length})</span>
+              <span>{t('categoryHub.tabContent', { count: contents.length })}</span>
             </button>
           </li>
           <li className="nav-item">
             <button
-              className={`nav-link rounded-pill py-2 fw-semibold d-flex align-items-center justify-content-center gap-2 ${
-                activeTab === 'characters' ? 'active shadow-sm' : 'text-secondary'
+              className={`nav-link rounded-pill py-2 px-3 fw-semibold text-nowrap d-flex align-items-center justify-content-center gap-2 ${
+                activeTab === 'characters' ? 'active shadow-sm text-white' : isDark ? 'text-white-50' : 'text-secondary'
               }`}
+              style={{
+                background: activeTab === 'characters' ? 'linear-gradient(135deg, #6C5CE7, #8075e8)' : 'transparent',
+                fontWeight: 600,
+              }}
               onClick={() => setActiveTab('characters')}
             >
               <i className="bi bi-people-fill"></i>
-              <span>Nhân Vật ({characters.length})</span>
+              <span>{t('categoryHub.tabCharacters', { count: characters.length })}</span>
             </button>
           </li>
           <li className="nav-item">
             <button
-              className={`nav-link rounded-pill py-2 fw-semibold d-flex align-items-center justify-content-center gap-2 ${
-                activeTab === 'events' ? 'active shadow-sm' : 'text-secondary'
+              className={`nav-link rounded-pill py-2 px-3 fw-semibold text-nowrap d-flex align-items-center justify-content-center gap-2 ${
+                activeTab === 'events' ? 'active shadow-sm text-white' : isDark ? 'text-white-50' : 'text-secondary'
               }`}
+              style={{
+                background: activeTab === 'events' ? 'linear-gradient(135deg, #6C5CE7, #8075e8)' : 'transparent',
+                fontWeight: 600,
+              }}
               onClick={() => setActiveTab('events')}
             >
               <i className="bi bi-calendar-check-fill"></i>
-              <span>Sự Kiện ({events.length})</span>
+              <span>{t('categoryHub.tabEvents', { count: events.length })}</span>
             </button>
           </li>
         </ul>
@@ -554,69 +820,74 @@ export default function CategoryHub() {
       {activeTab === 'content' && (
         <div>
           {/* Filter & Sort Bar */}
-          <div className="p-3 bg-white rounded-4 border mb-4 shadow-xs d-flex flex-wrap gap-3 align-items-center justify-content-between">
+          <div
+            className="p-3 rounded-4 mb-4 shadow-xs d-flex flex-wrap gap-3 align-items-center justify-content-between"
+            style={{
+              backgroundColor: isDark ? '#12162a' : '#ffffff',
+              border: isDark ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid rgba(0, 0, 0, 0.06)',
+            }}
+          >
             {/* Type Filters */}
-            <div className="d-flex flex-wrap gap-1 align-items-center">
-              <span className="small fw-semibold text-secondary me-2">Định dạng:</span>
+            <div className="fv-chips-scroll flex-grow-1 align-items-center me-md-2">
               <button
                 type="button"
                 className={`btn btn-sm rounded-pill px-3 py-1 ${
-                  selectedType === 'all' ? 'btn-primary' : 'btn-outline-secondary'
+                  selectedType === 'all' ? 'btn-primary' : isDark ? 'btn-outline-light text-white-50' : 'btn-outline-secondary'
                 }`}
                 onClick={() => setSelectedType('all')}
               >
-                Tất cả ({formatCounts.all})
+                {t('navbar.all')} ({formatCounts.all})
               </button>
               <button
                 type="button"
                 className={`btn btn-sm rounded-pill px-3 py-1 ${
-                  selectedType === 'article' ? 'btn-primary' : 'btn-outline-secondary'
+                  selectedType === 'article' ? 'btn-primary' : isDark ? 'btn-outline-light text-white-50' : 'btn-outline-secondary'
                 }`}
                 onClick={() => setSelectedType('article')}
               >
-                <i className="bi bi-file-text me-1"></i> Bài viết ({formatCounts.article})
+                <i className="bi bi-file-text me-1"></i> {t('contentTypes.article')} ({formatCounts.article})
               </button>
               <button
                 type="button"
                 className={`btn btn-sm rounded-pill px-3 py-1 ${
-                  selectedType === 'gallery' ? 'btn-primary' : 'btn-outline-secondary'
+                  selectedType === 'gallery' ? 'btn-primary' : isDark ? 'btn-outline-light text-white-50' : 'btn-outline-secondary'
                 }`}
                 onClick={() => setSelectedType('gallery')}
               >
-                <i className="bi bi-images me-1"></i> Bộ ảnh ({formatCounts.gallery})
+                <i className="bi bi-images me-1"></i> {t('categoryHub.filterGallery')} ({formatCounts.gallery})
               </button>
               <button
                 type="button"
                 className={`btn btn-sm rounded-pill px-3 py-1 ${
-                  selectedType === 'video' ? 'btn-primary' : 'btn-outline-secondary'
+                  selectedType === 'video' ? 'btn-primary' : isDark ? 'btn-outline-light text-white-50' : 'btn-outline-secondary'
                 }`}
                 onClick={() => setSelectedType('video')}
               >
-                <i className="bi bi-play-circle me-1"></i> Video ({formatCounts.video})
+                <i className="bi bi-play-circle me-1"></i> {t('contentTypes.video')} ({formatCounts.video})
               </button>
               <button
                 type="button"
                 className={`btn btn-sm rounded-pill px-3 py-1 ${
-                  selectedType === 'audio' ? 'btn-primary' : 'btn-outline-secondary'
+                  selectedType === 'audio' ? 'btn-primary' : isDark ? 'btn-outline-light text-white-50' : 'btn-outline-secondary'
                 }`}
                 onClick={() => setSelectedType('audio')}
               >
-                <i className="bi bi-soundwave me-1"></i> Audio ({formatCounts.audio})
+                <i className="bi bi-soundwave me-1"></i> {t('categoryHub.filterAudio')} ({formatCounts.audio})
               </button>
             </div>
 
             {/* Sort Options */}
             <div className="d-flex align-items-center gap-2">
-              <label className="small fw-semibold text-secondary text-nowrap">Sắp xếp:</label>
+              <label className={`small fw-semibold text-nowrap ${isDark ? 'text-white-50' : 'text-secondary'}`}>{t('categoryHub.sortLabel')}</label>
               <select
-                className="form-select form-select-sm bg-light"
+                className={`form-select form-select-sm rounded-pill ${isDark ? 'bg-dark text-white border-secondary' : 'bg-white text-dark'}`}
                 style={{ width: '160px' }}
                 value={selectedSort}
                 onChange={(e) => setSelectedSort(e.target.value)}
               >
-                <option value="newest">Mới nhất</option>
-                <option value="alphabetical">Tên (A-Z)</option>
-                <option value="featured">Nổi bật trước</option>
+                <option value="newest">{t('categoryHub.sortNewest')}</option>
+                <option value="alphabetical">{t('categoryHub.sortAlpha')}</option>
+                <option value="featured">{t('categoryHub.sortFeatured')}</option>
               </select>
             </div>
           </div>
@@ -624,10 +895,10 @@ export default function CategoryHub() {
           {/* Content Cards Grid */}
           {filteredContents.length === 0 ? (
             <EmptyState
-              title="Không có nội dung phù hợp"
-              message="Không có bài viết hoặc media nào khớp với định dạng bạn đã chọn."
+              title={t('categoryHub.noContentTitle')}
+              message={t('categoryHub.noContentMessage')}
               onAction={() => setSelectedType('all')}
-              actionLabel="Xem tất cả nội dung"
+              actionLabel={t('categoryHub.viewAllContent')}
             />
           ) : (
             <div className="row g-4">
@@ -649,30 +920,36 @@ export default function CategoryHub() {
       {activeTab === 'characters' && (
         <div>
           {/* Franchise Filter Toolbar */}
-          <div className="p-3 bg-white rounded-4 border mb-4 shadow-xs d-flex align-items-center gap-3">
-            <span className="small fw-semibold text-secondary">Lọc theo Franchise:</span>
+          <div
+            className="p-3 rounded-4 mb-4 shadow-xs d-flex align-items-center gap-3"
+            style={{
+              backgroundColor: isDark ? '#12162a' : '#ffffff',
+              border: isDark ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid rgba(0, 0, 0, 0.06)',
+            }}
+          >
+            <span className={`small fw-semibold ${isDark ? 'text-white-50' : 'text-secondary'}`}>{t('categoryHub.filterByFranchiseLabel')}</span>
             <select
-              className="form-select form-select-sm bg-light"
+              className={`form-select form-select-sm rounded-pill ${isDark ? 'bg-dark text-white border-secondary' : 'bg-white text-dark'}`}
               style={{ maxWidth: '280px' }}
               value={selectedFranchise}
               onChange={(e) => setSelectedFranchise(e.target.value)}
             >
-              <option value="all">Tất cả Franchise</option>
+              <option value="all">{t('categoryHub.allFranchise')}</option>
               {franchises.map((f) => (
                 <option key={f} value={f}>
                   {f}
                 </option>
               ))}
             </select>
-            <span className="badge bg-secondary rounded-pill ms-auto">
-              {filteredCharacters.length} nhân vật
+            <span className="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 rounded-pill ms-auto px-3 py-1.5">
+              {t('categoryHub.charactersCountBadge', { count: filteredCharacters.length })}
             </span>
           </div>
 
           {/* Characters Grid (>=5 characters) */}
-          <div className="row g-4">
+          <div className="row g-2 g-md-4">
             {filteredCharacters.map((char) => (
-              <div key={char.id} className="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+              <div key={char.id} className="col-xl-2 col-lg-3 col-md-4 col-6">
                 <CharacterCard character={char} />
               </div>
             ))}
@@ -684,36 +961,42 @@ export default function CategoryHub() {
       {activeTab === 'events' && (
         <div>
           {/* Event Status Filter Toolbar */}
-          <div className="p-3 bg-white rounded-4 border mb-4 shadow-xs d-flex align-items-center justify-content-between">
+          <div
+            className="p-3 rounded-4 mb-4 shadow-xs d-flex align-items-center justify-content-between"
+            style={{
+              backgroundColor: isDark ? '#12162a' : '#ffffff',
+              border: isDark ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid rgba(0, 0, 0, 0.06)',
+            }}
+          >
             <div className="d-flex align-items-center gap-2">
-              <span className="small fw-semibold text-secondary">Trạng thái:</span>
+              <span className={`small fw-semibold ${isDark ? 'text-white-50' : 'text-secondary'}`}>{t('categoryHub.statusLabel')}</span>
               <div className="btn-group btn-group-sm">
                 <button
                   type="button"
-                  className={`btn ${selectedEventStatus === 'all' ? 'btn-dark' : 'btn-outline-secondary'}`}
+                  className={`btn rounded-pill-start ${selectedEventStatus === 'all' ? (isDark ? 'btn-light' : 'btn-dark') : 'btn-outline-secondary'}`}
                   onClick={() => setSelectedEventStatus('all')}
                 >
-                  Tất cả
+                  {t('navbar.all')}
                 </button>
                 <button
                   type="button"
                   className={`btn ${selectedEventStatus === 'upcoming' ? 'btn-warning text-dark fw-bold' : 'btn-outline-secondary'}`}
                   onClick={() => setSelectedEventStatus('upcoming')}
                 >
-                  ⚡ Sắp diễn ra
+                  {t('categoryHub.statusUpcoming')}
                 </button>
                 <button
                   type="button"
-                  className={`btn ${selectedEventStatus === 'past' ? 'btn-secondary' : 'btn-outline-secondary'}`}
+                  className={`btn rounded-pill-end ${selectedEventStatus === 'past' ? 'btn-secondary text-white' : 'btn-outline-secondary'}`}
                   onClick={() => setSelectedEventStatus('past')}
                 >
-                  ✓ Đã diễn ra
+                  {t('categoryHub.statusPast')}
                 </button>
               </div>
             </div>
 
-            <span className="badge bg-secondary rounded-pill">
-              {filteredEvents.length} sự kiện
+            <span className="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 rounded-pill px-3 py-1.5">
+              {t('categoryHub.eventsCountBadge', { count: filteredEvents.length })}
             </span>
           </div>
 
@@ -732,7 +1015,7 @@ export default function CategoryHub() {
       {lightboxImages && (
         <LightboxGallery
           images={lightboxImages}
-          title={`${categoryInfo.label} Gallery`}
+          title={t('categoryHub.galleryTitle', { label: categoryInfo.label })}
           onClose={() => setLightboxImages(null)}
         />
       )}

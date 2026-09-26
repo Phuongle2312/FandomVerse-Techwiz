@@ -68,7 +68,29 @@ export default function Merchandise() {
         </button>
       </div>
 
-      {/* Filter Toolbar */}
+      {/* Quick Category Scroll Chips */}
+      <div className="fv-chips-scroll mb-3">
+        <button
+          type="button"
+          className={`btn btn-sm rounded-pill px-3 py-1 ${selectedCategory === 'all' ? 'btn-primary' : 'btn-outline-secondary'}`}
+          onClick={() => setSelectedCategory('all')}
+        >
+          {t('merchandise.allFandoms')}
+        </button>
+        {CATEGORY_LIST_LOCALIZED.map((c) => (
+          <button
+            key={c.id}
+            type="button"
+            className={`btn btn-sm rounded-pill px-3 py-1 ${selectedCategory === c.id ? 'btn-primary' : 'btn-outline-secondary'}`}
+            onClick={() => setSelectedCategory(c.id)}
+          >
+            <i className={`bi ${c.icon} me-1`}></i>
+            {c.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Filter Toolbar (collapsible / secondary) */}
       <div className="p-3 bg-light rounded-4 border mb-4">
         <div className="row g-3 align-items-center">
           {/* Category Filter */}
@@ -118,9 +140,9 @@ export default function Merchandise() {
           actionLabel={t('trailersHub.clearFilters')}
         />
       ) : (
-        <div className="row g-4">
+        <div className="row g-2 g-md-4 fv-merch-grid">
           {merchandise.map((item) => (
-            <div key={item.id} className="col-xl-3 col-lg-4 col-md-6 col-12">
+            <div key={item.id} className="col-xl-3 col-lg-4 col-md-6 col-6">
               <MerchCard item={item} onToast={handleShowToast} />
             </div>
           ))}

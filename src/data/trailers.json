@@ -11,11 +11,11 @@
   {
     "id": "anime-trailer-002",
     "category": "anime",
-    "title": { "vi": "Demon Slayer: Kimetsu no Yaiba Infinity Castle Arc - Main Trailer", "en": "Demon Slayer: Kimetsu no Yaiba Infinity Castle Arc - Main Trailer", "hi": "डेमन स्लेयर: किमेत्सु नो याइबा इन्फिनिटी कैसल आर्क - मेन ट्रेलर" },
-    "thumbnail": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=700&auto=format&fit=crop&q=80",
-    "mediaUrl": "https://www.youtube.com/embed/x7uL_xZ55Lw",
+    "title": { "vi": "Mobile Suit Gundam: Chiến Binh Thép Tái Xuất - Official Trailer", "en": "Mobile Suit Gundam: Steel Warriors Return - Official Trailer", "hi": "मोबाइल सूट गुंडम: स्टील वॉरियर्स रिटर्न - ऑफिशियल ट्रेलर" },
+    "thumbnail": "https://images.unsplash.com/photo-1563089145-599997674d42?w=700&auto=format&fit=crop&q=80",
+    "mediaUrl": "/GunDam.mp4",
     "status": "released",
-    "releaseDate": "2026-06-20"
+    "releaseDate": "2026-09-24"
   },
   {
     "id": "anime-trailer-003",

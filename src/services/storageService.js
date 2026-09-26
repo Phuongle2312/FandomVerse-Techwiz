@@ -94,4 +94,61 @@ export const storageService = {
       return 1248;
     }
   },
+
+  // Users / Auth (LocalStorage)
+  loadUsers() {
+    try {
+      const data = localStorage.getItem(STORAGE_KEYS.USERS);
+      return data ? JSON.parse(data) : [];
+    } catch (error) {
+      console.warn('Không thể đọc dữ liệu tài khoản từ LocalStorage:', error);
+      return [];
+    }
+  },
+
+  saveUsers(users) {
+    try {
+      localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(users));
+    } catch (error) {
+      console.warn('Không thể lưu dữ liệu tài khoản vào LocalStorage:', error);
+    }
+  },
+
+  loadCurrentUser() {
+    try {
+      return localStorage.getItem(STORAGE_KEYS.CURRENT_USER) || null;
+    } catch (error) {
+      console.warn('Không thể đọc phiên đăng nhập từ LocalStorage:', error);
+      return null;
+    }
+  },
+
+  saveCurrentUser(email) {
+    try {
+      if (!email) {
+        localStorage.removeItem(STORAGE_KEYS.CURRENT_USER);
+      } else {
+        localStorage.setItem(STORAGE_KEYS.CURRENT_USER, email);
+      }
+    } catch (error) {
+      console.warn('Không thể lưu phiên đăng nhập vào LocalStorage:', error);
+    }
+  },
+
+  // Language Preference (LocalStorage)
+  loadLanguage() {
+    try {
+      return localStorage.getItem(STORAGE_KEYS.LANGUAGE) || null;
+    } catch (error) {
+      return null;
+    }
+  },
+
+  saveLanguage(language) {
+    try {
+      localStorage.setItem(STORAGE_KEYS.LANGUAGE, language);
+    } catch (error) {
+      console.warn('Không thể lưu ngôn ngữ vào LocalStorage:', error);
+    }
+  },
 };

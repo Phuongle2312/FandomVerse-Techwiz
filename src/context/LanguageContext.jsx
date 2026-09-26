@@ -20,7 +20,11 @@ export function LanguageProvider({ children }) {
 
   const setLanguage = (nextLanguage) => {
     if (SUPPORTED_LANGUAGES.some((l) => l.code === nextLanguage)) {
+      i18n.changeLanguage(nextLanguage);
       setLanguageState(nextLanguage);
+      document.documentElement.setAttribute('lang', nextLanguage);
+      document.title = i18n.getFixedT(nextLanguage)('brand.documentTitle');
+      storageService.saveLanguage(nextLanguage);
     }
   };
 

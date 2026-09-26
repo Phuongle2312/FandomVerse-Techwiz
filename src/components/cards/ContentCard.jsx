@@ -1,20 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useBookmarks } from '../../context/BookmarkContext.jsx';
 import { useTheme } from '../../context/ThemeContext.jsx';
+import { useAuth } from '../../context/AuthContext.jsx';
 import { CATEGORY_LIST } from '../../constants.js';
 
 export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
+  const { t } = useTranslation();
   const { isBookmarked, toggleBookmark } = useBookmarks();
   const { isDark } = useTheme();
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
   const bookmarked = isBookmarked(item.id);
 
   const category = CATEGORY_LIST.find((c) => c.id === item.category);
-  const categoryLabel = category ? category.label : item.category;
+  const categoryLabel = category ? t(`categories.${category.id}.label`) : item.category;
 
   const handleBookmarkClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
+    if (!isAuthenticated) {
+      navigate('/login', { state: { from: window.location.hash ? window.location.hash.slice(1) : '/' } });
+      return;
+    }
     toggleBookmark(item);
   };
 
@@ -28,7 +37,7 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
 
   return (
     <div
-      className={`card fv-card h-100 accent-border-${item.category} overflow-hidden`}
+      className={`card fv-card fv-content-card h-100 accent-border-${item.category} overflow-hidden`}
       style={{
         backgroundColor: isDark ? 'rgba(255, 255, 255, 0.05)' : '#ffffff',
         border: isDark ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid var(--border-color)',
@@ -36,7 +45,7 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
       }}
     >
       {/* Thumbnail Container */}
-      <div className="position-relative overflow-hidden" style={{ height: '200px', backgroundColor: '#181b30' }}>
+      <div className="position-relative overflow-hidden fv-content-card-thumb" style={{ backgroundColor: '#181b30' }}>
         <img
           src={item.thumbnail}
           alt={item.title}
@@ -47,18 +56,16 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
         {/* Bookmark Action Button */}
         <button
           type="button"
-          className="btn btn-sm position-absolute top-0 end-0 m-2 rounded-circle shadow-sm"
+          className="btn btn-sm position-absolute top-0 end-0 m-2 rounded-circle shadow-sm fv-bookmark-btn"
           style={{
-            width: '36px',
-            height: '36px',
             zIndex: 2,
             background: isDark ? 'rgba(12, 15, 29, 0.75)' : 'rgba(255, 255, 255, 0.85)',
             backdropFilter: 'blur(8px)',
             border: isDark ? '1px solid rgba(255, 255, 255, 0.2)' : '1px solid rgba(0, 0, 0, 0.1)',
           }}
           onClick={handleBookmarkClick}
-          aria-label={bookmarked ? 'Bỏ lưu bài viết' : 'Lưu bài viết'}
-          title={bookmarked ? 'Bỏ lưu bài viết' : 'Lưu bài viết'}
+          aria-label={bookmarked ? t('common.unsave') : t('common.save')}
+          title={bookmarked ? t('common.unsave') : t('common.save')}
         >
           <i className={`bi ${bookmarked ? 'bi-heart-fill text-danger' : isDark ? 'bi-heart text-white' : 'bi-heart text-dark'}`}></i>
         </button>
@@ -75,7 +82,7 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
       </div>
 
       {/* Card Body */}
-      <div className="card-body d-flex flex-column p-3">
+      <div className="card-body d-flex flex-column fv-content-card-body p-3">
         <div className="d-flex align-items-center justify-content-between mb-2">
           <span className={`badge-category badge-category-${item.category}`}>
             {categoryLabel}
@@ -86,7 +93,7 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
           </span>
         </div>
 
-        <h5 className="card-title font-heading fs-6 fw-bold mb-2 line-clamp-2">
+        <h5 className="card-title font-heading fw-bold mb-2 line-clamp-2">
           {item.type === 'article' ? (
             <Link
               to={`/category/${item.category}/article/${item.id}`}
@@ -104,10 +111,6 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
             </span>
           )}
         </h5>
-
-        <p className={`card-text small flex-grow-1 line-clamp-2 mb-3 ${isDark ? 'text-white-50' : 'text-secondary'}`}>
-          {item.shortDescription}
-        </p>
 
         {/* Subtags */}
         {item.subTags && item.subTags.length > 0 && (
@@ -142,7 +145,7 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
               className="btn btn-sm fw-semibold p-0 text-decoration-none d-flex align-items-center gap-1"
               style={{ color: '#6C5CE7' }}
             >
-              Xem chi tiết <i className="bi bi-arrow-right"></i>
+              {t('common.viewDetails')} <i className="bi bi-arrow-right"></i>
             </Link>
           ) : item.type === 'video' ? (
             <button
@@ -150,7 +153,7 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
               className="btn btn-sm btn-outline-danger rounded-pill px-3 py-1"
               onClick={handleCardClick}
             >
-              <i className="bi bi-play-fill me-1"></i> Phát Video
+              <i className="bi bi-play-fill me-1"></i> {t('common.playVideo')}
             </button>
           ) : item.type === 'gallery' ? (
             <button
@@ -158,7 +161,7 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
               className="btn btn-sm btn-outline-warning rounded-pill px-3 py-1"
               onClick={handleCardClick}
             >
-              <i className="bi bi-eye-fill me-1"></i> Xem Bộ Ảnh ({item.images?.length || 0})
+              <i className="bi bi-eye-fill me-1"></i> {t('cards.content.viewGalleryCount', { count: item.images?.length || 0 })}
             </button>
           ) : item.type === 'audio' ? (
             <button
@@ -166,10 +169,10 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
               className="btn btn-sm btn-outline-info rounded-pill px-3 py-1"
               onClick={handleCardClick}
             >
-              <i className="bi bi-soundwave me-1"></i> Nghe Audio
+              <i className="bi bi-soundwave me-1"></i> {t('common.audioTrack')}
             </button>
           ) : (
-            <span className={`small ${isDark ? 'text-white-50' : 'text-muted'}`}>Nội dung</span>
+            <span className={`small ${isDark ? 'text-white-50' : 'text-muted'}`}>{t('common.audioTrack')}</span>
           )}
         </div>
       </div>

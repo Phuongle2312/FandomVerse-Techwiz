@@ -1,18 +1,29 @@
 import React, { useState, useRef, useMemo, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { CATEGORY_LIST } from '../constants.js';
 import { dataService } from '../services/dataService.js';
 import { useTheme } from '../context/ThemeContext.jsx';
+import { useLanguage } from '../context/LanguageContext.jsx';
 import ContentCard from '../components/cards/ContentCard.jsx';
 import EventCard from '../components/cards/EventCard.jsx';
 import LightboxGallery from '../components/interactive/LightboxGallery.jsx';
 import VideoModal from '../components/interactive/VideoModal.jsx';
 
 export default function Home() {
+  const { t } = useTranslation();
+  const { language } = useLanguage();
   const { isDark } = useTheme();
-  const featuredContents = dataService.getFeaturedContents();
-  const allTrailers = useMemo(() => dataService.getAllTrailers(), []);
-  const upcomingEvents = dataService.getAllEvents().filter((e) => e.date >= new Date().toISOString().split('T')[0]).slice(0, 3);
+
+  const featuredContents = useMemo(() => dataService.getFeaturedContents(), [language]);
+  const allTrailers = useMemo(() => dataService.getAllTrailers(), [language]);
+  const upcomingEvents = useMemo(() => dataService.getAllEvents().filter((e) => e.date >= new Date().toISOString().split('T')[0]).slice(0, 3), [language]);
+
+  const CATEGORY_LIST_LOCALIZED = useMemo(() => CATEGORY_LIST.map((cat) => ({
+    ...cat,
+    label: t(`categories.${cat.id}.label`) || cat.label,
+    description: t(`categories.${cat.id}.description`) || cat.description,
+  })), [t, language]);
 
   const [lightboxImages, setLightboxImages] = useState(null);
   const [activeVideo, setActiveVideo] = useState(null);
@@ -102,8 +113,21 @@ export default function Home() {
   return (
     <div style={{ backgroundColor: isDark ? '#0c0f1d' : '#F8F9FC', transition: 'background-color 0.3s ease' }}>
       {/* 1. CINEMATIC 1280x720 VIDEO HERO SECTION WITH DARK STAGE BACKDROP */}
-      <div className="hero-stage-container">
+      <div className="hero-stage-container hero-pull-under-nav">
         <section className="hero-video-wrapper position-relative text-white">
+          {/* SVG unsharp-mask filter to counter the blur from upscaling a 720p source */}
+          <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
+            <defs>
+              <filter id="hero-video-sharpen">
+                <feConvolveMatrix
+                  order="3"
+                  kernelMatrix="0 -1 0 -1 5 -1 0 -1 0"
+                  preserveAlpha="true"
+                />
+              </filter>
+            </defs>
+          </svg>
+
           {/* Fullscreen Video Background */}
           <video
             ref={heroVideoRef}
@@ -135,31 +159,34 @@ export default function Home() {
           >
             {/* H1 */}
             <h1
-              className="text-foreground animate-fade-rise fw-normal mb-0"
+              className="text-foreground animate-fade-rise fw-bold mb-0"
               style={{
-                fontFamily: "'Instrument Serif', serif",
+                fontFamily: "var(--font-heading)",
                 fontSize: 'clamp(2rem, 4.8vw, 3.8rem)',
-                lineHeight: 1.05,
-                letterSpacing: '-1.5px',
+                lineHeight: 1.15,
+                letterSpacing: '-0.5px',
                 maxWidth: '1000px',
               }}
             >
-              Where <em className="fst-normal text-muted-foreground">dreams</em> rise{' '}
-              <em className="fst-normal text-muted-foreground">through the silence.</em>
+              {t('home.heroTitleWhere')}{' '}
+              <em className="fst-normal text-muted-foreground">{t('home.heroTitleDreams')}</em>{' '}
+              {t('home.heroTitleRise')}{' '}
+              <em className="fst-normal text-muted-foreground">{t('home.heroTitleThrough')}</em>
             </h1>
 
             {/* Subtext */}
             <p
-              className="text-muted-foreground animate-fade-rise-delay mt-2 mt-md-3 mb-0"
+              className="animate-fade-rise-delay mt-2 mt-md-3 mb-0"
               style={{
                 maxWidth: '38rem',
                 fontSize: 'clamp(0.85rem, 1.4vw, 1rem)',
                 lineHeight: 1.5,
-                fontWeight: 400,
-                opacity: 0.9,
+                fontWeight: 500,
+                color: 'rgba(255, 255, 255, 0.92)',
+                textShadow: '0 2px 6px rgba(0, 0, 0, 0.75), 0 1px 16px rgba(0, 0, 0, 0.5)',
               }}
             >
-              We're designing tools for deep thinkers, bold creators, and quiet rebels. Amid the chaos, we build digital spaces for sharp focus and inspired work.
+              {t('home.heroSubtext')}
             </p>
 
             {/* CTA Button */}
@@ -173,7 +200,7 @@ export default function Home() {
                 fontWeight: 550,
               }}
             >
-              Begin Journey
+              {t('home.heroCta')}
             </button>
           </div>
 
@@ -185,7 +212,7 @@ export default function Home() {
               className="btn btn-link text-muted-foreground hover-text-foreground text-decoration-none p-0 d-inline-flex flex-column align-items-center gap-1 opacity-75"
               style={{ fontSize: '0.72rem', letterSpacing: '0.12em' }}
             >
-              <span className="text-uppercase">Khám phá vũ trụ</span>
+              <span className="text-uppercase">{t('home.exploreUniverse')}</span>
               <i className="bi bi-chevron-down animate-float-bounce"></i>
             </button>
           </div>
@@ -213,18 +240,18 @@ export default function Home() {
               }}
             >
               <i className="bi bi-compass-fill"></i>
-              <span className="small fw-bold text-uppercase">Khám Phá Toàn Diện</span>
+              <span className="small fw-bold text-uppercase">{t('home.discoverBadge')}</span>
             </div>
             <h2 className={`font-heading fw-bold display-6 mb-2 ${isDark ? 'text-white' : 'text-dark'}`}>
-              7 Danh Mục Fandom Nổi Bật
+              {t('home.categoriesTitle')}
             </h2>
             <p className={`mx-auto ${isDark ? 'text-white-50' : 'text-secondary'}`} style={{ maxWidth: '580px' }}>
-              Lựa chọn vũ trụ đam mê của bạn để đắm chìm vào những câu chuyện hấp dẫn, nhân vật biểu tượng và sự kiện đáng nhớ.
+              {t('home.categoriesSubtitle')}
             </p>
           </div>
 
-          <div className="row g-4">
-            {CATEGORY_LIST.map((cat) => {
+          <div className="row g-2 g-md-4">
+            {CATEGORY_LIST_LOCALIZED.map((cat) => {
               const categoryImages = {
                 anime: 'https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500&auto=format&fit=crop&q=80',
                 gaming: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500&auto=format&fit=crop&q=80',
@@ -236,7 +263,7 @@ export default function Home() {
               };
 
               return (
-                <div key={cat.id} className="col-xl-3 col-lg-4 col-md-6 col-12">
+                <div key={cat.id} className="col-xl-3 col-lg-4 col-md-6 col-6">
                   <Link
                     to={`/category/${cat.id}`}
                     className={`category-visual-card h-100 accent-border-${cat.id}`}
@@ -275,7 +302,7 @@ export default function Home() {
                               fontSize: '0.7rem',
                             }}
                           >
-                            Khám phá vũ trụ
+                            {t('home.exploreUniverse')}
                           </span>
                         </div>
                       </div>
@@ -285,7 +312,7 @@ export default function Home() {
                       </p>
 
                       <div className="d-flex align-items-center justify-content-between small fw-bold pt-2 border-top border-white-50 border-opacity-10 position-relative" style={{ color: `var(--accent-${cat.id})`, zIndex: 2 }}>
-                        <span>Xem nội dung & nhân vật</span>
+                        <span>{t('home.viewContentCharacters')}</span>
                         <i className="bi bi-arrow-right"></i>
                       </div>
                     </div>
@@ -295,7 +322,7 @@ export default function Home() {
             })}
 
             {/* 8th Card: Quick Link to Merchandise */}
-            <div className="col-xl-3 col-lg-4 col-md-6 col-12">
+            <div className="col-xl-3 col-lg-4 col-md-6 col-6">
               <Link
                 to="/merchandise"
                 className="category-visual-card h-100 text-white position-relative"
@@ -319,17 +346,17 @@ export default function Home() {
                       <i className="bi bi-bag-check-fill fs-3" style={{ color: '#6C5CE7' }}></i>
                     </div>
                     <div>
-                      <h4 className="font-heading fw-bold text-white mb-0">Gian Hàng</h4>
+                      <h4 className="font-heading fw-bold text-white mb-0">{t('home.merchCardTitle')}</h4>
                       <span className="badge bg-warning text-dark rounded-pill px-2 py-0.5" style={{ fontSize: '0.7rem' }}>
-                        Mô hình & Phụ kiện
+                        {t('home.merchCardBadge')}
                       </span>
                     </div>
                   </div>
                   <p className="text-white-50 small mb-3 flex-grow-1 leading-relaxed position-relative" style={{ zIndex: 2 }}>
-                    Hàng trăm mô hình Figure, áo thun, lightstick và phụ kiện chính hãng đang chờ đón bạn.
+                    {t('home.merchCardDesc')}
                   </p>
                   <div className="d-flex align-items-center justify-content-between text-white small fw-bold pt-2 border-top border-white-50 position-relative" style={{ zIndex: 2 }}>
-                    <span>Vào Merchandise Shop</span>
+                    <span>{t('home.enterMerchShop')}</span>
                     <i className="bi bi-arrow-right"></i>
                   </div>
                 </div>
@@ -353,10 +380,10 @@ export default function Home() {
           <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between mb-4 gap-2">
             <div>
               <div className="d-flex align-items-center gap-2 mb-1">
-                <span className="badge bg-warning text-dark fw-bold">SPOTLIGHT</span>
-                <h2 className={`font-heading fw-bold mb-0 ${isDark ? 'text-white' : 'text-dark'}`}>Nội Dung Tiêu Điểm</h2>
+                <span className="badge bg-warning text-dark fw-bold">{t('home.spotlightBadge')}</span>
+                <h2 className={`font-heading fw-bold mb-0 ${isDark ? 'text-white' : 'text-dark'}`}>{t('home.featuredTitle')}</h2>
               </div>
-              <p className={`small mb-0 ${isDark ? 'text-white-50' : 'text-secondary'}`}>Các bài viết chuyên sâu và media nổi bật được tuyển chọn</p>
+              <p className={`small mb-0 ${isDark ? 'text-white-50' : 'text-secondary'}`}>{t('home.featuredSubtitle')}</p>
             </div>
           </div>
 
@@ -382,14 +409,14 @@ export default function Home() {
             <div>
               <div className="d-flex align-items-center gap-2 mb-1">
                 <span className="badge rounded-pill bg-danger px-2.5 py-1 text-white small fw-bold d-inline-flex align-items-center gap-1">
-                  <i className="bi bi-play-circle-fill"></i> TRAILERS
+                  <i className="bi bi-play-circle-fill"></i> {t('home.trailersBadge')}
                 </span>
                 <h2 className={`font-heading fw-bold mb-0 ${isDark ? 'text-white' : 'text-dark'}`}>
-                  Trailer Bom Tấn Mới Nhất
+                  {t('home.trailersTitle')}
                 </h2>
               </div>
               <p className={`small mb-0 ${isDark ? 'text-white-50' : 'text-secondary'}`}>
-                Những thước phim hé lộ các siêu phẩm sắp bùng nổ trong vũ trụ Fandom (Kéo hoặc bấm nút để lướt)
+                {t('home.trailersSubtitle')}
               </p>
             </div>
 
@@ -400,8 +427,8 @@ export default function Home() {
                 className="fv-slider-nav-btn"
                 onClick={() => scrollSlider('left')}
                 disabled={!canScrollLeft}
-                aria-label="Lướt sang trái"
-                title="Lướt sang trái"
+                aria-label={t('home.scrollLeftAria')}
+                title={t('home.scrollLeftAria')}
               >
                 <i className="bi bi-chevron-left fs-5"></i>
               </button>
@@ -410,8 +437,8 @@ export default function Home() {
                 className="fv-slider-nav-btn"
                 onClick={() => scrollSlider('right')}
                 disabled={!canScrollRight}
-                aria-label="Lướt sang phải"
-                title="Lướt sang phải"
+                aria-label={t('home.scrollRightAria')}
+                title={t('home.scrollRightAria')}
               >
                 <i className="bi bi-chevron-right fs-5"></i>
               </button>
@@ -419,7 +446,7 @@ export default function Home() {
                 to="/trailers"
                 className="btn btn-sm btn-outline-danger rounded-pill px-3 py-2 fw-semibold d-inline-flex align-items-center gap-1 ms-1"
               >
-                <span>Xem tất cả ({allTrailers.length})</span>
+                <span>{t('home.viewAllTrailers', { count: allTrailers.length })}</span>
                 <i className="bi bi-arrow-right"></i>
               </Link>
             </div>
@@ -435,10 +462,10 @@ export default function Home() {
                 if (trailerSliderRef.current) trailerSliderRef.current.scrollLeft = 0;
               }}
             >
-              Tất cả ({allTrailers.length})
+              {t('home.allChip', { count: allTrailers.length })}
             </button>
-            {CATEGORY_LIST.map((cat) => {
-              const count = allTrailers.filter((t) => t.category === cat.id).length;
+            {CATEGORY_LIST_LOCALIZED.map((cat) => {
+              const count = allTrailers.filter((t2) => t2.category === cat.id).length;
               if (count === 0) return null;
               return (
                 <button
@@ -451,7 +478,7 @@ export default function Home() {
                   }}
                 >
                   <i className={`bi ${cat.icon} me-1`}></i>
-                  {cat.label} ({count})
+                  {t('home.categoryChip', { label: cat.label, count })}
                 </button>
               );
             })}
@@ -468,10 +495,10 @@ export default function Home() {
               onMouseUp={handleMouseUpOrLeave}
               onMouseLeave={handleMouseUpOrLeave}
             >
-              {filteredTrailers.map((t) => {
-                const categoryColor = `var(--accent-${t.category}, #6C5CE7)`;
+              {filteredTrailers.map((tItem) => {
+                const categoryColor = `var(--accent-${tItem.category}, #6C5CE7)`;
                 return (
-                  <div key={t.id} className="fv-trailer-card-item">
+                  <div key={tItem.id} className="fv-trailer-card-item">
                     <div
                       className="card fv-card h-100 overflow-hidden shadow-sm"
                       style={{
@@ -481,14 +508,14 @@ export default function Home() {
                       }}
                       onClick={() => {
                         if (hasMovedRef.current) return;
-                        setActiveVideo(t);
+                        setActiveVideo(tItem);
                       }}
                     >
                       {/* Video Thumbnail with Hover Zoom */}
-                      <div className="position-relative overflow-hidden" style={{ height: '200px', backgroundColor: '#000' }}>
+                      <div className="position-relative overflow-hidden fv-trailer-thumb-wrap" style={{ backgroundColor: '#000' }}>
                         <img
-                          src={t.thumbnail}
-                          alt={t.title}
+                          src={tItem.thumbnail}
+                          alt={tItem.title}
                           className="w-100 h-100 object-fit-cover"
                           style={{
                             opacity: 0.88,
@@ -522,25 +549,25 @@ export default function Home() {
                             boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
                           }}
                         >
-                          {t.category}
+                          {tItem.category}
                         </span>
 
                         {/* Status Badge */}
                         <span
                           className="position-absolute top-0 end-0 m-2.5 badge rounded-pill px-2 py-1 text-white small"
                           style={{
-                            background: t.status === 'released' ? 'rgba(0, 184, 148, 0.9)' : 'rgba(108, 92, 231, 0.9)',
+                            background: tItem.status === 'released' ? 'rgba(0, 184, 148, 0.9)' : 'rgba(108, 92, 231, 0.9)',
                             backdropFilter: 'blur(6px)',
                             fontSize: '0.7rem',
                             fontWeight: 600,
                           }}
                         >
-                          {t.status === 'released' ? '🔥 Mới ra mắt' : '⏳ Sắp chiếu'}
+                          {tItem.status === 'released' ? t('home.newRelease') : t('home.comingSoon')}
                         </span>
                       </div>
 
                       {/* Card Info */}
-                      <div className="p-3 d-flex flex-column flex-grow-1 justify-content-between">
+                      <div className="p-3 d-flex flex-column flex-grow-1 justify-content-between fv-trailer-card-body">
                         <div>
                           <h6
                             className={`font-heading fw-bold mb-2 ${isDark ? 'text-white' : 'text-dark'}`}
@@ -553,21 +580,21 @@ export default function Home() {
                               lineHeight: 1.3,
                               fontSize: '0.95rem',
                             }}
-                            title={t.title}
+                            title={tItem.title}
                           >
-                            {t.title}
+                            {tItem.title}
                           </h6>
                         </div>
 
                         <div className="d-flex align-items-center justify-content-between pt-2 border-top border-white-50 border-opacity-10 small">
                           <span className={`${isDark ? 'text-white-50' : 'text-muted'}`}>
-                            <i className="bi bi-calendar3 me-1"></i> {t.releaseDate}
+                            <i className="bi bi-calendar3 me-1"></i> {tItem.releaseDate}
                           </span>
                           <span
                             className="fw-bold d-inline-flex align-items-center gap-1"
                             style={{ color: '#ff4757', fontSize: '0.8rem' }}
                           >
-                            <span>Xem ngay</span>
+                            <span>{t('home.watchNow')}</span>
                             <i className="bi bi-play-circle"></i>
                           </span>
                         </div>
@@ -581,11 +608,11 @@ export default function Home() {
             {/* Bottom Swipe Hint */}
             <div className="d-flex align-items-center justify-content-between mt-2 px-1">
               <span className={`small ${isDark ? 'text-white-50' : 'text-secondary'}`} style={{ fontSize: '0.8rem' }}>
-                <i className="bi bi-arrows-expand me-1"></i> Giữ chuột kéo để lướt qua {filteredTrailers.length} trailer
+                <i className="bi bi-arrows-expand me-1"></i> {t('home.swipeHint', { count: filteredTrailers.length })}
               </span>
               <div className="d-flex align-items-center gap-1.5">
                 <span className={`small fw-semibold ${isDark ? 'text-white-50' : 'text-muted'}`} style={{ fontSize: '0.78rem' }}>
-                  {filteredTrailers.length} trailer khả dụng
+                  {t('home.trailersAvailable', { count: filteredTrailers.length })}
                 </span>
               </div>
             </div>
@@ -606,9 +633,9 @@ export default function Home() {
           <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between mb-4 gap-2">
             <div>
               <h2 className={`font-heading fw-bold mb-1 d-flex align-items-center gap-2 ${isDark ? 'text-white' : 'text-dark'}`}>
-                <i className="bi bi-calendar-event" style={{ color: '#a29bfe' }}></i> Sự Kiện Fandom Sắp Diễn Ra
+                <i className="bi bi-calendar-event" style={{ color: '#a29bfe' }}></i> {t('home.eventsTitle')}
               </h2>
-              <p className={`small mb-0 ${isDark ? 'text-white-50' : 'text-secondary'}`}>Các ngày hội văn hóa, đại nhạc hội và triển lãm quy mô quốc tế</p>
+              <p className={`small mb-0 ${isDark ? 'text-white-50' : 'text-secondary'}`}>{t('home.eventsSubtitle')}</p>
             </div>
           </div>
 
@@ -626,7 +653,7 @@ export default function Home() {
       {lightboxImages && (
         <LightboxGallery
           images={lightboxImages}
-          title="Thư viện ảnh tiêu điểm"
+          title={t('home.featuredGalleryTitle')}
           onClose={() => setLightboxImages(null)}
         />
       )}

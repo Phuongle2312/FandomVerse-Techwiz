@@ -1,10 +1,13 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { CATEGORY_LIST } from '../../constants.js';
 import { searchService } from '../../services/searchService.js';
 import { useCart } from '../../context/CartContext.jsx';
 import { useBookmarks } from '../../context/BookmarkContext.jsx';
 import { useTheme } from '../../context/ThemeContext.jsx';
+import { useAuth } from '../../context/AuthContext.jsx';
+import { useLanguage } from '../../context/LanguageContext.jsx';
+import { useTranslation } from 'react-i18next';
 
 const CONTENT_FILTER_TYPES = [
   { id: 'character', label: 'Nhân vật', icon: 'bi-person-badge' },
@@ -29,23 +32,61 @@ export default function Navbar() {
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
   const [isNavVisible, setIsNavVisible] = useState(true);
+  const [isOverHero, setIsOverHero] = useState(true);
+  const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const searchContainerRef = useRef(null);
   const categoriesRef = useRef(null);
+  const languageRef = useRef(null);
+  const userMenuRef = useRef(null);
   const directionAnchorRef = useRef(0);
   const navigate = useNavigate();
+  const location = useLocation();
+  const isTransparentHero = location.pathname === '/' && isOverHero;
 
+  const { t } = useTranslation();
+  const { language, setLanguage, languages } = useLanguage();
   const { cartCount, setIsCartOpen } = useCart();
   const { bookmarkCount } = useBookmarks();
   const { isDark, toggleTheme } = useTheme();
+  const { currentUser, isAuthenticated, logout } = useAuth();
+
+  // Over transparent hero: always white text and contrast, immune to dark/light theme.
+  // When scrolled past hero or on other pages: dynamically adapts to theme!
+  const navTextColor = isTransparentHero ? 'text-white' : (isDark ? 'text-white' : 'text-dark');
+  const navSubTextColor = isTransparentHero ? 'text-white-50' : (isDark ? 'text-white-50' : 'text-secondary');
+  const navCartColor = isTransparentHero ? 'text-white' : (isDark ? 'text-white' : 'text-primary');
+  const navDividerBorder = isTransparentHero ? 'rgba(255, 255, 255, 0.25)' : (isDark ? 'rgba(255, 255, 255, 0.25)' : 'rgba(0, 0, 0, 0.12)');
+
+  const CATEGORY_LIST_LOCALIZED = useMemo(() => CATEGORY_LIST.map((cat) => ({
+    ...cat,
+    label: t(`categories.${cat.id}.label`) || cat.label,
+  })), [t, language]);
+
+  const CONTENT_FILTER_TYPES_LOCALIZED = useMemo(() => CONTENT_FILTER_TYPES.map((f) => ({
+    ...f,
+    label: t(`navbar.filterTypes.${f.id}`) || f.label,
+  })), [t, language]);
 
   useEffect(() => {
-    // Note: this project enables global `scroll-behavior: smooth`, which makes a single
-    // scroll gesture fire many tiny incremental scroll events. Comparing raw deltas
-    // between consecutive events (a few px each) would almost never cross a threshold,
-    // so instead we track cumulative movement since the last direction flip.
     const HIDE_THRESHOLD = 60;
-    const handleScroll = () => {
+    const checkHeroAndScroll = () => {
       const currentScrollY = window.scrollY;
+
+      // Check if navbar is overlaying the hero section
+      if (location.pathname === '/') {
+        const heroEl = document.querySelector('.hero-stage-container') || document.querySelector('.hero-video-wrapper');
+        if (heroEl) {
+          const rect = heroEl.getBoundingClientRect();
+          // Navbar is ~76px high. If hero bottom is still below 80px, navbar is over hero!
+          setIsOverHero(rect.bottom > 80);
+        } else {
+          setIsOverHero(currentScrollY < (window.innerHeight - 100));
+        }
+      } else {
+        setIsOverHero(false);
+      }
+
       if (currentScrollY < 80) {
         setIsNavVisible(true);
         directionAnchorRef.current = currentScrollY;
@@ -60,9 +101,17 @@ export default function Navbar() {
         directionAnchorRef.current = currentScrollY;
       }
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+
+    // Run immediately on mount and route change
+    checkHeroAndScroll();
+
+    window.addEventListener('scroll', checkHeroAndScroll, { passive: true });
+    window.addEventListener('resize', checkHeroAndScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', checkHeroAndScroll);
+      window.removeEventListener('resize', checkHeroAndScroll);
+    };
+  }, [location.pathname]);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -72,6 +121,12 @@ export default function Navbar() {
       }
       if (categoriesRef.current && !categoriesRef.current.contains(e.target)) {
         setIsCategoriesOpen(false);
+      }
+      if (languageRef.current && !languageRef.current.contains(e.target)) {
+        setIsLanguageOpen(false);
+      }
+      if (userMenuRef.current && !userMenuRef.current.contains(e.target)) {
+        setIsUserMenuOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -132,14 +187,11 @@ export default function Navbar() {
 
   return (
     <nav
-      className="navbar navbar-expand-lg fixed-top py-2.5"
+      className={`navbar navbar-expand-lg fixed-top py-2.5 fv-navbar ${isTransparentHero ? 'fv-navbar-transparent' : ''}`}
       style={{
-        backgroundColor: 'transparent',
-        borderBottom: 'none',
-        boxShadow: 'none',
         zIndex: 1030,
         transform: isNavVisible ? 'translateY(0)' : 'translateY(-100%)',
-        transition: 'transform 0.35s ease',
+        transition: 'transform 0.35s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease',
       }}
     >
       <div className="container-fluid px-3 px-md-4 px-lg-5">
@@ -148,7 +200,6 @@ export default function Navbar() {
           to="/"
           className="navbar-brand d-flex align-items-center gap-2 fw-bold fs-4 text-decoration-none"
           onClick={() => setIsNavCollapsed(true)}
-          style={{ textShadow: '0 1px 4px rgba(0, 0, 0, 0.6), 0 1px 10px rgba(0, 0, 0, 0.3)' }}
         >
           <span
             className="d-flex align-items-center justify-content-center rounded-3 text-white shadow-sm"
@@ -160,28 +211,28 @@ export default function Navbar() {
           >
             <i className="bi bi-stars fs-5"></i>
           </span>
-          <span className="font-heading tracking-wide fw-bold text-white">
-            Fandom<span style={{ background: 'linear-gradient(135deg, #a29bfe, #ff7675)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Verse</span>
+          <span className={`font-heading tracking-wide fw-bold ${navTextColor}`}>
+            Fandom<span style={{ background: 'linear-gradient(135deg, #6C5CE7, #FF6B81)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent', WebkitTextFillColor: 'transparent' }}>Verse</span>
           </span>
         </Link>
 
-        {/* Mobile Toggle Button */}
+        {/* Mobile Search Toggle Button */}
         <button
-          className="navbar-toggler border-0 shadow-none text-white"
+          className={`navbar-toggler border-0 shadow-none d-lg-none ${navTextColor}`}
           type="button"
           aria-controls="fandomNavbar"
           aria-expanded={!isNavCollapsed}
-          aria-label="Chuyển đổi thanh điều hướng"
+          aria-label={isNavCollapsed ? 'Mở tìm kiếm' : 'Đóng tìm kiếm'}
           onClick={() => setIsNavCollapsed(!isNavCollapsed)}
         >
-          <i className={`bi ${isNavCollapsed ? 'bi-list' : 'bi-x-lg'} fs-3`}></i>
+          <i className={`bi ${isNavCollapsed ? 'bi-search' : 'bi-x-lg'} fs-4`}></i>
         </button>
 
         {/* Nav Content */}
         <div className={`collapse navbar-collapse ${isNavCollapsed ? '' : 'show'}`} id="fandomNavbar">
-          {/* Main Links */}
+          {/* Main Links (Desktop Only) */}
           <ul
-            className="navbar-nav me-auto mb-2 mb-lg-0 align-items-lg-center"
+            className="navbar-nav d-none d-lg-flex me-auto mb-2 mb-lg-0 align-items-lg-center"
           >
             {/* 7 Categories Dropdown */}
             <li
@@ -190,31 +241,31 @@ export default function Navbar() {
             >
               <button
                 type="button"
-                className="nav-link dropdown-toggle fw-semibold px-3 d-flex align-items-center gap-1.5 bg-transparent border-0 text-white"
+                className={`nav-link dropdown-toggle fw-semibold px-3 d-flex align-items-center gap-1.5 bg-transparent border-0 ${navTextColor}`}
                 id="categoriesDropdown"
                 aria-expanded={isCategoriesOpen}
                 onClick={() => setIsCategoriesOpen((open) => !open)}
               >
-                <i className="bi bi-grid-3x3-gap-fill" style={{ color: '#a29bfe' }}></i>
-                <span>Vũ Trụ Fandom</span>
+                <i className="bi bi-grid-3x3-gap-fill" style={{ color: '#6C5CE7' }}></i>
+                <span>{t('navbar.fandomUniverse')}</span>
               </button>
               <ul
-                className={`dropdown-menu border-0 shadow-lg rounded-4 py-2 ${isDark ? 'dropdown-menu-dark' : ''} ${isCategoriesOpen ? 'show' : ''}`}
+                className={`dropdown-menu dropdown-menu-dark border-0 shadow-lg rounded-4 py-2 ${isCategoriesOpen ? 'show' : ''}`}
                 style={{
-                  backgroundColor: isDark ? '#12162a' : '#ffffff',
-                  border: isDark ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.08)',
+                  backgroundColor: '#12162a',
+                  border: '1px solid rgba(255,255,255,0.1)',
                   textShadow: 'none',
                 }}
                 aria-labelledby="categoriesDropdown"
               >
-                {CATEGORY_LIST.map((cat) => (
+                {CATEGORY_LIST_LOCALIZED.map((cat) => (
                   <li key={cat.id}>
                     <Link
                       to={`/category/${cat.id}`}
-                      className="dropdown-item d-flex align-items-center gap-2 py-2 px-3"
+                      className={`dropdown-item d-flex align-items-center gap-2 py-2 px-3 fv-category-dropdown-item fv-cat-${cat.id}`}
                       style={{
-                        color: isDark ? '#cbd5e1' : '#4b5563',
-                        fontWeight: 450,
+                        color: '#cbd5e1',
+                        fontWeight: 500,
                         textShadow: 'none',
                       }}
                       onClick={() => {
@@ -233,41 +284,41 @@ export default function Navbar() {
             <li className="nav-item">
               <Link
                 to="/trailers"
-                className="nav-link fw-semibold px-3 d-flex align-items-center gap-1.5 text-white"
+                className={`nav-link fw-semibold px-3 d-flex align-items-center gap-1.5 ${navTextColor}`}
                 onClick={() => setIsNavCollapsed(true)}
               >
                 <i className="bi bi-play-circle-fill text-danger"></i>
-                <span>Trailers</span>
+                <span>{t('navbar.trailers')}</span>
               </Link>
             </li>
 
             <li className="nav-item">
               <Link
                 to="/merchandise"
-                className="nav-link fw-semibold px-3 d-flex align-items-center gap-1.5 text-white"
+                className={`nav-link fw-semibold px-3 d-flex align-items-center gap-1.5 ${navTextColor}`}
                 onClick={() => setIsNavCollapsed(true)}
               >
                 <i className="bi bi-bag-check-fill text-success"></i>
-                <span>Merchandise</span>
+                <span>{t('navbar.merchandise')}</span>
               </Link>
             </li>
 
             <li className="nav-item">
               <Link
                 to="/about"
-                className="nav-link fw-medium px-2 text-white-50"
+                className={`nav-link fw-semibold px-3 ${navTextColor}`}
                 onClick={() => setIsNavCollapsed(true)}
               >
-                Giới thiệu
+                {t('navbar.about')}
               </Link>
             </li>
             <li className="nav-item">
               <Link
                 to="/contact"
-                className="nav-link fw-medium px-2 text-white-50"
+                className={`nav-link fw-semibold px-3 ${navTextColor}`}
                 onClick={() => setIsNavCollapsed(true)}
               >
-                Liên hệ
+                {t('navbar.contact')}
               </Link>
             </li>
           </ul>
@@ -288,23 +339,28 @@ export default function Navbar() {
                     setIsSuggestionsOpen(false);
                   }}
                   aria-expanded={isFilterOpen}
-                  title="Bộ lọc tìm kiếm (Danh mục / Định dạng)"
+                  title={t('navbar.searchFilterTitle')}
                 >
                   <i className={`bi ${filterMode.icon}`}></i>
-                  <span className="fv-search-filter-text">{filterMode.label}</span>
+                  <span className="fv-search-filter-text">
+                    {filterMode.id === 'all' ? t('navbar.all') : filterMode.label}
+                  </span>
                   <i className={`bi bi-chevron-${isFilterOpen ? 'up' : 'down'}`} style={{ fontSize: '0.62rem' }}></i>
                 </button>
+
+                <span className="fv-search-divider" aria-hidden="true"></span>
 
                 {/* Search Text Input */}
                 <input
                   type="search"
-                  className="form-control fv-search-input"
+                  className="fv-search-input border-0 shadow-none"
+                  style={{ outline: 'none', border: 'none', boxShadow: 'none' }}
                   placeholder={
                     filterMode.id !== 'all'
-                      ? `Tìm trong ${filterMode.label}...`
-                      : 'Tìm nhân vật, bài viết...'
+                      ? t('navbar.searchPlaceholderIn', { label: filterMode.label })
+                      : t('navbar.searchPlaceholderDefault')
                   }
-                  aria-label="Tìm kiếm toàn cục"
+                  aria-label={t('navbar.searchAriaLabel')}
                   value={searchTerm}
                   onChange={(e) => {
                     setSearchTerm(e.target.value);
@@ -334,8 +390,8 @@ export default function Navbar() {
                       setSearchTerm('');
                       setIsSuggestionsOpen(false);
                     }}
-                    title="Xóa từ khóa"
-                    aria-label="Xóa từ khóa"
+                    title={t('navbar.clearKeyword')}
+                    aria-label={t('navbar.clearKeyword')}
                   >
                     <i className="bi bi-x-circle-fill"></i>
                   </button>
@@ -345,8 +401,8 @@ export default function Navbar() {
                 <button
                   className="btn fv-search-submit-btn"
                   type="submit"
-                  aria-label="Nút tìm kiếm"
-                  title="Tìm kiếm"
+                  aria-label={t('navbar.searchButton')}
+                  title={t('navbar.search')}
                 >
                   <i className="bi bi-search fs-6"></i>
                 </button>
@@ -361,11 +417,11 @@ export default function Navbar() {
                   <button
                     type="button"
                     className={`fv-filter-item ${filterMode.id === 'all' ? 'active' : ''}`}
-                    onClick={() => handleSelectFilter('all', 'all', 'Tất cả', 'bi-grid-fill')}
+                    onClick={() => handleSelectFilter('all', 'all', t('navbar.all'), 'bi-grid-fill')}
                   >
                     <span className="d-flex align-items-center gap-2">
                       <i className="bi bi-grid-fill text-primary"></i>
-                      <span>Tất cả vũ trụ (Toàn bộ)</span>
+                      <span>{t('navbar.allUniverses')}</span>
                     </span>
                     {filterMode.id === 'all' && <i className="bi bi-check2 text-primary fw-bold"></i>}
                   </button>
@@ -374,9 +430,9 @@ export default function Navbar() {
 
                   {/* Section 1: Categories */}
                   <div className="fv-filter-section-title">
-                    <i className="bi bi-compass me-1"></i> Theo Vũ Trụ / Danh Mục
+                    <i className="bi bi-compass me-1"></i> {t('navbar.byUniverseCategory')}
                   </div>
-                  {CATEGORY_LIST.map((c) => (
+                  {CATEGORY_LIST_LOCALIZED.map((c) => (
                     <button
                       key={c.id}
                       type="button"
@@ -395,20 +451,20 @@ export default function Navbar() {
 
                   {/* Section 2: Content Types */}
                   <div className="fv-filter-section-title">
-                    <i className="bi bi-layers me-1"></i> Theo Loại Nội Dung
+                    <i className="bi bi-layers me-1"></i> {t('navbar.byContentType')}
                   </div>
-                  {CONTENT_FILTER_TYPES.map((t) => (
+                  {CONTENT_FILTER_TYPES_LOCALIZED.map((fItem) => (
                     <button
-                      key={t.id}
+                      key={fItem.id}
                       type="button"
-                      className={`fv-filter-item ${filterMode.id === t.id ? 'active' : ''}`}
-                      onClick={() => handleSelectFilter('type', t.id, t.label, t.icon)}
+                      className={`fv-filter-item ${filterMode.id === fItem.id ? 'active' : ''}`}
+                      onClick={() => handleSelectFilter('type', fItem.id, fItem.label, fItem.icon)}
                     >
                       <span className="d-flex align-items-center gap-2">
-                        <i className={`bi ${t.icon} text-info`}></i>
-                        <span>{t.label}</span>
+                        <i className={`bi ${fItem.icon} text-info`}></i>
+                        <span>{fItem.label}</span>
                       </span>
-                      {filterMode.id === t.id && <i className="bi bi-check2 text-primary fw-bold"></i>}
+                      {filterMode.id === fItem.id && <i className="bi bi-check2 text-primary fw-bold"></i>}
                     </button>
                   ))}
                 </div>
@@ -424,31 +480,31 @@ export default function Navbar() {
                     className={`fv-quick-chip ${quickFilterType === 'all' ? 'active' : ''}`}
                     onClick={() => setQuickFilterType('all')}
                   >
-                    Tất cả
+                    {t('navbar.all')}
                   </span>
                   <span
                     className={`fv-quick-chip ${quickFilterType === 'character' ? 'active' : ''}`}
                     onClick={() => setQuickFilterType('character')}
                   >
-                    👤 Nhân vật
+                    👤 {t('navbar.filterTypes.character')}
                   </span>
                   <span
                     className={`fv-quick-chip ${quickFilterType === 'article' ? 'active' : ''}`}
                     onClick={() => setQuickFilterType('article')}
                   >
-                    📰 Bài viết
+                    📰 {t('navbar.filterTypes.article')}
                   </span>
                   <span
                     className={`fv-quick-chip ${quickFilterType === 'trailer' ? 'active' : ''}`}
                     onClick={() => setQuickFilterType('trailer')}
                   >
-                    🎥 Trailers
+                    🎥 {t('navbar.filterTypes.trailer')}
                   </span>
                   <span
                     className={`fv-quick-chip ${quickFilterType === 'merchandise' ? 'active' : ''}`}
                     onClick={() => setQuickFilterType('merchandise')}
                   >
-                    🛍️ Vật phẩm
+                    🛍️ {t('navbar.filterTypes.merchandise')}
                   </span>
                 </div>
 
@@ -457,7 +513,7 @@ export default function Navbar() {
                   {liveResults.length === 0 ? (
                     <div className="p-3 text-center text-secondary small">
                       <i className="bi bi-search fs-4 d-block mb-1 opacity-50"></i>
-                      Không tìm thấy kết quả phù hợp cho "<strong>{searchTerm}</strong>".
+                      {t('navbar.noResultsFor', { term: searchTerm })}
                     </div>
                   ) : (
                     liveResults.map((item) => (
@@ -496,36 +552,72 @@ export default function Navbar() {
                 {/* Footer with Full Results Link */}
                 <div className="fv-suggestions-footer">
                   <span className="text-secondary small">
-                    {totalResultsCount} kết quả tìm được
+                    {t('navbar.resultsFound', { count: totalResultsCount })}
                   </span>
                   <button
                     type="button"
                     onClick={() => handleSearchSubmit()}
                   >
-                    Xem tất cả <i className="bi bi-arrow-right"></i>
+                    {t('navbar.viewAll')} <i className="bi bi-arrow-right"></i>
                   </button>
                 </div>
               </div>
             )}
           </div>
 
-          {/* Action Icons & Theme Switcher */}
-          <div className="d-flex align-items-center gap-2 mt-2 mt-lg-0">
+          {/* Action Icons & Theme Switcher (Desktop Only) */}
+          <div className="d-none d-lg-flex flex-wrap align-items-center gap-2 mt-2 mt-lg-0">
+            {/* Language Switcher Dropdown - Permanent styling from photo, immune to light/dark mode */}
+            <div ref={languageRef} className={`dropdown ${isLanguageOpen ? 'show' : ''} position-relative`}>
+              <button
+                type="button"
+                className="btn fv-lang-btn"
+                title={t('navbar.chooseLanguage')}
+                aria-label={t('navbar.language')}
+                aria-expanded={isLanguageOpen}
+                onClick={() => setIsLanguageOpen((open) => !open)}
+              >
+                <span>{language === 'vi' ? 'VN' : language.toUpperCase()}</span>
+              </button>
+              <ul
+                className={`dropdown-menu dropdown-menu-end fv-lang-dropdown shadow-lg ${isLanguageOpen ? 'show' : ''}`}
+                style={{
+                  position: 'absolute',
+                  top: 'calc(100% + 8px)',
+                  right: 0,
+                  left: 'auto',
+                  zIndex: 1050,
+                }}
+              >
+                {languages.map((l) => (
+                  <li key={l.code}>
+                    <button
+                      type="button"
+                      className={`dropdown-item fv-lang-item ${language === l.code ? 'active' : ''}`}
+                      onClick={() => {
+                        setLanguage(l.code);
+                        setIsLanguageOpen(false);
+                      }}
+                    >
+                      <span style={{ fontSize: '1.15rem' }}>{l.flag}</span>
+                      <span>{l.label}</span>
+                      <span className="badge bg-white bg-opacity-10 text-white-50 ms-auto small" style={{ fontSize: '0.68rem' }}>
+                        {l.code === 'vi' ? 'VN' : l.code.toUpperCase()}
+                      </span>
+                      {language === l.code && <i className="bi bi-check2 text-primary fw-bold ms-1"></i>}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             {/* Theme Toggle Button (Light / Dark Mode) */}
             <button
               type="button"
-              className="btn position-relative rounded-circle p-2 shadow-xs d-flex align-items-center justify-content-center"
-              style={{
-                width: '40px',
-                height: '40px',
-                background: isDark ? 'rgba(255, 255, 255, 0.12)' : 'rgba(108, 92, 231, 0.1)',
-                border: isDark ? '1px solid rgba(255, 255, 255, 0.2)' : '1px solid rgba(108, 92, 231, 0.25)',
-                color: isDark ? '#fdcb6e' : '#6C5CE7',
-                transition: 'all 0.25s ease',
-              }}
+              className="btn fv-action-circle-btn position-relative shadow-xs"
               onClick={toggleTheme}
-              title={isDark ? 'Chuyển sang giao diện Sáng (Light Mode)' : 'Chuyển sang giao diện Tối (Dark Mode)'}
-              aria-label="Chuyển đổi giao diện Sáng / Tối"
+              title={isDark ? t('navbar.switchToLight') : t('navbar.switchToDark')}
+              aria-label={t('navbar.toggleTheme')}
             >
               {isDark ? (
                 <i className="bi bi-sun-fill fs-5" style={{ color: '#fdcb6e' }}></i>
@@ -537,18 +629,12 @@ export default function Navbar() {
             {/* Bookmarks Icon Button */}
             <Link
               to="/bookmarks"
-              className="btn position-relative rounded-circle p-2 shadow-xs d-flex align-items-center justify-content-center"
-              style={{
-                width: '40px',
-                height: '40px',
-                background: isDark ? 'rgba(255, 255, 255, 0.12)' : 'rgba(0, 0, 0, 0.05)',
-                border: isDark ? '1px solid rgba(255, 255, 255, 0.2)' : '1px solid rgba(0, 0, 0, 0.08)',
-              }}
-              title="Danh sách đã lưu"
-              aria-label="Xem danh sách bài viết đã bookmark"
+              className="btn fv-action-circle-btn position-relative shadow-xs"
+              title={t('navbar.bookmarksTitle')}
+              aria-label={t('navbar.bookmarksAriaLabel')}
               onClick={() => setIsNavCollapsed(true)}
             >
-              <i className="bi bi-heart-fill text-danger fs-5"></i>
+              <i className="bi bi-heart-fill fs-5" style={{ color: '#ff4757' }}></i>
               {bookmarkCount > 0 && (
                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style={{ fontSize: '0.7rem' }}>
                   {bookmarkCount}
@@ -559,21 +645,15 @@ export default function Navbar() {
             {/* Cart Icon Button */}
             <button
               type="button"
-              className="btn position-relative rounded-circle p-2 shadow-xs d-flex align-items-center justify-content-center"
-              style={{
-                width: '40px',
-                height: '40px',
-                background: isDark ? 'rgba(255, 255, 255, 0.12)' : 'rgba(0, 0, 0, 0.05)',
-                border: isDark ? '1px solid rgba(255, 255, 255, 0.2)' : '1px solid rgba(0, 0, 0, 0.08)',
-              }}
-              title="Mở giỏ hàng"
-              aria-label="Mở giỏ hàng"
+              className="btn fv-action-circle-btn position-relative shadow-xs"
+              title={t('navbar.cartTitle')}
+              aria-label={t('navbar.cartAriaLabel')}
               onClick={() => {
                 setIsCartOpen(true);
                 setIsNavCollapsed(true);
               }}
             >
-              <i className={`bi bi-cart3 fs-5 ${isDark ? 'text-white' : 'text-primary'}`}></i>
+              <i className={`bi bi-cart3 fs-5 ${navCartColor}`}></i>
               {cartCount > 0 && (
                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary" style={{ fontSize: '0.7rem' }}>
                   {cartCount}
@@ -581,22 +661,145 @@ export default function Navbar() {
               )}
             </button>
 
-            {/* Dummy Login / Signup Links */}
-            <div className={`d-flex align-items-center gap-2 ms-2 border-start ps-2 ${isDark ? 'border-white-50' : 'border-secondary-subtle'}`}>
-              <Link
-                to="/login"
-                className={`btn btn-sm rounded-pill px-3 ${isDark ? 'btn-outline-light' : 'btn-outline-primary'}`}
-                onClick={() => setIsNavCollapsed(true)}
-              >
-                Đăng nhập
-              </Link>
-              <Link
-                to="/signup"
-                className="btn btn-sm btn-primary-fv px-3 d-none d-sm-inline-block text-white"
-                onClick={() => setIsNavCollapsed(true)}
-              >
-                Đăng ký
-              </Link>
+            {/* Auth Section: Login/Signup or User Profile & Logout */}
+            <div
+              className="fv-auth-divider d-flex align-items-center gap-2.5 ms-2 border-start ps-3"
+              style={{ borderColor: navDividerBorder }}
+            >
+              {isAuthenticated ? (
+                <div ref={userMenuRef} className={`dropdown ${isUserMenuOpen ? 'show' : ''} position-relative`}>
+                  <button
+                    type="button"
+                    className="btn d-flex align-items-center gap-1.5 border-0 bg-transparent px-1"
+                    style={{ maxWidth: '180px' }}
+                    title={currentUser?.name}
+                    aria-expanded={isUserMenuOpen}
+                    onClick={() => setIsUserMenuOpen((open) => !open)}
+                  >
+                    <i className="bi bi-person-circle fs-5" style={{ color: '#00a8ff' }}></i>
+                    <span className={`fv-username-text fw-bold fs-6 text-truncate ${navTextColor}`}>{currentUser?.name}</span>
+                    <i className={`fv-user-chevron bi bi-chevron-${isUserMenuOpen ? 'up' : 'down'} ${navSubTextColor}`} style={{ fontSize: '0.65rem' }}></i>
+                  </button>
+
+                  <ul
+                    className={`dropdown-menu dropdown-menu-end border-0 shadow-lg rounded-4 py-2 ${isDark ? 'dropdown-menu-dark' : ''} ${isUserMenuOpen ? 'show' : ''}`}
+                    style={{
+                      backgroundColor: isDark ? '#12162a' : '#ffffff',
+                      border: isDark ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.08)',
+                      width: '220px',
+                      maxWidth: 'calc(100vw - 24px)',
+                      position: 'absolute',
+                      top: 'calc(100% + 8px)',
+                      right: 0,
+                      left: 'auto',
+                      zIndex: 1050,
+                      textShadow: 'none',
+                    }}
+                  >
+                    <li className="px-3 py-2">
+                      <div className={`fw-bold text-truncate ${isDark ? 'text-white' : 'text-dark'}`}>{currentUser?.name}</div>
+                      <div className={`small text-truncate ${isDark ? 'text-white-50' : 'text-secondary'}`}>{currentUser?.email}</div>
+                    </li>
+                    <li><hr className="dropdown-divider my-1" style={{ borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.08)' }} /></li>
+                    <li>
+                      <Link
+                        to="/profile"
+                        className="dropdown-item d-flex align-items-center gap-2 py-2 px-3"
+                        style={{ color: isDark ? '#cbd5e1' : '#4b5563', fontWeight: 500 }}
+                        onClick={() => {
+                          setIsUserMenuOpen(false);
+                          setIsNavCollapsed(true);
+                        }}
+                      >
+                        <i className="bi bi-person-fill" style={{ color: '#00a8ff' }}></i>
+                        <span>{t('navbar.account') || 'Tài khoản'}</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/bookmarks"
+                        className="dropdown-item d-flex align-items-center gap-2 py-2 px-3"
+                        style={{ color: isDark ? '#cbd5e1' : '#4b5563', fontWeight: 500 }}
+                        onClick={() => {
+                          setIsUserMenuOpen(false);
+                          setIsNavCollapsed(true);
+                        }}
+                      >
+                        <i className="bi bi-heart-fill" style={{ color: '#ff4757' }}></i>
+                        <span>{t('navbar.bookmarksTitle')}</span>
+                        {bookmarkCount > 0 && (
+                          <span className="badge bg-danger rounded-pill ms-auto">{bookmarkCount}</span>
+                        )}
+                      </Link>
+                    </li>
+                    <li>
+                      <button
+                        type="button"
+                        className="dropdown-item d-flex align-items-center gap-2 py-2 px-3 w-100 text-start border-0 bg-transparent"
+                        style={{ color: isDark ? '#cbd5e1' : '#4b5563', fontWeight: 500 }}
+                        onClick={() => {
+                          setIsUserMenuOpen(false);
+                          setIsNavCollapsed(true);
+                          setIsCartOpen(true);
+                        }}
+                      >
+                        <i className="bi bi-cart3" style={{ color: '#6C5CE7' }}></i>
+                        <span>{t('navbar.cartTitle')}</span>
+                        {cartCount > 0 && (
+                          <span className="badge bg-primary rounded-pill ms-auto">{cartCount}</span>
+                        )}
+                      </button>
+                    </li>
+                    <li><hr className="dropdown-divider my-1" style={{ borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.08)' }} /></li>
+                    <li>
+                      <button
+                        type="button"
+                        className="dropdown-item d-flex align-items-center gap-2 py-2 px-3 w-100 text-start border-0 bg-transparent text-danger fw-semibold"
+                        onClick={() => {
+                          setIsUserMenuOpen(false);
+                          setIsNavCollapsed(true);
+                          logout();
+                        }}
+                      >
+                        <i className="bi bi-box-arrow-right"></i>
+                        <span>{t('navbar.logout')}</span>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              ) : (
+                <>
+                  <Link
+                    to="/login"
+                    className="btn rounded-pill px-3 py-1 fw-semibold"
+                    style={{
+                      border: isTransparentHero
+                        ? '1.5px solid rgba(255, 255, 255, 0.85)'
+                        : (isDark ? '1.5px solid rgba(255, 255, 255, 0.85)' : '1.5px solid #6C5CE7'),
+                      color: isTransparentHero
+                        ? '#ffffff'
+                        : (isDark ? '#ffffff' : '#6C5CE7'),
+                      background: 'transparent',
+                      fontSize: '0.875rem',
+                    }}
+                    onClick={() => setIsNavCollapsed(true)}
+                  >
+                    {t('navbar.login')}
+                  </Link>
+                  <Link
+                    to="/signup"
+                    className="btn rounded-pill px-3 py-1 text-white fw-semibold"
+                    style={{
+                      background: 'linear-gradient(135deg, #6C5CE7 0%, #FF6B81 100%)',
+                      fontSize: '0.875rem',
+                      border: 'none',
+                    }}
+                    onClick={() => setIsNavCollapsed(true)}
+                  >
+                    {t('navbar.signup')}
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>
