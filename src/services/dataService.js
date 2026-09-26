@@ -330,7 +330,7 @@ export const dataService = {
     return activeMerchandise.find((m) => m.id === id) || null;
   },
 
-  getMerchandiseByCategory(categoryId, { productType = 'all' } = {}) {
+  getMerchandiseByCategory(categoryId, { productType = 'all', sort = 'featured' } = {}) {
     let result = activeMerchandise;
     if (categoryId && categoryId !== 'all') {
       result = result.filter((m) => m.category === categoryId);
