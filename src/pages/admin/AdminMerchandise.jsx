@@ -104,22 +104,51 @@ export default function AdminMerchandise({ onShowToast }) {
     return filteredItems.slice(start, start + pageSize);
   }, [filteredItems, currentPage, pageSize]);
 
+  const DEMO_MERCH_DATA = {
+    category: 'anime',
+    nameVi: 'Mô hình Monkey D. Luffy Gear 5 - Thần Mặt Trời Nika (Bản Giới Hạn)',
+    nameEn: 'Monkey D. Luffy Gear 5 Figure - Sun God Nika Special Edition',
+    productType: 'figure',
+    price: 59.99,
+    imageUrl: '/image/logo_luffy.jpg',
+    inStock: true,
+    rating: 5.0,
+    descVi: 'Mô hình PVC cao cấp tái hiện hoàn hảo trạng thái Gear 5 huyền thoại với hiệu ứng mây khói tinh xảo và đế trưng bày độc quyền.',
+    descEn: 'Premium collector PVC figure depicting the legendary Gear 5 transformation with dynamic effects and exclusive display stand.',
+  };
+
   const handleOpenAdd = () => {
     setEditingItem(null);
     setFormData({
       id: `merch-${Date.now()}`,
-      category: 'anime',
-      nameVi: '',
-      nameEn: '',
-      productType: 'figure',
-      price: 59.99,
-      imageUrl: '/image/logo_luffy.jpg',
-      inStock: true,
-      rating: 4.9,
-      descVi: '',
-      descEn: '',
+      category: DEMO_MERCH_DATA.category,
+      nameVi: DEMO_MERCH_DATA.nameVi,
+      nameEn: DEMO_MERCH_DATA.nameEn,
+      productType: DEMO_MERCH_DATA.productType,
+      price: DEMO_MERCH_DATA.price,
+      imageUrl: DEMO_MERCH_DATA.imageUrl,
+      inStock: DEMO_MERCH_DATA.inStock,
+      rating: DEMO_MERCH_DATA.rating,
+      descVi: DEMO_MERCH_DATA.descVi,
+      descEn: DEMO_MERCH_DATA.descEn,
     });
     setIsModalOpen(true);
+  };
+
+  const handleFillDemoData = () => {
+    setFormData((prev) => ({
+      ...prev,
+      category: DEMO_MERCH_DATA.category,
+      nameVi: DEMO_MERCH_DATA.nameVi,
+      nameEn: DEMO_MERCH_DATA.nameEn,
+      productType: DEMO_MERCH_DATA.productType,
+      price: DEMO_MERCH_DATA.price,
+      imageUrl: DEMO_MERCH_DATA.imageUrl,
+      inStock: DEMO_MERCH_DATA.inStock,
+      rating: DEMO_MERCH_DATA.rating,
+      descVi: DEMO_MERCH_DATA.descVi,
+      descEn: DEMO_MERCH_DATA.descEn,
+    }));
   };
 
   const handleOpenEdit = (item) => {
@@ -542,10 +571,23 @@ export default function AdminMerchandise({ onShowToast }) {
         <div className="fv-admin-modal-backdrop" onClick={() => setIsModalOpen(false)}>
           <div className="fv-admin-modal-dialog" onClick={(e) => e.stopPropagation()}>
             <div className="fv-admin-modal-header">
-              <h5 className="fw-bold mb-0 text-white d-flex align-items-center gap-2">
-                <i className="bi bi-bag-plus text-info"></i>
-                {editingItem ? 'Chỉnh sửa Sản Phẩm' : 'Thêm Sản Phẩm mới'}
-              </h5>
+              <div className="d-flex align-items-center gap-3">
+                <h5 className="fw-bold mb-0 text-white d-flex align-items-center gap-2">
+                  <i className="bi bi-bag-plus text-info"></i>
+                  {editingItem ? 'Chỉnh sửa Sản Phẩm' : 'Thêm Sản Phẩm mới'}
+                </h5>
+                {!editingItem && (
+                  <button
+                    type="button"
+                    className="btn btn-sm btn-outline-warning d-flex align-items-center gap-1 py-1 px-2"
+                    style={{ fontSize: '0.78rem', borderRadius: '20px' }}
+                    onClick={handleFillDemoData}
+                    title="Bấm để tự động điền lại mẫu demo chuẩn quay video"
+                  >
+                    <i className="bi bi-lightning-charge-fill"></i> Điền mẫu demo
+                  </button>
+                )}
+              </div>
               <button
                 type="button"
                 className="btn-close btn-close-white"

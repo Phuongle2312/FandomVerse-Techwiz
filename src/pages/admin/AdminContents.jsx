@@ -106,23 +106,54 @@ export default function AdminContents({ onShowToast }) {
     return filteredItems.slice(start, start + pageSize);
   }, [filteredItems, currentPage, pageSize]);
 
+  const DEMO_ARTICLE_DATA = {
+    category: 'anime',
+    type: 'article',
+    titleVi: 'One Piece: Tiết lộ chấn động về kho báu bí ẩn tại Đảo Elbaf',
+    titleEn: 'One Piece: Shocking Revelation About The Legendary Treasure on Elbaf',
+    shortDescVi: 'Tổng hợp toàn bộ phân tích cốt truyện, sức mạnh của các chiến binh Elbaf và manh mối mới nhất về kho báu One Piece.',
+    shortDescEn: 'Comprehensive story breakdown, giant warrior abilities, and the newest clues regarding the legendary One Piece treasure.',
+    imageUrl: '/image/onepice_thamnail.jpg',
+    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    audioUrl: 'https://actions.google.com/sounds/v1/science_fiction/scifi_laser_burst.ogg',
+    subTags: 'One Piece, Anime, Elbaf, Tin Nóng, Arc Mới',
+    featured: true,
+  };
+
   const handleOpenAdd = () => {
     setEditingItem(null);
     setFormData({
       id: `content-${Date.now()}`,
-      category: 'anime',
-      type: 'article',
-      titleVi: '',
-      titleEn: '',
-      shortDescVi: '',
-      shortDescEn: '',
-      imageUrl: '/image/onepice_thamnail.jpg',
-      videoUrl: '',
-      audioUrl: '',
-      subTags: 'Hot, Tin tức, Đánh giá',
-      featured: false,
+      category: DEMO_ARTICLE_DATA.category,
+      type: DEMO_ARTICLE_DATA.type,
+      titleVi: DEMO_ARTICLE_DATA.titleVi,
+      titleEn: DEMO_ARTICLE_DATA.titleEn,
+      shortDescVi: DEMO_ARTICLE_DATA.shortDescVi,
+      shortDescEn: DEMO_ARTICLE_DATA.shortDescEn,
+      imageUrl: DEMO_ARTICLE_DATA.imageUrl,
+      videoUrl: DEMO_ARTICLE_DATA.videoUrl,
+      audioUrl: DEMO_ARTICLE_DATA.audioUrl,
+      subTags: DEMO_ARTICLE_DATA.subTags,
+      featured: DEMO_ARTICLE_DATA.featured,
     });
     setIsModalOpen(true);
+  };
+
+  const handleFillDemoData = () => {
+    setFormData((prev) => ({
+      ...prev,
+      category: DEMO_ARTICLE_DATA.category,
+      type: DEMO_ARTICLE_DATA.type,
+      titleVi: DEMO_ARTICLE_DATA.titleVi,
+      titleEn: DEMO_ARTICLE_DATA.titleEn,
+      shortDescVi: DEMO_ARTICLE_DATA.shortDescVi,
+      shortDescEn: DEMO_ARTICLE_DATA.shortDescEn,
+      imageUrl: DEMO_ARTICLE_DATA.imageUrl,
+      videoUrl: DEMO_ARTICLE_DATA.videoUrl,
+      audioUrl: DEMO_ARTICLE_DATA.audioUrl,
+      subTags: DEMO_ARTICLE_DATA.subTags,
+      featured: DEMO_ARTICLE_DATA.featured,
+    }));
   };
 
   const handleOpenEdit = (item) => {
@@ -572,10 +603,23 @@ export default function AdminContents({ onShowToast }) {
         <div className="fv-admin-modal-backdrop" onClick={() => setIsModalOpen(false)}>
           <div className="fv-admin-modal-dialog" onClick={(e) => e.stopPropagation()}>
             <div className="fv-admin-modal-header">
-              <h5 className="fw-bold mb-0 text-white d-flex align-items-center gap-2">
-                <i className={`bi ${editingItem ? 'bi-pencil-square text-info' : 'bi-plus-circle text-success'}`}></i>
-                {editingItem ? 'Chỉnh sửa bài viết' : 'Thêm bài viết mới'}
-              </h5>
+              <div className="d-flex align-items-center gap-3">
+                <h5 className="fw-bold mb-0 text-white d-flex align-items-center gap-2">
+                  <i className={`bi ${editingItem ? 'bi-pencil-square text-info' : 'bi-plus-circle text-success'}`}></i>
+                  {editingItem ? 'Chỉnh sửa bài viết' : 'Thêm bài viết mới'}
+                </h5>
+                {!editingItem && (
+                  <button
+                    type="button"
+                    className="btn btn-sm btn-outline-warning d-flex align-items-center gap-1 py-1 px-2"
+                    style={{ fontSize: '0.78rem', borderRadius: '20px' }}
+                    onClick={handleFillDemoData}
+                    title="Bấm để tự động điền lại mẫu demo chuẩn quay video"
+                  >
+                    <i className="bi bi-lightning-charge-fill"></i> Điền mẫu demo
+                  </button>
+                )}
+              </div>
               <button
                 type="button"
                 className="btn-close btn-close-white"
