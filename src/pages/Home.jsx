@@ -30,6 +30,7 @@ export default function Home() {
   const [trailerCategory, setTrailerCategory] = useState('all');
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  const [isAutoScrollActive, setIsAutoScrollActive] = useState(true);
 
   const trailerSliderRef = useRef(null);
   const heroVideoRef = useRef(null);
@@ -37,6 +38,43 @@ export default function Home() {
   const startXRef = useRef(0);
   const scrollLeftRef = useRef(0);
   const hasMovedRef = useRef(false);
+  const isTrailerHoveredRef = useRef(false);
+
+  const checkScrollBounds = useCallback(() => {
+    if (trailerSliderRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = trailerSliderRef.current;
+      setCanScrollLeft(scrollLeft > 10);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 15);
+    }
+  }, []);
+
+  // Hiệu ứng lướt tự động mượt mà cho phần trailer
+  useEffect(() => {
+    if (!isAutoScrollActive) return;
+
+    const interval = setInterval(() => {
+      if (
+        isTrailerHoveredRef.current ||
+        isDraggingRef.current ||
+        !trailerSliderRef.current ||
+        activeVideo
+      ) {
+        return;
+      }
+      const slider = trailerSliderRef.current;
+      const cardWidth = 360;
+      const maxScroll = slider.scrollWidth - slider.clientWidth;
+
+      if (slider.scrollLeft >= maxScroll - 30) {
+        slider.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        slider.scrollBy({ left: cardWidth, behavior: 'smooth' });
+      }
+      setTimeout(checkScrollBounds, 350);
+    }, 2800);
+
+    return () => clearInterval(interval);
+  }, [isAutoScrollActive, checkScrollBounds, activeVideo]);
 
   useEffect(() => {
     if (heroVideoRef.current) {
@@ -49,14 +87,6 @@ export default function Home() {
     if (trailerCategory === 'all') return allTrailers;
     return allTrailers.filter((t) => t.category === trailerCategory);
   }, [allTrailers, trailerCategory]);
-
-  const checkScrollBounds = useCallback(() => {
-    if (trailerSliderRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = trailerSliderRef.current;
-      setCanScrollLeft(scrollLeft > 10);
-      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 15);
-    }
-  }, []);
 
   useEffect(() => {
     checkScrollBounds();
@@ -368,15 +398,15 @@ export default function Home() {
 
       {/* 3. FEATURED CONTENTS SHOWCASE - DYNAMIC THEME */}
       <section
-        className="py-4"
+        className="py-5"
         style={{
-          backgroundColor: isDark ? '#0c0f1d' : '#FFFFFF',
+          backgroundColor: isDark ? '#0c0f1d' : '#f5f6fa',
           borderTop: isDark ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid var(--border-color)',
           borderBottom: isDark ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid var(--border-color)',
           transition: 'background-color 0.3s ease',
         }}
       >
-        <div className="container-fluid px-3 px-md-4 px-lg-5">
+        <div className="container-fluid px-3 px-md-4 px-xl-5">
           <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between mb-4 gap-2">
             <div>
               <div className="d-flex align-items-center gap-2 mb-1">
@@ -387,14 +417,16 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="row g-4">
-            {featuredContents.slice(0, 6).map((item) => (
-              <div key={item.id} className="col-lg-4 col-md-6 col-12">
-                <ContentCard
-                  item={item}
-                  onOpenGallery={(g) => setLightboxImages(g.images)}
-                  onOpenMedia={(v) => setActiveVideo(v)}
-                />
+          <div className="row g-3 g-xl-4">
+            {featuredContents.slice(0, 8).map((item) => (
+              <div key={item.id} className="col-xl-3 col-lg-3 col-md-6 col-12 d-flex">
+                <div className="w-100 h-100">
+                  <ContentCard
+                    item={item}
+                    onOpenGallery={(g) => setLightboxImages(g.images)}
+                    onOpenMedia={(v) => setActiveVideo(v)}
+                  />
+                </div>
               </div>
             ))}
           </div>
@@ -420,8 +452,24 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Slider Navigation Arrows & View All Link */}
+            {/* Slider Navigation Arrows & View All Link & Auto-scroll Toggle */}
             <div className="d-flex align-items-center gap-2">
+              <button
+                type="button"
+                className={`btn btn-sm rounded-pill px-3 py-1.5 fw-semibold d-inline-flex align-items-center gap-1.5 border-0 ${
+                  isAutoScrollActive
+                    ? 'bg-danger bg-opacity-20 text-danger'
+                    : isDark
+                    ? 'bg-secondary bg-opacity-20 text-white-50'
+                    : 'bg-secondary bg-opacity-10 text-secondary'
+                }`}
+                onClick={() => setIsAutoScrollActive(!isAutoScrollActive)}
+                title={isAutoScrollActive ? 'Bấm để tạm dừng lướt tự động' : 'Bấm để bật lướt tự động'}
+                style={{ fontSize: '0.8rem', transition: 'all 0.2s ease' }}
+              >
+                <i className={`bi ${isAutoScrollActive ? 'bi-pause-circle-fill' : 'bi-play-circle-fill'}`}></i>
+                <span>{isAutoScrollActive ? 'Tự động lướt: Bật' : 'Tự động lướt: Tắt'}</span>
+              </button>
               <button
                 type="button"
                 className="fv-slider-nav-btn"
@@ -485,7 +533,16 @@ export default function Home() {
           </div>
 
           {/* Interactive Sliding Track ("Lướt") */}
-          <div className="fv-trailer-slider-container">
+          <div
+            className="fv-trailer-slider-container"
+            onMouseEnter={() => {
+              isTrailerHoveredRef.current = true;
+            }}
+            onMouseLeave={() => {
+              isTrailerHoveredRef.current = false;
+              handleMouseUpOrLeave();
+            }}
+          >
             <div
               ref={trailerSliderRef}
               className="fv-trailer-slider-track"
