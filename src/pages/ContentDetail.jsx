@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { dataService } from '../services/dataService.js';
 import { CATEGORY_LIST } from '../constants.js';
@@ -18,11 +18,26 @@ export default function ContentDetail() {
   const { isBookmarked, toggleBookmark } = useBookmarks();
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const bookmarked = content ? isBookmarked(content.id) : false;
+
+  // Auto bookmark after login redirect if requested
+  useEffect(() => {
+    if (isAuthenticated && content && location.state?.autoBookmarkId === content.id) {
+      if (!isBookmarked(content.id)) {
+        toggleBookmark(content);
+      }
+    }
+  }, [isAuthenticated, location.state, content]);
 
   const handleBookmarkToggle = () => {
     if (!isAuthenticated) {
-      navigate('/login');
+      navigate('/login', {
+        state: {
+          from: location.pathname + location.search,
+          autoBookmarkId: content?.id,
+        },
+      });
       return;
     }
     toggleBookmark(content);

@@ -761,6 +761,7 @@ export default function Navbar() {
                 <>
                   <Link
                     to="/login"
+                    state={{ from: location.pathname + location.search }}
                     className="btn rounded-pill px-3 py-1 fw-semibold"
                     style={{
                       border: isTransparentHero
@@ -778,6 +779,7 @@ export default function Navbar() {
                   </Link>
                   <Link
                     to="/signup"
+                    state={{ from: location.pathname + location.search }}
                     className="btn rounded-pill px-3 py-1 text-white fw-semibold"
                     style={{
                       background: 'linear-gradient(135deg, #6C5CE7 0%, #FF6B81 100%)',

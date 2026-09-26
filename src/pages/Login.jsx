@@ -28,7 +28,10 @@ export default function Login() {
     e.preventDefault();
     const result = login(formData.email, formData.password);
     if (result.success) {
-      navigate(location.state?.from || '/', { replace: true });
+      const targetFrom = typeof location.state?.from === 'string'
+        ? location.state.from
+        : (location.state?.from?.pathname || '/');
+      navigate(targetFrom, { replace: true, state: location.state });
     } else {
       setToast({
         message: result.message,

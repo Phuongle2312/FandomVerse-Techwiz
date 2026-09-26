@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useCart } from '../../context/CartContext.jsx';
 import { useAuth } from '../../context/AuthContext.jsx';
@@ -10,6 +10,7 @@ export default function MerchCard({ item, onToast }) {
   const { addItem } = useCart();
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const [isAdded, setIsAdded] = useState(false);
 
   const category = CATEGORY_LIST.find((c) => c.id === item.category);
@@ -20,7 +21,7 @@ export default function MerchCard({ item, onToast }) {
       if (onToast) {
         onToast(t('cards.merch.loginToAddToCart'));
       }
-      navigate('/login');
+      navigate('/login', { state: { from: location.pathname + location.search } });
       return;
     }
 
