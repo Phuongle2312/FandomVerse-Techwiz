@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { dataService } from '../services/dataService.js';
 import { CATEGORY_LIST, PRODUCT_TYPES } from '../constants.js';
 import MerchCard from '../components/cards/MerchCard.jsx';
@@ -7,11 +8,22 @@ import ToastNotification from '../components/common/ToastNotification.jsx';
 import { useCart } from '../context/CartContext.jsx';
 
 export default function Merchandise() {
+  const { t } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedType, setSelectedType] = useState('all');
   const [toast, setToast] = useState(null);
 
   const { setIsCartOpen, cartCount, cartTotal } = useCart();
+
+  const CATEGORY_LIST_LOCALIZED = CATEGORY_LIST.map((cat) => ({
+    ...cat,
+    label: t(`categories.${cat.id}.label`),
+  }));
+
+  const PRODUCT_TYPES_LOCALIZED = PRODUCT_TYPES.map((pt) => ({
+    ...pt,
+    label: t(`productTypes.${pt.id}`),
+  }));
 
   const merchandise = useMemo(() => {
     return dataService.getMerchandiseByCategory(selectedCategory, {
@@ -33,10 +45,10 @@ export default function Merchandise() {
       <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-4">
         <div>
           <h1 className="font-heading display-6 fw-bold text-dark mb-1 d-flex align-items-center gap-2">
-            <i className="bi bi-shop text-success"></i> Gian Hàng Fandom Merchandise
+            <i className="bi bi-shop text-success"></i> {t('merchandise.title')}
           </h1>
           <p className="text-secondary small mb-0">
-            Khám phá các mô hình Figure, trang phục, thú bông và đồ sưu tầm chính hãng từ các vũ trụ fandom.
+            {t('merchandise.subtitle')}
           </p>
         </div>
 
@@ -47,7 +59,7 @@ export default function Merchandise() {
           onClick={() => setIsCartOpen(true)}
         >
           <i className="bi bi-cart3 fs-5"></i>
-          <span>Xem Giỏ Hàng ({cartCount})</span>
+          <span>{t('merchandise.viewCart', { count: cartCount })}</span>
           {cartTotal > 0 && (
             <span className="badge bg-white text-primary ms-1 font-monospace">
               ${cartTotal.toFixed(2)}
@@ -61,14 +73,14 @@ export default function Merchandise() {
         <div className="row g-3 align-items-center">
           {/* Category Filter */}
           <div className="col-md-6 col-12 d-flex align-items-center gap-2">
-            <label className="small fw-semibold text-secondary text-nowrap">Danh mục:</label>
+            <label className="small fw-semibold text-secondary text-nowrap">{t('merchandise.categoryLabel')}</label>
             <select
               className="form-select form-select-sm bg-white"
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
             >
-              <option value="all">Tất cả 7 Fandom</option>
-              {CATEGORY_LIST.map((c) => (
+              <option value="all">{t('merchandise.allFandoms')}</option>
+              {CATEGORY_LIST_LOCALIZED.map((c) => (
                 <option key={c.id} value={c.id}>
                   {c.label}
                 </option>
@@ -78,15 +90,15 @@ export default function Merchandise() {
 
           {/* Product Type Filter */}
           <div className="col-md-6 col-12 d-flex align-items-center gap-2">
-            <label className="small fw-semibold text-secondary text-nowrap">Loại vật phẩm:</label>
+            <label className="small fw-semibold text-secondary text-nowrap">{t('merchandise.typeLabel')}</label>
             <select
               className="form-select form-select-sm bg-white"
               value={selectedType}
               onChange={(e) => setSelectedType(e.target.value)}
             >
-              {PRODUCT_TYPES.map((t) => (
-                <option key={t.id} value={t.id}>
-                  {t.label}
+              {PRODUCT_TYPES_LOCALIZED.map((pt) => (
+                <option key={pt.id} value={pt.id}>
+                  {pt.label}
                 </option>
               ))}
             </select>
@@ -97,13 +109,13 @@ export default function Merchandise() {
       {/* Products Grid */}
       {merchandise.length === 0 ? (
         <EmptyState
-          title="Không có sản phẩm nào phù hợp"
-          message="Không tìm thấy vật phẩm lưu niệm khớp với bộ lọc bạn đã chọn."
+          title={t('merchandise.noProductsTitle')}
+          message={t('merchandise.noProductsMessage')}
           onAction={() => {
             setSelectedCategory('all');
             setSelectedType('all');
           }}
-          actionLabel="Xóa bộ lọc"
+          actionLabel={t('trailersHub.clearFilters')}
         />
       ) : (
         <div className="row g-4">

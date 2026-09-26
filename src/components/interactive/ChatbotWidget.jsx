@@ -1,15 +1,19 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { chatbotService } from '../../services/chatbotService.js';
 import { useNavigate } from 'react-router-dom';
+import { useLanguage } from '../../context/LanguageContext.jsx';
 
 export default function ChatbotWidget() {
+  const { t } = useTranslation();
+  const { bcp47 } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState([
+  const [messages, setMessages] = useState(() => [
     {
       sender: 'bot',
-      text: 'Xin chào fan hâm mộ! 🌌 Tôi là Trợ Lý Vũ Trụ FandomVerse. Tôi có thể giúp gì cho bạn hôm nay?',
+      text: t('chatbot.greeting'),
       link: null,
-      time: new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }),
+      time: new Date().toLocaleTimeString(bcp47, { hour: '2-digit', minute: '2-digit' }),
     },
   ]);
   const [input, setInput] = useState('');
@@ -32,7 +36,7 @@ export default function ChatbotWidget() {
     const text = (textToSend || input).trim();
     if (!text) return;
 
-    const time = new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
+    const time = new Date().toLocaleTimeString(bcp47, { hour: '2-digit', minute: '2-digit' });
 
     // 1. Add User message
     const userMsg = { sender: 'user', text, link: null, time };
@@ -46,7 +50,7 @@ export default function ChatbotWidget() {
         sender: 'bot',
         text: response.answer,
         link: response.link,
-        time: new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }),
+        time: new Date().toLocaleTimeString(bcp47, { hour: '2-digit', minute: '2-digit' }),
       };
       setMessages((prev) => [...prev, botMsg]);
     }, 400);
@@ -75,13 +79,13 @@ export default function ChatbotWidget() {
             className="btn btn-primary-fv p-3 rounded-circle shadow-lg d-flex align-items-center justify-content-center position-relative"
             style={{ width: '60px', height: '60px' }}
             onClick={() => setIsOpen(true)}
-            aria-label="Mở Trợ lý ảo AI Chatbot"
-            title="Chat với Trợ lý FandomVerse"
+            aria-label={t('chatbot.openAria')}
+            title={t('chatbot.openTitle')}
           >
             <span style={{ fontSize: '1.6rem' }}>🤖</span>
             <span
               className="position-absolute top-0 start-100 translate-middle p-1 bg-success border border-light rounded-circle"
-              title="Đang hoạt động"
+              title={t('chatbot.activeTitle')}
             ></span>
           </button>
         )}
@@ -104,16 +108,16 @@ export default function ChatbotWidget() {
             <div className="d-flex align-items-center gap-2">
               <span className="fs-4">🤖</span>
               <div>
-                <h6 className="font-heading fw-bold mb-0 text-white">Trợ Lý FandomVerse</h6>
+                <h6 className="font-heading fw-bold mb-0 text-white">{t('chatbot.headerTitle')}</h6>
                 <small className="text-white-50" style={{ fontSize: '0.7rem' }}>
-                  <i className="bi bi-shield-check text-warning"></i> Rule-based Offline AI
+                  <i className="bi bi-shield-check text-warning"></i> {t('chatbot.headerSubtitle')}
                 </small>
               </div>
             </div>
             <button
               type="button"
               className="btn-close btn-close-white"
-              aria-label="Đóng khung chat"
+              aria-label={t('chatbot.closeAria')}
               onClick={() => setIsOpen(false)}
             ></button>
           </div>
@@ -142,7 +146,7 @@ export default function ChatbotWidget() {
                       className="btn btn-sm btn-outline-primary mt-2 w-100 rounded-pill py-1 fw-semibold d-flex align-items-center justify-content-center gap-1"
                       onClick={() => handleNavigate(msg.link)}
                     >
-                      <span>Khám phá ngay</span> <i className="bi bi-arrow-right-short fs-6"></i>
+                      <span>{t('chatbot.exploreNow')}</span> <i className="bi bi-arrow-right-short fs-6"></i>
                     </button>
                   )}
                 </div>
@@ -180,7 +184,7 @@ export default function ChatbotWidget() {
             <input
               type="text"
               className="form-control form-control-sm rounded-pill border bg-light"
-              placeholder="Nhập câu hỏi của bạn..."
+              placeholder={t('chatbot.inputPlaceholder')}
               value={input}
               onChange={(e) => setInput(e.target.value)}
             />
@@ -189,7 +193,7 @@ export default function ChatbotWidget() {
               className="btn btn-sm btn-primary-fv rounded-circle p-2 d-flex align-items-center justify-content-center"
               style={{ width: '36px', height: '36px', flexShrink: 0 }}
               disabled={!input.trim()}
-              aria-label="Gửi tin nhắn"
+              aria-label={t('chatbot.sendAria')}
             >
               <i className="bi bi-send-fill fs-6"></i>
             </button>

@@ -1,6 +1,8 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function ToastNotification({ toast, onClose }) {
+  const { t } = useTranslation();
   if (!toast) return null;
 
   const bgClass =
@@ -24,7 +26,7 @@ export default function ToastNotification({ toast, onClose }) {
           <button
             type="button"
             className="btn-close btn-close-white me-3 m-auto"
-            aria-label="Đóng"
+            aria-label={t('common.close')}
             onClick={onClose}
           ></button>
         </div>

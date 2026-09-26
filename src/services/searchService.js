@@ -1,4 +1,5 @@
 import { dataService } from './dataService.js';
+import i18n from '../i18n/index.js';
 
 export const searchService = {
   search(keyword = '', { category = 'all', type = 'all' } = {}) {
@@ -85,7 +86,10 @@ export const searchService = {
             id: t.id,
             category: t.category,
             title: t.title,
-            description: `Trạng thái: ${t.status === 'upcoming' ? 'Sắp chiếu' : 'Đã phát hành'} (Ngày: ${t.releaseDate})`,
+            description: i18n.t('search.trailerStatusLabel', {
+              status: t.status === 'upcoming' ? i18n.t('search.statusUpcoming') : i18n.t('search.statusReleased'),
+              date: t.releaseDate,
+            }),
             thumbnail: t.thumbnail,
             resultType: 'trailer',
             targetUrl: `#/trailers`,

@@ -1,19 +1,33 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useCart } from '../../context/CartContext.jsx';
+import { useAuth } from '../../context/AuthContext.jsx';
 import { CATEGORY_LIST } from '../../constants.js';
 
 export default function MerchCard({ item, onToast }) {
+  const { t } = useTranslation();
   const { addItem } = useCart();
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
   const [isAdded, setIsAdded] = useState(false);
 
   const category = CATEGORY_LIST.find((c) => c.id === item.category);
-  const categoryLabel = category ? category.label : item.category;
+  const categoryLabel = category ? t(`categories.${category.id}.label`) : item.category;
 
   const handleAddToCart = () => {
+    if (!isAuthenticated) {
+      if (onToast) {
+        onToast(t('cards.merch.loginToAddToCart'));
+      }
+      navigate('/login');
+      return;
+    }
+
     addItem(item.id, 1);
     setIsAdded(true);
     if (onToast) {
-      onToast(`Đã thêm "${item.name}" vào giỏ hàng!`);
+      onToast(t('cards.merch.addedToast', { name: item.name }));
     }
     setTimeout(() => {
       setIsAdded(false);
@@ -21,7 +35,7 @@ export default function MerchCard({ item, onToast }) {
   };
 
   return (
-    <div className="card fv-card h-100 border-0 shadow-sm overflow-hidden d-flex flex-column">
+    <div className="card fv-card fv-merch-card h-100 border-0 shadow-sm overflow-hidden d-flex flex-column">
       {/* Product Image 1:1 ratio */}
       <div className="position-relative overflow-hidden" style={{ paddingTop: '100%', backgroundColor: '#f9f9f9' }}>
         <img
@@ -30,14 +44,14 @@ export default function MerchCard({ item, onToast }) {
           className="position-absolute top-0 start-0 w-100 h-100 object-fit-cover transition-normal"
           loading="lazy"
         />
-        <span className="position-absolute top-0 start-0 m-2 badge bg-dark bg-opacity-75 text-white rounded-pill px-2 py-1 small">
+        <span className="position-absolute top-0 start-0 m-1.5 m-md-2 badge bg-dark bg-opacity-75 text-white rounded-pill px-2 py-0.5 py-md-1 small" style={{ fontSize: '0.65rem' }}>
           {item.productType}
         </span>
       </div>
 
       {/* Product Details */}
-      <div className="card-body p-3 d-flex flex-column flex-grow-1">
-        <span className={`badge-category badge-category-${item.category} mb-2 align-self-start`}>
+      <div className="card-body p-2 p-md-3 d-flex flex-column flex-grow-1">
+        <span className={`badge-category badge-category-${item.category} mb-1.5 mb-md-2 align-self-start`}>
           {categoryLabel}
         </span>
 
@@ -45,18 +59,18 @@ export default function MerchCard({ item, onToast }) {
           {item.name}
         </h5>
 
-        <p className="card-text text-secondary small flex-grow-1 line-clamp-2 mb-3">
+        <p className="card-text text-secondary small flex-grow-1 line-clamp-2 mb-2 mb-md-3">
           {item.shortDescription}
         </p>
 
         {/* Price and Add to Cart */}
-        <div className="mt-auto pt-2 border-top">
-          <div className="d-flex align-items-baseline gap-1 mb-2">
-            <span className="fs-5 fw-bold" style={{ color: 'var(--color-accent)' }}>
+        <div className="mt-auto pt-1.5 pt-md-2 border-top">
+          <div className="d-flex align-items-baseline gap-1 mb-1.5 mb-md-2">
+            <span className="fs-5 fw-bold fv-price-display" style={{ color: 'var(--color-accent)' }}>
               ${item.price.toFixed(2)}
             </span>
             {item.priceMax && (
-              <span className="text-secondary small fw-medium">
+              <span className="text-secondary small fw-medium" style={{ fontSize: '0.72rem' }}>
                 - ${item.priceMax.toFixed(2)}
               </span>
             )}
@@ -64,14 +78,13 @@ export default function MerchCard({ item, onToast }) {
 
           <button
             type="button"
-            className={`btn w-100 py-2 d-flex align-items-center justify-content-center gap-2 ${
-              isAdded ? 'btn-success text-white' : 'btn-accent-fv'
-            }`}
+            className={`btn w-100 py-1.5 py-md-2 fv-add-cart-btn d-flex align-items-center justify-content-center gap-1.5 ${isAdded ? 'btn-success text-white' : 'btn-accent-fv'
+              }`}
             onClick={handleAddToCart}
             disabled={isAdded}
           >
             <i className={`bi ${isAdded ? 'bi-check-circle-fill' : 'bi-bag-plus'}`}></i>
-            <span>{isAdded ? 'Đã thêm vào giỏ!' : 'Thêm vào giỏ'}</span>
+            <span>{isAdded ? t('cards.merch.added') : t('cards.merch.addToCart')}</span>
           </button>
         </div>
       </div>

@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useCart } from '../../context/CartContext.jsx';
+import { useLanguage } from '../../context/LanguageContext.jsx';
 import { Link } from 'react-router-dom';
 
 export default function CartDrawer() {
+  const { t } = useTranslation();
+  const { bcp47 } = useLanguage();
   const {
     isCartOpen,
     setIsCartOpen,
@@ -45,13 +49,13 @@ export default function CartDrawer() {
         <div className="p-3 border-bottom d-flex align-items-center justify-content-between bg-light">
           <div className="d-flex align-items-center gap-2">
             <i className="bi bi-cart3 text-primary fs-4"></i>
-            <h5 className="font-heading fw-bold mb-0">Giỏ Hàng Của Bạn</h5>
+            <h5 className="font-heading fw-bold mb-0">{t('cartDrawer.title')}</h5>
             <span className="badge bg-primary rounded-pill">{cartCount}</span>
           </div>
           <button
             type="button"
             className="btn-close"
-            aria-label="Đóng giỏ hàng"
+            aria-label={t('cartDrawer.closeAria')}
             onClick={() => setIsCartOpen(false)}
           ></button>
         </div>
@@ -61,14 +65,14 @@ export default function CartDrawer() {
           {cartItems.length === 0 ? (
             <div className="text-center py-5 text-muted">
               <i className="bi bi-bag-x display-3 text-secondary mb-3 d-block"></i>
-              <h6 className="fw-semibold">Giỏ hàng của bạn đang trống</h6>
-              <p className="small mb-4">Hãy khám phá các mô hình figure và quà lưu niệm fandom độc đáo!</p>
+              <h6 className="fw-semibold">{t('cartDrawer.emptyTitle')}</h6>
+              <p className="small mb-4">{t('cartDrawer.emptyMessage')}</p>
               <Link
                 to="/merchandise"
                 className="btn btn-primary-fv btn-sm px-4"
                 onClick={() => setIsCartOpen(false)}
               >
-                Khám phá Merchandise
+                {t('cartDrawer.exploreMerch')}
               </Link>
             </div>
           ) : (
@@ -99,7 +103,7 @@ export default function CartDrawer() {
                           className="btn btn-outline-secondary px-2"
                           type="button"
                           onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                          aria-label="Giảm số lượng"
+                          aria-label={t('cartDrawer.decreaseAria')}
                         >
                           -
                         </button>
@@ -110,7 +114,7 @@ export default function CartDrawer() {
                           className="btn btn-outline-secondary px-2"
                           type="button"
                           onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                          aria-label="Tăng số lượng"
+                          aria-label={t('cartDrawer.increaseAria')}
                         >
                           +
                         </button>
@@ -121,8 +125,8 @@ export default function CartDrawer() {
                         type="button"
                         className="btn btn-sm text-danger p-0 ms-auto"
                         onClick={() => removeItem(item.id)}
-                        title="Xóa sản phẩm"
-                        aria-label="Xóa sản phẩm"
+                        title={t('cartDrawer.removeTitle')}
+                        aria-label={t('cartDrawer.removeTitle')}
                       >
                         <i className="bi bi-trash fs-6"></i>
                       </button>
@@ -138,16 +142,16 @@ export default function CartDrawer() {
         {cartItems.length > 0 && (
           <div className="p-3 border-top bg-light">
             <div className="d-flex justify-content-between mb-1 small text-secondary">
-              <span>Tạm tính ({cartCount} món):</span>
+              <span>{t('cartDrawer.subtotalLabel', { count: cartCount })}</span>
               <span>${cartTotal.toFixed(2)}</span>
             </div>
             <div className="d-flex justify-content-between mb-2 small text-secondary">
-              <span>Phí vận chuyển:</span>
-              <span className="text-success fw-semibold">Miễn phí (Demo)</span>
+              <span>{t('cartDrawer.shippingLabel')}</span>
+              <span className="text-success fw-semibold">{t('cartDrawer.freeShipping')}</span>
             </div>
             <hr className="my-2" />
             <div className="d-flex justify-content-between mb-3 align-items-center">
-              <span className="fw-bold font-heading">Tổng thanh toán:</span>
+              <span className="fw-bold font-heading">{t('cartDrawer.totalLabel')}</span>
               <span className="fs-5 fw-bold text-primary font-monospace">
                 ${cartTotal.toFixed(2)}
               </span>
@@ -160,14 +164,14 @@ export default function CartDrawer() {
                 onClick={handleCheckoutDemo}
               >
                 <i className="bi bi-receipt"></i>
-                <span>Xem Tạm Tính Đơn Hàng</span>
+                <span>{t('cartDrawer.viewOrderSummary')}</span>
               </button>
               <button
                 type="button"
                 className="btn btn-sm btn-outline-secondary"
                 onClick={clearCart}
               >
-                Xóa sạch giỏ hàng
+                {t('cartDrawer.clearCart')}
               </button>
             </div>
           </div>
@@ -181,39 +185,39 @@ export default function CartDrawer() {
             <div className="modal-content border-0 shadow-lg rounded-4 p-2">
               <div className="modal-header border-0 pb-0">
                 <h5 className="modal-title font-heading fw-bold text-primary d-flex align-items-center gap-2">
-                  <i className="bi bi-shield-check text-success"></i> Tóm Tắt Đơn Hàng Demo
+                  <i className="bi bi-shield-check text-success"></i> {t('cartDrawer.checkoutModalTitle')}
                 </h5>
                 <button
                   type="button"
                   className="btn-close"
-                  aria-label="Đóng"
+                  aria-label={t('common.close')}
                   onClick={() => setCheckoutNotice(false)}
                 ></button>
               </div>
               <div className="modal-body">
                 <div className="alert alert-info border-0 rounded-3 small mb-3">
-                  <strong><i className="bi bi-info-circle me-1"></i> Ràng buộc kiến trúc SRS 1.5.1:</strong>
+                  <strong><i className="bi bi-info-circle me-1"></i> {t('cartDrawer.srsNoticeStrong')}</strong>
                   <br />
-                  FandomVerse hoạt động hoàn toàn ở phía trình duyệt (Client-Side SPA, No Backend). Tính năng giỏ hàng chỉ tính toán biểu diễn tổng hóa đơn, không thực hiện giao dịch tài chính hay lưu trữ thông tin thẻ thanh toán thật.
+                  {t('cartDrawer.srsNoticeText')}
                 </div>
 
                 <div className="p-3 bg-light rounded-3 mb-3">
                   <div className="d-flex justify-content-between mb-1 small">
-                    <span className="text-secondary">Số lượng sản phẩm:</span>
-                    <span className="fw-bold">{cartCount} sản phẩm</span>
+                    <span className="text-secondary">{t('cartDrawer.quantityLabel')}</span>
+                    <span className="fw-bold">{t('cartDrawer.quantityValue', { count: cartCount })}</span>
                   </div>
                   <div className="d-flex justify-content-between mb-1 small">
-                    <span className="text-secondary">Tổng số tiền:</span>
+                    <span className="text-secondary">{t('cartDrawer.totalAmountLabel')}</span>
                     <span className="fw-bold text-primary font-monospace">${cartTotal.toFixed(2)}</span>
                   </div>
                   <div className="d-flex justify-content-between small">
-                    <span className="text-secondary">Thời gian tạo:</span>
-                    <span>{new Date().toLocaleTimeString('vi-VN')}</span>
+                    <span className="text-secondary">{t('cartDrawer.createdTimeLabel')}</span>
+                    <span>{new Date().toLocaleTimeString(bcp47)}</span>
                   </div>
                 </div>
 
                 <p className="text-muted small text-center mb-0">
-                  Cảm ơn bạn đã trải nghiệm tính năng giỏ hàng lưu niệm của FandomVerse!
+                  {t('cartDrawer.thankYou')}
                 </p>
               </div>
               <div className="modal-footer border-0 pt-0">
@@ -225,7 +229,7 @@ export default function CartDrawer() {
                     setIsCartOpen(false);
                   }}
                 >
-                  Xác Nhận & Quay Lại Khám Phá
+                  {t('cartDrawer.confirmAndReturn')}
                 </button>
               </div>
             </div>

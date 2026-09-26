@@ -2,7 +2,7 @@
   {
     "id": "anime-trailer-001",
     "category": "anime",
-    "title": "Chainsaw Man: Reze Arc Movie - Official Teaser",
+    "title": { "vi": "Chainsaw Man: Reze Arc Movie - Official Teaser", "en": "Chainsaw Man: Reze Arc Movie - Official Teaser", "hi": "चेनसॉ मैन: रेज़े आर्क मूवी - ऑफिशियल टीज़र" },
     "thumbnail": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/v4yLeNt-kCU",
     "status": "upcoming",
@@ -11,16 +11,16 @@
   {
     "id": "anime-trailer-002",
     "category": "anime",
-    "title": "Mobile Suit Gundam: Chiến Binh Thép Tái Xuất - Official Trailer",
-    "thumbnail": "https://images.unsplash.com/photo-1563089145-599997674d42?w=700&auto=format&fit=crop&q=80",
-    "mediaUrl": "/GunDam.mp4",
+    "title": { "vi": "Demon Slayer: Kimetsu no Yaiba Infinity Castle Arc - Main Trailer", "en": "Demon Slayer: Kimetsu no Yaiba Infinity Castle Arc - Main Trailer", "hi": "डेमन स्लेयर: किमेत्सु नो याइबा इन्फिनिटी कैसल आर्क - मेन ट्रेलर" },
+    "thumbnail": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=700&auto=format&fit=crop&q=80",
+    "mediaUrl": "https://www.youtube.com/embed/x7uL_xZ55Lw",
     "status": "released",
-    "releaseDate": "2026-09-24"
+    "releaseDate": "2026-06-20"
   },
   {
     "id": "anime-trailer-003",
     "category": "anime",
-    "title": "Jujutsu Kaisen: Culling Game Arc - Teaser PV",
+    "title": { "vi": "Jujutsu Kaisen: Culling Game Arc - Teaser PV", "en": "Jujutsu Kaisen: Culling Game Arc - Teaser PV", "hi": "जुजुत्सु कैसेन: कलिंग गेम आर्क - टीज़र पीवी" },
     "thumbnail": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/v8bCVyq-d_M",
     "status": "upcoming",
@@ -29,7 +29,7 @@
   {
     "id": "anime-trailer-004",
     "category": "anime",
-    "title": "Solo Leveling Season 2: Arise from the Shadow - Official Trailer",
+    "title": { "vi": "Solo Leveling Season 2: Arise from the Shadow - Official Trailer", "en": "Solo Leveling Season 2: Arise from the Shadow - Official Trailer", "hi": "सोलो लेवलिंग सीज़न 2: अराइज़ फ्रॉम द शैडो - ऑफिशियल ट्रेलर" },
     "thumbnail": "https://images.unsplash.com/photo-1563089145-599997674d42?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/sUjN1R-XU_c",
     "status": "released",
@@ -38,7 +38,7 @@
   {
     "id": "anime-trailer-005",
     "category": "anime",
-    "title": "Attack on Titan: The Last Attack Movie - 4K Theatrical Trailer",
+    "title": { "vi": "Attack on Titan: The Last Attack Movie - 4K Theatrical Trailer", "en": "Attack on Titan: The Last Attack Movie - 4K Theatrical Trailer", "hi": "अटैक ऑन टाइटन: द लास्ट अटैक मूवी - 4के थिएट्रिकल ट्रेलर" },
     "thumbnail": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/M_OauHnAFc8",
     "status": "upcoming",
@@ -48,7 +48,7 @@
   {
     "id": "gaming-trailer-001",
     "category": "gaming",
-    "title": "Grand Theft Auto VI - First Look Reveal",
+    "title": { "vi": "Grand Theft Auto VI - First Look Reveal", "en": "Grand Theft Auto VI - First Look Reveal", "hi": "ग्रैंड थेफ्ट ऑटो VI - फर्स्ट लुक रिवील" },
     "thumbnail": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/QdBZY2fkU-0",
     "status": "upcoming",
@@ -57,7 +57,7 @@
   {
     "id": "gaming-trailer-002",
     "category": "gaming",
-    "title": "Black Myth: Wukong - Launch Gameplay Trailer",
+    "title": { "vi": "Black Myth: Wukong - Launch Gameplay Trailer", "en": "Black Myth: Wukong - Launch Gameplay Trailer", "hi": "ब्लैक मिथ: वुकोंग - लॉन्च गेमप्ले ट्रेलर" },
     "thumbnail": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/pCkWYd4yYg4",
     "status": "released",
@@ -66,7 +66,7 @@
   {
     "id": "gaming-trailer-003",
     "category": "gaming",
-    "title": "Elden Ring: Shadow of the Erdtree - Official Gameplay Trailer",
+    "title": { "vi": "Elden Ring: Shadow of the Erdtree - Official Gameplay Trailer", "en": "Elden Ring: Shadow of the Erdtree - Official Gameplay Trailer", "hi": "एल्डन रिंग: शैडो ऑफ द एर्डट्री - ऑफिशियल गेमप्ले ट्रेलर" },
     "thumbnail": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/qLZenOn7WUo",
     "status": "released",
@@ -75,7 +75,7 @@
   {
     "id": "gaming-trailer-004",
     "category": "gaming",
-    "title": "Ghost of Yōtei - PlayStation 5 Official Reveal Trailer",
+    "title": { "vi": "Ghost of Yōtei - PlayStation 5 Official Reveal Trailer", "en": "Ghost of Yōtei - PlayStation 5 Official Reveal Trailer", "hi": "घोस्ट ऑफ योतेई - प्लेस्टेशन 5 ऑफिशियल रिवील ट्रेलर" },
     "thumbnail": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/7X8iiK4cIeg",
     "status": "upcoming",
@@ -84,7 +84,7 @@
   {
     "id": "gaming-trailer-005",
     "category": "gaming",
-    "title": "Monster Hunter Wilds - Official 4K Showcase Trailer",
+    "title": { "vi": "Monster Hunter Wilds - Official 4K Showcase Trailer", "en": "Monster Hunter Wilds - Official 4K Showcase Trailer", "hi": "मॉन्स्टर हंटर वाइल्ड्स - ऑफिशियल 4के शोकेस ट्रेलर" },
     "thumbnail": "https://images.unsplash.com/photo-1552824722-ddab1374e622?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/K8e6Jg_H0J8",
     "status": "upcoming",
@@ -93,7 +93,7 @@
   {
     "id": "gaming-trailer-006",
     "category": "gaming",
-    "title": "Cyberpunk 2077: Phantom Liberty - Official Cinematic Trailer",
+    "title": { "vi": "Cyberpunk 2077: Phantom Liberty - Official Cinematic Trailer", "en": "Cyberpunk 2077: Phantom Liberty - Official Cinematic Trailer", "hi": "साइबरपंक 2077: फैंटम लिबर्टी - ऑफिशियल सिनेमैटिक ट्रेलर" },
     "thumbnail": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/KFdf1B4rZ4E",
     "status": "released",
@@ -103,7 +103,7 @@
   {
     "id": "movies-trailer-001",
     "category": "movies",
-    "title": "Avatar 3: Fire and Ash - Concept Teaser",
+    "title": { "vi": "Avatar 3: Fire and Ash - Concept Teaser", "en": "Avatar 3: Fire and Ash - Concept Teaser", "hi": "अवतार 3: फायर एंड ऐश - कॉन्सेप्ट टीज़र" },
     "thumbnail": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/d9MyW72ELq0",
     "status": "upcoming",
@@ -112,7 +112,7 @@
   {
     "id": "movies-trailer-002",
     "category": "movies",
-    "title": "Deadpool & Wolverine - Final Trailer",
+    "title": { "vi": "Deadpool & Wolverine - Final Trailer", "en": "Deadpool & Wolverine - Final Trailer", "hi": "डेडपूल एंड वूल्वरिन - फाइनल ट्रेलर" },
     "thumbnail": "https://images.unsplash.com/photo-1635863138275-d9b33299680b?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/73_1biulkYk",
     "status": "released",
@@ -121,7 +121,7 @@
   {
     "id": "movies-trailer-003",
     "category": "movies",
-    "title": "Avengers: Secret Wars - Multiverse Saga Official Teaser",
+    "title": { "vi": "Avengers: Secret Wars - Multiverse Saga Official Teaser", "en": "Avengers: Secret Wars - Multiverse Saga Official Teaser", "hi": "एवेंजर्स: सीक्रेट वॉर्स - मल्टीवर्स सागा ऑफिशियल टीज़र" },
     "thumbnail": "https://images.unsplash.com/photo-1604200213928-ba3cf4fc8436?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/TcMBFSGVi1c",
     "status": "upcoming",
@@ -130,7 +130,7 @@
   {
     "id": "movies-trailer-004",
     "category": "movies",
-    "title": "Spider-Man: Beyond the Spider-Verse - First Look Preview",
+    "title": { "vi": "Spider-Man: Beyond the Spider-Verse - First Look Preview", "en": "Spider-Man: Beyond the Spider-Verse - First Look Preview", "hi": "स्पाइडर-मैन: बियॉन्ड द स्पाइडर-वर्स - फर्स्ट लुक प्रीव्यू" },
     "thumbnail": "https://images.unsplash.com/photo-1635863138275-d9b33299680b?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/shW9i6k8cB0",
     "status": "upcoming",
@@ -139,7 +139,7 @@
   {
     "id": "movies-trailer-005",
     "category": "movies",
-    "title": "The Batman: Part II - The Dark Knight of Gotham Teaser",
+    "title": { "vi": "The Batman: Part II - The Dark Knight of Gotham Teaser", "en": "The Batman: Part II - The Dark Knight of Gotham Teaser", "hi": "द बैटमैन: पार्ट II - द डार्क नाइट ऑफ गोथम टीज़र" },
     "thumbnail": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/mqqft2x_Aa4",
     "status": "upcoming",
@@ -149,7 +149,7 @@
   {
     "id": "tvshows-trailer-001",
     "category": "tvshows",
-    "title": "Stranger Things Season 5 - The Final Adventure",
+    "title": { "vi": "Stranger Things Season 5 - The Final Adventure", "en": "Stranger Things Season 5 - The Final Adventure", "hi": "स्ट्रेंजर थिंग्स सीज़न 5 - द फाइनल एडवेंचर" },
     "thumbnail": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/yQEondeGvLk",
     "status": "upcoming",
@@ -158,7 +158,7 @@
   {
     "id": "tvshows-trailer-002",
     "category": "tvshows",
-    "title": "House of the Dragon Season 2 - War of Dragons",
+    "title": { "vi": "House of the Dragon Season 2 - War of Dragons", "en": "House of the Dragon Season 2 - War of Dragons", "hi": "हाउस ऑफ द ड्रैगन सीज़न 2 - वॉर ऑफ ड्रैगन्स" },
     "thumbnail": "https://images.unsplash.com/photo-1514539079130-25950c84af65?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/DotnJ7tTA34",
     "status": "released",
@@ -167,7 +167,7 @@
   {
     "id": "tvshows-trailer-003",
     "category": "tvshows",
-    "title": "The Last of Us Season 2 - Official Teaser Trailer",
+    "title": { "vi": "The Last of Us Season 2 - Official Teaser Trailer", "en": "The Last of Us Season 2 - Official Teaser Trailer", "hi": "द लास्ट ऑफ अस सीज़न 2 - ऑफिशियल टीज़र ट्रेलर" },
     "thumbnail": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/xT0g_O9Qp68",
     "status": "upcoming",
@@ -176,7 +176,7 @@
   {
     "id": "tvshows-trailer-004",
     "category": "tvshows",
-    "title": "Arcane Season 2: Final Chapter - Official Netflix Trailer",
+    "title": { "vi": "Arcane Season 2: Final Chapter - Official Netflix Trailer", "en": "Arcane Season 2: Final Chapter - Official Netflix Trailer", "hi": "आर्केन सीज़न 2: फाइनल चैप्टर - ऑफिशियल नेटफ्लिक्स ट्रेलर" },
     "thumbnail": "https://images.unsplash.com/photo-1563089145-599997674d42?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/ysQI1W-oP0g",
     "status": "released",
@@ -185,7 +185,7 @@
   {
     "id": "tvshows-trailer-005",
     "category": "tvshows",
-    "title": "Wednesday Season 2 - Return to Nevermore Official Teaser",
+    "title": { "vi": "Wednesday Season 2 - Return to Nevermore Official Teaser", "en": "Wednesday Season 2 - Return to Nevermore Official Teaser", "hi": "वेडनेस्डे सीज़न 2 - रिटर्न टू नेवरमोर ऑफिशियल टीज़र" },
     "thumbnail": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/Di310WS8zLk",
     "status": "upcoming",
@@ -195,7 +195,7 @@
   {
     "id": "kpop-trailer-001",
     "category": "kpop",
-    "title": "BTS 2026 Reunion Special Album - Comeback Teaser",
+    "title": { "vi": "BTS 2026 Reunion Special Album - Comeback Teaser", "en": "BTS 2026 Reunion Special Album - Comeback Teaser", "hi": "बीटीएस 2026 रीयूनियन स्पेशल एल्बम - कमबैक टीज़र" },
     "thumbnail": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/WMweEpGlu_U",
     "status": "upcoming",
@@ -204,7 +204,7 @@
   {
     "id": "kpop-trailer-002",
     "category": "kpop",
-    "title": "BLACKPINK World Tour Finale - Official Live Film",
+    "title": { "vi": "BLACKPINK World Tour Finale - Official Live Film", "en": "BLACKPINK World Tour Finale - Official Live Film", "hi": "ब्लैकपिंक वर्ल्ड टूर फिनाले - ऑफिशियल लाइव फिल्म" },
     "thumbnail": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/dyRsYk0LyA8",
     "status": "released",
@@ -213,7 +213,7 @@
   {
     "id": "kpop-trailer-003",
     "category": "kpop",
-    "title": "aespa - 'Whiplash' Official Performance MV Teaser",
+    "title": { "vi": "aespa - 'Whiplash' Official Performance MV Teaser", "en": "aespa - 'Whiplash' Official Performance MV Teaser", "hi": "एस्पा - 'व्हिपलैश' ऑफिशियल परफॉर्मेंस एमवी टीज़र" },
     "thumbnail": "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/jWQx2f-CErU",
     "status": "released",
@@ -222,7 +222,7 @@
   {
     "id": "kpop-trailer-004",
     "category": "kpop",
-    "title": "NewJeans - 2026 Global Stage Live Film Teaser",
+    "title": { "vi": "NewJeans - 2026 Global Stage Live Film Teaser", "en": "NewJeans - 2026 Global Stage Live Film Teaser", "hi": "न्यूजीन्स - 2026 ग्लोबल स्टेज लाइव फिल्म टीज़र" },
     "thumbnail": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/ArmDp-zijuc",
     "status": "upcoming",
@@ -232,7 +232,7 @@
   {
     "id": "comics-trailer-001",
     "category": "comics",
-    "title": "Superman: Legacy - Official Motion Comic Preview",
+    "title": { "vi": "Superman: Legacy - Official Motion Comic Preview", "en": "Superman: Legacy - Official Motion Comic Preview", "hi": "सुपरमैन: लिगेसी - ऑफिशियल मोशन कॉमिक प्रीव्यू" },
     "thumbnail": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/wA_QdI06n_0",
     "status": "upcoming",
@@ -241,7 +241,7 @@
   {
     "id": "comics-trailer-002",
     "category": "comics",
-    "title": "X-Men '97 - Animated Series Premiere",
+    "title": { "vi": "X-Men '97 - Animated Series Premiere", "en": "X-Men '97 - Animated Series Premiere", "hi": "एक्स-मेन '97 - एनिमेटेड सीरीज़ प्रीमियर" },
     "thumbnail": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/pv3Ss8o99qU",
     "status": "released",
@@ -250,7 +250,7 @@
   {
     "id": "comics-trailer-003",
     "category": "comics",
-    "title": "Batman: The Brave and the Bold - DC Studios Official Teaser",
+    "title": { "vi": "Batman: The Brave and the Bold - DC Studios Official Teaser", "en": "Batman: The Brave and the Bold - DC Studios Official Teaser", "hi": "बैटमैन: द ब्रेव एंड द बोल्ड - डीसी स्टूडियोज़ ऑफिशियल टीज़र" },
     "thumbnail": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/1Jj3wvyw9vw",
     "status": "upcoming",
@@ -260,7 +260,7 @@
   {
     "id": "manga-trailer-001",
     "category": "manga",
-    "title": "One Piece Chapter 1150 - Special Manga PV",
+    "title": { "vi": "One Piece Chapter 1150 - Special Manga PV", "en": "One Piece Chapter 1150 - Special Manga PV", "hi": "वन पीस चैप्टर 1150 - स्पेशल मंगा पीवी" },
     "thumbnail": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/Ades3pQbeh8",
     "status": "upcoming",
@@ -269,7 +269,7 @@
   {
     "id": "manga-trailer-002",
     "category": "manga",
-    "title": "Berserk Memorial Edition - Manga Tribute Trailer",
+    "title": { "vi": "Berserk Memorial Edition - Manga Tribute Trailer", "en": "Berserk Memorial Edition - Manga Tribute Trailer", "hi": "बर्सर्क मेमोरियल एडिशन - मंगा ट्रिब्यूट ट्रेलर" },
     "thumbnail": "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/oK0C9i4u_3A",
     "status": "released",
@@ -278,7 +278,7 @@
   {
     "id": "manga-trailer-003",
     "category": "manga",
-    "title": "Chainsaw Man Part 2 - Official Manga Motion PV",
+    "title": { "vi": "Chainsaw Man Part 2 - Official Manga Motion PV", "en": "Chainsaw Man Part 2 - Official Manga Motion PV", "hi": "चेनसॉ मैन पार्ट 2 - ऑफिशियल मंगा मोशन पीवी" },
     "thumbnail": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=700&auto=format&fit=crop&q=80",
     "mediaUrl": "https://www.youtube.com/embed/Ades3pQbeh8",
     "status": "released",
