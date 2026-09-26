@@ -13,6 +13,26 @@ export default function VideoModal({ item, onClose }) {
 
   if (!item || !item.mediaUrl) return null;
 
+  // Convert any YouTube URL format to embeddable URL
+  const getEmbedUrl = (url) => {
+    try {
+      // youtu.be/<id>
+      const shortMatch = url.match(/youtu\.be\/([^?&]+)/);
+      if (shortMatch) return `https://www.youtube.com/embed/${shortMatch[1]}`;
+
+      // youtube.com/watch?v=<id>
+      const watchMatch = url.match(/[?&]v=([^?&]+)/);
+      if (watchMatch) return `https://www.youtube.com/embed/${watchMatch[1]}`;
+
+      // Already an embed URL or other (local video, etc.)
+      return url;
+    } catch {
+      return url;
+    }
+  };
+
+  const embedUrl = `${getEmbedUrl(item.mediaUrl)}?autoplay=1`;
+
   return (
     <div
       className="modal show d-block"
@@ -36,7 +56,7 @@ export default function VideoModal({ item, onClose }) {
           <div className="modal-body p-0 mt-3">
             <div className="ratio ratio-16x9">
               <iframe
-                src={`${item.mediaUrl}?autoplay=1`}
+                src={embedUrl}
                 title={item.title}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
