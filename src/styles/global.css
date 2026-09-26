@@ -5727,3 +5727,56 @@ button.fv-lang-btn:hover,
   color: #00a8ff !important;
 }
 
+/* ==========================================================================
+   Premium Cyber-Modern Toast Notification System
+   ========================================================================== */
+@keyframes fvToastSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fvToastSlideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.96);
+  }
+}
+
+@keyframes fvToastProgress {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+.fv-toast-enter {
+  animation: fvToastSlideIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.fv-toast-exit {
+  animation: fvToastSlideOut 0.26s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@media (max-width: 576px) {
+  .fv-toast-container {
+    top: 76px !important;
+    right: 16px !important;
+    left: 16px !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+}
+
+
