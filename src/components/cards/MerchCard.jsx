@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useCart } from '../../context/CartContext.jsx';
@@ -7,21 +7,47 @@ import { CATEGORY_LIST } from '../../constants.js';
 
 export default function MerchCard({ item, onToast }) {
   const { t } = useTranslation();
-  const { addItem } = useCart();
+  const { addItem, setIsCartOpen } = useCart();
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const [isAdded, setIsAdded] = useState(false);
+  const hasAutoAddedRef = useRef(false);
 
   const category = CATEGORY_LIST.find((c) => c.id === item.category);
   const categoryLabel = category ? t(`categories.${category.id}.label`) : item.category;
+
+  // Auto add to cart after login redirect if this item was requested
+  useEffect(() => {
+    if (
+      isAuthenticated &&
+      location.state?.autoAddToCartId === item.id &&
+      !hasAutoAddedRef.current
+    ) {
+      hasAutoAddedRef.current = true;
+      addItem(item.id, 1);
+      setIsAdded(true);
+      if (onToast) {
+        onToast(t('cards.merch.addedToast', { name: item.name }));
+      }
+      setIsCartOpen(true);
+      setTimeout(() => {
+        setIsAdded(false);
+      }, 1500);
+    }
+  }, [isAuthenticated, location.state, item.id]);
 
   const handleAddToCart = () => {
     if (!isAuthenticated) {
       if (onToast) {
         onToast(t('cards.merch.loginToAddToCart'));
       }
-      navigate('/login', { state: { from: location.pathname + location.search } });
+      navigate('/login', {
+        state: {
+          from: location.pathname + location.search,
+          autoAddToCartId: item.id,
+        },
+      });
       return;
     }
 

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useRef } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useBookmarks } from '../../context/BookmarkContext.jsx';
 import { useTheme } from '../../context/ThemeContext.jsx';
@@ -13,17 +13,37 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
   const { isDark } = useTheme();
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const bookmarked = isBookmarked(item.id);
+  const hasAutoBookmarkedRef = useRef(false);
 
   const category = CATEGORY_LIST.find((c) => c.id === item.category);
   const categoryLabel = category ? t(`categories.${category.id}.label`) : item.category;
   const categoryColor = `var(--accent-${item.category}, #6C5CE7)`;
 
+  useEffect(() => {
+    if (
+      isAuthenticated &&
+      location.state?.autoBookmarkId === item.id &&
+      !hasAutoBookmarkedRef.current
+    ) {
+      hasAutoBookmarkedRef.current = true;
+      if (!isBookmarked(item.id)) {
+        toggleBookmark(item);
+      }
+    }
+  }, [isAuthenticated, location.state, item.id]);
+
   const handleBookmarkClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
     if (!isAuthenticated) {
-      navigate('/login', { state: { from: window.location.hash ? window.location.hash.slice(1) : '/' } });
+      navigate('/login', {
+        state: {
+          from: location.pathname + location.search,
+          autoBookmarkId: item.id,
+        },
+      });
       return;
     }
     toggleBookmark(item);
