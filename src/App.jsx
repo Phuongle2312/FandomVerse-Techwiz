@@ -28,6 +28,7 @@ import Login from './pages/Login.jsx';
 import Signup from './pages/Signup.jsx';
 import NotFound from './pages/NotFound.jsx';
 import AdminLayout from './pages/admin/AdminLayout.jsx';
+import ScrollToTop from './components/common/ScrollToTop.jsx';
 
 function AppContent() {
   const location = useLocation();
@@ -35,15 +36,21 @@ function AppContent() {
 
   if (isAdminRoute) {
     return (
-      <Routes>
-        <Route path="/admin/*" element={<AdminLayout />} />
-        <Route path="/admin" element={<AdminLayout />} />
-      </Routes>
+      <>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/admin/*" element={<AdminLayout />} />
+          <Route path="/admin" element={<AdminLayout />} />
+        </Routes>
+      </>
     );
   }
 
   return (
     <div className="app-layout">
+      {/* Scroll restoration on route changes */}
+      <ScrollToTop />
+
       {/* Header Navigation */}
       <Navbar />
 

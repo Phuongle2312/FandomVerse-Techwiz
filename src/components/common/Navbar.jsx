@@ -201,16 +201,6 @@ export default function Navbar() {
           className="navbar-brand d-flex align-items-center gap-2 fw-bold fs-4 text-decoration-none"
           onClick={() => setIsNavCollapsed(true)}
         >
-          <span
-            className="d-flex align-items-center justify-content-center rounded-3 text-white shadow-sm"
-            style={{
-              width: '38px',
-              height: '38px',
-              background: 'linear-gradient(135deg, #6C5CE7 0%, #FF6B81 100%)',
-            }}
-          >
-            <i className="bi bi-stars fs-5"></i>
-          </span>
           <span className={`font-heading tracking-wide fw-bold ${navTextColor}`}>
             Fandom<span style={{ background: 'linear-gradient(135deg, #6C5CE7, #FF6B81)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent', WebkitTextFillColor: 'transparent' }}>Verse</span>
           </span>
