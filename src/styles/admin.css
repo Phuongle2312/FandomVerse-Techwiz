@@ -390,7 +390,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(6, 9, 17, 0.8);
+  background: rgba(6, 9, 17, 0.85);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   z-index: 1060;
@@ -398,6 +398,7 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
+  overflow-y: auto;
 }
 
 .fv-admin-modal-dialog {
@@ -405,12 +406,24 @@
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 16px;
   width: 100%;
-  max-width: 680px;
-  max-height: 90vh;
+  max-width: 720px;
+  max-height: 88vh;
   display: flex;
   flex-direction: column;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
   animation: fvModalFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+}
+
+/* Crucial: form inside modal dialog must be flex and allow min-height: 0 so modal-body can scroll! */
+.fv-admin-modal-dialog > form,
+.fv-admin-modal-dialog form {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
   overflow: hidden;
 }
 
@@ -420,17 +433,43 @@
 }
 
 .fv-admin-modal-header {
-  padding: 20px 24px;
+  padding: 18px 24px;
   border-bottom: 1px solid var(--fv-admin-card-border);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-shrink: 0;
+  background: #111526;
+  z-index: 2;
 }
 
 .fv-admin-modal-body {
   padding: 24px;
-  overflow-y: auto;
+  overflow-y: auto !important;
+  flex: 1 1 auto;
+  min-height: 0;
   scrollbar-width: thin;
+  scrollbar-color: rgba(108, 92, 231, 0.5) rgba(255, 255, 255, 0.05);
+  -webkit-overflow-scrolling: touch;
+}
+
+.fv-admin-modal-body::-webkit-scrollbar {
+  display: block !important;
+  width: 6px;
+}
+
+.fv-admin-modal-body::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.fv-admin-modal-body::-webkit-scrollbar-thumb {
+  background: rgba(108, 92, 231, 0.5);
+  border-radius: 4px;
+}
+
+.fv-admin-modal-body::-webkit-scrollbar-thumb:hover {
+  background: rgba(108, 92, 231, 0.8);
 }
 
 .fv-admin-modal-footer {
@@ -440,7 +479,9 @@
   align-items: center;
   justify-content: flex-end;
   gap: 12px;
-  background: rgba(0, 0, 0, 0.2);
+  background: #0c0f1d;
+  flex-shrink: 0;
+  z-index: 2;
 }
 
 /* Form Controls */
