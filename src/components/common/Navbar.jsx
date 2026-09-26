@@ -251,34 +251,43 @@ export default function Navbar() {
                 <span>{t('navbar.fandomUniverse')}</span>
               </button>
               <ul
-                className={`dropdown-menu dropdown-menu-dark border-0 shadow-lg rounded-4 py-2 ${isCategoriesOpen ? 'show' : ''}`}
+                className={`dropdown-menu ${isDark ? 'dropdown-menu-dark' : ''} border-0 shadow-lg rounded-4 py-2 fv-categories-dropdown-menu ${isCategoriesOpen ? 'show' : ''}`}
                 style={{
-                  backgroundColor: '#12162a',
-                  border: '1px solid rgba(255,255,255,0.1)',
+                  backgroundColor: isDark ? '#12162a' : '#ffffff',
+                  border: isDark ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0, 0, 0, 0.08)',
+                  boxShadow: isDark
+                    ? '0 16px 40px rgba(0, 0, 0, 0.65), 0 0 20px rgba(108, 92, 231, 0.15)'
+                    : '0 16px 40px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(108, 92, 231, 0.08)',
                   textShadow: 'none',
                 }}
                 aria-labelledby="categoriesDropdown"
               >
-                {CATEGORY_LIST_LOCALIZED.map((cat) => (
-                  <li key={cat.id}>
-                    <Link
-                      to={`/category/${cat.id}`}
-                      className={`dropdown-item d-flex align-items-center gap-2 py-2 px-3 fv-category-dropdown-item fv-cat-${cat.id}`}
-                      style={{
-                        color: '#cbd5e1',
-                        fontWeight: 500,
-                        textShadow: 'none',
-                      }}
-                      onClick={() => {
-                        setIsNavCollapsed(true);
-                        setIsCategoriesOpen(false);
-                      }}
-                    >
-                      <i className={`bi ${cat.icon}`} style={{ color: `var(--accent-${cat.id})` }}></i>
-                      <span>{cat.label}</span>
-                    </Link>
-                  </li>
-                ))}
+                {CATEGORY_LIST_LOCALIZED.map((cat) => {
+                  const isActiveCategory = location.pathname === `/category/${cat.id}`;
+                  return (
+                    <li key={cat.id}>
+                      <Link
+                        to={`/category/${cat.id}`}
+                        className={`dropdown-item d-flex align-items-center gap-2 py-2 px-3 fv-category-dropdown-item fv-cat-${cat.id} ${isActiveCategory ? 'active' : ''}`}
+                        style={{
+                          color: isDark ? '#cbd5e1' : '#2d3436',
+                          fontWeight: isActiveCategory ? 700 : 550,
+                          textShadow: 'none',
+                        }}
+                        onClick={() => {
+                          setIsNavCollapsed(true);
+                          setIsCategoriesOpen(false);
+                        }}
+                      >
+                        <i className={`bi ${cat.icon}`} style={{ color: `var(--accent-${cat.id})` }}></i>
+                        <span>{cat.label}</span>
+                        {isActiveCategory && (
+                          <i className="bi bi-check2 ms-auto small" style={{ color: `var(--accent-${cat.id})` }}></i>
+                        )}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </li>
 
@@ -530,7 +539,7 @@ export default function Navbar() {
                               {item.category?.toUpperCase()}
                             </span>
                             <span>•</span>
-                            <span className="text-white-50">{item.resultType}</span>
+                            <span className={isDark ? 'text-white-50' : 'text-secondary'}>{item.resultType}</span>
                           </div>
                         </div>
                         <i className="bi bi-arrow-up-left small text-secondary opacity-75"></i>
@@ -591,7 +600,7 @@ export default function Navbar() {
                     >
                       <span style={{ fontSize: '1.15rem' }}>{l.flag}</span>
                       <span>{l.label}</span>
-                      <span className="badge bg-white bg-opacity-10 text-white-50 ms-auto small" style={{ fontSize: '0.68rem' }}>
+                      <span className={`badge ${isDark ? 'bg-white bg-opacity-10 text-white-50' : 'bg-secondary bg-opacity-10 text-secondary'} ms-auto small`} style={{ fontSize: '0.68rem' }}>
                         {l.code === 'vi' ? 'VN' : l.code.toUpperCase()}
                       </span>
                       {language === l.code && <i className="bi bi-check2 text-primary fw-bold ms-1"></i>}

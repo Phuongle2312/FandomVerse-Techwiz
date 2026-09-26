@@ -35,9 +35,9 @@ export default function TrailersHub() {
       </div>
 
       {/* Filter Toolbar */}
-      <div className="p-3 bg-light rounded-4 border mb-4 d-flex flex-wrap gap-3 align-items-center justify-content-between">
+      <div className="p-3 bg-light rounded-4 border mb-4 d-flex flex-column flex-lg-row gap-3 align-items-lg-center justify-content-lg-between">
         {/* Category Pills */}
-        <div className="d-flex flex-wrap gap-1 align-items-center">
+        <div className="fv-chips-scroll">
           <span className="small fw-semibold text-secondary me-2">{t('trailersHub.categoryLabel')}</span>
           <button
             type="button"
@@ -63,9 +63,9 @@ export default function TrailersHub() {
         </div>
 
         {/* Status Toggle */}
-        <div className="d-flex align-items-center gap-2">
+        <div className="fv-chips-scroll">
           <span className="small fw-semibold text-secondary">{t('trailersHub.statusLabel')}</span>
-          <div className="btn-group btn-group-sm" role="group">
+          <div className="btn-group btn-group-sm flex-shrink-0" role="group">
             <button
               type="button"
               className={`btn ${selectedStatus === 'all' ? 'btn-dark' : 'btn-outline-secondary bg-white'}`}

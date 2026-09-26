@@ -212,8 +212,8 @@
     "allFranchise": "सभी फ़्रैंचाइज़ी",
     "charactersCountBadge": "{{count}} पात्र",
     "statusLabel": "स्थिति:",
-    "statusUpcoming": "⚡ आगामी",
-    "statusPast": "✓ बीत चुका",
+    "statusUpcoming": "आगामी",
+    "statusPast": "बीत चुका",
     "eventsCountBadge": "{{count}} इवेंट्स",
     "galleryTitle": "{{label}} गैलरी"
   },
@@ -250,13 +250,13 @@
     "subtitle": "एनीमे, गेमिंग, हॉलीवुड मूवीज़, के-पॉप और कॉमिक्स के नवीनतम ब्लॉकबस्टर ट्रेलर।",
     "categoryLabel": "श्रेणी:",
     "statusLabel": "स्थिति:",
-    "statusUpcoming": "⚡ जल्द आ रहा है",
-    "statusReleased": "✓ रिलीज़ हो चुका",
+    "statusUpcoming": "जल्द आ रहा है",
+    "statusReleased": "रिलीज़ हो चुका",
     "noTrailersTitle": "कोई उपयुक्त ट्रेलर नहीं",
     "noTrailersMessage": "मौजूदा फ़िल्टर से कोई ट्रेलर मेल नहीं खाता। पूरी सूची देखने के लिए 'सभी' चुनें।",
     "clearFilters": "फ़िल्टर हटाएं",
-    "badgeUpcoming": "⚡ जल्द आ रहा है",
-    "badgeReleased": "✓ रिलीज़ हो चुका",
+    "badgeUpcoming": "जल्द आ रहा है",
+    "badgeReleased": "रिलीज़ हो चुका",
     "watchTrailer": "ट्रेलर देखें"
   },
   "merchandise": {

@@ -7,7 +7,8 @@ import { useAuth } from '../../context/AuthContext.jsx';
 import { CATEGORY_LIST } from '../../constants.js';
 
 export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isVi = i18n.language === 'vi';
   const { isBookmarked, toggleBookmark } = useBookmarks();
   const { isDark } = useTheme();
   const { isAuthenticated } = useAuth();
@@ -38,22 +39,22 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
     }
   };
 
-  // Type-specific icons & colors
+  // Type-specific icons & colors with full internationalization
   const typeConfig = {
     video: {
       label: 'VIDEO',
       color: '#ff4757',
       bgGlow: 'rgba(255, 71, 87, 0.45)',
       icon: 'bi-play-fill',
-      actionText: 'Xem video',
+      actionText: isVi ? 'Xem video' : 'Watch video',
       actionIcon: 'bi-play-circle',
     },
     gallery: {
-      label: `BỘ ẢNH (${item.images?.length || 2})`,
+      label: isVi ? `BỘ ẢNH (${item.images?.length || 2})` : `GALLERY (${item.images?.length || 2})`,
       color: '#feca57',
       bgGlow: 'rgba(254, 202, 87, 0.45)',
       icon: 'bi-images',
-      actionText: 'Xem bộ ảnh',
+      actionText: isVi ? 'Xem bộ ảnh' : 'View gallery',
       actionIcon: 'bi-eye',
     },
     audio: {
@@ -61,23 +62,23 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
       color: '#00cec9',
       bgGlow: 'rgba(0, 206, 201, 0.45)',
       icon: 'bi-soundwave',
-      actionText: 'Nghe audio',
+      actionText: isVi ? 'Nghe audio' : 'Listen audio',
       actionIcon: 'bi-headphones',
     },
     article: {
-      label: 'BÀI VIẾT',
+      label: isVi ? 'BÀI VIẾT' : 'ARTICLE',
       color: '#a29bfe',
       bgGlow: 'rgba(108, 92, 231, 0.45)',
       icon: 'bi-book-half',
-      actionText: 'Đọc chi tiết',
+      actionText: isVi ? 'Đọc chi tiết' : 'Read more',
       actionIcon: 'bi-arrow-right-circle',
     },
   }[item.type] || {
-    label: 'NỘI DUNG',
+    label: isVi ? 'NỘI DUNG' : 'CONTENT',
     color: '#6C5CE7',
     bgGlow: 'rgba(108, 92, 231, 0.45)',
     icon: 'bi-star-fill',
-    actionText: 'Khám phá',
+    actionText: isVi ? 'Khám phá' : 'Explore',
     actionIcon: 'bi-arrow-right',
   };
 
@@ -264,7 +265,7 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
             {readTimeMinutes && (
               <>
                 <span className="mx-1.5">•</span>
-                <i className="bi bi-clock-history me-1"></i>{readTimeMinutes} phút đọc
+                <i className="bi bi-clock-history me-1"></i>{readTimeMinutes} {isVi ? 'phút đọc' : 'min read'}
               </>
             )}
           </span>

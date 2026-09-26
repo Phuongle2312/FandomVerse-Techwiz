@@ -37,14 +37,18 @@ export default function MerchCard({ item, onToast }) {
   return (
     <div className="card fv-card fv-merch-card h-100 border-0 shadow-sm overflow-hidden d-flex flex-column">
       {/* Product Image 1:1 ratio */}
-      <div className="position-relative overflow-hidden" style={{ paddingTop: '100%', backgroundColor: '#f9f9f9' }}>
+      <div className="position-relative overflow-hidden" style={{ paddingTop: '100%', backgroundColor: 'rgba(128, 128, 128, 0.08)' }}>
         <img
           src={item.image}
           alt={item.name}
           className="position-absolute top-0 start-0 w-100 h-100 object-fit-cover transition-normal"
           loading="lazy"
+          onError={(e) => {
+            e.currentTarget.onerror = null;
+            e.currentTarget.src = 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&auto=format&fit=crop&q=80';
+          }}
         />
-        <span className="position-absolute top-0 start-0 m-1.5 m-md-2 badge bg-dark bg-opacity-75 text-white rounded-pill px-2 py-0.5 py-md-1 small" style={{ fontSize: '0.65rem' }}>
+        <span className="position-absolute top-0 start-0 m-1.5 m-md-2 badge bg-dark bg-opacity-75 text-white rounded-pill px-2 py-0.5 py-md-1 small text-uppercase" style={{ fontSize: '0.65rem', backdropFilter: 'blur(4px)' }}>
           {item.productType}
         </span>
       </div>
@@ -80,7 +84,10 @@ export default function MerchCard({ item, onToast }) {
             type="button"
             className={`btn w-100 py-1.5 py-md-2 fv-add-cart-btn d-flex align-items-center justify-content-center gap-1.5 ${isAdded ? 'btn-success text-white' : 'btn-accent-fv'
               }`}
-            onClick={handleAddToCart}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleAddToCart();
+            }}
             disabled={isAdded}
           >
             <i className={`bi ${isAdded ? 'bi-check-circle-fill' : 'bi-bag-plus'}`}></i>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Baloo+2:wght@600;700;800&family=Bebas+Neue&family=Comfortaa:wght@500;600;700&family=Montserrat:wght@500;600;700;800;900&family=Orbitron:wght@500;600;700;800;900&family=Oswald:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=Quicksand:wght@500;600;700&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&family=Unbounded:wght@500;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Baloo+2:wght@600;700;800&family=Bangers&family=Bebas+Neue&family=Bungee&family=Comic+Neue:ital,wght@0,400;0,700;1,700&family=Comfortaa:wght@500;600;700&family=Dela+Gothic+One&family=Montserrat:wght@500;600;700;800;900&family=Orbitron:wght@500;600;700;800;900&family=Oswald:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=Quicksand:wght@500;600;700&family=Rajdhani:wght@500;600;700&family=Righteous&family=Share+Tech+Mono&family=Unbounded:wght@500;700;800;900&display=swap');
 @import './design-tokens.css';
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -34,7 +34,7 @@ h1, h2, h3, h4, h5, h6,
   color: #ffffff;
 }
 
-[data-theme="light"] h1:not(.text-white),
+[data-theme="light"] h1:not(.text-white):not(.category-cinema-hero-title),
 [data-theme="light"] h2:not(.text-white),
 [data-theme="light"] h3:not(.text-white),
 [data-theme="light"] h4:not(.text-white),
@@ -76,6 +76,11 @@ h1, h2, h3, h4, h5, h6,
 }
 [data-theme="light"] .app-layout {
   background-color: #f8fafc;
+  background-image: 
+    radial-gradient(circle at 12% 10%, rgba(108, 92, 231, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 88% 18%, rgba(0, 206, 201, 0.04) 0%, transparent 42%),
+    radial-gradient(circle at 50% 85%, rgba(255, 107, 129, 0.035) 0%, transparent 50%);
+  background-attachment: fixed;
 }
 
 .main-content {
@@ -100,15 +105,23 @@ h1, h2, h3, h4, h5, h6,
 }
 
 [data-theme="light"] .fv-card {
-  background-color: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  background-color: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02);
 }
 
 .fv-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 10px 30px rgba(108, 92, 231, 0.25);
   border-color: rgba(108, 92, 231, 0.5);
+}
+
+[data-theme="light"] .fv-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px -4px rgba(108, 92, 231, 0.16), 0 4px 12px -2px rgba(0, 0, 0, 0.04);
+  border-color: rgba(108, 92, 231, 0.35);
 }
 
 /* Line-clamp utilities */
@@ -165,6 +178,38 @@ h1, h2, h3, h4, h5, h6,
 .fv-category-dropdown-item.fv-cat-kpop:hover { background-color: rgba(232, 67, 147, 0.12); color: var(--accent-kpop) !important; }
 .fv-category-dropdown-item.fv-cat-comics:hover { background-color: rgba(253, 203, 110, 0.18); color: #d68910 !important; }
 .fv-category-dropdown-item.fv-cat-manga:hover { background-color: rgba(225, 112, 85, 0.12); color: var(--accent-manga) !important; }
+
+/* Fandom Universe Dropdown Menu & Items */
+.fv-categories-dropdown-menu {
+  min-width: 215px;
+  animation: fvFadeSlideDown 0.2s ease-out forwards;
+}
+
+[data-theme="light"] .fv-categories-dropdown-menu {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(108, 92, 231, 0.08) !important;
+}
+
+[data-theme="light"] .fv-category-dropdown-item {
+  color: #334155 !important;
+}
+
+[data-theme="light"] .fv-category-dropdown-item:hover {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .fv-category-dropdown-item.active {
+  background-color: rgba(108, 92, 231, 0.08);
+  font-weight: 700;
+}
+
+[data-theme="light"] .dropdown-menu:not(.dropdown-menu-dark) {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(108, 92, 231, 0.06) !important;
+}
 
 /* Category Badge Styling */
 .badge-category {
@@ -505,6 +550,25 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   background-color: rgba(255, 255, 255, 0.06);
   border-color: rgba(255, 255, 255, 0.15);
   color: #f1f5f9;
+  color-scheme: dark;
+}
+[data-theme="dark"] select,
+[data-theme="dark"] .form-select {
+  color-scheme: dark !important;
+}
+[data-theme="dark"] select option,
+[data-theme="dark"] .form-select option {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+}
+[data-theme="light"] select,
+[data-theme="light"] .form-select {
+  color-scheme: light !important;
+}
+[data-theme="light"] select option,
+[data-theme="light"] .form-select option {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
 }
 [data-theme="dark"] .form-control:focus,
 [data-theme="dark"] .form-select:focus {
@@ -2083,6 +2147,13 @@ button.fv-lang-btn:hover,
   }
 }
 
+/* Nút "Tự động lướt" dùng màu nền/chữ đặt trực tiếp qua inline style (không qua class
+   bg-opacity-* của Bootstrap — class đó bị lỗi không giảm được độ mờ trong dự án này,
+   khiến nút bị đặc màu che mất chữ ngay cả khi không hover). Hover chỉ cần sáng nhẹ lên. */
+.fv-autoscroll-toggle:hover {
+  filter: brightness(1.25);
+}
+
 .fv-slider-nav-btn {
   width: 42px;
   height: 42px;
@@ -2543,6 +2614,19 @@ button.fv-lang-btn:hover,
   line-height: 1.1;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
   margin-bottom: 0.75rem;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+[data-theme="light"] .category-cinema-hero-title,
+[data-theme="light"] h1.category-cinema-hero-title {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+}
+
+[data-theme="light"] .category-cinema-hero {
+  box-shadow: 0 20px 48px -12px rgba(15, 23, 42, 0.22), 0 0 0 1px rgba(0, 0, 0, 0.06);
 }
 
 .category-cinema-hero-desc {
@@ -3041,7 +3125,7 @@ button.fv-lang-btn:hover,
 /* Mobile Responsive Compact */
 @media (max-width: 768px) {
   .fv-chatbot-launcher {
-    bottom: calc(68px + env(safe-area-inset-bottom, 0px)) !important;
+    bottom: calc(82px + env(safe-area-inset-bottom, 0px)) !important;
     right: 12px !important;
     margin: 0 !important;
   }
@@ -3438,6 +3522,7 @@ button.fv-lang-btn:hover,
   font-weight: 800 !important;
   letter-spacing: 1.5px !important;
   text-shadow: 0 0 24px rgba(0, 206, 201, 0.45), 2px 2px 8px rgba(0, 0, 0, 0.9) !important;
+  color: #ffffff !important;
 }
 
 .gaming-universe-container .gaming-cinema-hero .category-cinema-hero-desc {
@@ -3753,6 +3838,7 @@ button.fv-lang-btn:hover,
   font-family: var(--font-anime-title) !important;
   font-weight: 800 !important;
   letter-spacing: 0.5px !important;
+  color: #ffffff !important;
 }
 
 .anime-universe-container .category-cinema-hero-desc {
@@ -4054,80 +4140,216 @@ button.fv-lang-btn:hover,
   }
 }
 
-/* 4. K-Pop Category Hub Navigation, Filters & Buttons */
+/* 4. K-Pop Category Hub Hero Cinema Banner & Modern Typography */
+.kpop-universe-container .category-cinema-hero {
+  border: 2px solid rgba(255, 91, 168, 0.45) !important;
+  box-shadow: 0 20px 65px rgba(0, 0, 0, 0.75), 0 0 50px rgba(255, 91, 168, 0.3), 0 0 90px rgba(160, 108, 255, 0.22) !important;
+  transition: all 0.35s ease;
+}
+
+.kpop-universe-container .category-cinema-hero:hover {
+  box-shadow: 0 24px 75px rgba(0, 0, 0, 0.85), 0 0 65px rgba(255, 91, 168, 0.45), 0 0 110px rgba(160, 108, 255, 0.35) !important;
+  border-color: rgba(255, 91, 168, 0.75) !important;
+}
+
+.kpop-universe-container .category-cinema-hero-title {
+  font-family: 'Unbounded', 'Baloo 2', 'Poppins', sans-serif !important;
+  font-size: clamp(2.3rem, 4.2vw, 3.6rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.5px !important;
+  background: linear-gradient(135deg, #ffffff 0%, #ff8ac6 35%, #c49bff 70%, #94e8ff 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: drop-shadow(0 0 25px rgba(255, 91, 168, 0.55)) drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.85)) !important;
+}
+
+.kpop-universe-container .category-cinema-hero-title span {
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 600 !important;
+  color: #ffe8a3 !important;
+  -webkit-text-fill-color: #ffe8a3 !important;
+  text-shadow: 0 0 12px rgba(255, 214, 107, 0.6), 1px 1px 4px rgba(0, 0, 0, 0.8) !important;
+  letter-spacing: 0.5px !important;
+}
+
+.kpop-universe-container .category-cinema-hero-desc {
+  font-family: 'Poppins', 'Quicksand', sans-serif !important;
+  font-size: 1.08rem !important;
+  font-weight: 550 !important;
+  line-height: 1.65 !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7) !important;
+}
+
+.kpop-universe-container .category-cinema-hero-cta {
+  font-family: 'Unbounded', 'Poppins', sans-serif !important;
+  font-size: 0.92rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  background: linear-gradient(135deg, #ff5ba8 0%, #a06cff 60%, #4fd8ff 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 8px 25px rgba(255, 91, 168, 0.55) !important;
+  color: #ffffff !important;
+  transition: all 0.25s ease !important;
+}
+
+.kpop-universe-container .category-cinema-hero-cta:hover {
+  transform: translateY(-2px) scale(1.03) !important;
+  box-shadow: 0 12px 32px rgba(255, 91, 168, 0.75) !important;
+}
+
+.kpop-universe-container .category-cinema-hero-btn-secondary {
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 600 !important;
+  background: rgba(160, 108, 255, 0.22) !important;
+  border: 1px solid rgba(160, 108, 255, 0.5) !important;
+  color: #ffffff !important;
+  transition: all 0.25s ease !important;
+}
+
+.kpop-universe-container .category-cinema-hero-btn-secondary:hover {
+  background: rgba(160, 108, 255, 0.42) !important;
+  border-color: #ff8ac6 !important;
+  transform: translateY(-2px) scale(1.03) !important;
+}
+
+/* 5. K-Pop Section Headings & Badges */
+.kpop-universe-container .font-heading,
+.kpop-universe-container h3,
+.kpop-universe-container h4,
+.kpop-universe-container h5 {
+  font-family: 'Unbounded', 'Baloo 2', sans-serif !important;
+  letter-spacing: -0.3px !important;
+}
+
+[data-theme="dark"] .kpop-universe-container .font-heading,
+[data-theme="dark"] .kpop-universe-container h3 {
+  text-shadow: 0 0 18px rgba(255, 91, 168, 0.38) !important;
+}
+
+[data-theme="light"] .kpop-universe-container .font-heading,
+[data-theme="light"] .kpop-universe-container h3 {
+  color: #0f172a !important;
+}
+
+.badge-category-kpop,
+.kpop-universe-container .badge-category-kpop {
+  font-family: 'Unbounded', sans-serif !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.5px !important;
+  background: linear-gradient(135deg, #ff5ba8 0%, #a06cff 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 0 3px 12px rgba(255, 91, 168, 0.45) !important;
+}
+
+/* 6. K-Pop Category Hub Navigation, Filters & Buttons */
 .kpop-universe-container .nav-pills .nav-link {
-  font-family: var(--font-kpop-title) !important;
+  font-family: 'Unbounded', 'Baloo 2', sans-serif !important;
   font-weight: 700;
+  font-size: 0.85rem !important;
 }
 
 .kpop-universe-container .nav-pills .nav-link.active {
-  background: linear-gradient(135deg, var(--kpop-holo-1), var(--kpop-holo-2)) !important;
+  background: linear-gradient(135deg, #ff5ba8 0%, #a06cff 100%) !important;
   color: #ffffff !important;
-  border: 1px solid var(--kpop-holo-1) !important;
+  border: 1px solid #ff5ba8 !important;
   box-shadow: 0 4px 16px rgba(255, 91, 168, 0.4) !important;
 }
 
 .kpop-universe-container .btn-primary {
-  font-family: var(--font-kpop-title) !important;
+  font-family: 'Unbounded', sans-serif !important;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--kpop-holo-1), var(--kpop-holo-2)) !important;
-  border-color: var(--kpop-holo-1) !important;
+  background: linear-gradient(135deg, #ff5ba8 0%, #a06cff 100%) !important;
+  border-color: #ff5ba8 !important;
 }
 
 .kpop-universe-container .btn-outline-secondary,
 .kpop-universe-container .btn-outline-light {
-  font-family: var(--font-kpop-body) !important;
+  font-family: 'Poppins', sans-serif !important;
   font-weight: 600;
 }
 
-/* 5. K-Pop Content Cards */
+/* 7. K-Pop Content Cards */
 .accent-border-kpop {
-  border-left: 4px solid var(--accent-kpop) !important;
+  border-left: 4px solid #ff5ba8 !important;
+}
+
+.fv-content-card.accent-border-kpop {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease !important;
+}
+
+.fv-content-card.accent-border-kpop:hover {
+  transform: translateY(-5px) scale(1.01) !important;
+  box-shadow: 0 16px 36px rgba(255, 91, 168, 0.25), 0 4px 12px rgba(160, 108, 255, 0.18) !important;
+  border-color: #ff5ba8 !important;
 }
 
 .fv-content-card.accent-border-kpop .card-title {
-  font-family: var(--font-kpop-title) !important;
+  font-family: 'Baloo 2', 'Poppins', sans-serif !important;
   font-weight: 700 !important;
+  font-size: 1.18rem !important;
+}
+
+.fv-content-card.accent-border-kpop p {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 0.92rem !important;
 }
 
 .fv-content-card.accent-border-kpop .badge.rounded-pill {
-  font-family: var(--font-kpop-body) !important;
+  font-family: 'Poppins', sans-serif !important;
   font-weight: 600 !important;
 }
 
 .fv-content-card.accent-border-kpop .btn {
-  font-family: var(--font-kpop-title) !important;
+  font-family: 'Unbounded', sans-serif !important;
   font-weight: 700;
+  font-size: 0.8rem;
 }
 
-/* 6. K-Pop Character Card */
+/* 8. K-Pop Character Card */
 .kpop-character-card h5 {
-  font-family: var(--font-kpop-title) !important;
+  font-family: 'Baloo 2', 'Poppins', sans-serif !important;
   font-weight: 700 !important;
 }
 
 .kpop-character-card .badge {
-  font-family: var(--font-kpop-body) !important;
+  font-family: 'Poppins', sans-serif !important;
   font-weight: 600 !important;
 }
 
 .kpop-character-card p {
-  font-family: var(--font-kpop-body) !important;
+  font-family: 'Poppins', sans-serif !important;
 }
 
-/* 7. K-Pop Event Card */
+/* 9. K-Pop Event Card */
 .kpop-event-card h5 {
-  font-family: var(--font-kpop-title) !important;
+  font-family: 'Baloo 2', 'Poppins', sans-serif !important;
   font-weight: 700 !important;
 }
 
 .kpop-event-card .fv-event-date-block {
-  font-family: var(--font-kpop-title) !important;
+  font-family: 'Unbounded', sans-serif !important;
 }
 
 .kpop-event-card .badge {
-  font-family: var(--font-kpop-body) !important;
+  font-family: 'Poppins', sans-serif !important;
   font-weight: 600 !important;
+}
+
+/* 10. K-Pop Stage FX Pulse Badge */
+.fv-kpop-stage-badge {
+  animation: kpopStagePulse 2.4s infinite ease-in-out;
+}
+
+@keyframes kpopStagePulse {
+  0%, 100% {
+    box-shadow: 0 0 14px rgba(255, 91, 168, 0.65), 0 2px 8px rgba(0,0,0,0.4);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 91, 168, 0.9), 0 0 35px rgba(160, 108, 255, 0.55);
+  }
 }
 
 /* ==========================================================================
@@ -4409,5 +4631,803 @@ button.fv-lang-btn:hover,
   font-family: var(--font-manga-display) !important;
   letter-spacing: 0.5px;
 }
+
+/* ==========================================================================
+   EXCLUSIVE SUPERHERO COMICS & SPIDER-MAN EXPERIENCE
+   Fonts: Bangers (Headings/Display), Bungee (Badges), Comic Neue (Body/Text)
+   ========================================================================== */
+
+/* 1. Global Comics Font Classes */
+.comics-font-display {
+  font-family: var(--font-comics-display) !important;
+  letter-spacing: 1.5px;
+}
+
+.comics-font-title {
+  font-family: var(--font-comics-title) !important;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.comics-font-body {
+  font-family: var(--font-comics-body) !important;
+}
+
+/* 2. Comics Category Hub Hero Banner */
+.comics-universe-container .category-cinema-hero {
+  border: 2px solid rgba(231, 76, 60, 0.45) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.75), 0 0 45px rgba(231, 76, 60, 0.28), 0 0 85px rgba(9, 132, 227, 0.18) !important;
+  transition: all 0.35s ease;
+}
+
+.comics-universe-container .category-cinema-hero:hover {
+  box-shadow: 0 24px 75px rgba(0, 0, 0, 0.85), 0 0 60px rgba(231, 76, 60, 0.45), 0 0 100px rgba(9, 132, 227, 0.3) !important;
+  border-color: rgba(231, 76, 60, 0.75) !important;
+}
+
+.comics-universe-container .category-cinema-hero-title {
+  font-family: var(--font-comics-title) !important;
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem) !important;
+  font-weight: 900 !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  text-shadow: 3px 3px 0px #e74c3c, 6px 6px 0px #0984e3, 9px 9px 22px rgba(0, 0, 0, 0.95) !important;
+}
+
+.comics-universe-container .category-cinema-hero-title span {
+  font-family: var(--font-comics-body) !important;
+  font-weight: 700 !important;
+  color: #f1c40f !important;
+  -webkit-text-fill-color: #f1c40f !important;
+  text-shadow: 2px 2px 0px #c0392b, 4px 4px 10px rgba(0, 0, 0, 0.9) !important;
+  letter-spacing: 0.5px !important;
+}
+
+.comics-universe-container .category-cinema-hero-desc {
+  font-family: var(--font-comics-body) !important;
+  font-size: 1.12rem !important;
+  font-weight: 600 !important;
+  line-height: 1.65 !important;
+  color: #ffffff !important;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.85) !important;
+}
+
+.comics-universe-container .category-cinema-hero-cta {
+  font-family: var(--font-comics-title) !important;
+  font-size: 1.15rem !important;
+  letter-spacing: 1.5px !important;
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 8px 24px rgba(231, 76, 60, 0.55) !important;
+  color: #ffffff !important;
+  transition: all 0.25s ease !important;
+}
+
+.comics-universe-container .category-cinema-hero-cta:hover {
+  transform: translateY(-2px) scale(1.03) !important;
+  box-shadow: 0 12px 30px rgba(231, 76, 60, 0.75) !important;
+}
+
+.comics-universe-container .category-cinema-hero-btn-secondary {
+  font-family: var(--font-comics-title) !important;
+  font-size: 1.05rem !important;
+  letter-spacing: 1px !important;
+  background: rgba(9, 132, 227, 0.25) !important;
+  border: 1px solid rgba(9, 132, 227, 0.5) !important;
+  color: #ffffff !important;
+}
+
+.comics-universe-container .category-cinema-hero-btn-secondary:hover {
+  background: rgba(9, 132, 227, 0.45) !important;
+  border-color: #00a8ff !important;
+  transform: translateY(-2px) scale(1.03) !important;
+}
+
+/* 3. Comics Section Headings & Badges */
+.comics-universe-container .font-heading,
+.comics-universe-container h3,
+.comics-universe-container h4,
+.comics-universe-container h5 {
+  font-family: var(--font-comics-title) !important;
+  letter-spacing: 1.2px !important;
+}
+
+[data-theme="dark"] .comics-universe-container .font-heading,
+[data-theme="dark"] .comics-universe-container h3 {
+  text-shadow: 2px 2px 0px rgba(231, 76, 60, 0.35) !important;
+}
+
+[data-theme="light"] .comics-universe-container .font-heading,
+[data-theme="light"] .comics-universe-container h3 {
+  color: #0f172a !important;
+  text-shadow: 1px 1px 0px rgba(231, 76, 60, 0.25) !important;
+}
+
+.badge-category-comics,
+.comics-universe-container .badge-category-comics {
+  font-family: var(--font-comics-title) !important;
+  letter-spacing: 1px !important;
+  background: linear-gradient(135deg, #e74c3c 0%, #d63031 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 2px 8px rgba(231, 76, 60, 0.4) !important;
+}
+
+/* 4. Comics Content Cards */
+.accent-border-comics {
+  border-left: 4px solid #e74c3c !important;
+}
+
+.fv-content-card.accent-border-comics {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease !important;
+}
+
+.fv-content-card.accent-border-comics:hover {
+  transform: translateY(-6px) scale(1.01) !important;
+  box-shadow: 0 16px 36px rgba(231, 76, 60, 0.25), 0 4px 12px rgba(9, 132, 227, 0.15) !important;
+  border-color: #e74c3c !important;
+}
+
+.fv-content-card.accent-border-comics .card-title,
+.comics-universe-container .fv-content-card .card-title {
+  font-family: var(--font-comics-title) !important;
+  letter-spacing: 0.6px !important;
+  font-size: 1.25rem !important;
+}
+
+.fv-content-card.accent-border-comics p,
+.comics-universe-container .fv-content-card p {
+  font-family: var(--font-comics-body) !important;
+  font-size: 0.95rem !important;
+}
+
+/* 5. Spider-Web FX Pulse Badge */
+.fv-comics-fx-badge {
+  animation: spideyPulse 2.5s infinite ease-in-out;
+}
+
+@keyframes spideyPulse {
+  0%, 100% {
+    box-shadow: 0 0 14px rgba(231, 76, 60, 0.65), 0 2px 8px rgba(0,0,0,0.4);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(231, 76, 60, 0.9), 0 0 35px rgba(9, 132, 227, 0.5);
+  }
+}
+
+/* ==========================================================================
+   MERCHANDISE STOREFRONT ULTRA-PREMIUM HERO & FILTER DECK STYLES
+   ========================================================================== */
+
+/* 1. Hero Banner */
+.fv-merch-hero-banner {
+  position: relative;
+  border-radius: 24px;
+  padding: 2.25rem 2.5rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 50%, rgba(15, 23, 42, 0.98) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+}
+
+.fv-merch-hero-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -20%;
+  width: 70%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.18) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.fv-merch-hero-banner::after {
+  content: '';
+  position: absolute;
+  bottom: -40%;
+  right: -10%;
+  width: 60%;
+  height: 180%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+[data-theme="light"] .fv-merch-hero-banner {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 40px -15px rgba(100, 116, 139, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="light"] .fv-merch-hero-banner::before {
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 60%);
+}
+
+[data-theme="light"] .fv-merch-hero-banner::after {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 60%);
+}
+
+/* 2. Hero Title & Highlights */
+.fv-merch-hero-title {
+  font-family: var(--font-heading, inherit);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.2;
+}
+
+[data-theme="light"] .fv-merch-hero-title {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #4f46e5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.fv-merch-tag-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background: rgba(99, 102, 241, 0.18);
+  border: 1px solid rgba(129, 140, 248, 0.35);
+  color: #a5b4fc;
+}
+
+[data-theme="light"] .fv-merch-tag-badge {
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  color: #4338ca;
+}
+
+.fv-merch-highlight-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
+  transition: all 0.2s ease;
+}
+
+[data-theme="light"] .fv-merch-highlight-pill {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+}
+
+.fv-merch-highlight-pill:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+}
+
+[data-theme="light"] .fv-merch-highlight-pill:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+/* 3. Segmented View Switcher (Slider vs Grid) */
+.fv-merch-view-switcher {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 9999px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px);
+}
+
+[data-theme="light"] .fv-merch-view-switcher {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.fv-merch-view-switcher .btn-switch-item {
+  border: none;
+  background: transparent;
+  color: #94a3b8;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.45rem 1rem;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+[data-theme="light"] .fv-merch-view-switcher .btn-switch-item {
+  color: #64748b;
+}
+
+.fv-merch-view-switcher .btn-switch-item:hover {
+  color: #ffffff;
+}
+
+[data-theme="light"] .fv-merch-view-switcher .btn-switch-item:hover {
+  color: #0f172a;
+}
+
+.fv-merch-view-switcher .btn-switch-item.active {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.45);
+}
+
+/* 4. VIP Floating Cart Button */
+.fv-merch-cart-btn {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff !important;
+  padding: 0.55rem 1.35rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.35);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.fv-merch-cart-btn:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(16, 185, 129, 0.5);
+}
+
+/* 5. Universe Fandom Badges Bar */
+.fv-fandom-universe-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  overflow-x: auto;
+  padding: 0.25rem 0.25rem 0.85rem 0.25rem;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.fv-fandom-universe-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.fv-fandom-chip-btn {
+  padding: 0.45rem 1.15rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: #cbd5e1;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+[data-theme="light"] .fv-fandom-chip-btn {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.fv-fandom-chip-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+[data-theme="light"] .fv-fandom-chip-btn:hover {
+  background: #f8fafc;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+.fv-fandom-chip-btn.active {
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* Category specific active gradients */
+.fv-fandom-chip-btn.active.chip-all {
+  background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+  border-color: transparent;
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
+}
+
+.fv-fandom-chip-btn.active.chip-anime {
+  background: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%);
+  border-color: transparent;
+  box-shadow: 0 6px 20px rgba(255, 71, 87, 0.45);
+}
+
+.fv-fandom-chip-btn.active.chip-gaming {
+  background: linear-gradient(135deg, #8e44ad 0%, #3498db 100%);
+  border-color: transparent;
+  box-shadow: 0 6px 20px rgba(142, 68, 173, 0.45);
+}
+
+.fv-fandom-chip-btn.active.chip-movies {
+  background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+  border-color: transparent;
+  box-shadow: 0 6px 20px rgba(243, 156, 18, 0.45);
+}
+
+.fv-fandom-chip-btn.active.chip-tvshows {
+  background: linear-gradient(135deg, #0984e3 0%, #00cec9 100%);
+  border-color: transparent;
+  box-shadow: 0 6px 20px rgba(9, 132, 227, 0.45);
+}
+
+.fv-fandom-chip-btn.active.chip-kpop {
+  background: linear-gradient(135deg, #ff5ba8 0%, #a06cff 100%);
+  border-color: transparent;
+  box-shadow: 0 6px 20px rgba(255, 91, 168, 0.45);
+}
+
+.fv-fandom-chip-btn.active.chip-comics {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  border-color: transparent;
+  box-shadow: 0 6px 20px rgba(231, 76, 60, 0.45);
+}
+
+.fv-fandom-chip-btn.active.chip-manga {
+  background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+  border-color: transparent;
+  box-shadow: 0 6px 20px rgba(0, 184, 148, 0.45);
+}
+
+/* 6. Filter Control Deck */
+.fv-merch-control-deck {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2.25rem;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+[data-theme="light"] .fv-merch-control-deck {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.fv-merch-control-deck .deck-select-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.fv-merch-control-deck .deck-icon-label {
+  position: absolute;
+  left: 14px;
+  color: #6366f1;
+  font-size: 0.95rem;
+  pointer-events: none;
+  z-index: 2;
+}
+
+[data-theme="light"] .fv-merch-control-deck .deck-icon-label {
+  color: #4f46e5;
+}
+
+.fv-merch-control-deck .deck-select {
+  padding-left: 2.45rem;
+  padding-right: 2rem;
+  height: 42px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  background-color: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  color-scheme: dark !important;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.fv-merch-control-deck .deck-select option {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+  padding: 10px 14px;
+}
+
+[data-theme="light"] .fv-merch-control-deck .deck-select {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  color-scheme: light !important;
+}
+
+[data-theme="light"] .fv-merch-control-deck .deck-select option {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+.fv-merch-control-deck .deck-select:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+  background-color: #1e293b;
+}
+
+[data-theme="light"] .fv-merch-control-deck .deck-select:focus {
+  background-color: #ffffff;
+}
+
+.fv-merch-control-deck .deck-search-input {
+  padding-left: 2.45rem;
+  height: 42px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+[data-theme="light"] .fv-merch-control-deck .deck-search-input {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+}
+
+.fv-merch-control-deck .deck-search-input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="light"] .fv-merch-control-deck .deck-search-input:focus {
+  background: #ffffff;
+}
+
+.fv-merch-count-badge {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(168, 85, 247, 0.2));
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  color: #c084fc;
+  padding: 0.55rem 1.1rem;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+[data-theme="light"] .fv-merch-count-badge {
+  background: #f3e8ff;
+  border: 1px solid #d8b4fe;
+  color: #7e22ce;
+}
+
+/* ==========================================================================
+   TV SHOWS — HOUSE OF THE DRAGON UNIVERSE & CINZEL DECORATIVE TYPOGRAPHY
+   ========================================================================== */
+
+:root {
+  --font-dragon-title: 'Cinzel Decorative', 'Cinzel', serif;
+  --font-dragon-body: 'Cinzel', serif;
+}
+
+/* 1. Epic Hero Title & Typography */
+.tvshows-universe-container .category-cinema-hero-title {
+  font-family: var(--font-dragon-title) !important;
+  font-weight: 900 !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  background: linear-gradient(135deg, #ffffff 0%, #ffd32a 35%, #ff5e57 70%, #d63031 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  text-shadow: 0 0 35px rgba(255, 71, 87, 0.45);
+}
+
+.tvshows-universe-container .category-cinema-hero-title span {
+  font-family: var(--font-dragon-body) !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.5px !important;
+  color: #f5cd79 !important;
+  -webkit-text-fill-color: #f5cd79 !important;
+}
+
+.tvshows-universe-container .category-cinema-hero-desc {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 1.05rem !important;
+  line-height: 1.7 !important;
+  color: #e2e8f0 !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* 2. Dragon Theme Headings */
+.tvshows-universe-container h3.font-heading,
+.tvshows-universe-container .fv-trailer-slider-container h3,
+.tvshows-universe-container .fv-category-content-row h3,
+.tvshows-universe-container .fv-category-section h3 {
+  font-family: var(--font-dragon-title) !important;
+  letter-spacing: 1.5px !important;
+  background: linear-gradient(135deg, #ffffff 0%, #ffd32a 45%, #ff793f 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  text-shadow: 0 0 20px rgba(255, 159, 26, 0.3);
+}
+
+[data-theme="light"] .tvshows-universe-container h3.font-heading,
+[data-theme="light"] .tvshows-universe-container .fv-trailer-slider-container h3,
+[data-theme="light"] .tvshows-universe-container .fv-category-content-row h3,
+[data-theme="light"] .tvshows-universe-container .fv-category-section h3 {
+  background: linear-gradient(135deg, #b71540 0%, #c0392b 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.tvshows-universe-container .fv-content-card .card-title {
+  font-family: var(--font-dragon-body) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.6px !important;
+}
+
+/* 3. Dragon Flame FX Badge Animation */
+.fv-dragon-fx-badge {
+  animation: dragonFlamePulse 2.4s infinite ease-in-out;
+}
+
+@keyframes dragonFlamePulse {
+  0%, 100% {
+    box-shadow: 0 0 14px rgba(214, 48, 49, 0.65), 0 2px 8px rgba(0, 0, 0, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(255, 107, 129, 0.9), 0 0 45px rgba(243, 156, 18, 0.55);
+    transform: scale(1.03);
+  }
+}
+
+/* 4. Targaryen Fire Card Glow on Hover */
+.tvshows-universe-container .fv-content-card:hover {
+  border-color: #ff4757 !important;
+  box-shadow: 0 16px 36px rgba(214, 48, 49, 0.3), 0 4px 14px rgba(243, 156, 18, 0.2) !important;
+}
+
+/* 5. Majestic House of the Dragon Hero Styling */
+.category-cinema-hero.tvshows-cinema-hero {
+  border: 1px solid rgba(243, 156, 18, 0.45) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 50px rgba(214, 48, 49, 0.35), inset 0 0 60px rgba(243, 156, 18, 0.15) !important;
+}
+
+.category-cinema-hero.tvshows-cinema-hero .category-cinema-hero-scrim {
+  background: linear-gradient(
+    90deg,
+    rgba(10, 13, 26, 0.94) 0%,
+    rgba(10, 13, 26, 0.78) 40%,
+    rgba(10, 13, 26, 0.2) 75%,
+    rgba(10, 13, 26, 0.4) 100%
+  ) !important;
+}
+
+.dragon-hero-headline-block {
+  position: relative;
+  z-index: 4;
+}
+
+.badge-targaryen-realm {
+  font-family: 'Cinzel', serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(214, 48, 49, 0.18);
+  border: 1px solid rgba(214, 48, 49, 0.45);
+  color: #ff7675;
+  backdrop-filter: blur(8px);
+}
+
+.badge-valyrian-steel {
+  font-family: 'Cinzel', serif;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(255, 211, 42, 0.12);
+  border: 1px solid rgba(255, 211, 42, 0.4);
+  color: #ffd32a;
+  backdrop-filter: blur(8px);
+}
+
+.dragon-cinema-main-title {
+  font-family: 'Cinzel Decorative', 'Cinzel', serif !important;
+  font-size: clamp(2.2rem, 5.2vw, 3.8rem) !important;
+  font-weight: 900 !important;
+  letter-spacing: 3px !important;
+  line-height: 1.15 !important;
+  margin-bottom: 0.35rem !important;
+  text-transform: uppercase !important;
+  background: linear-gradient(135deg, #ffffff 0%, #fff2a3 25%, #ffd32a 50%, #ff5e57 78%, #d63031 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  text-shadow: 0 0 35px rgba(255, 71, 87, 0.5), 0 0 60px rgba(255, 159, 26, 0.3);
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.8));
+}
+
+.dragon-cinema-main-title .dragon-fire-text {
+  font-family: 'Cinzel', serif !important;
+  font-size: 0.72em;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #f5cd79 !important;
+  -webkit-text-fill-color: #f5cd79 !important;
+}
+
+.dragon-cinema-tagline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #ffd32a;
+  text-shadow: 0 0 12px rgba(255, 211, 42, 0.4);
+}
+
+.dragon-cinema-tagline .tagline-rune {
+  font-size: 0.9rem;
+}
+
+/* 6. Interactive Dracarys Action Button */
+.category-cinema-hero-btn-dragon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.4rem;
+  border-radius: 9999px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #d63031 0%, #b71540 100%);
+  border: 1px solid rgba(255, 211, 42, 0.5);
+  color: #ffffff;
+  box-shadow: 0 4px 18px rgba(214, 48, 49, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.category-cinema-hero-btn-dragon:hover {
+  background: linear-gradient(135deg, #ff3838 0%, #d63031 100%);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 28px rgba(255, 56, 56, 0.7), 0 0 20px rgba(255, 211, 42, 0.5);
+  color: #fff;
+}
+
 
 

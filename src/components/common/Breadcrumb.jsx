@@ -57,10 +57,13 @@ export default function Breadcrumb() {
     <div className="container-fluid px-3 px-md-4 px-lg-5 pt-3">
       <nav
         aria-label="breadcrumb"
-        className="py-2 px-3 rounded-3 mb-4 shadow-sm"
+        className="py-2.5 px-3.5 rounded-4 mb-4"
         style={{
-          backgroundColor: isDark ? 'rgba(255, 255, 255, 0.05)' : '#f8f9fa',
-          border: isDark ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid transparent',
+          backgroundColor: isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.92)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          border: isDark ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(226, 232, 240, 0.9)',
+          boxShadow: isDark ? '0 4px 16px rgba(0, 0, 0, 0.2)' : '0 2px 12px rgba(15, 23, 42, 0.04)',
         }}
       >
         <ol className="breadcrumb mb-0 align-items-center">
@@ -69,9 +72,9 @@ export default function Breadcrumb() {
           return (
             <li
               key={crumb.to + idx}
-              className={`breadcrumb-item ${isLast ? 'fw-semibold' : ''}`}
+              className={`breadcrumb-item ${isLast ? 'fw-bold' : 'fw-medium'}`}
               aria-current={isLast ? 'page' : undefined}
-              style={isLast ? { color: isDark ? '#a0a4b8' : '#6c757d' } : undefined}
+              style={isLast ? { color: isDark ? '#e2e8f0' : '#1e293b' } : undefined}
             >
               {isLast ? (
                 <span className="text-truncate d-inline-block" style={{ maxWidth: '300px' }}>

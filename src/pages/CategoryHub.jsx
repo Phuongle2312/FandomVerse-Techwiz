@@ -11,10 +11,12 @@ import LightboxGallery from '../components/interactive/LightboxGallery.jsx';
 import VideoModal from '../components/interactive/VideoModal.jsx';
 import CategoryContentRow from '../components/interactive/CategoryContentRow.jsx';
 import SakuraEffect from '../components/interactive/SakuraEffect.jsx';
-import KpopSparkleEffect from '../components/interactive/KpopSparkleEffect.jsx';
+import KpopIdolStageEffect from '../components/interactive/KpopIdolStageEffect.jsx';
 import MoviesProjectorEffect from '../components/interactive/MoviesProjectorEffect.jsx';
 import MangaActionEffect from '../components/interactive/MangaActionEffect.jsx';
 import GamingHextechEffect from '../components/interactive/GamingHextechEffect.jsx';
+import ComicsSpiderWebEffect from '../components/interactive/ComicsSpiderWebEffect.jsx';
+import DragonFireEmbersEffect from '../components/interactive/DragonFireEmbersEffect.jsx';
 import EmptyState from '../components/common/EmptyState.jsx';
 import { useBookmarks } from '../context/BookmarkContext.jsx';
 import { useTheme } from '../context/ThemeContext.jsx';
@@ -44,6 +46,8 @@ export default function CategoryHub() {
   const isAnime = categoryId === 'anime';
   const isKpop = categoryId === 'kpop';
   const isManga = categoryId === 'manga';
+  const isComics = categoryId === 'comics';
+  const isTvShows = categoryId === 'tvshows';
   const { isBookmarked, toggleBookmark } = useBookmarks();
   const { isDark } = useTheme();
 
@@ -123,6 +127,8 @@ export default function CategoryHub() {
     }
   }, [categoryId]);
 
+  const isVi = language === 'vi';
+
   const heroConfig = useMemo(() => {
     const configs = {
       anime: {
@@ -130,9 +136,11 @@ export default function CategoryHub() {
         badgeText: 'Anime Exclusive',
         badgeGradient: 'linear-gradient(135deg, #FF6B81, #ff4757)',
         badgeShadow: 'rgba(255, 107, 129, 0.35)',
-        videoTitle: 'Mobile Suit Gundam: Chiến Binh Thép Tái Xuất',
+        videoTitle: isVi ? 'Mobile Suit Gundam: Chiến Binh Thép Tái Xuất' : 'Mobile Suit Gundam: Iron-Blooded Warriors',
         heroSubtitle: '• Mobile Suit GunDam',
-        heroDesc: 'Khám phá thế giới hoạt hình Nhật Bản đỉnh cao, các tác phẩm shounen huyền thoại cùng trailer bom tấn Mobile Suit Gundam: Chiến Binh Thép Tái Xuất với những màn đại chiến mecha mãn nhãn.',
+        heroDesc: isVi
+          ? 'Khám phá thế giới hoạt hình Nhật Bản đỉnh cao, các tác phẩm shounen huyền thoại cùng trailer bom tấn Mobile Suit Gundam: Chiến Binh Thép Tái Xuất với những màn đại chiến mecha mãn nhãn.'
+          : 'Explore top Japanese animation, legendary shounen masterpieces, and the blockbuster Mobile Suit Gundam trailer featuring visually breathtaking mecha battles.',
         effect: <SakuraEffect autoStart={true} />,
       },
       gaming: {
@@ -142,7 +150,9 @@ export default function CategoryHub() {
         badgeShadow: 'rgba(0, 206, 201, 0.35)',
         videoTitle: 'League of Legends: Cinematic eSports',
         heroSubtitle: '• League of Legends & eSports',
-        heroDesc: 'Thế giới game đỉnh cao, eSports chuyên nghiệp, các tựa game bom tấn AAA cùng trailer bom tấn League of Legends Cinematic với những trận đại chiến huyền thoại và đồ họa tương lai mãn nhãn.',
+        heroDesc: isVi
+          ? 'Thế giới game đỉnh cao, eSports chuyên nghiệp, các tựa game bom tấn AAA cùng trailer bom tấn League of Legends Cinematic với những trận đại chiến huyền thoại và đồ họa tương lai mãn nhãn.'
+          : 'High-octane gaming, pro eSports, blockbuster AAA titles, and cinematic League of Legends trailers featuring legendary showdowns and stunning futuristic visuals.',
         effect: <GamingHextechEffect autoStart={true} />,
       },
       manga: {
@@ -151,8 +161,10 @@ export default function CategoryHub() {
         badgeGradient: 'linear-gradient(135deg, #d35400, #E17055)',
         badgeShadow: 'rgba(211, 84, 0, 0.35)',
         videoTitle: 'Manga Shounen Jump & Seinen Masterpieces',
-        heroSubtitle: '• Kho Tàng Truyện Tranh Huyền Thoại',
-        heroDesc: 'Đắm chìm vào những trang truyện tranh kinh điển, các nét vẽ mực đỉnh cao từ Eiichiro Oda, Gege Akutami, Kentaro Miura đến thế giới shounen bùng nổ cảm xúc.',
+        heroSubtitle: isVi ? '• Kho Tàng Truyện Tranh Huyền Thoại' : '• Legendary Manga Masterpieces',
+        heroDesc: isVi
+          ? 'Đắm chìm vào những trang truyện tranh kinh điển, các nét vẽ mực đỉnh cao từ Eiichiro Oda, Gege Akutami, Kentaro Miura đến thế giới shounen bùng nổ cảm xúc.'
+          : 'Immerse yourself in timeless manga chapters, masterwork ink drawings from legendary mangaka, and emotional shounen adventures.',
         effect: <MangaActionEffect autoStart={true} />,
       },
       movies: {
@@ -161,43 +173,55 @@ export default function CategoryHub() {
         badgeGradient: 'linear-gradient(135deg, #0984E3, #00a8ff)',
         badgeShadow: 'rgba(9, 132, 227, 0.35)',
         videoTitle: 'Hollywood & Vũ Trụ Điện Ảnh Marvel/DC',
-        heroSubtitle: '• Bom Tấn Màn Bạc & Kỹ Xảo Điện Ảnh',
-        heroDesc: 'Hòa mình vào vũ trụ điện ảnh đỉnh cao, những kiệt tác màn ảnh rộng, vũ trụ đa chiều MCU & DC cùng kỹ xảo CGI mãn nhãn hàng đầu thế giới.',
+        heroSubtitle: isVi ? '• Bom Tấn Màn Bạc & Kỹ Xảo Điện Ảnh' : '• Silver Screen Blockbusters & CGI',
+        heroDesc: isVi
+          ? 'Hòa mình vào vũ trụ điện ảnh đỉnh cao, những kiệt tác màn ảnh rộng, vũ trụ đa chiều MCU & DC cùng kỹ xảo CGI mãn nhãn hàng đầu thế giới.'
+          : 'Step into epic cinematic universes, silver screen masterpieces, Marvel and DC multiverses, and world-class visual effects.',
         effect: <MoviesProjectorEffect autoStart={true} />,
       },
       tvshows: {
-        videoSrc: '/hero-video.mp4',
-        badgeText: 'TV Series Exclusive',
-        badgeGradient: 'linear-gradient(135deg, #6C5CE7, #a29bfe)',
-        badgeShadow: 'rgba(108, 92, 231, 0.35)',
-        videoTitle: 'Top TV Series & Streaming Originals',
-        heroSubtitle: '• Series Truyền Hình Bom Tấn',
-        heroDesc: 'Thưởng thức những mùa phim truyền hình gây bão toàn cầu, từ Stranger Things, House of the Dragon đến các tác phẩm kịch tính đỉnh cao trên các nền tảng streaming.',
-        effect: <GamingHextechEffect autoStart={true} />,
+        videoSrc: '/dragon.mp4',
+        badgeText: 'House of the Dragon 4K',
+        badgeGradient: 'linear-gradient(135deg, #d63031 0%, #e17055 50%, #f39c12 100%)',
+        badgeShadow: 'rgba(214, 48, 49, 0.45)',
+        videoTitle: isVi
+          ? 'House of the Dragon: Vũ Điệu Của Bầy Rồng (Dance of the Dragons)'
+          : 'House of the Dragon: Dance of the Dragons',
+        heroSubtitle: isVi
+          ? '• House of the Dragon & Vũ Trụ Game of Thrones'
+          : '• House of the Dragon & Game of Thrones Universe',
+        heroDesc: isVi
+          ? 'Bước vào kỷ nguyên huy hoàng và tàn khốc của Gia tộc Targaryen, nơi bầu trời rực lửa bởi những con rồng khổng lồ Caraxes, Vhagar và Syrax trong cuộc đại chiến vương quyền đẫm máu "Vũ Điệu Của Bầy Rồng".'
+          : 'Step into the glorious and brutal reign of House Targaryen, where skies burn with legendary dragons Caraxes, Vhagar, and Syrax in the bloodiest civil war for the Iron Throne: The Dance of the Dragons.',
+        effect: <DragonFireEmbersEffect autoStart={true} />,
       },
       kpop: {
-        videoSrc: '/0925 (1).mp4',
-        badgeText: 'K-Pop Universe',
-        badgeGradient: 'linear-gradient(135deg, #FD79A8, #e84393)',
-        badgeShadow: 'rgba(253, 121, 168, 0.35)',
-        videoTitle: 'K-Pop Global Live Stage & MV Teasers',
-        heroSubtitle: '• Làn Sóng Hallyu Toàn Cầu',
-        heroDesc: 'Thế giới âm nhạc bùng nổ của BTS, BLACKPINK, aespa, NewJeans với các màn trình diễn vũ đạo đỉnh cao, lightstick rực rỡ và đại nhạc hội quốc tế.',
-        effect: <KpopSparkleEffect autoStart={true} />,
+        videoSrc: '/Kpol.mp4',
+        badgeText: 'K-Pop Comeback Stage 4K',
+        badgeGradient: 'linear-gradient(135deg, #ff5ba8 0%, #a06cff 50%, #4fd8ff 100%)',
+        badgeShadow: 'rgba(255, 91, 168, 0.45)',
+        videoTitle: isVi ? 'K-Pop Comeback Stage: Vũ Đạo & Thần Thái Đỉnh Cao' : 'K-Pop Comeback Stage: Elite Choreography & Visuals',
+        heroSubtitle: isVi ? '• K-Pop Live Stage & Làn Sóng Hallyu' : '• K-Pop Live Stage & Hallyu Wave',
+        heroDesc: isVi
+          ? 'Đắm chìm vào những màn vũ đạo bùng nổ, visual tỏa sáng và thần thái đỉnh cao từ các nhóm nhạc hàng đầu K-Pop, hòa cùng biển lightstick rực rỡ và giai điệu bắt tai gây sốt toàn cầu.'
+          : 'Immerse yourself in electrifying choreography, shining visuals, and charismatic performances from top K-Pop idols, amidst glowing oceans of lightsticks.',
+        effect: <KpopIdolStageEffect autoStart={true} />,
       },
       comics: {
-        videoSrc: '/hero-video.mp4',
-        badgeText: 'Comics Universe',
-        badgeGradient: 'linear-gradient(135deg, #FDCB6E, #e17055)',
-        badgeShadow: 'rgba(253, 203, 110, 0.35)',
-        videoTitle: 'Marvel & DC Comics Epic Sagas',
-        heroSubtitle: '• Kỷ Nguyên Siêu Anh Hùng Đồ Họa',
-        heroDesc: 'Khám phá lịch sử truyện tranh phương Tây, những huyền thoại Avengers, Batman, Spider-Man cùng các ấn bản graphic novel kinh điển.',
-        effect: <MangaActionEffect autoStart={true} />,
+        videoSrc: '/spiderman-hero.mp4',
+        badgeText: 'Spider-Man & Marvel Comics',
+        badgeGradient: 'linear-gradient(135deg, #e74c3c 0%, #0984e3 100%)',
+        badgeShadow: 'rgba(231, 76, 60, 0.45)',
+        videoTitle: isVi ? 'Spider-Man: Vũ Trụ Đa Chiều & Marvel Comics' : 'Spider-Man: Multiverse & Marvel Comics',
+        heroSubtitle: isVi ? '• Spider-Man & Kỷ Nguyên Siêu Anh Hùng' : '• Spider-Man & Superhero Era',
+        heroDesc: isVi
+          ? 'Đắm chìm vào thế giới siêu anh hùng Người Nhện (Spider-Man), những màn đu tơ bay lượn nghẹt thở giữa các tòa nhà chọc trời New York, giác quan nhện nhạy bén và kỷ nguyên truyện tranh Marvel & DC bất hủ.'
+          : 'Swing through New York skyscrapers with Spider-Man, experience hyper-acute spider-sense, and dive into timeless Marvel and DC comic eras.',
+        effect: <ComicsSpiderWebEffect autoStart={true} />,
       },
     };
     return configs[categoryId] || configs.anime;
-  }, [categoryId]);
+  }, [categoryId, isVi]);
 
   // Content Filters
   const [selectedType, setSelectedType] = useState('all');
@@ -376,7 +400,7 @@ export default function CategoryHub() {
   }
 
   return (
-    <div className={`container-fluid px-2 px-sm-3 px-md-4 px-xl-5 py-3 ${isGaming ? 'gaming-universe-container' : ''} ${isAnime ? 'anime-universe-container' : ''} ${isKpop ? 'kpop-universe-container' : ''} ${isMovies ? 'movies-universe-container' : ''} ${isManga ? 'manga-universe-container' : ''} ${categoryId}-universe-container`}>
+    <div className={`container-fluid px-2 px-sm-3 px-md-4 px-xl-5 py-3 ${isGaming ? 'gaming-universe-container' : ''} ${isAnime ? 'anime-universe-container' : ''} ${isKpop ? 'kpop-universe-container' : ''} ${isMovies ? 'movies-universe-container' : ''} ${isManga ? 'manga-universe-container' : ''} ${isComics ? 'comics-universe-container' : ''} ${categoryId}-universe-container`}>
       {/* EXCLUSIVE CINEMATIC HERO BANNER — WIDESCREEN & EXPANDED CANVAS */}
       <div className={`category-cinema-hero ${categoryId}-cinema-hero mb-4`}>
         <video
@@ -413,17 +437,38 @@ export default function CategoryHub() {
                 border: '1px solid rgba(255,255,255,0.15)',
               }}
             >
-              <i className="bi bi-play-circle-fill"></i> Video Nổi Bật
+              <i className="bi bi-play-circle-fill"></i> {isVi ? 'Video Nổi Bật' : 'Featured Video'}
             </span>
             {heroConfig.effect}
           </div>
 
-          <h1 className="category-cinema-hero-title">
-            {categoryInfo.label}
-            <span className="ms-2 fs-4 fw-normal text-white-50 d-block d-sm-inline">
-              {heroConfig.heroSubtitle}
-            </span>
-          </h1>
+          {isTvShows ? (
+            <div className="dragon-hero-headline-block mb-3">
+              <div className="d-flex flex-wrap align-items-center gap-2 mb-2">
+                <span className="badge-targaryen-realm">
+                  <i className="bi bi-shield-fill text-danger me-1"></i> HBO ORIGINAL • GAME OF THRONES UNIVERSE
+                </span>
+                <span className="badge-valyrian-steel">
+                  HOUSE TARGARYEN
+                </span>
+              </div>
+              <h1 className="dragon-cinema-main-title">
+                HOUSE <span className="dragon-fire-text">OF THE</span> DRAGON
+              </h1>
+              <div className="dragon-cinema-tagline">
+                <span className="tagline-rune">⚔️</span>
+                <span className="tagline-text">{isVi ? 'VŨ ĐIỆU CỦA BẦY RỒNG • FIRE & BLOOD' : 'DANCE OF THE DRAGONS • FIRE & BLOOD'}</span>
+                <span className="tagline-rune">⚔️</span>
+              </div>
+            </div>
+          ) : (
+            <h1 className="category-cinema-hero-title text-white">
+              {categoryInfo.label}
+              <span className="ms-2 fs-4 fw-normal text-white-50 d-block d-sm-inline">
+                {heroConfig.heroSubtitle}
+              </span>
+            </h1>
+          )}
 
           <p className="category-cinema-hero-desc">
             {heroConfig.heroDesc}
@@ -443,28 +488,42 @@ export default function CategoryHub() {
                 mediaUrl: heroConfig.videoSrc,
               })}
             >
-              <i className="bi bi-arrows-fullscreen fs-6"></i>
-              <span>Xem Bản Chi Tiết (Full Video)</span>
+              <i className="bi bi-play-circle-fill fs-5"></i>
+              <span>{isVi ? 'Xem Bản Chi Tiết (Full Video)' : 'Watch Full Video'}</span>
             </button>
+
+            {isTvShows && (
+              <button
+                type="button"
+                className="category-cinema-hero-btn-dragon"
+                onClick={() => {
+                  window.dispatchEvent(new CustomEvent('fv-trigger-dracarys'));
+                }}
+                title={isVi ? 'Nhấn để giải phóng ngọn lửa rồng Dracarys!' : 'Click to unleash dragon fire breath!'}
+              >
+                <span>🔥</span>
+                <span>{isVi ? 'Phun Lửa Rồng (Dracarys)' : 'Dracarys Fire Breath'}</span>
+              </button>
+            )}
 
             <button
               type="button"
               className="category-cinema-hero-btn-secondary"
               onClick={toggleHeroAudio}
-              title={heroMuted ? 'Bật âm thanh video' : 'Tắt tiếng video'}
+              title={heroMuted ? (isVi ? 'Bật âm thanh video' : 'Unmute video') : (isVi ? 'Tắt tiếng video' : 'Mute video')}
             >
               <i className={`bi ${heroMuted ? 'bi-volume-mute-fill' : 'bi-volume-up-fill'} fs-6`}></i>
-              <span>{heroMuted ? 'Bật Âm Thanh' : 'Tắt Âm Thanh'}</span>
+              <span>{heroMuted ? (isVi ? 'Bật Âm Thanh' : 'Unmute') : (isVi ? 'Tắt Âm Thanh' : 'Mute')}</span>
             </button>
 
             <button
               type="button"
               className="movies-hero-icon-btn"
-              aria-label="Chia sẻ"
-              title="Sao chép liên kết chia sẻ"
+              aria-label={isVi ? 'Chia sẻ' : 'Share'}
+              title={isVi ? 'Sao chép liên kết chia sẻ' : 'Copy share link'}
               onClick={() => {
                 navigator.clipboard?.writeText(window.location.href);
-                alert('Đã sao chép liên kết vũ trụ ' + categoryInfo.label + ' vào bộ nhớ tạm!');
+                alert(isVi ? ('Đã sao chép liên kết vũ trụ ' + categoryInfo.label + ' vào bộ nhớ tạm!') : ('Copied link for ' + categoryInfo.label + ' to clipboard!'));
               }}
             >
               <i className="bi bi-share-fill"></i>
@@ -477,8 +536,8 @@ export default function CategoryHub() {
       <div className="category-divided-content-sections mt-4">
         {/* 1. Video Row - Wider Cinema Cards */}
         <CategoryContentRow
-          title="Video & Phân Cảnh Đặc Sắc"
-          subtitle="Các đoạn video clip, trailer bom tấn và hoạt cảnh đại chiến mãn nhãn"
+          title={isVi ? "Video & Phân Cảnh Đặc Sắc" : "Featured Videos & Epic Scenes"}
+          subtitle={isVi ? "Các đoạn video clip, trailer bom tấn và hoạt cảnh đại chiến mãn nhãn" : "Blockbuster trailers, iconic clips, and visually stunning battle scenes"}
           icon="bi-play-circle-fill"
           color="#ff4757"
           badgeText={`${videoContents.length} Video`}
@@ -490,11 +549,11 @@ export default function CategoryHub() {
 
         {/* 2. Gallery Row */}
         <CategoryContentRow
-          title="Bộ Sưu Tập Ảnh & Concept Art"
-          subtitle="Phòng trưng bày hình nền 4K, bản vẽ phác thảo mecha và minh họa độc quyền"
+          title={isVi ? "Bộ Sưu Tập Ảnh & Concept Art" : "Gallery & Concept Art"}
+          subtitle={isVi ? "Phòng trưng bày hình nền 4K, bản vẽ phác thảo mecha và minh họa độc quyền" : "4K wallpapers, mecha concept art, and exclusive illustrations"}
           icon="bi-images"
           color="#feca57"
-          badgeText={`${galleryContents.length} Bộ Ảnh`}
+          badgeText={`${galleryContents.length} ${isVi ? 'Bộ Ảnh' : 'Galleries'}`}
           items={galleryContents}
           onOpenMedia={(v) => setActiveVideo(v)}
           onOpenGallery={(g) => setLightboxImages(g.images)}
@@ -502,11 +561,11 @@ export default function CategoryHub() {
 
         {/* 3. Article Row */}
         <CategoryContentRow
-          title="Bài Viết Chuyên Sâu & Phân Tích"
-          subtitle="Đánh giá tác phẩm, phân tích nhân vật và các bài xã luận văn hóa đặc sắc"
+          title={isVi ? "Bài Viết Chuyên Sâu & Phân Tích" : "In-Depth Articles & Analysis"}
+          subtitle={isVi ? "Đánh giá tác phẩm, phân tích nhân vật và các bài xã luận văn hóa đặc sắc" : "Reviews, character deep-dives, and cultural essays"}
           icon="bi-file-text-fill"
           color="#a29bfe"
-          badgeText={`${articleContents.length} Bài Viết`}
+          badgeText={`${articleContents.length} ${isVi ? 'Bài Viết' : 'Articles'}`}
           items={articleContents}
           onOpenMedia={(v) => setActiveVideo(v)}
           onOpenGallery={(g) => setLightboxImages(g.images)}
@@ -514,8 +573,8 @@ export default function CategoryHub() {
 
         {/* 4. Audio Row */}
         <CategoryContentRow
-          title="Podcast & Bản Âm Thanh Fandom"
-          subtitle="Nhạc nền OST kinh điển và các số radio thảo luận cùng cộng đồng"
+          title={isVi ? "Podcast & Bản Âm Thanh Fandom" : "Podcasts & Fandom Audio"}
+          subtitle={isVi ? "Nhạc nền OST kinh điển và các số radio thảo luận cùng cộng đồng" : "Iconic soundtracks (OST) and community radio episodes"}
           icon="bi-soundwave"
           color="#00cec9"
           badgeText={`${audioContents.length} Audio`}
@@ -534,10 +593,10 @@ export default function CategoryHub() {
                 className="badge rounded-pill px-2.5 py-1 text-white small fw-bold d-inline-flex align-items-center gap-1.5"
                 style={{ background: '#00b894', boxShadow: '0 4px 12px rgba(0, 184, 148, 0.3)' }}
               >
-                <i className="bi bi-people-fill"></i> {filteredCharacters.length} Nhân Vật
+                <i className="bi bi-people-fill"></i> {filteredCharacters.length} {isVi ? 'Nhân Vật' : 'Characters'}
               </span>
               <h3 className={`font-heading fw-bold mb-0 fs-5 ${isDark ? 'text-white' : 'text-dark'}`}>
-                Nhân Vật Tiêu Biểu ({categoryInfo.label})
+                {isVi ? 'Nhân Vật Tiêu Biểu' : 'Featured Characters'} ({categoryInfo.label})
               </h3>
             </div>
             {franchises.length > 0 && (
@@ -575,10 +634,10 @@ export default function CategoryHub() {
                 className="badge rounded-pill px-2.5 py-1 text-white small fw-bold d-inline-flex align-items-center gap-1.5"
                 style={{ background: '#f39c12', boxShadow: '0 4px 12px rgba(243, 156, 18, 0.3)' }}
               >
-                <i className="bi bi-calendar-event-fill"></i> {filteredEvents.length} Sự Kiện
+                <i className="bi bi-calendar-event-fill"></i> {filteredEvents.length} {isVi ? 'Sự Kiện' : 'Events'}
               </span>
               <h3 className={`font-heading fw-bold mb-0 fs-5 ${isDark ? 'text-white' : 'text-dark'}`}>
-                Sự Kiện & Lễ Hội Fandom
+                {isVi ? 'Sự Kiện & Lễ Hội Fandom' : 'Fandom Events & Festivals'}
               </h3>
             </div>
             <div className="btn-group btn-group-sm">

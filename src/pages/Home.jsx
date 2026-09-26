@@ -456,16 +456,21 @@ export default function Home() {
             <div className="d-flex align-items-center gap-2">
               <button
                 type="button"
-                className={`btn btn-sm rounded-pill px-3 py-1.5 fw-semibold d-inline-flex align-items-center gap-1.5 border-0 ${
-                  isAutoScrollActive
-                    ? 'bg-danger bg-opacity-20 text-danger'
-                    : isDark
-                    ? 'bg-secondary bg-opacity-20 text-white-50'
-                    : 'bg-secondary bg-opacity-10 text-secondary'
-                }`}
+                className="btn btn-sm rounded-pill px-3 py-1.5 fw-semibold d-inline-flex align-items-center gap-1.5 border-0 fv-autoscroll-toggle"
                 onClick={() => setIsAutoScrollActive(!isAutoScrollActive)}
                 title={isAutoScrollActive ? 'Bấm để tạm dừng lướt tự động' : 'Bấm để bật lướt tự động'}
-                style={{ fontSize: '0.8rem', transition: 'all 0.2s ease' }}
+                style={{
+                  fontSize: '0.8rem',
+                  transition: 'all 0.2s ease',
+                  // Đặt màu trực tiếp thay vì dùng class bg-opacity-* của Bootstrap
+                  // (class đó bị lỗi không giảm được độ mờ trong dự án này, khiến nút bị đặc màu che mất chữ)
+                  backgroundColor: isAutoScrollActive
+                    ? 'rgba(220, 53, 69, 0.18)'
+                    : isDark
+                    ? 'rgba(148, 163, 184, 0.18)'
+                    : 'rgba(100, 116, 139, 0.1)',
+                  color: isAutoScrollActive ? '#dc3545' : isDark ? 'rgba(255, 255, 255, 0.6)' : '#64748b',
+                }}
               >
                 <i className={`bi ${isAutoScrollActive ? 'bi-pause-circle-fill' : 'bi-play-circle-fill'}`}></i>
                 <span>{isAutoScrollActive ? 'Tự động lướt: Bật' : 'Tự động lướt: Tắt'}</span>

@@ -1,18 +1,22 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import ContentCard from '../cards/ContentCard.jsx';
+import MerchCard from '../cards/MerchCard.jsx';
 import { useTheme } from '../../context/ThemeContext.jsx';
 
-export default function CategoryContentRow({
+/**
+ * MerchandiseContentRow - Component hiển thị từng hàng sản phẩm dạng trượt (Slider Row)
+ * Được thiết kế chuẩn giao diện FandomVerse với Badge phân loại, Tiêu đề, Phụ đề,
+ * nút điều hướng chuyển slide (< >) và kéo chuột mượt mà 60fps.
+ */
+export default function MerchandiseContentRow({
   title,
   subtitle,
-  icon,
+  icon = 'bi-bag-fill',
   color = '#6C5CE7',
   badgeText,
   items = [],
-  cardWidth = '340px',
-  onOpenMedia,
-  onOpenGallery,
+  cardWidth = '290px',
+  onToast,
   onFilterSelf,
 }) {
   const { t, i18n } = useTranslation();
@@ -42,8 +46,7 @@ export default function CategoryContentRow({
 
   const scrollSlider = (direction) => {
     if (sliderRef.current) {
-      const cardWidth = 360;
-      const scrollAmount = direction === 'left' ? -cardWidth * 1.5 : cardWidth * 1.5;
+      const scrollAmount = direction === 'left' ? -320 * 1.5 : 320 * 1.5;
       sliderRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
       setTimeout(checkScrollBounds, 350);
     }
@@ -77,8 +80,8 @@ export default function CategoryContentRow({
   if (!items || items.length === 0) return null;
 
   return (
-    <div className="fv-category-content-row mb-5">
-      {/* Row Header */}
+    <div className="fv-merchandise-content-row mb-5">
+      {/* Row Header giống hệt ảnh 2 */}
       <div className="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-2 mb-3">
         <div>
           <div className="d-flex align-items-center gap-2">
@@ -86,7 +89,7 @@ export default function CategoryContentRow({
               className="badge rounded-pill px-2.5 py-1 text-white small fw-bold d-inline-flex align-items-center gap-1.5"
               style={{ background: color, boxShadow: `0 4px 12px ${color}40` }}
             >
-              <i className={`bi ${icon}`}></i> {badgeText || items.length}
+              <i className={`bi ${icon}`}></i> {badgeText || (isVi ? `${items.length} Món` : `${items.length} Items`)}
             </span>
             <h3
               className={`font-heading fw-bold mb-0 fs-5 ${isDark ? 'text-white' : 'text-dark'}`}
@@ -125,6 +128,7 @@ export default function CategoryContentRow({
             onClick={() => scrollSlider('left')}
             disabled={!canScrollLeft}
             aria-label={isVi ? 'Cuộn sang trái' : 'Scroll left'}
+            title={isVi ? 'Cuộn sang trái' : 'Scroll left'}
           >
             <i className="bi bi-chevron-left"></i>
           </button>
@@ -135,6 +139,7 @@ export default function CategoryContentRow({
             onClick={() => scrollSlider('right')}
             disabled={!canScrollRight}
             aria-label={isVi ? 'Cuộn sang phải' : 'Scroll right'}
+            title={isVi ? 'Cuộn sang phải' : 'Scroll right'}
           >
             <i className="bi bi-chevron-right"></i>
           </button>
@@ -151,7 +156,7 @@ export default function CategoryContentRow({
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUpOrLeave}
           onMouseLeave={handleMouseUpOrLeave}
-          style={{ paddingBottom: '0.75rem' }}
+          style={{ paddingBottom: '0.75rem', gap: '1.25rem' }}
         >
           {items.map((item) => (
             <div
@@ -159,11 +164,7 @@ export default function CategoryContentRow({
               className="fv-trailer-card-item"
               style={{ flex: `0 0 ${cardWidth}`, maxWidth: cardWidth }}
             >
-              <ContentCard
-                item={item}
-                onOpenMedia={onOpenMedia}
-                onOpenGallery={onOpenGallery}
-              />
+              <MerchCard item={item} onToast={onToast} />
             </div>
           ))}
         </div>

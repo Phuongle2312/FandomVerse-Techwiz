@@ -69,6 +69,17 @@
   --manga-ink-red: #ff3838;
   --manga-speed-line: rgba(255, 255, 255, 0.25);
 
+  /* Western Superhero, Spider-Man & Marvel/DC Comics Custom Fonts */
+  --font-comics-title: 'Bangers', 'Impact', cursive, sans-serif;
+  --font-comics-display: 'Bungee', 'Bangers', cursive, sans-serif;
+  --font-comics-body: 'Comic Neue', 'Plus Jakarta Sans', sans-serif;
+  --font-comics-sfx: 'Bangers', cursive, sans-serif;
+  --comics-spidey-red: #e74c3c;
+  --comics-spidey-blue: #0984e3;
+  --comics-hero-yellow: #f1c40f;
+  --comics-hero-dark: #0f1423;
+  --comics-panel-border: rgba(231, 76, 60, 0.4);
+
   --fs-display: 3rem;
   --fs-h1: 2.25rem;
   --fs-h2: 1.75rem;

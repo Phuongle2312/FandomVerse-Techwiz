@@ -215,8 +215,8 @@
     "allFranchise": "All franchises",
     "charactersCountBadge": "{{count}} characters",
     "statusLabel": "Status:",
-    "statusUpcoming": "⚡ Upcoming",
-    "statusPast": "✓ Past",
+    "statusUpcoming": "Upcoming",
+    "statusPast": "Past",
     "eventsCountBadge": "{{count}} events",
     "galleryTitle": "{{label}} Gallery"
   },
@@ -253,13 +253,13 @@
     "subtitle": "The latest blockbuster trailers from Anime, Gaming, Hollywood Movies, K-Pop and Comics.",
     "categoryLabel": "Category:",
     "statusLabel": "Status:",
-    "statusUpcoming": "⚡ Coming soon",
-    "statusReleased": "✓ Released",
+    "statusUpcoming": "Coming soon",
+    "statusReleased": "Released",
     "noTrailersTitle": "No matching trailers",
     "noTrailersMessage": "No trailers match the current filters. Choose 'All' to view the full list.",
     "clearFilters": "Clear filters",
-    "badgeUpcoming": "⚡ COMING SOON",
-    "badgeReleased": "✓ RELEASED",
+    "badgeUpcoming": "COMING SOON",
+    "badgeReleased": "RELEASED",
     "watchTrailer": "Watch Trailer"
   },
   "merchandise": {

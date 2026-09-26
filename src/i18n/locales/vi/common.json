@@ -215,8 +215,8 @@
     "allFranchise": "Tất cả Franchise",
     "charactersCountBadge": "{{count}} nhân vật",
     "statusLabel": "Trạng thái:",
-    "statusUpcoming": "⚡ Sắp diễn ra",
-    "statusPast": "✓ Đã diễn ra",
+    "statusUpcoming": "Sắp diễn ra",
+    "statusPast": "Đã diễn ra",
     "eventsCountBadge": "{{count}} sự kiện",
     "galleryTitle": "{{label}} Gallery"
   },
@@ -253,13 +253,13 @@
     "subtitle": "Cập nhật các đoạn giới thiệu video bom tấn mới nhất từ Anime, Game, Điện ảnh Hollywood, K-Pop và Comics.",
     "categoryLabel": "Danh mục:",
     "statusLabel": "Trạng thái:",
-    "statusUpcoming": "⚡ Sắp chiếu",
-    "statusReleased": "✓ Đã ra mắt",
+    "statusUpcoming": "Sắp chiếu",
+    "statusReleased": "Đã ra mắt",
     "noTrailersTitle": "Không có trailer nào phù hợp",
     "noTrailersMessage": "Không có trailer nào khớp với bộ lọc hiện tại. Hãy chọn 'Tất cả' để xem toàn bộ danh sách.",
     "clearFilters": "Xóa bộ lọc",
-    "badgeUpcoming": "⚡ SẮP CHIẾU",
-    "badgeReleased": "✓ ĐÃ RA MẮT",
+    "badgeUpcoming": "SẮP CHIẾU",
+    "badgeReleased": "ĐÃ RA MẮT",
     "watchTrailer": "Xem Trailer"
   },
   "merchandise": {
