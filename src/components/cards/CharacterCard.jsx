@@ -7,7 +7,7 @@ export default function CharacterCard({ character }) {
 
   return (
     <>
-      <div className={`card fv-card fv-character-card h-100 text-center p-3 border-0 shadow-sm d-flex flex-column align-items-center ${character.category === 'gaming' ? 'gaming-character-card' : ''}`}>
+      <div className={`card fv-card fv-character-card h-100 text-center p-3 border-0 shadow-sm d-flex flex-column align-items-center ${character.category === 'gaming' ? 'gaming-character-card' : ''} ${character.category === 'anime' ? 'anime-character-card' : ''} ${character.category === 'kpop' ? 'kpop-character-card' : ''} ${character.category === 'movies' ? 'movies-character-card' : ''} ${character.category === 'manga' ? 'manga-character-card' : ''}`}>
         {/* Circular Avatar */}
         <div
           className="rounded-circle overflow-hidden mb-3 border border-3 border-white shadow-sm"

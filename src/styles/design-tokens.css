@@ -40,6 +40,35 @@
   --neon-gaming-emerald: #00b894;
   --neon-gaming-glow: 0 0 15px rgba(0, 255, 204, 0.5);
 
+  /* Anime, Manga & JRPG Custom Fonts */
+  --font-anime-title: 'Montserrat', 'Bebas Neue', sans-serif;
+  --font-anime-display: 'Bebas Neue', 'Montserrat', sans-serif;
+  --font-anime-body: 'Quicksand', 'Comfortaa', sans-serif;
+  --font-anime-cute: 'Comfortaa', 'Quicksand', cursive, sans-serif;
+
+  /* K-Pop & Idol Comeback Stage Custom Fonts */
+  --font-kpop-display: 'Unbounded', 'Poppins', sans-serif;
+  --font-kpop-title: 'Baloo 2', 'Poppins', sans-serif;
+  --font-kpop-body: 'Poppins', sans-serif;
+  --kpop-holo-1: #ff5ba8;
+  --kpop-holo-2: #a06cff;
+  --kpop-holo-3: #4fd8ff;
+  --kpop-holo-4: #ffd66b;
+
+  /* Movies & Cinematic Blockbuster Custom Fonts */
+  --font-movies-display: 'Anton', 'Oswald', sans-serif;
+  --font-movies-title: 'Oswald', 'Anton', sans-serif;
+  --font-movies-body: 'Oswald', sans-serif;
+
+  /* Manga, Comic Action & Shonen Custom Fonts */
+  --font-manga-title: 'Dela Gothic One', 'Bebas Neue', sans-serif;
+  --font-manga-display: 'Bangers', 'Dela Gothic One', cursive, sans-serif;
+  --font-manga-sfx: 'Bangers', cursive, sans-serif;
+  --font-manga-body: 'Quicksand', 'Plus Jakarta Sans', sans-serif;
+  --manga-ink-black: #11141a;
+  --manga-ink-red: #ff3838;
+  --manga-speed-line: rgba(255, 255, 255, 0.25);
+
   --fs-display: 3rem;
   --fs-h1: 2.25rem;
   --fs-h2: 1.75rem;
