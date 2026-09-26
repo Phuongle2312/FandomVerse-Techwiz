@@ -526,6 +526,14 @@
     "paymentMethod": "Payment Method",
     "reorderSuccess": "Added {{count}} items from order {{id}} back into your cart!"
   },
+  "orders": {
+    "title": "Order & Transaction History",
+    "subtitle": "Track your FandomVerse merchandise orders, invoices and delivery status.",
+    "backToProfile": "Back to My Account",
+    "filterAll": "All Orders",
+    "filterCompleted": "Completed",
+    "filterProcessing": "Processing"
+  },
   "checkout": {
     "title": "Checkout & Order Confirmation",
     "subtitle": "Fast nationwide delivery • Shockproof packaging protecting anime & gaming products",

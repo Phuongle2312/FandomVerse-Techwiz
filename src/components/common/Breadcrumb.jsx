@@ -52,7 +52,10 @@ export default function Breadcrumb() {
     crumbs.push({ label: t('breadcrumb.login'), to: '/login' });
   } else if (parts[0] === 'signup') {
     crumbs.push({ label: t('breadcrumb.signup'), to: '/signup' });
-  } else if (['profile', 'account', 'my-account', 'orders', 'order-history', 'history', 'transactions'].includes(parts[0])) {
+  } else if (['orders', 'order-history', 'history', 'transactions'].includes(parts[0])) {
+    crumbs.push({ label: t('breadcrumb.profile'), to: '/profile' });
+    crumbs.push({ label: t('orders.title') || t('profile.ordersTitle'), to: '/orders' });
+  } else if (['profile', 'account', 'my-account'].includes(parts[0])) {
     crumbs.push({ label: t('breadcrumb.profile'), to: '/profile' });
   } else {
     crumbs.push({ label: t('breadcrumb.genericPage'), to: path });

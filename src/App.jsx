@@ -21,6 +21,7 @@ import TrailersHub from './pages/TrailersHub.jsx';
 import Merchandise from './pages/Merchandise.jsx';
 import Bookmarks from './pages/Bookmarks.jsx';
 import Profile from './pages/Profile.jsx';
+import OrdersHistory from './pages/OrdersHistory.jsx';
 import SearchResults from './pages/SearchResults.jsx';
 import Contact from './pages/Contact.jsx';
 import About from './pages/About.jsx';
@@ -87,11 +88,11 @@ function AppContent() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/account" element={<Profile />} />
           <Route path="/my-account" element={<Profile />} />
-          <Route path="/orders" element={<Profile />} />
-          <Route path="/order-history" element={<Profile />} />
-          <Route path="/history" element={<Profile />} />
-          <Route path="/transactions" element={<Profile />} />
-          <Route path="/profile/orders" element={<Profile />} />
+          <Route path="/orders" element={<OrdersHistory />} />
+          <Route path="/order-history" element={<OrdersHistory />} />
+          <Route path="/history" element={<OrdersHistory />} />
+          <Route path="/transactions" element={<OrdersHistory />} />
+          <Route path="/profile/orders" element={<OrdersHistory />} />
           <Route path="/checkout/success" element={<Checkout />} />
           <Route path="/order-success" element={<Checkout />} />
           <Route path="/search" element={<SearchResults />} />

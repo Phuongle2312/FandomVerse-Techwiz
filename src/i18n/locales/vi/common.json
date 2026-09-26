@@ -526,6 +526,14 @@
     "paymentMethod": "Phương Thức Thanh Toán",
     "reorderSuccess": "Đã thêm lại {{count}} món từ đơn {{id}} vào giỏ hàng!"
   },
+  "orders": {
+    "title": "Lịch Sử Giao Dịch & Đơn Hàng",
+    "subtitle": "Theo dõi các đơn hàng vật phẩm, hóa đơn và thông tin giao hàng của bạn.",
+    "backToProfile": "Quay lại tài khoản",
+    "filterAll": "Tất cả đơn hàng",
+    "filterCompleted": "Đã hoàn thành",
+    "filterProcessing": "Đang xử lý"
+  },
   "checkout": {
     "title": "Thanh Toán & Xác Nhận Đơn Hàng",
     "subtitle": "Giao hàng nhanh toàn quốc • Đóng gói hộp chống sốc bảo vệ sản phẩm anime & gaming",
