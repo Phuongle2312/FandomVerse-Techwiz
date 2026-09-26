@@ -72,7 +72,6 @@ export const dataService = {
     } else if (sort === 'featured') {
       result = [...result].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
     } else {
-      // Default: newest
       result = [...result].sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
     }
 
@@ -106,7 +105,7 @@ export const dataService = {
 
   getFranchisesByCategory(categoryId) {
     const chars = charactersData.filter((c) => c.category === categoryId);
-    const set = new Set(chars.map((c) => c.franchise));
+    const set = new Set(chars.map((c) => c.franchise).filter(Boolean));
     return Array.from(set);
   },
 

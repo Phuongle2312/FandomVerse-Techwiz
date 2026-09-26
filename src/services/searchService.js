@@ -1,5 +1,41 @@
 import { dataService } from './dataService.js';
 import i18n from '../i18n/index.js';
+// Below this query length, only the primary field (title/name) is matched.
+// A 1-2 letter query almost always appears somewhere inside a long bio/description,
+// which used to flood the results with items whose *title* had nothing to do with the query.
+const MIN_LENGTH_FOR_SECONDARY_FIELDS = 3;
+
+// Scores how well a single field matches the query: exact > starts-with > contains > no match.
+function fieldScore(value, q) {
+  if (!value || !q) return 0;
+  const text = value.toLowerCase();
+  if (text === q) return 100;
+  if (text.startsWith(q)) return 70;
+  if (text.includes(q)) return 40;
+  return 0;
+}
+
+// Best score across a list of secondary field values (description, tags, traits...).
+function secondaryFieldScore(values, q) {
+  let best = 0;
+  for (const value of values) {
+    if (!value) continue;
+    const score = fieldScore(value, q);
+    if (score > best) best = score;
+  }
+  return best;
+}
+
+// Combines a primary-field score with secondary-field scores into one relevance score.
+// Secondary matches are only considered for longer queries, and are always weighted
+// below primary matches so a title/name hit never gets buried under a bio hit.
+function computeRelevance(primaryValue, secondaryValues, q) {
+  const primary = fieldScore(primaryValue, q);
+  const secondary = q.length >= MIN_LENGTH_FOR_SECONDARY_FIELDS
+    ? secondaryFieldScore(secondaryValues, q)
+    : 0;
+  return { matched: primary > 0 || secondary > 0, score: primary + secondary * 0.3 };
+}
 
 export const searchService = {
   search(keyword = '', { category = 'all', type = 'all' } = {}) {
@@ -12,11 +48,14 @@ export const searchService = {
     if (type === 'all' || ['article', 'gallery', 'video', 'audio'].includes(type)) {
       const contents = dataService.getAllContents();
       contents.forEach((item) => {
-        const matchTitle = !q || item.title.toLowerCase().includes(q);
-        const matchDesc = !q || item.shortDescription?.toLowerCase().includes(q);
-        const matchTags = !q || item.subTags?.some((tag) => tag.toLowerCase().includes(q));
+        const { matched, score } = q
+          ? computeRelevance(item.title?.toLowerCase(), [
+              item.shortDescription?.toLowerCase(),
+              ...(item.subTags || []).map((tag) => tag.toLowerCase()),
+            ], q)
+          : { matched: true, score: 0 };
 
-        if (matchTitle || matchDesc || matchTags) {
+        if (matched) {
           results.push({
             id: item.id,
             category: item.category,
@@ -26,6 +65,7 @@ export const searchService = {
             resultType: item.type, // 'article' | 'gallery' | 'video' | 'audio'
             targetUrl: `#/category/${item.category}/article/${item.id}`,
             date: item.dateAdded,
+            _score: score,
           });
         }
       });
@@ -35,12 +75,15 @@ export const searchService = {
     if (type === 'all' || type === 'character') {
       const characters = dataService.getAllCharacters();
       characters.forEach((c) => {
-        const matchName = !q || c.name.toLowerCase().includes(q);
-        const matchBio = !q || c.biography.toLowerCase().includes(q);
-        const matchFranchise = !q || c.franchise.toLowerCase().includes(q);
-        const matchTraits = !q || c.traits.some((t) => t.toLowerCase().includes(q));
+        const { matched, score } = q
+          ? computeRelevance(c.name?.toLowerCase(), [
+              c.biography?.toLowerCase(),
+              c.franchise?.toLowerCase(),
+              ...(c.traits || []).map((t) => t.toLowerCase()),
+            ], q)
+          : { matched: true, score: 0 };
 
-        if (matchName || matchBio || matchFranchise || matchTraits) {
+        if (matched) {
           results.push({
             id: c.id,
             category: c.category,
@@ -49,6 +92,7 @@ export const searchService = {
             thumbnail: c.image,
             resultType: 'character',
             targetUrl: `#/category/${c.category}`,
+            _score: score,
           });
         }
       });
@@ -58,11 +102,14 @@ export const searchService = {
     if (type === 'all' || type === 'event') {
       const events = dataService.getAllEvents();
       events.forEach((e) => {
-        const matchTitle = !q || e.title.toLowerCase().includes(q);
-        const matchDesc = !q || e.description.toLowerCase().includes(q);
-        const matchLoc = !q || e.location.toLowerCase().includes(q);
+        const { matched, score } = q
+          ? computeRelevance(e.title?.toLowerCase(), [
+              e.description?.toLowerCase(),
+              e.location?.toLowerCase(),
+            ], q)
+          : { matched: true, score: 0 };
 
-        if (matchTitle || matchDesc || matchLoc) {
+        if (matched) {
           results.push({
             id: e.id,
             category: e.category,
@@ -72,6 +119,7 @@ export const searchService = {
             resultType: 'event',
             targetUrl: `#/category/${e.category}`,
             date: e.date,
+            _score: score,
           });
         }
       });
@@ -81,7 +129,11 @@ export const searchService = {
     if (type === 'all' || type === 'trailer') {
       const trailers = dataService.getAllTrailers();
       trailers.forEach((t) => {
-        if (!q || t.title.toLowerCase().includes(q)) {
+        const { matched, score } = q
+          ? computeRelevance(t.title?.toLowerCase(), [], q)
+          : { matched: true, score: 0 };
+
+        if (matched) {
           results.push({
             id: t.id,
             category: t.category,
@@ -94,6 +146,7 @@ export const searchService = {
             resultType: 'trailer',
             targetUrl: `#/trailers`,
             date: t.releaseDate,
+            _score: score,
           });
         }
       });
@@ -103,10 +156,11 @@ export const searchService = {
     if (type === 'all' || type === 'merchandise') {
       const merchandise = dataService.getAllMerchandise();
       merchandise.forEach((m) => {
-        const matchName = !q || m.name.toLowerCase().includes(q);
-        const matchDesc = !q || m.shortDescription.toLowerCase().includes(q);
+        const { matched, score } = q
+          ? computeRelevance(m.name?.toLowerCase(), [m.shortDescription?.toLowerCase()], q)
+          : { matched: true, score: 0 };
 
-        if (matchName || matchDesc) {
+        if (matched) {
           results.push({
             id: m.id,
             category: m.category,
@@ -115,6 +169,7 @@ export const searchService = {
             thumbnail: m.image,
             resultType: 'merchandise',
             targetUrl: `#/merchandise`,
+            _score: score,
           });
         }
       });
@@ -125,6 +180,8 @@ export const searchService = {
       results = results.filter((r) => r.category === category);
     }
 
-    return results;
+    // Rank the closest matches (title/name hits) first; drop the internal score before returning.
+    results.sort((a, b) => b._score - a._score);
+    return results.map(({ _score, ...r }) => r);
   },
 };

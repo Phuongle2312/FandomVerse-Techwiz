@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { CATEGORY_LIST } from '../constants.js';
 import { dataService } from '../services/dataService.js';
 import { useTheme } from '../context/ThemeContext.jsx';
+import { useLanguage } from '../context/LanguageContext.jsx';
 import ContentCard from '../components/cards/ContentCard.jsx';
 import EventCard from '../components/cards/EventCard.jsx';
 import LightboxGallery from '../components/interactive/LightboxGallery.jsx';
@@ -11,16 +12,18 @@ import VideoModal from '../components/interactive/VideoModal.jsx';
 
 export default function Home() {
   const { t } = useTranslation();
+  const { language } = useLanguage();
   const { isDark } = useTheme();
-  const featuredContents = dataService.getFeaturedContents();
-  const allTrailers = useMemo(() => dataService.getAllTrailers(), []);
-  const upcomingEvents = dataService.getAllEvents().filter((e) => e.date >= new Date().toISOString().split('T')[0]).slice(0, 3);
 
-  const CATEGORY_LIST_LOCALIZED = CATEGORY_LIST.map((cat) => ({
+  const featuredContents = useMemo(() => dataService.getFeaturedContents(), [language]);
+  const allTrailers = useMemo(() => dataService.getAllTrailers(), [language]);
+  const upcomingEvents = useMemo(() => dataService.getAllEvents().filter((e) => e.date >= new Date().toISOString().split('T')[0]).slice(0, 3), [language]);
+
+  const CATEGORY_LIST_LOCALIZED = useMemo(() => CATEGORY_LIST.map((cat) => ({
     ...cat,
-    label: t(`categories.${cat.id}.label`),
-    description: t(`categories.${cat.id}.description`),
-  }));
+    label: t(`categories.${cat.id}.label`) || cat.label,
+    description: t(`categories.${cat.id}.description`) || cat.description,
+  })), [t, language]);
 
   const [lightboxImages, setLightboxImages] = useState(null);
   const [activeVideo, setActiveVideo] = useState(null);
@@ -29,10 +32,18 @@ export default function Home() {
   const [canScrollRight, setCanScrollRight] = useState(true);
 
   const trailerSliderRef = useRef(null);
+  const heroVideoRef = useRef(null);
   const isDraggingRef = useRef(false);
   const startXRef = useRef(0);
   const scrollLeftRef = useRef(0);
   const hasMovedRef = useRef(false);
+
+  useEffect(() => {
+    if (heroVideoRef.current) {
+      heroVideoRef.current.muted = true;
+      heroVideoRef.current.play().catch(() => { });
+    }
+  }, []);
 
   const filteredTrailers = useMemo(() => {
     if (trailerCategory === 'all') return allTrailers;
@@ -101,85 +112,112 @@ export default function Home() {
 
   return (
     <div style={{ backgroundColor: isDark ? '#0c0f1d' : '#F8F9FC', transition: 'background-color 0.3s ease' }}>
-      {/* 1. CINEMATIC FULLSCREEN VIDEO BACKGROUND HERO SECTION */}
-      <section className="hero-video-wrapper hero-pull-under-nav position-relative text-white">
-        {/* Fullscreen Video Background */}
-        <video
-          className="hero-video-element"
-          autoPlay
-          loop
-          muted
-          playsInline
-          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4"
-        />
+      {/* 1. CINEMATIC 1280x720 VIDEO HERO SECTION WITH DARK STAGE BACKDROP */}
+      <div className="hero-stage-container hero-pull-under-nav">
+        <section className="hero-video-wrapper position-relative text-white">
+          {/* SVG unsharp-mask filter to counter the blur from upscaling a 720p source */}
+          <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
+            <defs>
+              <filter id="hero-video-sharpen">
+                <feConvolveMatrix
+                  order="3"
+                  kernelMatrix="0 -1 0 -1 5 -1 0 -1 0"
+                  preserveAlpha="true"
+                />
+              </filter>
+            </defs>
+          </svg>
 
-        {/* Hero Center Section */}
-        <div
-          className="position-relative flex-grow-1 d-flex flex-column align-items-center justify-content-center text-center px-4"
-          style={{
-            zIndex: 10,
-            maxWidth: '1280px',
-            margin: '0 auto',
-            paddingTop: '4rem',
-            paddingBottom: '5rem',
-          }}
-        >
-          {/* H1 */}
-          <h1
-            className="text-foreground animate-fade-rise fw-normal mb-0"
+          {/* Fullscreen Video Background */}
+          <video
+            ref={heroVideoRef}
+            key="hero-video-active"
+            className="hero-video-element"
+            autoPlay
+            loop
+            muted
+            playsInline
+            poster="/hero-poster.png"
+            src="/hero-video.mp4"
+          >
+            <source src="/hero-video.mp4" type="video/mp4" />
+          </video>
+
+          {/* Cinematic Vignette Overlay */}
+          <div className="hero-video-overlay" />
+
+          {/* Hero Center Section */}
+          <div
+            className="position-relative flex-grow-1 d-flex flex-column align-items-center justify-content-center text-center px-3 px-md-4"
             style={{
-              fontFamily: "'Instrument Serif', serif",
-              fontSize: 'clamp(2.75rem, 7vw, 6rem)',
-              lineHeight: 0.95,
-              letterSpacing: '-2.46px',
-              maxWidth: '1280px',
+              zIndex: 10,
+              maxWidth: '1100px',
+              margin: '0 auto',
+              paddingTop: '1.5rem',
+              paddingBottom: '1rem',
             }}
           >
-            {t('home.heroTitleWhere')} <em className="fst-normal text-muted-foreground">{t('home.heroTitleDreams')}</em> {t('home.heroTitleRise')}{' '}
-            <em className="fst-normal text-muted-foreground">{t('home.heroTitleThrough')}</em>
-          </h1>
+            {/* H1 */}
+            <h1
+              className="text-foreground animate-fade-rise fw-bold mb-0"
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontSize: 'clamp(2rem, 4.8vw, 3.8rem)',
+                lineHeight: 1.15,
+                letterSpacing: '-0.5px',
+                maxWidth: '1000px',
+              }}
+            >
+              {t('home.heroTitleWhere')}{' '}
+              <em className="fst-normal text-muted-foreground">{t('home.heroTitleDreams')}</em>{' '}
+              {t('home.heroTitleRise')}{' '}
+              <em className="fst-normal text-muted-foreground">{t('home.heroTitleThrough')}</em>
+            </h1>
 
-          {/* Subtext */}
-          <p
-            className="text-muted-foreground animate-fade-rise-delay mt-4 mb-0"
-            style={{
-              maxWidth: '42rem',
-              fontSize: 'clamp(1rem, 2vw, 1.125rem)',
-              lineHeight: 1.625,
-              fontWeight: 400,
-            }}
-          >
-            {t('home.heroSubtext')}
-          </p>
+            {/* Subtext */}
+            <p
+              className="animate-fade-rise-delay mt-2 mt-md-3 mb-0"
+              style={{
+                maxWidth: '38rem',
+                fontSize: 'clamp(0.85rem, 1.4vw, 1rem)',
+                lineHeight: 1.5,
+                fontWeight: 500,
+                color: 'rgba(255, 255, 255, 0.92)',
+                textShadow: '0 2px 6px rgba(0, 0, 0, 0.75), 0 1px 16px rgba(0, 0, 0, 0.5)',
+              }}
+            >
+              {t('home.heroSubtext')}
+            </p>
 
-          {/* CTA Button */}
-          <button
-            type="button"
-            onClick={scrollToCategories}
-            className="liquid-glass hero-cta-btn rounded-pill text-foreground animate-fade-rise-delay-2 mt-5"
-            style={{
-              padding: '1.25rem 3.5rem',
-              fontSize: '1rem',
-              fontWeight: 500,
-            }}
-          >
-            {t('home.heroCta')}
-          </button>
-        </div>
+            {/* CTA Button */}
+            <button
+              type="button"
+              onClick={scrollToCategories}
+              className="liquid-glass hero-cta-btn rounded-pill text-foreground animate-fade-rise-delay-2 mt-3 mt-md-4"
+              style={{
+                padding: '0.8rem 2.5rem',
+                fontSize: '0.95rem',
+                fontWeight: 550,
+              }}
+            >
+              {t('home.heroCta')}
+            </button>
+          </div>
 
-        {/* Bottom Indicator */}
-        <div className="position-relative pb-4 text-center" style={{ zIndex: 10 }}>
-          <button
-            type="button"
-            onClick={scrollToCategories}
-            className="btn btn-link text-muted-foreground hover-text-foreground text-decoration-none p-0 d-inline-flex flex-column align-items-center gap-1 opacity-75"
-            style={{ fontSize: '0.75rem', letterSpacing: '0.12em' }}
-          >
-            <span className="text-uppercase">{t('home.exploreUniverse')}</span>
-            <i className="bi bi-chevron-down animate-float-bounce"></i>
-          </button>
-        </div>
-      </section>
+          {/* Bottom Indicator */}
+          <div className="position-relative pb-2 pb-md-3 text-center" style={{ zIndex: 10 }}>
+            <button
+              type="button"
+              onClick={scrollToCategories}
+              className="btn btn-link text-muted-foreground hover-text-foreground text-decoration-none p-0 d-inline-flex flex-column align-items-center gap-1 opacity-75"
+              style={{ fontSize: '0.72rem', letterSpacing: '0.12em' }}
+            >
+              <span className="text-uppercase">{t('home.exploreUniverse')}</span>
+              <i className="bi bi-chevron-down animate-float-bounce"></i>
+            </button>
+          </div>
+        </section>
+      </div>
 
       {/* 2. 7 CATEGORY HUBS GRID - DYNAMIC THEME */}
       <section
@@ -212,7 +250,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="row g-4">
+          <div className="row g-2 g-md-4">
             {CATEGORY_LIST_LOCALIZED.map((cat) => {
               const categoryImages = {
                 anime: 'https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500&auto=format&fit=crop&q=80',
@@ -225,7 +263,7 @@ export default function Home() {
               };
 
               return (
-                <div key={cat.id} className="col-xl-3 col-lg-4 col-md-6 col-12">
+                <div key={cat.id} className="col-xl-3 col-lg-4 col-md-6 col-6">
                   <Link
                     to={`/category/${cat.id}`}
                     className={`category-visual-card h-100 accent-border-${cat.id}`}
@@ -284,7 +322,7 @@ export default function Home() {
             })}
 
             {/* 8th Card: Quick Link to Merchandise */}
-            <div className="col-xl-3 col-lg-4 col-md-6 col-12">
+            <div className="col-xl-3 col-lg-4 col-md-6 col-6">
               <Link
                 to="/merchandise"
                 className="category-visual-card h-100 text-white position-relative"
@@ -474,7 +512,7 @@ export default function Home() {
                       }}
                     >
                       {/* Video Thumbnail with Hover Zoom */}
-                      <div className="position-relative overflow-hidden" style={{ height: '200px', backgroundColor: '#000' }}>
+                      <div className="position-relative overflow-hidden fv-trailer-thumb-wrap" style={{ backgroundColor: '#000' }}>
                         <img
                           src={tItem.thumbnail}
                           alt={tItem.title}
@@ -529,7 +567,7 @@ export default function Home() {
                       </div>
 
                       {/* Card Info */}
-                      <div className="p-3 d-flex flex-column flex-grow-1 justify-content-between">
+                      <div className="p-3 d-flex flex-column flex-grow-1 justify-content-between fv-trailer-card-body">
                         <div>
                           <h6
                             className={`font-heading fw-bold mb-2 ${isDark ? 'text-white' : 'text-dark'}`}

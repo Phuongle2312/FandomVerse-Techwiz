@@ -21,14 +21,14 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
     e.preventDefault();
     e.stopPropagation();
     if (!isAuthenticated) {
-      navigate('/login');
+      navigate('/login', { state: { from: window.location.hash ? window.location.hash.slice(1) : '/' } });
       return;
     }
     toggleBookmark(item);
   };
 
   const handleCardClick = () => {
-    if (item.type === 'video' && item.mediaUrl && onOpenMedia) {
+    if ((item.type === 'video' || item.type === 'audio') && item.mediaUrl && onOpenMedia) {
       onOpenMedia(item);
     } else if (item.type === 'gallery' && item.images && item.images.length > 0 && onOpenGallery) {
       onOpenGallery(item);
@@ -37,7 +37,7 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
 
   return (
     <div
-      className={`card fv-card h-100 accent-border-${item.category} overflow-hidden`}
+      className={`card fv-card fv-content-card h-100 accent-border-${item.category} overflow-hidden`}
       style={{
         backgroundColor: isDark ? 'rgba(255, 255, 255, 0.05)' : '#ffffff',
         border: isDark ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid var(--border-color)',
@@ -45,7 +45,7 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
       }}
     >
       {/* Thumbnail Container */}
-      <div className="position-relative overflow-hidden" style={{ height: '200px', backgroundColor: '#181b30' }}>
+      <div className="position-relative overflow-hidden fv-content-card-thumb" style={{ backgroundColor: '#181b30' }}>
         <img
           src={item.thumbnail}
           alt={item.title}
@@ -56,10 +56,8 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
         {/* Bookmark Action Button */}
         <button
           type="button"
-          className="btn btn-sm position-absolute top-0 end-0 m-2 rounded-circle shadow-sm"
+          className="btn btn-sm position-absolute top-0 end-0 m-2 rounded-circle shadow-sm fv-bookmark-btn"
           style={{
-            width: '36px',
-            height: '36px',
             zIndex: 2,
             background: isDark ? 'rgba(12, 15, 29, 0.75)' : 'rgba(255, 255, 255, 0.85)',
             backdropFilter: 'blur(8px)',
@@ -84,7 +82,7 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
       </div>
 
       {/* Card Body */}
-      <div className="card-body d-flex flex-column p-3">
+      <div className="card-body d-flex flex-column fv-content-card-body p-3">
         <div className="d-flex align-items-center justify-content-between mb-2">
           <span className={`badge-category badge-category-${item.category}`}>
             {categoryLabel}
@@ -95,7 +93,7 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
           </span>
         </div>
 
-        <h5 className="card-title font-heading fs-6 fw-bold mb-2 line-clamp-2">
+        <h5 className="card-title font-heading fw-bold mb-2 line-clamp-2">
           {item.type === 'article' ? (
             <Link
               to={`/category/${item.category}/article/${item.id}`}
@@ -113,10 +111,6 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
             </span>
           )}
         </h5>
-
-        <p className={`card-text small flex-grow-1 line-clamp-2 mb-3 ${isDark ? 'text-white-50' : 'text-secondary'}`}>
-          {item.shortDescription}
-        </p>
 
         {/* Subtags */}
         {item.subTags && item.subTags.length > 0 && (
@@ -168,6 +162,14 @@ export default function ContentCard({ item, onOpenMedia, onOpenGallery }) {
               onClick={handleCardClick}
             >
               <i className="bi bi-eye-fill me-1"></i> {t('cards.content.viewGalleryCount', { count: item.images?.length || 0 })}
+            </button>
+          ) : item.type === 'audio' ? (
+            <button
+              type="button"
+              className="btn btn-sm btn-outline-info rounded-pill px-3 py-1"
+              onClick={handleCardClick}
+            >
+              <i className="bi bi-soundwave me-1"></i> {t('common.audioTrack')}
             </button>
           ) : (
             <span className={`small ${isDark ? 'text-white-50' : 'text-muted'}`}>{t('common.audioTrack')}</span>

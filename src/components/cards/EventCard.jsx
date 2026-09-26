@@ -17,17 +17,17 @@ export default function EventCard({ event }) {
 
   return (
     <div
-      className="card fv-card h-100 p-3"
+      className={`card fv-card fv-event-card h-100 p-3 ${event.category === 'gaming' ? 'gaming-event-card' : ''}`}
       style={{
         backgroundColor: isDark ? 'rgba(255, 255, 255, 0.05)' : '#ffffff',
         border: isDark ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid var(--border-color)',
         boxShadow: isDark ? '0 4px 20px rgba(0, 0, 0, 0.25)' : '0 4px 20px rgba(0, 0, 0, 0.06)',
       }}
     >
-      <div className="d-flex gap-3 align-items-start">
+      <div className="d-flex gap-3 align-items-start fv-event-inner">
         {/* Date Block */}
         <div
-          className="d-flex flex-column align-items-center justify-content-center rounded-3 p-2 text-center"
+          className="d-flex flex-column align-items-center justify-content-center rounded-3 p-2 text-center fv-event-date-block"
           style={{
             minWidth: '70px',
             backgroundColor: isDark ? 'rgba(108, 92, 231, 0.2)' : 'rgba(108, 92, 231, 0.1)',
