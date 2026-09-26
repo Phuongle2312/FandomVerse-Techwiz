@@ -7,7 +7,7 @@
       "en": "Chainsaw Man: Reze Arc Movie - Official Teaser",
       "hi": "चेनसॉ मैन: रेज़े आर्क मूवी - ऑफिशियल टीज़र"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=700&auto=format&fit=crop&q=80",
+    "thumbnail": "/image/chansawman.jpg",
     "mediaUrl": "https://www.youtube.com/embed/v4yLeNt-kCU",
     "status": "upcoming",
     "releaseDate": "2026-11-15"
@@ -20,7 +20,7 @@
       "en": "Mobile Suit Gundam: Steel Warriors Return - Official Trailer",
       "hi": "मोबाइल सूट गुंडम: स्टील वॉरियर्स रिटर्न - ऑफिशियल ट्रेलर"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1563089145-599997674d42?w=700&auto=format&fit=crop&q=80",
+    "thumbnail": "/image/gundam.jpg",
     "mediaUrl": "/GunDam.mp4",
     "status": "released",
     "releaseDate": "2026-09-24"
@@ -33,7 +33,7 @@
       "en": "Jujutsu Kaisen: Culling Game Arc - Teaser PV",
       "hi": "जुजुत्सु कैसेन: कलिंग गेम आर्क - टीज़र पीवी"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=700&auto=format&fit=crop&q=80",
+    "thumbnail": "/image/jujutsu.jpg",
     "mediaUrl": "https://www.youtube.com/embed/v8bCVyq-d_M",
     "status": "upcoming",
     "releaseDate": "2026-10-12"
@@ -46,7 +46,7 @@
       "en": "Solo Leveling Season 2: Arise from the Shadow - Official Trailer",
       "hi": "सोलो लेवलिंग सीज़न 2: अराइज़ फ्रॉम द शैडो - ऑफिशियल ट्रेलर"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1563089145-599997674d42?w=700&auto=format&fit=crop&q=80",
+    "thumbnail": "/image/solo.jpg",
     "mediaUrl": "https://www.youtube.com/embed/sUjN1R-XU_c",
     "status": "released",
     "releaseDate": "2026-07-05"
@@ -59,7 +59,7 @@
       "en": "Attack on Titan: The Last Attack Movie - 4K Theatrical Trailer",
       "hi": "अटैक ऑन टाइटन: द लास्ट अटैक मूवी - 4के थिएट्रिकल ट्रेलर"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=700&auto=format&fit=crop&q=80",
+    "thumbnail": "/image/aot.jpg",
     "mediaUrl": "https://www.youtube.com/embed/M_OauHnAFc8",
     "status": "upcoming",
     "releaseDate": "2026-11-20"
@@ -72,7 +72,7 @@
       "en": "Grand Theft Auto VI - First Look Reveal",
       "hi": "ग्रैंड थेफ्ट ऑटो VI - फर्स्ट लुक रिवील"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=700&auto=format&fit=crop&q=80",
+    "thumbnail": "/image/gta.jpg",
     "mediaUrl": "https://www.youtube.com/embed/QdBZY2fkU-0",
     "status": "upcoming",
     "releaseDate": "2026-12-01"
@@ -85,8 +85,8 @@
       "en": "Black Myth: Wukong - Launch Gameplay Trailer",
       "hi": "ब्लैक मिथ: वुकोंग - लॉन्च गेमप्ले ट्रेलर"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=700&auto=format&fit=crop&q=80",
-    "mediaUrl": "https://www.youtube.com/embed/pCkWYd4yYg4",
+    "thumbnail": "/image/wukong.jpg",
+    "mediaUrl": "https://youtu.be/u83VdXAVq08?si=dY9OSvSM---yqCxj",
     "status": "released",
     "releaseDate": "2026-08-20"
   },
@@ -98,7 +98,7 @@
       "en": "Elden Ring: Shadow of the Erdtree - Official Gameplay Trailer",
       "hi": "एल्डन रिंग: शैडो ऑफ द एर्डट्री - ऑफिशियल गेमप्ले ट्रेलर"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=700&auto=format&fit=crop&q=80",
+    "thumbnail": "/image/eldenring.jpg",
     "mediaUrl": "https://www.youtube.com/embed/qLZenOn7WUo",
     "status": "released",
     "releaseDate": "2026-06-21"
@@ -111,7 +111,7 @@
       "en": "Ghost of Yōtei - PlayStation 5 Official Reveal Trailer",
       "hi": "घोस्ट ऑफ योतेई - प्लेस्टेशन 5 ऑफिशियल रिवील ट्रेलर"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=700&auto=format&fit=crop&q=80",
+    "thumbnail": "/image/ghost.jpg",
     "mediaUrl": "https://www.youtube.com/embed/7X8iiK4cIeg",
     "status": "upcoming",
     "releaseDate": "2026-11-10"
@@ -124,8 +124,8 @@
       "en": "Monster Hunter Wilds - Official 4K Showcase Trailer",
       "hi": "मॉन्स्टर हंटर वाइल्ड्स - ऑफिशियल 4के शोकेस ट्रेलर"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1552824722-ddab1374e622?w=700&auto=format&fit=crop&q=80",
-    "mediaUrl": "https://www.youtube.com/embed/K8e6Jg_H0J8",
+    "thumbnail": "/image/monterhunter.jpg",
+    "mediaUrl": "https://youtu.be/BGuMwevrAGo?si=JEBUHGzOCJbOMbgW",
     "status": "upcoming",
     "releaseDate": "2026-09-28"
   },
@@ -137,8 +137,8 @@
       "en": "Cyberpunk 2077: Phantom Liberty - Official Cinematic Trailer",
       "hi": "साइबरपंक 2077: फैंटम लिबर्टी - ऑफिशियल सिनेमैटिक ट्रेलर"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=700&auto=format&fit=crop&q=80",
-    "mediaUrl": "https://www.youtube.com/embed/KFdf1B4rZ4E",
+    "thumbnail": "/image/cyper.jpg",
+    "mediaUrl": "https://youtu.be/sJbexcm4Trk?si=9hkQ5reqYU34yUE7",
     "status": "released",
     "releaseDate": "2026-05-18"
   },
@@ -150,7 +150,7 @@
       "en": "Avatar 3: Fire and Ash - Concept Teaser",
       "hi": "अवतार 3: फायर एंड ऐश - कॉन्सेप्ट टीज़र"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=700&auto=format&fit=crop&q=80",
+    "thumbnail": "/image/avatar_3.jpg",
     "mediaUrl": "https://www.youtube.com/embed/d9MyW72ELq0",
     "status": "upcoming",
     "releaseDate": "2026-12-18"
@@ -163,7 +163,7 @@
       "en": "Deadpool & Wolverine - Final Trailer",
       "hi": "डेडपूल एंड वूल्वरिन - फाइनल ट्रेलर"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1635863138275-d9b33299680b?w=700&auto=format&fit=crop&q=80",
+    "thumbnail": "/image/deadpool.jpg",
     "mediaUrl": "https://www.youtube.com/embed/73_1biulkYk",
     "status": "released",
     "releaseDate": "2026-07-26"
@@ -176,7 +176,7 @@
       "en": "Avengers: Secret Wars - Multiverse Saga Official Teaser",
       "hi": "एवेंजर्स: सीक्रेट वॉर्स - मल्टीवर्स सागा ऑफिशियल टीज़र"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1604200213928-ba3cf4fc8436?w=700&auto=format&fit=crop&q=80",
+    "thumbnail": "/image/avenger.jpg",
     "mediaUrl": "https://www.youtube.com/embed/TcMBFSGVi1c",
     "status": "upcoming",
     "releaseDate": "2026-12-25"
@@ -189,7 +189,7 @@
       "en": "Spider-Man: Beyond the Spider-Verse - First Look Preview",
       "hi": "स्पाइडर-मैन: बियॉन्ड द स्पाइडर-वर्स - फर्स्ट लुक प्रीव्यू"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1635863138275-d9b33299680b?w=700&auto=format&fit=crop&q=80",
+    "thumbnail": "/image/spider_1.jpg",
     "mediaUrl": "https://www.youtube.com/embed/shW9i6k8cB0",
     "status": "upcoming",
     "releaseDate": "2026-10-15"
@@ -202,7 +202,7 @@
       "en": "The Batman: Part II - The Dark Knight of Gotham Teaser",
       "hi": "द बैटमैन: पार्ट II - द डार्क नाइट ऑफ गोथम टीज़र"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=700&auto=format&fit=crop&q=80",
+    "thumbnail": "/image/batmandark.jpg",
     "mediaUrl": "https://www.youtube.com/embed/mqqft2x_Aa4",
     "status": "upcoming",
     "releaseDate": "2026-11-05"
@@ -215,8 +215,8 @@
       "en": "Stranger Things Season 5 - The Final Adventure",
       "hi": "स्ट्रेंजर थिंग्स सीज़न 5 - द फाइनल एडवेंचर"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=700&auto=format&fit=crop&q=80",
-    "mediaUrl": "https://www.youtube.com/embed/yQEondeGvLk",
+    "thumbnail": "/image/Strang.jpg",
+    "mediaUrl": "https://youtu.be/tvFFMR7q9dE?si=WzaAdug984-AwnPw",
     "status": "upcoming",
     "releaseDate": "2026-11-28"
   },
@@ -228,7 +228,7 @@
       "en": "House of the Dragon Season 2 - War of Dragons",
       "hi": "हाउस ऑफ द ड्रैगन सीज़न 2 - वॉर ऑफ ड्रैगन्स"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1514539079130-25950c84af65?w=700&auto=format&fit=crop&q=80",
+    "thumbnail": "/image/house.jpg",
     "mediaUrl": "https://www.youtube.com/embed/DotnJ7tTA34",
     "status": "released",
     "releaseDate": "2026-06-16"
@@ -241,7 +241,7 @@
       "en": "The Last of Us Season 2 - Official Teaser Trailer",
       "hi": "द लास्ट ऑफ अस सीज़न 2 - ऑफिशियल टीज़र ट्रेलर"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=700&auto=format&fit=crop&q=80",
+    "thumbnail": "/image/us.jpg",
     "mediaUrl": "https://www.youtube.com/embed/xT0g_O9Qp68",
     "status": "upcoming",
     "releaseDate": "2026-08-30"
@@ -254,7 +254,7 @@
       "en": "Arcane Season 2: Final Chapter - Official Netflix Trailer",
       "hi": "आर्केन सीज़न 2: फाइनल चैप्टर - ऑफिशियल नेटफ्लिक्स ट्रेलर"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1563089145-599997674d42?w=700&auto=format&fit=crop&q=80",
+    "thumbnail": "/image/ar.jpg",
     "mediaUrl": "https://www.youtube.com/embed/ysQI1W-oP0g",
     "status": "released",
     "releaseDate": "2026-05-22"
@@ -267,7 +267,7 @@
       "en": "Wednesday Season 2 - Return to Nevermore Official Teaser",
       "hi": "वेडनेस्डे सीज़न 2 - रिटर्न टू नेवरमोर ऑफिशियल टीज़र"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=700&auto=format&fit=crop&q=80",
+    "thumbnail": "/image/wed.jpg",
     "mediaUrl": "https://www.youtube.com/embed/Di310WS8zLk",
     "status": "upcoming",
     "releaseDate": "2026-10-08"
@@ -280,7 +280,7 @@
       "en": "BTS 2026 Reunion Special Album - Comeback Teaser",
       "hi": "बीटीएस 2026 रीयूनियन स्पेशल एल्बम - कमबैक टीज़र"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=700&auto=format&fit=crop&q=80",
+    "thumbnail": "/image/bts.jpg",
     "mediaUrl": "https://www.youtube.com/embed/WMweEpGlu_U",
     "status": "upcoming",
     "releaseDate": "2026-10-20"
@@ -293,7 +293,7 @@
       "en": "BLACKPINK World Tour Finale - Official Live Film",
       "hi": "ब्लैकपिंक वर्ल्ड टूर फिनाले - ऑफिशियल लाइव फिल्म"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=700&auto=format&fit=crop&q=80",
+    "thumbnail": "/image/black.jpg",
     "mediaUrl": "https://www.youtube.com/embed/dyRsYk0LyA8",
     "status": "released",
     "releaseDate": "2026-05-15"
@@ -306,7 +306,7 @@
       "en": "aespa - 'Whiplash' Official Performance MV Teaser",
       "hi": "एस्पा - 'व्हिपलैश' ऑफिशियल परफॉर्मेंस एमवी टीज़र"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=700&auto=format&fit=crop&q=80",
+    "thumbnail": "/image/ai.jpg",
     "mediaUrl": "https://www.youtube.com/embed/jWQx2f-CErU",
     "status": "released",
     "releaseDate": "2026-09-18"
@@ -319,7 +319,7 @@
       "en": "NewJeans - 2026 Global Stage Live Film Teaser",
       "hi": "न्यूजीन्स - 2026 ग्लोबल स्टेज लाइव फिल्म टीज़र"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=700&auto=format&fit=crop&q=80",
+    "thumbnail": "/image/newjean.jpg",
     "mediaUrl": "https://www.youtube.com/embed/ArmDp-zijuc",
     "status": "upcoming",
     "releaseDate": "2026-12-10"
@@ -332,7 +332,7 @@
       "en": "Superman: Legacy - Official Motion Comic Preview",
       "hi": "सुपरमैन: लिगेसी - ऑफिशियल मोशन कॉमिक प्रीव्यू"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=700&auto=format&fit=crop&q=80",
+    "thumbnail": "/image/superman_2.jpg",
     "mediaUrl": "https://www.youtube.com/embed/wA_QdI06n_0",
     "status": "upcoming",
     "releaseDate": "2026-11-01"
@@ -345,8 +345,8 @@
       "en": "X-Men '97 - Animated Series Premiere",
       "hi": "एक्स-मेन '97 - एनिमेटेड सीरीज़ प्रीमियर"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=700&auto=format&fit=crop&q=80",
-    "mediaUrl": "https://www.youtube.com/embed/pv3Ss8o99qU",
+    "thumbnail": "/image/xmen.jpg",
+    "mediaUrl": "https://youtu.be/-sqio1tiPGk?si=taT3JS0UiVDs27ri",
     "status": "released",
     "releaseDate": "2026-03-20"
   },
@@ -358,8 +358,8 @@
       "en": "Batman: The Brave and the Bold - DC Studios Official Teaser",
       "hi": "बैटमैन: द ब्रेव एंड द बोल्ड - डीसी स्टूडियोज़ ऑफिशियल टीज़र"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=700&auto=format&fit=crop&q=80",
-    "mediaUrl": "https://www.youtube.com/embed/1Jj3wvyw9vw",
+    "thumbnail": "/image/press.jpg",
+    "mediaUrl": "https://youtu.be/mqqft2x_Aa4?si=lQpCd_uDdGvay-vF",
     "status": "upcoming",
     "releaseDate": "2026-12-15"
   },
@@ -371,7 +371,7 @@
       "en": "One Piece Chapter 1150 - Special Manga PV",
       "hi": "वन पीस चैप्टर 1150 - स्पेशल मंगा पीवी"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=700&auto=format&fit=crop&q=80",
+    "thumbnail": "/image/godvalley.jpg",
     "mediaUrl": "https://www.youtube.com/embed/Ades3pQbeh8",
     "status": "upcoming",
     "releaseDate": "2026-10-31"
@@ -384,8 +384,8 @@
       "en": "Berserk Memorial Edition - Manga Tribute Trailer",
       "hi": "बर्सर्क मेमोरियल एडिशन - मंगा ट्रिब्यूट ट्रेलर"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?w=700&auto=format&fit=crop&q=80",
-    "mediaUrl": "https://www.youtube.com/embed/oK0C9i4u_3A",
+    "thumbnail": "/image/memo.jpg",
+    "mediaUrl": "https://youtu.be/7cc1o1H2xbI?si=7peOHk-mBT-om-zq",
     "status": "released",
     "releaseDate": "2026-04-12"
   },
@@ -397,8 +397,8 @@
       "en": "Chainsaw Man Part 2 - Official Manga Motion PV",
       "hi": "चेनसॉ मैन पार्ट 2 - ऑफिशियल मंगा मोशन पीवी"
     },
-    "thumbnail": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=700&auto=format&fit=crop&q=80",
-    "mediaUrl": "https://www.youtube.com/embed/Ades3pQbeh8",
+    "thumbnail": "/image/denji.jpg",
+    "mediaUrl": "https://youtu.be/dFlDRhvM4L0?si=hRAqoOqkHACTbLs3",
     "status": "released",
     "releaseDate": "2026-06-14"
   },

@@ -13,6 +13,24 @@ export default function VideoModal({ item, onClose }) {
 
   if (!item || !item.mediaUrl) return null;
 
+  // Convert any YouTube URL format to embeddable URL (from nguyendinhhung)
+  const getEmbedUrl = (url) => {
+    try {
+      const shortMatch = url.match(/youtu\.be\/([^?&]+)/);
+      if (shortMatch) return `https://www.youtube.com/embed/${shortMatch[1]}`;
+
+      const watchMatch = url.match(/[?&]v=([^?&]+)/);
+      if (watchMatch) return `https://www.youtube.com/embed/${watchMatch[1]}`;
+
+      return url;
+    } catch {
+      return url;
+    }
+  };
+
+  const isLocalVideo = typeof item.mediaUrl === 'string' && (item.mediaUrl.endsWith('.mp4') || item.mediaUrl.endsWith('.webm'));
+  const embedUrl = `${getEmbedUrl(item.mediaUrl)}?autoplay=1`;
+
   return (
     <div
       className="modal show d-block"
@@ -35,12 +53,22 @@ export default function VideoModal({ item, onClose }) {
           </div>
           <div className="modal-body p-0 mt-3">
             <div className="ratio ratio-16x9">
-              <iframe
-                src={`${item.mediaUrl}?autoplay=1`}
-                title={item.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+              {isLocalVideo ? (
+                <video
+                  src={item.mediaUrl}
+                  controls
+                  autoPlay
+                  className="w-100 h-100"
+                  style={{ objectFit: 'contain', backgroundColor: '#000' }}
+                />
+              ) : (
+                <iframe
+                  src={embedUrl}
+                  title={item.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              )}
             </div>
           </div>
         </div>

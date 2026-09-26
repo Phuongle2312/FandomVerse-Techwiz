@@ -238,6 +238,8 @@ export default function Navbar() {
             <li
               ref={categoriesRef}
               className={`nav-item dropdown ${isCategoriesOpen ? 'show' : ''}`}
+              onMouseEnter={() => setIsCategoriesOpen(true)}
+              onMouseLeave={() => setIsCategoriesOpen(false)}
             >
               <button
                 type="button"

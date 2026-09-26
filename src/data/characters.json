@@ -7,7 +7,7 @@
       "en": "Monkey D. Luffy",
       "hi": "मंकी डी. लूफी"
     },
-    "image": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500&auto=format&fit=crop&q=80",
+    "image": "/image/luffy.jpg",
     "franchise": "One Piece",
     "biography": {
       "vi": "Thuyền trưởng băng hải tặc Mũ Rơm với ước mơ tìm thấy kho báu vĩ đại One Piece và trở thành Vua Hải Tặc. Cậu sở hữu sức mạnh co giãn cao su từ trái ác quỷ Hito Hito no Mi, Model: Nika.",
@@ -45,7 +45,7 @@
       "en": "Naruto Uzumaki",
       "hi": "नारुतो उज़ुमाकी"
     },
-    "image": "https://images.unsplash.com/photo-1563089145-599997674d42?w=500&auto=format&fit=crop&q=80",
+    "image": "/image/naruto_1.jpg",
     "franchise": "Naruto",
     "biography": {
       "vi": "Ninja làng Lá mang trong mình Cửu Vĩ Kurama, vượt qua định kiến và nỗi cô đơn thời thơ ấu bằng ý chí kiên định để trở thành Hokage Đệ Thất vĩ đại bảo vệ nhẫn giới.",
@@ -83,7 +83,7 @@
       "en": "Goku",
       "hi": "गोकू"
     },
-    "image": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=500&auto=format&fit=crop&q=80",
+    "image": "/image/goku.jpg",
     "franchise": "Dragon Ball",
     "biography": {
       "vi": "Chiến binh người Saiyan sống tại Trái Đất, luôn khao khát vượt qua giới hạn của bản thân thông qua rèn luyện không ngừng và đối đầu với những đối thủ mạnh nhất vũ trụ.",
@@ -121,7 +121,7 @@
       "en": "Levi Ackerman",
       "hi": "लेवी एकरमैन"
     },
-    "image": "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?w=500&auto=format&fit=crop&q=80",
+    "image": "/image/levi.jpg",
     "franchise": "Attack on Titan",
     "biography": {
       "vi": "Đại đội trưởng Quân Trinh Sát, được mệnh danh là chiến binh mạnh nhất của nhân loại với kỹ năng sử dụng bộ cơ động 3D điêu luyện và khả năng hạ gục Titan chớp nhoáng.",
@@ -159,7 +159,7 @@
       "en": "Tanjiro Kamado",
       "hi": "तंजिरो कामाडो"
     },
-    "image": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=500&auto=format&fit=crop&q=80",
+    "image": "/image/tanjiro.jpg",
     "franchise": "Demon Slayer",
     "biography": {
       "vi": "Thợ săn quỷ mang tấm lòng nhân hậu, dấn thân vào hành trình nguy hiểm để tìm cách biến em gái Nezuko trở lại thành người và tiêu diệt chúa quỷ Muzan.",
@@ -1147,7 +1147,7 @@
       "en": "Roronoa Zoro",
       "hi": "रोरोनोआ ज़ोरो"
     },
-    "image": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500&auto=format&fit=crop&q=80",
+    "image": "/image/zoro.jpg",
     "franchise": "One Piece (Manga)",
     "biography": {
       "vi": "Kiếm sĩ Tam Kiếm Phái của băng Mũ Rơm, mang lời thề trở thành Đệ Nhất Kiếm Sĩ thế giới và luôn là chỗ dựa vững chắc nhất cho đồng đội trong mọi nghịch cảnh.",
@@ -1185,7 +1185,7 @@
       "en": "Saitama",
       "hi": "सैतामा"
     },
-    "image": "https://images.unsplash.com/photo-1563089145-599997674d42?w=500&auto=format&fit=crop&q=80",
+    "image": "/image/saitama.jpg",
     "franchise": "One-Punch Man",
     "biography": {
       "vi": "Anh hùng làm việc vì sở thích, đạt được sức mạnh tối thượng có thể hạ gục mọi quái vật chỉ bằng một cú đấm sau chế độ tập luyện 100 cái hít đất mỗi ngày.",
@@ -1223,7 +1223,7 @@
       "en": "Ken Kaneki",
       "hi": "केन कानेकी"
     },
-    "image": "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?w=500&auto=format&fit=crop&q=80",
+    "image": "/image/kentaki.jpg",
     "franchise": "Tokyo Ghoul",
     "biography": {
       "vi": "Sinh viên đại học bình thường vô tình bị biến thành Ngạ Quỷ Bán Nhân Bán Quỷ, đấu tranh trong giằng xé nội tâm để tìm kiếm sự hòa hợp giữa hai giống loài.",
@@ -1261,7 +1261,7 @@
       "en": "Light Yagami (Kira)",
       "hi": "लाइट यागामी (किरा)"
     },
-    "image": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=500&auto=format&fit=crop&q=80",
+    "image": "/image/yagami.jpg",
     "franchise": "Death Note",
     "biography": {
       "vi": "Học sinh thiên tài nhặt được cuốn sổ tử thần Death Note, bắt đầu kế hoạch thanh lọc tội phạm để xây dựng một thế giới mới không tội ác nơi cậu làm Chúa tể.",
@@ -1299,7 +1299,7 @@
       "en": "Edward Elric",
       "hi": "एडवर्ड एल्रिक"
     },
-    "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=500&auto=format&fit=crop&q=80",
+    "image": "/image/eward.jpg",
     "franchise": "Fullmetal Alchemist",
     "biography": {
       "vi": "Giả kim thuật sư trẻ tuổi nhất lịch sử quốc gia Amestris, dấn thân vào hành trình tìm kiếm Hòn Đá Triết Gia để khôi phục lại cơ thể cho người em trai Alphonse.",

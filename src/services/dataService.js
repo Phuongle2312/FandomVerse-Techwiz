@@ -14,11 +14,11 @@ const TRAILER_LOCALE_FIELDS = ['title'];
 const MERCHANDISE_LOCALE_FIELDS = ['name', 'shortDescription'];
 
 const STORAGE_KEYS = {
-  CONTENTS: 'fv_admin_contents_v2',
-  CHARACTERS: 'fv_admin_characters_v2',
-  EVENTS: 'fv_admin_events_v2',
-  TRAILERS: 'fv_admin_trailers_v2',
-  MERCHANDISE: 'fv_admin_merchandise_v2',
+  CONTENTS: 'fv_admin_contents_v3',
+  CHARACTERS: 'fv_admin_characters_v3',
+  EVENTS: 'fv_admin_events_v3',
+  TRAILERS: 'fv_admin_trailers_v3',
+  MERCHANDISE: 'fv_admin_merchandise_v3',
 };
 
 function loadDataset(key, defaultData) {

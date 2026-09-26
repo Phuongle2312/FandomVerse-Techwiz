@@ -40,6 +40,14 @@ export default function Home() {
   const hasMovedRef = useRef(false);
   const isTrailerHoveredRef = useRef(false);
 
+  const checkScrollBounds = useCallback(() => {
+    if (trailerSliderRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = trailerSliderRef.current;
+      setCanScrollLeft(scrollLeft > 10);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 15);
+    }
+  }, []);
+
   // Hiệu ứng lướt tự động mượt mà cho phần trailer
   useEffect(() => {
     if (!isAutoScrollActive) return;
@@ -79,14 +87,6 @@ export default function Home() {
     if (trailerCategory === 'all') return allTrailers;
     return allTrailers.filter((t) => t.category === trailerCategory);
   }, [allTrailers, trailerCategory]);
-
-  const checkScrollBounds = useCallback(() => {
-    if (trailerSliderRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = trailerSliderRef.current;
-      setCanScrollLeft(scrollLeft > 10);
-      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 15);
-    }
-  }, []);
 
   useEffect(() => {
     checkScrollBounds();
@@ -398,15 +398,15 @@ export default function Home() {
 
       {/* 3. FEATURED CONTENTS SHOWCASE - DYNAMIC THEME */}
       <section
-        className="py-4"
+        className="py-5"
         style={{
-          backgroundColor: isDark ? '#0c0f1d' : '#FFFFFF',
+          backgroundColor: isDark ? '#0c0f1d' : '#f5f6fa',
           borderTop: isDark ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid var(--border-color)',
           borderBottom: isDark ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid var(--border-color)',
           transition: 'background-color 0.3s ease',
         }}
       >
-        <div className="container-fluid px-3 px-md-4 px-lg-5">
+        <div className="container-fluid px-3 px-md-4 px-xl-5">
           <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between mb-4 gap-2">
             <div>
               <div className="d-flex align-items-center gap-2 mb-1">
@@ -417,14 +417,16 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="row g-4">
-            {featuredContents.slice(0, 6).map((item) => (
-              <div key={item.id} className="col-lg-4 col-md-6 col-12">
-                <ContentCard
-                  item={item}
-                  onOpenGallery={(g) => setLightboxImages(g.images)}
-                  onOpenMedia={(v) => setActiveVideo(v)}
-                />
+          <div className="row g-3 g-xl-4">
+            {featuredContents.slice(0, 8).map((item) => (
+              <div key={item.id} className="col-xl-3 col-lg-3 col-md-6 col-12 d-flex">
+                <div className="w-100 h-100">
+                  <ContentCard
+                    item={item}
+                    onOpenGallery={(g) => setLightboxImages(g.images)}
+                    onOpenMedia={(v) => setActiveVideo(v)}
+                  />
+                </div>
               </div>
             ))}
           </div>

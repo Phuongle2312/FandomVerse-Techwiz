@@ -9,6 +9,7 @@ export default function CategoryContentRow({
   color = '#6C5CE7',
   badgeText,
   items = [],
+  cardWidth = '340px',
   onOpenMedia,
   onOpenGallery,
   onFilterSelf,
@@ -153,7 +154,7 @@ export default function CategoryContentRow({
             <div
               key={item.id}
               className="fv-trailer-card-item"
-              style={{ flex: '0 0 340px', maxWidth: '350px' }}
+              style={{ flex: `0 0 ${cardWidth}`, maxWidth: cardWidth }}
             >
               <ContentCard
                 item={item}
