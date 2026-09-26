@@ -194,6 +194,9 @@
     "haveAccount": "Đã có tài khoản?"
   },
   "auth": {
+    "login": "Đăng nhập",
+    "signup": "Đăng ký",
+    "logout": "Đăng xuất",
     "emailAlreadyRegistered": "Email này đã được đăng ký. Vui lòng đăng nhập.",
     "invalidCredentials": "Email hoặc mật khẩu không đúng."
   },
@@ -465,5 +468,37 @@
     "thankYou": "Cảm ơn bạn đã đồng hành cùng FandomVerse Universe!",
     "footer": "© FandomVerse — Web Innovation Unleashed",
     "generalCategory": "GENERAL"
+  },
+  "profile": {
+    "joinedDate": "Tham gia từ {{date}}",
+    "guestTitle": "Khách Fandom (Chưa đăng nhập)",
+    "guestSubtitle": "Đăng nhập để đồng bộ danh sách bài viết yêu thích và quản lý đơn hàng vật phẩm.",
+    "activitiesTitle": "Hoạt Động & Mua Sắm",
+    "cartTitle": "Giỏ Hàng Fandom",
+    "cartCount": "{{count}} sản phẩm • ${{total}}",
+    "cartEmpty": "Chưa có sản phẩm nào",
+    "openCart": "Mở giỏ",
+    "bookmarksTitle": "Mục Đã Lưu (Yêu Thích)",
+    "bookmarksCount": "{{count}} nội dung đã ghim",
+    "bookmarksEmpty": "Chưa lưu nội dung nào",
+    "settingsTitle": "Cài Đặt & Tùy Chọn",
+    "themeTitle": "Chế Độ Giao Diện",
+    "darkTheme": "Giao Diện Tối (Dark Mode)",
+    "lightTheme": "Giao Diện Sáng (Light Mode)",
+    "darkThemeShort": "Tối (Dark Mode)",
+    "lightThemeShort": "Sáng (Light Mode)",
+    "darkSubtitle": "Huyền ảo, tiết kiệm pin & bảo vệ mắt",
+    "lightSubtitle": "Tươi sáng, rõ ràng & thanh lịch",
+    "darkBadge": "Tối",
+    "lightBadge": "Sáng",
+    "languageTitle": "Ngôn Ngữ Hiển Thị",
+    "langViDesc": "Tiếng Việt chuẩn",
+    "langEnDesc": "Tiếng Anh (English - International)",
+    "langHiDesc": "Tiếng Ấn (हिन्दी - India)",
+    "exploreTitle": "Khám Phá & Hỗ Trợ",
+    "merchShop": "Cửa Hàng Fandom & Vật Phẩm",
+    "trailersHub": "Trailers & Teasers Bom Tấn",
+    "aboutUs": "Về Vũ Trụ FandomVerse",
+    "contactSupport": "Liên Hệ & Phản Hồi Ý Kiến"
   }
 }

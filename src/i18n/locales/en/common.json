@@ -194,6 +194,9 @@
     "haveAccount": "Already have an account?"
   },
   "auth": {
+    "login": "Log in",
+    "signup": "Sign up",
+    "logout": "Log out",
     "emailAlreadyRegistered": "This email is already registered. Please log in.",
     "invalidCredentials": "Incorrect email or password."
   },
@@ -465,5 +468,37 @@
     "thankYou": "Thank you for being part of the FandomVerse Universe!",
     "footer": "© FandomVerse — Web Innovation Unleashed",
     "generalCategory": "GENERAL"
+  },
+  "profile": {
+    "joinedDate": "Member since {{date}}",
+    "guestTitle": "Fandom Guest (Not logged in)",
+    "guestSubtitle": "Log in to sync your favorite bookmarks and manage your merchandise orders.",
+    "activitiesTitle": "Activities & Shopping",
+    "cartTitle": "Fandom Cart",
+    "cartCount": "{{count}} items • ${{total}}",
+    "cartEmpty": "No items yet",
+    "openCart": "Open cart",
+    "bookmarksTitle": "Saved Items (Bookmarks)",
+    "bookmarksCount": "{{count}} pinned items",
+    "bookmarksEmpty": "No saved items yet",
+    "settingsTitle": "Settings & Preferences",
+    "themeTitle": "Appearance Mode",
+    "darkTheme": "Dark Theme (Dark Mode)",
+    "lightTheme": "Light Theme (Light Mode)",
+    "darkThemeShort": "Dark Mode",
+    "lightThemeShort": "Light Mode",
+    "darkSubtitle": "Sleek, battery saving & easy on the eyes",
+    "lightSubtitle": "Bright, clean & elegant",
+    "darkBadge": "Dark",
+    "lightBadge": "Light",
+    "languageTitle": "Display Language",
+    "langViDesc": "Vietnamese (Tiếng Việt)",
+    "langEnDesc": "English (International)",
+    "langHiDesc": "Hindi (हिन्दी - India)",
+    "exploreTitle": "Explore & Support",
+    "merchShop": "Fandom Store & Merchandise",
+    "trailersHub": "Blockbuster Trailers & Teasers",
+    "aboutUs": "About FandomVerse Universe",
+    "contactSupport": "Contact & Feedback"
   }
 }

@@ -15,14 +15,18 @@ export default function Profile() {
   const { bookmarkCount } = useBookmarks();
   const { cartCount, cartTotal, setIsCartOpen } = useCart();
   const { isDark, setTheme } = useTheme();
-  const { language, setLanguage, languages } = useLanguage();
+  const { language, setLanguage, languages, bcp47 } = useLanguage();
 
   const [isThemeOpen, setIsThemeOpen] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
 
   const interestCategory = CATEGORY_LIST.find((c) => c.id === currentUser?.fandomInterest);
   const joinedDate = currentUser?.createdAt
-    ? new Date(currentUser.createdAt).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' })
+    ? new Date(currentUser.createdAt).toLocaleDateString(bcp47 || (language === 'vi' ? 'vi-VN' : language === 'hi' ? 'hi-IN' : 'en-US'), {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+      })
     : null;
 
   return (
@@ -55,7 +59,7 @@ export default function Profile() {
                 </h4>
                 {interestCategory && (
                   <span className={`badge-category badge-category-${interestCategory.id} d-inline-flex align-items-center gap-1`}>
-                    <i className={`bi ${interestCategory.icon}`}></i> {interestCategory.label}
+                    <i className={`bi ${interestCategory.icon}`}></i> {t(`categories.${interestCategory.id}.label`) || interestCategory.label}
                   </span>
                 )}
               </div>
@@ -64,7 +68,7 @@ export default function Profile() {
               </p>
               {joinedDate && (
                 <p className={`small mb-0 ${isDark ? 'text-white-50' : 'text-secondary'}`} style={{ fontSize: '0.75rem' }}>
-                  <i className="bi bi-calendar3 me-1"></i> Tham gia từ {joinedDate}
+                  <i className="bi bi-calendar3 me-1"></i> {t('profile.joinedDate', { date: joinedDate })}
                 </p>
               )}
             </div>
@@ -73,7 +77,7 @@ export default function Profile() {
               className="btn btn-sm btn-outline-danger rounded-pill px-3 py-1.5 fw-semibold mt-2 mt-sm-0"
               onClick={logout}
             >
-              <i className="bi bi-box-arrow-right me-1"></i> {t('auth.logout') || 'Đăng xuất'}
+              <i className="bi bi-box-arrow-right me-1"></i> {t('auth.logout')}
             </button>
           </div>
         ) : (
@@ -91,18 +95,18 @@ export default function Profile() {
             </div>
             <div className="flex-grow-1">
               <h5 className={`font-heading fw-bold mb-1 ${isDark ? 'text-white' : 'text-dark'}`}>
-                Khách Fandom (Chưa đăng nhập)
+                {t('profile.guestTitle')}
               </h5>
               <p className={`small mb-0 ${isDark ? 'text-white-50' : 'text-secondary'}`}>
-                Đăng nhập để đồng bộ danh sách bài viết yêu thích và quản lý đơn hàng vật phẩm.
+                {t('profile.guestSubtitle')}
               </p>
             </div>
             <div className="d-flex align-items-center gap-2 mt-2 mt-sm-0">
               <Link to="/login" className="btn btn-sm btn-primary-fv rounded-pill px-3 py-1.5 fw-semibold">
-                {t('auth.login') || 'Đăng nhập'}
+                {t('auth.login')}
               </Link>
               <Link to="/signup" className="btn btn-sm btn-outline-secondary rounded-pill px-3 py-1.5 fw-semibold">
-                {t('auth.signup') || 'Đăng ký'}
+                {t('auth.signup')}
               </Link>
             </div>
           </div>
@@ -111,7 +115,7 @@ export default function Profile() {
 
       {/* 2. Core Activities: Giỏ hàng & Yêu thích */}
       <h6 className={`text-uppercase small fw-bold mb-3 ${isDark ? 'text-white-50' : 'text-secondary'}`} style={{ letterSpacing: '0.08em' }}>
-        Hoạt Động & Mua Sắm
+        {t('profile.activitiesTitle')}
       </h6>
       <div className="row g-3 mb-4">
         {/* Giỏ Hàng (Cart) */}
@@ -141,10 +145,10 @@ export default function Profile() {
               </div>
               <div>
                 <h6 className={`fw-bold mb-0 ${isDark ? 'text-white' : 'text-dark'}`}>
-                  Giỏ Hàng Fandom
+                  {t('profile.cartTitle')}
                 </h6>
                 <span className="small text-muted">
-                  {cartCount > 0 ? `${cartCount} sản phẩm • $${cartTotal.toFixed(2)}` : 'Chưa có sản phẩm nào'}
+                  {cartCount > 0 ? t('profile.cartCount', { count: cartCount, total: cartTotal.toFixed(2) }) : t('profile.cartEmpty')}
                 </span>
               </div>
             </div>
@@ -156,7 +160,7 @@ export default function Profile() {
                 setIsCartOpen(true);
               }}
             >
-              Mở giỏ
+              {t('profile.openCart')}
             </button>
           </div>
         </div>
@@ -187,10 +191,10 @@ export default function Profile() {
               </div>
               <div>
                 <h6 className={`fw-bold mb-0 ${isDark ? 'text-white' : 'text-dark'}`}>
-                  Mục Đã Lưu (Yêu Thích)
+                  {t('profile.bookmarksTitle')}
                 </h6>
                 <span className="small text-muted">
-                  {bookmarkCount > 0 ? `${bookmarkCount} nội dung đã ghim` : 'Chưa lưu nội dung nào'}
+                  {bookmarkCount > 0 ? t('profile.bookmarksCount', { count: bookmarkCount }) : t('profile.bookmarksEmpty')}
                 </span>
               </div>
             </div>
@@ -201,7 +205,7 @@ export default function Profile() {
 
       {/* 3. Cài Đặt Hệ Thống: Chế Độ Giao Diện & Ngôn Ngữ Dạng Xổ Xuống */}
       <h6 className={`text-uppercase small fw-bold mb-3 ${isDark ? 'text-white-50' : 'text-secondary'}`} style={{ letterSpacing: '0.08em' }}>
-        Cài Đặt & Tùy Chọn
+        {t('profile.settingsTitle')}
       </h6>
       <div className="d-flex flex-column gap-3 mb-4">
         {/* Item 1: Chế Độ Giao Diện (Accordion) */}
@@ -236,10 +240,10 @@ export default function Profile() {
               </div>
               <div>
                 <h6 className={`fw-bold mb-0 ${isDark ? 'text-white' : 'text-dark'}`}>
-                  Chế Độ Giao Diện
+                  {t('profile.themeTitle')}
                 </h6>
                 <span className="small text-muted">
-                  {isDark ? '🌙 Giao Diện Tối (Dark Mode)' : '☀️ Giao Diện Sáng (Light Mode)'}
+                  {isDark ? `🌙 ${t('profile.darkTheme')}` : `☀️ ${t('profile.lightTheme')}`}
                 </span>
               </div>
             </div>
@@ -251,7 +255,7 @@ export default function Profile() {
                   color: isDark ? '#a29bfe' : '#d35400',
                 }}
               >
-                {isDark ? 'Tối' : 'Sáng'}
+                {isDark ? t('profile.darkBadge') : t('profile.lightBadge')}
               </span>
               <i className={`bi bi-chevron-${isThemeOpen ? 'up' : 'down'} text-secondary fs-5`}></i>
             </div>
@@ -275,10 +279,10 @@ export default function Profile() {
                     <span className="fs-5">🌙</span>
                     <div>
                       <div className={`fw-semibold small ${isDark ? 'text-white' : 'text-dark'}`}>
-                        Giao Diện Tối (Dark Mode)
+                        {t('profile.darkTheme')}
                       </div>
                       <div className="text-muted" style={{ fontSize: '0.7rem' }}>
-                        Huyền ảo, tiết kiệm pin & bảo vệ mắt
+                        {t('profile.darkSubtitle')}
                       </div>
                     </div>
                   </div>
@@ -299,10 +303,10 @@ export default function Profile() {
                     <span className="fs-5">☀️</span>
                     <div>
                       <div className={`fw-semibold small ${isDark ? 'text-white' : 'text-dark'}`}>
-                        Giao Diện Sáng (Light Mode)
+                        {t('profile.lightTheme')}
                       </div>
                       <div className="text-muted" style={{ fontSize: '0.7rem' }}>
-                        Tươi sáng, rõ ràng & thanh lịch
+                        {t('profile.lightSubtitle')}
                       </div>
                     </div>
                   </div>
@@ -343,20 +347,17 @@ export default function Profile() {
               </div>
               <div>
                 <h6 className={`fw-bold mb-0 ${isDark ? 'text-white' : 'text-dark'}`}>
-                  Ngôn Ngữ Hiển Thị
+                  {t('profile.languageTitle')}
                 </h6>
                 <span className="small text-muted">
-                  {language === 'vi'
-                    ? '🇻🇳 Tiếng Việt'
-                    : language === 'en'
-                    ? '🇬🇧 Tiếng Anh (English)'
-                    : '🇮🇳 Tiếng Ấn Độ (हिन्दी)'}
+                  {languages.find((l) => l.code === language)?.flag}{' '}
+                  {languages.find((l) => l.code === language)?.label}
                 </span>
               </div>
             </div>
             <div className="d-flex align-items-center gap-2">
               <span className="badge rounded-pill bg-success bg-opacity-10 text-success small">
-                {language === 'vi' ? 'Tiếng Việt' : language === 'en' ? 'English' : 'हिन्दी'}
+                {languages.find((l) => l.code === language)?.label || language}
               </span>
               <i className={`bi bi-chevron-${isLanguageOpen ? 'up' : 'down'} text-secondary fs-5`}></i>
             </div>
@@ -369,9 +370,9 @@ export default function Profile() {
                 {languages.map((l) => {
                   const isActive = language === l.code;
                   const languageDescriptions = {
-                    vi: 'Tiếng Việt chuẩn',
-                    en: 'Tiếng Anh (English - International)',
-                    hi: 'Tiếng Ấn (हिन्दी - India)',
+                    vi: t('profile.langViDesc'),
+                    en: t('profile.langEnDesc'),
+                    hi: t('profile.langHiDesc'),
                   };
                   return (
                     <div
@@ -407,7 +408,7 @@ export default function Profile() {
 
       {/* 4. Khám phá & Tiện ích khác */}
       <h6 className={`text-uppercase small fw-bold mb-3 ${isDark ? 'text-white-50' : 'text-secondary'}`} style={{ letterSpacing: '0.08em' }}>
-        Khám Phá & Hỗ Trợ
+        {t('profile.exploreTitle')}
       </h6>
       <div
         className="rounded-4 shadow-sm overflow-hidden mb-4"
@@ -422,7 +423,7 @@ export default function Profile() {
         >
           <div className="d-flex align-items-center gap-3">
             <i className="bi bi-shop fs-5 text-success"></i>
-            <span className="fw-semibold small">Cửa Hàng Fandom & Vật Phẩm</span>
+            <span className="fw-semibold small">{t('profile.merchShop')}</span>
           </div>
           <i className="bi bi-chevron-right text-secondary"></i>
         </Link>
@@ -432,7 +433,7 @@ export default function Profile() {
         >
           <div className="d-flex align-items-center gap-3">
             <i className="bi bi-play-circle-fill fs-5 text-danger"></i>
-            <span className="fw-semibold small">Trailers & Teasers Bom Tấn</span>
+            <span className="fw-semibold small">{t('profile.trailersHub')}</span>
           </div>
           <i className="bi bi-chevron-right text-secondary"></i>
         </Link>
@@ -442,7 +443,7 @@ export default function Profile() {
         >
           <div className="d-flex align-items-center gap-3">
             <i className="bi bi-info-circle-fill fs-5 text-info"></i>
-            <span className="fw-semibold small">Về Vũ Trụ FandomVerse</span>
+            <span className="fw-semibold small">{t('profile.aboutUs')}</span>
           </div>
           <i className="bi bi-chevron-right text-secondary"></i>
         </Link>
@@ -452,7 +453,7 @@ export default function Profile() {
         >
           <div className="d-flex align-items-center gap-3">
             <i className="bi bi-envelope-fill fs-5 text-warning"></i>
-            <span className="fw-semibold small">Liên Hệ & Phản Hồi Ý Kiến</span>
+            <span className="fw-semibold small">{t('profile.contactSupport')}</span>
           </div>
           <i className="bi bi-chevron-right text-secondary"></i>
         </Link>

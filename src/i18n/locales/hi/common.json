@@ -191,6 +191,9 @@
     "haveAccount": "पहले से खाता है?"
   },
   "auth": {
+    "login": "लॉग इन",
+    "signup": "साइन अप",
+    "logout": "लॉग आउट",
     "emailAlreadyRegistered": "यह ईमेल पहले से पंजीकृत है। कृपया लॉग इन करें।",
     "invalidCredentials": "ईमेल या पासवर्ड गलत है।"
   },
@@ -462,5 +465,37 @@
     "thankYou": "FandomVerse यूनिवर्स का हिस्सा बनने के लिए धन्यवाद!",
     "footer": "© FandomVerse — Web Innovation Unleashed",
     "generalCategory": "सामान्य"
+  },
+  "profile": {
+    "joinedDate": "{{date}} से सदस्य",
+    "guestTitle": "फैन्डम अतिथि (लॉग इन नहीं है)",
+    "guestSubtitle": "अपने पसंदीदा लेखों को सिंक करने और मर्चेंडाइज ऑर्डर प्रबंधित करने के लिए लॉग इन करें।",
+    "activitiesTitle": "गतिविधियाँ और खरीदारी",
+    "cartTitle": "फैन्डम कार्ट",
+    "cartCount": "{{count}} आइटम • ${{total}}",
+    "cartEmpty": "अभी कोई उत्पाद नहीं है",
+    "openCart": "कार्ट खोलें",
+    "bookmarksTitle": "सहेजे गए आइटम (पसंदीदा)",
+    "bookmarksCount": "{{count}} पिन की गई सामग्री",
+    "bookmarksEmpty": "अभी तक कोई आइटम सहेजा नहीं गया",
+    "settingsTitle": "सेटिंग्स और प्राथमिकताएं",
+    "themeTitle": "थीम मोड",
+    "darkTheme": "डार्क थीम (Dark Mode)",
+    "lightTheme": "लाइट थीम (Light Mode)",
+    "darkThemeShort": "डार्क मोड",
+    "lightThemeShort": "लाइट मोड",
+    "darkSubtitle": "आकर्षक, बैटरी की बचत और आंखों के लिए आरामदायक",
+    "lightSubtitle": "उज्ज्वल, स्पष्ट और सुरुचिपूर्ण",
+    "darkBadge": "डार्क",
+    "lightBadge": "लाइट",
+    "languageTitle": "प्रदर्शन भाषा",
+    "langViDesc": "वियतनामी (Tiếng Việt)",
+    "langEnDesc": "अंग्रेजी (English - International)",
+    "langHiDesc": "हिन्दी (भारत)",
+    "exploreTitle": "एक्सप्लोर और सहायता",
+    "merchShop": "फैन्डम स्टोर और मर्चेंडाइज",
+    "trailersHub": "ब्लॉकबस्टर ट्रेलर और टीज़र",
+    "aboutUs": "FandomVerse के बारे में",
+    "contactSupport": "संपर्क और प्रतिक्रिया"
   }
 }
