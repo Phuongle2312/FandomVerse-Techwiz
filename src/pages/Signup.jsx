@@ -36,9 +36,6 @@ export default function Signup() {
           <p className="text-secondary small mb-0">{t('signup.subtitle')}</p>
         </div>
 
-        <div className="alert alert-primary bg-primary-subtle border-0 rounded-3 small py-2 px-3 mb-3">
-          <i className="bi bi-info-circle me-1 text-primary"></i> {t('signup.dummyNotice')}
-        </div>
 
         <form onSubmit={handleSubmit}>
           <div className="mb-3">

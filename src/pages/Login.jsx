@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import ToastNotification from '../components/common/ToastNotification.jsx';
-import { useAuth, DEMO_ACCOUNT } from '../context/AuthContext.jsx';
+import { useAuth } from '../context/AuthContext.jsx';
 
 export default function Login() {
   const { t } = useTranslation();
@@ -14,10 +14,6 @@ export default function Login() {
   const location = useLocation();
 
   const redirectedFromAuthGate = Boolean(location.state?.from);
-
-  const fillDemoAccount = () => {
-    setFormData({ ...formData, email: DEMO_ACCOUNT.email, password: DEMO_ACCOUNT.password });
-  };
 
   const handleForgotPassword = (e) => {
     e.preventDefault();
@@ -52,27 +48,12 @@ export default function Login() {
           <p className="text-secondary small mb-0">{t('login.subtitle')}</p>
         </div>
 
-        <div
-          className={`alert ${redirectedFromAuthGate ? 'alert-warning bg-warning-subtle' : 'alert-primary bg-primary-subtle'} border-0 rounded-3 small py-2 px-3 mb-3`}
-        >
-          <div className="mb-2">
-            <i className={`bi ${redirectedFromAuthGate ? 'bi-lock-fill text-warning' : 'bi-info-circle text-primary'} me-1`}></i>
-            {redirectedFromAuthGate ? t('login.authGateWarning') : t('login.dummyNotice')}
+        {redirectedFromAuthGate && (
+          <div className="alert alert-warning bg-warning-subtle border-0 rounded-3 small py-2 px-3 mb-3">
+            <i className="bi bi-lock-fill text-warning me-1"></i>
+            {t('login.authGateWarning')}
           </div>
-          <div className="d-flex flex-wrap align-items-center justify-content-between gap-2 pt-2 border-top border-white-50 border-opacity-10">
-            <span>
-              <i className="bi bi-person-badge me-1"></i>
-              {t('login.demoAccountLabel')} <strong>{DEMO_ACCOUNT.email}</strong> / <strong>{DEMO_ACCOUNT.password}</strong>
-            </span>
-            <button
-              type="button"
-              className="btn btn-sm btn-outline-secondary flex-shrink-0"
-              onClick={fillDemoAccount}
-            >
-              {t('login.fillDemo')}
-            </button>
-          </div>
-        </div>
+        )}
 
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
