@@ -84,14 +84,14 @@ export default function Checkout() {
       setAppliedCoupon({ code, ...PROMO_CODES[code] });
       setCouponError('');
       setToast({
-        message: `Áp dụng mã giảm giá "${code}" thành công!`,
+        message: `${code}: ${PROMO_CODES[code].label}`,
         type: 'success',
         icon: 'bi-patch-check-fill',
       });
     } else {
-      setCouponError('Mã ưu đãi không hợp lệ hoặc đã hết hạn.');
+      setCouponError('Invalid promo code');
       setToast({
-        message: 'Mã ưu đãi không tồn tại!',
+        message: 'Invalid promo code',
         type: 'danger',
         icon: 'bi-exclamation-triangle-fill',
       });
@@ -124,7 +124,7 @@ export default function Checkout() {
     e.preventDefault();
     if (!shippingInfo.fullName.trim() || !shippingInfo.phone.trim() || !shippingInfo.address.trim()) {
       setToast({
-        message: 'Vui lòng điền đầy đủ họ tên, số điện thoại và địa chỉ nhận hàng.',
+        message: t('checkout.requiredNote') || 'Please fill in all required shipping fields.',
         type: 'warning',
         icon: 'bi-exclamation-circle-fill',
       });
@@ -141,7 +141,7 @@ export default function Checkout() {
     if (paymentMethod === 'credit_card') {
       if (!cardInfo.number || cardInfo.number.replace(/\s/g, '').length < 16) {
         setToast({
-          message: 'Vui lòng nhập đúng 16 số thẻ thanh toán quốc tế.',
+          message: t('checkout.cardNumberLabel'),
           type: 'warning',
           icon: 'bi-credit-card',
         });
@@ -149,7 +149,7 @@ export default function Checkout() {
       }
       if (!cardInfo.expiry || cardInfo.expiry.length < 5) {
         setToast({
-          message: 'Vui lòng nhập hạn thẻ (MM/YY).',
+          message: t('checkout.cardExpiryLabel'),
           type: 'warning',
           icon: 'bi-calendar-date',
         });
@@ -157,7 +157,7 @@ export default function Checkout() {
       }
       if (!cardInfo.cvv || cardInfo.cvv.length < 3) {
         setToast({
-          message: 'Vui lòng nhập mã bảo mật CVV (3-4 số).',
+          message: t('checkout.cvvLabel'),
           type: 'warning',
           icon: 'bi-shield-lock',
         });
@@ -172,7 +172,9 @@ export default function Checkout() {
       const orderId = `FV-${Math.floor(100000 + Math.random() * 900000)}`;
       const orderData = {
         orderId,
-        date: new Date().toLocaleString(i18n.language?.startsWith('vi') ? 'vi-VN' : 'en-US'),
+        date: new Date().toLocaleString(
+          i18n.language?.startsWith('vi') ? 'vi-VN' : i18n.language?.startsWith('hi') ? 'hi-IN' : 'en-US'
+        ),
         items: [...cartItems],
         shippingInfo: { ...shippingInfo },
         paymentMethod,
@@ -214,16 +216,16 @@ export default function Checkout() {
           >
             <i className="bi bi-cart-x display-4"></i>
           </div>
-          <h3 className="font-heading fw-bold mb-2">Giỏ Hàng Của Bạn Đang Trống</h3>
+          <h3 className="font-heading fw-bold mb-2">{t('checkout.emptyCartTitle')}</h3>
           <p className="text-secondary small mb-4">
-            Bạn chưa thêm vật phẩm nào vào giỏ hàng. Hãy khám phá gian hàng Fandom Merchandise để chọn những mô hình figure và quà tặng độc quyền nhé!
+            {t('checkout.emptyCartSubtitle')}
           </p>
           <div className="d-flex justify-content-center gap-3">
             <Link to="/merchandise" className="btn btn-primary-fv px-4 py-2">
-              <i className="bi bi-shop me-2"></i> Khám phá Merchandise
+              <i className="bi bi-shop me-2"></i> {t('checkout.exploreMerch')}
             </Link>
             <Link to="/" className="btn btn-outline-secondary px-4 py-2">
-              <i className="bi bi-house me-2"></i> Về Trang Chủ
+              <i className="bi bi-house me-2"></i> {t('checkout.backHome')}
             </Link>
           </div>
         </div>
@@ -236,24 +238,24 @@ export default function Checkout() {
       {/* Checkout Header & Breadcrumbs */}
       <div className="mb-4">
         <div className="d-flex align-items-center gap-2 text-secondary small mb-2">
-          <Link to="/" className="text-decoration-none text-secondary">Trang chủ</Link>
+          <Link to="/" className="text-decoration-none text-secondary">{t('breadcrumb.home')}</Link>
           <i className="bi bi-chevron-right" style={{ fontSize: '0.7rem' }}></i>
-          <Link to="/merchandise" className="text-decoration-none text-secondary">Merchandise</Link>
+          <Link to="/merchandise" className="text-decoration-none text-secondary">{t('breadcrumb.merchandiseShop')}</Link>
           <i className="bi bi-chevron-right" style={{ fontSize: '0.7rem' }}></i>
-          <span className="fw-bold text-primary">Thanh toán đơn hàng</span>
+          <span className="fw-bold text-primary">{t('breadcrumb.checkout')}</span>
         </div>
         <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-2">
           <div>
             <h1 className="font-heading fw-bold display-6 mb-1">
-              Thanh Toán & Xác Nhận Đơn Hàng
+              {t('checkout.title')}
             </h1>
             <p className="text-secondary small mb-0">
-              Giao hàng nhanh toàn quốc • Đóng gói hộp chống sốc bảo vệ sản phẩm anime & gaming
+              {t('checkout.subtitle')}
             </p>
           </div>
           <div className="d-flex align-items-center gap-2">
             <span className="badge bg-success-subtle text-success border border-success px-3 py-2 rounded-pill">
-              <i className="bi bi-shield-check me-1"></i> Bảo Mật SSL 256-bit
+              <i className="bi bi-shield-check me-1"></i> {t('checkout.sslBadge')}
             </span>
           </div>
         </div>
@@ -277,8 +279,8 @@ export default function Checkout() {
               }`}
             >
               <i className={`bi ${step === 'shipping' ? 'bi-1-circle-fill' : 'bi-check-circle-fill'}`}></i>
-              <span className="small d-none d-sm-inline">1. Thông tin giao hàng</span>
-              <span className="small d-sm-none">1. Giao hàng</span>
+              <span className="small d-none d-sm-inline">{t('checkout.stepShipping')}</span>
+              <span className="small d-sm-none">{t('checkout.stepShippingShort')}</span>
             </div>
           </div>
           <div className="col-4">
@@ -292,8 +294,8 @@ export default function Checkout() {
               }`}
             >
               <i className={`bi ${step === 'success' ? 'bi-check-circle-fill' : 'bi-2-circle-fill'}`}></i>
-              <span className="small d-none d-sm-inline">2. Phương thức thanh toán</span>
-              <span className="small d-sm-none">2. Thanh toán</span>
+              <span className="small d-none d-sm-inline">{t('checkout.stepPayment')}</span>
+              <span className="small d-sm-none">{t('checkout.stepPaymentShort')}</span>
             </div>
           </div>
           <div className="col-4">
@@ -305,8 +307,8 @@ export default function Checkout() {
               }`}
             >
               <i className="bi bi-3-circle-fill"></i>
-              <span className="small d-none d-sm-inline">3. Hoàn tất đơn hàng</span>
-              <span className="small d-sm-none">3. Hoàn tất</span>
+              <span className="small d-none d-sm-inline">{t('checkout.stepSuccess')}</span>
+              <span className="small d-sm-none">{t('checkout.stepSuccessShort')}</span>
             </div>
           </div>
         </div>
@@ -349,11 +351,11 @@ export default function Checkout() {
               </div>
 
               <span className="badge bg-success-subtle text-success border border-success px-3 py-1 rounded-pill mb-2">
-                ĐẶT HÀNG THÀNH CÔNG
+                {t('checkout.successBadge')}
               </span>
-              <h2 className="font-heading fw-bold mb-1">Cảm Ơn Bạn Đã Mua Sắm!</h2>
+              <h2 className="font-heading fw-bold mb-1">{t('checkout.successTitle')}</h2>
               <p className="text-secondary small mb-4">
-                Đơn hàng của bạn đã được tiếp nhận và đang được đóng gói chuyển tới bạn.
+                {t('checkout.successSubtitle')}
               </p>
 
               {/* Order Info Summary Card */}
@@ -363,24 +365,24 @@ export default function Checkout() {
               >
                 <div className="row g-3">
                   <div className="col-6 col-md-3">
-                    <span className="text-secondary small d-block">Mã đơn hàng:</span>
+                    <span className="text-secondary small d-block">{t('checkout.orderCode')}</span>
                     <strong className="text-primary font-monospace fs-6">{completedOrder?.orderId}</strong>
                   </div>
                   <div className="col-6 col-md-3">
-                    <span className="text-secondary small d-block">Thời gian đặt:</span>
+                    <span className="text-secondary small d-block">{t('checkout.orderTime')}</span>
                     <strong className="small">{completedOrder?.date}</strong>
                   </div>
                   <div className="col-6 col-md-3">
-                    <span className="text-secondary small d-block">Phương thức:</span>
+                    <span className="text-secondary small d-block">{t('checkout.paymentMethodLabel')}</span>
                     <span className="badge bg-secondary-subtle text-capitalize small">
-                      {completedOrder?.paymentMethod === 'credit_card' && '💳 Thẻ Quốc Tế'}
-                      {completedOrder?.paymentMethod === 'momo' && '📱 Ví MoMo/VNPay'}
-                      {completedOrder?.paymentMethod === 'bank_transfer' && '🏦 Chuyển khoản VietQR'}
-                      {completedOrder?.paymentMethod === 'cod' && '📦 Nhận hàng (COD)'}
+                      {completedOrder?.paymentMethod === 'credit_card' && t('checkout.methodCreditCard')}
+                      {completedOrder?.paymentMethod === 'momo' && t('checkout.methodMomo')}
+                      {completedOrder?.paymentMethod === 'bank_transfer' && t('checkout.methodBank')}
+                      {completedOrder?.paymentMethod === 'cod' && t('checkout.methodCod')}
                     </span>
                   </div>
                   <div className="col-6 col-md-3">
-                    <span className="text-secondary small d-block">Tổng thanh toán:</span>
+                    <span className="text-secondary small d-block">{t('checkout.totalPaid')}</span>
                     <strong className="text-danger font-monospace fs-5">${completedOrder?.total.toFixed(2)}</strong>
                   </div>
                 </div>
@@ -388,7 +390,7 @@ export default function Checkout() {
                 <hr className="my-3 opacity-25" />
 
                 <div>
-                  <h6 className="fw-bold mb-2 small text-uppercase text-secondary">Địa chỉ giao hàng:</h6>
+                  <h6 className="fw-bold mb-2 small text-uppercase text-secondary">{t('checkout.shippingAddress')}</h6>
                   <p className="small mb-1">
                     <strong>{completedOrder?.shippingInfo.fullName}</strong> • {completedOrder?.shippingInfo.phone}
                   </p>
@@ -399,7 +401,7 @@ export default function Checkout() {
 
                 <hr className="my-3 opacity-25" />
 
-                <h6 className="fw-bold mb-2 small text-uppercase text-secondary">Sản phẩm trong đơn:</h6>
+                <h6 className="fw-bold mb-2 small text-uppercase text-secondary">{t('checkout.orderedItems')}</h6>
                 <div className="d-flex flex-column gap-2">
                   {completedOrder?.items.map((it) => (
                     <div key={it.id} className="d-flex align-items-center justify-content-between small">
@@ -422,7 +424,7 @@ export default function Checkout() {
               {/* Action Buttons */}
               <div className="d-flex flex-wrap justify-content-center gap-3">
                 <Link to="/merchandise" className="btn btn-primary-fv px-4 py-2">
-                  <i className="bi bi-bag-plus me-2"></i> Tiếp tục mua sắm
+                  <i className="bi bi-bag-plus me-2"></i> {t('checkout.continueShopping')}
                 </Link>
                 <button
                   type="button"
@@ -431,10 +433,10 @@ export default function Checkout() {
                     window.print();
                   }}
                 >
-                  <i className="bi bi-printer me-2"></i> In hóa đơn
+                  <i className="bi bi-printer me-2"></i> {t('checkout.printInvoice')}
                 </button>
                 <Link to="/" className="btn btn-outline-secondary px-4 py-2">
-                  <i className="bi bi-house me-2"></i> Về trang chủ
+                  <i className="bi bi-house me-2"></i> {t('checkout.backHome')}
                 </Link>
               </div>
             </div>
@@ -455,16 +457,16 @@ export default function Checkout() {
               >
                 <div className="d-flex align-items-center justify-content-between mb-3">
                   <h4 className="font-heading fw-bold text-primary mb-0 d-flex align-items-center gap-2">
-                    <i className="bi bi-geo-alt-fill text-danger"></i> 1. Thông Tin Nhận Hàng
+                    <i className="bi bi-geo-alt-fill text-danger"></i> {t('checkout.shippingTitle')}
                   </h4>
-                  <span className="small text-secondary">* Thông tin bắt buộc</span>
+                  <span className="small text-secondary">{t('checkout.requiredNote')}</span>
                 </div>
 
                 <form onSubmit={handleGoToPayment}>
                   <div className="row g-3">
                     <div className="col-12 col-md-6">
                       <label className="form-label small fw-semibold text-secondary">
-                        Họ và tên người nhận *
+                        {t('checkout.fullNameLabel')}
                       </label>
                       <div className="input-group">
                         <span className="input-group-text bg-light border-end-0 text-muted">
@@ -473,7 +475,7 @@ export default function Checkout() {
                         <input
                           type="text"
                           className="form-control border-start-0 bg-light"
-                          placeholder="VD: Nguyễn Văn Anh"
+                          placeholder={t('checkout.fullNamePlaceholder')}
                           value={shippingInfo.fullName}
                           onChange={(e) => setShippingInfo({ ...shippingInfo, fullName: e.target.value })}
                           required
@@ -483,7 +485,7 @@ export default function Checkout() {
 
                     <div className="col-12 col-md-6">
                       <label className="form-label small fw-semibold text-secondary">
-                        Số điện thoại nhận hàng *
+                        {t('checkout.phoneLabel')}
                       </label>
                       <div className="input-group">
                         <span className="input-group-text bg-light border-end-0 text-muted">
@@ -492,7 +494,7 @@ export default function Checkout() {
                         <input
                           type="tel"
                           className="form-control border-start-0 bg-light"
-                          placeholder="VD: 0912 345 678"
+                          placeholder={t('checkout.phonePlaceholder')}
                           value={shippingInfo.phone}
                           onChange={(e) => setShippingInfo({ ...shippingInfo, phone: e.target.value })}
                           required
@@ -502,7 +504,7 @@ export default function Checkout() {
 
                     <div className="col-12">
                       <label className="form-label small fw-semibold text-secondary">
-                        Email nhận xác nhận đơn hàng *
+                        {t('checkout.emailLabel')}
                       </label>
                       <div className="input-group">
                         <span className="input-group-text bg-light border-end-0 text-muted">
@@ -521,7 +523,7 @@ export default function Checkout() {
 
                     <div className="col-12 col-md-6">
                       <label className="form-label small fw-semibold text-secondary">
-                        Tỉnh / Thành phố *
+                        {t('checkout.cityLabel')}
                       </label>
                       <select
                         className="form-select bg-light"
@@ -537,18 +539,18 @@ export default function Checkout() {
                         <option value="Đồng Nai">Đồng Nai</option>
                         <option value="Quảng Ninh">Quảng Ninh</option>
                         <option value="Khánh Hòa">Khánh Hòa</option>
-                        <option value="Khác">Tỉnh thành khác</option>
+                        <option value="Khác">{t('checkout.cityOther')}</option>
                       </select>
                     </div>
 
                     <div className="col-12 col-md-6">
                       <label className="form-label small fw-semibold text-secondary">
-                        Quận / Huyện
+                        {t('checkout.districtLabel')}
                       </label>
                       <input
                         type="text"
                         className="form-control bg-light"
-                        placeholder="VD: Ba Đình, Cầu Giấy, Quận 1..."
+                        placeholder={t('checkout.districtPlaceholder')}
                         value={shippingInfo.district}
                         onChange={(e) => setShippingInfo({ ...shippingInfo, district: e.target.value })}
                       />
@@ -556,12 +558,12 @@ export default function Checkout() {
 
                     <div className="col-12">
                       <label className="form-label small fw-semibold text-secondary">
-                        Địa chỉ chi tiết (Số nhà, tên đường, tòa nhà...) *
+                        {t('checkout.addressLabel')}
                       </label>
                       <input
                         type="text"
                         className="form-control bg-light"
-                        placeholder="VD: 285 Đội Cấn, Phường Liễu Giai..."
+                        placeholder={t('checkout.addressPlaceholder')}
                         value={shippingInfo.address}
                         onChange={(e) => setShippingInfo({ ...shippingInfo, address: e.target.value })}
                         required
@@ -570,12 +572,12 @@ export default function Checkout() {
 
                     <div className="col-12">
                       <label className="form-label small fw-semibold text-secondary">
-                        Ghi chú cho shipper (Tùy chọn)
+                        {t('checkout.noteLabel')}
                       </label>
                       <textarea
                         className="form-control bg-light"
                         rows="2"
-                        placeholder="VD: Giao giờ hành chính, gọi trước 15 phút, gửi lễ tân..."
+                        placeholder={t('checkout.notePlaceholder')}
                         value={shippingInfo.note}
                         onChange={(e) => setShippingInfo({ ...shippingInfo, note: e.target.value })}
                       ></textarea>
@@ -591,7 +593,7 @@ export default function Checkout() {
                           onChange={(e) => setShippingInfo({ ...shippingInfo, saveInfo: e.target.checked })}
                         />
                         <label className="form-check-label small text-secondary" htmlFor="saveShippingCheck">
-                          Lưu địa chỉ này vào hồ sơ để thanh toán nhanh hơn cho lần sau
+                          {t('checkout.saveInfoLabel')}
                         </label>
                       </div>
                     </div>
@@ -599,10 +601,10 @@ export default function Checkout() {
 
                   <div className="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
                     <Link to="/merchandise" className="btn btn-outline-secondary">
-                      <i className="bi bi-arrow-left me-1"></i> Quay lại giỏ hàng
+                      <i className="bi bi-arrow-left me-1"></i> {t('checkout.backToCart')}
                     </Link>
                     <button type="submit" className="btn btn-primary-fv px-4 py-2">
-                      Tiếp tục: Chọn thanh toán <i className="bi bi-arrow-right ms-1"></i>
+                      {t('checkout.continueToPayment')} <i className="bi bi-arrow-right ms-1"></i>
                     </button>
                   </div>
                 </form>
@@ -617,14 +619,14 @@ export default function Checkout() {
               >
                 <div className="d-flex align-items-center justify-content-between mb-3">
                   <h4 className="font-heading fw-bold text-primary mb-0 d-flex align-items-center gap-2">
-                    <i className="bi bi-credit-card-2-front text-info"></i> 2. Chọn Phương Thức Thanh Toán
+                    <i className="bi bi-credit-card-2-front text-info"></i> {t('checkout.paymentTitle')}
                   </h4>
                   <button
                     type="button"
                     className="btn btn-sm btn-link text-decoration-none"
                     onClick={() => setStep('shipping')}
                   >
-                    <i className="bi bi-pencil me-1"></i> Sửa thông tin giao hàng
+                    <i className="bi bi-pencil me-1"></i> {t('checkout.editShipping')}
                   </button>
                 </div>
 
@@ -634,10 +636,10 @@ export default function Checkout() {
                   style={{ background: isDark ? 'rgba(255, 255, 255, 0.05)' : '#f8f9fa' }}
                 >
                   <div className="small">
-                    <span className="text-secondary">Giao đến: </span>
+                    <span className="text-secondary">{t('checkout.deliverTo')} </span>
                     <strong>{shippingInfo.fullName}</strong> ({shippingInfo.phone}) - {shippingInfo.address}, {shippingInfo.city}
                   </div>
-                  <span className="badge bg-success-subtle text-success small">Đã xác nhận</span>
+                  <span className="badge bg-success-subtle text-success small">{t('checkout.confirmed')}</span>
                 </div>
 
                 {/* Payment Option Radio Cards */}
@@ -663,10 +665,10 @@ export default function Checkout() {
                         />
                         <div>
                           <div className="fw-bold d-flex align-items-center gap-2">
-                            <span>Thẻ Tín Dụng / Ghi Nợ Quốc Tế</span>
-                            <span className="badge bg-primary text-white" style={{ fontSize: '0.65rem' }}>Khuyên dùng</span>
+                            <span>{t('checkout.creditCardTitle')}</span>
+                            <span className="badge bg-primary text-white" style={{ fontSize: '0.65rem' }}>{t('checkout.recommendedBadge')}</span>
                           </div>
-                          <small className="text-secondary">Hỗ trợ Visa, MasterCard, JCB - Bảo mật chuẩn PCI-DSS</small>
+                          <small className="text-secondary">{t('checkout.creditCardDesc')}</small>
                         </div>
                       </div>
                       <div className="d-flex gap-1 fs-5 text-primary">
@@ -688,7 +690,7 @@ export default function Checkout() {
                           }}
                         >
                           <div className="d-flex justify-content-between align-items-center mb-3">
-                            <span className="fw-bold tracking-wider fs-6 opacity-75">FANDOMVERSE VIP</span>
+                            <span className="fw-bold tracking-wider fs-6 opacity-75">{t('checkout.cardVipTitle')}</span>
                             <i className="bi bi-shield-lock-fill text-warning fs-5"></i>
                           </div>
 
@@ -711,13 +713,13 @@ export default function Checkout() {
 
                           <div className="d-flex justify-content-between align-items-end small">
                             <div>
-                              <div className="text-uppercase opacity-50" style={{ fontSize: '0.65rem' }}>Chủ thẻ</div>
+                              <div className="text-uppercase opacity-50" style={{ fontSize: '0.65rem' }}>{t('checkout.cardHolder')}</div>
                               <div className="fw-bold text-truncate" style={{ maxWidth: '180px' }}>
-                                {cardInfo.holder || 'NGUYEN VAN A'}
+                                {cardInfo.holder || 'JOHN DOE'}
                               </div>
                             </div>
                             <div className="text-end">
-                              <div className="text-uppercase opacity-50" style={{ fontSize: '0.65rem' }}>Hết hạn</div>
+                              <div className="text-uppercase opacity-50" style={{ fontSize: '0.65rem' }}>{t('checkout.cardExpiry')}</div>
                               <div className="fw-bold font-monospace">{cardInfo.expiry || 'MM/YY'}</div>
                             </div>
                           </div>
@@ -726,7 +728,7 @@ export default function Checkout() {
                         {/* Card Input fields */}
                         <div className="row g-2">
                           <div className="col-12">
-                            <label className="form-label small fw-semibold text-secondary">Số thẻ ngân hàng (16 chữ số)</label>
+                            <label className="form-label small fw-semibold text-secondary">{t('checkout.cardNumberLabel')}</label>
                             <input
                               type="text"
                               className="form-control font-monospace"
@@ -737,17 +739,17 @@ export default function Checkout() {
                             />
                           </div>
                           <div className="col-12 col-md-6">
-                            <label className="form-label small fw-semibold text-secondary">Tên in trên thẻ</label>
+                            <label className="form-label small fw-semibold text-secondary">{t('checkout.cardHolderLabel')}</label>
                             <input
                               type="text"
                               className="form-control text-uppercase"
-                              placeholder="NGUYEN VAN A"
+                              placeholder="JOHN DOE"
                               value={cardInfo.holder}
                               onChange={(e) => setCardInfo({ ...cardInfo, holder: e.target.value.toUpperCase() })}
                             />
                           </div>
                           <div className="col-6 col-md-3">
-                            <label className="form-label small fw-semibold text-secondary">Hết hạn (MM/YY)</label>
+                            <label className="form-label small fw-semibold text-secondary">{t('checkout.cardExpiryLabel')}</label>
                             <input
                               type="text"
                               className="form-control font-monospace text-center"
@@ -758,7 +760,7 @@ export default function Checkout() {
                             />
                           </div>
                           <div className="col-6 col-md-3">
-                            <label className="form-label small fw-semibold text-secondary">Mã CVV / CVC</label>
+                            <label className="form-label small fw-semibold text-secondary">{t('checkout.cvvLabel')}</label>
                             <input
                               type="password"
                               className="form-control font-monospace text-center"
@@ -794,10 +796,10 @@ export default function Checkout() {
                         />
                         <div>
                           <div className="fw-bold d-flex align-items-center gap-2">
-                            <span>Ví Điện Tử MoMo / VNPay QR</span>
-                            <span className="badge bg-danger" style={{ fontSize: '0.65rem' }}>Quét QR 1 giây</span>
+                            <span>{t('checkout.momoTitle')}</span>
+                            <span className="badge bg-danger" style={{ fontSize: '0.65rem' }}>{t('checkout.momoBadge')}</span>
                           </div>
-                          <small className="text-secondary">Quét mã QR trực tiếp qua ứng dụng MoMo, VNPay hoặc Ngân hàng</small>
+                          <small className="text-secondary">{t('checkout.momoDesc')}</small>
                         </div>
                       </div>
                       <i className="bi bi-qr-code-scan fs-4 text-danger"></i>
@@ -816,10 +818,10 @@ export default function Checkout() {
                           />
                         </div>
                         <p className="small text-secondary mb-1">
-                          Mở ứng dụng <strong>MoMo</strong> hoặc app Ngân hàng quét mã để thanh toán <strong>${finalTotal.toFixed(2)}</strong>
+                          {t('checkout.momoInstruction', { total: finalTotal.toFixed(2) })}
                         </p>
                         <span className="badge bg-warning-subtle text-warning border border-warning small">
-                          <i className="bi bi-clock me-1"></i> Mã QR có hiệu lực trong 15:00
+                          <i className="bi bi-clock me-1"></i> {t('checkout.qrValidity')}
                         </span>
                       </div>
                     )}
@@ -845,8 +847,8 @@ export default function Checkout() {
                           onChange={() => setPaymentMethod('bank_transfer')}
                         />
                         <div>
-                          <div className="fw-bold">Chuyển Khoản Ngân Hàng (VietQR 24/7)</div>
-                          <small className="text-secondary">Chuyển khoản tự động xác nhận ngay lập tức qua Napas247</small>
+                          <div className="fw-bold">{t('checkout.bankTransferTitle')}</div>
+                          <small className="text-secondary">{t('checkout.bankTransferDesc')}</small>
                         </div>
                       </div>
                       <i className="bi bi-bank fs-4 text-success"></i>
@@ -860,19 +862,19 @@ export default function Checkout() {
                         >
                           <div className="row g-2 small">
                             <div className="col-sm-6">
-                              <span className="text-secondary">Ngân hàng:</span>
+                              <span className="text-secondary">{t('checkout.bankLabel')}</span>
                               <strong className="d-block text-primary">Vietcombank (VCB) - CN Ba Đình</strong>
                             </div>
                             <div className="col-sm-6">
-                              <span className="text-secondary">Số tài khoản:</span>
+                              <span className="text-secondary">{t('checkout.accountNumberLabel')}</span>
                               <strong className="d-block font-monospace">1029 3847 5689</strong>
                             </div>
                             <div className="col-sm-6">
-                              <span className="text-secondary">Chủ tài khoản:</span>
+                              <span className="text-secondary">{t('checkout.accountHolderLabel')}</span>
                               <strong className="d-block">CONG TY TNHH FANDOMVERSE VIETNAM</strong>
                             </div>
                             <div className="col-sm-6">
-                              <span className="text-secondary">Cú pháp chuyển khoản:</span>
+                              <span className="text-secondary">{t('checkout.transferMemoLabel')}</span>
                               <strong className="d-block text-danger font-monospace">FV {shippingInfo.phone || '9999'}</strong>
                             </div>
                           </div>
@@ -901,8 +903,8 @@ export default function Checkout() {
                           onChange={() => setPaymentMethod('cod')}
                         />
                         <div>
-                          <div className="fw-bold">Thanh Toán Khi Nhận Hàng (COD)</div>
-                          <small className="text-secondary">Thanh toán tiền mặt cho nhân viên giao hàng khi nhận gói hàng</small>
+                          <div className="fw-bold">{t('checkout.codTitle')}</div>
+                          <small className="text-secondary">{t('checkout.codDesc')}</small>
                         </div>
                       </div>
                       <i className="bi bi-box-seam fs-4 text-warning"></i>
@@ -917,7 +919,7 @@ export default function Checkout() {
                     className="btn btn-outline-secondary"
                     onClick={() => setStep('shipping')}
                   >
-                    <i className="bi bi-arrow-left me-1"></i> Quay lại
+                    <i className="bi bi-arrow-left me-1"></i> {t('checkout.back')}
                   </button>
                   <button
                     type="button"
@@ -928,12 +930,12 @@ export default function Checkout() {
                     {isProcessing ? (
                       <>
                         <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                        Đang xử lý đơn hàng...
+                        {t('checkout.processingOrder')}
                       </>
                     ) : (
                       <>
                         <i className="bi bi-lock-fill"></i>
-                        Xác Nhận & Đặt Hàng (${finalTotal.toFixed(2)})
+                        {t('checkout.confirmAndOrder', { total: finalTotal.toFixed(2) })}
                       </>
                     )}
                   </button>
@@ -952,8 +954,8 @@ export default function Checkout() {
               }}
             >
               <h5 className="font-heading fw-bold text-dark mb-3 d-flex align-items-center justify-content-between">
-                <span>Tóm Tắt Đơn Hàng</span>
-                <span className="badge bg-primary rounded-pill">{cartCount} món</span>
+                <span>{t('checkout.orderSummary')}</span>
+                <span className="badge bg-primary rounded-pill">{t('checkout.itemsCount', { count: cartCount })}</span>
               </h5>
 
               {/* Cart Items Preview List */}
@@ -974,7 +976,7 @@ export default function Checkout() {
                         {item.name}
                       </div>
                       <div className="text-secondary small">
-                        Số lượng: <strong>{item.quantity}</strong> × ${item.price.toFixed(2)}
+                        {t('checkout.itemQty')} <strong>{item.quantity}</strong> × ${item.price.toFixed(2)}
                       </div>
                     </div>
                     <div className="fw-bold font-monospace text-primary small">
@@ -990,7 +992,7 @@ export default function Checkout() {
                   <input
                     type="text"
                     className="form-control form-control-sm text-uppercase font-monospace bg-light"
-                    placeholder="MÃ GIẢM GIÁ (VD: FANDOM2026)"
+                    placeholder={t('checkout.couponPlaceholder')}
                     value={couponInput}
                     onChange={(e) => setCouponInput(e.target.value)}
                     disabled={!!appliedCoupon}
@@ -1000,13 +1002,13 @@ export default function Checkout() {
                       type="button"
                       className="btn btn-sm btn-outline-danger"
                       onClick={handleRemoveCoupon}
-                      title="Gỡ mã"
+                      title={t('checkout.removeCoupon')}
                     >
                       <i className="bi bi-x-lg"></i>
                     </button>
                   ) : (
                     <button type="submit" className="btn btn-sm btn-primary-fv px-3">
-                      Áp dụng
+                      {t('checkout.applyCoupon')}
                     </button>
                   )}
                 </form>
@@ -1019,42 +1021,42 @@ export default function Checkout() {
                 )}
                 {/* Promo hints */}
                 <div className="mt-2 text-muted" style={{ fontSize: '0.72rem' }}>
-                  Gợi ý mã: <code className="text-primary cursor-pointer" onClick={() => setCouponInput('FANDOM2026')}>FANDOM2026</code> (-10%), <code className="text-primary cursor-pointer" onClick={() => setCouponInput('FREESHIP')}>FREESHIP</code>
+                  {t('checkout.couponHint')} <code className="text-primary cursor-pointer" onClick={() => setCouponInput('FANDOM2026')}>FANDOM2026</code> (-10%), <code className="text-primary cursor-pointer" onClick={() => setCouponInput('FREESHIP')}>FREESHIP</code>
                 </div>
               </div>
 
               {/* Price Breakdown */}
               <div className="border-top pt-3 d-flex flex-column gap-2 small">
                 <div className="d-flex justify-content-between text-secondary">
-                  <span>Tạm tính hàng hóa:</span>
+                  <span>{t('checkout.merchSubtotal')}</span>
                   <span className="font-monospace">${cartTotal.toFixed(2)}</span>
                 </div>
 
                 {appliedCoupon && discountAmount > 0 && (
                   <div className="d-flex justify-content-between text-success fw-semibold">
-                    <span>Khuyến mãi giảm giá:</span>
+                    <span>{t('checkout.discountLabel')}</span>
                     <span className="font-monospace">-${discountAmount.toFixed(2)}</span>
                   </div>
                 )}
 
                 <div className="d-flex justify-content-between text-secondary">
-                  <span>Phí vận chuyển:</span>
+                  <span>{t('checkout.shippingFeeLabel')}</span>
                   {shippingFee === 0 ? (
-                    <span className="text-success fw-bold">MIỄN PHÍ</span>
+                    <span className="text-success fw-bold">{t('checkout.freeShipping')}</span>
                   ) : (
                     <span className="font-monospace">${shippingFee.toFixed(2)}</span>
                   )}
                 </div>
 
                 <div className="d-flex justify-content-between text-secondary">
-                  <span>Thuế VAT ước tính (8%):</span>
+                  <span>{t('checkout.vatLabel')}</span>
                   <span className="font-monospace">${vatTax.toFixed(2)}</span>
                 </div>
 
                 <hr className="my-1 opacity-25" />
 
                 <div className="d-flex justify-content-between align-items-center">
-                  <span className="fw-bold fs-6 font-heading">Tổng thanh toán:</span>
+                  <span className="fw-bold fs-6 font-heading">{t('checkout.totalPayable')}</span>
                   <span className="fs-4 fw-bold text-primary font-monospace">
                     ${finalTotal.toFixed(2)}
                   </span>
@@ -1068,15 +1070,15 @@ export default function Checkout() {
               >
                 <div className="d-flex align-items-center gap-2 mb-2 text-secondary">
                   <i className="bi bi-box-seam text-primary"></i>
-                  <span>Hàng chính hãng 100%, bảo hiểm vận chuyển</span>
+                  <span>{t('checkout.guarantee1')}</span>
                 </div>
                 <div className="d-flex align-items-center gap-2 mb-2 text-secondary">
                   <i className="bi bi-arrow-repeat text-success"></i>
-                  <span>Đổi trả 1-đổi-1 trong 7 ngày nếu lỗi hộp</span>
+                  <span>{t('checkout.guarantee2')}</span>
                 </div>
                 <div className="d-flex align-items-center gap-2 text-secondary">
                   <i className="bi bi-headset text-info"></i>
-                  <span>Hỗ trợ trực tuyến 24/7 qua Hotline</span>
+                  <span>{t('checkout.guarantee3')}</span>
                 </div>
               </div>
             </div>
