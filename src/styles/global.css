@@ -142,6 +142,54 @@ h1, h2, h3, h4, h5, h6,
 .accent-border-comics { border-left: 4px solid var(--accent-comics) !important; }
 .accent-border-manga { border-left: 4px solid var(--accent-manga) !important; }
 
+/* About page hero background */
+.about-hero {
+  background:
+    linear-gradient(120deg, rgba(20, 16, 40, 0.86) 0%, rgba(24, 20, 48, 0.8) 45%, rgba(10, 30, 40, 0.86) 100%),
+    url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=1600&auto=format&fit=crop&q=80') center 35% / cover no-repeat;
+}
+[data-theme="light"] .about-hero {
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.9) 0%, rgba(241, 242, 249, 0.88) 45%, rgba(255, 255, 255, 0.92) 100%),
+    url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=1600&auto=format&fit=crop&q=80') center 35% / cover no-repeat;
+}
+.about-hero-glow {
+  position: absolute;
+  inset: -40%;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 107, 129, 0.18), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(0, 184, 148, 0.18), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(108, 92, 231, 0.2), transparent 45%);
+  pointer-events: none;
+}
+.about-hero > *:not(.about-hero-glow) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Category-colored "Explore" buttons (About page universe cards) */
+.btn-explore-category {
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  border: 1.5px solid transparent;
+  transition: all var(--transition-fast);
+}
+.btn-explore-anime { background: rgba(255, 107, 129, 0.12); color: var(--accent-anime); }
+.btn-explore-anime:hover { background: var(--accent-anime); color: #fff; transform: translateY(-2px); }
+.btn-explore-gaming { background: rgba(0, 184, 148, 0.12); color: var(--accent-gaming); }
+.btn-explore-gaming:hover { background: var(--accent-gaming); color: #fff; transform: translateY(-2px); }
+.btn-explore-movies { background: rgba(9, 132, 227, 0.12); color: var(--accent-movies); }
+.btn-explore-movies:hover { background: var(--accent-movies); color: #fff; transform: translateY(-2px); }
+.btn-explore-tvshows { background: rgba(108, 92, 231, 0.12); color: var(--accent-tvshows); }
+.btn-explore-tvshows:hover { background: var(--accent-tvshows); color: #fff; transform: translateY(-2px); }
+.btn-explore-kpop { background: rgba(232, 67, 147, 0.12); color: var(--accent-kpop); }
+.btn-explore-kpop:hover { background: var(--accent-kpop); color: #fff; transform: translateY(-2px); }
+.btn-explore-comics { background: rgba(253, 203, 110, 0.2); color: #d68910; }
+.btn-explore-comics:hover { background: #d68910; color: #fff; transform: translateY(-2px); }
+.btn-explore-manga { background: rgba(225, 112, 85, 0.12); color: var(--accent-manga); }
+.btn-explore-manga:hover { background: var(--accent-manga); color: #fff; transform: translateY(-2px); }
+
 /* Fandom Universe Dropdown - Category Items */
 .fv-category-dropdown-item {
   transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, padding-left 0.2s ease;
@@ -529,6 +577,53 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 }
 [data-theme="dark"] .form-check-label {
   color: #cbd5e1;
+}
+
+/* Explicit Select Option Menu Styling to prevent white text on white popup background in Chromium/Windows */
+:root,
+[data-theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+[data-theme="light"],
+html[data-theme="light"],
+body[data-theme="light"] {
+  color-scheme: light;
+}
+
+select,
+.form-select {
+  color-scheme: dark;
+}
+
+[data-theme="light"] select,
+[data-theme="light"] .form-select {
+  color-scheme: light;
+}
+
+[data-theme="dark"] select,
+[data-theme="dark"] .form-select,
+[data-theme="dark"] input,
+[data-theme="dark"] textarea {
+  color-scheme: dark;
+}
+
+[data-theme="dark"] select option,
+[data-theme="dark"] .form-select option,
+.dark select option,
+.dark-theme select option {
+  background-color: #12162a !important;
+  color: #ffffff !important;
+}
+
+[data-theme="light"] select option,
+[data-theme="light"] .form-select option,
+.light select option,
+.light-theme select option {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
 }
 
 /* Navigation Bar - Frosted Glass & Sharp Contrast. Adapts to theme once scrolled past the hero. */

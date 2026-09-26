@@ -113,6 +113,7 @@
     "hidePassword": "Hide password"
   },
   "about": {
+    "badgeLabel": "Our Story",
     "title": "About the FandomVerse Project",
     "subtitle": "The first fandom universe portal to bring together the world's 7 biggest pop-culture categories in one smooth, intuitive Single Page Application (SPA).",
     "contestBadge": "TechWir Contest — Web Innovation Unleashed (© Aptech Limited)",
@@ -126,6 +127,7 @@
     "tech2Desc": "A smart chatbot handles frequently asked questions and instant navigation without relying on any external AI API.",
     "tech3Title": "Responsive & Accessible:",
     "tech3Desc": "Optimized for every device from Mobile (375px) to Desktop, strictly following WCAG AA accessibility standards.",
+    "universesBadge": "Explore",
     "universesTitle": "7 Connected Fandom Universes",
     "exploreCategory": "Explore {{label}}",
     "creditsTitle": "Release & Copyright Information",
@@ -134,8 +136,12 @@
   },
   "contact": {
     "toastSuccess": "Your message was sent successfully! (Client-side simulation mode)",
+    "badge": "Get in Touch",
     "title": "FandomVerse Contact & Coordinates",
     "subtitle": "Have a question, a content suggestion, or want to connect with the FandomVerse community team? We're always happy to hear from you!",
+    "chipResponse": "Reply within 24 hours",
+    "chipCommunity": "7 fandom universes, one team",
+    "chipSecure": "Your messages stay private",
     "formTitle": "Send Us a Message",
     "nameLabel": "Your full name",
     "subjectLabel": "Subject",
@@ -270,7 +276,19 @@
     "allFandoms": "All 7 fandoms",
     "typeLabel": "Product type:",
     "noProductsTitle": "No matching products",
-    "noProductsMessage": "No merchandise matched the filters you selected."
+    "noProductsMessage": "No merchandise matched the filters you selected.",
+    "officialBadge": "100% Official Licensed",
+    "freeShipping": "Free Shipping (Demo)",
+    "perk1": "7 Fandom Universes",
+    "perk2": "24+ Exclusive Memorabilia",
+    "perk3": "Premium Collectibles",
+    "searchPlaceholder": "Search products (Luffy, Starfield, Batman...)...",
+    "sortFeatured": "✨ Featured & Popular",
+    "sortRating": "⭐ Top Rated",
+    "sortPriceAsc": "💵 Price: Low to High",
+    "sortPriceDesc": "💎 Price: High to Low",
+    "productsCount": "{{count}} products",
+    "reset": "Reset"
   },
   "bookmarks": {
     "exportSuccess": "Your bookmark list was exported to fandomverse-bookmarks.txt successfully!",
@@ -359,7 +377,8 @@
       "loginToAddToCart": "Please log in to add products to your cart.",
       "addedToast": "Added \"{{name}}\" to your cart!",
       "added": "Added to cart!",
-      "addToCart": "Add to cart"
+      "addToCart": "Add to cart",
+      "inStock": "In Stock"
     }
   },
   "chatbot": {

@@ -167,7 +167,7 @@ export const dataService = {
     return resolveLocale(m, MERCHANDISE_LOCALE_FIELDS);
   },
 
-  getMerchandiseByCategory(categoryId, { productType = 'all' } = {}) {
+  getMerchandiseByCategory(categoryId, { productType = 'all', sort = 'featured' } = {}) {
     let result = merchandiseData;
     if (categoryId && categoryId !== 'all') {
       result = result.filter((m) => m.category === categoryId);
@@ -175,6 +175,18 @@ export const dataService = {
     if (productType && productType !== 'all') {
       result = result.filter((m) => m.productType === productType);
     }
-    return result.map((m) => resolveLocale(m, MERCHANDISE_LOCALE_FIELDS));
+
+    const localized = result.map((m) => resolveLocale(m, MERCHANDISE_LOCALE_FIELDS));
+
+    if (sort === 'price-asc') {
+      return localized.sort((a, b) => a.price - b.price);
+    }
+    if (sort === 'price-desc') {
+      return localized.sort((a, b) => b.price - a.price);
+    }
+    if (sort === 'rating') {
+      return localized.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+    }
+    return localized;
   },
 };
