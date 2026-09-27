@@ -9,7 +9,8 @@ import { useTranslation } from 'react-i18next';
  * 4. Chữ cổ Valyrian "DRACARYS!" & "FIRE & BLOOD" bay lượn với hiệu ứng phát quang.
  */
 export default function DragonFireEmbersEffect({ autoStart = false }) {
-  const isVi = i18n.language === 'vi';
+  const { i18n } = useTranslation();
+  const isVi = i18n?.language === 'vi';
   const canvasRef = useRef(null);
   const [isActive, setIsActive] = useState(autoStart);
   const [burstCount, setBurstCount] = useState(0);

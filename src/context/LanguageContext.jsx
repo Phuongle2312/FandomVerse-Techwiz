@@ -7,7 +7,15 @@ const LanguageContext = createContext();
 
 export function LanguageProvider({ children }) {
   const { i18n } = useTranslation();
-  const [language, setLanguageState] = useState(() => storageService.loadLanguage() || DEFAULT_LANGUAGE);
+  const [language, setLanguageState] = useState(() => {
+    try {
+      const selected = localStorage.getItem('fv_user_selected_lang');
+      if (selected && SUPPORTED_LANGUAGES.some((l) => l.code === selected)) {
+        return selected;
+      }
+    } catch (e) {}
+    return DEFAULT_LANGUAGE;
+  });
 
   useEffect(() => {
     if (i18n.language !== language) {
@@ -15,7 +23,6 @@ export function LanguageProvider({ children }) {
     }
     document.documentElement.setAttribute('lang', language);
     document.title = i18n.getFixedT(language)('brand.documentTitle');
-    storageService.saveLanguage(language);
   }, [language, i18n]);
 
   const setLanguage = (nextLanguage) => {
@@ -24,6 +31,9 @@ export function LanguageProvider({ children }) {
       setLanguageState(nextLanguage);
       document.documentElement.setAttribute('lang', nextLanguage);
       document.title = i18n.getFixedT(nextLanguage)('brand.documentTitle');
+      try {
+        localStorage.setItem('fv_user_selected_lang', nextLanguage);
+      } catch (e) {}
       storageService.saveLanguage(nextLanguage);
     }
   };

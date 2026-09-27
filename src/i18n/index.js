@@ -6,12 +6,12 @@ import viCommon from './locales/vi/common.json';
 import enCommon from './locales/en/common.json';
 import hiCommon from './locales/hi/common.json';
 
-const STORAGE_KEY = 'fv_language';
+const STORAGE_KEY = 'fv_user_selected_lang';
 
 function getInitialLanguage() {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) return saved;
+    if (saved && (saved === 'en' || saved === 'vi' || saved === 'hi')) return saved;
   } catch (error) {
     // localStorage unavailable — fall back to default
   }
