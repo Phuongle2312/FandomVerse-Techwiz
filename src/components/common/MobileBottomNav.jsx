@@ -2,13 +2,11 @@ import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { CATEGORY_LIST } from '../../constants.js';
-import { useCart } from '../../context/CartContext.jsx';
 import { useTheme } from '../../context/ThemeContext.jsx';
 
 export default function MobileBottomNav() {
   const { t } = useTranslation();
   const location = useLocation();
-  const { cartCount, setIsCartOpen } = useCart();
   const { isDark } = useTheme();
   const [isFandomSheetOpen, setIsFandomSheetOpen] = useState(false);
 

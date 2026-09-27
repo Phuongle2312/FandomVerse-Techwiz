@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
 
+// Stable default so the effect below isn't re-subscribed on every render
+const ALL_KEYS = [];
+
 /**
  * Custom hook that listens to both local window data changes ('fv_data_change')
  * and cross-tab storage changes ('storage') to trigger automatic component re-renders.
  */
-export function useDataSync(targetKeys = []) {
+export function useDataSync(targetKeys = ALL_KEYS) {
   const [dataVersion, setDataVersion] = useState(0);
 
   useEffect(() => {

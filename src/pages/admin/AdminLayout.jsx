@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { useAuth, ADMIN_ACCOUNT } from '../../context/AuthContext.jsx';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext.jsx';
 import { dataService } from '../../services/dataService.js';
 import '../../styles/admin.css';
 
@@ -15,9 +15,8 @@ import AdminUsers from './AdminUsers.jsx';
 import AdminSettings from './AdminSettings.jsx';
 
 export default function AdminLayout() {
-  const { currentUser, isAdmin, logout } = useAuth();
+  const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
-  const location = useLocation();
 
   // Tab management: read from url hash or query or internal state
   const [activeTab, setActiveTab] = useState('dashboard');

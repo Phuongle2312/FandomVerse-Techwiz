@@ -1,20 +1,17 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext.jsx';
 import { useCart } from '../context/CartContext.jsx';
 import { useTheme } from '../context/ThemeContext.jsx';
-import { useLanguage } from '../context/LanguageContext.jsx';
 import { storageService } from '../services/storageService.js';
 import ToastNotification from '../components/common/ToastNotification.jsx';
 
 export default function OrdersHistory() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const { currentUser, isAuthenticated } = useAuth();
   const { addItem, setIsCartOpen } = useCart();
   const { isDark } = useTheme();
-  const { language } = useLanguage();
 
   const [orders, setOrders] = useState(() => storageService.loadOrders());
   const [filter, setFilter] = useState('all'); // 'all' | 'completed' | 'processing'

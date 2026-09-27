@@ -64,14 +64,6 @@ async function optimizeImage(filePath) {
     } else {
       console.log(`- ${path.basename(filePath)}: Đã tối ưu sẵn (${formatBytes(originalSize)})`);
     }
-
-    // Also generate .webp counterpart for maximum performance
-    const webpPath = filePath.replace(/\.(jpg|jpeg|png)$/i, '.webp');
-    const webpBuffer = await sharp(inputBuffer)
-      .resize({ width: 1200, withoutEnlargement: true })
-      .webp({ quality: 80, effort: 5 })
-      .toBuffer();
-    fs.writeFileSync(webpPath, webpBuffer);
   } catch (err) {
     console.error(`✗ Lỗi tối ưu ${path.basename(filePath)}:`, err.message);
   }

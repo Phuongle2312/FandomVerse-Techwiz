@@ -13,7 +13,6 @@ import React, { useEffect, useRef, useState } from 'react';
 export default function MoviesProjectorEffect({ autoStart = true }) {
   const canvasRef = useRef(null);
   const [isActive, setIsActive] = useState(autoStart);
-  const [burstCount, setBurstCount] = useState(0);
   const animFrameIdRef = useRef(null);
 
   // Audio Context Ref
@@ -206,7 +205,6 @@ export default function MoviesProjectorEffect({ autoStart = true }) {
         });
       }
 
-      setBurstCount((prev) => prev + 1);
       playCinemaSfx('burst');
     };
 

@@ -50,6 +50,12 @@ export const CATEGORY_LIST = [
   },
 ];
 
+// Category filter / select options shared by the Admin management pages
+export const ADMIN_CATEGORY_OPTIONS = [
+  { id: 'all', label: 'Tất cả danh mục' },
+  ...CATEGORY_LIST.map(({ id, label }) => ({ id, label })),
+];
+
 export const STORAGE_KEYS = {
   CART: 'fandomverse_cart',
   BOOKMARKS: 'fandomverse_bookmarks',
@@ -60,14 +66,6 @@ export const STORAGE_KEYS = {
   LANGUAGE: 'fv_language',
   ORDERS: 'fandomverse_orders',
 };
-
-export const CONTENT_TYPES = [
-  { id: 'all', label: 'Tất cả' },
-  { id: 'article', label: 'Bài viết', icon: 'bi-file-text' },
-  { id: 'gallery', label: 'Thư viện ảnh', icon: 'bi-images' },
-  { id: 'video', label: 'Video', icon: 'bi-play-circle' },
-  { id: 'audio', label: 'Audio / Podcast', icon: 'bi-soundwave' },
-];
 
 export const PRODUCT_TYPES = [
   { id: 'all', label: 'Tất cả loại', icon: '📦' },

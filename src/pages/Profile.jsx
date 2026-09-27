@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext.jsx';
 import { useBookmarks } from '../context/BookmarkContext.jsx';
@@ -11,7 +11,6 @@ import { storageService } from '../services/storageService.js';
 
 export default function Profile() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const { currentUser, isAuthenticated, logout } = useAuth();
   const { bookmarkCount } = useBookmarks();
   const { cartCount, cartTotal, setIsCartOpen } = useCart();

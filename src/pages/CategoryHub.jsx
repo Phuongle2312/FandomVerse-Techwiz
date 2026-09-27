@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useCategoryData } from '../hooks/useCategoryData.js';
 import { useLanguage } from '../context/LanguageContext.jsx';
@@ -18,25 +18,9 @@ import GamingHextechEffect from '../components/interactive/GamingHextechEffect.j
 import ComicsSpiderWebEffect from '../components/interactive/ComicsSpiderWebEffect.jsx';
 import DragonFireEmbersEffect from '../components/interactive/DragonFireEmbersEffect.jsx';
 import EmptyState from '../components/common/EmptyState.jsx';
-import { useBookmarks } from '../context/BookmarkContext.jsx';
 import { useTheme } from '../context/ThemeContext.jsx';
 import { useVideoVisibilityAutoplay } from '../hooks/useVideoVisibilityAutoplay.js';
 import { useDataSync } from '../hooks/useDataSync.js';
-
-function formatVietnameseDate(dateStr) {
-  if (!dateStr) return '';
-  const d = new Date(dateStr);
-  if (Number.isNaN(d.getTime())) return dateStr;
-  return d.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' });
-}
-
-function isRecentlyAdded(dateStr, days = 21) {
-  if (!dateStr) return false;
-  const d = new Date(dateStr);
-  if (Number.isNaN(d.getTime())) return false;
-  const diffDays = (Date.now() - d.getTime()) / (1000 * 60 * 60 * 24);
-  return diffDays >= 0 && diffDays <= days;
-}
 
 export default function CategoryHub() {
   const { t } = useTranslation();
@@ -50,66 +34,8 @@ export default function CategoryHub() {
   const isManga = categoryId === 'manga';
   const isComics = categoryId === 'comics';
   const isTvShows = categoryId === 'tvshows';
-  const { isBookmarked, toggleBookmark } = useBookmarks();
   const { isDark } = useTheme();
   const dataVersion = useDataSync();
-
-  // Gaming-only: Cyber HUD Scanner interactive mode
-  const [gamingScannerActive, setGamingScannerActive] = useState(false);
-
-  const toggleGamingScanner = () => {
-    const nextState = !gamingScannerActive;
-    setGamingScannerActive(nextState);
-    try {
-      const AudioCtx = window.AudioContext || window.webkitAudioContext;
-      if (AudioCtx) {
-        const ctx = new AudioCtx();
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'sawtooth';
-        osc.frequency.setValueAtTime(nextState ? 587.33 : 440, ctx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(nextState ? 1174.66 : 220, ctx.currentTime + 0.18);
-        gain.gain.setValueAtTime(0.08, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.25);
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start();
-        osc.stop(ctx.currentTime + 0.25);
-      }
-    } catch (e) {
-      // AudioContext optional / user interaction
-    }
-  };
-
-  // Tab State: 'content' | 'characters' | 'events'
-  const [activeTab, setActiveTab] = useState('content');
-
-  // Movies-only: cinematic hero spotlight + "Mới ra mắt" carousel
-  const [heroIndex, setHeroIndex] = useState(0);
-  const moviesCarouselRef = useRef(null);
-  const moviesHeroVideoRef = useRef(null);
-
-  // Loop only the first 15s of the hero background video
-  const handleMoviesHeroTimeUpdate = () => {
-    const v = moviesHeroVideoRef.current;
-    if (v && v.currentTime >= 15) {
-      v.currentTime = 0;
-      v.play();
-    }
-  };
-
-  // Watchdog: some unrelated re-render elsewhere in the app can leave the hero
-  // video paused after it loops back to 0. Auto-resume it if that happens.
-  useEffect(() => {
-    if (!isMovies) return;
-    const interval = setInterval(() => {
-      const v = moviesHeroVideoRef.current;
-      if (v && v.paused && !document.hidden) {
-        v.play().catch(() => {});
-      }
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [isMovies]);
 
   // Unified Cinematic Hero Video state (matching Anime across all categories)
   const [heroMuted, setHeroMuted] = useState(true);
@@ -314,30 +240,20 @@ export default function CategoryHub() {
     }
   }, [categoryInfo, contents, characters, events, categoryId]);
 
-  // Filtered & Sorted Contents
-  const filteredContents = useMemo(() => {
-    return dataService.getContentsByCategory(categoryId, {
-      type: selectedType,
-      sort: selectedSort,
-    });
-  }, [categoryId, selectedType, selectedSort, language, dataVersion]);
-
-  // Divided Content Collections for 'All' View
-  const videoContents = useMemo(() => {
-    return dataService.getContentsByCategory(categoryId, { type: 'video', sort: selectedSort });
+  // Sorted once; each per-type list below is a filter of it (sort is stable, so order is unchanged)
+  const sortedContents = useMemo(() => {
+    return dataService.getContentsByCategory(categoryId, { sort: selectedSort });
   }, [categoryId, selectedSort, language, dataVersion]);
 
-  const galleryContents = useMemo(() => {
-    return dataService.getContentsByCategory(categoryId, { type: 'gallery', sort: selectedSort });
-  }, [categoryId, selectedSort, language, dataVersion]);
+  const filteredContents = useMemo(
+    () => (selectedType === 'all' ? sortedContents : sortedContents.filter((c) => c.type === selectedType)),
+    [sortedContents, selectedType]
+  );
 
-  const articleContents = useMemo(() => {
-    return dataService.getContentsByCategory(categoryId, { type: 'article', sort: selectedSort });
-  }, [categoryId, selectedSort, language, dataVersion]);
-
-  const audioContents = useMemo(() => {
-    return dataService.getContentsByCategory(categoryId, { type: 'audio', sort: selectedSort });
-  }, [categoryId, selectedSort, language, dataVersion]);
+  const [videoContents, galleryContents, articleContents, audioContents] = useMemo(
+    () => ['video', 'gallery', 'article', 'audio'].map((type) => sortedContents.filter((c) => c.type === type)),
+    [sortedContents]
+  );
 
   // Filtered Characters
   const filteredCharacters = useMemo(() => {
@@ -345,45 +261,6 @@ export default function CategoryHub() {
       franchise: selectedFranchise,
     });
   }, [categoryId, selectedFranchise, language, dataVersion]);
-
-  // Movies-only: trailers power the cinematic hero spotlight
-  const heroTrailers = useMemo(() => {
-    if (!isMovies) return [];
-    return dataService.getTrailersByCategory('movies').slice(0, 5);
-  }, [isMovies, language]);
-
-  // Movies-only: combine content + trailers into one "Mới ra mắt" poster rail
-  const moviesLatest = useMemo(() => {
-    if (!isMovies) return [];
-    const contentItems = dataService.getContentsByCategory('movies', { sort: 'newest' }).map((c) => ({
-      id: c.id,
-      title: c.title,
-      thumbnail: c.thumbnail,
-      dateAdded: c.dateAdded,
-      kind: 'content',
-      source: c,
-    }));
-    const trailerItems = dataService.getTrailersByCategory('movies').map((t) => ({
-      id: t.id,
-      title: t.title,
-      thumbnail: t.thumbnail,
-      dateAdded: t.releaseDate,
-      kind: 'trailer',
-      source: t,
-    }));
-    return [...contentItems, ...trailerItems].sort(
-      (a, b) => new Date(b.dateAdded) - new Date(a.dateAdded)
-    );
-  }, [isMovies, language]);
-
-  const activeHeroTrailer = heroTrailers[heroIndex] || null;
-
-  const scrollMoviesCarousel = (direction) => {
-    const el = moviesCarouselRef.current;
-    if (!el) return;
-    const cardWidth = el.querySelector('.movies-poster-card')?.offsetWidth || 200;
-    el.scrollBy({ left: direction * (cardWidth + 20) * 2, behavior: 'smooth' });
-  };
 
   // Filtered Events
   const filteredEvents = useMemo(() => {

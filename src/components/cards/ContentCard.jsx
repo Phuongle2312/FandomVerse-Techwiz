@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useBookmarks } from '../../context/BookmarkContext.jsx';
 import { useTheme } from '../../context/ThemeContext.jsx';

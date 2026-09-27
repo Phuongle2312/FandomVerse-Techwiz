@@ -14,7 +14,6 @@ import React, { useEffect, useRef, useState } from 'react';
 export default function GamingHextechEffect({ autoStart = true }) {
   const canvasRef = useRef(null);
   const [isActive, setIsActive] = useState(autoStart);
-  const [burstCount, setBurstCount] = useState(0);
   const animFrameIdRef = useRef(null);
   const audioCtxRef = useRef(null);
 
@@ -214,7 +213,6 @@ export default function GamingHextechEffect({ autoStart = true }) {
         scale: 0.4,
       });
 
-      setBurstCount((c) => c + 1);
       playGamingSfx('burst');
     };
 

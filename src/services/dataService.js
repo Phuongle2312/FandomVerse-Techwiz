@@ -13,25 +13,6 @@ const EVENT_LOCALE_FIELDS = ['title', 'description', 'location'];
 const TRAILER_LOCALE_FIELDS = ['title'];
 const MERCHANDISE_LOCALE_FIELDS = ['name', 'shortDescription'];
 
-const STORAGE_KEYS = {
-  CONTENTS: 'fv_admin_contents_v3',
-  CHARACTERS: 'fv_admin_characters_v3',
-  EVENTS: 'fv_admin_events_v3',
-  TRAILERS: 'fv_admin_trailers_v3',
-  MERCHANDISE: 'fv_admin_merchandise_v3',
-};
-
-// Clean up legacy localStorage caches so they never shadow or desync from the real JSON files
-if (typeof window !== 'undefined') {
-  try {
-    localStorage.removeItem(STORAGE_KEYS.CONTENTS);
-    localStorage.removeItem(STORAGE_KEYS.CHARACTERS);
-    localStorage.removeItem(STORAGE_KEYS.EVENTS);
-    localStorage.removeItem(STORAGE_KEYS.TRAILERS);
-    localStorage.removeItem(STORAGE_KEYS.MERCHANDISE);
-  } catch (_) {}
-}
-
 // In-memory active stores initialized directly from the authentic JSON files on disk
 let activeContents = [...contentsData];
 let activeCharacters = [...charactersData];
@@ -39,19 +20,21 @@ let activeEvents = [...eventsData];
 let activeTrailers = [...trailersData];
 let activeMerchandise = [...merchandiseData];
 
+// Applies a dataset pushed from another tab / the dev server and notifies subscribed components
+function applyRemoteUpdate(message) {
+  if (!message?.dataset || !Array.isArray(message.data)) return;
+  const { dataset, data } = message;
+  if (dataset === 'contents') activeContents = data;
+  else if (dataset === 'characters') activeCharacters = data;
+  else if (dataset === 'events') activeEvents = data;
+  else if (dataset === 'trailers') activeTrailers = data;
+  else if (dataset === 'merchandise') activeMerchandise = data;
+  window.dispatchEvent(new CustomEvent('fv_data_change', { detail: { key: dataset } }));
+}
+
 // 1. Live WebSocket synchronization via Vite HMR across all open tabs (User & Admin, Incognito & Normal)
 if (typeof import.meta !== 'undefined' && import.meta.hot) {
-  import.meta.hot.on('fandomverse:data-updated', (payload) => {
-    if (payload?.dataset && Array.isArray(payload.data)) {
-      if (payload.dataset === 'contents') activeContents = payload.data;
-      else if (payload.dataset === 'characters') activeCharacters = payload.data;
-      else if (payload.dataset === 'events') activeEvents = payload.data;
-      else if (payload.dataset === 'trailers') activeTrailers = payload.data;
-      else if (payload.dataset === 'merchandise') activeMerchandise = payload.data;
-
-      window.dispatchEvent(new CustomEvent('fv_data_change', { detail: { key: payload.dataset } }));
-    }
-  });
+  import.meta.hot.on('fandomverse:data-updated', applyRemoteUpdate);
 }
 
 // 2. BroadcastChannel fallback across same-origin tabs
@@ -59,17 +42,7 @@ let broadcastChannel = null;
 if (typeof window !== 'undefined' && 'BroadcastChannel' in window) {
   try {
     broadcastChannel = new BroadcastChannel('fandomverse_data_sync');
-    broadcastChannel.onmessage = (event) => {
-      if (event?.data?.dataset && Array.isArray(event.data.data)) {
-        const { dataset, data } = event.data;
-        if (dataset === 'contents') activeContents = data;
-        else if (dataset === 'characters') activeCharacters = data;
-        else if (dataset === 'events') activeEvents = data;
-        else if (dataset === 'trailers') activeTrailers = data;
-        else if (dataset === 'merchandise') activeMerchandise = data;
-        window.dispatchEvent(new CustomEvent('fv_data_change', { detail: { key: dataset } }));
-      }
-    };
+    broadcastChannel.onmessage = (event) => applyRemoteUpdate(event?.data);
   } catch (_) {}
 }
 
@@ -88,16 +61,7 @@ if (typeof window !== 'undefined') {
   });
 }
 
-function persistDataset(key, dataset) {
-  const datasetMap = {
-    [STORAGE_KEYS.CONTENTS]: 'contents',
-    [STORAGE_KEYS.CHARACTERS]: 'characters',
-    [STORAGE_KEYS.EVENTS]: 'events',
-    [STORAGE_KEYS.TRAILERS]: 'trailers',
-    [STORAGE_KEYS.MERCHANDISE]: 'merchandise',
-  };
-  const datasetName = datasetMap[key] || key;
-
+function persistDataset(datasetName, dataset) {
   if (typeof window !== 'undefined') {
     window.dispatchEvent(new CustomEvent('fv_data_change', { detail: { key: datasetName } }));
     if (broadcastChannel) {
@@ -163,10 +127,6 @@ export const dataService = {
     return resolveLocale(item, CONTENT_LOCALE_FIELDS);
   },
 
-  getRawContentById(id) {
-    return activeContents.find((item) => item.id === id) || null;
-  },
-
   getContentsByCategory(categoryId, { type = 'all', subTag = 'all', sort = 'newest' } = {}) {
     let result = activeContents.filter((item) => item.category === categoryId);
 
@@ -209,13 +169,13 @@ export const dataService = {
     } else {
       activeContents.unshift(item);
     }
-    persistDataset(STORAGE_KEYS.CONTENTS, activeContents);
+    persistDataset('contents', activeContents);
     return item;
   },
 
   deleteContent(id) {
     activeContents = activeContents.filter((c) => c.id !== id);
-    persistDataset(STORAGE_KEYS.CONTENTS, activeContents);
+    persistDataset('contents', activeContents);
     return true;
   },
 
@@ -228,15 +188,6 @@ export const dataService = {
 
   getRawCharacters() {
     return [...activeCharacters];
-  },
-
-  getCharacterById(id) {
-    const c = activeCharacters.find((c) => c.id === id) || null;
-    return resolveLocale(c, CHARACTER_LOCALE_FIELDS);
-  },
-
-  getRawCharacterById(id) {
-    return activeCharacters.find((c) => c.id === id) || null;
   },
 
   getCharactersByCategory(categoryId, { franchise = 'all' } = {}) {
@@ -260,13 +211,13 @@ export const dataService = {
     } else {
       activeCharacters.unshift(item);
     }
-    persistDataset(STORAGE_KEYS.CHARACTERS, activeCharacters);
+    persistDataset('characters', activeCharacters);
     return item;
   },
 
   deleteCharacter(id) {
     activeCharacters = activeCharacters.filter((c) => c.id !== id);
-    persistDataset(STORAGE_KEYS.CHARACTERS, activeCharacters);
+    persistDataset('characters', activeCharacters);
     return true;
   },
 
@@ -279,15 +230,6 @@ export const dataService = {
 
   getRawEvents() {
     return [...activeEvents];
-  },
-
-  getEventById(id) {
-    const e = activeEvents.find((e) => e.id === id) || null;
-    return resolveLocale(e, EVENT_LOCALE_FIELDS);
-  },
-
-  getRawEventById(id) {
-    return activeEvents.find((e) => e.id === id) || null;
   },
 
   getEventsByCategory(categoryId, { status = 'all' } = {}) {
@@ -312,13 +254,13 @@ export const dataService = {
     } else {
       activeEvents.unshift(item);
     }
-    persistDataset(STORAGE_KEYS.EVENTS, activeEvents);
+    persistDataset('events', activeEvents);
     return item;
   },
 
   deleteEvent(id) {
     activeEvents = activeEvents.filter((e) => e.id !== id);
-    persistDataset(STORAGE_KEYS.EVENTS, activeEvents);
+    persistDataset('events', activeEvents);
     return true;
   },
 
@@ -331,15 +273,6 @@ export const dataService = {
 
   getRawTrailers() {
     return [...activeTrailers];
-  },
-
-  getTrailerById(id) {
-    const t = activeTrailers.find((t) => t.id === id) || null;
-    return resolveLocale(t, TRAILER_LOCALE_FIELDS);
-  },
-
-  getRawTrailerById(id) {
-    return activeTrailers.find((t) => t.id === id) || null;
   },
 
   getTrailersByCategory(categoryId, { status = 'all' } = {}) {
@@ -362,13 +295,13 @@ export const dataService = {
     } else {
       activeTrailers.unshift(item);
     }
-    persistDataset(STORAGE_KEYS.TRAILERS, activeTrailers);
+    persistDataset('trailers', activeTrailers);
     return item;
   },
 
   deleteTrailer(id) {
     activeTrailers = activeTrailers.filter((t) => t.id !== id);
-    persistDataset(STORAGE_KEYS.TRAILERS, activeTrailers);
+    persistDataset('trailers', activeTrailers);
     return true;
   },
 
@@ -381,15 +314,6 @@ export const dataService = {
 
   getRawMerchandise() {
     return [...activeMerchandise];
-  },
-
-  getMerchandiseById(id) {
-    const m = activeMerchandise.find((m) => m.id === id) || null;
-    return resolveLocale(m, MERCHANDISE_LOCALE_FIELDS);
-  },
-
-  getRawMerchandiseById(id) {
-    return activeMerchandise.find((m) => m.id === id) || null;
   },
 
   getMerchandiseByCategory(categoryId, { productType = 'all', sort = 'featured' } = {}) {
@@ -422,13 +346,13 @@ export const dataService = {
     } else {
       activeMerchandise.unshift(item);
     }
-    persistDataset(STORAGE_KEYS.MERCHANDISE, activeMerchandise);
+    persistDataset('merchandise', activeMerchandise);
     return item;
   },
 
   deleteMerchandise(id) {
     activeMerchandise = activeMerchandise.filter((m) => m.id !== id);
-    persistDataset(STORAGE_KEYS.MERCHANDISE, activeMerchandise);
+    persistDataset('merchandise', activeMerchandise);
     return true;
   },
 
@@ -473,7 +397,6 @@ export const dataService = {
     activeTrailers = [...trailersData];
     activeMerchandise = [...merchandiseData];
 
-    Object.values(STORAGE_KEYS).forEach((k) => localStorage.removeItem(k));
     if (typeof window !== 'undefined') {
       window.dispatchEvent(new CustomEvent('fv_data_change', { detail: { action: 'reset' } }));
     }
@@ -502,23 +425,23 @@ export const dataService = {
 
     if (Array.isArray(contents)) {
       activeContents = contents;
-      persistDataset(STORAGE_KEYS.CONTENTS, activeContents);
+      persistDataset('contents', activeContents);
     }
     if (Array.isArray(characters)) {
       activeCharacters = characters;
-      persistDataset(STORAGE_KEYS.CHARACTERS, activeCharacters);
+      persistDataset('characters', activeCharacters);
     }
     if (Array.isArray(events)) {
       activeEvents = events;
-      persistDataset(STORAGE_KEYS.EVENTS, activeEvents);
+      persistDataset('events', activeEvents);
     }
     if (Array.isArray(trailers)) {
       activeTrailers = trailers;
-      persistDataset(STORAGE_KEYS.TRAILERS, activeTrailers);
+      persistDataset('trailers', activeTrailers);
     }
     if (Array.isArray(merchandise)) {
       activeMerchandise = merchandise;
-      persistDataset(STORAGE_KEYS.MERCHANDISE, activeMerchandise);
+      persistDataset('merchandise', activeMerchandise);
     }
 
     if (typeof window !== 'undefined') {

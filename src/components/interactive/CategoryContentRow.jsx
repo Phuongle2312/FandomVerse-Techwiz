@@ -15,7 +15,7 @@ export default function CategoryContentRow({
   onOpenGallery,
   onFilterSelf,
 }) {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const isVi = i18n.language === 'vi';
   const { isDark } = useTheme();
   const sliderRef = useRef(null);

@@ -3,18 +3,9 @@ import { dataService } from '../../services/dataService.js';
 import { resolveAdminImage, handleImageFallback } from '../../utils/adminImageHelper.js';
 import AdminPagination from '../../components/common/AdminPagination.jsx';
 import AdminCategoryTabs from '../../components/common/AdminCategoryTabs.jsx';
+import AdminImageLightbox from '../../components/common/AdminImageLightbox.jsx';
+import { ADMIN_CATEGORY_OPTIONS as CATEGORIES } from '../../constants.js';
 import ConfirmModal from '../../components/common/ConfirmModal.jsx';
-
-const CATEGORIES = [
-  { id: 'all', label: 'Tất cả danh mục' },
-  { id: 'anime', label: 'Anime' },
-  { id: 'gaming', label: 'Gaming' },
-  { id: 'movies', label: 'Movies' },
-  { id: 'tvshows', label: 'TV Shows' },
-  { id: 'kpop', label: 'K-Pop' },
-  { id: 'comics', label: 'Comics' },
-  { id: 'manga', label: 'Manga' },
-];
 
 const PRODUCT_TYPES = [
   { id: 'all', label: 'Tất cả loại sản phẩm' },
@@ -121,36 +112,12 @@ export default function AdminMerchandise({ onShowToast }) {
 
   const handleOpenAdd = () => {
     setEditingItem(null);
-    setFormData({
-      id: `merch-${Date.now()}`,
-      category: DEMO_MERCH_DATA.category,
-      nameVi: DEMO_MERCH_DATA.nameVi,
-      nameEn: DEMO_MERCH_DATA.nameEn,
-      productType: DEMO_MERCH_DATA.productType,
-      price: DEMO_MERCH_DATA.price,
-      imageUrl: DEMO_MERCH_DATA.imageUrl,
-      inStock: DEMO_MERCH_DATA.inStock,
-      rating: DEMO_MERCH_DATA.rating,
-      descVi: DEMO_MERCH_DATA.descVi,
-      descEn: DEMO_MERCH_DATA.descEn,
-    });
+    setFormData({ id: `merch-${Date.now()}`, ...DEMO_MERCH_DATA });
     setIsModalOpen(true);
   };
 
   const handleFillDemoData = () => {
-    setFormData((prev) => ({
-      ...prev,
-      category: DEMO_MERCH_DATA.category,
-      nameVi: DEMO_MERCH_DATA.nameVi,
-      nameEn: DEMO_MERCH_DATA.nameEn,
-      productType: DEMO_MERCH_DATA.productType,
-      price: DEMO_MERCH_DATA.price,
-      imageUrl: DEMO_MERCH_DATA.imageUrl,
-      inStock: DEMO_MERCH_DATA.inStock,
-      rating: DEMO_MERCH_DATA.rating,
-      descVi: DEMO_MERCH_DATA.descVi,
-      descEn: DEMO_MERCH_DATA.descEn,
-    }));
+    setFormData((prev) => ({ ...prev, ...DEMO_MERCH_DATA }));
   };
 
   const handleOpenEdit = (item) => {
@@ -549,30 +516,14 @@ export default function AdminMerchandise({ onShowToast }) {
 
       {/* Lightbox Modal */}
       {previewImage && (
-        <div className="fv-admin-lightbox-modal" onClick={() => setPreviewImage(null)}>
-          <div className="fv-admin-lightbox-content" onClick={(e) => e.stopPropagation()}>
-            <img
-              src={previewImage.resolvedImg || resolveAdminImage(previewImage, previewImage.category)}
-              alt={previewImage.name?.vi || previewImage.name}
-              className="fv-admin-lightbox-img"
-              onError={(e) => handleImageFallback(e, previewImage.category)}
-            />
-            <div className="d-flex justify-content-between align-items-center mt-3 text-white">
-              <div className="text-start">
-                <h5 className="fw-bold mb-0">{previewImage.name?.vi || previewImage.name}</h5>
-                <span className="text-info fw-bold">${previewImage.price}</span>
-                <span className="text-secondary small ms-2">• {previewImage.category} ({previewImage.productType})</span>
-              </div>
-              <button
-                type="button"
-                className="btn btn-outline-light btn-sm rounded-pill px-3"
-                onClick={() => setPreviewImage(null)}
-              >
-                <i className="bi bi-x-lg me-1"></i> Đóng
-              </button>
-            </div>
-          </div>
-        </div>
+        <AdminImageLightbox
+          item={previewImage}
+          title={previewImage.name?.vi || previewImage.name}
+          onClose={() => setPreviewImage(null)}
+        >
+          <span className="text-info fw-bold">${previewImage.price}</span>
+          <span className="text-secondary small ms-2">• {previewImage.category} ({previewImage.productType})</span>
+        </AdminImageLightbox>
       )}
 
       {/* Add / Edit Modal */}

@@ -14,7 +14,6 @@ import React, { useEffect, useRef, useState } from 'react';
 export default function MangaActionEffect({ autoStart = true }) {
   const canvasRef = useRef(null);
   const [isActive, setIsActive] = useState(autoStart);
-  const [slashCount, setSlashCount] = useState(0);
   const animFrameIdRef = useRef(null);
   const audioCtxRef = useRef(null);
 
@@ -214,7 +213,6 @@ export default function MangaActionEffect({ autoStart = true }) {
         });
       }
 
-      setSlashCount((c) => c + 1);
       playMangaSfx('slash');
     };
 

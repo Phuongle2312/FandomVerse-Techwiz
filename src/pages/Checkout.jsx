@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useCart } from '../context/CartContext.jsx';
 import { useAuth } from '../context/AuthContext.jsx';
@@ -19,7 +19,6 @@ export default function Checkout() {
   const { isDark } = useTheme();
   const { cartItems, cartTotal, cartCount, clearCart } = useCart();
   const { currentUser } = useAuth();
-  const navigate = useNavigate();
 
   // Active Checkout Step: 'shipping' | 'payment' | 'success'
   const [step, setStep] = useState('shipping');
