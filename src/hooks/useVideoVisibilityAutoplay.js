@@ -36,7 +36,21 @@ export function useVideoVisibilityAutoplay(videoRef, remountKey) {
 
     observer.observe(video);
 
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        video.pause();
+      } else {
+        const r = video.getBoundingClientRect();
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+        if (r.bottom > 0 && r.top < vh) {
+          video.play().catch(() => {});
+        }
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
     return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       observer.disconnect();
       video.pause();
     };

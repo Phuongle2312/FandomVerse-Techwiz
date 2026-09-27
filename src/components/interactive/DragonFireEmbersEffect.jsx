@@ -6,11 +6,9 @@ import { useTranslation } from 'react-i18next';
  * Cực đỉnh (PEAK):
  * 1. Rising Dragon Embers & Sparks với ánh sáng động và đuôi lửa (Glowing Embers).
  * 2. Phun lửa Dracarys bùng nổ khi click màn hình hoặc click nút "Phun Lửa Rồng (Dracarys)".
- * 3. Hợp âm gầm rồng Sub-bass & tiếng lửa cháy xèo xèo chân thực qua Web Audio API.
  * 4. Chữ cổ Valyrian "DRACARYS!" & "FIRE & BLOOD" bay lượn với hiệu ứng phát quang.
  */
-export default function DragonFireEmbersEffect({ autoStart = true }) {
-  const { i18n } = useTranslation();
+export default function DragonFireEmbersEffect({ autoStart = false }) {
   const isVi = i18n.language === 'vi';
   const canvasRef = useRef(null);
   const [isActive, setIsActive] = useState(autoStart);
@@ -21,11 +19,11 @@ export default function DragonFireEmbersEffect({ autoStart = true }) {
 
   // Bảng màu ngọn lửa House Targaryen
   const fireColors = [
-    { primary: '#ff3838', glow: 'rgba(255, 56, 56, 0.9)', name: 'Ruby Flame' },
-    { primary: '#ff9f1a', glow: 'rgba(255, 159, 26, 0.9)', name: 'Ember Gold' },
-    { primary: '#ff5252', glow: 'rgba(255, 82, 82, 0.9)', name: 'Dragon Blood' },
-    { primary: '#ffd32a', glow: 'rgba(255, 211, 42, 0.95)', name: 'Sunfyre Gold' },
-    { primary: '#ff793f', glow: 'rgba(255, 121, 63, 0.9)', name: 'Caraxes Orange' },
+    { primary: '#ff3838', glow: 'rgba(255, 56, 56, 0.4)', name: 'Ruby Flame' },
+    { primary: '#ff9f1a', glow: 'rgba(255, 159, 26, 0.4)', name: 'Ember Gold' },
+    { primary: '#ff5252', glow: 'rgba(255, 82, 82, 0.4)', name: 'Dragon Blood' },
+    { primary: '#ffd32a', glow: 'rgba(255, 211, 42, 0.4)', name: 'Sunfyre Gold' },
+    { primary: '#ff793f', glow: 'rgba(255, 121, 63, 0.4)', name: 'Caraxes Orange' },
   ];
 
   // Phát âm thanh tiếng lửa rồng bùng cháy & tiếng gầm sub-bass qua Web Audio API
@@ -98,14 +96,14 @@ export default function DragonFireEmbersEffect({ autoStart = true }) {
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
         osc.type = 'sine';
-        osc.frequency.setValueAtTime(350, now);
-        osc.frequency.exponentialRampToValueAtTime(700, now + 0.2);
+        osc.frequency.setValueAtTime(320, now);
+        osc.frequency.exponentialRampToValueAtTime(640, now + 0.2);
         gain.gain.setValueAtTime(0.07, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
         osc.connect(gain);
         gain.connect(ctx.destination);
         osc.start(now);
-        osc.stop(now + 0.2);
+        osc.stop(now + 0.25);
       }
     } catch {
       // Audio optional
@@ -117,7 +115,9 @@ export default function DragonFireEmbersEffect({ autoStart = true }) {
 
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: true });
+    if (!ctx) return;
+
     let width = (canvas.width = canvas.parentElement?.offsetWidth || window.innerWidth);
     let height = (canvas.height = canvas.parentElement?.offsetHeight || 600);
 
@@ -128,29 +128,29 @@ export default function DragonFireEmbersEffect({ autoStart = true }) {
     };
     window.addEventListener('resize', handleResize);
 
-    // Danh sách các tàn tro bay lượn (Ambient Floating Embers)
-    const emberCount = 65;
+    // Danh sách các tàn tro bay lượn tối ưu (tối đa 18 tàn tro)
+    const emberCount = Math.min(18, Math.max(8, Math.floor(width / 70)));
     const embers = [];
     for (let i = 0; i < emberCount; i++) {
       const col = fireColors[Math.floor(Math.random() * fireColors.length)];
       embers.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        size: Math.random() * 3.2 + 1.2,
-        speedY: -(Math.random() * 1.6 + 0.7),
-        speedX: (Math.random() - 0.5) * 0.9,
-        swaySpeed: Math.random() * 0.035 + 0.015,
-        swayAmount: Math.random() * 1.8 + 0.6,
+        size: Math.random() * 2.8 + 1.2,
+        speedY: -(Math.random() * 1.4 + 0.6),
+        speedX: (Math.random() - 0.5) * 0.8,
+        swaySpeed: Math.random() * 0.03 + 0.01,
+        swayAmount: Math.random() * 1.5 + 0.5,
         swayAngle: Math.random() * Math.PI * 2,
         color: col.primary,
         glow: col.glow,
         opacity: Math.random() * 0.7 + 0.3,
-        pulseSpeed: Math.random() * 0.045 + 0.02,
+        pulseSpeed: Math.random() * 0.04 + 0.02,
         pulseOffset: Math.random() * Math.PI * 2,
       });
     }
 
-    // Danh sách các vụ nổ tia lửa rồng tương tác (Interactive Dracarys Flame Bursts)
+    // Danh sách các vụ nổ tia lửa rồng tương tác
     const bursts = [];
     const shockwaves = [];
     const floatingRunes = [];
@@ -160,45 +160,44 @@ export default function DragonFireEmbersEffect({ autoStart = true }) {
       playDragonRoarSound('dracarys');
       setBurstCount((prev) => prev + 1);
 
-      // 1. Phun trào chùm tia lửa (Sparks)
-      const sparkCount = 48;
+      // 1. Phun trào chùm tia lửa (nhẹ, tối đa 16 tia lửa)
+      const sparkCount = 16;
       for (let i = 0; i < sparkCount; i++) {
         const angle = Math.random() * Math.PI * 2;
-        const speed = Math.random() * 8.5 + 3.0;
+        const speed = Math.random() * 6.5 + 2.5;
         const col = fireColors[Math.floor(Math.random() * fireColors.length)];
         bursts.push({
           x,
           y,
           vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed - 2.8,
+          vy: Math.sin(angle) * speed - 2.2,
           gravity: 0.14,
-          size: Math.random() * 3.8 + 2.0,
+          size: Math.random() * 3.0 + 1.5,
           color: col.primary,
-          glow: col.glow,
           life: 1.0,
-          decay: Math.random() * 0.022 + 0.015,
+          decay: Math.random() * 0.025 + 0.018,
         });
       }
 
-      // 2. Vòng sóng xung kích ngọn lửa (Fire Shockwave)
+      // 2. Vòng sóng xung kích ngọn lửa
       shockwaves.push({
         x,
         y,
-        radius: 10,
-        maxRadius: Math.random() * 50 + 65,
-        opacity: 0.9,
+        radius: 8,
+        maxRadius: Math.random() * 40 + 50,
+        opacity: 0.8,
         color: '#ff9f1a',
       });
 
-      // 3. Phù hiệu ngọn lửa "DRACARYS!" hoặc "FIRE & BLOOD"
-      const titles = ['🔥 DRACARYS!', '⚔️ FIRE & BLOOD', '🐉 HOUSE TARGARYEN', '🔥 VALYRIAN FIRE'];
+      // 3. Phù hiệu ngọn lửa
+      const titles = ['🔥 DRACARYS!', '⚔️ FIRE & BLOOD', '🐉 HOUSE TARGARYEN'];
       floatingRunes.push({
         x,
         y: y - 20,
         text: titles[Math.floor(Math.random() * titles.length)],
         opacity: 1.0,
         scale: 0.9,
-        vy: -1.4,
+        vy: -1.2,
       });
     };
 
@@ -207,7 +206,6 @@ export default function DragonFireEmbersEffect({ autoStart = true }) {
     // Lắng nghe click trên hero container
     const heroContainer = canvas.parentElement;
     const handleContainerClick = (e) => {
-      // Tránh cướp click của các nút bấm điều khiển
       if (e.target.closest('button') || e.target.closest('a') || e.target.closest('select')) {
         return;
       }
@@ -218,11 +216,9 @@ export default function DragonFireEmbersEffect({ autoStart = true }) {
       triggerFlameAt(clickX, clickY);
     };
 
-    // Lắng nghe custom event từ nút bấm "Phun Lửa Rồng (Dracarys)"
     const handleCustomTrigger = () => {
-      // Bắn ngẫu nhiên ở khu vực trung tâm hero banner
-      const centerX = width * 0.5 + (Math.random() - 0.5) * 200;
-      const centerY = height * 0.5 + (Math.random() - 0.5) * 100;
+      const centerX = width * 0.5 + (Math.random() - 0.5) * 160;
+      const centerY = height * 0.5 + (Math.random() - 0.5) * 80;
       triggerFlameAt(centerX, centerY);
     };
 
@@ -231,50 +227,69 @@ export default function DragonFireEmbersEffect({ autoStart = true }) {
     }
     window.addEventListener('fv-trigger-dracarys', handleCustomTrigger);
 
+    let isTabVisible = !document.hidden;
+    const handleVisibility = () => {
+      isTabVisible = !document.hidden;
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+
+    let isScrolledDown = false;
+    const handleScroll = () => {
+      isScrolledDown = window.scrollY > 750;
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
     // Animation Loop 60fps
     let time = 0;
     const render = () => {
+      if (!isTabVisible || isScrolledDown) {
+        animFrameIdRef.current = requestAnimationFrame(render);
+        return;
+      }
+
       time += 0.03;
       ctx.clearRect(0, 0, width, height);
 
-      // 1. Render Ambient Floating Embers
+      // 1. Render Ambient Floating Embers (không shadowBlur)
       for (let i = 0; i < embers.length; i++) {
         const em = embers[i];
         em.swayAngle += em.swaySpeed;
         em.x += Math.sin(em.swayAngle) * em.swayAmount + em.speedX;
         em.y += em.speedY;
 
-        // Tái tạo khi bay quá màn hình
         if (em.y < -20 || em.x < -20 || em.x > width + 20) {
           em.y = height + 10;
           em.x = Math.random() * width;
         }
 
-        const currentOpacity = Math.max(0.12, em.opacity + Math.sin(time * 3 + em.pulseOffset) * 0.28);
+        const currentOpacity = Math.max(0.15, em.opacity + Math.sin(time * 3 + em.pulseOffset) * 0.25);
 
-        ctx.save();
-        ctx.globalAlpha = currentOpacity;
-        ctx.shadowBlur = em.size * 4;
-        ctx.shadowColor = em.glow;
-        ctx.fillStyle = em.color;
-
+        // Hào quang mờ
         ctx.beginPath();
+        ctx.fillStyle = em.glow;
+        ctx.globalAlpha = currentOpacity * 0.4;
+        ctx.arc(em.x, em.y, em.size * 2.2, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Thân đốm lửa
+        ctx.beginPath();
+        ctx.fillStyle = em.color;
+        ctx.globalAlpha = currentOpacity;
         ctx.arc(em.x, em.y, em.size, 0, Math.PI * 2);
         ctx.fill();
 
         // Lõi vàng rực
-        ctx.fillStyle = '#ffffff';
         ctx.beginPath();
+        ctx.fillStyle = '#ffffff';
+        ctx.globalAlpha = Math.min(1, currentOpacity * 1.2);
         ctx.arc(em.x, em.y, em.size * 0.45, 0, Math.PI * 2);
         ctx.fill();
-
-        ctx.restore();
       }
 
-      // 2. Render Fire Shockwaves
+      // 2. Render Fire Shockwaves (không shadowBlur)
       for (let i = shockwaves.length - 1; i >= 0; i--) {
         const sw = shockwaves[i];
-        sw.radius += 3.2;
+        sw.radius += 3.0;
         sw.opacity -= 0.035;
 
         if (sw.opacity <= 0) {
@@ -285,16 +300,14 @@ export default function DragonFireEmbersEffect({ autoStart = true }) {
         ctx.save();
         ctx.globalAlpha = sw.opacity;
         ctx.strokeStyle = sw.color;
-        ctx.lineWidth = 3.0;
-        ctx.shadowBlur = 22;
-        ctx.shadowColor = sw.color;
+        ctx.lineWidth = 2.0;
         ctx.beginPath();
         ctx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2);
         ctx.stroke();
         ctx.restore();
       }
 
-      // 3. Render Flame Sparks (Bursts)
+      // 3. Render Flame Sparks (không shadowBlur)
       for (let i = bursts.length - 1; i >= 0; i--) {
         const sp = bursts[i];
         sp.vy += sp.gravity;
@@ -307,30 +320,23 @@ export default function DragonFireEmbersEffect({ autoStart = true }) {
           continue;
         }
 
-        ctx.save();
-        ctx.globalAlpha = sp.life;
-        ctx.shadowBlur = 16;
-        ctx.shadowColor = sp.glow;
-        ctx.fillStyle = sp.color;
-
         ctx.beginPath();
+        ctx.globalAlpha = sp.life;
+        ctx.fillStyle = sp.color;
         ctx.arc(sp.x, sp.y, sp.size * sp.life, 0, Math.PI * 2);
         ctx.fill();
 
-        // Lõi trắng sáng
-        ctx.fillStyle = '#ffffff';
         ctx.beginPath();
+        ctx.fillStyle = '#ffffff';
         ctx.arc(sp.x, sp.y, (sp.size * sp.life) * 0.45, 0, Math.PI * 2);
         ctx.fill();
-
-        ctx.restore();
       }
 
-      // 4. Render Floating Dragon Runes (Dracarys!)
+      // 4. Render Floating Dragon Runes (không shadowBlur)
       for (let i = floatingRunes.length - 1; i >= 0; i--) {
         const fr = floatingRunes[i];
         fr.y += fr.vy;
-        fr.scale = Math.min(1.2, fr.scale + 0.02);
+        fr.scale = Math.min(1.1, fr.scale + 0.015);
         fr.opacity -= 0.015;
 
         if (fr.opacity <= 0) {
@@ -340,10 +346,8 @@ export default function DragonFireEmbersEffect({ autoStart = true }) {
 
         ctx.save();
         ctx.globalAlpha = fr.opacity;
-        ctx.font = 'bold 16px "Cinzel Decorative", "Cinzel", serif';
+        ctx.font = 'bold 15px "Cinzel Decorative", "Cinzel", serif';
         ctx.textAlign = 'center';
-        ctx.shadowBlur = 18;
-        ctx.shadowColor = 'rgba(255, 71, 87, 0.95)';
         ctx.fillStyle = '#ffd32a';
         ctx.fillText(fr.text, fr.x, fr.y);
         ctx.restore();
@@ -357,6 +361,8 @@ export default function DragonFireEmbersEffect({ autoStart = true }) {
     return () => {
       if (animFrameIdRef.current) cancelAnimationFrame(animFrameIdRef.current);
       window.removeEventListener('resize', handleResize);
+      document.removeEventListener('visibilitychange', handleVisibility);
+      window.removeEventListener('scroll', handleScroll);
       if (heroContainer) {
         heroContainer.removeEventListener('click', handleContainerClick);
       }

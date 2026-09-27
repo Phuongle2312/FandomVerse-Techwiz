@@ -11,7 +11,7 @@ import React, { useEffect, useRef, useState } from 'react';
  * 4. Hạt mực Sumi-e & Ink Splatters: Các giọt mực đen và đỏ manga bắn tóe chân thực theo quán tính.
  * 5. Âm thanh chém Katana (Manga Sword Slash SFX) chân thực qua Web Audio API.
  */
-export default function MangaActionEffect({ autoStart = true }) {
+export default function MangaActionEffect({ autoStart = false }) {
   const canvasRef = useRef(null);
   const [isActive, setIsActive] = useState(autoStart);
   const animFrameIdRef = useRef(null);
@@ -224,12 +224,28 @@ export default function MangaActionEffect({ autoStart = true }) {
     };
     window.addEventListener('pointerdown', handlePointerDown);
 
+    let isTabVisible = !document.hidden;
+    const handleVisibility = () => {
+      isTabVisible = !document.hidden;
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+
+    let isScrolledDown = false;
+    const handleScroll = () => {
+      isScrolledDown = window.scrollY > 750;
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
     // ==========================================
     // RENDER LOOP MANGA (60 FPS)
     // ==========================================
     let lastTime = performance.now();
 
     const render = (time) => {
+      if (!isTabVisible || isScrolledDown) {
+        animFrameIdRef.current = requestAnimationFrame(render);
+        return;
+      }
       const dt = Math.min((time - lastTime) / 16.66, 2.0);
       lastTime = time;
 
@@ -297,13 +313,11 @@ export default function MangaActionEffect({ autoStart = true }) {
         ctx.save();
         ctx.lineCap = 'round';
 
-        // Ánh sáng loé ngoài (Glow)
+        // Ánh sáng loé ngoài (Glow - không shadowBlur)
         ctx.strokeStyle = s.color === '#ff3838'
-          ? `rgba(255, 56, 56, ${s.life * 0.6})`
-          : `rgba(255, 255, 255, ${s.life * 0.5})`;
-        ctx.lineWidth = s.width * 2.8 * s.life;
-        ctx.shadowColor = s.color === '#ff3838' ? '#ff3838' : '#ffffff';
-        ctx.shadowBlur = 16;
+          ? `rgba(255, 56, 56, ${s.life * 0.5})`
+          : `rgba(255, 255, 255, ${s.life * 0.4})`;
+        ctx.lineWidth = s.width * 2.5 * s.life;
         ctx.beginPath();
         ctx.moveTo(s.startX, s.startY);
         ctx.lineTo(s.endX, s.endY);

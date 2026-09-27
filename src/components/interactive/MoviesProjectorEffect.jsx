@@ -10,7 +10,7 @@ import React, { useEffect, useRef, useState } from 'react';
  * 4. 3D Bokeh Depth & Floating Embers: Tàn tro vàng rực và đốm sáng mờ ảo theo chiều sâu quang học chuẩn Hollywood.
  * 5. Tương tác mượt mà 60 FPS, không cản trở nút bấm, tối ưu trên cả PC và Mobile.
  */
-export default function MoviesProjectorEffect({ autoStart = true }) {
+export default function MoviesProjectorEffect({ autoStart = false }) {
   const canvasRef = useRef(null);
   const [isActive, setIsActive] = useState(autoStart);
   const animFrameIdRef = useRef(null);
@@ -234,7 +234,17 @@ export default function MoviesProjectorEffect({ autoStart = true }) {
         });
       }
     };
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    let isTabVisible = !document.hidden;
+    const handleVisibility = () => {
+      isTabVisible = !document.hidden;
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+
+    let isScrolledDown = false;
+    const handleScroll = () => {
+      isScrolledDown = window.scrollY > 750;
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     // ==========================================
     // RENDER LOOP (60 FPS CHUẨN HOLLYWOOD)
@@ -242,6 +252,11 @@ export default function MoviesProjectorEffect({ autoStart = true }) {
     let lastTime = performance.now();
 
     const render = (time) => {
+      if (!isTabVisible || isScrolledDown) {
+        animFrameIdRef.current = requestAnimationFrame(render);
+        return;
+      }
+
       const dt = Math.min((time - lastTime) / 16.66, 2.0);
       lastTime = time;
 
@@ -379,11 +394,9 @@ export default function MoviesProjectorEffect({ autoStart = true }) {
       ctx.arc(portalCenter.x, portalCenter.y, portalCenter.radius * 1.3, 0, Math.PI * 2);
       ctx.fill();
 
-      // Vành đai lửa ma thuật Sling Ring Doctor Strange quay tròn
+      // Vành đai lửa ma thuật Sling Ring Doctor Strange quay tròn (không shadowBlur)
       ctx.strokeStyle = 'rgba(255, 195, 18, 0.65)';
       ctx.lineWidth = 2.4;
-      ctx.shadowColor = '#ff9f1a';
-      ctx.shadowBlur = 16;
       ctx.beginPath();
       ctx.arc(portalCenter.x, portalCenter.y, portalCenter.radius, portalAngle, portalAngle + Math.PI * 1.5);
       ctx.stroke();
@@ -484,8 +497,6 @@ export default function MoviesProjectorEffect({ autoStart = true }) {
         ctx.save();
         ctx.strokeStyle = `rgba(${sw.color}, ${Math.max(0, sw.alpha)})`;
         ctx.lineWidth = sw.width * sw.alpha;
-        ctx.shadowColor = `rgba(${sw.color}, 0.85)`;
-        ctx.shadowBlur = 14;
         ctx.beginPath();
         ctx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2);
         ctx.stroke();

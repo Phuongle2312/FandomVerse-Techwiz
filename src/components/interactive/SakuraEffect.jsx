@@ -5,7 +5,7 @@ import React, { useEffect, useRef, useState } from 'react';
  * Hiệu năng cao bằng HTML5 Canvas 60fps, tự điều chỉnh theo kích thước màn hình
  * Có nút toggle tiện lợi để người dùng linh hoạt bật / tắt
  */
-export default function SakuraEffect({ autoStart = true }) {
+export default function SakuraEffect({ autoStart = false }) {
   const canvasRef = useRef(null);
   const [isActive, setIsActive] = useState(autoStart);
   const animFrameIdRef = useRef(null);
@@ -15,7 +15,7 @@ export default function SakuraEffect({ autoStart = true }) {
 
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;
 
     let width = (canvas.width = window.innerWidth);
@@ -28,8 +28,8 @@ export default function SakuraEffect({ autoStart = true }) {
     };
     window.addEventListener('resize', handleResize);
 
-    // Tạo cánh hoa anh đào với hình dáng và chuyển động ngẫu nhiên
-    const petalCount = Math.min(35, Math.floor(window.innerWidth / 40));
+    // Tạo cánh hoa anh đào tối ưu (tối đa 18 cánh)
+    const petalCount = Math.min(18, Math.max(8, Math.floor(window.innerWidth / 80)));
     const petals = [];
 
     const petalColors = [
@@ -44,11 +44,11 @@ export default function SakuraEffect({ autoStart = true }) {
       petals.push({
         x: Math.random() * width,
         y: Math.random() * height - height,
-        size: Math.random() * 10 + 9,
-        speedY: Math.random() * 1.6 + 1.0,
-        speedX: Math.random() * 1.5 - 0.75,
+        size: Math.random() * 8 + 8,
+        speedY: Math.random() * 1.4 + 0.8,
+        speedX: Math.random() * 1.2 - 0.6,
         rotation: Math.random() * 360,
-        rotationSpeed: (Math.random() - 0.5) * 1.8,
+        rotationSpeed: (Math.random() - 0.5) * 1.5,
         swaySpeed: Math.random() * 0.02 + 0.01,
         swayAngle: Math.random() * Math.PI * 2,
         color: petalColors[Math.floor(Math.random() * petalColors.length)],
@@ -64,7 +64,6 @@ export default function SakuraEffect({ autoStart = true }) {
       ctx.scale(Math.cos(p.flip), 1);
 
       ctx.beginPath();
-      // Vẽ cánh hoa hình giọt nước/oval uốn lượn đặc trưng của sakura
       ctx.moveTo(0, 0);
       ctx.bezierCurveTo(
         -p.size / 2, -p.size * 0.6,
@@ -78,14 +77,29 @@ export default function SakuraEffect({ autoStart = true }) {
       );
 
       ctx.fillStyle = p.color;
-      ctx.shadowColor = 'rgba(255, 107, 129, 0.35)';
-      ctx.shadowBlur = 6;
       ctx.fill();
       ctx.restore();
     };
 
+    let isTabVisible = !document.hidden;
+    const handleVisibility = () => {
+      isTabVisible = !document.hidden;
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+
+    let isScrolledDown = false;
+    const handleScroll = () => {
+      isScrolledDown = window.scrollY > 750;
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
     let lastTime = performance.now();
     const render = (time) => {
+      if (!isTabVisible || isScrolledDown) {
+        animFrameIdRef.current = requestAnimationFrame(render);
+        return;
+      }
+
       const dt = Math.min((time - lastTime) / 16.66, 2.0);
       lastTime = time;
 
@@ -99,7 +113,6 @@ export default function SakuraEffect({ autoStart = true }) {
         p.x += (Math.sin(p.swayAngle) * 1.2 + p.speedX) * dt;
         p.y += p.speedY * dt;
 
-        // Tái tạo cánh hoa khi rơi khỏi màn hình
         if (p.y > height + 20) {
           p.y = -20;
           p.x = Math.random() * width;
@@ -120,6 +133,8 @@ export default function SakuraEffect({ autoStart = true }) {
 
     return () => {
       window.removeEventListener('resize', handleResize);
+      document.removeEventListener('visibilitychange', handleVisibility);
+      window.removeEventListener('scroll', handleScroll);
       if (animFrameIdRef.current) cancelAnimationFrame(animFrameIdRef.current);
     };
   }, [isActive]);

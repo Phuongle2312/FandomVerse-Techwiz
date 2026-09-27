@@ -16,7 +16,7 @@ import React, { useEffect, useRef, useState } from 'react';
  *    Các sợi tơ nhện tơ lụa phát quang và bụi màu comic pop-art trôi nhẹ nhàng trong không gian.
  * 5. Web-Shooter SFX (Âm thanh "THWIP!" chuẩn studio qua Web Audio API không tốn tài nguyên mạng).
  */
-export default function ComicsSpiderWebEffect({ autoStart = true }) {
+export default function ComicsSpiderWebEffect({ autoStart = false }) {
   const canvasRef = useRef(null);
   const [isActive, setIsActive] = useState(autoStart);
   const [thwipCount, setThwipCount] = useState(0);
@@ -230,11 +230,26 @@ export default function ComicsSpiderWebEffect({ autoStart = true }) {
       }
     };
 
-    window.addEventListener('pointerdown', handlePointerDown);
+    let isTabVisible = !document.hidden;
+    const handleVisibility = () => {
+      isTabVisible = !document.hidden;
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+
+    let isScrolledDown = false;
+    const handleScroll = () => {
+      isScrolledDown = window.scrollY > 750;
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     // Vòng lặp Render Canvas 60fps
     let lastTime = performance.now();
     const render = (time) => {
+      if (!isTabVisible || isScrolledDown) {
+        animFrameIdRef.current = requestAnimationFrame(render);
+        return;
+      }
+
       const dt = Math.min((time - lastTime) / 16.66, 2.0);
       lastTime = time;
 
@@ -299,11 +314,9 @@ export default function ComicsSpiderWebEffect({ autoStart = true }) {
           ctx.stroke();
         }
 
-        // Vẽ các sợi tơ neo bắn ra 4 phía (Web Slings to edges)
+        // Vẽ các sợi tơ neo bắn ra 4 phía (Web Slings to edges - không shadowBlur)
         ctx.strokeStyle = `rgba(255, 255, 255, ${currentAlpha * 0.65})`;
-        ctx.lineWidth = 1.8;
-        ctx.shadowColor = '#00a8ff';
-        ctx.shadowBlur = 8;
+        ctx.lineWidth = 1.6;
         web.slingAnchors.forEach((anc) => {
           const curTx = web.x + (anc.tx - web.x) * web.progress;
           const curTy = web.y + (anc.ty - web.y) * web.progress;
@@ -313,11 +326,9 @@ export default function ComicsSpiderWebEffect({ autoStart = true }) {
           ctx.stroke();
         });
 
-        // Vẽ các nan tơ hướng tâm của mạng nhện (Radial Spokes)
-        ctx.shadowColor = '#ffffff';
-        ctx.shadowBlur = 6;
+        // Vẽ các nan tơ hướng tâm của mạng nhện (Radial Spokes - không shadowBlur)
         ctx.strokeStyle = `rgba(255, 255, 255, ${currentAlpha * 0.95})`;
-        ctx.lineWidth = 1.5;
+        ctx.lineWidth = 1.3;
 
         const spokeEnds = [];
         web.radialSpokes.forEach((sp) => {

@@ -11,7 +11,7 @@ import React, { useEffect, useRef, useState } from 'react';
  * 3. Âm thanh năng lượng Hextech Sci-Fi chân thực qua Web Audio API.
  * 4. Tương tác mượt mà 60 FPS, không cản trở nút bấm hay video.
  */
-export default function GamingHextechEffect({ autoStart = true }) {
+export default function GamingHextechEffect({ autoStart = false }) {
   const canvasRef = useRef(null);
   const [isActive, setIsActive] = useState(autoStart);
   const animFrameIdRef = useRef(null);
@@ -117,7 +117,7 @@ export default function GamingHextechEffect({ autoStart = true }) {
     // ==========================================
     // 1. CÁC HẠT NĂNG LƯỢNG HEXTECH LƠ LỬNG
     // ==========================================
-    const particleCount = Math.min(50, Math.floor(window.innerWidth / 30));
+    const particleCount = Math.min(18, Math.max(8, Math.floor(window.innerWidth / 80)));
     const motes = [];
     for (let i = 0; i < particleCount; i++) {
       motes.push({
@@ -267,19 +267,37 @@ export default function GamingHextechEffect({ autoStart = true }) {
     };
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
 
+    let isTabVisible = !document.hidden;
+    const handleVisibility = () => {
+      isTabVisible = !document.hidden;
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+
+    let isScrolledDown = false;
+    const handleScroll = () => {
+      isScrolledDown = window.scrollY > 750;
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
     // ==========================================
     // RENDER LOOP (60 FPS)
     // ==========================================
     let lastTime = performance.now();
 
     const render = (time) => {
+      if (!isTabVisible || isScrolledDown) {
+        animFrameIdRef.current = requestAnimationFrame(render);
+        return;
+      }
+
       const dt = Math.min((time - lastTime) / 16.66, 2.0);
       lastTime = time;
 
       ctx.clearRect(0, 0, width, height);
 
-      // --- 1. VẼ CÁC HẠT NĂNG LƯỢNG HEXTECH LƠ LỬNG ---
-      motes.forEach((m) => {
+      // --- 1. VẼ CÁC HẠT NĂNG LƯỢNG HEXTECH LƠ LỬNG (không radial gradient) ---
+      for (let i = 0; i < motes.length; i++) {
+        const m = motes[i];
         m.y += m.vy * dt;
         m.x += (m.vx + Math.sin(time * 0.002 + m.phase) * 0.3) * dt;
 
@@ -291,35 +309,27 @@ export default function GamingHextechEffect({ autoStart = true }) {
         if (m.x > width + 20) m.x = -10;
 
         const alpha = Math.sin(time * m.pulseSpeed + m.phase) * 0.28 + m.maxAlpha;
-        if (alpha <= 0.02) return;
+        if (alpha <= 0.02) continue;
 
-        ctx.save();
         if (m.isHex) {
-          // Lục giác ma kỹ Hextech nhỏ lấp lánh
           ctx.strokeStyle = `rgba(${m.color.r}, ${m.color.g}, ${m.color.b}, ${alpha * 0.85})`;
-          ctx.lineWidth = 1.2;
-          drawHexagon(ctx, m.x, m.y, m.size * 2.8);
+          ctx.lineWidth = 1.0;
+          drawHexagon(ctx, m.x, m.y, m.size * 2.5);
           ctx.stroke();
         } else {
-          // Hạt phát sáng
-          const glow = ctx.createRadialGradient(m.x, m.y, 0, m.x, m.y, m.size * 3.5);
-          glow.addColorStop(0, `rgba(${m.color.r}, ${m.color.g}, ${m.color.b}, ${alpha * 0.9})`);
-          glow.addColorStop(0.5, `rgba(${m.color.r}, ${m.color.g}, ${m.color.b}, ${alpha * 0.25})`);
-          glow.addColorStop(1, `rgba(${m.color.r}, ${m.color.g}, ${m.color.b}, 0)`);
-          ctx.fillStyle = glow;
           ctx.beginPath();
-          ctx.arc(m.x, m.y, m.size * 3.5, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${m.color.r}, ${m.color.g}, ${m.color.b}, ${alpha * 0.25})`;
+          ctx.arc(m.x, m.y, m.size * 2.8, 0, Math.PI * 2);
           ctx.fill();
 
-          ctx.fillStyle = `rgba(255, 255, 255, ${Math.min(1, alpha * 1.3)})`;
           ctx.beginPath();
-          ctx.arc(m.x, m.y, m.size * 0.65, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${Math.min(1, alpha * 1.2)})`;
+          ctx.arc(m.x, m.y, m.size * 0.7, 0, Math.PI * 2);
           ctx.fill();
         }
-        ctx.restore();
-      });
+      }
 
-      // --- 2. VẼ SÓNG XUNG KÍCH HEXTECH (SHOCKWAVES) ---
+      // --- 2. VẼ SÓNG XUNG KÍCH HEXTECH (không shadowBlur) ---
       for (let s = shockwaves.length - 1; s >= 0; s--) {
         const sw = shockwaves[s];
         sw.radius += (sw.maxRadius - sw.radius) * 0.16 * dt + 1.5;
@@ -333,8 +343,6 @@ export default function GamingHextechEffect({ autoStart = true }) {
         ctx.save();
         ctx.strokeStyle = `rgba(${sw.color}, ${Math.max(0, sw.alpha)})`;
         ctx.lineWidth = sw.width * sw.alpha;
-        ctx.shadowColor = `rgba(${sw.color}, 0.9)`;
-        ctx.shadowBlur = 14;
 
         if (sw.isHex) {
           drawHexagon(ctx, sw.x, sw.y, sw.radius);

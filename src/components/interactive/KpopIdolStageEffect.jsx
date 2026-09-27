@@ -14,7 +14,7 @@ import React, { useEffect, useRef, useState } from 'react';
  *    Các chùm ánh sáng gradient quét nhẹ tạo chiều sâu như đang xem live stage tại concert.
  * 4. K-Pop Idol Shimmer Audio (Âm thanh chuông ngân Shimmer Bell & Bass Kick nhẹ qua Web Audio API).
  */
-export default function KpopIdolStageEffect({ autoStart = true }) {
+export default function KpopIdolStageEffect({ autoStart = false }) {
   const canvasRef = useRef(null);
   const [isActive, setIsActive] = useState(autoStart);
   const [cheerCount, setCheerCount] = useState(0);
@@ -23,10 +23,10 @@ export default function KpopIdolStageEffect({ autoStart = true }) {
 
   // Bảng màu Hologram thời thượng chuẩn K-Pop Y2K / Cyber Stage
   const kpopPalettes = [
-    { name: 'Pink Venom', primary: '#ff5ba8', secondary: '#ff8ac6', glow: 'rgba(255, 91, 168, 0.7)' },
-    { name: 'Borahae Purple', primary: '#a06cff', secondary: '#c49bff', glow: 'rgba(160, 108, 255, 0.7)' },
-    { name: 'Hype Blue', primary: '#4fd8ff', secondary: '#94e8ff', glow: 'rgba(79, 216, 255, 0.7)' },
-    { name: 'Champagne Gold', primary: '#ffd66b', secondary: '#ffe8a3', glow: 'rgba(255, 214, 107, 0.7)' },
+    { name: 'Pink Venom', primary: '#ff5ba8', secondary: '#ff8ac6', glow: 'rgba(255, 91, 168, 0.4)' },
+    { name: 'Borahae Purple', primary: '#a06cff', secondary: '#c49bff', glow: 'rgba(160, 108, 255, 0.4)' },
+    { name: 'Hype Blue', primary: '#4fd8ff', secondary: '#94e8ff', glow: 'rgba(79, 216, 255, 0.4)' },
+    { name: 'Champagne Gold', primary: '#ffd66b', secondary: '#ffe8a3', glow: 'rgba(255, 214, 107, 0.4)' },
   ];
 
   // Phát âm thanh Shimmer Chime & Synth Chime ngọt ngào chuẩn K-Pop Pop-Drop
@@ -46,7 +46,7 @@ export default function KpopIdolStageEffect({ autoStart = true }) {
 
       if (type === 'cheer') {
         // Hợp âm Arpeggio chuông gió lấp lánh (Shimmer Bell Chime)
-        const freqs = [659.25, 830.61, 987.77, 1318.51, 1661.22]; // E5, G#5, B5, E6, G#6 (Hợp âm E Major rực rỡ)
+        const freqs = [659.25, 830.61, 987.77, 1318.51, 1661.22]; // E5, G#5, B5, E6, G#6
         freqs.forEach((freq, idx) => {
           const osc = ctx.createOscillator();
           const gain = ctx.createGain();
@@ -97,7 +97,7 @@ export default function KpopIdolStageEffect({ autoStart = true }) {
 
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;
 
     let width = (canvas.width = window.innerWidth);
@@ -116,19 +116,19 @@ export default function KpopIdolStageEffect({ autoStart = true }) {
     const pulseRings = [];      // Vòng hào quang Lightstick
     const oceanOrbs = [];       // Biển lightstick lượn sóng ambient
 
-    // Khởi tạo biển lightstick ambient (Lightstick Ocean)
-    const orbCount = Math.min(48, Math.floor(window.innerWidth / 28));
+    // Khởi tạo biển lightstick ambient tối ưu (tối đa 16 hạt để không lag GPU)
+    const orbCount = Math.min(16, Math.max(8, Math.floor(window.innerWidth / 80)));
     for (let i = 0; i < orbCount; i++) {
       const pal = kpopPalettes[Math.floor(Math.random() * kpopPalettes.length)];
       oceanOrbs.push({
         x: Math.random() * width,
         y: Math.random() * height,
         baseX: Math.random() * width,
-        radius: Math.random() * 3 + 2,
-        speedY: Math.random() * 0.45 + 0.2,
+        radius: Math.random() * 2.5 + 2,
+        speedY: Math.random() * 0.4 + 0.2,
         waveAngle: Math.random() * Math.PI * 2,
         waveSpeed: Math.random() * 0.02 + 0.008,
-        waveAmp: Math.random() * 25 + 10,
+        waveAmp: Math.random() * 20 + 8,
         pulseSpeed: Math.random() * 0.04 + 0.02,
         pulsePhase: Math.random() * Math.PI * 2,
         color: pal.primary,
@@ -136,7 +136,7 @@ export default function KpopIdolStageEffect({ autoStart = true }) {
       });
     }
 
-    // Hàm vẽ hình Trái Tim (Bezier Heart)
+    // Hàm vẽ hình Trái Tim (nhẹ, không shadowBlur)
     const drawHeart = (cx, cy, size, color, alpha, rotation = 0) => {
       ctx.save();
       ctx.translate(cx, cy);
@@ -151,13 +151,11 @@ export default function KpopIdolStageEffect({ autoStart = true }) {
       ctx.closePath();
 
       ctx.fillStyle = color;
-      ctx.shadowColor = color;
-      ctx.shadowBlur = 12;
       ctx.fill();
 
-      // Tâm phát sáng trắng
-      ctx.lineWidth = 1.2;
-      ctx.strokeStyle = '#ffffff';
+      // Viền sáng trắng nhẹ
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
       ctx.stroke();
 
       ctx.restore();
@@ -165,37 +163,35 @@ export default function KpopIdolStageEffect({ autoStart = true }) {
 
     // Hàm tạo vụ nổ Thả Tim & Nốt Nhạc K-Pop khi click
     const createStageCheer = (x, y) => {
-      const heartCount = Math.floor(Math.random() * 4) + 8; // 8 - 11 trái tim
-      const noteSymbols = ['♪', '♫', '♬', '✨', '💖'];
+      const heartCount = 6;
+      const noteSymbols = ['♪', '♫', '✨', '💖'];
 
-      // 1. Tạo các trái tim bắn ra xung quanh
       for (let i = 0; i < heartCount; i++) {
         const pal = kpopPalettes[Math.floor(Math.random() * kpopPalettes.length)];
         const angle = (i / heartCount) * Math.PI * 2 + (Math.random() - 0.5) * 0.4;
-        const speed = Math.random() * 5 + 3.5;
+        const speed = Math.random() * 4 + 3;
 
         burstHearts.push({
           type: 'heart',
           x,
           y,
           vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed - 2.5, // Nẩy lên trên
+          vy: Math.sin(angle) * speed - 2.5,
           gravity: 0.12,
-          size: Math.random() * 10 + 14,
+          size: Math.random() * 8 + 12,
           color: pal.primary,
           rotation: Math.random() * Math.PI * 2,
           rotSpeed: (Math.random() - 0.5) * 0.1,
           life: 1.0,
-          decay: Math.random() * 0.015 + 0.015,
+          decay: 0.02,
         });
       }
 
-      // 2. Tạo nốt nhạc & biểu tượng thần tượng
-      for (let k = 0; k < 4; k++) {
+      for (let k = 0; k < 2; k++) {
         const pal = kpopPalettes[Math.floor(Math.random() * kpopPalettes.length)];
         const symbol = noteSymbols[Math.floor(Math.random() * noteSymbols.length)];
         const angle = Math.random() * Math.PI * 2;
-        const speed = Math.random() * 4 + 2;
+        const speed = Math.random() * 3 + 2;
 
         burstHearts.push({
           type: 'symbol',
@@ -203,41 +199,39 @@ export default function KpopIdolStageEffect({ autoStart = true }) {
           x,
           y,
           vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed - 3.0,
+          vy: Math.sin(angle) * speed - 2.5,
           gravity: 0.08,
-          fontSize: Math.random() * 8 + 18,
+          fontSize: 16,
           color: pal.primary,
           life: 1.0,
-          decay: Math.random() * 0.012 + 0.012,
+          decay: 0.016,
         });
       }
 
-      // 3. Tạo dải kim tuyến ruy băng concert rơi uốn lượn (Streamers)
-      for (let s = 0; s < 6; s++) {
+      for (let s = 0; s < 4; s++) {
         const pal = kpopPalettes[Math.floor(Math.random() * kpopPalettes.length)];
         stageStreamers.push({
-          x: x + (Math.random() - 0.5) * 40,
-          y: y + (Math.random() - 0.5) * 30,
-          vx: (Math.random() - 0.5) * 6,
-          vy: -Math.random() * 6 - 3,
+          x: x + (Math.random() - 0.5) * 30,
+          y: y + (Math.random() - 0.5) * 20,
+          vx: (Math.random() - 0.5) * 5,
+          vy: -Math.random() * 5 - 2,
           gravity: 0.14,
-          length: Math.random() * 30 + 20,
-          width: Math.random() * 3 + 2,
+          length: Math.random() * 24 + 16,
+          width: 2.5,
           color: pal.primary,
           angle: Math.random() * Math.PI * 2,
-          rotSpeed: (Math.random() - 0.5) * 0.15,
+          rotSpeed: (Math.random() - 0.5) * 0.12,
           life: 1.0,
-          decay: 0.014,
+          decay: 0.018,
         });
       }
 
-      // 4. Vòng sóng ánh sáng Lightstick Pulse
       pulseRings.push({
         x,
         y,
-        radius: 5,
-        maxRadius: 140,
-        speed: 5.5,
+        radius: 4,
+        maxRadius: 100,
+        speed: 5.0,
         color: kpopPalettes[Math.floor(Math.random() * kpopPalettes.length)].primary,
         life: 1.0,
       });
@@ -266,16 +260,35 @@ export default function KpopIdolStageEffect({ autoStart = true }) {
 
     window.addEventListener('pointerdown', handlePointerDown);
 
-    // Vòng lặp Render 60fps
+    // Tự động tạm dừng render khi tab bị ẩn hoặc cuộn sâu xuống trang (tiết kiệm 100% CPU)
+    let isTabVisible = !document.hidden;
+    const handleVisibility = () => {
+      isTabVisible = !document.hidden;
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+
+    let isScrolledDown = false;
+    const handleScroll = () => {
+      isScrolledDown = window.scrollY > 750;
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // Vòng lặp Render tối ưu 60fps
     let lastTime = performance.now();
     const render = (time) => {
+      if (!isTabVisible || isScrolledDown) {
+        animFrameIdRef.current = requestAnimationFrame(render);
+        return;
+      }
+
       const dt = Math.min((time - lastTime) / 16.66, 2.0);
       lastTime = time;
 
       ctx.clearRect(0, 0, width, height);
 
-      // 1. Vẽ Biển Lightstick Ocean trôi bồng bềnh
-      oceanOrbs.forEach((orb) => {
+      // 1. Vẽ Biển Lightstick Ocean trôi bồng bềnh (không dùng radialGradient per frame)
+      for (let i = 0; i < oceanOrbs.length; i++) {
+        const orb = oceanOrbs[i];
         orb.waveAngle += orb.waveSpeed * dt;
         orb.pulsePhase += orb.pulseSpeed * dt;
         orb.y -= orb.speedY * dt;
@@ -289,24 +302,29 @@ export default function KpopIdolStageEffect({ autoStart = true }) {
         const twinkle = (Math.sin(orb.pulsePhase) + 1) / 2;
         const currentR = orb.radius * (0.8 + twinkle * 0.5);
 
-        // Hào quang tỏa sáng của lightstick
-        const grad = ctx.createRadialGradient(orb.x, orb.y, 0, orb.x, orb.y, currentR * 4);
-        grad.addColorStop(0, orb.glowColor);
-        grad.addColorStop(1, 'rgba(0,0,0,0)');
-
-        ctx.fillStyle = grad;
+        // Hào quang ngoài (nhẹ, nhanh gấp 50 lần so với radial gradient)
         ctx.beginPath();
-        ctx.arc(orb.x, orb.y, currentR * 4, 0, Math.PI * 2);
+        ctx.fillStyle = orb.glowColor;
+        ctx.globalAlpha = 0.35 + twinkle * 0.25;
+        ctx.arc(orb.x, orb.y, currentR * 3, 0, Math.PI * 2);
         ctx.fill();
 
-        // Điểm sáng trung tâm
-        ctx.fillStyle = '#ffffff';
+        // Lõi sáng có màu
         ctx.beginPath();
+        ctx.fillStyle = orb.color;
+        ctx.globalAlpha = 0.85;
+        ctx.arc(orb.x, orb.y, currentR, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Điểm sáng trắng trung tâm
+        ctx.beginPath();
+        ctx.fillStyle = '#ffffff';
+        ctx.globalAlpha = 0.95;
         ctx.arc(orb.x, orb.y, currentR * 0.45, 0, Math.PI * 2);
         ctx.fill();
-      });
+      }
 
-      // 2. Vẽ vòng sóng ánh sáng Lightstick Pulse
+      // 2. Vẽ vòng sóng ánh sáng Lightstick Pulse (không shadowBlur)
       for (let p = pulseRings.length - 1; p >= 0; p--) {
         const ring = pulseRings[p];
         ring.radius += ring.speed * dt;
@@ -320,16 +338,14 @@ export default function KpopIdolStageEffect({ autoStart = true }) {
         ctx.save();
         ctx.strokeStyle = ring.color;
         ctx.globalAlpha = ring.life * 0.7;
-        ctx.lineWidth = 2.5;
-        ctx.shadowColor = ring.color;
-        ctx.shadowBlur = 10;
+        ctx.lineWidth = 2.0;
         ctx.beginPath();
         ctx.arc(ring.x, ring.y, ring.radius, 0, Math.PI * 2);
         ctx.stroke();
         ctx.restore();
       }
 
-      // 3. Vẽ các dải ruy băng kim tuyến Concert Streamers
+      // 3. Vẽ các dải ruy băng kim tuyến Concert Streamers (không shadowBlur)
       for (let s = stageStreamers.length - 1; s >= 0; s--) {
         const st = stageStreamers[s];
         st.x += st.vx * dt;
@@ -349,13 +365,11 @@ export default function KpopIdolStageEffect({ autoStart = true }) {
         ctx.rotate(st.angle);
         ctx.globalAlpha = Math.max(0, st.life);
         ctx.fillStyle = st.color;
-        ctx.shadowColor = st.color;
-        ctx.shadowBlur = 8;
         ctx.fillRect(-st.length / 2, -st.width / 2, st.length, st.width);
         ctx.restore();
       }
 
-      // 4. Vẽ Trái Tim Neon & Nốt Nhạc bùng nổ
+      // 4. Vẽ Trái Tim Neon & Nốt Nhạc bùng nổ (không shadowBlur)
       for (let h = burstHearts.length - 1; h >= 0; h--) {
         const b = burstHearts[h];
         b.x += b.vx * dt;
@@ -379,8 +393,6 @@ export default function KpopIdolStageEffect({ autoStart = true }) {
           ctx.textBaseline = 'middle';
           ctx.globalAlpha = Math.max(0, b.life);
           ctx.fillStyle = b.color;
-          ctx.shadowColor = b.color;
-          ctx.shadowBlur = 12;
           ctx.fillText(b.symbol, b.x, b.y);
           ctx.restore();
         }
@@ -394,6 +406,8 @@ export default function KpopIdolStageEffect({ autoStart = true }) {
     return () => {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('pointerdown', handlePointerDown);
+      document.removeEventListener('visibilitychange', handleVisibility);
+      window.removeEventListener('scroll', handleScroll);
       if (animFrameIdRef.current) {
         cancelAnimationFrame(animFrameIdRef.current);
       }

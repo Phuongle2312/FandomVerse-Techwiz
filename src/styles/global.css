@@ -2268,6 +2268,9 @@ button.fv-lang-btn:hover,
   height: 100%;
   object-fit: cover;
   transition: opacity 0.5s ease;
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .category-cinema-hero-scrim {

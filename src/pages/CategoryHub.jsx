@@ -62,6 +62,7 @@ export default function CategoryHub() {
     const configs = {
       anime: {
         videoSrc: '/GunDam.mp4',
+        poster: '/image/gundam.jpg',
         badgeText: 'Anime Exclusive',
         badgeGradient: 'linear-gradient(135deg, #FF6B81, #ff4757)',
         badgeShadow: 'rgba(255, 107, 129, 0.35)',
@@ -70,10 +71,11 @@ export default function CategoryHub() {
         heroDesc: isVi
           ? 'Khám phá thế giới hoạt hình Nhật Bản đỉnh cao, các tác phẩm shounen huyền thoại cùng trailer bom tấn Mobile Suit Gundam: Chiến Binh Thép Tái Xuất với những màn đại chiến mecha mãn nhãn.'
           : 'Explore top Japanese animation, legendary shounen masterpieces, and the blockbuster Mobile Suit Gundam trailer featuring visually breathtaking mecha battles.',
-        effect: <SakuraEffect autoStart={true} />,
+        effect: <SakuraEffect autoStart={false} />,
       },
       gaming: {
         videoSrc: '/video_lol.mp4',
+        poster: '/image/cyper.jpg',
         badgeText: 'Gaming Exclusive',
         badgeGradient: 'linear-gradient(135deg, #00cec9, #0984e3)',
         badgeShadow: 'rgba(0, 206, 201, 0.35)',
@@ -82,10 +84,11 @@ export default function CategoryHub() {
         heroDesc: isVi
           ? 'Thế giới game đỉnh cao, eSports chuyên nghiệp, các tựa game bom tấn AAA cùng trailer bom tấn League of Legends Cinematic với những trận đại chiến huyền thoại và đồ họa tương lai mãn nhãn.'
           : 'High-octane gaming, pro eSports, blockbuster AAA titles, and cinematic League of Legends trailers featuring legendary showdowns and stunning futuristic visuals.',
-        effect: <GamingHextechEffect autoStart={true} />,
+        effect: <GamingHextechEffect autoStart={false} />,
       },
       manga: {
         videoSrc: '/manga-hero-video.mp4',
+        poster: '/image/onepice_thamnail.jpg',
         badgeText: 'Manga Exclusive',
         badgeGradient: 'linear-gradient(135deg, #d35400, #E17055)',
         badgeShadow: 'rgba(211, 84, 0, 0.35)',
@@ -94,10 +97,11 @@ export default function CategoryHub() {
         heroDesc: isVi
           ? 'Đắm chìm vào những trang truyện tranh kinh điển, các nét vẽ mực đỉnh cao từ Eiichiro Oda, Gege Akutami, Kentaro Miura đến thế giới shounen bùng nổ cảm xúc.'
           : 'Immerse yourself in timeless manga chapters, masterwork ink drawings from legendary mangaka, and emotional shounen adventures.',
-        effect: <MangaActionEffect autoStart={true} />,
+        effect: <MangaActionEffect autoStart={false} />,
       },
       movies: {
         videoSrc: '/movies-hero-video.mp4',
+        poster: '/image/avenger.jpg',
         badgeText: 'Cinema Exclusive',
         badgeGradient: 'linear-gradient(135deg, #0984E3, #00a8ff)',
         badgeShadow: 'rgba(9, 132, 227, 0.35)',
@@ -106,10 +110,11 @@ export default function CategoryHub() {
         heroDesc: isVi
           ? 'Hòa mình vào vũ trụ điện ảnh đỉnh cao, những kiệt tác màn ảnh rộng, vũ trụ đa chiều MCU & DC cùng kỹ xảo CGI mãn nhãn hàng đầu thế giới.'
           : 'Step into epic cinematic universes, silver screen masterpieces, Marvel and DC multiverses, and world-class visual effects.',
-        effect: <MoviesProjectorEffect autoStart={true} />,
+        effect: <MoviesProjectorEffect autoStart={false} />,
       },
       tvshows: {
         videoSrc: '/dragon.mp4',
+        poster: '/image/rong.jpg',
         badgeText: 'House of the Dragon 4K',
         badgeGradient: 'linear-gradient(135deg, #d63031 0%, #e17055 50%, #f39c12 100%)',
         badgeShadow: 'rgba(214, 48, 49, 0.45)',
@@ -122,10 +127,11 @@ export default function CategoryHub() {
         heroDesc: isVi
           ? 'Bước vào kỷ nguyên huy hoàng và tàn khốc của Gia tộc Targaryen, nơi bầu trời rực lửa bởi những con rồng khổng lồ Caraxes, Vhagar và Syrax trong cuộc đại chiến vương quyền đẫm máu "Vũ Điệu Của Bầy Rồng".'
           : 'Step into the glorious and brutal reign of House Targaryen, where skies burn with legendary dragons Caraxes, Vhagar, and Syrax in the bloodiest civil war for the Iron Throne: The Dance of the Dragons.',
-        effect: <DragonFireEmbersEffect autoStart={true} />,
+        effect: <DragonFireEmbersEffect autoStart={false} />,
       },
       kpop: {
         videoSrc: '/Kpol.mp4',
+        poster: '/image/kpop.jpg',
         badgeText: 'K-Pop Comeback Stage 4K',
         badgeGradient: 'linear-gradient(135deg, #ff5ba8 0%, #a06cff 50%, #4fd8ff 100%)',
         badgeShadow: 'rgba(255, 91, 168, 0.45)',
@@ -134,10 +140,11 @@ export default function CategoryHub() {
         heroDesc: isVi
           ? 'Đắm chìm vào những màn vũ đạo bùng nổ, visual tỏa sáng và thần thái đỉnh cao từ các nhóm nhạc hàng đầu K-Pop, hòa cùng biển lightstick rực rỡ và giai điệu bắt tai gây sốt toàn cầu.'
           : 'Immerse yourself in electrifying choreography, shining visuals, and charismatic performances from top K-Pop idols, amidst glowing oceans of lightsticks.',
-        effect: <KpopIdolStageEffect autoStart={true} />,
+        effect: <KpopIdolStageEffect autoStart={false} />,
       },
       comics: {
         videoSrc: '/spiderman-hero.mp4',
+        poster: '/image/spider_1.jpg',
         badgeText: 'Spider-Man & Marvel Comics',
         badgeGradient: 'linear-gradient(135deg, #e74c3c 0%, #0984e3 100%)',
         badgeShadow: 'rgba(231, 76, 60, 0.45)',
@@ -146,7 +153,7 @@ export default function CategoryHub() {
         heroDesc: isVi
           ? 'Đắm chìm vào thế giới siêu anh hùng Người Nhện (Spider-Man), những màn đu tơ bay lượn nghẹt thở giữa các tòa nhà chọc trời New York, giác quan nhện nhạy bén và kỷ nguyên truyện tranh Marvel & DC bất hủ.'
           : 'Swing through New York skyscrapers with Spider-Man, experience hyper-acute spider-sense, and dive into timeless Marvel and DC comic eras.',
-        effect: <ComicsSpiderWebEffect autoStart={true} />,
+        effect: <ComicsSpiderWebEffect autoStart={false} />,
       },
     };
     return configs[categoryId] || configs.anime;
@@ -295,6 +302,9 @@ export default function CategoryHub() {
           loop
           muted={heroMuted}
           playsInline
+          preload="metadata"
+          poster={heroConfig.poster}
+          disablePictureInPicture
         />
         <div className="category-cinema-hero-scrim" />
 
